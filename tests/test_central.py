@@ -1,11 +1,11 @@
 import sympy as sp
 
-from aeg_shakespeare.central import (
+from aeg_shakespeare.process.finite import (
     ProcessCocycle,
+    ProcessFamily,
     central_commutator_residual,
     verify_process_cocycle,
 )
-from aeg_shakespeare.families import ProcessFamily
 
 
 def _pair_add(left, right):
