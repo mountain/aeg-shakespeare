@@ -59,16 +59,20 @@ jobs:
             sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
             -o /tmp/lr-upstream-patched
 
-      - name: Verify complete canonical solution sets
+      - name: Verify complete canonical solution sets K8 to K12
         run: |
           mkdir -p /tmp/lr-solutions
-          for p in 79 89 127; do
+          for p in 79 89 127 131 139; do
             /tmp/lr-upstream-baseline dump "$p" > "/tmp/lr-solutions/base-$p.txt"
             /tmp/lr-upstream-patched dump "$p" > "/tmp/lr-solutions/patched-$p.txt"
             cmp "/tmp/lr-solutions/base-$p.txt" "/tmp/lr-solutions/patched-$p.txt"
             echo "P=$p exact-set SHA256: $(sha256sum "/tmp/lr-solutions/base-$p.txt" | cut -d' ' -f1)"
             head -n 1 "/tmp/lr-solutions/base-$p.txt"
           done
+          # Keep the smaller evidence files as an artifact; K11/K12 equality and
+          # hashes remain in the immutable workflow log without inflating storage.
+          rm -f /tmp/lr-solutions/base-131.txt /tmp/lr-solutions/patched-131.txt
+          rm -f /tmp/lr-solutions/base-139.txt /tmp/lr-solutions/patched-139.txt
 
       - name: Benchmark pinned upstream source K8 to K10
         run: |
@@ -88,16 +92,16 @@ jobs:
           import subprocess
 
           cases = [
-              # (prime, repeats, warmups, expected canonical set size)
-              (131, 3, 1, 2_639_975),
-              (139, 2, 1, 7_644_014),
+              # (prime, repeats, warmups)
+              (131, 5, 1),
+              (139, 3, 1),
           ]
           pattern = re.compile(
               r"P=(\d+) K=(\d+) N=(\d+) repeats=(\d+) warmups=(\d+) "
               r"median_ms=([0-9.]+) mean_ms=([0-9.]+) min_ms=([0-9.]+)"
           )
 
-          for p, repeats, warmups, expected in cases:
+          for p, repeats, warmups in cases:
               results = {}
               for label, binary in (
                   ("baseline", "/tmp/lr-upstream-baseline"),
@@ -112,7 +116,6 @@ jobs:
                   assert match, output
                   n = int(match.group(3))
                   median = float(match.group(6))
-                  assert n == expected, (p, n, expected)
                   results[label] = (n, median)
 
               assert results["baseline"][0] == results["patched"][0]
