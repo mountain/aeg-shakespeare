@@ -140,4 +140,10 @@ class ConstraintCanonicalization:
         )
 
 
+# Hidden transition alias for the first research commits on this branch.  It is
+# intentionally omitted from ``__all__`` and should disappear when the new
+# classical calibrations are migrated to the narrowed name.
+Canonicalization = ConstraintCanonicalization
+
+
 __all__ = ["ConstraintCanonicalization"]
