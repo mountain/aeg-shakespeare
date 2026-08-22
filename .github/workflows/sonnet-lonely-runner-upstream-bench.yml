@@ -70,16 +70,55 @@ jobs:
             head -n 1 "/tmp/lr-solutions/base-$p.txt"
           done
 
-      - name: Benchmark pinned upstream source
+      - name: Benchmark pinned upstream source K8 to K10
         run: |
           echo '=== baseline ==='
           for p in 79 89 127; do
-            /tmp/lr-upstream-baseline bench "$p" 15
+            /tmp/lr-upstream-baseline bench "$p" 15 3
           done
           echo '=== patched ==='
           for p in 79 89 127; do
-            /tmp/lr-upstream-patched bench "$p" 15
+            /tmp/lr-upstream-patched bench "$p" 15 3
           done
+
+      - name: Transfer frozen rule to solved-frontier K11 and K12
+        run: |
+          python - <<'PY'
+          import re
+          import subprocess
+
+          cases = [
+              # (prime, repeats, warmups, expected canonical set size)
+              (131, 3, 1, 2_639_975),
+              (139, 2, 1, 7_644_014),
+          ]
+          pattern = re.compile(
+              r"P=(\d+) K=(\d+) N=(\d+) repeats=(\d+) warmups=(\d+) "
+              r"median_ms=([0-9.]+) mean_ms=([0-9.]+) min_ms=([0-9.]+)"
+          )
+
+          for p, repeats, warmups, expected in cases:
+              results = {}
+              for label, binary in (
+                  ("baseline", "/tmp/lr-upstream-baseline"),
+                  ("patched", "/tmp/lr-upstream-patched"),
+              ):
+                  output = subprocess.check_output(
+                      [binary, "bench", str(p), str(repeats), str(warmups)],
+                      text=True,
+                  ).strip()
+                  print(label, output)
+                  match = pattern.fullmatch(output)
+                  assert match, output
+                  n = int(match.group(3))
+                  median = float(match.group(6))
+                  assert n == expected, (p, n, expected)
+                  results[label] = (n, median)
+
+              assert results["baseline"][0] == results["patched"][0]
+              speedup = results["baseline"][1] / results["patched"][1]
+              print(f"P={p} frozen-rule median speedup={speedup:.3f}x")
+          PY
 
       - name: Upload exact-set evidence
         uses: actions/upload-artifact@v4
