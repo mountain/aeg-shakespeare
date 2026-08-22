@@ -1,13 +1,13 @@
-"""Constraint-quotient quickstart for AEG Shakespeare 0.0.1.
+"""Constraint-quotient quickstart using the semantic public namespaces.
 
-A relation is treated as part of the represented process space, not merely as an
-expression to simplify away.  The Groebner backend supplies an exact quotient
-certificate while Shakespeare keeps that equality layer explicit.
+A relation is treated as part of the represented presentation space, not merely
+as an expression to simplify away. The Groebner backend supplies an exact
+quotient certificate while Shakespeare keeps that equality layer explicit.
 """
 
 import sympy as sp
 
-from aeg_shakespeare import AlgebraicConstraintSet
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
 
 x, y = sp.symbols("x y")
 quotient = AlgebraicConstraintSet(
