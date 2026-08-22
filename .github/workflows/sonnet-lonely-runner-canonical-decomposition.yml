@@ -36,3 +36,7 @@ jobs:
           AEG_RUN_LR_CANONICAL_DECOMPOSITION: "1"
         run: |
           python -m pytest -q tests/research/test_lonely_runner_canonical_observer_decomposition.py
+
+      - name: Print Phase 8B transport-only witness probe
+        run: |
+          python sonnet/lonely-runner/python/local_contact_refinement.py
