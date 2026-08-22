@@ -1,32 +1,31 @@
 """Experimental observer-connection certificates.
 
 An observer connection is not introduced here as a general principal-bundle
-object.  The current vertical slice records only what the first independent
-calibrations need: a local canonicalization, declared base rates, the induced
-observer-parameter rates, and exact residuals certifying that the differentiated
-canonicalization constraints remain satisfied.
+object.  The current vertical slice records only what the first calibrations
+need: canonicalization provenance, declared base rates, induced observer rates,
+and exact residuals certifying the maintained local condition.
 
-Construction should normally go through
-``Canonicalization.induced_connection`` so that observer motion retains its
-canonicalization provenance instead of being supplied as an arbitrary ODE.
+The provenance carrier is generic on purpose.  Exact constraint
+canonicalization is the first backend; later orthogonality, osculation, or
+stationarity backends should be able to produce the same connection record
+without pretending to be algebraic constraints.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Mapping, TYPE_CHECKING
+from typing import Generic, Mapping, TypeVar
 
 import sympy as sp
 
-if TYPE_CHECKING:
-    from ..presentation.canonicalization import Canonicalization
+CanonicalizationT = TypeVar("CanonicalizationT")
 
 
 @dataclass(frozen=True)
-class ObserverConnection:
-    """Local observer transport induced by maintaining canonicalization."""
+class ObserverConnection(Generic[CanonicalizationT]):
+    """Local observer transport together with canonicalization provenance."""
 
-    canonicalization: "Canonicalization"
+    canonicalization: CanonicalizationT
     base_rates: Mapping[sp.Symbol, sp.Expr]
     observer_rates: Mapping[sp.Symbol, sp.Expr]
     residuals: tuple[sp.Expr, ...]
@@ -57,7 +56,7 @@ class ObserverConnection:
 
     @property
     def certified(self) -> bool:
-        """Whether every differentiated canonicalization residual vanishes."""
+        """Whether every supplied canonicalization residual vanishes."""
 
         return all(sp.simplify(residual) == 0 for residual in self.residuals)
 
