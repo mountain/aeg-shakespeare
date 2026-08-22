@@ -26,7 +26,8 @@ The documentation is organized as a mathematical/programming narrative rather th
 22. `21-structured-observer-proposals.md` — minimal structured pairing constructions, backend lowering, and Pendulum III observer generation.
 23. `22-oscillator-additive-process-module.md` — finite additive process closure, basis-accident red team, and relation-before-spectrum discipline.
 24. `23-oscillator-coefficient-extension.md` — explicit coefficient-language extension, refined relation factors, and one-dimensional kernel primitives before spectral semantics.
-25. `REFERENCES.md` — shared mathematical bibliography.
-26. `RELEASE_CHECKLIST.md` — release gates.
+25. `24-oscillator-refinement-red-team.md` — two-frequency red team showing that finer coefficient splitting trades component count against relation order rather than yielding a universal winner.
+26. `REFERENCES.md` — shared mathematical bibliography.
+27. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
