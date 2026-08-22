@@ -3,27 +3,27 @@
 Primitive question
 ------------------
 The period and intersection layers can measure cycles once those cycles have
-already been supplied.  That still leaves a representation choice outside the
+already been supplied. That still leaves a representation choice outside the
 library: *where did the A/B cycles come from?*
 
 For a real-split even-degree hyperelliptic quotient
 
     y^2 = c prod_j (x-e_j),       e_1 < ... < e_(2g+2),
 
-there is a classical answer visible directly in the branch-point order.  Pair
+there is a classical answer visible directly in the branch-point order. Pair
 adjacent branch points into cuts
 
     [e_1,e_2], [e_3,e_4], ..., [e_(2g+1),e_(2g+2)].
 
 A standard symplectic presentation may take ``a_i`` around the i-th nonreference
 cut and ``b_i`` around the even branch set beginning at the right end of that
-cut and ending at the left end of the final reference cut.  In index notation
+cut and ending at the left end of the final reference cut. In index notation
 used here,
 
     a_i encloses e_(2i), ..., e_(2i+1),
     b_i encloses e_(2i+1), ..., e_(2g),
 
-for ``i=0,...,g-1``.  The resulting abstract pairing is
+for ``i=0,...,g-1``. The resulting abstract pairing is
 
     a_i . a_j = b_i . b_j = 0,
     a_i . b_j = delta_ij.
@@ -44,23 +44,26 @@ The branch-point presentation itself emits:
 5. lifted histories obtained by the existing square-root continuation engine.
 
 The exact combinatorial certificate and the sampled realization are deliberately
-kept separate.  Later code can ask whether numerical lifted intersections agree
+kept separate. Later code can ask whether numerical lifted intersections agree
 with the pairing promised by construction.
 
 Executable contract
 -------------------
 ``real_branch_cut_presentation`` validates a supplied ordered list of all
-``2g+2`` real branch points of an even-degree quotient.  ``construct_real_branch_cycles``
+``2g+2`` real branch points of an even-degree quotient. ``construct_real_branch_cycles``
 turns the canonical interval specifications into nested/transverse ellipses and
-lifts them to the Riemann surface.  It returns both the construction metadata
-and an ``AbelianCycleSystem`` ready for period integration.
+lifts them to the Riemann surface. Under the implementation's fixed convention
+that continuation starts at the rightmost point on the principal square-root
+sheet, nested B-contours alternate their base orientation so that the lifted
+cycles realize ``a_i.b_i=+1``. The function returns both the construction
+metadata and an ``AbelianCycleSystem`` ready for period integration.
 
 Boundary
 --------
 This module handles only the real-split, even-degree case with explicitly
-supplied branch points.  It does not discover cuts for arbitrary complex branch
+supplied branch points. It does not discover cuts for arbitrary complex branch
 configurations, prove numerical contour deformation invariance, or replace a
-general Tretkoff--Tretkoff style homology algorithm.  The ellipse geometry is a
+general Tretkoff--Tretkoff style homology algorithm. The ellipse geometry is a
 sampled realization of a classical branch-cut presentation, not the topology
 itself.
 """
@@ -182,9 +185,9 @@ def real_branch_cut_presentation(
         RealBranchCycleSpec("A", index, 2 * index, 2 * index + 1)
         for index in range(genus)
     )
-    # The final pair [e_(2g), e_(2g+1)] is the reference cut.  b_i surrounds
+    # The final pair [e_(2g), e_(2g+1)] is the reference cut. b_i surrounds
     # the even branch set from the right endpoint of a_i to the left endpoint
-    # of that reference cut.  Nested B-contours then intersect only their dual A.
+    # of that reference cut. Nested B-contours then intersect only their dual A.
     b_specs = tuple(
         RealBranchCycleSpec("B", index, 2 * index + 1, 2 * genus)
         for index in range(genus)
@@ -230,12 +233,19 @@ def _ellipse_for_spec(
     horizontal_radius = 0.5 * span + padding
     vertical_radius = height_fraction * horizontal_radius
 
-    return tuple(
+    contour = tuple(
         center
         + horizontal_radius * math.cos(2.0 * math.pi * step / samples)
         + 1j * vertical_radius * math.sin(2.0 * math.pi * step / samples)
         for step in range(samples + 1)
     )
+    # All contours start at their rightmost point.  With the principal-square-root
+    # initial sheet used by lift_square_root_path, successive nested B cycles
+    # acquire alternating lifted orientation.  Reverse the odd-indexed ones so
+    # the realized basis matches the construction convention a_i.b_i=+1.
+    if spec.family == "B" and spec.index % 2 == 1:
+        contour = tuple(reversed(contour))
+    return contour
 
 
 def construct_real_branch_cycles(
