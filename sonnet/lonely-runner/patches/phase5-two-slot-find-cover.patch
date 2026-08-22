@@ -1,0 +1,48 @@
+diff --git a/src/find_cover.h b/src/find_cover.h
+index 1f6fe26..phase5 100644
+--- a/src/find_cover.h
++++ b/src/find_cover.h
+@@ -61,6 +61,7 @@ template <int P, int K> struct Dfs
+     }
+ 
+     if (early_return_bound()) return;
++    if (two_slot_completion_impossible()) return;
+ 
+     const auto saved_choice = state.choice;
+ 
+@@ -86,6 +87,35 @@ template <int P, int K> struct Dfs
+ 
+ private:
++  bool two_slot_completion_impossible() const
++  {
++    // Phase-5 Shakespeare certificate: with exactly two speed slots left,
++    // decide the remaining set-cover task exactly.  This introduces no new
++    // persistent state and preserves the existing MRV/search order.
++    if (state.elems.size() != K - 2) return false;
++
++    const int nextToCover = state.choice.get_next_to_cover(state.covered);
++    if (nextToCover == -1) return false; // already covered; descendants exist
++
++    const CoveredBitset uncovered = ~state.covered;
++
++    for (int i = 0; i < P / 2; ++i)
++    {
++      if (state.choice.isEliminated(i)) continue;
++      if (!context<P, K>.cover(i)[nextToCover]) continue;
++
++      const CoveredBitset residual = uncovered & ~context<P, K>.cover(i);
++      if (residual.none()) return false;
++
++      for (int j = 0; j < P / 2; ++j)
++      {
++        if (state.choice.isEliminated(j)) continue;
++        if ((residual & ~context<P, K>.cover(j)).none()) return false;
++      }
++    }
++
++    return true;
++  }
++
+   bool early_return_bound() const
+   {
+     const int nextToCover = state.choice.get_next_to_cover(state.covered);
