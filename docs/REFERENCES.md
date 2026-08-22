@@ -12,6 +12,14 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Carinena-Martinez-MunozLecanda-2022]** J. F. Carinena, E. Martinez, and M. C. Munoz-Lecanda, “Infinitesimal Time Reparametrisation and Its Applications,” *Journal of Nonlinear Mathematical Physics* 29 (2022), 523–555. DOI: `10.1007/s44198-022-00037-w`. Section 2 reviews the classical Sundman transformation `dt=r dτ`, collision regularization, and fixed-energy linearization of the Kepler radial equation.
 
+## Electrical networks and boundary response
+
+**[Curtis-Ingerman-Morrow-1998]** Edward B. Curtis, David Ingerman, and James A. Morrow, “Circular planar graphs and resistor networks,” *Linear Algebra and its Applications* 283 (1998), 115–150. DOI: `10.1016/S0024-3795(98)10087-3`. Develops circular-planar network response matrices, critical networks, recovery of conductances from boundary response, and Y–Delta equivalence.
+
+**[Curtis-Morrow-1991]** Edward B. Curtis and James A. Morrow, “The Dirichlet to Neumann map for a resistor network,” *SIAM Journal on Applied Mathematics* 51 (1991), 1011–1029. DOI: `10.1137/0151051`. Classical source for the discrete boundary voltage-to-current map and inverse-network questions.
+
+**[Dorfler-Bullo-2013]** Florian Dörfler and Francesco Bullo, “Kron reduction of graphs with applications to electrical networks,” *IEEE Transactions on Circuits and Systems I: Regular Papers* 60 (2013), 150–163. DOI: `10.1109/TCSI.2012.2215780`. Treats Schur-complement/Kron reduction of weighted graph Laplacians and its electrical-network interpretation.
+
 ## Integrable waves and KdV
 
 **[Carretero-Frantzeskakis-Kevrekidis-2024]** R. Carretero-Gonzalez, D. J. Frantzeskakis, and P. G. Kevrekidis, “Traveling Wave Reduction, Elliptic Functions, and Connections to KdV,” in *Nonlinear Waves & Hamiltonian Systems: From One To Many Degrees of Freedom, From Discrete To Continuum*, Oxford University Press, 2024, Chapter 6. DOI: `10.1093/oso/9780192843234.003.0006`. The traveling-wave reduction gives a cubic effective potential whose elliptic solutions degenerate to solitary waves.
@@ -72,7 +80,7 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Kline-1972]** Morris Kline, *Mathematical Thought from Ancient to Modern Times*, Oxford University Press, 1972. Useful secondary history for the nineteenth-century development from elliptic integrals to elliptic functions and complex analysis.
 
-**[Gray-2015]** Jeremy Gray, *The Real and the Complex: A History of Analysis in the 19th Century*, Springer, 2015. DOI: `10.1007/978-3-319-23715-2`. See the treatment of elliptic functions, Riemann surfaces, and the algebraic/analytic interaction.
+**[Gray-2015]** Jeremy Gray, *The Real and the Complex: A History of Analysis in the 19th Century*, Springer, 2015. See the treatment of elliptic functions, Riemann surfaces, and the algebraic/analytic interaction.
 
 ## Project interpretation
 
