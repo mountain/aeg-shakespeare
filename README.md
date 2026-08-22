@@ -51,14 +51,17 @@ What the process **is**.
 
 ### `aeg_shakespeare.presentation`
 
-How process history is **objectified, quotiented, compressed, and compared**.
+How process history is **objectified, quotiented, compressed, transformed, and compared**.
 
 - `presentation.history` — explicit rewriting, task signatures, and finite history geometry;
 - `presentation.construction` — construction-history-preserving primitive proposals;
 - `presentation.constraints` — exact algebraic quotient constraints;
 - `presentation.grammar` — generated finite process grammars;
 - `presentation.relations` — exact process relations, factors, kernels, and decompositions;
+- `presentation.morphism` — task-relative, certificate-carrying transformations between possibly heterogeneous presentations;
 - `presentation.search` — budgets, representation cost, Pareto filtering, and presentation search.
+
+The first `PresentationMorphism` API is intentionally minimal: it records source, target, declared task semantics, a caller-defined certificate, and optional construction provenance. It does not yet define universal verification, composition, inverses, normal forms, or a category/groupoid structure.
 
 ### `aeg_shakespeare.discovery`
 
@@ -80,6 +83,7 @@ A representative import therefore looks like:
 ```python
 from aeg_shakespeare.process.history import ProcessWord
 from aeg_shakespeare.presentation.grammar import discover_generated_presentation
+from aeg_shakespeare.presentation.morphism import PresentationMorphism
 from aeg_shakespeare.discovery import discover_polynomial_invariants
 from aeg_shakespeare.analysis.am import AMFunctionTheory
 ```
@@ -145,13 +149,15 @@ The current implementation supports a bounded loop from declared process structu
 Recent calibrations have established several deliberately limited layers:
 
 - finite families, scalar characters, family actions, and additive process cocycles live in the **process** layer;
-- rewriting, task quotients, construction histories, grammars, relations, and Pareto cost live in the **presentation** layer;
+- rewriting, task quotients, construction histories, grammars, relations, task-relative presentation morphisms, and Pareto cost live in the **presentation** layer;
 - invariant/observer/quotient/language proposals live in **discovery**;
 - A/M calculus, algebraic quotient profiles, Abelian integrals, lifted cycles, period matrices, and normalized history quotients live in **analysis**.
 
+`PresentationMorphism` was promoted only after independent KdV, resistor-network, and braid/Markov calibrations forced different aspects of the same role: cross-presentation completeness, task-semantic rather than syntactic confluence, and transformations between presentation spaces of different dimensions. The public object remains only an evidence-bearing record; composition and a universal verification semantics are still outside the API.
+
 The separation is intentional. For example, `ProcessCocycle` is a finite-process object; generic cohomology classes, central-extension groups, projective representations, and an automatic finite-to-infinitesimal bridge are not currently public abstractions. Likewise, the existence of oscillator spectral shadows does not make maximal spectral splitting a universal presentation objective.
 
-Physical and mathematical calibration problems do **not** define the package API. Pendulum, oscillator, Galilean mechanics, magnetic translations, and related systems live in tests as probes of the common machinery.
+Physical and mathematical calibration problems do **not** define the package API. Pendulum, oscillator, Galilean mechanics, magnetic translations, KdV, resistor networks, and braid/Markov systems live in tests as probes of the common machinery.
 
 ## Development and release checks
 
