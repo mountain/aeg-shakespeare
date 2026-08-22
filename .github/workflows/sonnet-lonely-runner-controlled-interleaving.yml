@@ -1,0 +1,32 @@
+name: Sonnet Lonely Runner Controlled Interleaving
+
+# Research-only Phase 8E probe. The PR trigger is temporary for one auditable
+# run; it will be removed after the activation/interleaving profile is recorded.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-controlled-interleaving.yml
+
+jobs:
+  controlled-interleaving:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run controlled old/new wall interleaving probe
+        run: |
+          python sonnet/lonely-runner/python/controlled_interleaving.py
