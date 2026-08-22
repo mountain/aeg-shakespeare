@@ -92,11 +92,9 @@ Algorithms*, 4th ed., Springer, 2015.
 
 import sympy as sp
 
-from aeg_shakespeare import (
-    AlgebraicConstraintSet,
-    ProcessSystem,
-    search_first_order_process_quotients,
-)
+from aeg_shakespeare.discovery import search_first_order_process_quotients
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def _same_relation_up_to_scalar(left, right):
