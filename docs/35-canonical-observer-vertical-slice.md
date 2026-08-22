@@ -4,38 +4,41 @@
 
 ## 1. Current causal order
 
-The AEG Analysis programme currently uses
+The AEG Analysis programme is now best represented as
 
 ```text
-local canonicalization
-    -> observer connection when the canonical representation actually moves
+process direction
+    -> local canonicalization when needed
+    -> observer connection only when the canonical observer actually moves
     -> canonical decomposition
     -> renormalize / transport / complete
-    -> task-relative quotient/objectification of any new raw representation.
+    -> minimum process-generated completion support
+    -> task-relative residual objectification
+    -> history/DAG placement under explicit cost semantics.
 ```
 
-The last line is now forced by Sonnet 001 Phase 8C: a cardinality-minimal raw completion can still over-refine the task.
+The last three lines are not theoretical ornament.  Sonnet 001 Phases 8C--8D forced them experimentally: a minimum raw completion can over-refine the task, and an objectified local completion can have the correct total amount of decision structure while still being globally poorly placed in history.
 
-The branch currently contains only four reusable roles:
+The branch still contains only four reusable research roles:
 
 ```text
 ProcessDirection
 ConstraintCanonicalization
 ObserverConnection
-CanonicalDecomposition
+CanonicalDecomposition.
 ```
 
-No generic `Completion` object has been promoted.
+No generic `Completion`, `ResidualQuotient`, persistent-DAG, or Hauffman-action API has been promoted.
 
 ## 2. `ProcessDirection`
 
-`ProcessDirection` represents
+For an existing process frame `X_i`,
 
 \[
-\mathscr D=\sum_i u^iX_i
+\mathscr D=\sum_i u^iX_i.
 \]
 
-inside an already-declared `ProcessFrame`.  It may be lowered to a one-generator `ProcessSystem`, but assignment ODEs are shadows rather than the ontology of the process.
+`ProcessDirection` acts on the assignment algebra and may be lowered to a one-generator `ProcessSystem`; an ordinary ODE is therefore a representation shadow, not the process ontology.
 
 Executable controls:
 
@@ -45,85 +48,77 @@ tests/classical/test_restricted_riccati_canonical_observer.py
 tests/classical/test_coupled_scalar_canonical_observer.py
 ```
 
-A/M is also a negative control: physical/process motion alone does not imply observer transport.
+A/M is the negative control: process motion alone does not imply observer transport.
 
 ## 3. `ConstraintCanonicalization`
 
-The first concrete canonicalization backend uses
+The first implemented canonicalization backend is the exact local condition
 
 \[
 \Phi(z,g)=0.
 \]
 
-Differentiating the exact constraint along declared base rates and solving uniquely for observer-parameter rates produces the current exact `ObserverConnection` backend.
+Differentiating it along declared base rates and solving uniquely for observer rates gives the current exact connection backend.
 
-There is deliberately no generic `Canonicalization` alias or base protocol.  Restricted Kepler shows why: osculation, orthogonality, projection, or stationarity need not share this exact-equation implementation contract.
+There is deliberately no generic `Canonicalization` protocol.  Restricted Kepler remains the red team: osculation, orthogonality, projection, or stationarity need not share the exact-equation implementation contract.
 
 ## 4. `ObserverConnection`
 
-`ObserverConnection` is an evidence-bearing local transport record containing
+`ObserverConnection` records actual observer motion required to maintain a local canonical representation.  Current positive calibrations are:
 
-```text
-canonicalization provenance
-base rates
-observer rates
-exact residuals.
-```
+- Restricted Riccati: root/separation parameters move inside the affine observer family;
+- coupled scalar registers: relative scale moves while preserving the balancing condition.
 
-It is justified by continuous examples where the canonical observer really moves:
-
-- Restricted Riccati: root/separation parameters move to maintain an affine canonical form;
-- coupled scalar registers: relative scale moves to maintain balanced cross coupling.
-
-It does not yet define a principal bundle, horizontal projection, composition, curvature, holonomy, or numerical path ordering.
+It stores provenance, base rates, observer rates, and exact residuals.  It does not yet define principal-bundle structure, curvature, holonomy, composition, or numerical path ordering.
 
 ### Discrete red team
 
-Sonnet 001 Phase 8B rejects a tempting false positive.  Two one-to-one task changes preserve the exact same witness boundary and mode and only shift event rank by `+2`; they are history/decoder reindexing, not observer motion.
+Sonnet 001 Phase 8B rejected a tempting false positive.  Two one-to-one center-depth updates preserve the exact same witness boundary and mode and merely shift event rank by `+2`:
 
-Therefore Sonnet 001 currently provides **no discrete evidence for `ObserverConnection`**.
+```text
+(11, ((1,1,'exit'),), 'interval') -> (13, ((1,1,'exit'),), 'interval')
+(12, ((1,1,'exit'),), 'interval') -> (14, ((1,1,'exit'),), 'interval').
+```
+
+These are history/decoder reindexing, not observer motion.  Sonnet 001 therefore currently provides **no discrete evidence for `ObserverConnection`**.
 
 ## 5. `CanonicalDecomposition`
 
-The generic record stores a claimed split
+The generic result record stores
 
 \[
 F=F_{\rm ren}+F_{\rm res}+F_{\rm comp}
 \]
 
-plus evidence without prescribing a universal discovery algorithm.
+plus evidence, without prescribing a universal decomposition algorithm.
 
-It has survived four qualitatively different carriers:
+It has now survived four qualitatively different carriers:
 
 | Calibration | Carrier | Exact calibrated split |
 | --- | --- | --- |
-| Restricted Riccati | Lie directions | affine tangent / empty resonant sector / `Q` completion |
-| coupled scalar registers | multivariable Lie directions | diagonal ruler / empty resonant sector / cross completion |
+| Restricted Riccati | Lie directions | affine tangent / no resonance / `Q` completion |
+| coupled scalars | multivariable Lie directions | diagonal ruler / no resonance / cross completion |
 | Restricted Kepler | finite function module | `n=0 / n=1 / n=2` |
-| Sonnet 001 Phase 8A/8B | persistent finite task states | `843 / 0 / 6` |
+| Sonnet 001 | persistent finite task states | `843 / 0 / 6` |
 
 For Sonnet 001:
 
 \[
 \boxed{
-843\text{ renormalizable}
+843F_{\rm ren}
 =841\text{ identity-stable}+2\text{ history reindex},
-\quad0\text{ resonant},
-\quad6\text{ completion}.
+\quad0F_{\rm res},
+\quad6F_{\rm comp}.
 }
 \]
 
-This strengthens the result shape while showing that the middle sector may be empty.
+The empty middle sector is part of the calibration, not a missing feature.
 
-## 6. Restricted Riccati calibration
+## 6. Classical killer calibrations
 
-Executable essay:
+### Restricted Riccati
 
-```text
-tests/classical/test_restricted_riccati_canonical_observer.py
-```
-
-With
+`tests/classical/test_restricted_riccati_canonical_observer.py` starts from
 
 \[
 A=\partial_x,
@@ -131,7 +126,7 @@ A=\partial_x,
 \quad Q=x^2\partial_x,
 \]
 
-an affine root/separation observer is selected by exact root constraints.  In `y=(x-r)/d`, observer transport absorbs the affine directions while `Q` survives as a genuine completion residual.  Only afterwards does the test identify the classical closure
+restricts the observer to an affine root/separation family, derives observer motion from exact root constraints, and leaves `Q` as genuine completion.  Only afterwards does it identify
 
 \[
 [A,M]=A,
@@ -139,180 +134,203 @@ an affine root/separation observer is selected by exact root constraints.  In `y
 \qquad[M,Q]=Q
 \]
 
-with the Riccati `sl(2)` realization [Carinena-Marmo-Nasarre-1998; Hall-2015].
+with the classical Riccati `sl(2)` realization [Carinena-Marmo-Nasarre-1998; Hall-2015].
 
-## 7. Coupled scalar calibration and sign audit
+### Coupled scalar registers
 
-Executable essay:
-
-```text
-tests/classical/test_coupled_scalar_canonical_observer.py
-```
-
-The relative scale `rho` is selected by
+`tests/classical/test_coupled_scalar_canonical_observer.py` selects the relative ruler by
 
 \[
-b_{12}\rho^2-b_{21}=0,
+b_{12}\rho^2-b_{21}=0
 \]
 
-hence
+and derives
 
 \[
 \frac{\dot\rho}{\rho}
-=
-\frac12\left(
+=\frac12\left(
 \frac{\dot b_{21}}{b_{21}}-
 \frac{\dot b_{12}}{b_{12}}
 \right).
 \]
 
-Observer motion remains in the diagonal-ruler algebra; bidirectional cross directions require matrix completion.
-
-The repository convention is
-
-\[
-[X,Y]=X(Y)-Y(X).
-\]
-
-For
+With the repository convention `[X,Y]=X(Y)-Y(X)` and
 
 \[
 E_{12}=y\partial_x,
 \qquad E_{21}=x\partial_y,
 \]
 
-it gives
+the executable sign is
 
 \[
 \boxed{[E_{12},E_{21}]=M_2-M_1.}
 \]
 
-One line in the externally supplied AEG Analysis v0.2 note has the opposite sign.  Repository code/tests/docs use the executable convention; the external note should be corrected in its next revision.  The `gl(2)`/`aff(2)` generation statement is unchanged [Hall-2015].
+One line in the externally supplied AEG Analysis v0.2 note has the opposite sign; repository code/tests/docs retain the executable convention [Hall-2015].
 
-## 8. Restricted Kepler calibration
+### Restricted Kepler
 
-Executable essay:
-
-```text
-tests/classical/test_restricted_kepler_canonical_decomposition.py
-```
-
-For
+`tests/classical/test_restricted_kepler_canonical_decomposition.py` uses
 
 \[
 \mathcal K_1=\operatorname{span}\{1,\cos\psi,\sin\psi\},
-\qquad L_K=R^2+1,
+\qquad L_K=R^2+1
 \]
 
-the squared shape forcing produces exact `n=0`, `n=1`, and `n=2` sectors.  Their `L_K` action distinguishes renormalization, resonance/modulation, and representation completion, and `R` forces the second-harmonic companion required for the five-dimensional `K_2` module [Goldstein-Poole-Safko-2002; Arnold-1989; DLMF-4.21].
+and classifies the exact `n=0`, `n=1`, `n=2` forcing sectors as renormalization, resonance/modulation, and function-module completion.  This calibrates `CanonicalDecomposition` across a non-Lie carrier without pretending that Kepler osculation is already implemented by `ConstraintCanonicalization` [Goldstein-Poole-Safko-2002; Arnold-1989; DLMF-4.21].
 
-This example intentionally does not force osculation through `ConstraintCanonicalization`.
+## 7. Sonnet 001: completion is not one operation
 
-## 9. Sonnet 001 Phase 8A/8B
-
-Executable essay:
+Phases 8C and 8C.2 separate
 
 ```text
-tests/research/test_lonely_runner_canonical_observer_decomposition.py
+completion pressure
+    != minimum raw process-generator support
+    != minimum task representation.
 ```
 
-Phase 8A predicts, before child semantics are evaluated,
-
-```text
-841 stable
-2 nonbranching updates
-6 completion pressure.
-```
-
-Phase 8B shows the two nonbranching cases are only history reindexing:
-
-```text
-(11, ((1,1,'exit'),), 'interval') -> (13, ((1,1,'exit'),), 'interval')
-(12, ((1,1,'exit'),), 'interval') -> (14, ((1,1,'exit'),), 'interval').
-```
-
-Thus final canonical sectors are `843 / 0 / 6`.
-
-Corrected dedicated gate:
-
-```text
-workflow run: 32584153291
-Python:       3.12.14
-pytest:       1 passed in 7.95 s.
-```
-
-Result notes 20 and 21 preserve the behavioral classification and its later interpretive correction.
-
-## 10. Sonnet 001 Phase 8C — minimum raw completion
-
-Executable essay:
-
-```text
-tests/research/test_lonely_runner_minimal_completion_residuals.py
-```
-
-For each of the six genuine completion parents, every varying center-3 pair/contact wall sign is allowed as a primitive residual.  Exact conflict-cover dynamic programming finds a minimum-cardinality task-separating raw wall signature.
-
-The six minimum wall counts are
+For the six `F_comp` parents, exact conflict-cover search over new center-3 contact walls gives minimum raw support sizes
 
 \[
 \boxed{1,2,2,2,3,4}.
 \]
 
-Every selected wall is **new at center 3**; no selected minimum signature needs an old latent wall.
+Every selected wall is new at center 3.  Four raw signatures already equal their task quotient.  Two are over-refined:
 
-Per-parent `(task semantics, wall count, residual sign classes)` profile:
+\[
+11\text{ raw classes}\to7\text{ task classes},
+\qquad
+13\text{ raw classes}\to3\text{ task classes}.
+\]
+
+Phase 8C.2 objectifies these quotients and constructs exact adaptive decoders using only the selected completion walls.  In the `13 -> 3` case, raw support contains four walls but decoder worst depth is only three.
+
+Executable essays:
 
 ```text
-(3,1,3)
-(3,4,13)
-(5,2,5)
-(5,2,5)
-(5,2,5)
-(7,3,11).
+tests/research/test_lonely_runner_minimal_completion_residuals.py
+tests/research/test_lonely_runner_residual_objectification.py
 ```
 
-Four parents reach an exact task quotient directly.  Two remain over-refined even at minimum raw wall cardinality.  Therefore:
+Result notes 22 and 23 preserve the full proof maps and boundaries [Karp-1972; Huffman-1952].
+
+## 8. Sonnet 001 Phase 8D: local completion versus global placement
+
+`tests/research/test_lonely_runner_persistent_dag_increment.py` keeps the center-2 68-label persistent Hauffman tree unchanged and grafts the six objectified completion decoders only at genuine `F_comp` leaves.
+
+Frozen center-2 tree:
 
 ```text
-completion pressure
-    !=
-minimum raw generator support
-    !=
-minimum task representation.
+tree/boundary nodes  328
+internal nodes       109
+terminal-merged DAG  177
+peak                   72
+worst depth              9.
 ```
 
-Dedicated exact run:
+The six completion decoders add 16 internal query nodes and 38 path leaves.  The explicit center-3 graft is therefore
+
+\[
+328-6+16+38=\boxed{376}
+\]
+
+prefix-tree nodes,
+
+\[
+109+16=\boxed{125}
+\]
+
+internal nodes, and after merging 75 final semantic terminals,
+
+\[
+125+75=\boxed{200}
+\]
+
+persistent DAG nodes.
+
+Thus one contact layer adds `+48` tree nodes but only `+23` explicit DAG objects after semantic objectification.
+
+### Structural comparison
+
+The separately frozen fresh center-3 time-first tree also has `376` total nodes and `125` internal nodes, but its peak/worst pair is `(72,10)` while the local graft has
+
+\[
+\boxed{(75,12)}.
+\]
+
+Hence Phase 8D cleanly separates:
 
 ```text
-workflow run: 32584599992
+local completion/objectification -> how much decision structure is needed
+global Hauffman placement        -> where that structure sits in history.
+```
+
+Equality of total node counts is a bounded calibration fact, not a graph-isomorphism or universality theorem.
+
+## 9. Cost semantics: current usage is not refinement risk
+
+The historical 55-input center-2 Hauffman distribution hits none of the eight refinement-sensitive parents:
+
+```text
+completion inputs       0
+history-reindex inputs  0
+extra wall queries      0.
+```
+
+Its zero incremental cost is therefore a **sampling blind spot**, not evidence that refinement is free.
+
+Conditional on the actual 298 locally reopened children, 288 lie below genuine completion parents and ten below the two history-reindex parents.  Exact local decoders use
+
+\[
+\boxed{544}
+\]
+
+new wall queries in total:
+
+\[
+E[d_{\rm extra}\mid\text{reopened}]
+=\frac{544}{298}\approx1.8255,
+\]
+
+\[
+E[d_{\rm extra}\mid F_{\rm comp}]
+=\frac{544}{288}=\frac{17}{9}\approx1.8889,
+\]
+
+with worst extra depth three.
+
+Therefore current usage weights and continuation/refinement weights must remain separate cost axes.  This is now the strongest new pressure on Shakespeare's presentation-cost layer.
+
+Recorded exact 8D run:
+
+```text
+workflow run: 32586254733
 Python:       3.12.14
-8A/8B:        1 passed in 8.04 s
-8C:           1 passed in 7.55 s.
+8D:           1 passed in 21.46 s.
 ```
 
-Full claim boundary is in `sonnet/lonely-runner/22-phase8c-minimum-completion-residuals.md` [Karp-1972].
-
-## 11. Negative controls
+## 10. Negative controls
 
 The new vocabulary must say when **not** to apply itself:
 
 - A/M: process direction but no moving observer;
-- Pendulum: task-relative scalar **observable** selection, not dynamic observer transport;
+- Pendulum: task-relative scalar observable selection, not observer transport;
 - two-frequency oscillator: coefficient refinement is not automatically `F_comp`;
-- Galilean/magnetic cocycles: lifted central-history pressure is not automatically a connection;
-- Sonnet Phase 8B: changed history index is not observer motion;
-- Sonnet Phase 8C: a cardinality-minimal wall tuple is not automatically a canonical primitive.
+- Galilean/magnetic cocycles: central history residual is not automatically a connection;
+- Sonnet 8B: changed history index is not observer motion;
+- Sonnet 8C: minimum raw wall support is not automatically a canonical primitive;
+- Sonnet 8D: current-usage expected depth is not automatically future refinement cost.
 
-These negative controls are part of the API evidence.
+These failures and empty sectors are part of the API evidence.
 
-## 12. Current API judgment
+## 11. Current API judgment
 
 ### Strongest candidates to retain
 
 - `ProcessDirection`;
 - evidence-bearing `CanonicalDecomposition`;
-- provenance-generic `ObserverConnection` only for cases with actual observer motion.
+- provenance-generic `ObserverConnection` only where an observer actually moves.
 
 ### Provisional backend
 
@@ -322,12 +340,30 @@ These negative controls are part of the API evidence.
 
 - generic `Canonicalization` protocol;
 - discrete observer connection;
-- universal `Completion` object;
+- universal `Completion` / `ResidualQuotient`;
+- persistent-DAG public object;
 - stationary/cost canonicalization;
 - observer bundle;
-- process-jet object;
+- generic process-jet object;
 - curvature/holonomy;
 - numerical observer ODE integration.
+
+## 12. Next pressure on the cost API
+
+Freeze all local completion semantics from Sonnet 8A--8D.  The next experiment changes only **global wall placement**.
+
+The cost model must be able to compare at least:
+
+```text
+current history / expected-depth cost
+frontier / boundary geometry
+residual and decoder size
+explicit continuation/refinement workload.
+```
+
+In particular, refinement weights must not be silently inferred from current usage samples.  A refinement-aware Hauffman search should ask whether the already-discovered `376/125` decision structure can be rearranged from the persistent graft's `(peak,worst)=(75,12)` toward the fresh center-3 `(72,10)` geometry without changing the six completion residuals.
+
+Only after this placement problem is understood should a center-3 -> center-4 persistence experiment be used to pressure a more general API.
 
 ## 13. Literate-programming / consistency gate
 
@@ -344,27 +380,11 @@ Boundary
 References.
 ```
 
-`tests/test_canonical_observer_essay_hygiene.py` checks required sections, citation-key resolution and locators, and Proof-map/test correspondence.
+`tests/test_canonical_observer_essay_hygiene.py` checks required sections, citation-key resolution and locators, and Proof-map/test correspondence.  `docs/37-canonical-observer-claim-ledger.md` maps important mathematical claims to implementation owners, executable certificates, references, and epistemic status.
 
-`docs/11-references-and-test-essays.md` makes cross-artifact mathematical consistency a proof obligation.  `docs/37-canonical-observer-claim-ledger.md` maps formulas and claims to implementation owners, executable certificates, references, and epistemic status.
-
-## 14. Next development order
-
-Phase 8C now forces a narrower next step before the persistent DAG is frozen:
-
-1. objectify/quotient the two over-refined minimum raw signatures into exact 7-value and 3-value residual primitives;
-2. keep the four exact raw signatures as provisional completion primitives;
-3. compare opaque parent identity vs raw tuple vs objectified residual on decoder/update cost;
-4. then build the persistent DAG and measure incremental Hauffman geometry;
-5. search separately for a true moving-observer discrete example only if a canonical frame actually changes.
-
-Curvature/holonomy and a generic canonicalization protocol remain deferred.
-
-## 15. References
+## 14. References
 
 [Hall-2015] Brian C. Hall, *Lie Groups, Lie Algebras, and Representations: An Elementary Introduction*, 2nd ed., Graduate Texts in Mathematics 222, Springer, 2015; DOI 10.1007/978-3-319-13467-3.
-
-[Coddington-Levinson-1955] Earl A. Coddington, Norman Levinson, *Theory of Ordinary Differential Equations*, McGraw-Hill, 1955; linear differential equations begin p. 62; ISBN 978-0-07-099256-6.
 
 [Carinena-Marmo-Nasarre-1998] J. F. Carinena, G. Marmo, J. Nasarre, "The nonlinear superposition principle and the Wei-Norman method," arXiv:physics/9802041 (1998), https://arxiv.org/abs/physics/9802041 .
 
