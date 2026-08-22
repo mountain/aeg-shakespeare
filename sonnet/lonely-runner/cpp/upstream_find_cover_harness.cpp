@@ -1,23 +1,30 @@
 // Harness for benchmarking the *actual pinned upstream* find_cover.h source.
 //
-// This file is compiled twice by the dedicated GitHub Actions workflow:
+// This file is compiled twice by the dedicated GitHub Actions workflows:
 // once against an untouched checkout of vzsky/13-lonely-runners and once against
 // the same checkout after applying phase5-two-slot-find-cover.patch.
 //
-// Usage:
+// Whole-search usage:
 //   ./harness dump 79
 //   ./harness bench 127 15 3
 //
-// Supported cases are configured solved-parameter probes used by Sonnet 001:
-//   (K,P) = (8,79), (9,89), (10,127), (11,131), (12,139).
+// Top-level-worker usage:
+//   ./harness worker-info 199
+//   ./harness worker-dump 199 0 > worker.txt 2> worker.meta
+//
+// `worker-dump` times only the upstream Dfs worker computation.  Timing metadata
+// goes to stderr while the complete sorted canonical solution set goes to stdout,
+// so baseline/patched stdout can be compared byte-for-byte from a single run.
 
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <streambuf>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "find_cover.h"
@@ -38,9 +45,8 @@ template <int P, int K> auto solve_silent()
   return solutions;
 }
 
-template <int P, int K> void dump_case()
+template <int K> auto sorted_rows(const SetOfSpeedSets<K>& solutions)
 {
-  auto solutions = solve_silent<P, K>();
   std::vector<std::array<int, K>> rows;
   rows.reserve(solutions.size());
 
@@ -52,7 +58,11 @@ template <int P, int K> void dump_case()
   }
 
   std::sort(rows.begin(), rows.end());
-  std::cout << "P=" << P << " K=" << K << " N=" << rows.size() << '\n';
+  return rows;
+}
+
+template <int K> void print_rows(const std::vector<std::array<int, K>>& rows)
+{
   for (const auto& row : rows)
   {
     for (int i = 0; i < K; ++i)
@@ -62,6 +72,15 @@ template <int P, int K> void dump_case()
     }
     std::cout << '\n';
   }
+}
+
+template <int P, int K> void dump_case()
+{
+  auto solutions = solve_silent<P, K>();
+  auto rows = sorted_rows<K>(solutions);
+
+  std::cout << "P=" << P << " K=" << K << " N=" << rows.size() << '\n';
+  print_rows<K>(rows);
 }
 
 template <int P, int K> void bench_case(int repeats, int warmups)
@@ -102,6 +121,92 @@ template <int P, int K> void bench_case(int repeats, int warmups)
             << " min_ms=" << minimum << '\n';
 }
 
+template <int P, int K> struct WorkerSetup
+{
+  using Dfs = find_cover::Dfs<P, K>;
+  using CoveredBitset = typename Dfs::CoveredBitset;
+  using AvailableChoice = typename Dfs::State::AvailableChoice;
+
+  AvailableChoice base_choice{};
+  CoveredBitset first_covered{};
+  SpeedSet<K> first_elems{};
+  std::vector<int> coord2_candidates;
+  std::vector<AvailableChoice> choices;
+
+  WorkerSetup()
+  {
+    first_elems.insert(1);
+    first_covered |= find_cover::context<P, K>.cover(0);
+
+    const int next_to_cover = base_choice.get_next_to_cover(first_covered);
+    for (int i = 0; i < P / 2; ++i)
+      if (next_to_cover == -1 || find_cover::context<P, K>.cover(i)[next_to_cover])
+        coord2_candidates.push_back(i);
+
+    choices.resize(coord2_candidates.size() + 1);
+    choices[0] = base_choice;
+    for (std::size_t idx = 0; idx < coord2_candidates.size(); ++idx)
+    {
+      choices[idx + 1] = choices[idx];
+      choices[idx + 1].eliminate(coord2_candidates[idx]);
+    }
+  }
+};
+
+template <int P, int K> void worker_info()
+{
+  WorkerSetup<P, K> setup;
+  std::cout << "P=" << P << " K=" << K
+            << " workers=" << setup.coord2_candidates.size() << " second_speeds=";
+  for (std::size_t idx = 0; idx < setup.coord2_candidates.size(); ++idx)
+  {
+    if (idx) std::cout << ',';
+    std::cout << setup.coord2_candidates[idx] + 1;
+  }
+  std::cout << '\n';
+}
+
+template <int P, int K> void worker_dump(std::size_t worker_index)
+{
+  using Dfs = find_cover::Dfs<P, K>;
+
+  WorkerSetup<P, K> setup;
+  if (worker_index >= setup.coord2_candidates.size())
+    throw std::out_of_range("worker index out of range");
+
+  const int choice = setup.coord2_candidates[worker_index];
+  SpeedSet<K> local_elems = setup.first_elems;
+  local_elems.insert(choice + 1);
+
+  Dfs dfs(typename Dfs::State{
+      setup.first_covered | find_cover::context<P, K>.cover(choice),
+      local_elems,
+      setup.choices[worker_index],
+  });
+
+  const auto start = std::chrono::steady_clock::now();
+  dfs.run();
+  const auto finish = std::chrono::steady_clock::now();
+  const double milliseconds =
+      std::chrono::duration<double, std::milli>(finish - start).count();
+
+  auto rows = sorted_rows<K>(dfs.solutions);
+
+  // Keep timing/provenance out of stdout so exact set files can be compared.
+  std::cerr << std::fixed << std::setprecision(3)
+            << "WORKER P=" << P << " K=" << K
+            << " index=" << worker_index
+            << " second=" << choice + 1
+            << " N=" << rows.size()
+            << " solve_ms=" << milliseconds << '\n';
+
+  std::cout << "P=" << P << " K=" << K
+            << " worker=" << worker_index
+            << " second=" << choice + 1
+            << " N=" << rows.size() << '\n';
+  print_rows<K>(rows);
+}
+
 template <class F> void dispatch_case(int p, F&& f)
 {
   switch (p)
@@ -111,6 +216,7 @@ template <class F> void dispatch_case(int p, F&& f)
     case 127: f.template operator()<127, 10>(); break;
     case 131: f.template operator()<131, 11>(); break;
     case 139: f.template operator()<139, 12>(); break;
+    case 199: f.template operator()<199, 13>(); break;
     default: throw std::invalid_argument("unsupported prime");
   }
 }
@@ -120,7 +226,9 @@ int main(int argc, char** argv)
 {
   if (argc < 3)
   {
-    std::cerr << "usage: harness dump P | harness bench P REPEATS [WARMUPS]\n";
+    std::cerr
+        << "usage: harness dump P | harness bench P REPEATS [WARMUPS] | "
+           "harness worker-info P | harness worker-dump P INDEX\n";
     return 2;
   }
 
@@ -141,6 +249,23 @@ int main(int argc, char** argv)
     if (repeats <= 0 || warmups < 0) return 2;
     dispatch_case(p, [repeats, warmups]<int P, int K> {
       bench_case<P, K>(repeats, warmups);
+    });
+    return 0;
+  }
+
+  if (mode == "worker-info")
+  {
+    if (argc != 3) return 2;
+    dispatch_case(p, []<int P, int K> { worker_info<P, K>(); });
+    return 0;
+  }
+
+  if (mode == "worker-dump")
+  {
+    if (argc != 4) return 2;
+    const auto worker_index = static_cast<std::size_t>(std::stoull(argv[3]));
+    dispatch_case(p, [worker_index]<int P, int K> {
+      worker_dump<P, K>(worker_index);
     });
     return 0;
   }

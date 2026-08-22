@@ -1,0 +1,123 @@
+name: Sonnet Lonely Runner Open K13 Follow-up
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/sonnet-lonely-runner-phase6
+    paths:
+      - .github/workflows/sonnet-lonely-runner-open-k13-followup.yml
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-open-k13-followup.yml
+
+jobs:
+  adjacent-worker-probe:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        worker: [1, 2]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UPSTREAM_SHA: 755b116b2e6090cd4a83187a696f863388b7d746
+      PROBE_P: 199
+      PROBE_TIMEOUT_SECONDS: 300
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Freeze protocol
+        run: |
+          echo "Frozen Phase-5 two-slot certificate"
+          echo "Pinned upstream=$UPSTREAM_SHA"
+          echo "K=13 P=$PROBE_P worker=${{ matrix.worker }}"
+          echo "Per-variant timeout=${PROBE_TIMEOUT_SECONDS}s"
+          g++ --version
+          nproc
+
+      - name: Checkout pinned upstream baseline and patched trees
+        run: |
+          git clone --quiet https://github.com/vzsky/13-lonely-runners.git upstream-baseline
+          git -C upstream-baseline checkout --quiet "$UPSTREAM_SHA"
+          test "$(git -C upstream-baseline rev-parse HEAD)" = "$UPSTREAM_SHA"
+          cp -a upstream-baseline upstream-patched
+          git -C upstream-patched apply --check "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched apply "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched diff --check
+
+      - name: Compile against actual upstream source
+        run: |
+          CXXFLAGS='-O3 -std=c++23 -pthread -march=native'
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-baseline/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-k13-baseline
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-patched/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-k13-patched
+
+      - name: Run exact worker pair under frozen bound
+        shell: bash
+        run: |
+          set +e
+          worker='${{ matrix.worker }}'
+
+          timeout "${PROBE_TIMEOUT_SECONDS}s" \
+            /tmp/lr-k13-baseline worker-dump "$PROBE_P" "$worker" \
+            > /tmp/base.txt 2> /tmp/base.meta
+          baseline_status=$?
+
+          timeout "${PROBE_TIMEOUT_SECONDS}s" \
+            /tmp/lr-k13-patched worker-dump "$PROBE_P" "$worker" \
+            > /tmp/patched.txt 2> /tmp/patched.meta
+          patched_status=$?
+
+          echo "worker=$worker baseline_status=$baseline_status patched_status=$patched_status"
+          cat /tmp/base.meta
+          cat /tmp/patched.meta
+
+          {
+            echo "## K=13 p=199 worker $worker"
+            echo "- baseline exit: \`$baseline_status\`"
+            echo "- patched exit: \`$patched_status\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ $baseline_status -eq 0 && $patched_status -eq 0 ]]; then
+            cmp /tmp/base.txt /tmp/patched.txt
+            digest=$(sha256sum /tmp/base.txt | cut -d' ' -f1)
+            header=$(head -n 1 /tmp/base.txt)
+            echo "Exact worker sets identical: $header"
+            echo "SHA256: $digest"
+            {
+              echo "- exact set equality: **byte-identical**"
+              echo "- \`$header\`"
+              echo "- SHA-256: \`$digest\`"
+              echo '```text'
+              cat /tmp/base.meta
+              cat /tmp/patched.meta
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          if [[ $baseline_status -eq 124 || $patched_status -eq 124 ]]; then
+            echo "Bounded worker probe timed out; no set-equality or performance claim."
+            echo "- result: **timeout under predeclared bound**" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          exit 1
+
+      - name: Upload compact metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lonely-runner-k13-worker-${{ matrix.worker }}-metadata
+          path: |
+            /tmp/base.meta
+            /tmp/patched.meta
+          retention-days: 30

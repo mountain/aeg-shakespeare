@@ -1,6 +1,6 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 5c — frozen two-slot certificate validated on the actual pinned upstream `find_cover` source through the solved `K=12` frontier.  
+**Status:** Phase 6 — the frozen solved-case certificate has crossed the theorem frontier and preserved exact outputs on the first three real `K=13,p=199` upstream workers.  
 **Target open case:** `LRC(13)`, i.e. **14 total runners**.
 
 ## 1. Problem
@@ -260,6 +260,46 @@ positive median speedup at every tested K = 8..12
 
 This closes the solved-case transfer gate that was set before any open-case experiment was attempted.
 
+### Phase 6 — frozen open-case holdout
+
+[`08-open-k13-frozen-worker-probe.md`](08-open-k13-frozen-worker-probe.md)
+
+Primary bounded probe workflow:
+
+```text
+.github/workflows/sonnet-lonely-runner-open-k13-probe.yml
+```
+
+Adjacent-worker red team:
+
+```text
+.github/workflows/sonnet-lonely-runner-open-k13-followup.yml
+```
+
+The exact solved-case rule is transferred to the first configured open-case prime
+
+```text
+K=13, p=199
+```
+
+without changing the certificate or search heuristic. The upstream top level has 14 workers with second speeds
+
+```text
+2,4,6,8,10,12,14,16,18,20,22,24,26,28.
+```
+
+The first three workers are probed in index order. Every baseline/patched complete canonical worker set is byte-identical, while every patched worker is faster:
+
+| worker | prefix | canonical classes | baseline | patched | speedup | reduction |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 0 | `(1,2)` | 1,235,622 | 184.914 s | 165.732 s | **1.116x** | 10.4% |
+| 1 | `(1,4)` | 3,020,996 | 260.647 s | 216.269 s | **1.205x** | 17.0% |
+| 2 | `(1,6)` | 3,463,105 | 204.395 s | 195.240 s | **1.047x** | 4.5% |
+
+Stable exact-set SHA-256 values are recorded in the Phase-6 note. The three workers ran on separate hosted runners, so absolute times should not be summed into a synthetic whole-sieve estimate; the within-worker baseline/patched ratios are the valid comparison.
+
+This is the first point where a representation discovered and selected entirely on solved cases has produced a verified net gain inside actual search branches of the open problem itself.
+
 ## 3. What Shakespeare has contributed
 
 The research chain is now:
@@ -276,6 +316,9 @@ literal search history
     -> minimal patch to actual pinned upstream source
     -> byte-identical canonical outputs K=8..12
     -> net upstream find_cover speedups K=8..12
+    -> freeze representation
+    -> cross theorem frontier
+    -> exact open K=13 worker outputs + net speedups
 ```
 
 This is not merely a new notation for an existing algorithm. The key structure was found by first computing the correct future semantics, then explaining the resulting equivalence classes with a compact representation, and finally lowering that representation into a cheap certificate for the frontier solver.
@@ -294,32 +337,23 @@ The cost red team is equally important. Shakespeare should not maximize semantic
 Using the `sonnet/` rubric:
 
 1. **re-expression:** achieved;
-2. **compression:** achieved on actual pinned upstream searches across solved configurations;
-3. **structural discovery:** achieved — future-requirement/transversal structure yields a new exact pruning certificate and a reproducible implementation gain;
+2. **compression:** achieved on actual pinned upstream searches, including three real open-case workers;
+3. **structural discovery:** achieved — future-requirement/transversal structure yields a new exact pruning certificate that transfers across the theorem frontier without retuning;
 4. **new mathematics:** not achieved — `LRC(13)` remains open.
 
-Nothing through Phase 5c improves the published Lonely Runner mathematical frontier.
+Nothing through Phase 6 proves a new Lonely Runner case.
 
-## 5. Next threshold — Phase 6 frozen open-case probe
+## 5. Next threshold — return to solved worlds
 
-The protocol now permits a carefully bounded experiment on `K=13`.
+The `K=13` data must now be treated as a holdout, not as a tuning set.
 
-The rule must remain completely frozen. We will **not** retune the lookahead depth, threshold, presentation, or search heuristic after seeing open-case data.
+The next representation-development cycle should therefore move **back** to `K<=12` and ask for an advantage substantially larger than the current 5–20% regime. Candidate directions include:
 
-The first experiment should not launch the entire `K=13` initial sieve. Instead:
+1. memoization or merging by a provenance-preserving requirement presentation rather than literal search history;
+2. cheap lower bounds that approximate three/four-slot transversal semantics without paying full lookahead cost;
+3. forced-choice propagation inside the requirement hypergraph;
+4. cross-prime or lift-aware task signatures, but only after an exact solved-case calibration demonstrates that the additional state pays for itself.
 
-1. use the current upstream `K=13` configured prime list unchanged;
-2. start at its first configured prime, `p=199`;
-3. expose exactly the same top-level worker decomposition used by `find_all_covers_parallel`;
-4. replay one worker baseline vs patched;
-5. compare complete worker canonical solution sets and wall time;
-6. expand to a few workers only if the first probe remains tractable;
-7. extrapolate total cost only after measuring worker imbalance.
+Any new rule must again be selected and frozen on solved instances before it is allowed to touch `K=13`.
 
-The first open-case question is therefore deliberately narrow:
-
-\[
-\boxed{\text{Does the frozen solved-case representation advantage transfer to one real }K=13\text{ worker?}}
-\]
-
-A positive answer would still not prove `LRC(13)`, but it would be the first experiment in this Sonnet to touch the actual open-case search without changing the representation discovered on solved instances.
+Launching the remaining 11 `p=199` workers now would mostly measure brute-force scale. It may later be useful for end-to-end accounting, but it is not the next best experiment for the Shakespeare representation hypothesis.

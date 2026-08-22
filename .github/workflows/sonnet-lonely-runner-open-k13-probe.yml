@@ -1,0 +1,147 @@
+name: Sonnet Lonely Runner Open K13 Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/sonnet-lonely-runner-phase6
+    paths:
+      - .github/workflows/sonnet-lonely-runner-open-k13-probe.yml
+      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
+      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-open-k13-probe.yml
+      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
+      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
+
+jobs:
+  frozen-worker-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UPSTREAM_SHA: 755b116b2e6090cd4a83187a696f863388b7d746
+      PROBE_P: 199
+      PROBE_WORKER: 0
+      PROBE_TIMEOUT_SECONDS: 300
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Record protocol and toolchain
+        run: |
+          echo "Frozen rule: Phase-5 exact two-slot certificate"
+          echo "Pinned upstream: $UPSTREAM_SHA"
+          echo "Open-case probe: K=13 P=$PROBE_P worker=$PROBE_WORKER"
+          echo "Per-variant hard timeout: ${PROBE_TIMEOUT_SECONDS}s"
+          uname -a
+          g++ --version
+          nproc
+
+      - name: Checkout pinned upstream twice
+        run: |
+          git clone --quiet https://github.com/vzsky/13-lonely-runners.git upstream-baseline
+          git -C upstream-baseline checkout --quiet "$UPSTREAM_SHA"
+          test "$(git -C upstream-baseline rev-parse HEAD)" = "$UPSTREAM_SHA"
+          cp -a upstream-baseline upstream-patched
+
+      - name: Apply the already-frozen Phase-5 patch
+        run: |
+          git -C upstream-patched apply --check "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched apply "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched diff --check
+
+      - name: Compile baseline and patched harnesses
+        run: |
+          CXXFLAGS='-O3 -std=c++23 -pthread -march=native'
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-baseline/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-k13-baseline
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-patched/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-k13-patched
+
+      - name: Freeze and print the exact worker decomposition
+        run: |
+          /tmp/lr-k13-baseline worker-info "$PROBE_P" | tee /tmp/worker-info.txt
+          /tmp/lr-k13-patched worker-info "$PROBE_P" | cmp /tmp/worker-info.txt -
+
+      - name: Run one bounded open-case worker baseline vs patched
+        id: probe
+        shell: bash
+        run: |
+          set +e
+
+          timeout "${PROBE_TIMEOUT_SECONDS}s" \
+            /tmp/lr-k13-baseline worker-dump "$PROBE_P" "$PROBE_WORKER" \
+            > /tmp/k13-baseline.txt 2> /tmp/k13-baseline.meta
+          baseline_status=$?
+
+          timeout "${PROBE_TIMEOUT_SECONDS}s" \
+            /tmp/lr-k13-patched worker-dump "$PROBE_P" "$PROBE_WORKER" \
+            > /tmp/k13-patched.txt 2> /tmp/k13-patched.meta
+          patched_status=$?
+
+          echo "baseline_status=$baseline_status" | tee /tmp/probe-status.txt
+          echo "patched_status=$patched_status" | tee -a /tmp/probe-status.txt
+          echo '--- baseline meta ---'
+          cat /tmp/k13-baseline.meta
+          echo '--- patched meta ---'
+          cat /tmp/k13-patched.meta
+
+          {
+            echo '## K=13, p=199 frozen worker probe'
+            echo
+            echo "- upstream: \`$UPSTREAM_SHA\`"
+            echo "- worker index: \`$PROBE_WORKER\`"
+            echo "- timeout per variant: \`${PROBE_TIMEOUT_SECONDS}s\`"
+            echo "- baseline exit: \`$baseline_status\`"
+            echo "- patched exit: \`$patched_status\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ $baseline_status -eq 0 && $patched_status -eq 0 ]]; then
+            cmp /tmp/k13-baseline.txt /tmp/k13-patched.txt
+            digest=$(sha256sum /tmp/k13-baseline.txt | cut -d' ' -f1)
+            header=$(head -n 1 /tmp/k13-baseline.txt)
+            echo "Exact worker sets identical: $header"
+            echo "SHA256: $digest"
+            {
+              echo "- exact worker sets: **byte-identical**"
+              echo "- output header: \`$header\`"
+              echo "- SHA-256: \`$digest\`"
+              echo
+              echo '```text'
+              echo 'baseline:'
+              cat /tmp/k13-baseline.meta
+              echo 'patched:'
+              cat /tmp/k13-patched.meta
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "result=complete" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ $baseline_status -eq 124 || $patched_status -eq 124 ]]; then
+            echo "At least one worker exceeded the predeclared bound; record as a scaling result, not a semantic failure."
+            echo "- result: **bounded probe hit timeout; no exact worker-set comparison claimed**" >> "$GITHUB_STEP_SUMMARY"
+            echo "result=timeout" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Unexpected worker failure."
+          exit 1
+
+      - name: Upload compact probe metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lonely-runner-k13-worker-probe-metadata
+          path: |
+            /tmp/worker-info.txt
+            /tmp/probe-status.txt
+            /tmp/k13-baseline.meta
+            /tmp/k13-patched.meta
+          retention-days: 30
