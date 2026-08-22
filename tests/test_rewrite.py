@@ -1,9 +1,9 @@
-from aeg_shakespeare import (
-    ProcessWord,
+from aeg_shakespeare.presentation.history import (
     WordRewriteRule,
     normalize_word,
     rewrite_once,
 )
+from aeg_shakespeare.process.history import ProcessWord
 
 
 def word(*steps):
