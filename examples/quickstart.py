@@ -1,19 +1,16 @@
-"""Minimal AEG Shakespeare 0.0.1 quickstart.
+"""Minimal AEG Shakespeare quickstart using the semantic public namespaces.
 
 The example is intentionally small and problem-independent. It demonstrates
 three layers without asking the reader to accept a named classical solver:
-literal history, an explicitly declared history relation, and the
-Addition/Multiplication function-theory branch.
+literal process history, an explicitly declared presentation relation, and the
+Addition/Multiplication analysis branch.
 """
 
 import sympy as sp
 
-from aeg_shakespeare import (
-    AMFunctionTheory,
-    ProcessWord,
-    WordRewriteRule,
-    normalize_word,
-)
+from aeg_shakespeare.analysis.am import AMFunctionTheory
+from aeg_shakespeare.presentation.history import WordRewriteRule, normalize_word
+from aeg_shakespeare.process.history import ProcessWord
 
 
 # Literal histories come first. This example relation is merely caller-declared;

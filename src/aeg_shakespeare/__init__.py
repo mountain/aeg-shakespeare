@@ -1,299 +1,48 @@
-"""AEG Shakespeare: process-representation discovery library."""
+"""AEG Shakespeare: process-first representation infrastructure.
 
-from .central import (
-    CocycleVerification,
-    ProcessCocycle,
-    central_commutator_residual,
-    verify_process_cocycle,
-)
-from .construction import (
-    PrimitiveConstruction,
-    PrimitiveProposal,
-    PrimitiveProposalResult,
-    RejectedPrimitiveProposal,
-    SymbolicOperation,
-    generate_primitive_proposals,
-)
-from .constraints import AlgebraicConstraintSet, constraint_prolongation
-from .core import (
-    ProcessSystem,
-    ProcessWord,
-    SearchBudget,
-    homogeneous_monomials,
-    interpret_history,
-)
-from .cost import PresentationCost
-from .discovery import (
-    FirstOrderObservablePresentation,
-    ObservableQuotient,
-    ObservableRelation,
-    PairableAtom,
-    PairingConstruction,
-    PairingSpec,
-    PolynomialInvariant,
-    PolynomialInvariantDiscovery,
-    PolynomialObserverBasis,
-    StructuredObserverProposal,
-    StructuredObserverProposalResult,
-    discover_first_order_process_quotient,
-    discover_observable_relations,
-    discover_polynomial_invariants,
-    euclidean_pairing,
-    factor_process_relation_over_extension,
-    generate_pairing_observers,
-    generate_polynomial_observer_basis,
-    nonstationary_observer_proposals,
-    search_first_order_process_quotients,
-    structural_first_order_quotient_cost,
-)
-from .families import (
-    CharacterVerification,
-    FamilyAction,
-    FamilyActionVerification,
-    FamilyStep,
-    ProcessCharacter,
-    ProcessFamily,
-    character_invariance_residual,
-    transport_process_character,
-    verify_family_action,
-    verify_process_character,
-)
-from .frame import ProcessFrame
-from .function_theory import (
-    AMFunctionTheory,
-    AMPathFlow,
-    AMPowerWeight,
-    AMPrimitive,
-    AMState,
-    AbelJacobiHistoryIncrement,
-    AbelianCycleSystem,
-    AbelianIntegralProfile,
-    AbelianPeriodMatrix,
-    ConstructedRealBranchCycles,
-    GenusOneLattice,
-    HyperellipticDifferential,
-    HyperellipticProfile,
-    LiftedCycleIntersection,
-    LiftedSquareRootPath,
-    NormalizedAbelianTorus,
-    ProcessFunctionModule,
-    RealBranchCutPresentation,
-    RealBranchCycleSpec,
-    SampledIntersectionForm,
-    SampledRiemannProfile,
-    WeierstrassCubicProfile,
-    abel_jacobi_history_increment,
-    abelian_integral_profile,
-    affine_am_frame,
-    canonical_symplectic_form,
-    compute_period_matrix,
-    construct_real_branch_cycles,
-    holomorphic_differential_basis,
-    hyperelliptic_profile,
-    integrate_lifted_differential,
-    lift_square_root_path,
-    lifted_path_intersections,
-    normalized_abelian_torus,
-    polynomial_am_module,
-    real_branch_cut_presentation,
-    sampled_intersection_form,
-    sampled_intersection_number,
-    sampled_riemann_profile,
-    weierstrass_cubic_profile,
-)
-from .grammar import (
-    GeneratedGrammar,
-    GeneratedPresentation,
-    discover_generated_grammar,
-    discover_generated_presentation,
-)
-from .history_geometry import (
-    BoundaryProfile,
-    PrefixCode,
-    PrefixCodeMetrics,
-    boundary_profile,
-    history_depth,
-    huffman_prefix_code,
-)
-from .linear import KrylovReturnRelation, discover_krylov_relation
-from .relations import (
-    ProcessPolynomialRelation,
-    RelationDecomposition,
-    RelationKernel,
-    ReturnRelation,
-    action_matrix,
-    coefficient_vector,
-    decompose,
-    discover_operator_relation,
-    discover_relation_decomposition,
-    discover_relation_kernel,
-    discover_return_relation,
-    factor_process_relation,
-)
-from .rewrite import (
-    RewriteResult,
-    RewriteStep,
-    WordRewriteRule,
-    normalize_word,
-    rewrite_once,
-)
-from .search import (
-    ConstructedPrimitivePresentation,
-    ExactReconstructionPresentation,
-    PresentationCandidate,
-    PresentationSearchResult,
-    construction_aware_exact_reconstruction_cost,
-    evaluate_exact_reconstruction_presentation,
-    pareto_frontier,
-    search_exact_reconstruction_presentations,
-    search_primitive_proposals,
-    structural_exact_reconstruction_cost,
-)
-from .signature import (
-    ProcessJetSignature,
-    enumerate_process_words,
-    histories_task_equivalent,
-    history_process_jet_signature,
-    process_jet_signature,
-    signatures_equivalent,
-)
+The root package is intentionally a small navigation surface.  Public concepts
+are organized into four semantic namespaces:
 
-__all__ = [
-    "CocycleVerification",
-    "ProcessCocycle",
-    "central_commutator_residual",
-    "verify_process_cocycle",
-    "PrimitiveConstruction",
-    "PrimitiveProposal",
-    "PrimitiveProposalResult",
-    "RejectedPrimitiveProposal",
-    "SymbolicOperation",
-    "generate_primitive_proposals",
-    "AlgebraicConstraintSet",
-    "constraint_prolongation",
-    "ProcessSystem",
-    "ProcessWord",
-    "SearchBudget",
-    "homogeneous_monomials",
-    "interpret_history",
-    "PresentationCost",
-    "CharacterVerification",
-    "FamilyAction",
-    "FamilyActionVerification",
-    "FamilyStep",
-    "ProcessCharacter",
-    "ProcessFamily",
-    "character_invariance_residual",
-    "transport_process_character",
-    "verify_family_action",
-    "verify_process_character",
-    "FirstOrderObservablePresentation",
-    "ObservableQuotient",
-    "ObservableRelation",
-    "PairableAtom",
-    "PairingConstruction",
-    "PairingSpec",
-    "PolynomialInvariant",
-    "PolynomialInvariantDiscovery",
-    "PolynomialObserverBasis",
-    "StructuredObserverProposal",
-    "StructuredObserverProposalResult",
-    "discover_first_order_process_quotient",
-    "discover_observable_relations",
-    "discover_polynomial_invariants",
-    "euclidean_pairing",
-    "factor_process_relation_over_extension",
-    "generate_pairing_observers",
-    "generate_polynomial_observer_basis",
-    "nonstationary_observer_proposals",
-    "search_first_order_process_quotients",
-    "structural_first_order_quotient_cost",
-    "ProcessFrame",
-    "AMFunctionTheory",
-    "AMPathFlow",
-    "AMPowerWeight",
-    "AMPrimitive",
-    "AMState",
-    "AbelJacobiHistoryIncrement",
-    "AbelianCycleSystem",
-    "AbelianIntegralProfile",
-    "AbelianPeriodMatrix",
-    "ConstructedRealBranchCycles",
-    "GenusOneLattice",
-    "HyperellipticDifferential",
-    "HyperellipticProfile",
-    "LiftedCycleIntersection",
-    "LiftedSquareRootPath",
-    "NormalizedAbelianTorus",
-    "ProcessFunctionModule",
-    "RealBranchCutPresentation",
-    "RealBranchCycleSpec",
-    "SampledIntersectionForm",
-    "SampledRiemannProfile",
-    "WeierstrassCubicProfile",
-    "abel_jacobi_history_increment",
-    "abelian_integral_profile",
-    "affine_am_frame",
-    "canonical_symplectic_form",
-    "compute_period_matrix",
-    "construct_real_branch_cycles",
-    "holomorphic_differential_basis",
-    "hyperelliptic_profile",
-    "integrate_lifted_differential",
-    "lift_square_root_path",
-    "lifted_path_intersections",
-    "normalized_abelian_torus",
-    "polynomial_am_module",
-    "real_branch_cut_presentation",
-    "sampled_intersection_form",
-    "sampled_intersection_number",
-    "sampled_riemann_profile",
-    "weierstrass_cubic_profile",
-    "GeneratedGrammar",
-    "GeneratedPresentation",
-    "discover_generated_grammar",
-    "discover_generated_presentation",
-    "BoundaryProfile",
-    "PrefixCode",
-    "PrefixCodeMetrics",
-    "boundary_profile",
-    "history_depth",
-    "huffman_prefix_code",
-    "KrylovReturnRelation",
-    "discover_krylov_relation",
-    "ProcessPolynomialRelation",
-    "RelationDecomposition",
-    "RelationKernel",
-    "ReturnRelation",
-    "action_matrix",
-    "coefficient_vector",
-    "decompose",
-    "discover_operator_relation",
-    "discover_relation_decomposition",
-    "discover_relation_kernel",
-    "discover_return_relation",
-    "factor_process_relation",
-    "RewriteResult",
-    "RewriteStep",
-    "WordRewriteRule",
-    "normalize_word",
-    "rewrite_once",
-    "ConstructedPrimitivePresentation",
-    "ExactReconstructionPresentation",
-    "PresentationCandidate",
-    "PresentationSearchResult",
-    "construction_aware_exact_reconstruction_cost",
-    "evaluate_exact_reconstruction_presentation",
-    "pareto_frontier",
-    "search_exact_reconstruction_presentations",
-    "search_primitive_proposals",
-    "structural_exact_reconstruction_cost",
-    "ProcessJetSignature",
-    "enumerate_process_words",
-    "histories_task_equivalent",
-    "history_process_jet_signature",
-    "process_jet_signature",
-    "signatures_equivalent",
-]
+``process`` -> what the process is,
+``presentation`` -> how process history is finitely represented,
+``discovery`` -> how better presentations are searched,
+``analysis`` -> what analytic/geometric language a presentation supports.
+
+Legacy root-level symbol imports from the 0.0.x research-preview API remain
+available lazily during the namespace migration, but they are no longer part of
+``__all__`` and emit ``DeprecationWarning``.
+"""
+
+from __future__ import annotations
+
+import importlib
+import warnings
+
+from . import analysis, discovery, presentation, process
 
 __version__ = "0.0.2.dev0"
+
+__all__ = [
+    "process",
+    "presentation",
+    "discovery",
+    "analysis",
+    "__version__",
+]
+
+
+def __getattr__(name: str):
+    legacy = importlib.import_module("._legacy_api", __name__)
+    if name in getattr(legacy, "__all__", ()):
+        warnings.warn(
+            f"aeg_shakespeare.{name} is a legacy root-level import; "
+            "use the process/presentation/discovery/analysis namespaces instead",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return getattr(legacy, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+def __dir__():
+    return sorted(set(__all__))
