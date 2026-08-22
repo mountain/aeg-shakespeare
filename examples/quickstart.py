@@ -1,9 +1,9 @@
 """Minimal AEG Shakespeare 0.0.1 quickstart.
 
-The example is intentionally small and problem-independent.  It demonstrates
+The example is intentionally small and problem-independent. It demonstrates
 three layers without asking the reader to accept a named classical solver:
-ordered history, an explicit history relation, and the Addition/Multiplication
-function-theory branch.
+literal history, an explicitly declared history relation, and the
+Addition/Multiplication function-theory branch.
 """
 
 import sympy as sp
@@ -16,15 +16,21 @@ from aeg_shakespeare import (
 )
 
 
-# Literal histories come first.  Nothing here says A and M commute.
-history = ProcessWord(("A", "M", "A"))
-relation = WordRewriteRule(ProcessWord(("A", "M")), ProcessWord(("M", "A", "A")))
+# Literal histories come first. This example relation is merely caller-declared;
+# it is not the A/M arithmetic relation used below.
+history = ProcessWord(("P", "Q", "P"))
+relation = WordRewriteRule(
+    ProcessWord(("P", "Q")),
+    ProcessWord(("R",)),
+    name="objectify-PQ",
+)
 normalized = normalize_word(history, (relation,), max_steps=8)
 print("literal:", history.steps)
 print("rewritten:", normalized.normal_form.steps)
+print("rewrite trace length:", normalized.rewrite_steps)
 
 
-# A/M means Addition/Multiplication.  The arithmetic relation [A, M] = A is
+# A/M means Addition/Multiplication. The arithmetic relation [A, M] = A is
 # checked as a consequence of the concrete process frame.
 a, v = sp.symbols("a v")
 theory = AMFunctionTheory(a, v)
