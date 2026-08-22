@@ -2,8 +2,8 @@ name: Sonnet Lonely Runner Phase 9B Semantic Red Team
 
 # One auditable center4 local semantic red team. Only the nine Phase-9A pressure
 # cells are refined by symbolic event-order branching; no full center4 wall
-# arrangement is built. This diagnostic form keeps only the script tail so a
-# failure remains inspectable without pip/setup noise.
+# arrangement is built. The script output is uploaded separately so failures can
+# be audited without GitHub setup-log noise.
 on:
   workflow_dispatch:
   pull_request:
@@ -25,11 +25,20 @@ jobs:
           python-version: "3.12"
 
       - name: Run Phase 9B exact local semantic red team
+        id: probe
+        continue-on-error: true
         env:
           PYTHONFAULTHANDLER: "1"
         run: |
-          set +e
-          python sonnet/lonely-runner/python/center4_semantic_redteam.py > /tmp/phase9b.log 2>&1
-          status=$?
-          tail -120 /tmp/phase9b.log
-          exit $status
+          python sonnet/lonely-runner/python/center4_semantic_redteam.py > phase9b.log 2>&1
+
+      - name: Upload Phase 9B script output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase9b-output
+          path: phase9b.log
+
+      - name: Propagate probe failure
+        if: steps.probe.outcome == 'failure'
+        run: exit 1
