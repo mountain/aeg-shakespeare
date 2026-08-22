@@ -56,18 +56,20 @@ See `docs/11-references-and-test-essays.md`, `docs/12-test-essay-template.py.txt
 
 ## Publishing
 
-The tag-triggered publishing workflow is designed for PyPI Trusted Publishing. PyPI must be configured to trust:
+The tag-triggered publishing workflow is designed for PyPI Trusted Publishing. The Trusted Publisher is configured on PyPI for this repository/workflow/environment.
+
+The publishing identity is:
 
 - GitHub owner: `mountain`;
 - repository: `aeg-shakespeare`;
 - workflow: `.github/workflows/publish.yml`;
 - GitHub environment: `pypi`.
 
-The OIDC `id-token: write` permission is scoped only to the publish job. No PyPI API token should be committed to the repository.
+The OIDC `id-token: write` permission is scoped only to the publish job. No PyPI API token is committed to the repository.
 
 ## Release sequence
 
-Once the Trusted Publisher is configured:
+With the Trusted Publisher configured:
 
 ```text
 main green
