@@ -1,6 +1,6 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 4 — exact semantics, task quotient, structural quotient, and first upstream-strict pruning certificate.  
+**Status:** Phase 5 — bounded transversal certificate transferred to configured solved primes.  
 **Target open case:** `LRC(13)`, i.e. **14 runners**.
 
 ## 1. Problem
@@ -31,19 +31,17 @@ so the next fixed-dimensional open case is
 \boxed{LRC(13)\text{ — 14 total runners}.}
 \]
 
-The same work explicitly identifies efficient computation of the initial improper set
+The same work identifies efficient computation of the initial improper set
 
 \[
 I(k,p,1)
 \]
 
-as the primary bottleneck for extending the proof to `k=13`, and points to stronger pruning of no-witness speed tuples as the needed direction.
+as the primary bottleneck for extending the proof to `k=13`, and explicitly points toward stronger pruning of no-witness speed tuples.
 
-That makes this a particularly clean Shakespeare problem: the accepted frontier is already blocked by a representation/search-state issue rather than by lack of a numerical integrator.
+This is therefore a direct representation/search-state problem rather than a decorative application of Shakespeare.
 
-## 2. Current research chain
-
-The Sonnet is organized as a sequence of increasingly less naive representations.
+## 2. Research chain
 
 ### Phase 0 — exact ground truth
 
@@ -55,15 +53,9 @@ Executable calibration:
 tests/research/test_lonely_runner_phase0.py
 ```
 
-This phase freezes:
+Freezes the exact continuous oracle, finite `(k,p,l)` properness semantics, the known modulo-`p` quotient, tight-threshold red teams, and a first lift-future separation.
 
-- an exact rational continuous oracle for small integer speed tuples;
-- the exact finite `(k,p,l)` ansatz proper/improper predicate;
-- the known modulo-`p` quotient by permutation, independent sign flips, and global units;
-- tight-threshold red teams;
-- a first future-behavior separation: two states can both be improper at `l=1` but differ after all `c=2` lifts.
-
-### Phase 1 — `I(k,p,1)` is fixed-cardinality set cover
+### Phase 1 — `I(k,p,1)` as fixed-cardinality set cover
 
 [`01-initial-sieve-as-set-cover.md`](01-initial-sieve-as-set-cover.md)
 
@@ -79,13 +71,13 @@ For the half-circle time set
 U_p=\{1,\ldots,(p-1)/2\},
 \]
 
-each folded speed `s` defines its bad-time subset
+each folded speed `s` defines
 
 \[
 C_s=\left\{a\in U_p:\left\|\frac{as}{p}\right\|<\frac1{k+1}\right\}.
 \]
 
-Then
+Then exactly
 
 \[
 (s_1,\ldots,s_k)\in I(k,p,1)
@@ -93,9 +85,7 @@ Then
 C_{s_1}\cup\cdots\cup C_{s_k}=U_p.
 \]
 
-At `k=3,p=13`, direct rational-grid semantics and this set-cover semantics agree on all 56 folded multisets, giving 14 improper tuples and 3 unit-orbit canonical classes.
-
-A red team also shows that `current cover + depth` is not a sufficient state once a construction grammar constrains which future choices remain admissible.
+The initial modular sieve is therefore a finite set-cover completion process.
 
 ### Phase 2 — exact task quotient with Shakespeare
 
@@ -107,30 +97,14 @@ Executable calibration:
 tests/research/test_lonely_runner_process_jet_quotient.py
 ```
 
-Using a deliberately simple canonical nondecreasing multiset grammar, Shakespeare's existing `ProcessJetSignature` computes the **entire remaining future task language** on finite worlds.
+`ProcessJetSignature` is used as an exhaustive finite oracle for the complete future task language.  It both rejects unsafe state merges and certifies nontrivial safe merges.
 
-It does both sides of the job:
-
-- rejects unsound merges such as `(1,4)` / `(1,6)` at `k=3,p=13`;
-- certifies safe merges even when current cover sets differ.
-
-Example:
-
-\[
-(1,1,4)\equiv_Q(1,4,5)
-\qquad(k=5,p=17),
-\]
-
-because both have exactly the same accepting two-step continuation `(6,7)`.
-
-Exact class counts:
+Representative class compression:
 
 ```text
 k=4,p=13:  28 literal partial histories -> 11 task classes
 k=5,p=17: 165 literal partial histories -> 19 task classes
 ```
-
-These are semantic class counts, not runtime speedups.
 
 ### Phase 3 — requirement antichain
 
@@ -142,43 +116,25 @@ Executable calibration:
 tests/research/test_lonely_runner_requirement_antichain.py
 ```
 
-For every uncovered time `a`, record the still-admissible future speeds that can repair it:
+For each uncovered time `a`, define the available future repairs
 
 \[
 R_h(a)=\{s:\text{future speed }s\text{ covers }a\}.
 \]
 
-Delete duplicates and strict supersets, retaining the inclusion-minimal requirement antichain
+Delete duplicate requirements and strict supersets, retaining the inclusion-minimal antichain
 
 \[
 \mathcal A(h).
 \]
 
-For the canonical grammar, the structural state
+For the canonical grammar,
 
 \[
-\boxed{S(h)=(\text{remaining slots},\text{last speed},\mathcal A(h))}
+(\text{remaining slots},\text{last speed},\mathcal A(h))
 \]
 
-is proved sufficient to determine the complete future task language.
-
-Compression ladder:
-
-```text
-k=4,p=13:
-  literal histories       28
-  current-cover states    21
-  requirement states      16
-  exact task classes      11
-
-k=5,p=17:
-  literal histories      165
-  current-cover states    85
-  requirement states      41
-  exact task classes      19
-```
-
-Thus a substantial part of the semantic quotient has a cheap, intelligible structural explanation.
+is sufficient to determine the complete future task language.
 
 ### Phase 4 — return to the real upstream MRV state
 
@@ -190,86 +146,128 @@ Executable calibration:
 tests/research/test_lonely_runner_upstream_requirement_prune.py
 ```
 
-This phase transliterates the relevant `vzsky/13-lonely-runners` `find_cover` semantics, including the exact bit ordering, `AvailableChoice` elimination, MRV tie-breaking, optimistic `early_return_bound()`, and top-level worker initialization.
+This phase transliterates the relevant upstream `find_cover` semantics, including bit ordering, `AvailableChoice`, MRV tie-breaking, optimistic `early_return_bound()`, sibling elimination, and top-level worker initialization.
 
-The first strictly stronger pruning certificate appears at `k=5,p=29` in the reachable state
+The requirement representation yields the first reachable state pruned by Shakespeare-derived information but not by the existing upstream optimistic bound.  Small-world whole-search gains are intentionally modest; Phase 4 establishes strictness, not practical dominance.
+
+### Phase 5 — bounded transversal as a cost-selected exact certificate
+
+[`05-bounded-transversal-prune.md`](05-bounded-transversal-prune.md)
+
+Executable CI calibration:
 
 ```text
-chosen history     (1, 2, 7)
-eliminated speed   {5}
-remaining slots    2
+tests/research/test_lonely_runner_two_slot_transversal.py
 ```
 
-Among its minimal future requirements are the three pairwise-disjoint sets
+Manual configured-worker benchmark:
+
+```text
+python sonnet/lonely-runner/bench_phase5_two_slot.py
+```
+
+The requirement hypergraph has transversal number
 
 \[
-\{6,11,12\},
-\qquad
-\{3,8,13\},
-\qquad
-\{9,10,14\}.
+\tau(\mathcal A)=\min\{|H|:H\cap R\ne\varnothing\text{ for every }R\in\mathcal A\}.
 \]
 
-Therefore at least three future choices are necessary, while only two slots remain.  The branch is impossible.
-
-The current upstream optimistic bound does not reject this state: it sees six uncovered positions and obtains
+With `r` slots remaining,
 
 \[
-6 = 3 + 3(2-1),
+\tau(\mathcal A)>r
 \]
 
-so its strict pruning inequality fails exactly at equality.
+is an exact impossibility certificate for the remaining `I(k,p,1)` set-cover task.
 
-Whole-search small-world checks preserve the exact canonical solution sets:
+The first useful Pareto point is not full four-slot lookahead but the exact **two-slot** specialization:
+
+\[
+\boxed{
+\exists s,t\in A:\ U\subseteq C_s\cup C_t
+}
+\]
+
+where `U` is the current uncovered-time bitset and `A` the currently available speeds.  If no such pair exists, the branch is impossible.
+
+Complete configured-prime mirrors give:
 
 ```text
-k=5,p=29:  113 -> 110 DFS calls, 1 new prune, 7 solution classes unchanged
-k=7,p=37: 1752 -> 1743 DFS calls, 3 new prunes, 177 solution classes unchanged
+k=8,p=79:   39,813 -> 28,828 nodes   (-27.6%)
+k=8,p=83:  113,488 -> 91,335 nodes   (-19.5%)
+k=9,p=89:  161,820 -> 112,951 nodes  (-30.2%)
 ```
 
-The gains are small.  What Phase 4 establishes is **strictly stronger information**, not practical dominance.
+For `k=8,p=79` and `k=9,p=89`, the complete accepted raw history sets are compared directly and are identical before and after pruning.
 
-## 3. What Shakespeare has contributed so far
+For current-config `k=10,p=127`, the first five serialized top-level workers give:
 
-The useful conceptual move was not “rewrite Lonely Runner in new notation.”  It was the representation sequence
+| second speed | baseline | + 2-slot | reduction | new prunes | accepted leaves |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 2  | 376,376 | 264,486 | 29.7% | 17,022 | 2,822 |
+| 4  | 505,777 | 322,126 | 36.3% | 28,063 | 8,041 |
+| 6  | 543,301 | 345,043 | 36.5% | 30,261 | 19,176 |
+| 8  | 394,315 | 244,797 | 37.9% | 22,958 | 8,841 |
+| 10 | 316,729 | 201,286 | 36.5% | 18,319 | 7,454 |
+
+Aggregate:
+
+\[
+2,136,498\to1,377,738
+\]
+
+or about **35.5% fewer nodes**.
+
+A key red-team result is that stronger 3/4-slot exact lookahead removes still more nodes but can lose on certificate cost.  The two-slot rule is presently the best stable representation/certificate Pareto point in the Python semantic mirror.
+
+## 3. What Shakespeare has contributed
+
+The chain is now:
 
 ```text
-current tuple / covered times
-        ->
-exact future continuation language
-        ->
-future repair requirements
-        ->
-minimal requirement antichain
-        ->
-new exact obstruction on the actual upstream search
+literal search history
+    -> exact future continuation semantics
+    -> future repair requirements
+    -> requirement antichain
+    -> transversal feasibility
+    -> cost-selected two-slot certificate
+    -> substantial node reduction on configured solved parameters
 ```
 
-The difference is important.  Phase 2 first used exhaustive future semantics as an oracle for the correct quotient; Phase 3 then searched backward for a compact invariant explaining part of that quotient; Phase 4 transported the resulting object to the real computational bottleneck.
+This is stronger than translating an existing algorithm into new notation.  The key structure was discovered by first computing exact future semantics, then explaining the resulting equivalence classes, then lowering that explanation back into a cheap certificate for the frontier solver.
 
-That is the intended Shakespeare workflow.
+The cost red team is equally important: Shakespeare should not maximize semantic strength blindly.  The operative objective is a Pareto frontier over
+
+\[
+\text{semantic strength},
+\quad
+\text{search reduction},
+\quad
+\text{certificate cost},
+\quad
+\text{reconstruction/provenance cost}.
+\]
 
 ## 4. Claim level
 
-Using the `sonnet/` four-level rubric:
+Using the `sonnet/` rubric:
 
 1. **re-expression:** achieved;
-2. **compression:** achieved on finite state counts, but not yet as a meaningful wall-clock result;
-3. **structural discovery:** achieved at calibration level — the requirement-antichain presentation is exact for the canonical grammar and yields a strictly stronger reachable-state prune upstream;
+2. **compression:** achieved in exact state/node counts on configured solved parameters;
+3. **structural discovery:** achieved — future-requirement/transversal structure produces pruning not present in the upstream bound;
 4. **new mathematics:** not achieved — `LRC(13)` remains open.
 
-No claim here improves the published LRC frontier.
+Phase 5 still does **not** improve the published Lonely Runner frontier.
 
-## 5. Next phase
+## 5. Next threshold
 
-The next work should stay close to the actual `I(k,p,1)` bottleneck rather than return to abstract API design.
+The next step is now narrow and engineering-facing:
 
-Priority order:
+1. port only the exact two-slot test to a minimal C++ patch against upstream `find_cover.h`;
+2. instrument node counts and `find_cover` wall time without changing the lifting pipeline;
+3. verify output identity/hashes over several solved `K=8..10` primes;
+4. if the C++ net gain survives, extend the frozen patch to configured `K=11,12` primes;
+5. keep 3/4-slot lookahead as a red team unless its C++ cost becomes competitive;
+6. only after the frozen rule transfers should it be applied to exploratory `K=13` parameters.
 
-1. reconstruct the exact primes / parameter sets used in solved upstream `k=8..12` runs and collect node-count baselines;
-2. add forced-speed propagation and bounded transversal lower bounds on the requirement antichain;
-3. measure **additional prunes versus certificate cost** under identical solution semantics;
-4. investigate memoization by reduced requirement presentations while retaining construction provenance needed to reconstruct every candidate tuple;
-5. only after a method transfers across solved `k`, freeze it and test `k=13` without retuning the representation grammar.
-
-The next decisive threshold is therefore not another attractive toy merge.  It is a reproducible improvement on solved large instances of the same initial sieve that blocks `LRC(13)`.
+The decisive question has changed again.  It is no longer whether Shakespeare found stronger information; it did.  The next question is whether the **cheapest exact shadow** of that information remains a net win in the C++ implementation that defines the current computational frontier.
