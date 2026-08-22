@@ -19,6 +19,7 @@ _ESSAYS = (
     _ROOT / "classical" / "test_coupled_scalar_canonical_observer.py",
     _ROOT / "classical" / "test_restricted_kepler_canonical_decomposition.py",
     _ROOT / "classical" / "test_am_process_direction.py",
+    _ROOT / "research" / "test_lonely_runner_canonical_observer_decomposition.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
