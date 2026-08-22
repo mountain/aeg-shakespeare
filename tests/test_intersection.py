@@ -1,6 +1,6 @@
 import pytest
 
-from aeg_shakespeare import canonical_symplectic_form
+from aeg_shakespeare.analysis.abelian import canonical_symplectic_form
 
 
 def test_canonical_symplectic_form_uses_a_then_b_order():

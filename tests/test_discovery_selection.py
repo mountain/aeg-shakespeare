@@ -1,10 +1,8 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    AlgebraicConstraintSet,
-    ProcessSystem,
-    search_first_order_process_quotients,
-)
+from aeg_shakespeare.discovery import search_first_order_process_quotients
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def test_first_order_observer_search_reuses_pareto_presentation_costs():

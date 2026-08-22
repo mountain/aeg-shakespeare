@@ -1,7 +1,8 @@
 import pytest
 import sympy as sp
 
-from aeg_shakespeare import GenusOneLattice, hyperelliptic_profile, lift_square_root_path
+from aeg_shakespeare.analysis.abelian import GenusOneLattice, lift_square_root_path
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def test_lift_requires_numeric_parameters_and_avoids_branch_points():

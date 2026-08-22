@@ -94,13 +94,13 @@ Algorithms*, 4th ed., Springer, 2015.
 
 import sympy as sp
 
-from aeg_shakespeare import (
-    AlgebraicConstraintSet,
-    ProcessSystem,
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
+from aeg_shakespeare.discovery import (
     discover_first_order_process_quotient,
     discover_polynomial_invariants,
-    hyperelliptic_profile,
 )
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def closed_pendulum_process():

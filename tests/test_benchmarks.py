@@ -1,21 +1,19 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    PresentationCost,
-    ProcessSystem,
-    ProcessWord,
-    SearchBudget,
+from aeg_shakespeare.core import homogeneous_monomials
+from aeg_shakespeare.linear import discover_krylov_relation
+from aeg_shakespeare.presentation.relations import (
     coefficient_vector,
     decompose,
-    discover_krylov_relation,
     discover_operator_relation,
     discover_relation_decomposition,
     discover_relation_kernel,
     discover_return_relation,
     factor_process_relation,
-    homogeneous_monomials,
-    interpret_history,
 )
+from aeg_shakespeare.presentation.search import PresentationCost, SearchBudget
+from aeg_shakespeare.process.history import ProcessWord, interpret_history
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def test_process_word_interpreter_supports_affine_calibration_without_affine_api():

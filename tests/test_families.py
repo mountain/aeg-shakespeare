@@ -1,6 +1,6 @@
 import sympy as sp
 
-from aeg_shakespeare.families import (
+from aeg_shakespeare.process.finite import (
     FamilyAction,
     ProcessCharacter,
     ProcessFamily,

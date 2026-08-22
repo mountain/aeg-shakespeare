@@ -100,7 +100,9 @@ Chapters XX-XXII.
 
 import sympy as sp
 
-from aeg_shakespeare import AlgebraicConstraintSet, ProcessSystem, hyperelliptic_profile
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def even_power_oscillator(power: int):

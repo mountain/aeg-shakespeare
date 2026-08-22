@@ -84,7 +84,7 @@ Springer, 2009. DOI: 10.1007/978-0-387-09494-6.
 
 import sympy as sp
 
-from aeg_shakespeare import hyperelliptic_profile
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def test_pendulum_and_quartic_oscillator_share_genus_one_quotient_class():

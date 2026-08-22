@@ -105,11 +105,9 @@ References
 
 import sympy as sp
 
-from aeg_shakespeare import (
-    ProcessSystem,
-    coefficient_vector,
-    discover_generated_presentation,
-)
+from aeg_shakespeare.presentation.grammar import discover_generated_presentation
+from aeg_shakespeare.presentation.relations import coefficient_vector
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def _oscillator():

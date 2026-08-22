@@ -92,13 +92,13 @@ import math
 
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.analysis.abelian import (
     GenusOneLattice,
     holomorphic_differential_basis,
-    hyperelliptic_profile,
     integrate_lifted_differential,
     lift_square_root_path,
 )
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def pendulum_e0_curve():

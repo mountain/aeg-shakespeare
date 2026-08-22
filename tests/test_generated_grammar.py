@@ -1,11 +1,11 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    ProcessSystem,
-    SearchBudget,
+from aeg_shakespeare.presentation.grammar import (
     discover_generated_grammar,
     discover_generated_presentation,
 )
+from aeg_shakespeare.presentation.search import SearchBudget
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def recurrent_system():

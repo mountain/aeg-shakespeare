@@ -103,7 +103,8 @@ DOI: 10.1007/978-1-4899-2843-6.
 
 import sympy as sp
 
-from aeg_shakespeare import abelian_integral_profile, hyperelliptic_profile
+from aeg_shakespeare.analysis.abelian import abelian_integral_profile
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def oscillator_curve(power: int):

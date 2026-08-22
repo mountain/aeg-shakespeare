@@ -1,11 +1,11 @@
 import sympy as sp
 
-from aeg_shakespeare import ProcessSystem, SearchBudget
-from aeg_shakespeare.construction import (
+from aeg_shakespeare.presentation.construction import (
     SymbolicOperation,
     generate_primitive_proposals,
 )
-from aeg_shakespeare.search import search_primitive_proposals
+from aeg_shakespeare.presentation.search import SearchBudget, search_primitive_proposals
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def test_semantically_equal_proposals_keep_distinct_construction_trees():

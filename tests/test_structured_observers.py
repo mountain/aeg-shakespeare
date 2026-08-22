@@ -1,13 +1,13 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    AlgebraicConstraintSet,
+from aeg_shakespeare.discovery import (
     PairableAtom,
-    ProcessSystem,
     euclidean_pairing,
     generate_pairing_observers,
     nonstationary_observer_proposals,
 )
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def test_pairing_observers_preserve_structured_recipes_before_lowering():

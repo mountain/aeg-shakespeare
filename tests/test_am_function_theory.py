@@ -1,12 +1,8 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    AMFunctionTheory,
-    AMState,
-    ProcessFunctionModule,
-    ProcessWord,
-    polynomial_am_module,
-)
+from aeg_shakespeare.analysis.am import AMFunctionTheory, AMState
+from aeg_shakespeare.analysis.module import ProcessFunctionModule, polynomial_am_module
+from aeg_shakespeare.process.history import ProcessWord
 
 
 def test_am_means_addition_and_multiplication_at_finite_and_infinitesimal_levels():
