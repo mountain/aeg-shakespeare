@@ -67,8 +67,14 @@ A `sonnet` should distinguish four levels of result:
 
 These levels should not be conflated. In particular, reproducing a classical solution in process language is calibration, not evidence that Shakespeare has solved the underlying representation problem.
 
-## First candidate
+## Sonnet 001 — Lonely Runner
 
-The first candidate under consideration is the next open fixed-dimensional case of the **Lonely Runner Conjecture**. It is attractive because its known computational frontier already exhibits an explicit tradeoff between symmetry reduction, label reconstruction, CRT lifting, and combinatorial branching — exactly the kind of presentation problem Shakespeare is designed to make explicit.
+The first active study is [`lonely-runner/`](lonely-runner/), targeting the next open fixed-dimensional case `LRC(13)` (14 total runners).
 
-The concrete formulation, literature status, baselines, and experiment design should live in its own subdirectory once frozen; this index deliberately does not commit to a particular attack before that work is audited.
+The literature audit sharpens the reason for choosing it.  The 2026 computer-assisted proof through `LRC(12)` explicitly identifies the primary obstacle to `k=13` as efficient computation of the initial improper set `I(k,p,1)`.  The existing method already uses an exact quotient by permutation, sign flips, and multiplication by units modulo `p`; further progress is expected to require stronger structural understanding and pruning of no-witness residue tuples.
+
+That makes the first Shakespeare question concrete rather than decorative:
+
+> Can a task-sufficient presentation preserve future properness under lifting while identifying substantially more states than the known symmetry quotient?
+
+Phase 0 freezes exact continuous and finite-ansatz semantics before any new quotient is proposed.
