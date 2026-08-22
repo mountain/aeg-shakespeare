@@ -1,0 +1,26 @@
+name: Sonnet Lonely Runner Local Contact Refinement
+
+# This experiment validates incremental semantic refinement from the frozen
+# center<=2 task quotient.  It is manual because it performs a complete old
+# four-speed graph census, even though it avoids the much larger center<=3 census.
+on:
+  workflow_dispatch:
+
+jobs:
+  local-refinement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run local refinement detector
+        working-directory: sonnet/lonely-runner/python
+        run: |
+          python local_contact_refinement.py
