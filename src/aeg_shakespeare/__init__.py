@@ -1,32 +1,40 @@
-"""AEG Shakespeare: process-presentation discovery experiments."""
+"""AEG Shakespeare: process-representation discovery library."""
 
-from .affine import Add, AffineNormalForm, Scale, normalize_affine_history
-from .core import ProcessSystem, homogeneous_monomials
+from .core import (
+    ProcessSystem,
+    ProcessWord,
+    SearchBudget,
+    homogeneous_monomials,
+    interpret_history,
+)
+from .cost import PresentationCost
 from .linear import KrylovReturnRelation, discover_krylov_relation
 from .relations import (
+    RelationKernel,
     ReturnRelation,
-    ReturnSector,
     action_matrix,
+    coefficient_vector,
     decompose,
-    discover_quadratic_return_sectors,
+    discover_relation_kernel,
     discover_return_relation,
 )
 
 __all__ = [
-    "Add",
-    "AffineNormalForm",
-    "Scale",
-    "normalize_affine_history",
     "ProcessSystem",
+    "ProcessWord",
+    "SearchBudget",
     "homogeneous_monomials",
+    "interpret_history",
+    "PresentationCost",
     "KrylovReturnRelation",
     "discover_krylov_relation",
+    "RelationKernel",
     "ReturnRelation",
-    "ReturnSector",
     "action_matrix",
+    "coefficient_vector",
     "decompose",
-    "discover_quadratic_return_sectors",
+    "discover_relation_kernel",
     "discover_return_relation",
 ]
 
-__version__ = "0.1.0a1"
+__version__ = "0.0.1"

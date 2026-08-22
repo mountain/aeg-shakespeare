@@ -1,14 +1,16 @@
 # Process Presentation v0.1
 
-**Status:** research prototype / deliberately bounded / not a general decision procedure.
+**Status:** reusable library core + bounded research calibration tests; not a general decision procedure.
 
 ## 1. Objective
 
-Shakespeare is not an ODE solver. Its first research question is:
+Shakespeare is not an ODE solver and is not organized as a collection of solved problems. Its library question is:
 
-> Given assignments, primitive operations/processes, bounded history depth, and a task, can we discover a shorter process presentation: fewer reusable primitives, shorter return relations, a smaller task-sufficient quotient, or a cheaper decoder?
+> Given a caller-defined process grammar, ordered histories, symbolic semantics, finite search bounds, and a task/cost model, what reusable operations can discover or verify a cheaper process presentation?
 
-The project treats linear algebra, Gröbner methods, and SymPy as discovery and verification backends. They are not the ontology of process equality.
+The public API must stay problem-independent. Concrete systems such as affine add/multiply, oscillator, Duffing, or matrix examples are calibration tests of the same common machinery.
+
+The project treats linear algebra, Groebner methods, and SymPy as discovery and verification backends. They are not the ontology of process equality.
 
 ## 2. Minimal object
 
@@ -26,67 +28,60 @@ where:
 - `R` is a layered relation set;
 - semantics maps a history to its physical/computational effect;
 - `T` is the task whose sufficient information must be preserved;
-- `c` prices grammar, history, observer state, and decoding.
+- `c` prices grammar, relations, history, decoding, and task error.
 
-v0.1 implements only small exact fragments of this object.
+The current package implements only small exact fragments of this object.
 
-## 3. Computational discipline
+## 3. Public computational primitives
+
+The first reusable layer consists of:
+
+1. `ProcessWord`: an ordered process history with no built-in physical interpretation.
+2. `interpret_history`: caller-supplied semantics `transition(state, step) -> state`.
+3. `ProcessSystem`: a derivation-style symbolic backend for one local process generator.
+4. `SearchBudget`: explicit bounds on history depth, expression degree, relation order, and primitive proposals.
+5. `discover_return_relation`: bounded exact recurrence discovery in a generated process orbit.
+6. `discover_relation_kernel`: find finite-grammar primitives satisfying any caller-declared constant-coefficient process relation.
+7. `decompose`: express an object in a candidate/discovered primitive grammar.
+8. `PresentationCost`: keep grammar, relation, history, decoder, and task-error costs explicit; scalarization is caller-controlled.
+9. `discover_krylov_relation`: a matrix backend/calibration showing how classical linear recurrence structure can emerge from process histories without making eigen/Jordan data the discovery API.
+
+The package deliberately does not expose `Oscillator`, `Duffing`, `AddMultiplyProblem`, or similar domain objects as core abstractions.
+
+## 4. Computational discipline
 
 1. **Bounded search.** General word/rewrite problems need not be decidable. Shakespeare searches only bounded depth, degree, coefficient size, and grammar size.
-2. **History before quotient.** Equal SymPy expressions do not imply identical process histories.
+2. **History before quotient.** Equal symbolic expressions do not imply identical process histories.
 3. **Relations before eigenvalues.** A return relation such as `D^2 x + x = 0` is primary; spectral/eigen representations are optional downstream compressions.
 4. **Backend, not ontology.** Sparse linear algebra may discover relations; SymPy may verify them. The returned certificate is an explicit process relation.
 5. **Task matters.** A quotient is accepted only relative to declared task sufficiency.
+6. **Problems are tests.** Named physical/mathematical examples belong in `tests/` unless they motivate a genuinely reusable abstraction.
 
-## 4. Initial benchmarks
+## 5. Calibration tests
 
-### P0 — Add/multiply
+The current tests deliberately reuse the public API rather than adding problem-specific code to `src/`:
 
-Normalize finite affine histories. This tests exact history rewriting and gives a finite-scale source for the AEG relation `[A,M]=A` after infinitesimalization.
+- finite affine add/multiply history tests generic `ProcessWord` interpretation;
+- a matrix/Krylov case tests recurrence discovery before spectral language;
+- oscillator tests generic `discover_return_relation`;
+- the degree-three oscillator/Duffing calculation tests generic finite-grammar relation kernels and decomposition;
+- budget/cost tests exercise problem-independent search metadata.
 
-### P1 — Linear/Krylov
+These tests are regression probes, not package features.
 
-Expand `v, Xv, X^2v, ...` and discover the shortest recurrence. The target is to recover the cyclic minimal polynomial *before* any eigen/Jordan representation is requested.
-
-### P2 — Oscillator
-
-Input only
-
-\[
-D(x)=p,\qquad D(p)=-x.
-\]
-
-The system should discover
-
-\[
-D^2x+x=0
-\]
-
-as a short process-return relation.
-
-### P3 — Duffing cubic grammar
-
-Using the unperturbed oscillator process and arithmetic multiplication, generate the degree-three grammar and discover short return sectors. The research target is to recover compact composite primitives equivalent to the familiar cubic recurrence pairs without preloading Fourier modes, complex characters, or eigenvectors.
-
-## 5. What would count as success?
+## 6. What would count as research success?
 
 The first meaningful threshold is not reproducing known formulas. It is:
 
-> A bounded search discovers a composite primitive because it reduces presentation cost and yields a shorter closed process action table, without being told the classical representation in advance.
+> A bounded, problem-independent search discovers a composite primitive because it reduces presentation cost and yields a shorter closed process action table, without being told the classical representation in advance.
 
-P3 is the first benchmark intended to test that claim.
+The current relation-kernel machinery still searches a caller-declared relation family. The next threshold is to discover relation templates and primitive proposals jointly from generic presentation cost.
 
-## 6. Current P0-P3 prototype result
+## 7. Next library steps
 
-The first implementation has been executed locally with five tests passing. In particular, degree-three oscillator history discovery finds two return sectors, one satisfying `D^2 f + f = 0` and one satisfying `D^2 f + 9 f = 0`. The cubic forcing `x^3` is then reconstructed from the discovered primitives without preloading Fourier modes or complex eigenvectors.
-
-This is not yet grammar-agnostic primitive discovery: v0.1 still searches a declared family of quadratic return relations. The next research threshold is to discover the relation template and primitive proposal jointly from presentation cost.
-
-## 7. Next implementation steps
-
-- explicit `History` and layered `Relation` IR;
-- rewrite/equality-saturation backend for finite process words;
+- layered `Relation` and rewrite IR for finite process words;
+- equality-saturation / completion backend behind a generic normalization interface;
 - finite process-jet signatures for task congruence;
-- primitive proposals scored by description length;
+- grammar-agnostic primitive proposals;
 - decoder and sufficiency certificates;
-- move P3 from return-template search toward grammar-agnostic primitive discovery.
+- presentation-search loop that returns Pareto candidates rather than a problem-specific answer.
