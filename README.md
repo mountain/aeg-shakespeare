@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, bounded search, exact relation discovery, finite grammar generation, representation costs, and Pareto presentation search.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, operation-generated primitive proposals, bounded search, exact relation discovery, finite grammar generation, representation costs, and Pareto presentation search.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -33,6 +33,7 @@ The library core is intentionally problem-independent. Current public building b
 - `enumerate_process_words`, `process_jet_signature`, `history_process_jet_signature`, `histories_task_equivalent` — finite future-response signatures and bounded task congruence for deciding when distinct histories may be safely merged for a declared task;
 - `history_depth`, `boundary_profile`, `BoundaryProfile` — finite history geometry: process depth as the radial axis and prefix-frontier width/information as boundary observables, with an optional caller-supplied exact/task quotient key;
 - `huffman_prefix_code`, `PrefixCode`, `PrefixCodeMetrics` — one optional prefix-representation strategy that redistributes code depth after the task-relevant symbol set and weights have been fixed;
+- `SymbolicOperation`, `PrimitiveConstruction`, `PrimitiveProposal`, `generate_primitive_proposals` — bounded primitive proposal generation that retains construction trees and costs instead of identifying proposals by final symbolic value;
 - `interpret_history` — attach caller-defined semantics to a history;
 - `ProcessSystem` — a derivation-style symbolic backend for a local process generator;
 - `SearchBudget` — explicit finite limits for local representation search;
@@ -45,14 +46,15 @@ The library core is intentionally problem-independent. Current public building b
 - `discover_relation_decomposition` — jointly discover relation factors and their primitive subgrammars without a caller-supplied relation template;
 - `coefficient_vector` / `decompose` — move exactly between arbitrary independent polynomial grammars, including discovered composite primitives;
 - `PresentationCost`, `PresentationCandidate`, `pareto_frontier` — explicit multi-axis representation costs and generic task-sufficient Pareto filtering;
-- `search_exact_reconstruction_presentations` — first reusable symbolic search adapter: evaluate alternative seed presentations for exact target reconstruction without imposing a universal scalar objective;
+- `search_exact_reconstruction_presentations` — evaluate alternative seed presentations for exact target reconstruction without imposing a universal scalar objective;
+- `search_primitive_proposals` — feed construction-history-preserving primitive proposals into the common grammar/relation/decoder/Pareto pipeline;
 - `discover_krylov_relation` — a matrix backend showing how linear recurrence structure can be recovered from process histories before spectral interpretation.
 
 The physical and mathematical calibration problems do **not** define the package API. Oscillator, Duffing, affine add/multiply, and related systems live in the test suite as probes of the common machinery.
 
 ## Current research boundary
 
-Shakespeare now has five deliberately separate executable layers.
+Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
 
@@ -60,11 +62,13 @@ At the task layer, a history is not merged merely because its current observatio
 
 At the history-geometry layer, the remaining distinguishable histories form a finite prefix tree. Shakespeare can measure root-to-node process depth and level/frontier widths, and can optionally apply a Huffman prefix strategy once a task-relevant boundary and usage measure are supplied. Huffman is a representation strategy, not the definition of process equality or primitive discovery.
 
-At the symbolic local-process layer, Shakespeare grows independent process directions from seed expressions until a finite grammar closes or a bound is reached. If closure succeeds, the library discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact coordinates for the original seeds. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
+At the primitive-construction layer, caller-declared operations generate bounded construction trees. Two trees that evaluate to the same SymPy expression remain separate proposals unless the caller explicitly declares a construction symmetry such as commutativity. Construction depth and cost therefore survive objectification.
 
-At the search layer, arbitrary `PresentationCandidate` payloads can be compared by explicit multi-axis cost and task sufficiency. The first symbolic adapter evaluates alternative seed grammars for exact reconstruction and returns the Pareto frontier; a narrower seed dictionary and a shallower generated grammar are allowed to remain as distinct trade-offs instead of being collapsed to one score.
+At the symbolic local-process layer, each proposed seed can grow an exact process grammar. If closure succeeds, Shakespeare discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact target decoders. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
-The remaining earlier choice is **proposal generation**: candidate primitives must be generated from allowed operations together with their construction histories/costs. That layer should feed the existing rewrite, task, history-geometry, grammar, relation, and Pareto machinery rather than define another problem-specific solver.
+At the search layer, the resulting candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The Pareto frontier can therefore preserve a trade-off between construction cost, grammar width, process depth, relation complexity, and decoding rather than collapsing them to one score.
+
+The next threshold is **adaptive proposal priority/objectification**: repeated history subtrees, relation compression, task signatures, and boundary usage measures should determine which construction trees are proposed first. That is where the process-tree/Huffman line should meet grammar induction rather than merely follow it.
 
 ## Development
 
@@ -75,7 +79,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), and [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md) for the current computational formulation.
+See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md), and [`docs/05-primitive-construction.md`](docs/05-primitive-construction.md) for the current computational formulation.
 
 ## License
 
