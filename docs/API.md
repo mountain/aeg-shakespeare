@@ -49,7 +49,7 @@ bridge.
 ## 2. `aeg_shakespeare.presentation`
 
 A presentation records how process/history information is objectified,
-quotiented, reconstructed, and costed.
+quotiented, reconstructed, transformed, and costed.
 
 ### `presentation.history`
 
@@ -86,6 +86,22 @@ quotiented, reconstructed, and costed.
 - `factor_process_relation`
 - `discover_relation_kernel`, `discover_relation_decomposition`
 - exact coordinate/decomposition utilities used by finite presentations
+
+### `presentation.morphism`
+
+- `PresentationMorphism`
+
+`PresentationMorphism` is the minimal task-relative record promoted after three
+independent calibrations: KdV tau/rewrite presentations, resistor-network
+Schur/Y-Delta transformations, and braid/Markov moves. It binds a source
+presentation, target presentation, declared task semantics, caller-defined
+certificate, and optional construction witness.
+
+The public object deliberately does **not** define a universal verifier,
+composition law, inverse, normal-form relation, category/groupoid structure, or
+same-type requirement for source and target. In particular, a morphism may connect
+presentations with different carrier dimensions when the declared task semantics
+provides the comparison.
 
 ### `presentation.search`
 
