@@ -26,6 +26,7 @@ def test_representative_public_entry_points_are_importable():
         "PolynomialObserverBasis",
         "discover_polynomial_invariants",
         "discover_first_order_process_quotient",
+        "search_first_order_process_quotients",
         "AMFunctionTheory",
         "hyperelliptic_profile",
         "AbelianIntegralProfile",

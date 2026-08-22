@@ -11,6 +11,11 @@ from .polynomial import (
     discover_polynomial_invariants,
     generate_polynomial_observer_basis,
 )
+from .selection import (
+    FirstOrderObservablePresentation,
+    search_first_order_process_quotients,
+    structural_first_order_quotient_cost,
+)
 
 __all__ = [
     "ObservableQuotient",
@@ -22,4 +27,7 @@ __all__ = [
     "discover_observable_relations",
     "discover_polynomial_invariants",
     "generate_polynomial_observer_basis",
+    "FirstOrderObservablePresentation",
+    "search_first_order_process_quotients",
+    "structural_first_order_quotient_cost",
 ]
