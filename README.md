@@ -8,12 +8,12 @@ It is not primarily an ODE solver and does not take eigenvectors, Fourier modes,
 
 ## Status
 
-Latest PyPI release: **0.0.1**, the first **pre-alpha research preview**.  
-Current `main` development version: **0.0.2.dev0**.
+Latest PyPI release: **0.0.2**, a **pre-alpha research preview**.  
+Current `main` release version: **0.0.2**.
 
 The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not yet covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, and conceptual layer separation take priority over interface stability during this phase.
 
-See [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
+See [`docs/34-release-0.0.2.md`](docs/34-release-0.0.2.md) for this release contract, [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
 ## Install
 
@@ -28,7 +28,8 @@ python -m pip install -e '.[dev]'
 ```
 
 PyPI distribution: `aeg-shakespeare`  
-Python package: `aeg_shakespeare`
+Python package: `aeg_shakespeare`  
+Supported CPython versions: **3.10 through 3.14**
 
 SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
 
@@ -118,55 +119,15 @@ The examples are entry points, not mathematical proofs. Complete classical and r
 
 Shakespeare uses a **literate-programming** discipline. Mathematically substantial Python modules and tests should explain the mathematical pressure that created an abstraction before presenting its implementation.
 
-```text
-classical historical path:
-    analytic difficulty -> special construction -> geometry/algebra
+The project is intentionally layered:
 
-Shakespeare reconstruction:
-    primitive process -> history/constraint/invariant -> quotient geometry
-    -> adequate function language -> classical formula as a shadow
-```
+- `process` owns histories and finite/local process structure;
+- `presentation` owns quotienting, grammars, relations, budgets, costs, and search;
+- `discovery` owns algorithms that propose or compare representations;
+- `analysis` owns process-adapted function and global geometric languages.
 
-The canonical pendulum calibration therefore begins from constrained position/velocity dynamics rather than from `theta`, `sin(theta)`, or a preselected elliptic function. Likewise, the A/M layer begins from **Addition and Multiplication** and their finite/noncommutative process relations before logarithms or familiar harmonic-analysis names are introduced.
+Compatibility shims may remain during the `0.0.x` series, but canonical implementations are being physically consolidated under those semantic owners. The repository includes AST hygiene and physical-ownership tests to prevent the old flat module layout from becoming a hidden architecture again.
 
-A substantial test in `tests/classical/` or `tests/research/` is expected to be a complete mathematical vignette: question, primitive data, classical lineage, Shakespeare reconstruction, calibration statement, proof map, claim boundary, and bibliographic references.
+## License
 
-See:
-
-- [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md)
-- [`docs/11-references-and-test-essays.md`](docs/11-references-and-test-essays.md)
-- [`docs/REFERENCES.md`](docs/REFERENCES.md)
-
-## Current research boundary
-
-The current implementation supports a bounded loop from declared process structure to evaluated presentations, plus concrete routes from successful presentations toward process-adapted function theory and global geometry.
-
-Recent calibrations have established several deliberately limited layers:
-
-- finite families, scalar characters, family actions, and additive process cocycles live in the **process** layer;
-- rewriting, task quotients, construction histories, grammars, relations, and Pareto cost live in the **presentation** layer;
-- invariant/observer/quotient/language proposals live in **discovery**;
-- A/M calculus, algebraic quotient profiles, Abelian integrals, lifted cycles, period matrices, and normalized history quotients live in **analysis**.
-
-The separation is intentional. For example, `ProcessCocycle` is a finite-process object; generic cohomology classes, central-extension groups, projective representations, and an automatic finite-to-infinitesimal bridge are not currently public abstractions. Likewise, the existence of oscillator spectral shadows does not make maximal spectral splitting a universal presentation objective.
-
-Physical and mathematical calibration problems do **not** define the package API. Pendulum, oscillator, Galilean mechanics, magnetic translations, and related systems live in tests as probes of the common machinery.
-
-## Development and release checks
-
-```bash
-python -m pip install -e '.[dev]'
-pytest
-python -m build
-python -m twine check dist/*
-```
-
-CI additionally installs the built wheel into a fresh virtual environment and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
-
-The evolving mathematical story is indexed in [`docs/README.md`](docs/README.md).
-
-## License and citation
-
-Shakespeare is dedicated to the **public domain** using the Unlicense public-domain dedication text in [`LICENSE`](LICENSE). The intent is unrestricted use, modification, publication, redistribution, and reuse of both the software and its accompanying mathematical exposition.
-
-Scholarly attribution is separate from software licensing. Mathematical and historical sources are cited in the literate tests and [`docs/REFERENCES.md`](docs/REFERENCES.md); software citation metadata is provided in [`CITATION.cff`](CITATION.cff).
+Released into the public domain. See [`LICENSE`](LICENSE).
