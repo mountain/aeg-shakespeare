@@ -147,8 +147,10 @@ and check the exact induced parameter rates.
 
 ### Status
 
-**Evidence-bearing local transport record.**  Curvature, holonomy, horizontal
-projection, composition, and path-ordered numerical transport remain unpromoted.
+**Evidence-bearing local transport record for continuous calibrations.**
+Curvature, holonomy, horizontal projection, composition, and path-ordered
+numerical transport remain unpromoted.  Sonnet 001 has not yet earned a discrete
+`ObserverConnection`; Phase 8B must first objectify same-family transport.
 
 ---
 
@@ -195,16 +197,18 @@ Restricted Kepler
     finite function-module carrier
     n=0 / n=1 / n=2 -> renormalizable / resonant / completion
 
-Lonely Runner Phase 8A (opt-in gate)
+Lonely Runner Phase 8A
     finite persistent task-state carrier
-    acceptance target 841 / 2 / 6
+    exact local partition 841 / 2 / 6
 ```
 
 ### Status
 
-**Reusable result shape under cross-calibration.**  A universal discovery backend
-or categorical unification of Lie and module completion remains an open research
-question.
+**Reusable result shape supported by four qualitatively different carrier
+calibrations.**  Phase 8A adds the first discrete persistent-history carrier and
+passes its dedicated exact gate.  This strengthens the evidence for the result
+shape, but does not imply a universal discovery backend or categorical
+unification of Lie, function-module, and finite task-state completion.
 
 ---
 
@@ -407,14 +411,18 @@ Only afterwards are affected parents locally refined as a red-team oracle.
 tests/research/test_lonely_runner_canonical_observer_decomposition.py
 ```
 
-Routine CI skips the heavy census but still parses/checks this essay through the
-literate hygiene test.  The dedicated workflow is
+### Exact gate
 
 ```text
-.github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
+workflow: .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
+run id:   32583659546
+Python:   3.12.14
+result:   1 passed in 5.82 s
 ```
 
-### Acceptance target
+The duration is provenance, not a performance result.
+
+### Established result
 
 ```text
 841 stable
@@ -425,10 +433,18 @@ literate hygiene test.  The dedicated workflow is
 75 final witness semantics recovered
 ```
 
+Full research narrative and boundary:
+
+```text
+sonnet/lonely-runner/20-phase8a-discrete-canonical-decomposition.md
+```
+
 ### Status
 
-**Implementation staged; dedicated exact gate must pass before the target is
-promoted to a new Phase-8 result.**
+**Exact bounded Phase-8A cross-domain calibration passed.**  The result
+establishes the pre-refinement three-way local partition and its post hoc local
+semantic red team.  It does not yet establish that the two non-branching updates
+form a true same-family observer connection; that is Phase 8B.
 
 ---
 
@@ -441,6 +457,9 @@ anchors for this branch are:
   Springer, 2015; DOI 10.1007/978-3-319-13467-3.
 - V. I. Arnold, *Mathematical Methods of Classical Mechanics*, 2nd ed., Springer,
   1989; DOI 10.1007/978-1-4757-2063-1.
+- Earl A. Coddington, Norman Levinson, *Theory of Ordinary Differential
+  Equations*, McGraw-Hill, 1955; "Linear Differential Equations" begins p. 62;
+  ISBN 978-0-07-099256-6.
 - J. F. Cariñena, G. Marmo, J. Nasarre, "The nonlinear superposition principle
   and the Wei-Norman method," arXiv:physics/9802041 (1998),
   https://arxiv.org/abs/physics/9802041 .
@@ -451,8 +470,13 @@ anchors for this branch are:
 - David A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes,"
   *Proceedings of the IRE* 40(9) (1952), 1098--1101;
   DOI 10.1109/JRPROC.1952.273898.
-- T. Sungkawichai, T. Trakulthongchai, "Eleven, twelve, and thirteen lonely
-  runners," arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
+- Touch Sungkawichai, Tanupat Trakulthongchai, "Eleven, twelve, and thirteen
+  lonely runners," arXiv:2604.23906 (2026),
+  https://arxiv.org/abs/2604.23906 .
+
+These fields have been checked against publisher/catalogue, DLMF, arXiv, or
+journal/DOI records as appropriate.  Project-specific interpretations remain
+separately labeled in the executable essays.
 
 ## 12. Review rule
 
