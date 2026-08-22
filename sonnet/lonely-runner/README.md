@@ -1,6 +1,6 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 5 — bounded transversal certificate transferred to configured solved primes.  
+**Status:** Phase 5b — bounded transversal transferred to configured solved primes, C++ semantic mirror validated, minimal upstream patch prepared.  
 **Target open case:** `LRC(13)`, i.e. **14 runners**.
 
 ## 1. Problem
@@ -97,7 +97,7 @@ Executable calibration:
 tests/research/test_lonely_runner_process_jet_quotient.py
 ```
 
-`ProcessJetSignature` is used as an exhaustive finite oracle for the complete future task language.  It both rejects unsafe state merges and certifies nontrivial safe merges.
+`ProcessJetSignature` is used as an exhaustive finite oracle for the complete future task language. It both rejects unsafe state merges and certifies nontrivial safe merges.
 
 Representative class compression:
 
@@ -148,7 +148,7 @@ tests/research/test_lonely_runner_upstream_requirement_prune.py
 
 This phase transliterates the relevant upstream `find_cover` semantics, including bit ordering, `AvailableChoice`, MRV tie-breaking, optimistic `early_return_bound()`, sibling elimination, and top-level worker initialization.
 
-The requirement representation yields the first reachable state pruned by Shakespeare-derived information but not by the existing upstream optimistic bound.  Small-world whole-search gains are intentionally modest; Phase 4 establishes strictness, not practical dominance.
+The requirement representation yields the first reachable state pruned by Shakespeare-derived information but not by the existing upstream optimistic bound. Small-world whole-search gains are intentionally modest; Phase 4 establishes strictness, not practical dominance.
 
 ### Phase 5 — bounded transversal as a cost-selected exact certificate
 
@@ -183,12 +183,10 @@ is an exact impossibility certificate for the remaining `I(k,p,1)` set-cover tas
 The first useful Pareto point is not full four-slot lookahead but the exact **two-slot** specialization:
 
 \[
-\boxed{
-\exists s,t\in A:\ U\subseteq C_s\cup C_t
-}
+\boxed{\exists s,t\in A:\ U\subseteq C_s\cup C_t}
 \]
 
-where `U` is the current uncovered-time bitset and `A` the currently available speeds.  If no such pair exists, the branch is impossible.
+where `U` is the current uncovered-time bitset and `A` the currently available speeds. If no such pair exists, the branch is impossible.
 
 Complete configured-prime mirrors give:
 
@@ -218,7 +216,34 @@ Aggregate:
 
 or about **35.5% fewer nodes**.
 
-A key red-team result is that stronger 3/4-slot exact lookahead removes still more nodes but can lose on certificate cost.  The two-slot rule is presently the best stable representation/certificate Pareto point in the Python semantic mirror.
+A key red-team result is that stronger 3/4-slot exact lookahead removes still more nodes but can lose on certificate cost. The two-slot rule is presently the best stable representation/certificate Pareto point in the Python semantic mirror.
+
+### Phase 5b — C++ semantic mirror and minimal upstream bridge
+
+[`06-cpp-semantic-mirror-and-upstream-patch.md`](06-cpp-semantic-mirror-and-upstream-patch.md)
+
+Standalone C++ benchmark:
+
+```text
+sonnet/lonely-runner/cpp/phase5_two_slot_bench.cpp
+```
+
+Prepared source patch:
+
+```text
+sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
+```
+
+The C++23 / `std::bitset` mirror reproduces the Python deterministic node and accepted-leaf counts exactly. In one local `g++ 14.2 -O3 -march=native` diagnostic run, the two-slot rule remained a net win:
+
+```text
+k=8,p=79:  about 10.2 ms -> 8.7 ms
+k=9,p=89:  about 45.5 ms -> 33.3 ms
+```
+
+All first five `k=10,p=127` workers also improved in that standalone C++ realization, individually by roughly `1.1x–1.45x`.
+
+This is **not yet an upstream benchmark**. Its purpose is to eliminate a major alternative explanation: the certificate is not useful only because of Python-specific search costs. The remaining implementation uncertainty is now the exact upstream source/build/threading environment.
 
 ## 3. What Shakespeare has contributed
 
@@ -231,20 +256,19 @@ literal search history
     -> requirement antichain
     -> transversal feasibility
     -> cost-selected two-slot certificate
-    -> substantial node reduction on configured solved parameters
+    -> configured solved-prime node reduction
+    -> C++ bitset cost survival
+    -> prepared minimal upstream patch
 ```
 
-This is stronger than translating an existing algorithm into new notation.  The key structure was discovered by first computing exact future semantics, then explaining the resulting equivalence classes, then lowering that explanation back into a cheap certificate for the frontier solver.
+This is stronger than translating an existing algorithm into new notation. The key structure was discovered by first computing exact future semantics, then explaining the resulting equivalence classes, then lowering that explanation back into a cheap certificate for the frontier solver.
 
-The cost red team is equally important: Shakespeare should not maximize semantic strength blindly.  The operative objective is a Pareto frontier over
+The cost red team is equally important: Shakespeare should not maximize semantic strength blindly. The operative objective is a Pareto frontier over
 
 \[
-\text{semantic strength},
-\quad
-\text{search reduction},
-\quad
-\text{certificate cost},
-\quad
+\text{semantic strength},\quad
+\text{search reduction},\quad
+\text{certificate cost},\quad
 \text{reconstruction/provenance cost}.
 \]
 
@@ -254,20 +278,20 @@ Using the `sonnet/` rubric:
 
 1. **re-expression:** achieved;
 2. **compression:** achieved in exact state/node counts on configured solved parameters;
-3. **structural discovery:** achieved — future-requirement/transversal structure produces pruning not present in the upstream bound;
+3. **structural discovery:** achieved — future-requirement/transversal structure produces pruning not present in the upstream bound and survives a C++ realization;
 4. **new mathematics:** not achieved — `LRC(13)` remains open.
 
-Phase 5 still does **not** improve the published Lonely Runner frontier.
+Phase 5b still does **not** improve the published Lonely Runner frontier.
 
 ## 5. Next threshold
 
-The next step is now narrow and engineering-facing:
+The next step is now extremely specific:
 
-1. port only the exact two-slot test to a minimal C++ patch against upstream `find_cover.h`;
-2. instrument node counts and `find_cover` wall time without changing the lifting pipeline;
-3. verify output identity/hashes over several solved `K=8..10` primes;
-4. if the C++ net gain survives, extend the frozen patch to configured `K=11,12` primes;
-5. keep 3/4-slot lookahead as a red team unless its C++ cost becomes competitive;
-6. only after the frozen rule transfers should it be applied to exploratory `K=13` parameters.
+1. apply the prepared patch to the exact upstream `find_cover.h` revision;
+2. compile with the upstream command and threading setup;
+3. verify output identity or stable hashes over solved `K=8..10` primes;
+4. measure `find_cover` wall time and total proof-pipeline time;
+5. if the net gain survives, freeze the rule and extend to configured `K=11,12` primes;
+6. only after that transfer should the frozen rule be tried on exploratory `K=13` parameters.
 
-The decisive question has changed again.  It is no longer whether Shakespeare found stronger information; it did.  The next question is whether the **cheapest exact shadow** of that information remains a net win in the C++ implementation that defines the current computational frontier.
+The decisive question has narrowed from mathematics to implementation: does the cheapest exact shadow discovered by Shakespeare remain a net win **inside the actual solver that defines the current frontier**?
