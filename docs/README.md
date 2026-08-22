@@ -35,8 +35,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 31. `30-semantic-public-api-refactor.md` — Phase A.1 semantic namespace refactor, root contraction, compatibility bridge, and separation from later physical file movement.
 32. `31-internal-namespace-migration.md` — Phase A.2 migration of repository tests off the legacy root bridge, with an AST-based hygiene gate.
 33. `32-physical-finite-process-consolidation.md` — Phase B.1 physical relocation of finite family/character/action/cocycle implementation under `process/finite`, with old module paths reduced to compatibility shims.
-34. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-35. `REFERENCES.md` — shared mathematical bibliography.
-36. `RELEASE_CHECKLIST.md` — release gates.
+34. `33-core-decomposition.md` — Phase B.2 split of the old mixed `core.py` into canonical history, local-process, and presentation-budget owners, with source dependency hygiene gates.
+35. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+36. `REFERENCES.md` — shared mathematical bibliography.
+37. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
