@@ -33,7 +33,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/mountain/shakespeare"
+Repository = "https://github.com/mountain/aeg-shakespeare"
 
 [tool.setuptools.packages.find]
 where = ["src"]
