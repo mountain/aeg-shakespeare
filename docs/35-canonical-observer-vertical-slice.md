@@ -44,9 +44,27 @@ not a path, solver, connection, or reparameterization class.  Proportional
 directions are not automatically identified: Sundman-type examples show that
 parameterization can change analytic and reconstruction complexity.
 
-The first three calibrations all accept this boundary.  No `LocalProcessJet`
-object was needed yet, so one has not been promoted merely because the theory
-contains a jet language.
+The first calibrations all accept this boundary.  No `LocalProcessJet` object was
+needed yet, so one has not been promoted merely because the theory contains a
+jet language.
+
+The A/M re-expression now has its own executable essay:
+
+```text
+tests/classical/test_am_process_direction.py
+```
+
+which checks the exact chain
+
+```text
+A/M ProcessFrame
+    -> ProcessDirection
+    -> assignment ODE shadow
+    -> A/M-specific exact integration.
+```
+
+The affine-group / linear-ODE classical background used only for orientation is
+cited in that essay [Hall-2015; Coddington-Levinson-1955].
 
 ## 3. Exact constraint canonicalization
 
@@ -65,9 +83,10 @@ Restricted Kepler already shows why: orthogonality/osculation or stationarity
 conditions should not be disguised as algebraic equations merely to fit the
 first implementation.
 
-A hidden, non-exported `Canonicalization` alias exists only as a transition aid
-inside the first research commits and must be removed before this slice is
-promoted or merged as a stable interface.
+There is now **no generic `Canonicalization` alias in the implementation**.  The
+first temporary alias was removed after the Riccati/coupled-scalar essays were
+migrated to the narrowed name.  This note and the code therefore agree on the
+current public research surface.
 
 ## 4. `ObserverConnection`
 
@@ -114,6 +133,12 @@ mechanism discovering the parts is not yet universal.
 
 ## 6. Calibration A — Restricted Riccati
 
+Executable essay:
+
+```text
+tests/classical/test_restricted_riccati_canonical_observer.py
+```
+
 Start from
 
 \[
@@ -146,15 +171,17 @@ remains outside it.  The exact completion bracket table is
 \]
 
 so adjoining the residual direction gives the standard three-dimensional
-`sl(2)` realization.
-
-This is the first exact calibration of
-
-```text
-canonicalize -> transport -> genuine completion.
-```
+`sl(2)` Riccati realization.  The classical Lie-system identification is cited
+in the executable essay [Carinena-Marmo-Nasarre-1998]; it is checked only after
+the restricted decomposition, not used as its input.
 
 ## 7. Calibration B — two coupled scalar registers
+
+Executable essay:
+
+```text
+tests/classical/test_coupled_scalar_canonical_observer.py
+```
 
 For
 
@@ -205,15 +232,23 @@ With the displayed `E12,E21` definitions this gives
 [E_{12},E_{21}]=M_2-M_1.
 \]
 
-One line in the current v0.2 theory note has the opposite sign.  The sign does
-not change the generated matrix algebra, but future notes/tests should use the
-repository convention consistently.
+One line in the current external v0.2 theory note has the opposite sign.  The
+code and this repository note use the executable convention above.  The sign
+does not change the generated matrix algebra, but the discrepancy must be
+corrected when the theory note is next revised.
 
 Bidirectional coupling closes to the full matrix algebra (and to `aff(2)` after
 translations); one-way coupling remains in the corresponding triangular
-subalgebra.  This is an important minimality red team.
+subalgebra.  Matrix-Lie-algebra background is cited in the executable essay
+[Hall-2015].
 
 ## 8. Calibration C — Restricted Kepler function module
+
+Executable essay:
+
+```text
+tests/classical/test_restricted_kepler_canonical_decomposition.py
+```
 
 Use
 
@@ -234,7 +269,7 @@ For the squared Kepler shape forcing,
 +\frac{b^2}{2}\cos2\psi.
 \]
 
-The same `CanonicalDecomposition` record can carry the three roles:
+The same `CanonicalDecomposition` record carries the three roles:
 
 ```text
 n=0  -> renormalizable
@@ -262,12 +297,13 @@ The second harmonic forces the minimal `R`-closed extension
 \]
 
 Crucially, this vignette does **not** use `ConstraintCanonicalization` for the
-Kepler orthogonality/osculation gauge.  That absence is evidence: the generic
-canonicalization interface is not yet known well enough to freeze.
+Kepler orthogonality/osculation gauge.  Classical central-force, perturbation,
+and trigonometric references are carried by the executable essay
+[Goldstein-Poole-Safko-2002; Arnold-1989; DLMF-4.21].
 
 ## 9. Current API judgment
 
-After the three calibrations:
+After the three killer calibrations and the first A/M re-expression:
 
 ### Strongest candidates to retain
 
@@ -289,25 +325,67 @@ After the three calibrations:
 - universal Lie/module completion API;
 - numerical observer ODE integration.
 
-## 10. Next development order
+## 10. Literate-programming gate
 
-The next stage should use the current slice to re-read existing classical essays
-rather than enlarge the abstraction first.
+The new mathematical essays are now required by CI to contain all repository
+essay sections:
 
-Suggested migration order:
+```text
+Question
+Primitive data
+Classical lineage
+Shakespeare reconstruction
+Calibration statement
+Proof map
+Boundary
+References
+```
 
-1. Translation / Dilation / A-M: expose process directions and distinguish
-   process paths from assignment ODE shadows.
-2. Pendulum discovery sequence: retain it as a likely static/trivial-connection
-   control; do not force observer dynamics where none is needed.
-3. Oscillator / coefficient-extension red team: reinterpret refinement through
-   decomposition/completion cost without asserting that finer splitting is
-   canonical.
-4. Galilean / magnetic translations: keep as future pressure for lifted
-   transport/holonomy, not as justification to add curvature now.
-5. Sonnet 001 Phase 8: test whether the persistent Hauffman `841/2/6` split can
-   be rediscovered from the same canonical-decomposition language in a discrete
-   domain.
+The hygiene test also checks that citation keys resolve to entries with useful
+locators and that every test function named in the Proof map exists (and every
+mathematical test function is represented in that Proof map):
 
-Only after these migrations should the branch decide what deserves a stable
-semantic namespace export and remove the transition alias.
+```text
+tests/test_canonical_observer_essay_hygiene.py
+```
+
+This gate is intentionally scoped to the new vertical slice until the older
+classical/research corpus has been audited for the same standard.
+
+## 11. Next development order
+
+The first audit of Pendulum and the two-frequency oscillator has now been
+recorded in `docs/36-classical-reexpression-audit.md`: both are important
+negative controls against overusing the new vocabulary.
+
+The next genuinely new pressure should therefore come from Sonnet 001 Phase 8,
+which will test whether the persistent Hauffman `841/2/6` split can be
+rediscovered by the same canonical-decomposition language in a discrete history
+domain.  Curvature/holonomy and a generic canonicalization protocol remain
+deferred.
+
+## 12. References
+
+[Hall-2015] Brian C. Hall, *Lie Groups, Lie Algebras, and Representations: An
+Elementary Introduction*, 2nd ed., Graduate Texts in Mathematics 222, Springer,
+2015, Chapters 2--3; DOI 10.1007/978-3-319-13467-3.
+
+[Coddington-Levinson-1955] Earl A. Coddington, Norman Levinson, *Theory of
+Ordinary Differential Equations*, McGraw-Hill, New York, 1955; linear
+differential equations begin p. 62 in the standard edition; ISBN
+978-0-07-099256-6.
+
+[Carinena-Marmo-Nasarre-1998] J. F. Carinena, G. Marmo, J. Nasarre,
+"The nonlinear superposition principle and the Wei-Norman method,"
+arXiv:physics/9802041 (1998), https://arxiv.org/abs/physics/9802041 .
+
+[Arnold-1989] V. I. Arnold, *Mathematical Methods of Classical Mechanics*,
+2nd ed., Graduate Texts in Mathematics 60, Springer, 1989; DOI
+10.1007/978-1-4757-2063-1.
+
+[Goldstein-Poole-Safko-2002] Herbert Goldstein, Charles P. Poole Jr., John L.
+Safko, *Classical Mechanics*, 3rd ed., Addison-Wesley, 2002, Chapter 3,
+"The Central Force Problem," ISBN 0-201-65702-3.
+
+[DLMF-4.21] NIST Digital Library of Mathematical Functions, §4.21,
+"Identities" for trigonometric functions, https://dlmf.nist.gov/4.21 .
