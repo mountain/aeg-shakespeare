@@ -2,13 +2,15 @@ import math
 
 import sympy as sp
 
-from aeg_shakespeare import PresentationCost, ProcessSystem, SearchBudget
-from aeg_shakespeare.search import (
+from aeg_shakespeare.presentation.search import (
     PresentationCandidate,
+    PresentationCost,
+    SearchBudget,
     evaluate_exact_reconstruction_presentation,
     pareto_frontier,
     search_exact_reconstruction_presentations,
 )
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def recurrent_system():
