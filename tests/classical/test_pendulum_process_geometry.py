@@ -111,12 +111,12 @@ Chapters XX-XXII.
 
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
+from aeg_shakespeare.presentation.constraints import (
     AlgebraicConstraintSet,
-    ProcessSystem,
     constraint_prolongation,
-    hyperelliptic_profile,
 )
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def pendulum_raw_process():
