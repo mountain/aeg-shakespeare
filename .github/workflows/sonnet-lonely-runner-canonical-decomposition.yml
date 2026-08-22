@@ -3,14 +3,11 @@ name: Sonnet Lonely Runner Canonical Decomposition
 # Phase 8A/8B rebuilds the exact center<=2 four-speed task geometry and performs
 # local center-3 red-team refinement. Phase 8C certifies minimum raw
 # process-generated completion residuals, and Phase 8C.2 quotients over-refined
-# raw signatures by exact task semantics. This PR trigger is temporary so the
-# new research gate is attached to an auditable commit; it is restored to
-# workflow_dispatch-only after the result is recorded.
+# raw signatures by exact task semantics. This remains manual-only so routine
+# CI can audit the literate essays without repeating the exact census on every
+# pull-request synchronization or across the five-version Python matrix.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
 
 jobs:
   canonical-decomposition:
