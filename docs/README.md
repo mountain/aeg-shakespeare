@@ -18,7 +18,8 @@ The documentation is organized as a mathematical/programming narrative rather th
 14. `13-abelian-history-periods.md` — holomorphic differentials, period-history interpretation, symmetric pendulum square lattice, and the Jacobian threshold.
 15. `14-history-lift-and-period-cycles.md` — branch continuation, sheet monodromy, explicit lifted cycles, and the first directly integrated pendulum period.
 16. `15-period-matrix-and-riemann-shape.md` — A/B cycle systems, normalized candidate period matrices, and the distinction between Riemann shape checks and topological certificates.
-17. `REFERENCES.md` — shared mathematical bibliography.
-18. `RELEASE_CHECKLIST.md` — release gates.
+17. `16-lifted-cycle-intersection.md` — sampled surface intersection pairing, the role of sheet history, and the first measured symplectic form.
+18. `REFERENCES.md` — shared mathematical bibliography.
+19. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
