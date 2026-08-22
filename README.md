@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, bounded search, exact relation discovery, finite grammar generation, representation costs, and symbolic backends.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, bounded search, exact relation discovery, finite grammar generation, representation costs, and symbolic backends.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -29,6 +29,7 @@ SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level s
 The library core is intentionally problem-independent. Current public building blocks include:
 
 - `ProcessWord` — an uninterpreted ordered finite process history;
+- `WordRewriteRule`, `rewrite_once`, `normalize_word` — explicit oriented relations and certified normalization traces for noncommutative finite histories; no commutativity is assumed unless supplied as a relation;
 - `interpret_history` — attach caller-defined semantics to a history;
 - `ProcessSystem` — a derivation-style symbolic backend for a local process generator;
 - `SearchBudget` — explicit finite limits for local representation search;
@@ -47,11 +48,13 @@ The physical and mathematical calibration problems do **not** define the package
 
 ## Current research boundary
 
-Shakespeare no longer needs a caller-supplied ambient basis for the simplest finite-closure case. Given a process action and one or more seed expressions, it can now grow independent process directions until the generated grammar closes or a declared bound is reached. If closure succeeds, the library automatically discovers the grammar-wide return relation, factors it, constructs the corresponding primitive subgrammars, and returns exact coordinates for the original seeds.
+Shakespeare now has two deliberately separate executable layers.
 
-If a nonlinear process keeps generating new directions, Shakespeare does not silently project them away: the bounded search returns explicit residual expressions together with a grammar growth profile. That makes failure to close part of the representation result.
+At the finite-history layer, `ProcessWord` remains literal history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and refuses to pretend that arbitrary relation systems terminate: cycles and step-budget exhaustion are returned as certificates.
 
-The remaining threshold is not another named solver. It is **costed grammar proposal**: generate candidate seeds/primitives from allowed operations, compare alternative presentations, and feed accepted candidates back through the same closure and relation machinery. Task-sufficient quotients and noncommutative history rewriting remain separate next layers.
+At the symbolic local-process layer, Shakespeare can grow independent process directions from seed expressions until a finite grammar closes or a bound is reached. If closure succeeds, the library automatically discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact coordinates for the original seeds. If nonlinear growth escapes the grammar, residual expressions stay visible rather than being projected away.
+
+The remaining threshold is not another named solver. It is **costed presentation search**: generate candidate primitives/relations from allowed operations, compare alternative history + grammar + relation + decoder costs, and feed accepted candidates back through the same rewrite, closure, and relation machinery. Task-sufficient quotients are the next semantic layer.
 
 ## Development
 
