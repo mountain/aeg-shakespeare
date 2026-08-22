@@ -5,7 +5,7 @@ its certified first-witness contact prefixes, and the newly introduced center-3
 contact events.  It predicts which old task-safe parents must be reopened, then
 refines only the corresponding full sign systems.
 
-Phase 8A first produced a three-way local classification
+Phase 8A first produced a three-way local behavioral classification
 
     stable              = not forced_earlier and not unresolved_crossing
     nonbranching_update = forced_earlier and not unresolved_crossing
@@ -13,13 +13,16 @@ Phase 8A first produced a three-way local classification
 
 before any center-3 child semantics were examined.
 
-The Phase-8B witness probe then red-teamed the middle class.  In both cases the
-canonical witness boundary and mode remain *identical*; only the event index is
-shifted by two because newly admitted contacts are inserted earlier in the
-history.  Therefore these cases are now named ``history_reindex`` rather than
-``transport``.  They remain inside the current representation and belong to the
-renormalizable sector of the generic ``CanonicalDecomposition``.  No discrete
-observer-connection sector has yet been observed in this calibration.
+Phase 8B red-teamed the middle class.  In both cases the canonical witness
+boundary and mode remain identical; only the event index shifts by two because
+newly admitted contacts are inserted earlier in the history.  They are therefore
+history/decoder reindexing inside the renormalizable sector, not observer motion.
+
+Phase 8C now treats the six genuinely branching parents constructively.  For
+each one it searches the complete local center-3 child geometry for the smallest
+set of process-generated pair/contact-wall signs whose joint values determine
+the child task exactly.  No known five-wall answer or target residual signature
+is supplied to the search.
 
 The script deliberately does *not* enumerate all 72,241 center-3 realizable
 systems.  The frozen full-census numbers are used only as assertions/red-team
@@ -31,6 +34,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from fractions import Fraction
+from functools import lru_cache
 
 import pair_difference_refinement as pd
 
@@ -58,6 +62,30 @@ class HistoryReindexCaseAnalysis:
 
 
 @dataclass(frozen=True)
+class ResidualCoordinate:
+    """One process-generated pair/contact wall retained by a completion signature."""
+
+    pair: tuple[int, int]
+    ratio: Fraction
+    new_at_center3: bool
+
+
+@dataclass(frozen=True)
+class CompletionResidualCaseAnalysis:
+    """Minimum exact wall-sign signature for one branching parent."""
+
+    parent: tuple[int, ...]
+    child_system_count: int
+    semantic_count: int
+    coordinates: tuple[ResidualCoordinate, ...]
+    residual_class_count: int
+
+    @property
+    def coordinate_count(self) -> int:
+        return len(self.coordinates)
+
+
+@dataclass(frozen=True)
 class LocalRefinementAnalysis:
     """Exact center-2 -> center-3 local classification and red-team counts."""
 
@@ -66,6 +94,7 @@ class LocalRefinementAnalysis:
     history_reindex_parents: frozenset[tuple[int, ...]]
     completion_required_parents: frozenset[tuple[int, ...]]
     history_reindex_cases: tuple[HistoryReindexCaseAnalysis, ...]
+    completion_residual_cases: tuple[CompletionResidualCaseAnalysis, ...]
     affected_full_system_count: int
     refined_child_count: int
     recovered_semantic_count: int
@@ -128,11 +157,10 @@ def event_time_relation(old_system, old_strata, left, right) -> int | None:
     if i < j:
         ratio = b / a
         pair = (i, j)
-        relation = arbitrary_relation(
+        return arbitrary_relation(
             old_strata[old_system[pd.PAIR_INDEX[pair]]],
             ratio,
         )
-        return relation
 
     ratio = a / b
     pair = (j, i)
@@ -161,14 +189,137 @@ def collision_wall(left, right):
     return pair[0], pair[1], ratio
 
 
-def analyze_center2_to_center3() -> LocalRefinementAnalysis:
-    """Classify old task states locally, then red-team only affected states.
+def _minimum_task_separating_coordinates(
+    children: tuple[tuple[int, ...], ...],
+    tasks: tuple[tuple[object, ...], ...],
+    ratios2: tuple[Fraction, ...],
+    ratios3: tuple[Fraction, ...],
+    strata3,
+) -> tuple[tuple[int, ...], int]:
+    """Return a minimum sign-coordinate set whose key determines task exactly.
 
-    The stable / nonbranching-update / completion-required partition is
-    determined solely from center-2 task states and newly admitted center-3
-    contact events.  Center-3 child semantics are evaluated only afterwards.
-    The middle class is then further audited to decide *what* changed.
+    The finite optimization is formulated as exact conflict cover.  Every pair
+    of children with different tasks must be separated by at least one selected
+    wall-sign coordinate.  A feature covers exactly the cross-task pairs on
+    which its sign differs.  Dynamic programming over the uncovered conflict
+    bitset returns a minimum-cardinality feature set, with lexicographic tie
+    breaking for reproducibility.
     """
+
+    signatures = tuple(
+        pd.full_signature(child, ratios3, strata3)
+        for child in children
+    )
+    assert len(signatures) == len(tasks)
+    feature_count = len(signatures[0])
+    assert all(len(signature) == feature_count for signature in signatures)
+
+    conflicts = tuple(
+        (left, right)
+        for left in range(len(children))
+        for right in range(left + 1, len(children))
+        if tasks[left] != tasks[right]
+    )
+    if not conflicts:
+        return (), 1
+
+    conflict_count = len(conflicts)
+    full_mask = (1 << conflict_count) - 1
+
+    coverage_to_feature: dict[int, int] = {}
+    for feature in range(feature_count):
+        values = {signature[feature] for signature in signatures}
+        if len(values) <= 1:
+            continue
+        coverage = 0
+        for conflict_index, (left, right) in enumerate(conflicts):
+            if signatures[left][feature] != signatures[right][feature]:
+                coverage |= 1 << conflict_index
+        if coverage == 0:
+            continue
+        previous = coverage_to_feature.get(coverage)
+        if previous is None or feature < previous:
+            coverage_to_feature[coverage] = feature
+
+    feature_masks = tuple(
+        sorted(
+            (feature, coverage)
+            for coverage, feature in coverage_to_feature.items()
+        )
+    )
+    assert feature_masks
+
+    coverers: dict[int, tuple[tuple[int, int], ...]] = {}
+    for conflict_index in range(conflict_count):
+        bit = 1 << conflict_index
+        options = tuple(
+            (feature, coverage)
+            for feature, coverage in feature_masks
+            if coverage & bit
+        )
+        assert options
+        coverers[conflict_index] = options
+
+    @lru_cache(maxsize=None)
+    def solve(uncovered: int) -> tuple[int, ...]:
+        if uncovered == 0:
+            return ()
+
+        remaining_conflicts = [
+            index
+            for index in range(conflict_count)
+            if uncovered & (1 << index)
+        ]
+        pivot = min(
+            remaining_conflicts,
+            key=lambda index: sum(
+                bool(coverage & uncovered)
+                for _feature, coverage in coverers[index]
+            ),
+        )
+
+        best: tuple[int, ...] | None = None
+        for feature, coverage in coverers[pivot]:
+            reduced = uncovered & ~coverage
+            tail = solve(reduced)
+            candidate = tuple(sorted((feature, *tail)))
+            if best is None or (len(candidate), candidate) < (len(best), best):
+                best = candidate
+        assert best is not None
+        return best
+
+    selected = solve(full_mask)
+
+    task_by_key: dict[tuple[int, ...], tuple[object, ...]] = {}
+    for signature, task in zip(signatures, tasks):
+        key = tuple(signature[index] for index in selected)
+        previous = task_by_key.get(key)
+        if previous is not None:
+            assert previous == task
+        task_by_key[key] = task
+
+    # Minimality certificate: no signature with one fewer selected coordinate
+    # can classify all tasks.  The dynamic program proves this by construction;
+    # this explicit deletion red team makes the witness local and reviewable.
+    if selected:
+        for removed in selected:
+            reduced = tuple(index for index in selected if index != removed)
+            seen: dict[tuple[int, ...], tuple[object, ...]] = {}
+            has_conflict = False
+            for signature, task in zip(signatures, tasks):
+                key = tuple(signature[index] for index in reduced)
+                previous = seen.get(key)
+                if previous is not None and previous != task:
+                    has_conflict = True
+                    break
+                seen[key] = task
+            assert has_conflict
+
+    return selected, len(task_by_key)
+
+
+def analyze_center2_to_center3() -> LocalRefinementAnalysis:
+    """Classify old task states, red-team updates, then discover completions."""
 
     ratios2 = pd.contact_ratios(2)
     ratios3 = pd.contact_ratios(3)
@@ -212,8 +363,6 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
     )
 
     def forced_earlier(parent) -> bool:
-        """A new contact is already forced into the old witness prefix."""
-
         witness_event = parent_task[parent][1][0]
         for system_index in parents[parent]:
             system = old_systems[system_index]
@@ -229,8 +378,6 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         return False
 
     def effective_unresolved_crossing(parent) -> bool:
-        """A genuinely new non-enter/enter wall can change the causal prefix."""
-
         for system_index in parents[parent]:
             system = old_systems[system_index]
             history = old_histories[system_index]
@@ -241,10 +388,6 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
             )
             for new_event in new_events:
                 for old_event in old_prefix_events:
-                    # Two enter events only make the safe set smaller after the
-                    # first crossing. If all other runners were safe just before
-                    # them, the first witness would already have occurred. Their
-                    # unresolved order cannot create the first safe time.
                     if new_event[2] == "enter" and old_event[2] == "enter":
                         continue
 
@@ -290,8 +433,6 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
     assert len(affected_full_indices) == 26
     affected_old_systems = tuple(old_systems[index] for index in affected_full_indices)
 
-    # Refine only the 26 full systems carried by the eight affected task-safe
-    # parents. No other center-2 state is reopened.
     refined_children = pd.refine_systems(
         affected_old_systems,
         strata2,
@@ -307,6 +448,10 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
             new_to_old[new_index] = old_index
     assert len(new_to_old) == len(strata3)
 
+    local_children: dict[
+        tuple[int, ...],
+        list[tuple[tuple[int, ...], tuple[object, ...]]],
+    ] = defaultdict(list)
     local_new_tasks: dict[tuple[int, ...], set[tuple[object, ...]]] = defaultdict(set)
     for child in refined_children:
         task, _history = pd.first_witness(child, 3, ratios3, strata3)
@@ -314,13 +459,12 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         parent_signature = pd.full_signature(parent_system, ratios2, strata2)
         parent = tuple(parent_signature[position] for position in old_relevant)
         assert parent in affected
+        local_children[parent].append((child, task))
         local_new_tasks[parent].add(task)
 
     assert set(local_new_tasks) == affected
     assert sorted(len(tasks) for tasks in local_new_tasks.values()) == [1, 1, 3, 3, 5, 5, 5, 7]
 
-    # RED TEAM: only now inspect new semantics.  The pre-refinement local
-    # partition must predict nonbranching update versus genuine splitting.
     assert all(
         len(local_new_tasks[parent]) == 1
         and next(iter(local_new_tasks[parent])) != parent_task[parent]
@@ -341,14 +485,52 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         for parent in sorted(nonbranching_update)
     )
     assert len(history_reindex_cases) == 2
-
-    # PHASE 8B RED TEAM: the two nonbranching changes do not move the canonical
-    # witness geometry at all.  They only reindex the same witness in the deeper
-    # contact history, so they belong to the renormalizable/decoder sector, not a
-    # genuine observer-transport/resonance sector.
     assert all(case.same_boundary for case in history_reindex_cases)
     assert all(case.same_mode for case in history_reindex_cases)
     assert all(case.event_index_shift == 2 for case in history_reindex_cases)
+
+    # PHASE 8C: discover a minimum exact residual signature independently for
+    # each genuinely branching parent.  Candidate features are *all* center-3
+    # pair/contact wall signs that vary among that parent's locally possible
+    # children; the search is not handed the five globally known new walls.
+    completion_residual_cases = []
+    ratio2_set = set(ratios2)
+    for parent in sorted(completion_required):
+        entries = tuple(local_children[parent])
+        children = tuple(child for child, _task in entries)
+        tasks = tuple(task for _child, task in entries)
+        selected, residual_class_count = _minimum_task_separating_coordinates(
+            children,
+            tasks,
+            ratios2,
+            ratios3,
+            strata3,
+        )
+        assert selected
+        coordinates = []
+        for feature in selected:
+            pair_index, ratio_index = divmod(feature, len(ratios3))
+            ratio = ratios3[ratio_index]
+            coordinates.append(
+                ResidualCoordinate(
+                    pair=pd.PAIRS[pair_index],
+                    ratio=ratio,
+                    new_at_center3=ratio not in ratio2_set,
+                )
+            )
+        semantic_count = len(set(tasks))
+        assert residual_class_count >= semantic_count
+        completion_residual_cases.append(
+            CompletionResidualCaseAnalysis(
+                parent=parent,
+                child_system_count=len(children),
+                semantic_count=semantic_count,
+                coordinates=tuple(coordinates),
+                residual_class_count=residual_class_count,
+            )
+        )
+
+    assert len(completion_residual_cases) == 6
 
     updated_semantics = set()
     for parent, task in parent_task.items():
@@ -377,6 +559,7 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         history_reindex_parents=frozenset(nonbranching_update),
         completion_required_parents=frozenset(completion_required),
         history_reindex_cases=history_reindex_cases,
+        completion_residual_cases=tuple(completion_residual_cases),
         affected_full_system_count=len(affected_old_systems),
         refined_child_count=len(refined_children),
         recovered_semantic_count=len(updated_semantics),
@@ -408,6 +591,20 @@ def main() -> None:
         print(f"    same boundary:       {case.same_boundary}")
         print(f"    same mode:           {case.same_mode}")
         print(f"    old full systems:    {case.old_full_system_count}")
+    print()
+    print("Phase 8C minimum completion residuals")
+    for case in result.completion_residual_cases:
+        print(f"  parent:                {case.parent}")
+        print(f"    local children:      {case.child_system_count}")
+        print(f"    task semantics:      {case.semantic_count}")
+        print(f"    residual classes:    {case.residual_class_count}")
+        print(f"    minimum walls:       {case.coordinate_count}")
+        for coordinate in case.coordinates:
+            provenance = "new@center3" if coordinate.new_at_center3 else "latent-old"
+            print(
+                f"      u{coordinate.pair[1]+1}/u{coordinate.pair[0]+1}"
+                f" ? {coordinate.ratio}  [{provenance}]"
+            )
     print()
     print("full center-3 census avoided: 72,241 systems")
     print(f"local semantic evaluation:     {result.refined_child_count:,} systems")
