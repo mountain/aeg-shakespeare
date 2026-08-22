@@ -44,6 +44,15 @@ from .rewrite import (
     normalize_word,
     rewrite_once,
 )
+from .search import (
+    ExactReconstructionPresentation,
+    PresentationCandidate,
+    PresentationSearchResult,
+    evaluate_exact_reconstruction_presentation,
+    pareto_frontier,
+    search_exact_reconstruction_presentations,
+    structural_exact_reconstruction_cost,
+)
 from .signature import (
     ProcessJetSignature,
     enumerate_process_words,
@@ -89,6 +98,13 @@ __all__ = [
     "WordRewriteRule",
     "normalize_word",
     "rewrite_once",
+    "ExactReconstructionPresentation",
+    "PresentationCandidate",
+    "PresentationSearchResult",
+    "evaluate_exact_reconstruction_presentation",
+    "pareto_frontier",
+    "search_exact_reconstruction_presentations",
+    "structural_exact_reconstruction_cost",
     "ProcessJetSignature",
     "enumerate_process_words",
     "histories_task_equivalent",

@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, bounded search, exact relation discovery, finite grammar generation, representation costs, and symbolic backends.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, bounded search, exact relation discovery, finite grammar generation, representation costs, and Pareto presentation search.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -44,14 +44,15 @@ The library core is intentionally problem-independent. Current public building b
 - `discover_relation_kernel` — find primitives satisfying an arbitrary declared process relation in a finite grammar;
 - `discover_relation_decomposition` — jointly discover relation factors and their primitive subgrammars without a caller-supplied relation template;
 - `coefficient_vector` / `decompose` — move exactly between arbitrary independent polynomial grammars, including discovered composite primitives;
-- `PresentationCost` — explicit multi-axis representation cost with optional scalarization;
+- `PresentationCost`, `PresentationCandidate`, `pareto_frontier` — explicit multi-axis representation costs and generic task-sufficient Pareto filtering;
+- `search_exact_reconstruction_presentations` — first reusable symbolic search adapter: evaluate alternative seed presentations for exact target reconstruction without imposing a universal scalar objective;
 - `discover_krylov_relation` — a matrix backend showing how linear recurrence structure can be recovered from process histories before spectral interpretation.
 
 The physical and mathematical calibration problems do **not** define the package API. Oscillator, Duffing, affine add/multiply, and related systems live in the test suite as probes of the common machinery.
 
 ## Current research boundary
 
-Shakespeare now has four deliberately separate executable layers.
+Shakespeare now has five deliberately separate executable layers.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
 
@@ -61,7 +62,9 @@ At the history-geometry layer, the remaining distinguishable histories form a fi
 
 At the symbolic local-process layer, Shakespeare grows independent process directions from seed expressions until a finite grammar closes or a bound is reached. If closure succeeds, the library discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact coordinates for the original seeds. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
-The next threshold remains **costed presentation search**: generate candidate primitives/relations from allowed operations, require task sufficiency, compare alternative history + grammar + relation + decoder costs, and feed accepted candidates back through the same rewrite, signature, history-geometry, closure, and relation machinery.
+At the search layer, arbitrary `PresentationCandidate` payloads can be compared by explicit multi-axis cost and task sufficiency. The first symbolic adapter evaluates alternative seed grammars for exact reconstruction and returns the Pareto frontier; a narrower seed dictionary and a shallower generated grammar are allowed to remain as distinct trade-offs instead of being collapsed to one score.
+
+The remaining earlier choice is **proposal generation**: candidate primitives must be generated from allowed operations together with their construction histories/costs. That layer should feed the existing rewrite, task, history-geometry, grammar, relation, and Pareto machinery rather than define another problem-specific solver.
 
 ## Development
 
@@ -72,7 +75,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), and [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md) for the current computational formulation.
+See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), and [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md) for the current computational formulation.
 
 ## License
 
