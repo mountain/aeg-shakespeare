@@ -13,6 +13,17 @@ def recurrent_system():
     return x, p, ProcessSystem((x, p), {x: p, p: -x}, name="R")
 
 
+def proportional(left, right, variables):
+    left_poly = sp.Poly(sp.expand(left), *variables)
+    right_poly = sp.Poly(sp.expand(right), *variables)
+    monomials = sorted(set(left_poly.monoms()) | set(right_poly.monoms()), reverse=True)
+    left_vector = sp.Matrix([left_poly.coeff_monomial(m) for m in monomials])
+    right_vector = sp.Matrix([right_poly.coeff_monomial(m) for m in monomials])
+    return left_vector != sp.zeros(len(monomials), 1) and sp.Matrix.hstack(
+        left_vector, right_vector
+    ).rank() == 1
+
+
 def test_generated_presentation_needs_neither_ambient_basis_nor_relation_template():
     x, p, system = recurrent_system()
     budget = SearchBudget(
@@ -40,11 +51,11 @@ def test_generated_presentation_needs_neither_ambient_basis_nor_relation_templat
     assert factors == {D**2 + 1, D**2 + 9}
 
     assert any(
-        sp.expand(primitive - (x**3 - 3 * x * p**2)) == 0
+        proportional(primitive, x**3 - 3 * x * p**2, (x, p))
         for primitive in presentation.primitives
     )
     assert any(
-        sp.expand(primitive - (3 * x**2 * p - p**3)) == 0
+        proportional(primitive, 3 * x**2 * p - p**3, (x, p))
         for primitive in presentation.primitives
     )
 
