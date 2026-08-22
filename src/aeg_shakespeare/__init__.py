@@ -16,6 +16,17 @@ from .core import (
     interpret_history,
 )
 from .cost import PresentationCost
+from .frame import ProcessFrame
+from .function_theory import (
+    AMFunctionTheory,
+    AMPathFlow,
+    AMPowerWeight,
+    AMPrimitive,
+    AMState,
+    ProcessFunctionModule,
+    affine_am_frame,
+    polynomial_am_module,
+)
 from .grammar import (
     GeneratedGrammar,
     GeneratedPresentation,
@@ -86,6 +97,15 @@ __all__ = [
     "homogeneous_monomials",
     "interpret_history",
     "PresentationCost",
+    "ProcessFrame",
+    "AMFunctionTheory",
+    "AMPathFlow",
+    "AMPowerWeight",
+    "AMPrimitive",
+    "AMState",
+    "ProcessFunctionModule",
+    "affine_am_frame",
+    "polynomial_am_module",
     "GeneratedGrammar",
     "GeneratedPresentation",
     "discover_generated_grammar",
