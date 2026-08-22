@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, operation-generated primitive proposals, algebraic constraints, bounded search, exact relation discovery, finite grammar generation, representation costs, Pareto presentation search, and optional process-generated function theories.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, finite parameterized process families, scalar process characters, actions between process families, explicit history relations, finite task quotients, finite history geometry, operation-generated primitive proposals, algebraic constraints, bounded search, exact relation discovery, finite grammar generation, representation costs, Pareto presentation search, and optional process-generated function theories.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -80,6 +80,9 @@ See:
 The library core is intentionally problem-independent. Current public building blocks include:
 
 - `ProcessWord` — an uninterpreted ordered finite process history;
+- `ProcessFamily`, `FamilyStep` — finite parameterized process families whose only required structure is an explicit parameter-composition law; no universal group, topology, inverse, or measure structure is assumed;
+- `ProcessCharacter`, `verify_process_character` — SymPy-valued scalar multiplicative responses with bounded exact residual certificates; the API stops before Fourier/Mellin synthesis or character-completeness claims;
+- `FamilyAction`, `verify_family_action`, `transport_process_character`, `character_invariance_residual` — explicit actions between family parameter spaces, induced character transport, and scalar-response obstruction checks without constructing a semidirect-product or general representation hierarchy;
 - `WordRewriteRule`, `rewrite_once`, `normalize_word` — explicit oriented relations and certified normalization traces for noncommutative finite histories; no commutativity is assumed unless supplied as a relation;
 - `enumerate_process_words`, `process_jet_signature`, `history_process_jet_signature`, `histories_task_equivalent` — finite future-response signatures and bounded task congruence for deciding when distinct histories may be safely merged for a declared task;
 - `history_depth`, `boundary_profile`, `BoundaryProfile` — finite history geometry: process depth as the radial axis and prefix-frontier width/information as boundary observables, with an optional caller-supplied exact/task quotient key;
@@ -111,13 +114,15 @@ The library core is intentionally problem-independent. Current public building b
 - `search_primitive_proposals` — feed construction-history-preserving primitive proposals into the common grammar/relation/decoder/Pareto pipeline;
 - `discover_krylov_relation` — a matrix backend showing how linear recurrence structure can be recovered from process histories before spectral interpretation.
 
-The physical and mathematical calibration problems do **not** define the package API. Oscillator, Duffing, affine add/multiply, pendulum, and related systems belong in tests as probes of the common machinery.
+The physical and mathematical calibration problems do **not** define the package API. Oscillator, Duffing, affine add/multiply, pendulum, Galilean mechanics, and related systems belong in tests as probes of the common machinery.
 
 ## Current research boundary
 
 Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations, plus concrete local and global routes from process structure toward function theory.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
+
+At the finite-family layer, `ProcessFamily` records explicit parameter composition, `ProcessCharacter` records scalar multiplicative responses, and `FamilyAction` records one family's action on another family's parameter space. Translation and dilation share this API; A/M scale transport moves the additive character label `xi -> a xi` and exposes a nonzero scalar-character invariance residual rather than pretending scalar characters form a complete noncommutative representation theory. The first Galilean calibration reuses the same API for a two-dimensional spacetime-translation family and a boost shear, while deliberately leaving the missing mass-dependent central residual unresolved.
 
 At the task layer, a history is not merged merely because its current observation agrees with another one. Finite process-jet signatures compare every allowed continuation through a declared depth; a continuation that exposes hidden state splits the proposed task quotient.
 
@@ -127,13 +132,13 @@ At the primitive-construction layer, caller-declared operations generate bounded
 
 At the symbolic local-process layer, each proposed seed can grow an exact process grammar. If closure succeeds, Shakespeare discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact target decoders. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
-At the constraint/quotient layer, polynomial relations can be maintained and reduced exactly. The canonical pendulum calibration starts from planar position/velocity plus a rigid-rod relation and unresolved radial force—without `theta`, `sin`, or `cos`. Constraint prolongation determines the force, energy reduction yields a quotient `Y^2=2(E-U)(1-U^2)`, and the generic quotient is detected as genus one with degenerations at `E=±1`.
+At the constraint/quotient layer, polynomial relations can be maintained and reduced exactly. The pendulum discovery sequence now goes beyond verification of a supplied energy: bounded polynomial discovery can recover the first integral, construction-generated pairing observers can propose the gravity-aligned scalar, and first-order quotient/Pareto search can recover the cubic `Y^2=(K-2U)(1-U^2)` without supplying `q_y` as the preferred coordinate.
 
-At the search layer, the resulting candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The Pareto frontier can therefore preserve a trade-off between construction cost, grammar width, process depth, relation complexity, and decoding rather than collapsing them to one score.
+At the search layer, candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The two-frequency oscillator red team shows why this remains Pareto-valued: refining two quadratic relation components into four linear components lowers maximum relation order while increasing component count, so maximal spectral splitting is not a universal normal form.
 
-At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. Its resonance structure forces logarithmic/Jordan-type extensions. A separate global route now starts from algebraic process quotients, emits holomorphic differentials, lifts histories across branch sheets, measures closed-cycle periods, and forms candidate Abelian period matrices. The current matrix checks deliberately stop short of claiming a Riemann-bilinear certificate because cycle intersection numbers and an automatic symplectic homology basis are not yet implemented.
+At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. Its resonance structure forces logarithmic/Jordan-type extensions. A separate global route now starts from algebraic process quotients, emits holomorphic differentials, lifts histories across branch sheets, constructs/measures cycle systems, forms candidate Abelian period matrices, and A-normalizes Abel-Jacobi history increments modulo the measured closed-history lattice. The current global implementation remains restricted—for example, general certified homology for complex branch configurations and full Jacobian/divisor/theta machinery are not claimed.
 
-The next global threshold is therefore **cycle intersection / symplectic pairing**, before any `Jacobian` class is introduced. In parallel, the representation-search line still needs **adaptive proposal priority/objectification**, where repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure determine which constructions deserve to become new primitives.
+The next representation threshold is not a predeclared Fourier or wavelet API. The finite-family calibrations first need to determine what response object should replace scalar characters when the A/M obstruction matters, and whether the Galilean mass residual reappears strongly enough to justify a minimal cocycle/central-residual abstraction. In parallel, adaptive proposal priority/objectification remains an open search problem.
 
 ## Development and release checks
 

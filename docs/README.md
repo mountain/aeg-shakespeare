@@ -27,7 +27,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 23. `22-oscillator-additive-process-module.md` — finite additive process closure, basis-accident red team, and relation-before-spectrum discipline.
 24. `23-oscillator-coefficient-extension.md` — explicit coefficient-language extension, refined relation factors, and one-dimensional kernel primitives before spectral semantics.
 25. `24-oscillator-refinement-red-team.md` — two-frequency red team showing that finer coefficient splitting trades component count against relation order rather than yielding a universal winner.
-26. `REFERENCES.md` — shared mathematical bibliography.
-27. `RELEASE_CHECKLIST.md` — release gates.
+26. `25-finite-process-families-and-characters.md` — stable finite-family API slice from Translation/Dilation/A-M, plus Galilean shear acceptance and the retained mass-residual boundary.
+27. `26-finite-family-api-freeze-checklist.md` — explicit merge/freeze gates for the first finite-family/character/action public API slice.
+28. `REFERENCES.md` — shared mathematical bibliography.
+29. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
