@@ -94,7 +94,7 @@ needed before that generalization.
 
 References
 ----------
-[Farkas-Kra-1992] H. M. Farkas and I. Kra, *Riemann Surfaces*, 2nd ed.,
+[Farkas-Kra-1992] H. Farkas and I. Kra, *Riemann Surfaces*, 2nd ed.,
 Springer, 1992. DOI: 10.1007/978-1-4612-2034-3.
 
 [Frauendiener-Klein-2015] J. Frauendiener and C. Klein, “Computational approach
@@ -104,15 +104,15 @@ to hyperelliptic Riemann surfaces”, *Letters in Mathematical Physics* 105
 
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.analysis.abelian import (
     canonical_symplectic_form,
     compute_period_matrix,
     construct_real_branch_cycles,
-    hyperelliptic_profile,
     real_branch_cut_presentation,
     sampled_intersection_form,
     sampled_riemann_profile,
 )
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def real_split_genus_two():
