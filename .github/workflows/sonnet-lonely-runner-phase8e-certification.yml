@@ -1,13 +1,11 @@
 name: Sonnet Lonely Runner Phase 8E Certification
 
-# One auditable certification run for the Phase 8E.0 activation-geometry essay
-# and Phase 8E controlled-interleaving essay. The PR trigger is temporary and is
-# removed after the results are recorded.
+# Manual certification for the Phase 8E.0 activation-geometry essay and Phase
+# 8E controlled-interleaving essay. Routine CI audits their literate structure
+# without repeating the exact feasibility and 28-predicate DP searches on every
+# pull-request synchronization.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase8e-certification.yml
 
 jobs:
   phase8e:
