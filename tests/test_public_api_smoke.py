@@ -30,6 +30,7 @@ def test_representative_public_entry_points_are_importable():
         "PairableAtom",
         "PairingSpec",
         "generate_pairing_observers",
+        "factor_process_relation_over_extension",
         "AMFunctionTheory",
         "hyperelliptic_profile",
         "AbelianIntegralProfile",
