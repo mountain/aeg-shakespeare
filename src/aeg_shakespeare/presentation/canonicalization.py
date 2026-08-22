@@ -1,19 +1,21 @@
-"""Experimental local canonicalization constraints.
+"""Experimental exact constraint canonicalization.
 
-The first canonical-observer API is intentionally narrow.  ``Canonicalization``
-represents an exact finite family of local equations
+The generic research concept is *canonicalization*: a local rule selecting a
+low-complexity observer representation.  This module implements only the first
+backend forced by independent calibrations, namely exact finite equations
 
     Phi(local data, observer parameters) = 0.
 
-Observer motion is obtained by differentiating these equations along declared
-base rates and solving for the observer-parameter rates.  This realizes the
-research principle
+``ConstraintCanonicalization`` obtains observer motion by differentiating those
+equations along declared base rates and solving for observer-parameter rates.
+This realizes
 
     local canonicalization -> connection -> observer ODE
 
-without introducing a general bundle, gauge, curvature, or numerical-flow API.
-A stationary/cost-based canonicalization should be added only after an
-independent calibration fixes the information its Hessian transport must retain.
+without claiming that every useful canonicalization is algebraic.  Kepler
+orthogonality/osculation already provides a red team against such a claim;
+stationary, projection, or cost-based backends should be promoted separately
+only when their retained semantics are calibrated.
 """
 
 from __future__ import annotations
@@ -25,7 +27,7 @@ import sympy as sp
 
 
 @dataclass(frozen=True)
-class Canonicalization:
+class ConstraintCanonicalization:
     """Exact local constraints selecting observer parameters."""
 
     observer_parameters: tuple[sp.Symbol, ...]
@@ -93,7 +95,7 @@ class Canonicalization:
         *,
         label: str = "",
     ):
-        """Solve the differentiated canonicalization for observer rates.
+        """Solve the differentiated constraints for local observer rates.
 
         The current implementation requires a unique symbolic local solution.
         Residual gauge freedom, singular strata, least-squares stationarity, and
@@ -138,4 +140,4 @@ class Canonicalization:
         )
 
 
-__all__ = ["Canonicalization"]
+__all__ = ["ConstraintCanonicalization"]
