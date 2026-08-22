@@ -17,9 +17,10 @@ from typing import Callable, Generic, Sequence, TypeVar
 import sympy as sp
 
 from .construction import PrimitiveProposal
-from .core import ProcessSystem, SearchBudget
 from .cost import PresentationCost
 from .grammar import GeneratedPresentation, discover_generated_presentation
+from .presentation.budget import SearchBudget
+from .process.local import ProcessSystem
 from .relations import decompose
 
 PayloadT = TypeVar("PayloadT")
@@ -27,12 +28,7 @@ PayloadT = TypeVar("PayloadT")
 
 @dataclass(frozen=True)
 class PresentationCandidate(Generic[PayloadT]):
-    """One evaluated representation candidate.
-
-    ``sufficient`` is deliberately explicit. A cheap representation that does
-    not preserve the declared task is not allowed onto the default Pareto
-    frontier.
-    """
+    """One evaluated representation candidate."""
 
     payload: PayloadT
     cost: PresentationCost
@@ -59,7 +55,6 @@ def pareto_frontier(
     require_sufficient: bool = True,
 ) -> tuple[PresentationCandidate[PayloadT], ...]:
     """Return candidates not Pareto-dominated by another admissible candidate."""
-
     admissible = tuple(
         candidate
         for candidate in candidates
@@ -105,7 +100,6 @@ class ConstructedPrimitivePresentation:
 
 def _expression_complexity(expr: sp.Expr) -> float:
     """Small structural proxy used only by the default search cost model."""
-
     expr = sp.expand(sp.sympify(expr))
     return float(int(sp.count_ops(expr, visual=False)) + 1)
 
@@ -113,21 +107,7 @@ def _expression_complexity(expr: sp.Expr) -> float:
 def structural_exact_reconstruction_cost(
     candidate: ExactReconstructionPresentation,
 ) -> PresentationCost:
-    """Default transparent structural cost for exact symbolic candidates.
-
-    This is a convenience baseline, not a canonical Shakespeare objective.
-    Callers may replace it in ``search_exact_reconstruction_presentations``.
-
-    - grammar: symbolic construction size of proposed seeds plus returned
-      primitives;
-    - relations: number of nonzero coefficients in the discovered global and
-      component process relations;
-    - history: total process depth at which independent grammar directions were
-      first discovered;
-    - decoder: number of nonzero coefficients needed to reconstruct targets;
-    - task_error: zero for exact sufficiency, infinity otherwise.
-    """
-
+    """Default transparent structural cost for exact symbolic candidates."""
     presentation = candidate.presentation
     grammar_cost = sum(_expression_complexity(seed) for seed in candidate.proposal_seeds)
     grammar_cost += sum(_expression_complexity(item) for item in presentation.primitives)
@@ -168,14 +148,7 @@ def structural_exact_reconstruction_cost(
 def construction_aware_exact_reconstruction_cost(
     candidate: ConstructedPrimitivePresentation,
 ) -> PresentationCost:
-    """Baseline exact-reconstruction cost including proposal construction depth.
-
-    The expression-size proxy and explicit construction-tree cost are both kept
-    visible here on purpose: the former prices the resulting symbolic dictionary
-    entry, while the latter prices the history used to construct/objectify it.
-    Callers may replace this policy.
-    """
-
+    """Baseline exact-reconstruction cost including proposal construction depth."""
     base = structural_exact_reconstruction_cost(candidate.evaluation)
     return PresentationCost(
         grammar=base.grammar + candidate.proposal.cost,
@@ -194,7 +167,6 @@ def evaluate_exact_reconstruction_presentation(
     budget: SearchBudget | None = None,
 ) -> ExactReconstructionPresentation:
     """Build one generated presentation and certify exact target reconstruction."""
-
     normalized_seeds = tuple(sp.expand(sp.sympify(seed)) for seed in proposal_seeds)
     normalized_targets = tuple(sp.expand(sp.sympify(target)) for target in targets)
     if not normalized_targets:
@@ -242,7 +214,6 @@ def search_exact_reconstruction_presentations(
     cost_model: Callable[[ExactReconstructionPresentation], PresentationCost] | None = None,
 ) -> PresentationSearchResult[ExactReconstructionPresentation]:
     """Evaluate caller-proposed seed grammars and return their Pareto frontier."""
-
     if not seed_proposals:
         raise ValueError("at least one seed proposal is required")
     score = cost_model or structural_exact_reconstruction_cost
@@ -281,14 +252,7 @@ def search_primitive_proposals(
     budget: SearchBudget | None = None,
     cost_model: Callable[[ConstructedPrimitivePresentation], PresentationCost] | None = None,
 ) -> PresentationSearchResult[ConstructedPrimitivePresentation]:
-    """Evaluate construction-preserving primitive proposals as one-seed grammars.
-
-    Semantically equal proposal expressions remain separate candidates when
-    their construction trees differ.  This is the first executable bridge from
-    operation-generated primitive proposals to the existing grammar/relation/
-    decoder/Pareto machinery.
-    """
-
+    """Evaluate construction-preserving primitive proposals as one-seed grammars."""
     if not proposals:
         raise ValueError("at least one primitive proposal is required")
     score = cost_model or construction_aware_exact_reconstruction_cost
