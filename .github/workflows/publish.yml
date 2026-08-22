@@ -33,12 +33,16 @@ jobs:
           /tmp/aeg-shakespeare-publish-smoke/bin/python - <<'PY'
           from importlib.metadata import version
           import aeg_shakespeare as shakespeare
+          from aeg_shakespeare.analysis.abelian import AbelianPeriodMatrix
+          from aeg_shakespeare.analysis.am import AMFunctionTheory
+          from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+          from aeg_shakespeare.process.history import ProcessWord
 
           assert shakespeare.__version__ == version("aeg-shakespeare")
-          assert hasattr(shakespeare, "ProcessWord")
-          assert hasattr(shakespeare, "AMFunctionTheory")
-          assert hasattr(shakespeare, "AlgebraicConstraintSet")
-          assert hasattr(shakespeare, "AbelianPeriodMatrix")
+          assert ProcessWord is not None
+          assert AMFunctionTheory is not None
+          assert AlgebraicConstraintSet is not None
+          assert AbelianPeriodMatrix is not None
           print("publish wheel smoke OK:", shakespeare.__version__)
           PY
       - name: Upload distributions
