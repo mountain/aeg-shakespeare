@@ -112,7 +112,12 @@ def _collision_coordinate(left: Event, right: Event) -> lcr.ResidualCoordinate:
     wall = lcr.collision_wall(left, right)
     if wall is None:
         raise AssertionError(f"unresolved comparison has no admissible wall: {left}, {right}")
-    return lcr.ResidualCoordinate(pair=(wall[0], wall[1]), ratio=wall[2])
+    center3_new_ratios = set(pd.contact_ratios(3)) - set(pd.contact_ratios(2))
+    return lcr.ResidualCoordinate(
+        pair=(wall[0], wall[1]),
+        ratio=wall[2],
+        new_at_center3=wall[2] in center3_new_ratios,
+    )
 
 
 def _merge(expansions) -> SemanticExpansion:
