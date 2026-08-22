@@ -1,0 +1,25 @@
+name: Sonnet Lonely Runner Pair-Difference Refinement
+
+# Center-depth refinement is intentionally a manual research experiment.  It
+# performs the complete four-speed center<=2 -> center<=3 graph census and should
+# not be multiplied across the routine CPython CI matrix.
+on:
+  workflow_dispatch:
+
+jobs:
+  refinement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run exact pair-difference refinement
+        run: |
+          python sonnet/lonely-runner/python/pair_difference_refinement.py
