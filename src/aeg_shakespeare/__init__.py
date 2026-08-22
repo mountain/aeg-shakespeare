@@ -1,5 +1,13 @@
 """AEG Shakespeare: process-representation discovery library."""
 
+from .construction import (
+    PrimitiveConstruction,
+    PrimitiveProposal,
+    PrimitiveProposalResult,
+    RejectedPrimitiveProposal,
+    SymbolicOperation,
+    generate_primitive_proposals,
+)
 from .core import (
     ProcessSystem,
     ProcessWord,
@@ -45,12 +53,15 @@ from .rewrite import (
     rewrite_once,
 )
 from .search import (
+    ConstructedPrimitivePresentation,
     ExactReconstructionPresentation,
     PresentationCandidate,
     PresentationSearchResult,
+    construction_aware_exact_reconstruction_cost,
     evaluate_exact_reconstruction_presentation,
     pareto_frontier,
     search_exact_reconstruction_presentations,
+    search_primitive_proposals,
     structural_exact_reconstruction_cost,
 )
 from .signature import (
@@ -63,6 +74,12 @@ from .signature import (
 )
 
 __all__ = [
+    "PrimitiveConstruction",
+    "PrimitiveProposal",
+    "PrimitiveProposalResult",
+    "RejectedPrimitiveProposal",
+    "SymbolicOperation",
+    "generate_primitive_proposals",
     "ProcessSystem",
     "ProcessWord",
     "SearchBudget",
@@ -98,12 +115,15 @@ __all__ = [
     "WordRewriteRule",
     "normalize_word",
     "rewrite_once",
+    "ConstructedPrimitivePresentation",
     "ExactReconstructionPresentation",
     "PresentationCandidate",
     "PresentationSearchResult",
+    "construction_aware_exact_reconstruction_cost",
     "evaluate_exact_reconstruction_presentation",
     "pareto_frontier",
     "search_exact_reconstruction_presentations",
+    "search_primitive_proposals",
     "structural_exact_reconstruction_cost",
     "ProcessJetSignature",
     "enumerate_process_words",

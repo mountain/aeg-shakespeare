@@ -1,10 +1,10 @@
 """Costed search over reusable process-presentation candidates.
 
-The search layer does not define one universal scalar objective.  It evaluates
+The search layer does not define one universal scalar objective. It evaluates
 candidate presentations into the public multi-axis ``PresentationCost`` and
-returns the Pareto frontier.  The first symbolic adapter implements an exact
-reconstruction task over ``GeneratedPresentation`` objects; downstream users can
-reuse the generic candidate/frontier machinery for history codes, task
+returns the Pareto frontier. The symbolic adapters implement exact
+reconstruction tasks over ``GeneratedPresentation`` objects; downstream users
+can reuse the generic candidate/frontier machinery for history codes, task
 quotients, or other presentation families.
 """
 
@@ -16,6 +16,7 @@ from typing import Callable, Generic, Sequence, TypeVar
 
 import sympy as sp
 
+from .construction import PrimitiveProposal
 from .core import ProcessSystem, SearchBudget
 from .cost import PresentationCost
 from .grammar import GeneratedPresentation, discover_generated_presentation
@@ -28,7 +29,7 @@ PayloadT = TypeVar("PayloadT")
 class PresentationCandidate(Generic[PayloadT]):
     """One evaluated representation candidate.
 
-    ``sufficient`` is deliberately explicit.  A cheap representation that does
+    ``sufficient`` is deliberately explicit. A cheap representation that does
     not preserve the declared task is not allowed onto the default Pareto
     frontier.
     """
@@ -90,6 +91,18 @@ class ExactReconstructionPresentation:
         return self.failure is None and len(self.target_coordinates) == len(self.targets)
 
 
+@dataclass(frozen=True)
+class ConstructedPrimitivePresentation:
+    """One construction-history-preserving primitive proposal after evaluation."""
+
+    proposal: PrimitiveProposal
+    evaluation: ExactReconstructionPresentation
+
+    @property
+    def sufficient(self) -> bool:
+        return self.evaluation.sufficient
+
+
 def _expression_complexity(expr: sp.Expr) -> float:
     """Small structural proxy used only by the default search cost model."""
 
@@ -105,7 +118,8 @@ def structural_exact_reconstruction_cost(
     This is a convenience baseline, not a canonical Shakespeare objective.
     Callers may replace it in ``search_exact_reconstruction_presentations``.
 
-    - grammar: construction cost of proposed seeds plus returned primitives;
+    - grammar: symbolic construction size of proposed seeds plus returned
+      primitives;
     - relations: number of nonzero coefficients in the discovered global and
       component process relations;
     - history: total process depth at which independent grammar directions were
@@ -148,6 +162,27 @@ def structural_exact_reconstruction_cost(
         history=history_cost,
         decoder=decoder_cost,
         task_error=0.0 if candidate.sufficient else math.inf,
+    )
+
+
+def construction_aware_exact_reconstruction_cost(
+    candidate: ConstructedPrimitivePresentation,
+) -> PresentationCost:
+    """Baseline exact-reconstruction cost including proposal construction depth.
+
+    The expression-size proxy and explicit construction-tree cost are both kept
+    visible here on purpose: the former prices the resulting symbolic dictionary
+    entry, while the latter prices the history used to construct/objectify it.
+    Callers may replace this policy.
+    """
+
+    base = structural_exact_reconstruction_cost(candidate.evaluation)
+    return PresentationCost(
+        grammar=base.grammar + candidate.proposal.cost,
+        relations=base.relations,
+        history=base.history,
+        decoder=base.decoder,
+        task_error=base.task_error,
     )
 
 
@@ -206,13 +241,7 @@ def search_exact_reconstruction_presentations(
     budget: SearchBudget | None = None,
     cost_model: Callable[[ExactReconstructionPresentation], PresentationCost] | None = None,
 ) -> PresentationSearchResult[ExactReconstructionPresentation]:
-    """Evaluate caller-proposed seed grammars and return their Pareto frontier.
-
-    This routine intentionally separates **proposal generation** from
-    **presentation evaluation**.  Shakespeare can therefore add richer
-    operation-generated proposal policies later without changing the task,
-    certificate, cost, or Pareto interfaces introduced here.
-    """
+    """Evaluate caller-proposed seed grammars and return their Pareto frontier."""
 
     if not seed_proposals:
         raise ValueError("at least one seed proposal is required")
@@ -234,6 +263,55 @@ def search_exact_reconstruction_presentations(
                 sufficient=payload.sufficient,
                 label=f"proposal-{index}",
                 certificate=payload.failure or payload.target_coordinates,
+            )
+        )
+
+    evaluated_tuple = tuple(evaluated)
+    return PresentationSearchResult(
+        evaluated=evaluated_tuple,
+        pareto=pareto_frontier(evaluated_tuple),
+    )
+
+
+def search_primitive_proposals(
+    system: ProcessSystem,
+    proposals: Sequence[PrimitiveProposal],
+    targets: Sequence[sp.Expr],
+    *,
+    budget: SearchBudget | None = None,
+    cost_model: Callable[[ConstructedPrimitivePresentation], PresentationCost] | None = None,
+) -> PresentationSearchResult[ConstructedPrimitivePresentation]:
+    """Evaluate construction-preserving primitive proposals as one-seed grammars.
+
+    Semantically equal proposal expressions remain separate candidates when
+    their construction trees differ.  This is the first executable bridge from
+    operation-generated primitive proposals to the existing grammar/relation/
+    decoder/Pareto machinery.
+    """
+
+    if not proposals:
+        raise ValueError("at least one primitive proposal is required")
+    score = cost_model or construction_aware_exact_reconstruction_cost
+
+    evaluated: list[PresentationCandidate[ConstructedPrimitivePresentation]] = []
+    for proposal in proposals:
+        evaluation = evaluate_exact_reconstruction_presentation(
+            system,
+            (proposal.expression,),
+            targets,
+            budget=budget,
+        )
+        payload = ConstructedPrimitivePresentation(
+            proposal=proposal,
+            evaluation=evaluation,
+        )
+        evaluated.append(
+            PresentationCandidate(
+                payload=payload,
+                cost=score(payload),
+                sufficient=payload.sufficient,
+                label=proposal.construction.recipe(),
+                certificate=evaluation.failure or evaluation.target_coordinates,
             )
         )
 
