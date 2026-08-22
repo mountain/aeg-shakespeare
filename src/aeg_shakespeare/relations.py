@@ -15,7 +15,7 @@ from typing import Sequence
 
 import sympy as sp
 
-from .core import ProcessSystem
+from .process.local import ProcessSystem
 
 
 @dataclass(frozen=True)
@@ -78,13 +78,7 @@ class RelationKernel:
 
 @dataclass(frozen=True)
 class RelationDecomposition:
-    """Template-free relation decomposition of a finite closed grammar.
-
-    ``global_relation`` is the shortest grammar-wide polynomial relation found
-    for the represented process action. ``components`` are kernels of its
-    pairwise-coprime primary relation factors. ``complete`` certifies that the
-    discovered component primitives span the supplied grammar.
-    """
+    """Template-free relation decomposition of a finite closed grammar."""
 
     global_relation: ProcessPolynomialRelation
     components: tuple[RelationKernel, ...]
@@ -101,7 +95,6 @@ class RelationDecomposition:
 
 def _normalize_coordinate_vector(v: Sequence[sp.Expr] | sp.Matrix) -> sp.Matrix:
     """Normalize a coordinate vector without changing its length."""
-
     values = [sp.simplify(sp.sympify(value)) for value in list(v)]
     if not values or all(value == 0 for value in values):
         return sp.Matrix(values)
@@ -127,7 +120,6 @@ def _normalize_relation_coefficients(
     coefficients: Sequence[sp.Expr] | sp.Matrix,
 ) -> tuple[sp.Expr, ...]:
     """Normalize a relation up to nonzero scalar multiplication."""
-
     values = [sp.simplify(sp.sympify(value)) for value in list(coefficients)]
     while len(values) > 1 and values[-1] == 0:
         values.pop()
@@ -166,13 +158,7 @@ def coefficient_vector(
     basis: Sequence[sp.Expr],
     variables: Sequence[sp.Symbol],
 ) -> sp.Matrix:
-    """Return exact coordinates of ``expr`` in an arbitrary polynomial basis.
-
-    Unlike the first prototype, ``basis`` need not be a monomial basis. This is
-    important because discovered composite primitives must themselves be usable
-    as grammars in subsequent searches.
-    """
-
+    """Return exact coordinates of ``expr`` in an arbitrary polynomial basis."""
     basis = tuple(sp.expand(sp.sympify(item)) for item in basis)
     if not basis:
         raise ValueError("basis must be non-empty")
@@ -193,13 +179,7 @@ def coefficient_vector(
 
 
 def action_matrix(system: ProcessSystem, basis: Sequence[sp.Expr]) -> sp.Matrix:
-    """Matrix backend for process action on a declared finite grammar.
-
-    The basis may contain arbitrary independent polynomial expressions, but it
-    must be exactly closed under the represented process action. Failure to
-    close is reported rather than silently projected away.
-    """
-
+    """Matrix backend for process action on a declared finite grammar."""
     basis = tuple(basis)
     columns: list[sp.Matrix] = []
     for item in basis:
@@ -229,7 +209,6 @@ def discover_return_relation(
     max_order: int = 8,
 ) -> ReturnRelation | None:
     """Find the first exact constant-coefficient relation among ``D^i(expr)``."""
-
     orbit = system.iterate(expr, max_order)
     monomials: set[tuple[int, ...]] = set()
     polys: list[sp.Poly] = []
@@ -263,13 +242,7 @@ def discover_operator_relation(
     operator: sp.Matrix,
     max_order: int | None = None,
 ) -> ProcessPolynomialRelation | None:
-    """Discover the shortest polynomial relation satisfied by a finite action.
-
-    This searches linear dependence among ``I, A, A^2, ...`` and returns the
-    resulting process polynomial. It is a relation-discovery backend, not a
-    spectral decomposition API.
-    """
-
+    """Discover the shortest polynomial relation satisfied by a finite action."""
     operator = sp.Matrix(operator)
     if operator.rows != operator.cols:
         raise ValueError("operator must be square")
@@ -309,13 +282,7 @@ def discover_operator_relation(
 def factor_process_relation(
     relation: ProcessPolynomialRelation,
 ) -> tuple[ProcessPolynomialRelation, ...]:
-    """Factor a process relation into pairwise-coprime primary factors.
-
-    Multiplicity is retained inside each primary factor. Thus a repeated return
-    relation remains visible as process depth rather than being discarded by a
-    root-only interpretation.
-    """
-
+    """Factor a process relation into pairwise-coprime primary factors."""
     symbol = sp.Symbol("_D")
     expression = relation.as_expr(symbol)
     _unit, factors = sp.factor_list(expression, symbol)
@@ -338,7 +305,6 @@ def discover_relation_kernel(
     coefficients: Sequence[sp.Expr],
 ) -> RelationKernel:
     """Discover all primitives in ``span(basis)`` satisfying a process relation."""
-
     coefficients = _normalize_relation_coefficients(coefficients)
     action = action_matrix(system, basis)
     operator = sp.zeros(len(basis))
@@ -363,21 +329,7 @@ def discover_relation_decomposition(
     basis: Sequence[sp.Expr],
     max_order: int | None = None,
 ) -> RelationDecomposition | None:
-    """Discover relation factors and their primitive subgrammars jointly.
-
-    No return-relation template is supplied by the caller. The procedure:
-
-    1. constructs the exact action on a finite closed grammar;
-    2. discovers the shortest grammar-wide process polynomial relation;
-    3. factors that relation without introducing root/eigenvalue semantics;
-    4. computes the primitive kernel of each primary relation factor; and
-    5. certifies whether those components span the original grammar.
-
-    This is the first template-free finite-grammar discovery routine in the
-    library. It is deliberately bounded by the supplied grammar and
-    ``max_order``.
-    """
-
+    """Discover relation factors and their primitive subgrammars jointly."""
     basis = tuple(basis)
     if not basis:
         raise ValueError("basis must be non-empty")
@@ -418,6 +370,5 @@ def decompose(
     variables: Sequence[sp.Symbol],
 ) -> tuple[sp.Expr, ...]:
     """Express ``target`` uniquely in a supplied primitive grammar."""
-
     vector = coefficient_vector(target, primitives, variables)
     return tuple(sp.simplify(value) for value in vector)
