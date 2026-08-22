@@ -20,6 +20,10 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Dorfler-Bullo-2013]** Florian Dörfler and Francesco Bullo, “Kron reduction of graphs with applications to electrical networks,” *IEEE Transactions on Circuits and Systems I: Regular Papers* 60 (2013), 150–163. DOI: `10.1109/TCSI.2012.2215780`. Treats Schur-complement/Kron reduction of weighted graph Laplacians and its electrical-network interpretation.
 
+## Braids, knots, and link invariants
+
+**[Birman-1974]** Joan S. Birman, *Braids, Links, and Mapping Class Groups*, Annals of Mathematics Studies 82, Princeton University Press, 1974. See especially Chapter 2 for closed braids, Markov equivalence, and the relation between braid representations and link invariants. Classical source for the complete Markov theorem and Burau/Alexander machinery used by the braid calibration.
+
 ## Integrable waves and KdV
 
 **[Carretero-Frantzeskakis-Kevrekidis-2024]** R. Carretero-Gonzalez, D. J. Frantzeskakis, and P. G. Kevrekidis, “Traveling Wave Reduction, Elliptic Functions, and Connections to KdV,” in *Nonlinear Waves & Hamiltonian Systems: From One To Many Degrees of Freedom, From Discrete To Continuum*, Oxford University Press, 2024, Chapter 6. DOI: `10.1093/oso/9780192843234.003.0006`. The traveling-wave reduction gives a cubic effective potential whose elliptic solutions degenerate to solitary waves.
