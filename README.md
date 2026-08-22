@@ -8,15 +8,16 @@ It is not primarily an ODE solver and it does not treat eigenvectors, Fourier mo
 
 ## Status
 
-Current version: **0.0.1**, the first **pre-alpha research preview**.
+Latest PyPI release: **0.0.1**, the first **pre-alpha research preview**.  
+Current `main` development version: **0.0.2.dev0**.
 
 The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not yet covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, and conceptual layer separation take priority over interface stability during this phase.
 
-See [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the release contract and [`CHANGELOG.md`](CHANGELOG.md) for the release summary.
+See [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
 ## Install
 
-After the `0.0.1` release is published to PyPI:
+Install the published research preview from PyPI:
 
 ```bash
 python -m pip install aeg-shakespeare
@@ -89,6 +90,11 @@ The library core is intentionally problem-independent. Current public building b
 - `ProcessFunctionModule` — a generic finite process-function module with explicit action tables and exact frame certificates;
 - `AMFunctionTheory` — the first concrete optional function theory, where **A means Addition and M means Multiplication**; it exposes their finite relation, `[A,M]=A`, the power-weight lattice, resonant primitives, PBW reordering, and ordered A/M path flow;
 - `hyperelliptic_profile` / `HyperellipticProfile` — a small algebraic-quotient profiler for process reductions of the form `y^2=P(x)`, recording degree, discriminant, generic genus, and degeneration locus without pretending to be a general algebraic-geometry engine;
+- `AbelianIntegralProfile`, `HyperellipticDifferential`, `holomorphic_differential_basis` — canonical holomorphic differentials and Abelian/homology dimensions emitted by a hyperelliptic quotient;
+- `lift_square_root_path`, `LiftedSquareRootPath` — bounded numerical continuation of square-root histories, retaining whether a closed base path actually closes on the lifted surface;
+- `integrate_lifted_differential`, `GenusOneLattice` — explicit period measurements on lifted histories and a small genus-one lattice representation;
+- `AbelianCycleSystem`, `compute_period_matrix`, `AbelianPeriodMatrix` — caller-supplied closed A/B cycle systems, measured period blocks, normalized candidate `tau=A^{-1}B`, and numerical symmetry/positive-imaginary-part shape checks;
+- `weierstrass_cubic_profile` / `WeierstrassCubicProfile` — exact cubic-to-short-Weierstrass algebraization with invariants used as a classical calibration shadow;
 - `interpret_history` — attach caller-defined semantics to a history;
 - `ProcessSystem` — a derivation-style symbolic backend for a local process generator;
 - `SearchBudget` — explicit finite limits for local representation search;
@@ -109,7 +115,7 @@ The physical and mathematical calibration problems do **not** define the package
 
 ## Current research boundary
 
-Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations, plus the first concrete process-generated function-theory branch and the first first-principles constrained-mechanics calibration.
+Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations, plus concrete local and global routes from process structure toward function theory.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
 
@@ -125,9 +131,9 @@ At the constraint/quotient layer, polynomial relations can be maintained and red
 
 At the search layer, the resulting candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The Pareto frontier can therefore preserve a trade-off between construction cost, grammar width, process depth, relation complexity, and decoding rather than collapsing them to one score.
 
-At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. It is intentionally downstream of the generic process machinery. Its resonance structure forces logarithmic/Jordan-type extensions, while the pendulum and even-power oscillator calibrations demonstrate another route in which constrained or invariant processes force algebraic curves of different genera. Shakespeare therefore does not assume that every problem should reduce to A/M.
+At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. Its resonance structure forces logarithmic/Jordan-type extensions. A separate global route now starts from algebraic process quotients, emits holomorphic differentials, lifts histories across branch sheets, measures closed-cycle periods, and forms candidate Abelian period matrices. The current matrix checks deliberately stop short of claiming a Riemann-bilinear certificate because cycle intersection numbers and an automatic symplectic homology basis are not yet implemented.
 
-The next threshold is **adaptive proposal priority/objectification** together with a systematic classical calibration suite. Repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure should help determine which constructions deserve to become new primitives and which function language is adequate for the task.
+The next global threshold is therefore **cycle intersection / symplectic pairing**, before any `Jacobian` class is introduced. In parallel, the representation-search line still needs **adaptive proposal priority/objectification**, where repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure determine which constructions deserve to become new primitives.
 
 ## Development and release checks
 
