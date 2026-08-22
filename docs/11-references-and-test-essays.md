@@ -32,6 +32,8 @@ References are evidence, not decoration.
 - If a statement is the project's own interpretation, label it **Shakespeare interpretation** rather than attaching a classical citation that appears to endorse the new claim.
 - If a result is derived directly in the test, the derivation is primary; a reference is still useful for the classical shadow but must not replace the executable proof.
 
+Bibliographic fields themselves must be audited.  A syntactically complete entry with the wrong edition, page range, DOI, URL, authorship, or publication year is a failed reference, not a cosmetic defect.  Prefer the publisher, journal/DOI landing page, arXiv record, DLMF, or another authoritative catalogue when checking those fields.
+
 ## 3. Citation format inside Python tests
 
 Use short keys in the essay and give full entries at the end of the module docstring, for example:
@@ -91,11 +93,41 @@ For the pendulum, for example, the essay should distinguish:
 
 The test should execute only the stages currently implemented and should mark later stages as future work rather than silently importing them.
 
-## 6. Release policy
+## 6. Cross-artifact consistency is a proof obligation
 
-For the `0.0.x` series, a mathematical calibration should not be considered complete until both conditions hold:
+A substantial result is usually represented in several places at once:
 
-- its executable assertions pass in CI;
-- its mathematical essay and references are sufficient for an informed reader to audit the claim independently of the code.
+```text
+research note / design note
+source-level mathematical narrative
+implementation
+executable essay and assertions
+API / release documentation
+bibliographic references
+```
+
+These views must agree on the mathematical object, notation, sign convention,
+hypotheses, status, and claim boundary.  In particular:
+
+- a formula changed in code must be audited wherever the same formula is stated in prose;
+- a changed commutator/order convention must be reflected in every affected equation and test;
+- a provisional class or alias removed from code must not remain documented as current API;
+- an experiment that is merely staged must not be described elsewhere as already passed;
+- a heavy/full-census oracle must be distinguished from the cheaper algorithm being claimed;
+- a project interpretation must not acquire the epistemic status of a cited classical theorem merely by repetition.
+
+For research lines with several moving pieces, maintain a **claim ledger** mapping each important mathematical statement to its implementation owner, executable certificate, references, and epistemic status.  A row may be promoted only when all of those links are current.  The canonical-observer line provides the first concrete example in `docs/37-canonical-observer-claim-ledger.md`.
+
+Mechanical CI can enforce only part of this obligation.  It should check what is cheaply decidable — required essay sections, citation-key resolution, Proof-map/test correspondence, namespace/API hygiene — while executable mathematics certifies identities and semantic invariants.  Human/research review remains responsible for checking that the prose means exactly what the code proves.
+
+## 7. Release policy
+
+For the `0.0.x` series, a mathematical calibration should not be considered complete until all applicable conditions hold:
+
+- its executable assertions pass in routine CI;
+- any dedicated heavy or full-census research gate required by the claim has passed;
+- its mathematical essay and references are sufficient for an informed reader to audit the claim independently of the code;
+- duplicated mathematical statements in notes/docs have been reconciled with the executable convention;
+- its epistemic status has been updated only after those gates pass.
 
 A technically useful unit test is exempt from the essay form only when it makes no substantive mathematical claim beyond implementation behavior.
