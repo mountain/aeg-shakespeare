@@ -6,23 +6,50 @@ It is not primarily an ODE solver and it does not treat eigenvectors, Fourier mo
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
-## Package
+## Status
 
-PyPI distribution:
+Current version: **0.0.1**, the first **pre-alpha research preview**.
 
-```text
-aeg-shakespeare
+The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not yet covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, and conceptual layer separation take priority over interface stability during this phase.
+
+See [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the release contract and [`CHANGELOG.md`](CHANGELOG.md) for the release summary.
+
+## Install
+
+After the `0.0.1` release is published to PyPI:
+
+```bash
+python -m pip install aeg-shakespeare
 ```
 
-Python package:
+For development from the repository:
 
-```python
-import aeg_shakespeare
+```bash
+python -m pip install -e '.[dev]'
 ```
 
-Current version: **0.0.1**.
+PyPI distribution: `aeg-shakespeare`  
+Python package: `aeg_shakespeare`
 
 SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
+
+## Quick start
+
+The smallest runnable examples are deliberately problem-independent:
+
+```bash
+python examples/quickstart.py
+python examples/constraint_quickstart.py
+python examples/grammar_quickstart.py
+```
+
+They demonstrate, respectively:
+
+1. literal ordered histories, explicit rewriting, and A/M (Addition/Multiplication) resonance;
+2. exact equality modulo algebraic constraints;
+3. generated process grammars and return-relation discovery from a seed.
+
+The examples are entry points, not mathematical proofs. Complete classical and research arguments live under `tests/classical/` and `tests/research/` as cited executable essays.
 
 ## Reading the source
 
@@ -39,7 +66,13 @@ Shakespeare reconstruction:
 
 This means, for example, that the canonical pendulum calibration begins from constrained position/velocity dynamics rather than from `theta`, `sin(theta)`, or a preselected elliptic function. Likewise, the A/M layer begins from **Addition and Multiplication** and their finite/noncommutative process relations before logarithms or other familiar function names are introduced.
 
-The detailed source-writing convention is in [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md). Classical tests are intended to read as executable mathematical essays: primitive input, structural discovery, exact assertion, and only then the classical shadow.
+A substantial test in `tests/classical/` or `tests/research/` is expected to be a **complete mathematical vignette**: question, primitive data, classical lineage, Shakespeare reconstruction, precise calibration statement, proof map, claim boundary, and rigorous bibliographic references. Its Python assertions are the executable checking layer of that essay. Public-domain licensing does not remove scholarly attribution obligations.
+
+See:
+
+- [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md)
+- [`docs/11-references-and-test-essays.md`](docs/11-references-and-test-essays.md)
+- [`docs/REFERENCES.md`](docs/REFERENCES.md)
 
 ## Public API direction
 
@@ -96,7 +129,7 @@ At the optional function-theory layer, Addition/Multiplication (A/M) supplies th
 
 The next threshold is **adaptive proposal priority/objectification** together with a systematic classical calibration suite. Repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure should help determine which constructions deserve to become new primitives and which function language is adequate for the task.
 
-## Development
+## Development and release checks
 
 ```bash
 python -m pip install -e '.[dev]'
@@ -105,15 +138,12 @@ python -m build
 python -m twine check dist/*
 ```
 
-The evolving mathematical story is recorded in `docs/`. In particular, see:
+CI additionally installs the built wheel into a fresh virtual environment and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
 
-- [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md)
-- [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md)
-- [`docs/06-addition-multiplication-function-theory.md`](docs/06-addition-multiplication-function-theory.md)
-- [`docs/07-classical-calibration-program.md`](docs/07-classical-calibration-program.md)
-- [`docs/08-function-theory-genus-hierarchy.md`](docs/08-function-theory-genus-hierarchy.md)
-- [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md)
+The evolving mathematical story is indexed in [`docs/README.md`](docs/README.md).
 
-## License
+## License and citation
 
 Shakespeare is dedicated to the **public domain** using the Unlicense public-domain dedication text in [`LICENSE`](LICENSE). The intent is unrestricted use, modification, publication, redistribution, and reuse of both the software and its accompanying mathematical exposition.
+
+Scholarly attribution is separate from software licensing. Mathematical and historical sources are cited in the literate tests and [`docs/REFERENCES.md`](docs/REFERENCES.md); software citation metadata is provided in [`CITATION.cff`](CITATION.cff).
