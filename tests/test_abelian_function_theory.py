@@ -1,8 +1,10 @@
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.analysis.abelian import (
     abelian_integral_profile,
     holomorphic_differential_basis,
+)
+from aeg_shakespeare.analysis.algebraic import (
     hyperelliptic_profile,
     weierstrass_cubic_profile,
 )
