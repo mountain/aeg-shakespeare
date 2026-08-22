@@ -1,12 +1,14 @@
 # References and executable mathematical essays
 
-A classical or research test in Shakespeare is not merely a regression check.  It is a small, completed mathematical essay whose executable assertions certify the argument.
+A mathematical test program in Shakespeare is not merely a regression check. It is a small, completed mathematical essay whose executable assertions certify the argument.
 
 This strengthens the literate-programming rule in `docs/09-literate-programming-and-mathematical-lineage.md`.
 
+There is one deliberate distinction. Pure plumbing tests — for example, whether a dataclass rejects a negative bound or whether a public symbol imports — may remain concise unit tests. But **every test whose purpose is to make a mathematical claim, recover a classical structure, or compare mathematical representations should be written as a complete cited mathematical vignette**. In particular this applies to all substantial files in `tests/classical/` and `tests/research/`, and to mathematical calibration files elsewhere in the suite until they are reorganized.
+
 ## 1. What a completed test essay must contain
 
-A substantial test under `tests/classical/` or `tests/research/` should contain, normally in its module docstring, the following parts.
+A mathematical test essay should contain, normally in its module docstring, the following parts.
 
 1. **Question.** State the mathematical problem and the representation question being tested.
 2. **Primitive data.** State exactly what Shakespeare is allowed to receive as input.
@@ -17,7 +19,7 @@ A substantial test under `tests/classical/` or `tests/research/` should contain,
 7. **Boundary.** State what is not proved: for example, a genus computation is not by itself a uniformization theorem.
 8. **References.** Give complete bibliographic references with a stable URL, DOI, book edition, theorem/section, or other locator whenever possible.
 
-A reader should be able to understand the mathematical point of the file before reading the Python implementation.
+A reader should be able to understand the mathematical point of the file before reading the Python implementation. The intended unit is therefore not “one assertion = one essay”; rather, one coherent test module should read as a finished mathematical miniature whose individual test functions form the proof/checking steps.
 
 ## 2. Citation discipline
 
@@ -38,7 +40,7 @@ Use short keys in the essay and give full entries at the end of the module docst
 References
 ----------
 [Arnold-1989] V. I. Arnold, Mathematical Methods of Classical Mechanics,
-2nd ed., Springer, 1989, Chapter 3.
+2nd ed., Springer, 1989.
 
 [DLMF-19] NIST Digital Library of Mathematical Functions, Chapter 19,
 Elliptic Integrals, https://dlmf.nist.gov/19 .
@@ -55,7 +57,7 @@ The repository does not require one citation syntax for all prose, but every key
 
 ## 4. Tests are proofs, not literature reviews
 
-The bibliography should remain proportional to the argument.  A five-step calibration usually needs a few strong references, not dozens of secondary citations.
+The bibliography should remain proportional to the argument. A five-step calibration usually needs a few strong references, not dozens of secondary citations.
 
 The preferred hierarchy is:
 
@@ -91,7 +93,9 @@ The test should execute only the stages currently implemented and should mark la
 
 ## 6. Release policy
 
-For the `0.0.x` series, a new classical/research calibration should not be considered complete until both conditions hold:
+For the `0.0.x` series, a mathematical calibration should not be considered complete until both conditions hold:
 
 - its executable assertions pass in CI;
 - its mathematical essay and references are sufficient for an informed reader to audit the claim independently of the code.
+
+A technically useful unit test is exempt from the essay form only when it makes no substantive mathematical claim beyond implementation behavior.
