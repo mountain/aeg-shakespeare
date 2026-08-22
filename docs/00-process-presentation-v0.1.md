@@ -34,54 +34,110 @@ The current package implements only small exact fragments of this object.
 
 ## 3. Public computational primitives
 
-The first reusable layer consists of:
+The reusable layer now consists of:
 
 1. `ProcessWord`: an ordered process history with no built-in physical interpretation.
 2. `interpret_history`: caller-supplied semantics `transition(state, step) -> state`.
 3. `ProcessSystem`: a derivation-style symbolic backend for one local process generator.
 4. `SearchBudget`: explicit bounds on history depth, expression degree, relation order, and primitive proposals.
-5. `discover_return_relation`: bounded exact recurrence discovery in a generated process orbit.
-6. `discover_relation_kernel`: find finite-grammar primitives satisfying any caller-declared constant-coefficient process relation.
-7. `decompose`: express an object in a candidate/discovered primitive grammar.
-8. `PresentationCost`: keep grammar, relation, history, decoder, and task-error costs explicit; scalarization is caller-controlled.
-9. `discover_krylov_relation`: a matrix backend/calibration showing how classical linear recurrence structure can emerge from process histories without making eigen/Jordan data the discovery API.
+5. `discover_return_relation`: bounded exact recurrence discovery in one generated process orbit.
+6. `discover_operator_relation`: discover the shortest polynomial relation obeyed by a finite process action by searching dependence among `I, A, A^2, ...`.
+7. `factor_process_relation`: factor a discovered process polynomial into pairwise-coprime primary factors while retaining multiplicity.
+8. `discover_relation_kernel`: find finite-grammar primitives satisfying any supplied process relation.
+9. `discover_relation_decomposition`: combine 6–8 so the caller supplies only a finite closed grammar, not a relation template.
+10. `coefficient_vector` / `decompose`: exact coordinates in arbitrary independent polynomial grammars, so discovered composite primitives can become the grammar of a later search.
+11. `PresentationCost`: keep grammar, relation, history, decoder, and task-error costs explicit; scalarization is caller-controlled.
+12. `discover_krylov_relation`: a matrix backend/calibration showing how classical linear recurrence structure can emerge from process histories without making eigen/Jordan data the discovery API.
 
 The package deliberately does not expose `Oscillator`, `Duffing`, `AddMultiplyProblem`, or similar domain objects as core abstractions.
 
-## 4. Computational discipline
+## 4. Template-free finite-grammar discovery
+
+Let a finite grammar
+
+\[
+V=\operatorname{span}\{b_1,\ldots,b_n\}
+\]
+
+be exactly closed under the represented process generator `D`. Shakespeare forms the exact action `A` only as a backend and searches for the first relation
+
+\[
+c_0 I+c_1A+\cdots+c_rA^r=0.
+\]
+
+The coefficients define a process polynomial
+
+\[
+p(D)=c_0+c_1D+\cdots+c_rD^r.
+\]
+
+This relation is then factored algebraically:
+
+\[
+p(D)=p_1(D)\cdots p_s(D),
+\]
+
+with repeated factors retained inside their primary factors. For each factor Shakespeare computes
+
+\[
+\ker p_i(D),
+\]
+
+returns explicit primitive expressions, and certifies whether the resulting components span the original grammar.
+
+The key point is methodological: the caller does not propose `p_i` or a frequency/eigenvalue template. The relation is discovered from process closure and only then factorized.
+
+### Current calibration evidence
+
+The tests use a simple recurrent process only as a regression probe. On its degree-two polynomial grammar the generic routine discovers
+
+\[
+D^3+4D=D(D^2+4),
+\]
+
+and the `D`-kernel contains the invariant composite `x^2+p^2`.
+
+On the degree-three grammar it discovers
+
+\[
+D^4+10D^2+9=(D^2+1)(D^2+9),
+\]
+
+then recovers compact primitives equivalent to
+
+\[
+x^3-3xp^2,\qquad 3x^2p-p^3,
+\]
+
+without receiving either quadratic return template as input. These are tests of the generic relation-decomposition routine, not package-level domain features.
+
+## 5. Computational discipline
 
 1. **Bounded search.** General word/rewrite problems need not be decidable. Shakespeare searches only bounded depth, degree, coefficient size, and grammar size.
 2. **History before quotient.** Equal symbolic expressions do not imply identical process histories.
-3. **Relations before eigenvalues.** A return relation such as `D^2 x + x = 0` is primary; spectral/eigen representations are optional downstream compressions.
+3. **Relations before eigenvalues.** Process-return relations are primary; spectral/eigen representations are optional downstream encodings.
 4. **Backend, not ontology.** Sparse linear algebra may discover relations; SymPy may verify them. The returned certificate is an explicit process relation.
 5. **Task matters.** A quotient is accepted only relative to declared task sufficiency.
 6. **Problems are tests.** Named physical/mathematical examples belong in `tests/` unless they motivate a genuinely reusable abstraction.
+7. **Discovered grammars must be reusable.** Coordinate/decomposition routines accept arbitrary polynomial bases rather than assuming the monomial basis that generated them.
 
-## 5. Calibration tests
+## 6. Current research boundary
 
-The current tests deliberately reuse the public API rather than adding problem-specific code to `src/`:
+The previous prototype required the caller to declare a relation family and then searched its kernel. That limitation has now been removed for a finite closed grammar: Shakespeare can discover the grammar-wide relation and its primary relation factors itself.
 
-- finite affine add/multiply history tests generic `ProcessWord` interpretation;
-- a matrix/Krylov case tests recurrence discovery before spectral language;
-- oscillator tests generic `discover_return_relation`;
-- the degree-three oscillator/Duffing calculation tests generic finite-grammar relation kernels and decomposition;
-- budget/cost tests exercise problem-independent search metadata.
+The remaining major limitation is one level earlier:
 
-These tests are regression probes, not package features.
+> the ambient finite grammar is still supplied by the caller.
 
-## 6. What would count as research success?
-
-The first meaningful threshold is not reproducing known formulas. It is:
-
-> A bounded, problem-independent search discovers a composite primitive because it reduces presentation cost and yields a shorter closed process action table, without being told the classical representation in advance.
-
-The current relation-kernel machinery still searches a caller-declared relation family. The next threshold is to discover relation templates and primitive proposals jointly from generic presentation cost.
+The next research threshold is therefore **grammar search**, not another problem-specific solver. Shakespeare should propose composite generators, score the resulting grammar/relation/history/decoder trade-off, and feed accepted proposals back into the same relation-discovery machinery.
 
 ## 7. Next library steps
 
+- a generic `PresentationCandidate` / grammar object rather than passing bare expression tuples;
+- costed primitive-basis search inside a relation component (short expression + short process table);
+- bounded grammar proposal search across operation-generated expressions;
 - layered `Relation` and rewrite IR for finite process words;
 - equality-saturation / completion backend behind a generic normalization interface;
 - finite process-jet signatures for task congruence;
-- grammar-agnostic primitive proposals;
 - decoder and sufficiency certificates;
-- presentation-search loop that returns Pareto candidates rather than a problem-specific answer.
+- presentation-search loop returning Pareto candidates rather than a problem-specific answer.

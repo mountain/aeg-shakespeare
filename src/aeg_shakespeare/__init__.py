@@ -10,13 +10,18 @@ from .core import (
 from .cost import PresentationCost
 from .linear import KrylovReturnRelation, discover_krylov_relation
 from .relations import (
+    ProcessPolynomialRelation,
+    RelationDecomposition,
     RelationKernel,
     ReturnRelation,
     action_matrix,
     coefficient_vector,
     decompose,
+    discover_operator_relation,
+    discover_relation_decomposition,
     discover_relation_kernel,
     discover_return_relation,
+    factor_process_relation,
 )
 
 __all__ = [
@@ -28,13 +33,18 @@ __all__ = [
     "PresentationCost",
     "KrylovReturnRelation",
     "discover_krylov_relation",
+    "ProcessPolynomialRelation",
+    "RelationDecomposition",
     "RelationKernel",
     "ReturnRelation",
     "action_matrix",
     "coefficient_vector",
     "decompose",
+    "discover_operator_relation",
+    "discover_relation_decomposition",
     "discover_relation_kernel",
     "discover_return_relation",
+    "factor_process_relation",
 ]
 
 __version__ = "0.0.1"

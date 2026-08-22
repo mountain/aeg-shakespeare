@@ -5,10 +5,14 @@ from aeg_shakespeare import (
     ProcessSystem,
     ProcessWord,
     SearchBudget,
+    coefficient_vector,
     decompose,
     discover_krylov_relation,
+    discover_operator_relation,
+    discover_relation_decomposition,
     discover_relation_kernel,
     discover_return_relation,
+    factor_process_relation,
     homogeneous_monomials,
     interpret_history,
 )
@@ -45,6 +49,13 @@ def test_return_relation_api_discovers_oscillator_calibration():
     assert sp.expand(relation.as_expr(D) - (1 + D**2)) == 0
 
 
+def test_coordinate_backend_accepts_discovered_composite_grammars():
+    x, p = sp.symbols("x p")
+    basis = (x + p, x - p)
+    coordinates = coefficient_vector(x, basis, (x, p))
+    assert tuple(coordinates) == (sp.Rational(1, 2), sp.Rational(1, 2))
+
+
 def test_generic_relation_kernel_recovers_degree_three_calibration():
     x, p, system = oscillator()
     basis = homogeneous_monomials((x, p), 3)
@@ -59,6 +70,64 @@ def test_generic_relation_kernel_recovers_degree_three_calibration():
     for rate, kernel in discovered.items():
         for primitive in kernel.primitives:
             assert sp.expand(system.derive(system.derive(primitive)) + rate**2 * primitive) == 0
+
+
+def test_relation_decomposition_discovers_invariant_without_relation_template():
+    x, p, system = oscillator()
+    basis = homogeneous_monomials((x, p), 2)
+    discovery = discover_relation_decomposition(system, basis)
+    assert discovery is not None
+    assert discovery.complete
+
+    D = sp.Symbol("D")
+    assert sp.expand(discovery.global_relation.as_expr(D) - (D**3 + 4 * D)) == 0
+    factors = {sp.expand(component.as_expr(D)) for component in discovery.components}
+    assert factors == {D, D**2 + 4}
+
+    primitives = discovery.primitives
+    assert any(sp.expand(primitive - (x**2 + p**2)) == 0 for primitive in primitives)
+
+
+def test_relation_decomposition_finds_cubic_process_language_without_templates():
+    x, p, system = oscillator()
+    basis = homogeneous_monomials((x, p), 3)
+    discovery = discover_relation_decomposition(system, basis)
+    assert discovery is not None
+    assert discovery.complete
+
+    D = sp.Symbol("D")
+    assert sp.expand(
+        discovery.global_relation.as_expr(D) - (D**4 + 10 * D**2 + 9)
+    ) == 0
+    factors = {sp.expand(component.as_expr(D)) for component in discovery.components}
+    assert factors == {D**2 + 1, D**2 + 9}
+
+    coeffs = decompose(x**3, discovery.primitives, (x, p))
+    reconstructed = sp.expand(
+        sum(coefficient * primitive for coefficient, primitive in zip(coeffs, discovery.primitives))
+    )
+    assert sp.expand(reconstructed - x**3) == 0
+
+    assert any(
+        sp.expand(primitive - (x**3 - 3 * x * p**2)) == 0
+        for primitive in discovery.primitives
+    )
+    assert any(
+        sp.expand(primitive - (3 * x**2 * p - p**3)) == 0
+        for primitive in discovery.primitives
+    )
+
+
+def test_relation_factorization_retains_repeated_process_depth():
+    operator = sp.Matrix([[1, 1], [0, 1]])
+    relation = discover_operator_relation(operator)
+    assert relation is not None
+
+    D = sp.Symbol("D")
+    assert sp.expand(relation.as_expr(D) - (D**2 - 2 * D + 1)) == 0
+    factors = factor_process_relation(relation)
+    assert len(factors) == 1
+    assert sp.expand(factors[0].as_expr(D) - (D**2 - 2 * D + 1)) == 0
 
 
 def test_duffing_expression_is_only_a_calibration_of_generic_decompose():
