@@ -64,9 +64,22 @@ Avoid:
 
 Likewise, A/M means **Addition/Multiplication** and must be introduced from their finite and infinitesimal process relations before `exp`, `log`, or special-function vocabulary is used as explanation.
 
-## 5. Tests are executable essays
+## 5. Tests are executable mathematical essays
 
-Classical and research tests should read as short mathematical arguments. A preferred test structure is:
+A substantial test in `tests/classical/` or `tests/research/` should be a **complete mathematical vignette**, not a collection of assertions with explanatory comments added afterward.
+
+Before the first executable line, its module docstring should normally give:
+
+- the mathematical question;
+- the primitive data allowed to the program;
+- the relevant classical and historical lineage;
+- the Shakespeare reconstruction being tested;
+- a precise theorem/calibration statement;
+- a proof map explaining how the assertions certify the statement;
+- the boundary of the claim;
+- rigorous bibliographic references.
+
+The executable body should then follow a visible structure such as:
 
 ```python
 # GIVEN: primitive process data only.
@@ -82,7 +95,11 @@ Classical and research tests should read as short mathematical arguments. A pref
 ...
 ```
 
-Tests should avoid importing a named classical solution when the purpose of the test is to discover why that solution class appears.
+A reader should be able to read the file as a short mathematical essay and then use Python execution as a proof/checking layer.
+
+References are mandatory for substantial classical and research essays. Historical statements should cite history or primary sources when practical; standard mathematical facts should cite authoritative monographs, handbooks, or primary literature with a useful locator such as chapter, section, theorem, equation, DOI, or stable institutional URL. The test's own Shakespeare interpretation must be labelled as interpretation rather than presented as a claim made by a cited classical source.
+
+The detailed citation policy and test-essay template live in `docs/11-references-and-test-essays.md`.
 
 ## 6. Reusable abstractions go in `src/`; named problems stay in tests
 
@@ -118,24 +135,25 @@ small public data objects
 primitive operations
 exact certificates / reductions
 higher-level search or composition
-implementation helpers
 ```
 
-Long derivations that are useful for understanding but would obscure the API should live in `docs/`, with the source docstring linking to the corresponding note.
+Do not optimize source layout only for terseness.  The mathematical dependency order should remain visible even when a shorter implementation exists.
 
-## 9. Documentation is not a second, disconnected layer
+## 9. Literate programming is not verbose commenting
 
-The repository notes record the evolving mathematical language. Source docstrings should point to the relevant note, and notes should name the public objects that implement each idea. The goal is a single readable chain:
+Comments should explain representation choices, invariants, proof obligations, failure modes, and mathematical lineage.  They should not paraphrase obvious Python syntax.
 
-```text
-mathematical motivation -> public abstraction -> implementation -> test -> classical shadow
-```
+A good comment answers one of these questions:
 
-## 10. Design criterion
+- Why is this object primitive here?
+- Which equality layer is being used?
+- Why is this transformation admissible?
+- What certificate is produced?
+- Which historical/classical object appears as a shadow?
+- What remains unproved?
 
-A successful Shakespeare module should let a mathematically literate reader answer two questions after reading the source:
+A comment that merely says what the following line does should normally be removed.
 
-1. **What computation does this code perform?**
-2. **Why is this the right computation in the reconstructed mathematical story?**
+## 10. Public-domain code, attributed mathematics
 
-If only the first question can be answered, the module is not yet written in the intended literate-programming style.
+The source code is dedicated to the public domain under the repository `LICENSE`.  That does **not** remove scholarly obligations.  Mathematical ideas, historical claims, and borrowed formulations should still be attributed accurately.  Public-domain licensing and rigorous citation serve different purposes and should not be conflated.
