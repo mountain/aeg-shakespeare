@@ -5,6 +5,17 @@ its certified first-witness contact prefixes, and the newly introduced center-3
 contact events.  It predicts which old task-safe parents must be reopened, then
 refines only the corresponding full sign systems.
 
+The Phase-8 addition makes the prediction itself explicit as a three-way local
+classification:
+
+    stable              = not forced_earlier and not unresolved_crossing
+    transport_only      = forced_earlier and not unresolved_crossing
+    completion_required = unresolved_crossing
+
+The classification is computed *before* any center-3 child semantics are
+examined.  Local refinement is then used as the red-team oracle that checks the
+three-way prediction against the exact new task behavior.
+
 It deliberately does *not* enumerate all 72,241 center-3 realizable systems.
 The frozen full-census numbers are used only as assertions/red-team targets.
 """
@@ -12,9 +23,29 @@ The frozen full-census numbers are used only as assertions/red-team targets.
 from __future__ import annotations
 
 from collections import defaultdict
+from dataclasses import dataclass
 from fractions import Fraction
 
 import pair_difference_refinement as pd
+
+
+@dataclass(frozen=True)
+class LocalRefinementAnalysis:
+    """Exact center-2 -> center-3 local classification and red-team counts."""
+
+    parent_count: int
+    stable_parents: frozenset[tuple[int, ...]]
+    transport_only_parents: frozenset[tuple[int, ...]]
+    completion_required_parents: frozenset[tuple[int, ...]]
+    affected_full_system_count: int
+    refined_child_count: int
+    recovered_semantic_count: int
+    verified_split_count: int
+    verified_replacement_count: int
+
+    @property
+    def affected_parents(self) -> frozenset[tuple[int, ...]]:
+        return self.transport_only_parents | self.completion_required_parents
 
 
 def alpha(event: tuple[int, int, str]) -> Fraction:
@@ -89,7 +120,16 @@ def collision_wall(left, right):
     return pair[0], pair[1], ratio
 
 
-def main() -> None:
+def analyze_center2_to_center3() -> LocalRefinementAnalysis:
+    """Classify old task states locally, then red-team only affected states.
+
+    The stable / transport-only / completion-required partition is determined
+    solely from center-2 task states and newly admitted center-3 contact events.
+    Center-3 child semantics are evaluated only afterwards to verify that
+    transport-only parents undergo uniform replacement while completion parents
+    genuinely split.
+    """
+
     ratios2 = pd.contact_ratios(2)
     ratios3 = pd.contact_ratios(3)
     strata2 = pd.strata(ratios2)
@@ -162,8 +202,8 @@ def main() -> None:
             for new_event in new_events:
                 for old_event in old_prefix_events:
                     # Two enter events only make the safe set smaller after the
-                    # first crossing.  If all other runners were safe just before
-                    # them, the first witness would already have occurred.  Their
+                    # first crossing. If all other runners were safe just before
+                    # them, the first witness would already have occurred. Their
                     # unresolved order cannot create the first safe time.
                     if new_event[2] == "enter" and old_event[2] == "enter":
                         continue
@@ -180,11 +220,27 @@ def main() -> None:
                         return True
         return False
 
-    affected = {
+    # PHASE 8 CLASSIFICATION: this partition uses only the old canonical task
+    # representation plus local data from the newly admitted contact layer.
+    forced = {parent for parent in parents if forced_earlier(parent)}
+    unresolved = {
         parent
         for parent in parents
-        if forced_earlier(parent) or effective_unresolved_crossing(parent)
+        if effective_unresolved_crossing(parent)
     }
+    stable = set(parents) - forced - unresolved
+    transport_only = forced - unresolved
+    completion_required = unresolved
+
+    assert len(stable) == 841
+    assert len(transport_only) == 2
+    assert len(completion_required) == 6
+    assert not stable & transport_only
+    assert not stable & completion_required
+    assert not transport_only & completion_required
+    assert stable | transport_only | completion_required == set(parents)
+
+    affected = transport_only | completion_required
     assert len(affected) == 8
 
     affected_full_indices = sorted(
@@ -196,7 +252,7 @@ def main() -> None:
     affected_old_systems = tuple(old_systems[index] for index in affected_full_indices)
 
     # Refine only the 26 full systems carried by the eight affected task-safe
-    # parents.  No other center-2 state is reopened.
+    # parents. No other center-2 state is reopened.
     refined_children = pd.refine_systems(
         affected_old_systems,
         strata2,
@@ -224,9 +280,18 @@ def main() -> None:
     assert set(local_new_tasks) == affected
     assert sorted(len(tasks) for tasks in local_new_tasks.values()) == [1, 1, 3, 3, 5, 5, 5, 7]
 
-    # Reuse all 841 unaffected old semantics and replace/refine only the eight
-    # affected parents.  The local update already recovers the complete final
-    # center-3 witness-semantic count from the frozen full-census oracle.
+    # RED TEAM: only now inspect new semantics.  The pre-refinement local
+    # classification must predict uniform replacement versus genuine splitting.
+    assert all(
+        len(local_new_tasks[parent]) == 1
+        and next(iter(local_new_tasks[parent])) != parent_task[parent]
+        for parent in transport_only
+    )
+    assert all(
+        len(local_new_tasks[parent]) > 1
+        for parent in completion_required
+    )
+
     updated_semantics = set()
     for parent, task in parent_task.items():
         if parent in affected:
@@ -248,18 +313,34 @@ def main() -> None:
     assert replacement_count == 2
     assert unchanged_affected_count == 0
 
-    print("local contact-refinement update")
-    print(f"  old task-safe parents:       {len(parents):,}")
-    print(f"  detected affected parents:   {len(affected):,}")
-    print(f"    semantic splits:           {split_count}")
-    print(f"    uniform replacements:      {replacement_count}")
-    print(f"  old full systems reopened:   {len(affected_old_systems):,} / {len(old_systems):,}")
-    print(f"  refined center-3 children:   {len(refined_children):,}")
-    print(f"  recovered center-3 semantics:{len(updated_semantics):,}")
+    return LocalRefinementAnalysis(
+        parent_count=len(parents),
+        stable_parents=frozenset(stable),
+        transport_only_parents=frozenset(transport_only),
+        completion_required_parents=frozenset(completion_required),
+        affected_full_system_count=len(affected_old_systems),
+        refined_child_count=len(refined_children),
+        recovered_semantic_count=len(updated_semantics),
+        verified_split_count=split_count,
+        verified_replacement_count=replacement_count,
+    )
+
+
+def main() -> None:
+    result = analyze_center2_to_center3()
+
+    print("local contact-refinement canonical decomposition")
+    print(f"  old task-safe parents:       {result.parent_count:,}")
+    print(f"    stable:                    {len(result.stable_parents):,}")
+    print(f"    transport-only:            {len(result.transport_only_parents):,}")
+    print(f"    completion-required:       {len(result.completion_required_parents):,}")
+    print(f"  old full systems reopened:   {result.affected_full_system_count:,} / 5,823")
+    print(f"  refined center-3 children:   {result.refined_child_count:,}")
+    print(f"  recovered center-3 semantics:{result.recovered_semantic_count:,}")
     print()
     print("full center-3 census avoided: 72,241 systems")
-    print(f"local semantic evaluation:     {len(refined_children):,} systems")
-    print(f"reduction factor:              {72_241/len(refined_children):.1f}x")
+    print(f"local semantic evaluation:     {result.refined_child_count:,} systems")
+    print(f"reduction factor:              {72_241/result.refined_child_count:.1f}x")
 
 
 if __name__ == "__main__":
