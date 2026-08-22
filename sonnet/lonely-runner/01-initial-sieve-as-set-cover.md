@@ -4,13 +4,13 @@
 
 ## 1. The upstream bottleneck has a simpler combinatorial presentation
 
-For `l=1`, the gcd clause in `(k,p,l)`-properness is vacuous.  A residue tuple is improper exactly when it has no witness among the times
+For `l=1`, the gcd clause in `(k,p,l)`-properness is vacuous. A residue tuple is improper exactly when it has no witness among
 
 \[
 t=\frac a p.
 \]
 
-Because distance to the nearest integer is invariant under `a -> -a`, it suffices to inspect the half-circle
+Because distance to the nearest integer is invariant under `a -> -a`, it suffices to inspect
 
 \[
 U_p=\{1,2,\ldots,(p-1)/2\}.
@@ -30,7 +30,7 @@ C_s=\left\{a\in U_p:
 \right\}.
 \]
 
-Then a `k`-tuple `(s_1,...,s_k)` is in `I(k,p,1)` precisely when
+Then a `k`-tuple `(s_1,...,s_k)` lies in `I(k,p,1)` precisely when
 
 \[
 \boxed{C_{s_1}\cup\cdots\cup C_{s_k}=U_p.}
@@ -38,36 +38,33 @@ Then a `k`-tuple `(s_1,...,s_k)` is in `I(k,p,1)` precisely when
 
 So the initial LRC sieve is an exact **fixed-cardinality set-cover problem**.
 
-This is not an analogy: it is the literal predicate implemented by the upstream `find_cover` bitsets.  The C++ precomputes one bitset `cover(i)` for each folded speed residue, marks a time position when
+This is not an analogy. The upstream C++ `find_cover` precomputes one bitset `cover(i)` for every folded speed residue and accepts a length-`K` history exactly when the union bitset covers every half-circle time position.
 
-```text
-rem * (K + 1) < P
-or
-(P - rem) * (K + 1) < P,
-```
+## 2. What upstream `find_cover` actually retains
 
-and accepts a length-`K` speed history exactly when the union bitset covers every half-circle time position.
-
-## 2. Upstream DFS as a process presentation
-
-The upstream `find_cover` search state contains three components:
+The upstream DFS state contains
 
 ```text
 covered          bad-time positions already covered
 chosen speeds    construction history / current tuple
-available choice remaining speed residues allowed by enumeration order
+AvailableChoice  which speed choices remain live
 ```
 
-The recursive step chooses a speed residue that covers a selected still-uncovered time, adds its cover bitset, and consumes one slot.
+It chooses a still-uncovered time with the fewest currently available covering speeds, then branches only on choices that cover that selected time. Near leaves it also applies an optimistic coverage bound.
 
-The implementation also uses two pruning ideas:
+One subtlety matters for our reconstruction: this MRV traversal is **not** equivalent to simply appending speeds in nondecreasing numerical order. A smaller speed skipped because it does not cover the currently selected time is not automatically eliminated; it may become usable later after the selected time is covered by another speed.
 
-1. **most constrained uncovered time** — choose an uncovered position with the fewest remaining speed choices that can cover it;
-2. **optimistic coverage bound** — when few slots remain, bound how many uncovered positions the best remaining choices could possibly cover.
+Therefore subsequent Shakespeare experiments will distinguish:
 
-This is recognizably a constraint-search presentation.  It is already better than enumerating all tuples, but it is not obviously minimal for the LRC task.
+```text
+upstream MRV presentation
+        versus
+canonical nondecreasing multiset presentation
+```
 
-## 3. A first exact reconstruction at `k=3, p=13`
+and will not attribute the history semantics of one to the other.
+
+## 3. A first exact terminal reconstruction at `k=3,p=13`
 
 For `p=13`, sign folding leaves six speed residues
 
@@ -75,25 +72,33 @@ For `p=13`, sign folding leaves six speed residues
 1,2,3,4,5,6.
 \]
 
-Allowing nondecreasing length-three tuples gives
+As an independent canonical enumeration, allowing nondecreasing length-three tuples gives
 
 \[
 \binom{6+3-1}{3}=56
 \]
 
-candidate folded tuples.
+folded multisets.
 
-The independent exact reconstruction in
+The executable reconstruction in
 
 ```text
 tests/research/test_lonely_runner_initial_sieve.py
 ```
 
-finds:
+cross-checks two independent terminal predicates:
+
+```text
+exact rational-grid no-witness test
+            ==
+bad-time fixed-cardinality set cover
+```
+
+on all 56 tuples. It finds
 
 ```text
 56 folded sorted tuples
-14 tuples whose bad-time sets cover the whole half-circle
+14 improper / full-cover tuples
 3 canonical classes after the global unit quotient
 ```
 
@@ -105,66 +110,70 @@ with canonical improper representatives
 (1, 3, 4)
 ```
 
-The set-cover predicate is cross-checked tuple-by-tuple against a direct rational-grid witness predicate, rather than against itself.
+Thus the combinatorial object under the initial sieve is now frozen independently of the upstream implementation details.
 
-## 4. Why `covered` alone is not a sufficient state
+## 4. A deliberately simple canonical construction grammar
 
-A tempting Shakespeare compression would identify partial histories whenever they have the same covered-time bitset and the same number of chosen speeds.
+To ask a clean representation question, introduce a separate baseline grammar:
 
-That fails even in the tiny `k=3,p=13` calibration.
+```text
+fix the first folded speed to 1
+append folded speeds in nondecreasing order
+stop after k entries
+```
 
-Consider the two nondecreasing partial histories
+This grammar enumerates folded multisets canonically, but it is not proposed as a faster replacement for upstream MRV.
+
+Inside this grammar, a tempting compression is to identify partial histories whenever they have the same current covered-time bitset and the same depth. That already fails at `k=3,p=13`.
+
+Consider
 
 \[
 (1,4),\qquad(1,6).
 \]
 
-They cover the same five time positions:
+They have exactly the same current cover:
 
 \[
 C_1\cup C_4=C_1\cup C_6=\{1,2,3,4,6\}.
 \]
 
-Only time position `5` remains uncovered in either state.  Yet their future task semantics differ under the ordered completion grammar:
+Only time position `5` remains uncovered in either state. But their admissible futures differ:
 
 ```text
-(1,4)  -> choose 5 -> complete cover
-(1,6)  -> only 6 or later is allowed -> no completion
+(1,4)  -> 5 remains admissible -> complete cover
+(1,6)  -> only 6 remains admissible -> no complete cover
 ```
 
-Thus
+Hence
 
 \[
 \boxed{
-\text{same covered set + same depth}
+\text{same current cover + same depth}
 \not\Rightarrow
-\text{same future completion semantics}.
+\text{same future completion language}.
 }
 \]
 
-The upstream code therefore has a real reason to retain `AvailableChoice`; it is not merely an implementation detail.
-
-This is a second, independent future-signature pressure after the Phase-0 lift example.
+This red team does **not** claim to reproduce upstream `AvailableChoice`. It establishes the more general point that once a presentation canonicalizes construction history, admissible future choices become part of task semantics.
 
 ## 5. The Shakespeare formulation
 
-We can now state the first representation problem without LRC-specific prose.
+For any chosen construction presentation, let a partial history `h` determine:
 
-Let a partial search history `h` determine:
+- current cover `C(h)`;
+- remaining slots;
+- an admissible continuation language `A(h)`.
 
-- a current cover subset `C(h) subset U_p`;
-- remaining slots `r(h)`;
-- an admissible continuation language `A(h)` induced by canonical enumeration.
-
-Define the task predicate
+Let the terminal task predicate be
 
 \[
 Q(h)=1
 \]
 
-iff some admissible continuation of length at most `r(h)` completes the cover.
+iff `h` is or can become a full bad-time cover within the presentation.
 
-A sound history quotient must preserve this future language:
+A sound task quotient must preserve continuation semantics:
 
 \[
 h_1\sim h_2
@@ -172,25 +181,25 @@ h_1\sim h_2
 Q(h_1c)=Q(h_2c)
 \]
 
-for every continuation represented in the comparison grammar.
+for every continuation word represented in the comparison grammar.
 
-The known upstream state is one sufficient presentation.  The Shakespeare question is whether we can discover a cheaper one.
+The upstream MRV state is one sufficient representation for its own traversal. The canonical multiset state is another. Shakespeare should compare them through explicit task semantics rather than assume their internal states coincide.
 
 ## 6. Candidate quotient directions
 
-The next experiments should not immediately add opaque learned features.  Start from exact combinatorial candidates:
+The next experiments should stay exact and auditable.
 
 ### 6.1 Orbit of uncovered-time geometry
 
-Instead of the absolute bitset, quotient uncovered subsets under residual multiplication/reflection symmetries that remain compatible with the available-choice frontier.
+Quotient uncovered subsets under residual multiplication/reflection symmetries only when those symmetries also transport the admissible continuation language.
 
 ### 6.2 Cover-incidence signatures
 
-For each uncovered time, record the number or orbit-types of remaining speed choices that can cover it.  The upstream `get_next_to_cover` already uses the first scalar shadow of this information.
+For each uncovered time, record the number or orbit-types of future choices that can cover it. Upstream `get_next_to_cover` already uses the first scalar shadow of this information.
 
-### 6.3 Pairwise overlap profile
+### 6.3 Pairwise overlap profiles
 
-Record the intersection pattern
+Measure intersections such as
 
 \[
 |C_s\cap U_{\rm uncovered}|,
@@ -198,42 +207,42 @@ Record the intersection pattern
 |C_s\cap C_{s'}\cap U_{\rm uncovered}|,
 \]
 
-for admissible future choices, but only promote such a profile if future-completion equivalence can be certified on exhaustive small instances.
+but promote such data only if future-completion equivalence is certified on exhaustive small worlds.
 
-### 6.4 Bounded future signature
+### 6.4 Exact finite future signatures
 
-For solved small `(k,p)`, directly compute whether each short continuation leaves a completable state.  Cluster histories by this signature, then inspect whether the clusters admit a simpler invariant description.
+For a finite grammar, directly enumerate continuation behavior and cluster histories by the resulting task signature. Then search for a simpler invariant description of the classes.
 
-This reverses the usual workflow:
+The intended workflow is
 
 ```text
-first discover the exact quotient empirically on exhaustive small worlds
-then search for a compact invariant that explains it
+exact semantic quotient first
+    -> inspect equivalence classes
+    -> discover a compact invariant
+    -> red-team it elsewhere
 ```
 
-rather than guessing a pruning statistic and hoping it generalizes.
+rather than guessing a pruning statistic and calling it a quotient after a few successes.
 
 ## 7. Connection to existing Shakespeare machinery
 
-This set-cover reconstruction interacts naturally with several existing layers:
+This reconstruction maps directly onto existing abstractions:
 
-- `ProcessWord`: chosen-speed construction history;
-- task signatures: bounded future completion behavior;
-- `PresentationMorphism`: exact maps between labelled tuple search, sign-folded search, unit-orbit canonical search, and any newly discovered quotient;
-- `PresentationCost`: state count, branch count, certificate cost, reconstruction cost;
-- Pareto search: compare quotients without assuming maximum compression is universally optimal.
+- `ProcessWord` — construction histories;
+- `ProcessJetSignature` — finite future task language;
+- `PresentationMorphism` — certified maps between different search presentations;
+- `PresentationCost` — state count, branch count, certificate and reconstruction costs;
+- Pareto filtering — compare presentations without assuming maximal compression is always optimal.
 
-We should **not** yet add a generic SetCover API to Shakespeare.  Set cover is the current mathematical calibration, not the ontology.  A reusable abstraction should be promoted only if another Sonnet or existing calibration forces the same state semantics.
+We should **not** introduce a generic SetCover API. Set cover is the current calibration domain, not Shakespeare's ontology.
 
 ## 8. Next experiment
 
-The immediate next executable target is:
+Phase 2 therefore uses the canonical nondecreasing grammar, where the full remaining future is small enough to enumerate exactly, and applies the existing `ProcessJetSignature` machinery directly.
 
-1. exhaust `k=3` over several primes and `k=4` over small primes;
-2. enumerate reachable partial histories under the upstream ordered grammar;
-3. compute exact bounded/full completion equivalence classes;
-4. compare class count against the upstream `(covered, available-choice frontier, slots)` state count;
-5. search small invariant grammars for a signature that exactly predicts those classes;
-6. red-team every proposed merge on the next larger `(k,p)` not used for discovery.
+The goals are two-sided:
 
-Only after a stable quotient appears should we port the experiment toward `k=8..12`, where the upstream runtime baseline becomes meaningful.
+1. verify that the signature refuses unsound merges such as `(1,4)` / `(1,6)`;
+2. find **positive** merges where different raw cover states nevertheless have identical complete future task languages.
+
+Only after such task-semantic redundancy is measured should we search for a cheap invariant capable of replacing exhaustive future enumeration. A later phase must separately construct a certified bridge back to the upstream MRV / `AvailableChoice` presentation before any runtime claim is made.
