@@ -1,5 +1,4 @@
 diff --git a/src/find_cover.h b/src/find_cover.h
-index 1f6fe26..phase5 100644
 --- a/src/find_cover.h
 +++ b/src/find_cover.h
 @@ -61,6 +61,7 @@ template <int P, int K> struct Dfs
