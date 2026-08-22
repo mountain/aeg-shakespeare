@@ -1,17 +1,18 @@
 """Finite parameterized process structure.
 
-This namespace groups families, scalar responses, actions, and additive central
-composition residuals.  It deliberately stops before a universal group,
-representation, cohomology, topology, or measure hierarchy.
+Families, scalar responses, actions, and additive central composition residuals
+live together here because they are structures on finite process composition.
+The package deliberately stops before universal group, representation,
+cohomology, topology, or measure hierarchies.
 """
 
-from ..central import (
+from .cocycle import (
     CocycleVerification,
     ProcessCocycle,
     central_commutator_residual,
     verify_process_cocycle,
 )
-from ..families import (
+from .families import (
     CharacterVerification,
     FamilyAction,
     FamilyActionVerification,
