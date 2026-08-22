@@ -6,10 +6,10 @@
 //
 // Usage:
 //   ./harness dump 79
-//   ./harness bench 127 15
+//   ./harness bench 127 15 3
 //
-// Supported cases are the configured solved-parameter probes used by Sonnet 001:
-//   (K,P) = (8,79), (9,89), (10,127).
+// Supported cases are configured solved-parameter probes used by Sonnet 001:
+//   (K,P) = (8,79), (9,89), (10,127), (11,131), (12,139).
 
 #include <algorithm>
 #include <array>
@@ -64,10 +64,10 @@ template <int P, int K> void dump_case()
   }
 }
 
-template <int P, int K> void bench_case(int repeats)
+template <int P, int K> void bench_case(int repeats, int warmups)
 {
   // Warm the static context and allocator/thread machinery before recording.
-  for (int i = 0; i < 3; ++i) (void)solve_silent<P, K>();
+  for (int i = 0; i < warmups; ++i) (void)solve_silent<P, K>();
 
   std::vector<double> milliseconds;
   milliseconds.reserve(repeats);
@@ -96,6 +96,7 @@ template <int P, int K> void bench_case(int repeats)
 
   std::cout << "P=" << P << " K=" << K << " N=" << expected_size
             << " repeats=" << repeats
+            << " warmups=" << warmups
             << " median_ms=" << median
             << " mean_ms=" << total / repeats
             << " min_ms=" << minimum << '\n';
@@ -108,6 +109,8 @@ template <class F> void dispatch_case(int p, F&& f)
     case 79: f.template operator()<79, 8>(); break;
     case 89: f.template operator()<89, 9>(); break;
     case 127: f.template operator()<127, 10>(); break;
+    case 131: f.template operator()<131, 11>(); break;
+    case 139: f.template operator()<139, 12>(); break;
     default: throw std::invalid_argument("unsupported prime");
   }
 }
@@ -117,7 +120,7 @@ int main(int argc, char** argv)
 {
   if (argc < 3)
   {
-    std::cerr << "usage: harness dump P | harness bench P REPEATS\n";
+    std::cerr << "usage: harness dump P | harness bench P REPEATS [WARMUPS]\n";
     return 2;
   }
 
@@ -132,10 +135,13 @@ int main(int argc, char** argv)
 
   if (mode == "bench")
   {
-    if (argc != 4) return 2;
+    if (argc != 4 && argc != 5) return 2;
     const int repeats = std::stoi(argv[3]);
-    if (repeats <= 0) return 2;
-    dispatch_case(p, [repeats]<int P, int K> { bench_case<P, K>(repeats); });
+    const int warmups = argc == 5 ? std::stoi(argv[4]) : 3;
+    if (repeats <= 0 || warmups < 0) return 2;
+    dispatch_case(p, [repeats, warmups]<int P, int K> {
+      bench_case<P, K>(repeats, warmups);
+    });
     return 0;
   }
 
