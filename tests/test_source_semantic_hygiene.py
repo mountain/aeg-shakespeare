@@ -21,6 +21,29 @@ def _imported_names(node: ast.ImportFrom) -> set[str]:
     return {alias.name for alias in node.names}
 
 
+def _package_parts_for(path: Path) -> list[str]:
+    """Return the package containing ``path`` relative to ``aeg_shakespeare``."""
+    relative = path.relative_to(_SRC_ROOT)
+    if relative.name == "__init__.py":
+        return ["aeg_shakespeare", *relative.parent.parts]
+    return ["aeg_shakespeare", *relative.parent.parts]
+
+
+def _resolved_import_module(path: Path, node: ast.ImportFrom) -> str:
+    """Resolve an ``ImportFrom`` to the absolute package module it targets."""
+    if node.level == 0:
+        return node.module or ""
+
+    package = _package_parts_for(path)
+    ascend = node.level - 1
+    if ascend > len(package):
+        return node.module or ""
+    base = package[: len(package) - ascend]
+    if node.module:
+        base.extend(node.module.split("."))
+    return ".".join(base)
+
+
 def test_source_does_not_reintroduce_semantic_dependencies_on_core_or_frame_shims():
     offenders: list[str] = []
     for path in sorted(_SRC_ROOT.rglob("*.py")):
@@ -31,11 +54,12 @@ def test_source_does_not_reintroduce_semantic_dependencies_on_core_or_frame_shim
             if not isinstance(node, ast.ImportFrom):
                 continue
             names = _imported_names(node)
-            if node.module == "core" and names & _SEMANTIC_CORE_NAMES:
+            resolved = _resolved_import_module(path, node)
+            if resolved == "aeg_shakespeare.core" and names & _SEMANTIC_CORE_NAMES:
                 offenders.append(
                     f"{path.relative_to(_SRC_ROOT)} imports {sorted(names & _SEMANTIC_CORE_NAMES)} from core"
                 )
-            if node.module == "frame" and "ProcessFrame" in names:
+            if resolved == "aeg_shakespeare.frame" and "ProcessFrame" in names:
                 offenders.append(
                     f"{path.relative_to(_SRC_ROOT)} imports ProcessFrame from legacy frame shim"
                 )
@@ -53,7 +77,9 @@ def test_core_backend_import_is_limited_to_homogeneous_monomials_outside_compati
             continue
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         for node in ast.walk(tree):
-            if not isinstance(node, ast.ImportFrom) or node.module != "core":
+            if not isinstance(node, ast.ImportFrom):
+                continue
+            if _resolved_import_module(path, node) != "aeg_shakespeare.core":
                 continue
             extra = _imported_names(node) - {"homogeneous_monomials"}
             if extra:
