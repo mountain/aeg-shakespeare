@@ -22,6 +22,7 @@ _ESSAYS = (
     _ROOT / "research" / "test_lonely_runner_canonical_observer_decomposition.py",
     _ROOT / "research" / "test_lonely_runner_minimal_completion_residuals.py",
     _ROOT / "research" / "test_lonely_runner_residual_objectification.py",
+    _ROOT / "research" / "test_lonely_runner_persistent_dag_increment.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
