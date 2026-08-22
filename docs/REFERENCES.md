@@ -16,6 +16,10 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Carretero-Frantzeskakis-Kevrekidis-2024]** R. Carretero-Gonzalez, D. J. Frantzeskakis, and P. G. Kevrekidis, “Traveling Wave Reduction, Elliptic Functions, and Connections to KdV,” in *Nonlinear Waves & Hamiltonian Systems: From One To Many Degrees of Freedom, From Discrete To Continuum*, Oxford University Press, 2024, Chapter 6. DOI: `10.1093/oso/9780192843234.003.0006`. The traveling-wave reduction gives a cubic effective potential whose elliptic solutions degenerate to solitary waves.
 
+**[Hirota-1971]** Ryogo Hirota, “Exact Solution of the Korteweg–de Vries Equation for Multiple Collisions of Solitons,” *Physical Review Letters* 27 (1971), 1192–1194. DOI: `10.1103/PhysRevLett.27.1192`. Classical source for the exact KdV multi-soliton construction and pair-factorized collision structure.
+
+**[Ablowitz-Segur-1981]** Mark J. Ablowitz and Harvey Segur, *Solitons and the Inverse Scattering Transform*, SIAM, 1981. DOI: `10.1137/1.9781611970883`. Standard reference for KdV inverse scattering, elastic soliton interactions, scattering data, and phase shifts.
+
 **[Bertola-Jenkins-Tovbis-2023]** M. Bertola, R. Jenkins, and A. Tovbis, “Partial degeneration of finite gap solutions to the Korteweg–de Vries equation: soliton gas and scattering on elliptic background,” arXiv:`2210.01350`. Relevant here as a modern finite-gap/degeneration reference connecting algebraic-geometric KdV backgrounds to solitonic sectors.
 
 ## Elliptic integrals and elliptic functions
