@@ -2,8 +2,8 @@
 
 Question
 --------
-What process is the upstream I(k,p,1) search actually executing, and which pieces
-of its search state are semantically necessary?
+What combinatorial task is the upstream I(k,p,1) search solving, and what state
+information can or cannot be discarded in a simple canonical construction grammar?
 
 Primitive data
 --------------
@@ -15,31 +15,35 @@ Classical / upstream lineage
 The companion implementation for Sungkawichai--Trakulthongchai precomputes, for
 each folded speed residue, a bitset of rational time positions at which that speed
 fails the loneliness inequality.  Its find_cover DFS searches for k speeds whose
-union covers all half-circle time positions.  The DFS state includes the covered
-bitset, chosen speeds, and remaining allowed choices.
+union covers all half-circle time positions.  The upstream MRV traversal retains a
+covered bitset, chosen speeds, and a richer AvailableChoice object.
 
 Shakespeare reconstruction
 ---------------------------
-We reconstruct that computation independently in two presentations:
+We reconstruct the terminal predicate independently in two presentations:
 
 1. direct rational-grid witness semantics;
 2. fixed-cardinality set-cover semantics.
 
-They are cross-checked exhaustively on k=3,p=13.  We then red-team an apparently
-smaller state presentation, `covered set + depth`, and show that it loses future
-completion information.
+They are cross-checked exhaustively on k=3,p=13.  For a separate representation
+red team we use a simple canonical nondecreasing multiset grammar.  That grammar
+is intentionally not the exact upstream MRV traversal.  Inside it, `covered set +
+depth` loses future completion information.
 
 Calibration statement
 ---------------------
 Passing this file certifies that the initial l=1 improper predicate is exactly a
 set-cover predicate on the half-circle for the calibration world; it reproduces
 56 folded candidates -> 14 improper tuples -> 3 unit-orbit canonical classes;
-and it shows that the available-choice frontier cannot in general be discarded.
+and it shows that a canonical construction presentation must retain information
+about which future choices remain admissible.
 
 Boundary
 --------
 This is a tiny exact reconstruction, not a competitive implementation of
-find_cover and not a proof of any new Lonely Runner case.
+find_cover.  The nondecreasing continuation grammar is Shakespeare's calibration
+presentation, not a claim about upstream traversal order, and this file proves no
+new Lonely Runner case.
 
 References
 ----------
@@ -123,7 +127,7 @@ def nondecreasing_completions(
     k: int,
     p: int,
 ) -> Iterable[tuple[int, ...]]:
-    """Upstream-style ordered continuations, allowing repeated residues."""
+    """Canonical multiset continuations, distinct from upstream MRV order."""
 
     slots = k - len(prefix)
     if slots < 0:
@@ -134,7 +138,7 @@ def nondecreasing_completions(
 
 
 def can_complete_cover(prefix: Sequence[int], *, k: int, p: int) -> bool:
-    """Exact future task semantics for one ordered partial history."""
+    """Exact future task semantics in the canonical nondecreasing grammar."""
 
     universe = frozenset(range(1, (p - 1) // 2 + 1))
     current = covered_times(prefix, k=k, p=p)
@@ -170,7 +174,7 @@ def test_small_initial_sieve_cross_calibration() -> None:
     }
 
 
-# RED TEAM: covered-bitset + depth is not enough under ordered continuation.
+# RED TEAM: covered-bitset + depth is insufficient in the canonical grammar.
 def test_same_cover_and_depth_can_have_different_completion_semantics() -> None:
     k = 3
     p = 13
@@ -183,11 +187,10 @@ def test_same_cover_and_depth_can_have_different_completion_semantics() -> None:
     assert len(left) == len(right) == 2
     assert left_cover == right_cover == frozenset({1, 2, 3, 4, 6})
 
-    # The histories differ only in their remaining admissible-choice frontier.
-    # From (1,4), speed 5 is still available and completes the cover.
+    # Under nondecreasing canonical completion, (1,4) may still choose 5.
     assert set_cover_improper((1, 4, 5), p)
     assert can_complete_cover(left, k=k, p=p)
 
-    # From (1,6), ordered enumeration permits only another 6; no completion exists.
+    # From (1,6), only another 6 is admissible; no cover can be completed.
     assert not set_cover_improper((1, 6, 6), p)
     assert not can_complete_cover(right, k=k, p=p)
