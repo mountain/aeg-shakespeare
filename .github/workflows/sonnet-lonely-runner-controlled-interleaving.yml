@@ -1,12 +1,10 @@
 name: Sonnet Lonely Runner Controlled Interleaving
 
-# Research-only Phase 8E probe. The PR trigger is temporary for one auditable
-# run; it will be removed after the activation/interleaving profile is recorded.
+# Research-only Phase 8E controlled-interleaving probe. The exact 28-predicate
+# searches are manual-only; routine CI audits the corresponding mathematical
+# essay without rerunning the expanded exact DP on every PR synchronization.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-controlled-interleaving.yml
 
 jobs:
   controlled-interleaving:
