@@ -1,0 +1,47 @@
+"""<Title>: <one-sentence mathematical claim>
+
+Question
+--------
+<What mathematical/representation question is the test answering?>
+
+Primitive data
+--------------
+<List exactly what the program receives.  Explicitly list important classical
+objects that are *not* supplied as input.>
+
+Classical lineage
+-----------------
+<Explain the conventional/historical route to the mathematics.  Cite sources
+with keys such as [Author-Year] or [DLMF-Section].>
+
+Shakespeare reconstruction
+---------------------------
+<Explain the reversed process-first route being tested.  Label project-specific
+interpretations as such rather than attributing them to classical sources.>
+
+Calibration statement
+---------------------
+<State precisely what passing this file certifies.>
+
+Proof map
+---------
+1. <assertion group -> mathematical step>
+2. ...
+
+Boundary
+--------
+<State what is not established by the test.>
+
+References
+----------
+[Author-Year] Full bibliographic entry, edition/volume, publisher/journal,
+chapter/section/theorem/DOI/stable URL as appropriate.
+"""
+
+# GIVEN: primitive process data only.
+
+# DISCOVER: derive structure using public Shakespeare machinery.
+
+# ASSERT: certify the new-formalism structural statement.
+
+# CLASSICAL SHADOW: identify the familiar object only after discovery.
