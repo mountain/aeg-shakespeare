@@ -1,16 +1,11 @@
 """Costed search over first-order algebraic observer quotients.
 
-This module connects the new discovery front-end to Shakespeare's existing
-multi-axis presentation search. The task here is deliberately narrow: among a
+This module connects the discovery front-end to Shakespeare's multi-axis
+presentation search. The task here is deliberately narrow: among a
 caller-declared family of observer candidates, find those whose first process
 jet ``(F, D F)`` closes by certified algebraic relations on a declared leaf,
 and compare the resulting presentations without imposing a universal scalar
 objective.
-
-The caller still declares the candidate family. In particular, this layer does
-not yet infer vector roles such as position versus velocity from bare assignment
-symbols. That earlier proposal problem belongs to future observer-construction
-machinery.
 """
 
 from __future__ import annotations
@@ -21,10 +16,14 @@ from typing import Callable, Sequence
 
 import sympy as sp
 
-from ..constraints import AlgebraicConstraintSet
-from ..core import ProcessSystem
-from ..cost import PresentationCost
-from ..search import PresentationCandidate, PresentationSearchResult, pareto_frontier
+from ..presentation.constraints import AlgebraicConstraintSet
+from ..presentation.search import (
+    PresentationCandidate,
+    PresentationCost,
+    PresentationSearchResult,
+    pareto_frontier,
+)
+from ..process.local import ProcessSystem
 from .polynomial import ObservableQuotient, discover_first_order_process_quotient
 
 
@@ -51,7 +50,6 @@ def _relation_complexity(
     variables: Sequence[sp.Symbol],
 ) -> float:
     """Transparent degree-plus-support proxy for one algebraic relation."""
-
     try:
         polynomial = sp.Poly(sp.expand(relation), *variables, domain="EX")
     except sp.PolynomialError as exc:
@@ -62,18 +60,7 @@ def _relation_complexity(
 def structural_first_order_quotient_cost(
     presentation: FirstOrderObservablePresentation,
 ) -> PresentationCost:
-    """Default multi-axis cost for a first-order algebraic observer presentation.
-
-    ``grammar`` prices the observer and its first process derivative.
-    ``relations`` is the sum of total degree plus monomial support for all
-    discovered relations. ``history`` is one because the presentation uses the
-    first process jet ``(F, D F)``. ``task_error`` is zero exactly when a
-    certified algebraic closure relation was found; otherwise it is infinite.
-
-    This proxy is intentionally replaceable. It is a transparent baseline for
-    comparing observer quotients, not a canonical mathematical complexity.
-    """
-
+    """Default multi-axis cost for a first-order algebraic observer presentation."""
     relation_variables = (
         presentation.quotient.symbols + presentation.quotient.parameters
     )
@@ -113,17 +100,7 @@ def search_first_order_process_quotients(
         [FirstOrderObservablePresentation], PresentationCost
     ] | None = None,
 ) -> PresentationSearchResult[FirstOrderObservablePresentation]:
-    """Compare candidate observers by certified first-order algebraic closure.
-
-    The fixed task is *first-order algebraic quotient closure*: each candidate
-    ``F`` is mapped to fresh coordinates ``(U,Y)=(F,D F)``, source assignments
-    are eliminated on the declared constraint leaf, and candidates with at least
-    one certified relation are admitted to the Pareto frontier.
-
-    No candidate is silently dropped because it looks expensive. The result
-    retains every evaluated presentation and its exact quotient certificate.
-    """
-
+    """Compare candidate observers by certified first-order algebraic closure."""
     observer_candidates = tuple(
         sp.expand(sp.sympify(candidate)) for candidate in observer_candidates
     )
