@@ -14,6 +14,14 @@ from .grammar import (
     discover_generated_grammar,
     discover_generated_presentation,
 )
+from .history_geometry import (
+    BoundaryProfile,
+    PrefixCode,
+    PrefixCodeMetrics,
+    boundary_profile,
+    history_depth,
+    huffman_prefix_code,
+)
 from .linear import KrylovReturnRelation, discover_krylov_relation
 from .relations import (
     ProcessPolynomialRelation,
@@ -56,6 +64,12 @@ __all__ = [
     "GeneratedPresentation",
     "discover_generated_grammar",
     "discover_generated_presentation",
+    "BoundaryProfile",
+    "PrefixCode",
+    "PrefixCodeMetrics",
+    "boundary_profile",
+    "history_depth",
+    "huffman_prefix_code",
     "KrylovReturnRelation",
     "discover_krylov_relation",
     "ProcessPolynomialRelation",
