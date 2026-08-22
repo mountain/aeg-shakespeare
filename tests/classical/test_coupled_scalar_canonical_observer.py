@@ -30,10 +30,27 @@ cross-couplings, local canonicalization balances their transformed magnitudes:
 
 or equivalently ``b12*rho**2-b21=0``.
 
+No ``GL(2)`` normal form, matrix basis, opposite shear, or completed
+``aff(2)`` algebra is supplied as a target.
+
+Classical lineage
+-----------------
+A two-dimensional linear vector field is conventionally encoded by a matrix,
+and the diagonal and off-diagonal matrix units generate the corresponding
+matrix Lie algebra under commutator.  Matrix Lie groups/algebras and the
+identification of matrix commutators with infinitesimal linear transformations
+are standard; see [Hall-2015], especially Chapters 2--3.  The interpretation of
+ordinary equations of motion as vector-field flows is standard classical
+mechanics; see [Arnold-1989], Newtonian Mechanics, pp. 15--52.
+
+This test reverses that order.  It does not start with a full matrix algebra and
+then diagonalize it.  It starts with two independent scalar rulers and asks which
+cross directions the coupled process itself forces into the representation.
+
 Shakespeare reconstruction
 ---------------------------
-``Canonicalization`` differentiates that balance condition and induces the
-relative-scale observer rate.  With the gauge choice ``u=rho*x, v=y`` the
+``ConstraintCanonicalization`` differentiates the balance condition and induces
+the relative-scale observer rate.  With the gauge choice ``u=rho*x, v=y`` the
 connection contributes only to the diagonal ``M1`` direction.  On the canonical
 leaf, both cross coefficients become equal, but the cross directions themselves
 remain outside the original independent-register observer algebra.
@@ -51,9 +68,10 @@ the cross bracket is
 
     [E12,E21] = M2 - M1.
 
-This is the sign opposite to one line in the current v0.2 theory note, while
-leaving the structural conclusion unchanged: the two cross directions together
-with ``M1,M2`` generate ``gl(2)``, and adjoining translations gives ``aff(2)``.
+This sign is fixed by the executable convention.  One line in the current v0.2
+theory note has the opposite sign; that discrepancy is a documentation error,
+not an alternative mathematical result.  The generated algebra conclusion is
+unchanged.
 
 Calibration statement
 ---------------------
@@ -69,19 +87,44 @@ Passing this file certifies that:
 6. with only one cross direction present, brackets remain in the corresponding
    triangular matrix algebra rather than forcing the missing opposite shear.
 
+Proof map
+---------
+1. ``test_relative_scale_canonicalization_induces_connection`` differentiates
+   ``b12*rho**2-b21=0`` and checks the exact logarithmic relative-scale rate.
+2. ``test_bidirectional_cross_coupling_forces_matrix_completion`` checks the
+   original assignment equations, moves to the balanced observer frame,
+   certifies the decomposition residual as exactly zero, and only then evaluates
+   the bracket table that generates the matrix/affine classical shadow.
+3. ``test_one_way_cross_coupling_stays_triangular`` is the minimality red team:
+   the one-sided shear closes without manufacturing the opposite shear.
+
 Boundary
 --------
 This calibration fixes a positive-coupling sector and one residual gauge by
-holding the second scale fixed.  It does not define a general GL(n) observer,
-a matrix normal-form API, or a universal completion search.
+holding the second scale fixed.  It does not define a general ``GL(n)`` observer,
+a matrix normal-form search, a proof that every variable mixing forces full
+``aff(n)``, or a universal completion algorithm.  The balance condition is a
+project-specific canonicalization used to calibrate transport.  The Shakespeare
+interpretation -- independent rulers first, matrix closure only when forced --
+is not attributed to the classical references.
+
+References
+----------
+[Hall-2015] Brian C. Hall, *Lie Groups, Lie Algebras, and Representations: An
+Elementary Introduction*, 2nd ed., Graduate Texts in Mathematics 222, Springer,
+2015, Chapters 2--3; DOI 10.1007/978-3-319-13467-3.
+
+[Arnold-1989] V. I. Arnold, *Mathematical Methods of Classical Mechanics*,
+2nd ed., Graduate Texts in Mathematics 60, Springer, 1989, Newtonian Mechanics,
+"Investigation of the equations of motion," pp. 15--52;
+DOI 10.1007/978-1-4757-2063-1.
 """
 
 import sympy as sp
 
 from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
-from aeg_shakespeare.presentation.canonicalization import Canonicalization
-from aeg_shakespeare.process.local.direction import ProcessDirection
-from aeg_shakespeare.process.local.frame import ProcessFrame
+from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from aeg_shakespeare.process.local import ProcessDirection, ProcessFrame
 
 
 def coupled_frame(x, y):
@@ -102,7 +145,7 @@ def test_relative_scale_canonicalization_induces_connection():
     b12, b21, rho = sp.symbols("b12 b21 rho", positive=True)
     b12_dot, b21_dot = sp.symbols("b12_dot b21_dot")
 
-    canonicalization = Canonicalization(
+    canonicalization = ConstraintCanonicalization(
         observer_parameters=(rho,),
         constraints=(b12 * rho**2 - b21,),
         label="balanced cross coupling",
@@ -141,7 +184,7 @@ def test_bidirectional_cross_coupling_forces_matrix_completion():
     assert physical.apply(x) == b11 * x + b12 * y
     assert physical.apply(y) == b21 * x + b22 * y
 
-    canonicalization = Canonicalization(
+    canonicalization = ConstraintCanonicalization(
         observer_parameters=(rho,),
         constraints=(b12 * rho**2 - b21,),
     )
@@ -150,7 +193,7 @@ def test_bidirectional_cross_coupling_forces_matrix_completion():
     )
     rho_dot = connection.rate(rho)
 
-    # Gauge choice u=rho*x, v=y.  Relative-scale transport adds rho_dot/rho to
+    # Gauge choice u=rho*x, v=y. Relative-scale transport adds rho_dot/rho to
     # M1; it does not manufacture E12 or E21.
     observed_frame = coupled_frame(u, v)
     observed = ProcessDirection(
@@ -206,7 +249,8 @@ def test_bidirectional_cross_coupling_forces_matrix_completion():
     )
     assert decomposition.certificate == (0, 0)
 
-    # Matrix closure in the repository's [X,Y]=X(Y)-Y(X) convention.
+    # CLASSICAL SHADOW: the exact brackets identify the matrix closure only
+    # after the restricted observer decomposition has exposed the cross residual.
     assert observed_frame.commutator("E12", "E21", u) == -u
     assert observed_frame.commutator("E12", "E21", v) == v
     assert observed_frame.commutator("M1", "E12", u) == -v
