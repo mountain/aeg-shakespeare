@@ -1,9 +1,9 @@
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.discovery import factor_process_relation_over_extension
+from aeg_shakespeare.presentation.relations import (
     ProcessPolynomialRelation,
     factor_process_relation,
-    factor_process_relation_over_extension,
 )
 
 
