@@ -9,7 +9,7 @@ diff --git a/src/find_cover.h b/src/find_cover.h
  
      const auto saved_choice = state.choice;
  
-@@ -86,6 +87,35 @@ template <int P, int K> struct Dfs
+@@ -86,6 +87,36 @@ template <int P, int K> struct Dfs
  
  private:
 +  bool two_slot_completion_impossible() const
@@ -45,3 +45,4 @@ diff --git a/src/find_cover.h b/src/find_cover.h
    bool early_return_bound() const
    {
      const int nextToCover = state.choice.get_next_to_cover(state.covered);
+     if (nextToCover != -1 && !state.choice.canBeCovered(nextToCover)) return true;
