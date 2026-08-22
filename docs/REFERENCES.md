@@ -10,6 +10,14 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Marsden-Ratiu-1999]** Jerrold E. Marsden and Tudor S. Ratiu, *Introduction to Mechanics and Symmetry*, 2nd ed., Texts in Applied Mathematics 17, Springer, 1999. DOI: `10.1007/978-0-387-21792-5`.
 
+**[Carinena-Martinez-MunozLecanda-2022]** J. F. Carinena, E. Martinez, and M. C. Munoz-Lecanda, “Infinitesimal Time Reparametrisation and Its Applications,” *Journal of Nonlinear Mathematical Physics* 29 (2022), 523–555. DOI: `10.1007/s44198-022-00037-w`. Section 2 reviews the classical Sundman transformation `dt=r dτ`, collision regularization, and fixed-energy linearization of the Kepler radial equation.
+
+## Integrable waves and KdV
+
+**[Carretero-Frantzeskakis-Kevrekidis-2024]** R. Carretero-Gonzalez, D. J. Frantzeskakis, and P. G. Kevrekidis, “Traveling Wave Reduction, Elliptic Functions, and Connections to KdV,” in *Nonlinear Waves & Hamiltonian Systems: From One To Many Degrees of Freedom, From Discrete To Continuum*, Oxford University Press, 2024, Chapter 6. DOI: `10.1093/oso/9780192843234.003.0006`. The traveling-wave reduction gives a cubic effective potential whose elliptic solutions degenerate to solitary waves.
+
+**[Bertola-Jenkins-Tovbis-2023]** M. Bertola, R. Jenkins, and A. Tovbis, “Partial degeneration of finite gap solutions to the Korteweg–de Vries equation: soliton gas and scattering on elliptic background,” arXiv:`2210.01350`. Relevant here as a modern finite-gap/degeneration reference connecting algebraic-geometric KdV backgrounds to solitonic sectors.
+
 ## Elliptic integrals and elliptic functions
 
 **[DLMF-5.12]** NIST Digital Library of Mathematical Functions, §5.12, “Beta Function,” especially Euler’s beta integral (Eq. 5.12.1). https://dlmf.nist.gov/5.12
