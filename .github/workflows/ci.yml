@@ -38,10 +38,13 @@ jobs:
           /tmp/aeg-shakespeare-release-smoke/bin/python -m pip install dist/*.whl
           cd /tmp
           /tmp/aeg-shakespeare-release-smoke/bin/python - <<'PY'
+          from importlib.metadata import version
           import aeg_shakespeare as shakespeare
-          assert shakespeare.__version__ == "0.0.1"
+
+          assert shakespeare.__version__ == version("aeg-shakespeare")
           assert hasattr(shakespeare, "ProcessWord")
           assert hasattr(shakespeare, "AMFunctionTheory")
           assert hasattr(shakespeare, "AlgebraicConstraintSet")
+          assert hasattr(shakespeare, "AbelianPeriodMatrix")
           print("wheel smoke OK:", shakespeare.__version__)
           PY
