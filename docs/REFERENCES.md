@@ -1,6 +1,6 @@
 # Mathematical references
 
-This bibliography supports the literate source and executable mathematical essays in `tests/classical/` and `tests/research/`.  Individual tests should still cite the specific entries they rely on and, when practical, include chapter/section/equation locators close to the argument.
+This bibliography supports the literate source and executable mathematical essays in `tests/classical/` and `tests/research/`. Individual tests should still cite the specific entries they rely on and, when practical, include chapter/section/equation locators close to the argument.
 
 The repository is public-domain software; scholarly attribution remains mandatory for mathematical and historical claims.
 
@@ -12,9 +12,19 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 ## Elliptic integrals and elliptic functions
 
+**[DLMF-5.12]** NIST Digital Library of Mathematical Functions, §5.12, “Beta Function,” especially Euler’s beta integral (Eq. 5.12.1). https://dlmf.nist.gov/5.12
+
 **[DLMF-19]** NIST Digital Library of Mathematical Functions, Chapter 19, “Elliptic Integrals.” https://dlmf.nist.gov/19
 
 **[DLMF-22]** NIST Digital Library of Mathematical Functions, Chapter 22, “Jacobian Elliptic Functions.” https://dlmf.nist.gov/22
+
+**[DLMF-23.2]** NIST Digital Library of Mathematical Functions, §23.2, “Definitions and Periodic Properties,” including lattices and double periodicity of the Weierstrass `wp` function. https://dlmf.nist.gov/23.2
+
+**[DLMF-23.3]** NIST Digital Library of Mathematical Functions, §23.3, “Differential Equations,” including Weierstrass invariants, discriminant, roots, and the cubic differential equation. https://dlmf.nist.gov/23.3
+
+**[DLMF-23.5]** NIST Digital Library of Mathematical Functions, §23.5, “Special Lattices,” including the lemniscatic case `g3=0`, `tau=i`, and the associated special complete elliptic integral. https://dlmf.nist.gov/23.5
+
+**[DLMF-23.19]** NIST Digital Library of Mathematical Functions, §23.19, “Interrelations,” especially Eq. 23.19.3 for Klein’s invariant `J=g2^3/(g2^3-27g3^2)`. https://dlmf.nist.gov/23.19
 
 **[DLMF-23]** NIST Digital Library of Mathematical Functions, Chapter 23, “Weierstrass Elliptic and Modular Functions.” https://dlmf.nist.gov/23
 
@@ -27,6 +37,8 @@ The repository is public-domain software; scholarly attribution remains mandator
 **[Forster-1981]** Otto Forster, *Lectures on Riemann Surfaces*, Graduate Texts in Mathematics 81, Springer, 1981. DOI: `10.1007/978-1-4612-5961-9`.
 
 **[Farkas-Kra-1992]** Hershel M. Farkas and Irwin Kra, *Riemann Surfaces*, 2nd ed., Graduate Texts in Mathematics 71, Springer, 1992. DOI: `10.1007/978-1-4612-2034-3`.
+
+**[McMullen-Riemann-Surfaces]** Curtis T. McMullen, *Riemann Surfaces*, Harvard Math 213b course notes. In the hyperelliptic discussion the canonical holomorphic basis is written explicitly as `x^i dx/y`. https://abel.math.harvard.edu/~ctm/math213b/home/course/course.pdf
 
 **[Hartshorne-1977]** Robin Hartshorne, *Algebraic Geometry*, Graduate Texts in Mathematics 52, Springer, 1977. DOI: `10.1007/978-1-4757-3849-0`.
 
@@ -50,4 +62,4 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 ## Project interpretation
 
-Claims labelled **Shakespeare interpretation** are not claims made by the references above.  The references establish classical mathematics and historical context; the process-first reinterpretation is the research program implemented and tested in this repository.
+Claims labelled **Shakespeare interpretation** are not claims made by the references above. The references establish classical mathematics and historical context; the process-first reinterpretation is the research program implemented and tested in this repository.
