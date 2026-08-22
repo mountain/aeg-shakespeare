@@ -1,7 +1,8 @@
 # Phase 8 — from persistent Hauffman geometry to canonical observer transport
 
-**Status:** Phase 8A implementation staged; exact opt-in research gate not yet recorded as passed.  
+**Status:** Phase 8A exact cross-domain gate passed; Phase 8B is next.  
 **Branch:** `research/canonical-observer-api`  
+**Phase 8A result note:** [`20-phase8a-discrete-canonical-decomposition.md`](20-phase8a-discrete-canonical-decomposition.md)  
 **Starting point:** Phase 7i persistent Hauffman quotient at four-speed, center-2 -> center-3 contact-depth refinement.  
 **Open frontier policy:** `K=13` remains a frozen holdout and is not used for proposal generation, observer design, decomposition tuning, or cost selection.
 
@@ -35,15 +36,14 @@ Phase 7i additionally showed that retaining eight refinement-sensitive residual
 identities enlarges the current quotient only `60 -> 68`, with no extra current
 Hauffman tree queries, nodes, or worst depth.
 
-The Phase-8 question is therefore falsifiable:
-
-> can the canonical-observer language developed independently on continuous
-> classical problems reconstruct this sparse discrete transport/completion
-> structure *before* the refined task space is expanded?
+Phase 8 asks whether the canonical-observer language developed independently on
+continuous classical problems can explain this sparse discrete update *before*
+the refined task space is expanded.
 
 This interpretation is Shakespeare/AEG-specific.  The classical Lonely Runner
 and Huffman references orient the underlying problem and coding objective; they
-do not assert the observer-connection interpretation [Sungkawichai-Trakulthongchai-2026; Huffman-1952].
+do not assert the observer-connection interpretation
+[Sungkawichai-Trakulthongchai-2026; Huffman-1952].
 
 ## 2. Observation-locality rule
 
@@ -62,11 +62,11 @@ choosing the classification rule.
 
 This is the Sonnet-001 form of the Observation Localization Principle.
 
-## 3. Phase 8A — discrete canonical decomposition
+## 3. Phase 8A — discrete canonical decomposition: PASSED
 
 ### 3.1 Local observations
 
-The existing Phase-7h causal detector already supplies two local predicates:
+The Phase-7h causal detector supplies two local predicates:
 
 `A = forced_earlier`
 : a new contact is provably at or before the old first-witness event.
@@ -93,45 +93,39 @@ CanonicalDecomposition.resonant       <- transport-only
 CanonicalDecomposition.completion     <- completion-required
 ```
 
-The field names are being cross-calibrated here; this experiment does not yet
-prove a general theorem identifying discrete state refinement with smooth
-renormalization/resonance.
+The field correspondence remains a cross-calibration, not a universal theorem
+identifying discrete state refinement with smooth renormalization/resonance.
 
-### 3.2 Implementation now staged
+### 3.2 Executable implementation
 
-`sonnet/lonely-runner/python/local_contact_refinement.py` now exposes
+`sonnet/lonely-runner/python/local_contact_refinement.py` exposes
 
 ```python
 analyze_center2_to_center3()
 ```
 
-which performs the old-state-only classification first, asserts that it is a
-disjoint exhaustive partition, and only afterwards locally refines affected
-states as a red team.
+which computes the old-state-only partition first and only afterwards locally
+refines affected states as a red team.
 
-The opt-in executable mathematical essay is
+The executable mathematical essay is
 
 ```text
 tests/research/test_lonely_runner_canonical_observer_decomposition.py
 ```
 
-It wraps the three state sets in the same generic `CanonicalDecomposition` carrier
-used by the Riccati/coupled/Kepler calibrations.  The essay follows the repository
-literate-programming template, contains a Proof map and claim boundary, and cites
-both the modern Lonely Runner frontier and Huffman's original coding paper.
-
-The heavy gate is intentionally excluded from routine five-version CI:
+and the dedicated heavy gate is
 
 ```text
 .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
 ```
 
-The workflow installs the current package and runs the essay with
-`AEG_RUN_LR_CANONICAL_DECOMPOSITION=1` on Python 3.12.
+Routine five-version CI does not repeat the census.  The dedicated workflow is
+PR-auditable but path-scoped to its own workflow file, and can also be launched
+manually.
 
-### 3.3 Acceptance target
+### 3.3 Exact result
 
-The pre-refinement classifier must recover exactly
+The pre-refinement classifier recovered exactly
 
 ```text
 stable              841
@@ -139,7 +133,9 @@ transport-only        2
 completion-required   6
 ```
 
-and the later local red team must independently show:
+with a pairwise-disjoint exhaustive partition of all 849 task-safe parents.
+
+Only after this partition was fixed, local refinement verified:
 
 ```text
 2 transport-only parents -> one changed semantic each, no branching
@@ -149,25 +145,45 @@ and the later local red team must independently show:
 75 total center-3 witness semantics recovered
 ```
 
-Until the opt-in gate is executed successfully, these remain acceptance targets
-encoded as assertions, not a newly recorded experimental result.
+Dedicated GitHub Actions evidence:
 
-## 4. Phase 8B — objectify same-family transport
+```text
+workflow:   Sonnet Lonely Runner Canonical Decomposition
+run id:     32583659546
+job:        canonical-decomposition
+Python:     3.12.14
+result:     1 passed
+pytest:     5.82 s
+```
 
-If 8A passes, each of the two uniform-replacement parents must be represented by
-an explicit local observer state whose parameter update:
+The wall-clock time is provenance only, not a performance claim.  The accepted
+result is the exact pre-refinement classification plus its local semantic red
+team.  Full argument and claim boundary are recorded in Phase-8A note 20.
+
+## 4. Phase 8B — objectify same-family transport: NEXT
+
+Phase 8A identifies two states that change their canonical witness but do not
+branch semantically.  Phase 8B must determine whether that future-behavior fact
+really corresponds to observer transport.
+
+For each of the two uniform-replacement parents, construct the smallest explicit
+local observer state whose parameter update:
 
 1. remains inside the same declared representation family;
 2. depends only on old local state plus the new contact layer;
 3. changes the canonical witness/contact frame;
-4. requires no new sign/residual coordinate.
+4. requires no new sign/residual coordinate;
+5. reconstructs the exact new witness.
 
 If either case requires representation enlargement, it must be reclassified as
 completion rather than protected by analogy with smooth observer transport.
 
+No `ObserverConnection` object should be introduced in the discrete Sonnet until
+this same-family representation has been explicitly identified.
+
 ## 5. Phase 8C — minimal completion of the six splits
 
-For each predicted completion parent:
+For each Phase-8A completion parent:
 
 1. find the smallest new contact distinction separating its semantic children;
 2. treat that distinction as a candidate completion residual;
@@ -188,7 +204,7 @@ pressure
 
 ## 6. Phase 8D — persistent Hauffman DAG
 
-After 8A--8C, construct an explicit center-2 -> center-3 persistent DAG.  Measure
+After 8B--8C, construct an explicit center-2 -> center-3 persistent DAG.  Measure
 incremental rather than fresh-tree geometry:
 
 ```text
@@ -209,7 +225,7 @@ observation language will deepen.
 
 Do not impose a continuous observer ODE on the full sign graph in advance.
 
-If 8A--8D show that transport and completion are genuinely sparse, then search
+If 8B--8D show that transport and completion are genuinely sparse, then search
 for a small active contact frame containing only causally critical contacts, for
 example the current witness boundary, nearest effective enter/exit events, and
 nearest unresolved task-relevant crossing.  The A/M law transports their event
@@ -249,8 +265,8 @@ depth is the operative cost [Huffman-1952].
 
 ## 9. API discipline
 
-Sonnet 001 must pressure-test, not dictate, the public API.  The current
-cross-domain candidates are deliberately small:
+Sonnet 001 pressure-tests, but does not dictate, the public API.  The current
+cross-domain candidates remain deliberately small:
 
 ```text
 ProcessDirection
@@ -259,21 +275,25 @@ ObserverConnection           # generic provenance
 CanonicalDecomposition       # backend-neutral result shape
 ```
 
+Phase 8A strengthens the case for `CanonicalDecomposition` by adding a fourth,
+discrete carrier.  It does **not** yet strengthen the case for a discrete
+`ObserverConnection`; that is Phase 8B's burden.
+
 No `ObserverBundle`, generic `Canonicalization` base protocol, curvature,
 holonomy, universal completion engine, or numerical observer ODE is promoted by
 this phase.
 
-The new Phase-8A essay is included in
-`tests/test_canonical_observer_essay_hygiene.py`, so its narrative sections,
-reference resolution, and Proof-map/test correspondence are checked even when
-the heavy mathematics is skipped in routine CI.
+The Phase-8A essay is included in
+`tests/test_canonical_observer_essay_hygiene.py`, and the branch-wide
+math/code/reference/status mapping is maintained in
+`docs/37-canonical-observer-claim-ledger.md`.
 
 ## 10. Execution order
 
 ```text
-8A  run manual exact three-way classification gate
+8A  exact local three-way classification                    PASSED
     ↓
-8B  objectify same-family transport for the two replacements
+8B  objectify same-family transport for the two replacements NEXT
     ↓
 8C  derive minimal residuals for the six splits
     ↓
@@ -285,33 +305,34 @@ freeze discrete semantics
 ```
 
 Do not move to five runners, deeper contact alphabets, or open-case tuning before
-8A--8D establish whether observer transport actually explains the known local
-refinement structure.
+8B--8D establish whether observer transport/completion actually explains the
+known local refinement structure.
 
 ## 11. Claim boundary
 
-No new Lonely Runner case is proved here.  No Canonical Observer Connection is
-yet established for Lonely Runner.  The `841/2/6` mapping remains a bounded
-cross-domain hypothesis until the dedicated opt-in gate passes and the 8B/8C
-semantic conditions are checked.
+No new Lonely Runner case is proved.  Phase 8A establishes an exact bounded
+three-way local decomposition for the declared four-speed center-depth step, but
+no Canonical Observer Connection has yet been constructed for Lonely Runner.
 
-The intended methodological statement is narrower:
+The established methodological statement is now:
 
 \[
 \boxed{
-\text{known persistent Hauffman refinement data}
-\text{ is a frozen oracle for testing observer-connection theory.}
+\text{old persistent task state + next local process layer}
+\to
+\text{stable / non-branching update / branching completion pressure}
 }
 \]
 
-A success would connect continuous AEG Analysis with discrete history geometry;
-a failure would delimit where the smooth observer language stops transferring.
+with the three roles predicted before refined task semantics are enumerated.
+Whether the two non-branching updates deserve the stronger geometric name
+`observer transport` is deliberately left to Phase 8B.
 
 ## 12. References
 
-[Sungkawichai-Trakulthongchai-2026] T. Sungkawichai, T. Trakulthongchai,
-"Eleven, twelve, and thirteen lonely runners," arXiv:2604.23906 (2026),
-https://arxiv.org/abs/2604.23906 .
+[Sungkawichai-Trakulthongchai-2026] Touch Sungkawichai, Tanupat
+Trakulthongchai, "Eleven, twelve, and thirteen lonely runners,"
+arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
 
 [Huffman-1952] David A. Huffman, "A Method for the Construction of
 Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101;
