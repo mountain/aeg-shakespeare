@@ -1,18 +1,18 @@
 # Phase 7h — contact-depth refinement is semantically local
 
-**Status:** exact corollary of the center-2 -> center-3 pair-difference census; still Gate A.
+**Status:** exact corollary of the center-2 -> center-3 pair-difference census, plus a local detector that does not require enumerating the full center-3 geometry; still Gate A.
 
-Phase 7g showed that raw pair syntax grows much faster than the exact task presentation when the contact alphabet is refined.  A finer question is even more important for an incremental algorithm:
+Phase 7g showed that raw pair syntax grows much faster than the exact task presentation when the contact alphabet is refined.  The next question is algorithmic:
 
-> when center-3 contacts are introduced, how many of the already-frozen center-2 task-safe states actually need their task semantics recomputed?
+> when center-3 contacts are introduced, which already-frozen center-2 task-safe states actually need to be reopened?
 
-The answer in the four-speed `u4/u1<8` calibration is unexpectedly small.
+The answer is under one percent.
 
-## 1. Center-3 task geometry is a pure refinement of center-2
+## 1. Center-3 task geometry is a refinement of center-2
 
-All 21 wall coordinates that were task-relevant at center `<=2` remain relevant at center `<=3`.
+All 21 wall coordinates that are task-relevant at center `<=2` remain relevant at center `<=3`.
 
-Only five genuinely new task-relevant wall coordinates appear:
+Only five genuinely new wall coordinates survive the complete post-hoc task quotient:
 
 \[
 \boxed{
@@ -22,27 +22,18 @@ Only five genuinely new task-relevant wall coordinates appear:
 \frac{u_4}{u_3}&\ ?\ \frac{14}{11},\\
 \frac{u_4}{u_3}&\ ?\ \frac{14}{9},\\
 \frac{u_4}{u_3}&\ ?\ \frac{16}{9}.
-\end{aligned}
-}
+\end{aligned}}
 \]
 
-Thus the center-3 exact task-safe sign geometry is literally a refinement of the old 21-sign presentation, not a replacement by unrelated coordinates.
+Thus the center-3 presentation is not a replacement by unrelated coordinates.  It is a local refinement of the old pair-difference sign graph.
 
-## 2. Geometric refinement is already sparse
+## 2. Geometric refinement is sparse
 
-Project every one of the 1,953 center-3 task-safe sign strata onto the old 21-sign key.
+Project every one of the 1,953 center-3 task-safe sign strata onto the old 21-sign key.  Every old center-2 task-safe state is reached, so there are exactly 849 parents.
 
-Every old center-2 task-safe stratum is reached, so the projection has exactly
+Their center-3 child-count distribution is:
 
-\[
-849
-\]
-
-parent states.
-
-Their child-count distribution is:
-
-| center-3 child strata per old parent | number of old parents |
+| center-3 sign children | center-2 parents |
 | ---: | ---: |
 | 1 | 550 |
 | 3 | 136 |
@@ -57,141 +48,215 @@ Therefore
 \boxed{550/849\approx64.8\%}
 \]
 
-of the old exact sign states do not split at all when the contact alphabet is enlarged.
+of the old exact sign states do not split geometrically at all.  Only 299 need any finer sign geometry.
 
-Only 299 old sign states require any geometric refinement.
+## 3. Task semantics is much more stable than sign geometry
 
-## 3. Semantic refinement is dramatically sparser
+There are two distinct ways an old task-safe state can be affected by the new contact layer:
 
-Now forget the refined sign identities and ask only whether the first-witness semantics of a parent changes across any of its center-3 children.
+1. **split:** different center-3 refinements acquire different first-witness semantics;
+2. **uniform replacement:** all refinements still agree with one another, but the common first witness changes because a new contact is forced into the old causal prefix.
 
-The distribution becomes:
+The exact center-3 census gives:
 
-| distinct center-3 witness semantics inside one old parent | old parents |
-| ---: | ---: |
-| 1 | 843 |
-| 3 | 2 |
-| 5 | 3 |
-| 7 | 1 |
+```text
+841 parents   witness semantics unchanged
+  6 parents   split into several new witness semantics
+  2 parents   one common new witness replaces the old one
+```
 
 Hence only
 
 \[
-\boxed{6/849\approx0.7\%}
+\boxed{8/849\approx0.94\%}
 \]
 
-of the old task-safe states actually split semantically.
+of old task-safe states need any semantic recomputation at all.
 
 Equivalently,
 
 \[
-\boxed{843/849\approx99.3\%}
+\boxed{841/849\approx99.06\%}
 \]
 
-of the old state semantics can be inherited unchanged across this calculus-depth refinement.
+of the old first-witness semantics can be inherited unchanged across the contact-depth refinement.
 
-This is much stronger than the global count `849 -> 1,953` suggests.  Most new geometric distinctions are irrelevant to the actual first-witness observer.
-
-## 4. Where the five new walls act
-
-Even the five new task-relevant wall coordinates are highly local.  Counting old parent states on which each sign can actually vary gives:
-
-| new wall | old parent states with nontrivial variation |
-| --- | ---: |
-| `u4/u2 ? 7/3` | 85 |
-| `u4/u2 ? 8/3` | 81 |
-| `u4/u3 ? 14/11` | 161 |
-| `u4/u3 ? 14/9` | 101 |
-| `u4/u3 ? 16/9` | 101 |
-
-For every other old parent the sign of that new wall is already forced by the old pair-difference cycle closure.
-
-So contact-depth refinement has two successive local filters:
+For the six splitting parents, the numbers of distinct new witness semantics are
 
 ```text
-new primitive contact ratios
-    -> cycle closure says where a new sign is even variable
-    -> old task observer says where that variation can change the witness
+3, 3, 5, 5, 5, 7.
 ```
 
-The second filter is far stronger in this calibration.
+The two uniformly replaced parents each retain one semantic child, but their witness event index is pushed later by a center-3 contact that is already forced by the old geometry.
 
-## 5. Algorithmic consequence
+## 4. A local detector finds all eight affected parents without center-3 census
 
-A naive center-depth implementation would do
+The post-hoc `8/849` answer can be rediscovered from the **old center-2 process states only**.
+
+Each center-2 task-safe state already carries a certified first-witness contact prefix.  Introduce the two new center-3 events on each runner:
+
+\[
+\alpha_{3,-}=3-\frac15=\frac{14}{5},
+\qquad
+\alpha_{3,+}=3+\frac15=\frac{16}{5}.
+\]
+
+An old parent needs reopening if either of two local conditions holds.
+
+### A. Forced earlier insertion
+
+Using only the old pair-difference constraints, a new center-3 event is provably at or before the old witness event.
+
+Then the old witness prefix is no longer the actual process prefix even if no old sign cell splits.  This detects the two uniform replacements and one of the six splitting parents.
+
+### B. Effective unresolved crossing in the old causal prefix
+
+A new center-3 event can exchange order with an event already present before the old witness, and the old pair stratum does not decide which side of the new collision ratio it lies on.
+
+One crossing can be discarded without refinement:
+
+> an unresolved **enter-enter** swap cannot create the first safe time.
+
+Immediately before the first enter both involved runners are at least as safe as at their simultaneous contact; if all other runners were already safe, a witness would have existed before that swap.  Thus pure enter-enter ordering is causally irrelevant to first-witness creation.
+
+After this process-semantic filter, condition B detects six parents.
+
+The union
+
+\[
+A\cup B
+\]
+
+contains exactly
+
+\[
+\boxed{8}
+\]
+
+parents: **8 true positives, 0 false positives, 0 false negatives** against the complete center-3 census.
+
+So the affected subset can be identified before the 72,241 refined sign systems are generated.
+
+## 5. Local refinement shrinks 72,241 systems to 298 children
+
+The eight affected task-safe parents contain only
+
+\[
+\boxed{26}
+\]
+
+of the 5,823 complete center-2 realizable sign systems.
+
+Refine only those 26 full systems by the new center-3 pair strata and apply the same exact cycle closure.  They generate only
+
+\[
+\boxed{298}
+\]
+
+center-3 realizable children.
+
+Evaluating first-witness semantics on those 298 children reproduces **exactly** the complete post-hoc center-3 task sets of all eight affected parents.
+
+Thus the semantic refinement step can be changed from
+
+\[
+72{,}241\text{ full center-3 states}
+\]
+
+to
+
+\[
+\boxed{298\text{ locally required refined states}}
+\]
+
+once the old task quotient is available—a reduction of roughly
+
+\[
+\boxed{242\times}
+\]
+
+in the number of refined full sign systems whose new semantics must actually be evaluated.
+
+The other 841 task-safe parents are inherited as stable objects.
+
+## 6. This is the process-objectification mechanism we were looking for
+
+A census-style algorithm does
 
 ```text
-refine every realizable sign system
-    -> recompute contact history
-    -> rebuild task quotient
+new contact alphabet
+    -> rebuild all realizable geometry
+    -> recompute every task state
+    -> quotient again
 ```
 
-The observed locality suggests a different algorithm:
+The local process algorithm can instead do
 
 ```text
-old task-safe state S
-    -> retain its certified witness/history boundary
-    -> introduce one new contact layer
-    -> ask whether any new contact can enter the causally relevant prefix of S
-        no  -> inherit S unchanged
-        yes -> locally refine only S
-    -> run cycle closure only inside the affected residual region
+persistent old task-safe state S
+    -> keep its certified witness/contact prefix
+    -> introduce the next contact layer
+    -> local causal detector
+         unaffected -> reuse S unchanged
+         affected   -> refine only S
+    -> cycle-close only the affected residual geometry
+    -> update task DAG locally
 ```
 
-In other words, the correct object may be a **persistent task quotient with local contact refinements**, not a sequence of complete rebuilt arrangements.
+This is a much stronger form of compression than a smaller static state count.  The **objectified state survives future process depth** and is reopened only when a new observation can actually distinguish its future.
 
-This is closely aligned with Shakespeare's process-objectification goal: once a history region has been quotiented into a stable object, later process depth should reopen it only when new observations can distinguish its futures.
+That is very close to the intended Shakespeare/AEG idea of history residual becoming a stable object.
 
-## 6. Relation to the Hauffman structure
+## 7. Consequence for the Hauffman structure: use a persistent DAG
 
-This locality also changes how the history tree should be represented.
+If 841 of 849 old task nodes survive unchanged, rebuilding an entirely new decision tree at center 3 wastes almost all stable history structure.
 
-If 843 of 849 old task states retain their semantics, rebuilding a new decision tree from scratch wastes stable history structure.  The natural next representation is a **persistent decision DAG**:
+The natural next representation is therefore a **persistent decision DAG**:
 
-- unchanged task nodes are shared across contact depths;
-- only the six semantically split residual states acquire new descendants;
-- Hauffman/history cost is measured on the resulting shared DAG, not on a fresh tree.
+- old unaffected states are shared verbatim across contact depths;
+- only eight old semantic states acquire refinement edges;
+- only the six splitting states branch semantically;
+- two states are retargeted to a new common witness;
+- Hauffman/history cost measures the incremental space/time growth of the shared DAG.
 
-This should reduce both:
+This separates three quantities that a fresh tree conflates:
 
-1. **space growth** — stable subtrees are stored once;
-2. **time growth** — old decisions leading to unaffected states need no extra query.
+1. total representation size;
+2. new space allocated by one calculus refinement;
+3. extra decision depth paid only on affected histories.
 
-Thus the next optimization target is no longer merely a better tree at one fixed contact depth.  It is the growth of a persistent space-time DAG under calculus refinement.
+The right optimization target is therefore no longer merely `best tree at depth m`, but
 
-## 7. Next executable experiment
+\[
+\boxed{\text{minimum incremental space-time cost of }D_m\to D_{m+1}.}
+\]
 
-The immediate experiment should test whether the six semantic split states can be detected **without first generating all 72,241 center-3 realizable systems**.
+## 8. Next executable step
 
-A sufficient local certificate would inspect the old state's contact/witness prefix and ask whether a newly introduced center-3 event can cross any event that is causally prior to the old witness.
-
-The target is:
+The immediate implementation target is now precise:
 
 ```text
-849 old task-safe states
-    -> local refinement detector
-    -> predicted affected subset
+old task-safe DAG
+    + new contact events
+    -> detect 8 affected parents
+    -> refine 26 old full sign systems
+    -> construct 298 center-3 children
+    -> recover the exact new task semantics
+    -> patch the DAG locally
 ```
 
-with the exact post-hoc answer
+The full center-3 census remains the frozen oracle/red team, not the algorithm.
 
-```text
-6 semantically affected parents
-```
-
-held out as the oracle.
-
-If this succeeds, contact-center refinement becomes an incremental algorithm rather than a census.
+If this local update reproduces the same 75 final witness semantics and Hauffman decision behavior without visiting the other 71,943 center-3 full states, then contact-depth refinement has become genuinely incremental.
 
 ## Claim boundary
 
-The `6/849` result is a bounded four-speed first-witness fact.  It is not yet a general theorem about contact depth or higher runner number.
+The `8/849` locality and `26 -> 298` local refinement counts are bounded four-speed first-witness results.  They are not yet a theorem for arbitrary runner count or contact depth.
 
-Its significance is structural:
+Their significance for Shakespeare is direct:
 
 \[
-\boxed{
-\text{new calculus syntax can grow substantially while the old task quotient remains almost entirely stable.}
-}
+\boxed{\text{most objectified task states remain stable when the process language is deepened.}}
+\]
 
-That is precisely the kind of persistence Shakespeare needs if process objectification is to control higher-dimensional search.
+This is the strongest evidence so far in Sonnet 001 that process objectification can control not only a fixed search space, but the *growth of the representation itself*.
