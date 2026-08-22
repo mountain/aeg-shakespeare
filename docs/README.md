@@ -41,8 +41,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 37. `36-kdv-soliton-rewrite-confluence.md` — KdV pair phase transport as a parametric history rewrite, three-soliton critical-pair joinability, and a two-body-preserving nonconfluence red team.
 38. `37-kdv-tau-rewrite-cross-presentation.md` — Hirota bilinear derivation of the pair factor and three-body coefficient, exact agreement with rewrite residuals, and an irreducible three-body cross-presentation red team.
 39. `38-resistor-network-presentation-morphism.md` — non-KdV calibration: DtN task quotient, Y–Delta discovered from response equality, Schur-complement semantic confluence, and weak-observer red team.
-40. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-41. `REFERENCES.md` — shared mathematical bibliography.
-42. `RELEASE_CHECKLIST.md` — release gates.
+40. `39-braid-markov-presentation-morphism.md` — topology calibration: braid/Markov moves, Burau/Alexander closure semantics, cross-dimension stabilization, and weak topological observer red team.
+41. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+42. `REFERENCES.md` — shared mathematical bibliography.
+43. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
