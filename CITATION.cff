@@ -1,5 +1,7 @@
 cff-version: 1.2.0
 message: "If you use AEG Shakespeare in research, please cite the software and the specific mathematical sources named by the relevant literate tests."
+authors:
+  - name: "AEG Shakespeare contributors"
 title: "AEG Shakespeare"
 type: software
 version: 0.0.1
