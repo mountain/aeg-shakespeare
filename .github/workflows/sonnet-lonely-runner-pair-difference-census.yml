@@ -1,0 +1,32 @@
+name: Sonnet Lonely Runner Pair-Difference Census
+
+# Full exact four-speed graph geometry is a research benchmark, not a routine
+# package/PR gate.  The fast cycle-consistency regression remains in normal CI.
+on:
+  workflow_dispatch:
+
+jobs:
+  pair-difference-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      AEG_RUN_LR_PAIR_DIFF_CENSUS: "1"
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Run exact pair-difference census
+        run: |
+          python -m pytest -q \
+            tests/research/test_lonely_runner_four_speed_pair_difference.py

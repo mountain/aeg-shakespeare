@@ -1,15 +1,9 @@
 name: Sonnet Lonely Runner Open K13 Follow-up
 
+# Adjacent open-case workers are deliberate holdout experiments and must never
+# run as an ordinary push/PR gate.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/sonnet-lonely-runner-phase6
-    paths:
-      - .github/workflows/sonnet-lonely-runner-open-k13-followup.yml
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-open-k13-followup.yml
 
 jobs:
   adjacent-worker-probe:

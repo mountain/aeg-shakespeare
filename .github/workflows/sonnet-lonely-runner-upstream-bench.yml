@@ -1,19 +1,10 @@
 name: Sonnet Lonely Runner Upstream Benchmark
 
+# This is a research benchmark, not a routine CI gate.  It intentionally runs
+# only when explicitly dispatched so ordinary pushes/PRs do not replay the
+# multi-minute pinned-upstream experiment.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/sonnet-lonely-runner-phase5c
-    paths:
-      - .github/workflows/sonnet-lonely-runner-upstream-bench.yml
-      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
-      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-upstream-bench.yml
-      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
-      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
 
 jobs:
   benchmark:
@@ -69,8 +60,6 @@ jobs:
             echo "P=$p exact-set SHA256: $(sha256sum "/tmp/lr-solutions/base-$p.txt" | cut -d' ' -f1)"
             head -n 1 "/tmp/lr-solutions/base-$p.txt"
           done
-          # Keep the smaller evidence files as an artifact; K11/K12 equality and
-          # hashes remain in the immutable workflow log without inflating storage.
           rm -f /tmp/lr-solutions/base-131.txt /tmp/lr-solutions/patched-131.txt
           rm -f /tmp/lr-solutions/base-139.txt /tmp/lr-solutions/patched-139.txt
 
@@ -92,7 +81,6 @@ jobs:
           import subprocess
 
           cases = [
-              # (prime, repeats, warmups)
               (131, 5, 1),
               (139, 3, 1),
           ]
