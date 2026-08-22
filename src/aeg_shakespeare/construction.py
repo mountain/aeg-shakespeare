@@ -1,7 +1,7 @@
 """Construction-history-preserving primitive proposals.
 
 Candidate primitives should not be identified merely because their final SymPy
-expressions are equal.  This module provides a small symbolic proposal IR that
+expressions are equal. This module provides a small symbolic proposal IR that
 keeps an explicit construction tree, operation costs, and bounded generation.
 It is intentionally separate from presentation evaluation/Pareto search.
 """
@@ -27,17 +27,19 @@ class SymbolicOperation:
     arity:
         Number of input expressions.
     apply:
-        Callable implementing the operation's symbolic semantics.
+        Callable implementing the operation's symbolic semantics. Callable
+        identity remains part of construction identity, so two operations with
+        the same display name are not silently equated.
     cost:
         Non-negative construction cost of one use.
     commutative:
         If true, argument permutations are considered the same construction for
-        this operation.  Associativity is *not* assumed automatically.
+        this operation. Associativity is *not* assumed automatically.
     """
 
     name: str
     arity: int
-    apply: Callable[..., sp.Expr] = field(compare=False, repr=False)
+    apply: Callable[..., sp.Expr] = field(repr=False)
     cost: float = 1.0
     commutative: bool = False
 
@@ -129,6 +131,8 @@ class PrimitiveProposalResult:
 
     @property
     def semantic_expression_count(self) -> int:
+        """Count distinct final expressions without erasing proposal histories."""
+
         return len({sp.srepr(proposal.expression) for proposal in self.proposals})
 
 
@@ -158,10 +162,13 @@ def generate_primitive_proposals(
 ) -> PrimitiveProposalResult:
     """Generate bounded symbolic primitive proposals without erasing recipes.
 
-    Generation proceeds by construction depth.  Semantic duplicates are kept if
-    they have different construction trees.  The only automatic construction
+    Generation proceeds by construction depth. Semantic duplicates are kept if
+    they have different construction trees. The only automatic construction
     quotient is argument permutation for operations explicitly declared
     commutative by the caller.
+
+    ``max_candidates`` bounds generated non-atomic proposals; atoms are caller
+    inputs and are not charged against that bound.
     """
 
     if max_depth < 0:
@@ -173,7 +180,6 @@ def generate_primitive_proposals(
 
     variables = tuple(variables)
     constructions: list[PrimitiveConstruction] = []
-    by_depth: dict[int, list[PrimitiveConstruction]] = {0: []}
     seen_constructions: set[PrimitiveConstruction] = set()
     proposals: list[PrimitiveProposal] = []
     rejected: list[RejectedPrimitiveProposal] = []
@@ -199,15 +205,19 @@ def generate_primitive_proposals(
             )
             continue
         constructions.append(construction)
-        by_depth[0].append(construction)
         if include_atoms:
             proposals.append(PrimitiveProposal(expression, construction))
 
+    if max_candidates == 0:
+        return PrimitiveProposalResult(
+            proposals=tuple(proposals),
+            rejected=tuple(rejected),
+            truncated=max_depth > 0 and bool(operations) and bool(constructions),
+        )
+
     generated_nonatoms = 0
-    truncated = False
 
     for depth in range(1, max_depth + 1):
-        by_depth[depth] = []
         pool = tuple(constructions)
         if not pool:
             break
@@ -230,18 +240,7 @@ def generate_primitive_proposals(
                 seen_constructions.add(construction)
 
                 try:
-                    expression = sp.expand(
-                        sp.sympify(
-                            operation.apply(
-                                *[
-                                    child.atom
-                                    if child.atom is not None
-                                    else _evaluate_construction(child)
-                                    for child in children
-                                ]
-                            )
-                        )
-                    )
+                    expression = _evaluate_construction(construction)
                 except Exception as exc:  # caller operation boundary
                     rejected.append(
                         RejectedPrimitiveProposal(
@@ -253,7 +252,10 @@ def generate_primitive_proposals(
 
                 if expression == 0:
                     rejected.append(
-                        RejectedPrimitiveProposal(construction, "zero is not a primitive proposal")
+                        RejectedPrimitiveProposal(
+                            construction,
+                            "zero is not a primitive proposal",
+                        )
                     )
                     continue
 
@@ -271,23 +273,20 @@ def generate_primitive_proposals(
                     )
                     continue
 
-                proposal = PrimitiveProposal(expression, construction)
-                proposals.append(proposal)
+                proposals.append(PrimitiveProposal(expression, construction))
                 constructions.append(construction)
-                by_depth[depth].append(construction)
                 generated_nonatoms += 1
                 if generated_nonatoms >= max_candidates:
-                    truncated = True
                     return PrimitiveProposalResult(
                         proposals=tuple(proposals),
                         rejected=tuple(rejected),
-                        truncated=truncated,
+                        truncated=True,
                     )
 
     return PrimitiveProposalResult(
         proposals=tuple(proposals),
         rejected=tuple(rejected),
-        truncated=truncated,
+        truncated=False,
     )
 
 
