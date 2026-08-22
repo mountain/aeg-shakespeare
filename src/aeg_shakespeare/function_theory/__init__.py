@@ -4,7 +4,7 @@ Addition/Multiplication (A/M) is the first concrete arithmetic theory.
 Algebraic quotient profiles provide a second route for processes whose reduced
 geometry forces elliptic/Abelian or higher-genus function languages.  The
 Abelian layer then exposes canonical holomorphic differentials, history lifts,
-and the global cycle data from which period/Jacobian structures can grow.
+and the global cycle/period data from which Jacobian structures can grow.
 """
 
 from .abelian import (
@@ -23,6 +23,7 @@ from .am import (
     affine_am_frame,
 )
 from .module import ProcessFunctionModule, polynomial_am_module
+from .period_matrix import AbelianCycleSystem, AbelianPeriodMatrix, compute_period_matrix
 from .periods import (
     GenusOneLattice,
     LiftedSquareRootPath,
@@ -46,6 +47,9 @@ __all__ = [
     "affine_am_frame",
     "ProcessFunctionModule",
     "polynomial_am_module",
+    "AbelianCycleSystem",
+    "AbelianPeriodMatrix",
+    "compute_period_matrix",
     "GenusOneLattice",
     "LiftedSquareRootPath",
     "integrate_lifted_differential",
