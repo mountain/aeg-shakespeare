@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, bounded search, exact relation discovery, finite grammar generation, representation costs, and symbolic backends.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, bounded search, exact relation discovery, finite grammar generation, representation costs, and symbolic backends.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -31,6 +31,8 @@ The library core is intentionally problem-independent. Current public building b
 - `ProcessWord` — an uninterpreted ordered finite process history;
 - `WordRewriteRule`, `rewrite_once`, `normalize_word` — explicit oriented relations and certified normalization traces for noncommutative finite histories; no commutativity is assumed unless supplied as a relation;
 - `enumerate_process_words`, `process_jet_signature`, `history_process_jet_signature`, `histories_task_equivalent` — finite future-response signatures and bounded task congruence for deciding when distinct histories may be safely merged for a declared task;
+- `history_depth`, `boundary_profile`, `BoundaryProfile` — finite history geometry: process depth as the radial axis and prefix-frontier width/information as boundary observables, with an optional caller-supplied exact/task quotient key;
+- `huffman_prefix_code`, `PrefixCode`, `PrefixCodeMetrics` — one optional prefix-representation strategy that redistributes code depth after the task-relevant symbol set and weights have been fixed;
 - `interpret_history` — attach caller-defined semantics to a history;
 - `ProcessSystem` — a derivation-style symbolic backend for a local process generator;
 - `SearchBudget` — explicit finite limits for local representation search;
@@ -49,15 +51,17 @@ The physical and mathematical calibration problems do **not** define the package
 
 ## Current research boundary
 
-Shakespeare now has three deliberately separate executable layers.
+Shakespeare now has four deliberately separate executable layers.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
 
 At the task layer, a history is not merged merely because its current observation agrees with another one. Finite process-jet signatures compare every allowed continuation through a declared depth; a continuation that exposes hidden state splits the proposed task quotient.
 
+At the history-geometry layer, the remaining distinguishable histories form a finite prefix tree. Shakespeare can measure root-to-node process depth and level/frontier widths, and can optionally apply a Huffman prefix strategy once a task-relevant boundary and usage measure are supplied. Huffman is a representation strategy, not the definition of process equality or primitive discovery.
+
 At the symbolic local-process layer, Shakespeare grows independent process directions from seed expressions until a finite grammar closes or a bound is reached. If closure succeeds, the library discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact coordinates for the original seeds. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
-The next threshold is **costed presentation search**: generate candidate primitives/relations from allowed operations, require task sufficiency, compare alternative history + grammar + relation + decoder costs, and feed accepted candidates back through the same rewrite, signature, closure, and relation machinery.
+The next threshold remains **costed presentation search**: generate candidate primitives/relations from allowed operations, require task sufficiency, compare alternative history + grammar + relation + decoder costs, and feed accepted candidates back through the same rewrite, signature, history-geometry, closure, and relation machinery.
 
 ## Development
 
@@ -68,7 +72,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), and [`docs/02-task-signatures.md`](docs/02-task-signatures.md) for the current computational formulation.
+See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), and [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md) for the current computational formulation.
 
 ## License
 
