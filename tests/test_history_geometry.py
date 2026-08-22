@@ -2,12 +2,12 @@ import math
 
 import pytest
 
-from aeg_shakespeare import ProcessWord
-from aeg_shakespeare.history_geometry import (
+from aeg_shakespeare.presentation.history import (
     boundary_profile,
     history_depth,
     huffman_prefix_code,
 )
+from aeg_shakespeare.process.history import ProcessWord
 
 
 def test_history_depth_is_process_depth_and_can_be_weighted():
