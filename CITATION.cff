@@ -4,7 +4,7 @@ authors:
   - name: "AEG Shakespeare contributors"
 title: "AEG Shakespeare"
 type: software
-version: 0.0.1
+version: 0.0.2
 date-released: 2026-08-22
 repository-code: "https://github.com/mountain/aeg-shakespeare"
 license: Unlicense
