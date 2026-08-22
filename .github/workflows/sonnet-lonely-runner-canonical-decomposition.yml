@@ -1,8 +1,8 @@
 name: Sonnet Lonely Runner Canonical Decomposition
 
 # Phase 8A/8B rebuilds the exact center<=2 four-speed task geometry and performs
-# local center-3 red-team refinement. Phase 8C additionally probes minimum
-# process-generated residual signatures for the six genuinely branching parents.
+# local center-3 red-team refinement. Phase 8C additionally certifies minimum raw
+# process-generated completion residuals for the six genuinely branching parents.
 # This is not part of the routine five-version CI matrix. Besides manual
 # dispatch, it runs on a pull request only when this workflow file itself changes.
 on:
@@ -30,11 +30,17 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e . pytest
 
-      - name: Run corrected Phase 8A/8B canonical-decomposition red team
+      - name: Run Phase 8A/8B canonical-decomposition red team
         env:
           AEG_RUN_LR_CANONICAL_DECOMPOSITION: "1"
         run: |
           python -m pytest -q tests/research/test_lonely_runner_canonical_observer_decomposition.py
+
+      - name: Run Phase 8C minimum completion-residual calibration
+        env:
+          AEG_RUN_LR_CANONICAL_DECOMPOSITION: "1"
+        run: |
+          python -m pytest -q tests/research/test_lonely_runner_minimal_completion_residuals.py
 
       - name: Print Phase 8B/8C local refinement records
         run: |
