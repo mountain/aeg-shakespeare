@@ -40,8 +40,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 36. `35-killer-calibrations-and-dominance-target.md` — first KdV/Kepler killer calibrations and the stronger presentation-complexity/integrability target.
 37. `36-kdv-soliton-rewrite-confluence.md` — KdV pair phase transport as a parametric history rewrite, three-soliton critical-pair joinability, and a two-body-preserving nonconfluence red team.
 38. `37-kdv-tau-rewrite-cross-presentation.md` — Hirota bilinear derivation of the pair factor and three-body coefficient, exact agreement with rewrite residuals, and an irreducible three-body cross-presentation red team.
-39. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-40. `REFERENCES.md` — shared mathematical bibliography.
-41. `RELEASE_CHECKLIST.md` — release gates.
+39. `38-resistor-network-presentation-morphism.md` — non-KdV calibration: DtN task quotient, Y–Delta discovered from response equality, Schur-complement semantic confluence, and weak-observer red team.
+40. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+41. `REFERENCES.md` — shared mathematical bibliography.
+42. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
