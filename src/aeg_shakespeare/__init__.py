@@ -8,6 +8,12 @@ from .core import (
     interpret_history,
 )
 from .cost import PresentationCost
+from .grammar import (
+    GeneratedGrammar,
+    GeneratedPresentation,
+    discover_generated_grammar,
+    discover_generated_presentation,
+)
 from .linear import KrylovReturnRelation, discover_krylov_relation
 from .relations import (
     ProcessPolynomialRelation,
@@ -31,6 +37,10 @@ __all__ = [
     "homogeneous_monomials",
     "interpret_history",
     "PresentationCost",
+    "GeneratedGrammar",
+    "GeneratedPresentation",
+    "discover_generated_grammar",
+    "discover_generated_presentation",
     "KrylovReturnRelation",
     "discover_krylov_relation",
     "ProcessPolynomialRelation",
