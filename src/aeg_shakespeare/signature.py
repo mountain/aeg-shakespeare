@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from itertools import product
 from typing import Callable, Generic, Sequence, TypeVar
 
-from .core import ProcessWord, interpret_history
+from .process.history import ProcessWord, interpret_history
 
 StepT = TypeVar("StepT")
 StateT = TypeVar("StateT")
