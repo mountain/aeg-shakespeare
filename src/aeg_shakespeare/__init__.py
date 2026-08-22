@@ -29,6 +29,13 @@ from .relations import (
     discover_return_relation,
     factor_process_relation,
 )
+from .rewrite import (
+    RewriteResult,
+    RewriteStep,
+    WordRewriteRule,
+    normalize_word,
+    rewrite_once,
+)
 
 __all__ = [
     "ProcessSystem",
@@ -55,6 +62,11 @@ __all__ = [
     "discover_relation_kernel",
     "discover_return_relation",
     "factor_process_relation",
+    "RewriteResult",
+    "RewriteStep",
+    "WordRewriteRule",
+    "normalize_word",
+    "rewrite_once",
 ]
 
 __version__ = "0.0.1"
