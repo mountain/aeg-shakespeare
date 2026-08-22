@@ -16,6 +16,16 @@ from .selection import (
     search_first_order_process_quotients,
     structural_first_order_quotient_cost,
 )
+from .structured import (
+    PairableAtom,
+    PairingConstruction,
+    PairingSpec,
+    StructuredObserverProposal,
+    StructuredObserverProposalResult,
+    euclidean_pairing,
+    generate_pairing_observers,
+    nonstationary_observer_proposals,
+)
 
 __all__ = [
     "ObservableQuotient",
@@ -30,4 +40,12 @@ __all__ = [
     "FirstOrderObservablePresentation",
     "search_first_order_process_quotients",
     "structural_first_order_quotient_cost",
+    "PairableAtom",
+    "PairingConstruction",
+    "PairingSpec",
+    "StructuredObserverProposal",
+    "StructuredObserverProposalResult",
+    "euclidean_pairing",
+    "generate_pairing_observers",
+    "nonstationary_observer_proposals",
 ]
