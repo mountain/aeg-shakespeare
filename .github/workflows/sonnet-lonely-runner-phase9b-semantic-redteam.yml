@@ -1,0 +1,33 @@
+name: Sonnet Lonely Runner Phase 9B Semantic Red Team
+
+# One auditable center4 local semantic red team. Only the nine Phase-9A pressure
+# cells are refined by symbolic event-order branching; no full center4 wall
+# arrangement is built.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-phase9b-semantic-redteam.yml
+
+jobs:
+  phase9b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run Phase 9B exact local semantic red team
+        run: |
+          python sonnet/lonely-runner/python/center4_semantic_redteam.py
