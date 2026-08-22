@@ -2,8 +2,9 @@ name: Sonnet Lonely Runner Canonical Decomposition
 
 # Phase 8A--8C.2 establish the local decomposition/completion/objectification
 # chain. Phase 8D attaches those objectified completion decoders to the frozen
-# center-2 persistent Hauffman tree and measures incremental representation
-# geometry. This PR trigger is temporary for one auditable exact run.
+# center-2 persistent Hauffman tree and separately audits historical-usage cost
+# versus the 298-child conditional refinement workload. This PR trigger is
+# temporary for one auditable exact run.
 on:
   workflow_dispatch:
   pull_request:
