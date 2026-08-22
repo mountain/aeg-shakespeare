@@ -1,11 +1,28 @@
-"""Optional function-theory layers built on Shakespeare process structures.
+"""Optional process-generated function-theory layers.
 
-These modules are downstream representations, not the universal process
-ontology.  ``am`` means **Addition/Multiplication** and is the first concrete
-layer; other function theories can coexist without changing the core
+Addition/Multiplication (A/M) is the first concrete theory implemented here.
+The package also exposes a generic finite process-function module abstraction so
+other function theories can coexist without changing Shakespeare's core
 history/grammar/search interfaces.
 """
 
-from .am import AMFunctionTheory, AMPowerWeight, AMState, affine_am_frame
+from .am import (
+    AMFunctionTheory,
+    AMPathFlow,
+    AMPowerWeight,
+    AMPrimitive,
+    AMState,
+    affine_am_frame,
+)
+from .module import ProcessFunctionModule, polynomial_am_module
 
-__all__ = ["AMFunctionTheory", "AMPowerWeight", "AMState", "affine_am_frame"]
+__all__ = [
+    "AMFunctionTheory",
+    "AMPathFlow",
+    "AMPowerWeight",
+    "AMPrimitive",
+    "AMState",
+    "affine_am_frame",
+    "ProcessFunctionModule",
+    "polynomial_am_module",
+]
