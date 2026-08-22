@@ -1,149 +1,275 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 0 — audited frontier, exact oracles, baseline reconstruction.  
+**Status:** Phase 4 — exact semantics, task quotient, structural quotient, and first upstream-strict pruning certificate.  
 **Target open case:** `LRC(13)`, i.e. **14 runners**.
 
-## 1. Statement and notation
+## 1. Problem
 
-Following the convention used by Sungkawichai–Trakulthongchai, `LRC(k)` asks whether every positive integer speed tuple
-
-\[
-\mathbf u=(u_1,\ldots,u_k)
-\]
-
-has a witness time \(t\in\mathbb R\) satisfying
+For a positive integer speed tuple
 
 \[
-\|t u_i\|\ge \frac1{k+1}\qquad(i=1,\ldots,k),
+\mathbf u=(u_1,\ldots,u_k),
 \]
 
-where \(\|x\|\) denotes distance to the nearest integer.  In this notation `LRC(k)` is the Lonely Runner Conjecture for `k+1` total runners after passing to speeds relative to one runner.
-
-The current published/preprint computational frontier is
+`LRC(k)` asks whether some real time `t` satisfies
 
 \[
-\boxed{LRC(k)\text{ holds for }k\le 12.}
+\|t u_i\|\ge \frac1{k+1}\qquad(i=1,\ldots,k).
 \]
 
-Thus the next fixed-dimensional open case is
+This is the usual Lonely Runner Conjecture for `k+1` total runners after passing to speeds relative to one runner.
+
+The 2026 computer-assisted frontier proves
 
 \[
-\boxed{LRC(13)\quad\text{(14 runners)}.}
+LRC(k)\quad\text{for }k\le 12,
 \]
 
-## 2. Why this belongs in `sonnet/`
-
-This problem already contains an explicit representation bottleneck rather than merely a large numerical workload.
-
-The 2026 proof strategy converts the global conjecture into finite modular verification.  For a prime \(p\) and lifting denominator \(l\), one studies the set \(I(k,p,l)\) of speed tuples that are *improper*: they have neither the relevant gcd certificate nor a witness in the rational time grid \(\frac1{lp}\mathbb Z\).  Lifting and backward projection then progressively shrink supersets of the genuinely difficult residue classes.
-
-The implementation also quotients speed tuples by three exact symmetries modulo \(p\):
-
-1. coordinate permutation;
-2. independent sign flips;
-3. multiplication by a unit in \(\mathbb Z_p^\times\).
-
-This reduces the initial search from roughly \(p^k\) tuples to about
+so the next fixed-dimensional open case is
 
 \[
-\binom{p/2}{k-1}\approx\frac{p^k}{2^k(k-1)!}.
+\boxed{LRC(13)\text{ — 14 total runners}.}
 \]
 
-But the authors explicitly identify the next barrier:
-
-> for `k = 13`, the primary bottleneck is the efficient computation of `I(k,p,1)`; progress likely requires a better understanding of speed tuples without an ansatz witness, yielding stronger pruning conditions.
-
-That is almost exactly a Shakespeare question:
+The same work explicitly identifies efficient computation of the initial improper set
 
 \[
-\boxed{
-\text{Can the initial modular search be replaced by a cheaper task-sufficient presentation?}
-}
+I(k,p,1)
 \]
 
-The goal is **not** to rename the existing sieve.  The goal is to discover additional exact quotients, signatures, relations, or morphisms that preserve the only semantics that matter: whether a residue class can still contain a non-eventually-proper tuple after allowed refinements.
+as the primary bottleneck for extending the proof to `k=13`, and points to stronger pruning of no-witness speed tuples as the needed direction.
 
-## 3. Phase 0 contract
+That makes this a particularly clean Shakespeare problem: the accepted frontier is already blocked by a representation/search-state issue rather than by lack of a numerical integrator.
 
-Phase 0 deliberately stops before attacking `k=13` at scale.
+## 2. Current research chain
 
-It establishes four things:
+The Sonnet is organized as a sequence of increasingly less naive representations.
 
-1. **exact continuous oracle** for small integer speed tuples, using rational arithmetic only;
-2. **exact ansatz-grid oracle** matching the finite witness semantics used by the current computational proof;
-3. **symmetry reconstruction** for the known modulo-\(p\) quotient;
-4. **red-team calibration** on the tight tuple \((1,2,\ldots,k)\), which passes exactly at \(1/(k+1)\) and fails under any strengthened threshold.
+### Phase 0 — exact ground truth
 
-The executable Phase 0 calibration lives in:
+[`00-problem-frontier.md`](00-problem-frontier.md)
+
+Executable calibration:
 
 ```text
 tests/research/test_lonely_runner_phase0.py
 ```
 
-The mathematical and literature audit lives in:
+This phase freezes:
+
+- an exact rational continuous oracle for small integer speed tuples;
+- the exact finite `(k,p,l)` ansatz proper/improper predicate;
+- the known modulo-`p` quotient by permutation, independent sign flips, and global units;
+- tight-threshold red teams;
+- a first future-behavior separation: two states can both be improper at `l=1` but differ after all `c=2` lifts.
+
+### Phase 1 — `I(k,p,1)` is fixed-cardinality set cover
+
+[`01-initial-sieve-as-set-cover.md`](01-initial-sieve-as-set-cover.md)
+
+Executable calibration:
 
 ```text
-sonnet/lonely-runner/00-problem-frontier.md
+tests/research/test_lonely_runner_initial_sieve.py
 ```
 
-## 4. Shakespeare research hypothesis
-
-Let a modular search state encode partial information about a candidate speed tuple.  A future refinement may consist of a larger denominator, a lift, a projection, or another admissible sieve step.  Two states should be merged only if no allowed future refinement can distinguish them with respect to the target predicate
-
-```text
-can this state still contain a non-eventually-proper tuple?
-```
-
-This suggests a task-relative congruence analogous in spirit to the existing bounded future signatures:
+For the half-circle time set
 
 \[
-h_1\sim_{\mathrm{LRC}} h_2
-\iff
-Q(h_1c)=Q(h_2c)
-\quad\text{for all allowed continuations }c,
+U_p=\{1,\ldots,(p-1)/2\},
 \]
 
-where \(Q\) is the LRC survival/properness semantics.
+each folded speed `s` defines its bad-time subset
 
-The first serious discovery experiment will therefore search for **coarser-than-labelled but certificate-preserving states** on already solved values of \(k\), before attempting `k=13`.
+\[
+C_s=\left\{a\in U_p:\left\|\frac{as}{p}\right\|<\frac1{k+1}\right\}.
+\]
 
-## 5. Success ladder
+Then
 
-We will keep four claim levels separate:
+\[
+(s_1,\ldots,s_k)\in I(k,p,1)
+\iff
+C_{s_1}\cup\cdots\cup C_{s_k}=U_p.
+\]
 
-1. **re-expression:** reproduce the known ansatz/lifting argument;
-2. **compression:** reduce state count or runtime under identical exact semantics;
-3. **structural discovery:** discover a new exact pruning signature or presentation quotient;
-4. **new mathematics:** use the discovered structure to prove `LRC(13)` or another previously open statement.
+At `k=3,p=13`, direct rational-grid semantics and this set-cover semantics agree on all 56 folded multisets, giving 14 improper tuples and 3 unit-orbit canonical classes.
 
-Only level 4 is a solution of the open problem.
+A red team also shows that `current cover + depth` is not a sufficient state once a construction grammar constrains which future choices remain admissible.
 
-## 6. Immediate next phases
+### Phase 2 — exact task quotient with Shakespeare
 
-### Phase 0 — exact ground truth
+[`02-process-jet-quotient.md`](02-process-jet-quotient.md)
 
-- finish and test exact small-instance oracles;
-- reproduce the known symmetry quotient;
-- encode the paper's `(k,p,l)` proper/improper predicate exactly.
+Executable calibration:
 
-### Phase 1 — baseline reconstruction
+```text
+tests/research/test_lonely_runner_process_jet_quotient.py
+```
 
-- reproduce `I(k,p,1)` for small solved `k,p` pairs;
-- record tuple counts before and after each known quotient/pruning rule;
-- compare with the upstream `find_cover` implementation.
+Using a deliberately simple canonical nondecreasing multiset grammar, Shakespeare's existing `ProcessJetSignature` computes the **entire remaining future task language** on finite worlds.
 
-### Phase 2 — representation search
+It does both sides of the job:
 
-- define candidate state signatures from residue occupancy, pair differences, arc-cover profiles, witness-deficit patterns, and bounded refinement behavior;
-- merge only with exact task certificates;
-- measure Pareto tradeoffs among state count, branching, certificate cost, and decoder/reconstruction cost.
+- rejects unsound merges such as `(1,4)` / `(1,6)` at `k=3,p=13`;
+- certifies safe merges even when current cover sets differ.
 
-### Phase 3 — transfer
+Example:
 
-- train nothing and assume nothing from `k=13` initially;
-- freeze the best quotient on solved cases;
-- then apply the same representation grammar and budgets to `LRC(13)`.
+\[
+(1,1,4)\equiv_Q(1,4,5)
+\qquad(k=5,p=17),
+\]
 
-## Claim boundary
+because both have exactly the same accepting two-step continuation `(6,7)`.
 
-Nothing in this directory currently proves `LRC(13)`, improves the best published finite-checking bound, or establishes that Shakespeare will outperform the current C++ implementation.  Phase 0 only creates an auditable bridge from the accepted problem formulation to Shakespeare's representation-search machinery.
+Exact class counts:
+
+```text
+k=4,p=13:  28 literal partial histories -> 11 task classes
+k=5,p=17: 165 literal partial histories -> 19 task classes
+```
+
+These are semantic class counts, not runtime speedups.
+
+### Phase 3 — requirement antichain
+
+[`03-requirement-antichain-quotient.md`](03-requirement-antichain-quotient.md)
+
+Executable calibration:
+
+```text
+tests/research/test_lonely_runner_requirement_antichain.py
+```
+
+For every uncovered time `a`, record the still-admissible future speeds that can repair it:
+
+\[
+R_h(a)=\{s:\text{future speed }s\text{ covers }a\}.
+\]
+
+Delete duplicates and strict supersets, retaining the inclusion-minimal requirement antichain
+
+\[
+\mathcal A(h).
+\]
+
+For the canonical grammar, the structural state
+
+\[
+\boxed{S(h)=(\text{remaining slots},\text{last speed},\mathcal A(h))}
+\]
+
+is proved sufficient to determine the complete future task language.
+
+Compression ladder:
+
+```text
+k=4,p=13:
+  literal histories       28
+  current-cover states    21
+  requirement states      16
+  exact task classes      11
+
+k=5,p=17:
+  literal histories      165
+  current-cover states    85
+  requirement states      41
+  exact task classes      19
+```
+
+Thus a substantial part of the semantic quotient has a cheap, intelligible structural explanation.
+
+### Phase 4 — return to the real upstream MRV state
+
+[`04-upstream-mrv-disjoint-requirement-prune.md`](04-upstream-mrv-disjoint-requirement-prune.md)
+
+Executable calibration:
+
+```text
+tests/research/test_lonely_runner_upstream_requirement_prune.py
+```
+
+This phase transliterates the relevant `vzsky/13-lonely-runners` `find_cover` semantics, including the exact bit ordering, `AvailableChoice` elimination, MRV tie-breaking, optimistic `early_return_bound()`, and top-level worker initialization.
+
+The first strictly stronger pruning certificate appears at `k=5,p=29` in the reachable state
+
+```text
+chosen history     (1, 2, 7)
+eliminated speed   {5}
+remaining slots    2
+```
+
+Among its minimal future requirements are the three pairwise-disjoint sets
+
+\[
+\{6,11,12\},
+\qquad
+\{3,8,13\},
+\qquad
+\{9,10,14\}.
+\]
+
+Therefore at least three future choices are necessary, while only two slots remain.  The branch is impossible.
+
+The current upstream optimistic bound does not reject this state: it sees six uncovered positions and obtains
+
+\[
+6 = 3 + 3(2-1),
+\]
+
+so its strict pruning inequality fails exactly at equality.
+
+Whole-search small-world checks preserve the exact canonical solution sets:
+
+```text
+k=5,p=29:  113 -> 110 DFS calls, 1 new prune, 7 solution classes unchanged
+k=7,p=37: 1752 -> 1743 DFS calls, 3 new prunes, 177 solution classes unchanged
+```
+
+The gains are small.  What Phase 4 establishes is **strictly stronger information**, not practical dominance.
+
+## 3. What Shakespeare has contributed so far
+
+The useful conceptual move was not “rewrite Lonely Runner in new notation.”  It was the representation sequence
+
+```text
+current tuple / covered times
+        ->
+exact future continuation language
+        ->
+future repair requirements
+        ->
+minimal requirement antichain
+        ->
+new exact obstruction on the actual upstream search
+```
+
+The difference is important.  Phase 2 first used exhaustive future semantics as an oracle for the correct quotient; Phase 3 then searched backward for a compact invariant explaining part of that quotient; Phase 4 transported the resulting object to the real computational bottleneck.
+
+That is the intended Shakespeare workflow.
+
+## 4. Claim level
+
+Using the `sonnet/` four-level rubric:
+
+1. **re-expression:** achieved;
+2. **compression:** achieved on finite state counts, but not yet as a meaningful wall-clock result;
+3. **structural discovery:** achieved at calibration level — the requirement-antichain presentation is exact for the canonical grammar and yields a strictly stronger reachable-state prune upstream;
+4. **new mathematics:** not achieved — `LRC(13)` remains open.
+
+No claim here improves the published LRC frontier.
+
+## 5. Next phase
+
+The next work should stay close to the actual `I(k,p,1)` bottleneck rather than return to abstract API design.
+
+Priority order:
+
+1. reconstruct the exact primes / parameter sets used in solved upstream `k=8..12` runs and collect node-count baselines;
+2. add forced-speed propagation and bounded transversal lower bounds on the requirement antichain;
+3. measure **additional prunes versus certificate cost** under identical solution semantics;
+4. investigate memoization by reduced requirement presentations while retaining construction provenance needed to reconstruct every candidate tuple;
+5. only after a method transfers across solved `k`, freeze it and test `k=13` without retuning the representation grammar.
+
+The next decisive threshold is therefore not another attractive toy merge.  It is a reproducible improvement on solved large instances of the same initial sieve that blocks `LRC(13)`.
