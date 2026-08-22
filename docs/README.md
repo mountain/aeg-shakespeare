@@ -21,7 +21,8 @@ The documentation is organized as a mathematical/programming narrative rather th
 17. `16-lifted-cycle-intersection.md` — sampled surface intersection pairing, the role of sheet history, and the first measured symplectic form.
 18. `17-real-branch-cycle-presentation.md` — ordered real branch data as a cycle grammar, exact construction-level symplectic pairing, and the first branch-generated genus-two period calibration.
 19. `18-abel-jacobi-history-quotient.md` — A-normalized Abelian history increments, closed-history lattice generators, and the normalized period-lattice quotient.
-20. `REFERENCES.md` — shared mathematical bibliography.
-21. `RELEASE_CHECKLIST.md` — release gates.
+20. `19-polynomial-discovery-layer.md` — bounded observer grammars, template-free polynomial first integrals, and exact observable-quotient elimination.
+21. `REFERENCES.md` — shared mathematical bibliography.
+22. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
