@@ -36,6 +36,14 @@ from .rewrite import (
     normalize_word,
     rewrite_once,
 )
+from .signature import (
+    ProcessJetSignature,
+    enumerate_process_words,
+    histories_task_equivalent,
+    history_process_jet_signature,
+    process_jet_signature,
+    signatures_equivalent,
+)
 
 __all__ = [
     "ProcessSystem",
@@ -67,6 +75,12 @@ __all__ = [
     "WordRewriteRule",
     "normalize_word",
     "rewrite_once",
+    "ProcessJetSignature",
+    "enumerate_process_words",
+    "histories_task_equivalent",
+    "history_process_jet_signature",
+    "process_jet_signature",
+    "signatures_equivalent",
 ]
 
 __version__ = "0.0.1"
