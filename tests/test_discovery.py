@@ -1,12 +1,12 @@
 import sympy as sp
 
-from aeg_shakespeare import (
-    AlgebraicConstraintSet,
-    ProcessSystem,
+from aeg_shakespeare.discovery import (
     discover_first_order_process_quotient,
     discover_polynomial_invariants,
     generate_polynomial_observer_basis,
 )
+from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from aeg_shakespeare.process.local import ProcessSystem
 
 
 def _same_relation_up_to_scalar(left, right):
