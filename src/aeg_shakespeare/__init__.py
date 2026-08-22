@@ -1,5 +1,13 @@
 """AEG Shakespeare: process-representation discovery library."""
 
+from .construction import (
+    PrimitiveConstruction,
+    PrimitiveProposal,
+    PrimitiveProposalResult,
+    RejectedPrimitiveProposal,
+    SymbolicOperation,
+    generate_primitive_proposals,
+)
 from .core import (
     ProcessSystem,
     ProcessWord,
@@ -63,6 +71,12 @@ from .signature import (
 )
 
 __all__ = [
+    "PrimitiveConstruction",
+    "PrimitiveProposal",
+    "PrimitiveProposalResult",
+    "RejectedPrimitiveProposal",
+    "SymbolicOperation",
+    "generate_primitive_proposals",
     "ProcessSystem",
     "ProcessWord",
     "SearchBudget",
