@@ -15,7 +15,8 @@ from typing import Sequence
 
 import sympy as sp
 
-from .core import ProcessSystem, SearchBudget
+from .presentation.budget import SearchBudget
+from .process.local import ProcessSystem
 from .relations import (
     RelationDecomposition,
     coefficient_vector,
@@ -53,7 +54,6 @@ class GeneratedGrammar:
 
     def growth_profile(self) -> tuple[int, ...]:
         """Cumulative number of independent grammar directions by depth."""
-
         if not self.depths:
             return ()
         return tuple(
@@ -182,8 +182,6 @@ def discover_generated_grammar(
         queue.append((derived, depth + 1))
         additions += 1
 
-    # A final exact closure check makes the certificate explicit even if a
-    # future search policy changes queue behavior.
     for expression in basis:
         derived = sp.expand(system.derive(expression))
         if not _in_span(derived, basis, system.assignments):
@@ -202,13 +200,7 @@ def discover_generated_presentation(
     seeds: Sequence[sp.Expr],
     budget: SearchBudget | None = None,
 ) -> GeneratedPresentation:
-    """Discover a finite grammar, its relation factors, primitives, and decoder.
-
-    This high-level routine requires neither an ambient basis nor a relation
-    template. If the generated grammar fails to close within the budget, the
-    returned presentation is incomplete and exposes the escaping residuals.
-    """
-
+    """Discover a finite grammar, its relation factors, primitives, and decoder."""
     budget = budget or SearchBudget()
     grammar = discover_generated_grammar(system, seeds, budget=budget)
     if not grammar.closed:

@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Literal, Sequence, TypeVar
 
-from .core import ProcessWord
+from .process.history import ProcessWord
 
 StepT = TypeVar("StepT")
 RewriteReason = Literal["normal_form", "cycle", "max_steps"]
@@ -140,8 +140,6 @@ def normalize_word(
             )
         seen.append(current)
 
-    # Distinguish a normal form reached exactly at the budget boundary from a
-    # history that still has an applicable relation.
     if rewrite_once(current, rules) is None:
         return RewriteResult(
             original=history,

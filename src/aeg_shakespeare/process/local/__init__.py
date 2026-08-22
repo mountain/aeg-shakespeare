@@ -1,6 +1,6 @@
 """Local/infinitesimal process realizations."""
 
-from ..core import ProcessSystem
-from ..frame import ProcessFrame
+from .frame import ProcessFrame
+from .system import ProcessSystem
 
 __all__ = ["ProcessSystem", "ProcessFrame"]
