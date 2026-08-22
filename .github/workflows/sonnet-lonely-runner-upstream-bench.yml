@@ -1,0 +1,84 @@
+name: Sonnet Lonely Runner Upstream Benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/sonnet-lonely-runner-phase5c
+    paths:
+      - .github/workflows/sonnet-lonely-runner-upstream-bench.yml
+      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
+      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UPSTREAM_SHA: 755b116b2e6090cd4a83187a696f863388b7d746
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Record toolchain
+        run: |
+          uname -a
+          g++ --version
+          nproc
+
+      - name: Checkout pinned upstream twice
+        run: |
+          git clone --quiet https://github.com/vzsky/13-lonely-runners.git upstream-baseline
+          git -C upstream-baseline checkout --quiet "$UPSTREAM_SHA"
+          test "$(git -C upstream-baseline rev-parse HEAD)" = "$UPSTREAM_SHA"
+          cp -a upstream-baseline upstream-patched
+          echo "Pinned upstream: $(git -C upstream-baseline rev-parse HEAD)"
+
+      - name: Apply minimal two-slot patch
+        run: |
+          git -C upstream-patched apply --check "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched apply "$GITHUB_WORKSPACE/sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch"
+          git -C upstream-patched diff --check
+          git -C upstream-patched diff -- src/find_cover.h
+
+      - name: Compile baseline and patched harnesses
+        run: |
+          CXXFLAGS='-O3 -std=c++23 -pthread -march=native'
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-baseline/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-upstream-baseline
+          g++ $CXXFLAGS \
+            -I"$GITHUB_WORKSPACE/upstream-patched/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-upstream-patched
+
+      - name: Verify complete canonical solution sets
+        run: |
+          mkdir -p /tmp/lr-solutions
+          for p in 79 89 127; do
+            /tmp/lr-upstream-baseline dump "$p" > "/tmp/lr-solutions/base-$p.txt"
+            /tmp/lr-upstream-patched dump "$p" > "/tmp/lr-solutions/patched-$p.txt"
+            cmp "/tmp/lr-solutions/base-$p.txt" "/tmp/lr-solutions/patched-$p.txt"
+            echo "P=$p exact-set SHA256: $(sha256sum "/tmp/lr-solutions/base-$p.txt" | cut -d' ' -f1)"
+            head -n 1 "/tmp/lr-solutions/base-$p.txt"
+          done
+
+      - name: Benchmark pinned upstream source
+        run: |
+          echo '=== baseline ==='
+          for p in 79 89 127; do
+            /tmp/lr-upstream-baseline bench "$p" 15
+          done
+          echo '=== patched ==='
+          for p in 79 89 127; do
+            /tmp/lr-upstream-patched bench "$p" 15
+          done
+
+      - name: Upload exact-set evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lonely-runner-upstream-solution-sets
+          path: /tmp/lr-solutions
+          retention-days: 30
