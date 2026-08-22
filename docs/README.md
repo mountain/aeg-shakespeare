@@ -37,8 +37,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 33. `32-physical-finite-process-consolidation.md` — Phase B.1 physical relocation of finite family/character/action/cocycle implementation under `process/finite`, with old module paths reduced to compatibility shims.
 34. `33-core-decomposition.md` — Phase B.2 split of the old mixed `core.py` into canonical history, local-process, and presentation-budget owners, with source dependency hygiene gates.
 35. `34-release-0.0.2.md` — second research-preview release contract: semantic API consolidation, discovery expansion, and CPython 3.10–3.14 support.
-36. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-37. `REFERENCES.md` — shared mathematical bibliography.
-38. `RELEASE_CHECKLIST.md` — release gates.
+36. `35-killer-calibrations-and-dominance-target.md` — first KdV/Kepler killer calibrations and the stronger presentation-complexity/integrability target.
+37. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+38. `REFERENCES.md` — shared mathematical bibliography.
+39. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
