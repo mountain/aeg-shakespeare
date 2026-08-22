@@ -24,6 +24,8 @@ _ESSAYS = (
     _ROOT / "research" / "test_lonely_runner_residual_objectification.py",
     _ROOT / "research" / "test_lonely_runner_persistent_dag_increment.py",
     _ROOT / "research" / "test_lonely_runner_refinement_aware_huffman.py",
+    _ROOT / "research" / "test_lonely_runner_activation_geometry.py",
+    _ROOT / "research" / "test_lonely_runner_controlled_interleaving.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
