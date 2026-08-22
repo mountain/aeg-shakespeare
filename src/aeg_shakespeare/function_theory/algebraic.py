@@ -1,12 +1,38 @@
 """Algebraic-curve profiles for process quotients.
 
-This module is intentionally modest: it recognizes the common hyperelliptic
-form ``y**2 = P(x)`` and records exact algebraic invariants that help downstream
-code decide whether elementary, elliptic/Abelian, or higher-genus function
-languages may be required.
+Mathematical lineage
+--------------------
+Elliptic and Abelian function theory historically did not begin as a catalogue
+of special functions.  Elliptic integrals led to inversion; inversion exposed
+periods; periods produced complex tori; and the resulting function theory was
+then algebraized by relations such as the Weierstrass cubic.  Riemann surfaces,
+algebraic curves, Abelian integrals, and Jacobians grew from this analytic and
+geometric circle of ideas.
 
-It is not a general algebraic-geometry engine and it does not make genus the
-universal Shakespeare complexity measure.
+Shakespeare uses the same history in reverse as a calibration principle.  A
+primitive process may first force a constraint/invariant quotient.  Only after
+that quotient is visible do we ask what geometry and what function language are
+adequate.  Thus a relation ``y**2 = P(x)`` is not introduced because we already
+know the answer is elliptic or hyperelliptic; it is an algebraic shadow emitted
+by the process reduction.
+
+Implementation
+--------------
+This module deliberately implements only a small, exact observable:
+``HyperellipticProfile`` records degree, discriminant, generic genus, and the
+degeneration condition for ``y**2 = P(x)``.  That is enough for classical tests
+to distinguish genus-zero, genus-one, and higher-genus quotient regimes without
+preloading the corresponding named function theory.
+
+Boundary
+--------
+Genus is not a complete process normal form, and this module is not a general
+algebraic-geometry engine.  Period lattices, Abel-Jacobi maps, Jacobians, and
+function-field compression belong to later layers and should be derived when a
+calibration actually requires them.
+
+See ``docs/08-function-theory-genus-hierarchy.md`` and
+``docs/09-literate-programming-and-mathematical-lineage.md``.
 """
 
 from __future__ import annotations
