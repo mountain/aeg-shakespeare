@@ -1,13 +1,11 @@
 name: Sonnet Lonely Runner Phase 9A Constraint Cells
 
-# One auditable scaling probe: first replay the generic next-layer detector on
+# Manual scaling calibration: first replay the generic next-layer detector on
 # center2->3, then apply the unchanged rule to the Phase-8E center3 persistent
-# constraint-cell representation and the center4 contact layer.
+# constraint-cell representation and the center4 contact layer. Routine CI does
+# not repeat the exact closure materialization on every PR synchronization.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase9a-cells.yml
 
 jobs:
   phase9a:
