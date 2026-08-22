@@ -1,0 +1,33 @@
+name: Sonnet Lonely Runner Phase 9A Constraint Cells
+
+# One auditable scaling probe: first replay the generic next-layer detector on
+# center2->3, then apply the unchanged rule to the Phase-8E center3 persistent
+# constraint-cell representation and the center4 contact layer.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-phase9a-cells.yml
+
+jobs:
+  phase9a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run Phase 9A persistent constraint-cell probe
+        run: |
+          python sonnet/lonely-runner/python/persistent_constraint_cells.py
