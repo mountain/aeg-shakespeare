@@ -10,6 +10,13 @@ Terminal nodes with the same final first-witness task are shared when counting
 the persistent DAG.  No additional cross-parent sharing of internal decoder
 subgraphs is assumed, so the resulting node count is an explicit auditable
 construction rather than an optimistic graph-minimization claim.
+
+Two execution-cost diagnostics are kept deliberately separate.  The historical
+55-input distribution from the center-2 Hauffman calibration happens not to hit
+any refinement-sensitive parent and is therefore retained only as a *blind
+control*.  A second conditional workload measures the exact extra queries across
+all 298 locally reopened center-3 children; it is structural and does not pretend
+to be a global probability model.
 """
 
 from __future__ import annotations
@@ -46,6 +53,11 @@ class PersistentDagIncrementAnalysis:
     training_history_reindex_inputs: int
     training_extra_queries: int
     training_updated_depth: int
+    local_completion_child_count: int
+    local_history_reindex_child_count: int
+    local_refinement_child_count: int
+    local_refinement_extra_queries: int
+    local_completion_worst_extra_depth: int
 
     @property
     def training_incremental_mean_depth(self) -> Fraction:
@@ -54,6 +66,24 @@ class PersistentDagIncrementAnalysis:
     @property
     def training_updated_mean_depth(self) -> Fraction:
         return Fraction(self.training_updated_depth, 55)
+
+    @property
+    def local_refinement_mean_extra_depth(self) -> Fraction:
+        """Mean new-wall queries conditional on the 298 reopened children."""
+
+        return Fraction(
+            self.local_refinement_extra_queries,
+            self.local_refinement_child_count,
+        )
+
+    @property
+    def local_completion_mean_extra_depth(self) -> Fraction:
+        """Mean new-wall queries conditional on genuine completion children."""
+
+        return Fraction(
+            self.local_refinement_extra_queries,
+            self.local_completion_child_count,
+        )
 
 
 def _center2_persistent_tree(base: lcr.LocalRefinementAnalysis):
@@ -181,6 +211,9 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
     raw_records = {}
     decoder_internal_total = 0
     decoder_path_leaf_total = 0
+    decoder_weighted_total = 0
+    decoder_worst_max = 0
+    completion_child_total = 0
     for parent in sorted(base.completion_required_parents):
         completion = completion_by_parent[parent]
         selected_features = tuple(
@@ -194,19 +227,26 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
             strata3,
         )
         root, internal, worst, weighted, path_leaves = ro._optimal_decoder(records)
-        del worst, weighted
         decoders[parent] = root
         raw_records[parent] = records
         decoder_internal_total += internal
         decoder_path_leaf_total += path_leaves
+        decoder_weighted_total += weighted
+        decoder_worst_max = max(decoder_worst_max, worst)
+        completion_child_total += sum(weight for _key, _task, weight in records)
 
     assert decoder_internal_total == 16
     assert decoder_path_leaf_total == 38
+    assert completion_child_total == 288
+    assert decoder_weighted_total == 544
+    assert decoder_worst_max == 3
+    history_reindex_child_total = base.refined_child_count - completion_child_total
+    assert history_reindex_child_total == 10
 
     # Build the persistent updated prefix histories without expanding unrelated
-    # center-3 sign states.  Stable and history-reindex parents reuse their old
+    # center-3 sign states. Stable and history-reindex parents reuse their old
     # paths exactly; completion parents append only locally required decoder
-    # queries.  Parent identity is included in a local query token because this
+    # queries. Parent identity is included in a local query token because this
     # construction does not assume cross-parent internal sharing.
     updated_histories = []
     final_tasks = set()
@@ -242,8 +282,8 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
     updated_worst_depth = len(updated_widths) - 1
     updated_peak = max(updated_widths)
 
-    # A tree node count is the boundary volume.  Six old completion terminal
-    # leaves are replaced by local decoder trees.  The history calculation is an
+    # A tree node count is the boundary volume. Six old completion terminal
+    # leaves are replaced by local decoder trees. The history calculation is an
     # independent certificate of the same arithmetic.
     expected_tree_nodes = 328 - 6 + decoder_internal_total + decoder_path_leaf_total
     assert updated_tree_nodes == expected_tree_nodes
@@ -256,7 +296,9 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
     old_dag_nodes = 109 + 68
     updated_dag_nodes = updated_internal_nodes + len(final_tasks)
 
-    # Exact incremental execution on the frozen 55-input usage distribution.
+    # Historical usage control: replay the old 55 integer quadruples.  This
+    # distribution turns out to be blind to all eight refinement-sensitive
+    # parents, so its zero incremental query cost must not be generalized.
     completion_inputs = 0
     reindex_inputs = 0
     extra_queries = 0
@@ -283,7 +325,10 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
         extra_queries += local_depth
         updated_depth += old_depth + local_depth
 
-    assert updated_depth == 135 + extra_queries
+    assert completion_inputs == 0
+    assert reindex_inputs == 0
+    assert extra_queries == 0
+    assert updated_depth == 135
 
     return PersistentDagIncrementAnalysis(
         old_persistent_labels=68,
@@ -307,6 +352,11 @@ def analyze_persistent_dag_increment() -> PersistentDagIncrementAnalysis:
         training_history_reindex_inputs=reindex_inputs,
         training_extra_queries=extra_queries,
         training_updated_depth=updated_depth,
+        local_completion_child_count=completion_child_total,
+        local_history_reindex_child_count=history_reindex_child_total,
+        local_refinement_child_count=base.refined_child_count,
+        local_refinement_extra_queries=decoder_weighted_total,
+        local_completion_worst_extra_depth=decoder_worst_max,
     )
 
 
@@ -328,13 +378,21 @@ def main() -> None:
     print(f"    incremental DAG nodes:  {result.incremental_dag_nodes}")
     print(f"    peak / worst:           {result.updated_peak_frontier} / {result.updated_worst_depth}")
     print(f"    width profile:          {result.updated_widths}")
-    print("  frozen 55-input execution")
+    print("  historical 55-input control")
     print(f"    completion inputs:      {result.training_completion_inputs}")
     print(f"    history-reindex inputs: {result.training_history_reindex_inputs}")
     print(f"    extra wall queries:     {result.training_extra_queries}")
     print(f"    updated weighted depth: {result.training_updated_depth}")
     print(f"    incremental mean depth: {float(result.training_incremental_mean_depth):.6f}")
-    print(f"    updated mean depth:     {float(result.training_updated_mean_depth):.6f}")
+    print("    interpretation:         BLIND to refinement-sensitive parents")
+    print("  conditional local-refinement workload")
+    print(f"    completion children:    {result.local_completion_child_count}")
+    print(f"    reindex children:       {result.local_history_reindex_child_count}")
+    print(f"    all reopened children:  {result.local_refinement_child_count}")
+    print(f"    extra wall queries:     {result.local_refinement_extra_queries}")
+    print(f"    mean / reopened child:  {float(result.local_refinement_mean_extra_depth):.6f}")
+    print(f"    mean / completion child:{float(result.local_completion_mean_extra_depth):.6f}")
+    print(f"    worst extra depth:      {result.local_completion_worst_extra_depth}")
 
 
 if __name__ == "__main__":
