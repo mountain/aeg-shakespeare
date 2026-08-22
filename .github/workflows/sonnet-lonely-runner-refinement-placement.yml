@@ -1,12 +1,10 @@
 name: Sonnet Lonely Runner Refinement Placement
 
-# Research-only Phase 8D.2 calibration. The PR trigger is temporary for one
-# auditable executable-essay run and will be removed after the result is recorded.
+# Research-only Phase 8D.2 calibration. The seven-point exact placement sweep is
+# manual-only; routine CI audits its executable essay without repeating the
+# expensive exact old-tree searches on every pull-request synchronization.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-refinement-placement.yml
 
 jobs:
   placement-probe:
