@@ -23,6 +23,7 @@ _ESSAYS = (
     _ROOT / "research" / "test_lonely_runner_minimal_completion_residuals.py",
     _ROOT / "research" / "test_lonely_runner_residual_objectification.py",
     _ROOT / "research" / "test_lonely_runner_persistent_dag_increment.py",
+    _ROOT / "research" / "test_lonely_runner_refinement_aware_huffman.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
@@ -72,8 +73,6 @@ def test_every_citation_key_resolves_to_a_full_reference_entry():
         if not entries:
             failures.append(f"{path.name}: empty References section")
 
-        # Each entry must expose at least one useful locator somewhere before the
-        # next entry: DOI, stable URL, ISBN, or a precise page/chapter/section cue.
         chunks = re.split(r"(?m)^\[(?=[A-Z])", references)
         for chunk in chunks:
             if not chunk.strip():
