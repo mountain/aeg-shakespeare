@@ -1,11 +1,11 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 5b — bounded transversal transferred to configured solved primes, C++ semantic mirror validated, minimal upstream patch prepared.  
-**Target open case:** `LRC(13)`, i.e. **14 runners**.
+**Status:** Phase 5c — frozen two-slot certificate validated on the actual pinned upstream `find_cover` source through the solved `K=12` frontier.  
+**Target open case:** `LRC(13)`, i.e. **14 total runners**.
 
 ## 1. Problem
 
-For a positive integer speed tuple
+For a positive integer relative speed tuple
 
 \[
 \mathbf u=(u_1,\ldots,u_k),
@@ -55,7 +55,7 @@ tests/research/test_lonely_runner_phase0.py
 
 Freezes the exact continuous oracle, finite `(k,p,l)` properness semantics, the known modulo-`p` quotient, tight-threshold red teams, and a first lift-future separation.
 
-### Phase 1 — `I(k,p,1)` as fixed-cardinality set cover
+### Phase 1 — `I(k,p,1)` is fixed-cardinality set cover
 
 [`01-initial-sieve-as-set-cover.md`](01-initial-sieve-as-set-cover.md)
 
@@ -85,7 +85,7 @@ Then exactly
 C_{s_1}\cup\cdots\cup C_{s_k}=U_p.
 \]
 
-The initial modular sieve is therefore a finite set-cover completion process.
+Thus the initial modular sieve is a finite set-cover completion process.
 
 ### Phase 2 — exact task quotient with Shakespeare
 
@@ -154,16 +154,10 @@ The requirement representation yields the first reachable state pruned by Shakes
 
 [`05-bounded-transversal-prune.md`](05-bounded-transversal-prune.md)
 
-Executable CI calibration:
+Executable calibration:
 
 ```text
 tests/research/test_lonely_runner_two_slot_transversal.py
-```
-
-Manual configured-worker benchmark:
-
-```text
-python sonnet/lonely-runner/bench_phase5_two_slot.py
 ```
 
 The requirement hypergraph has transversal number
@@ -180,7 +174,7 @@ With `r` slots remaining,
 
 is an exact impossibility certificate for the remaining `I(k,p,1)` set-cover task.
 
-The first useful Pareto point is not full four-slot lookahead but the exact **two-slot** specialization:
+The strongest useful Pareto point found so far is not full four-slot lookahead but the exact **two-slot** specialization:
 
 \[
 \boxed{\exists s,t\in A:\ U\subseteq C_s\cup C_t}
@@ -188,66 +182,87 @@ The first useful Pareto point is not full four-slot lookahead but the exact **tw
 
 where `U` is the current uncovered-time bitset and `A` the currently available speeds. If no such pair exists, the branch is impossible.
 
-Complete configured-prime mirrors give:
+The Python semantic mirror already showed material node reductions, including about 35.5% over the first five `k=10,p=127` top-level workers. Stronger three/four-slot lookahead removes more nodes but can lose on certificate cost, making the two-slot rule the first stable cost/strength Pareto point.
 
-```text
-k=8,p=79:   39,813 -> 28,828 nodes   (-27.6%)
-k=8,p=83:  113,488 -> 91,335 nodes   (-19.5%)
-k=9,p=89:  161,820 -> 112,951 nodes  (-30.2%)
-```
-
-For `k=8,p=79` and `k=9,p=89`, the complete accepted raw history sets are compared directly and are identical before and after pruning.
-
-For current-config `k=10,p=127`, the first five serialized top-level workers give:
-
-| second speed | baseline | + 2-slot | reduction | new prunes | accepted leaves |
-| ---: | ---: | ---: | ---: | ---: | ---: |
-| 2  | 376,376 | 264,486 | 29.7% | 17,022 | 2,822 |
-| 4  | 505,777 | 322,126 | 36.3% | 28,063 | 8,041 |
-| 6  | 543,301 | 345,043 | 36.5% | 30,261 | 19,176 |
-| 8  | 394,315 | 244,797 | 37.9% | 22,958 | 8,841 |
-| 10 | 316,729 | 201,286 | 36.5% | 18,319 | 7,454 |
-
-Aggregate:
-
-\[
-2,136,498\to1,377,738
-\]
-
-or about **35.5% fewer nodes**.
-
-A key red-team result is that stronger 3/4-slot exact lookahead removes still more nodes but can lose on certificate cost. The two-slot rule is presently the best stable representation/certificate Pareto point in the Python semantic mirror.
-
-### Phase 5b — C++ semantic mirror and minimal upstream bridge
+### Phase 5b — independent C++ cost survival
 
 [`06-cpp-semantic-mirror-and-upstream-patch.md`](06-cpp-semantic-mirror-and-upstream-patch.md)
 
-Standalone C++ benchmark:
+Standalone C++ mirror:
 
 ```text
 sonnet/lonely-runner/cpp/phase5_two_slot_bench.cpp
 ```
 
-Prepared source patch:
+Prepared minimal patch:
 
 ```text
 sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
 ```
 
-The C++23 / `std::bitset` mirror reproduces the Python deterministic node and accepted-leaf counts exactly. In one local `g++ 14.2 -O3 -march=native` diagnostic run, the two-slot rule remained a net win:
+The independent C++23 / `std::bitset` mirror reproduces the deterministic Python node/leaf counts and shows that the two-slot certificate remains cheap enough to produce a net speedup in C++.
+
+This eliminated the explanation that the Phase-5 advantage was merely an artifact of Python search overhead, but still left one gap: it was our C++ reconstruction rather than the upstream implementation itself.
+
+### Phase 5c — pinned actual-upstream benchmark
+
+[`07-pinned-upstream-find-cover-benchmark.md`](07-pinned-upstream-find-cover-benchmark.md)
+
+Pinned benchmark workflow:
 
 ```text
-k=8,p=79:  about 10.2 ms -> 8.7 ms
-k=9,p=89:  about 45.5 ms -> 33.3 ms
+.github/workflows/sonnet-lonely-runner-upstream-bench.yml
 ```
 
-All first five `k=10,p=127` workers also improved in that standalone C++ realization, individually by roughly `1.1x–1.45x`.
+Harness compiled directly against upstream source:
 
-This is **not yet an upstream benchmark**. Its purpose is to eliminate a major alternative explanation: the certificate is not useful only because of Python-specific search costs. The remaining implementation uncertainty is now the exact upstream source/build/threading environment.
+```text
+sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
+```
+
+The workflow clones the upstream repository and pins exactly
+
+```text
+755b116b2e6090cd4a83187a696f863388b7d746
+```
+
+before compiling baseline and patched harnesses against the two source trees with the same compiler and flags.
+
+Before any timing result is accepted, the complete canonical solution sets are serialized, sorted, and compared byte-for-byte. Equality holds from `K=8` through the solved `K=12` frontier:
+
+| `K` | `p` | canonical classes | exact-set SHA-256 |
+| ---: | ---: | ---: | --- |
+| 8 | 79 | 442 | `19e7676dd8b93337528427e34e93eeb676398cf9bf2bf56db7ab0a695ee4cde4` |
+| 9 | 89 | 1,382 | `6592161f6521096779a65c851f41e0da254dfb72f1c8b645d2d6dade4b111c5b` |
+| 10 | 127 | 8,228 | `7de33735d72cb7ecdc6f6169a77ed6b93bdba18a73d42e25f9c47633151ab328` |
+| 11 | 131 | 40,615 | `2c6f57d4ca0d809d68c2f66e3122eee09685cb4856bed1860247aa1719de0fcb` |
+| 12 | 139 | 641,960 | `913fb4de316be14928cb09621b9f66fd57adff418e70247651605bbbc3dc8b0e` |
+
+On one successful 4-core GitHub-hosted runner (`g++ 13.3.0`, `-O3 -std=c++23 -pthread -march=native`), median `find_cover` timings were:
+
+| `K,p` | baseline | patched | speedup | reduction |
+| --- | ---: | ---: | ---: | ---: |
+| `8,79` | 4.842 ms | 4.003 ms | **1.210x** | 17.3% |
+| `9,89` | 20.642 ms | 17.604 ms | **1.173x** | 14.7% |
+| `10,127` | 450.341 ms | 373.116 ms | **1.207x** | 17.1% |
+| `11,131` | 1.630 s | 1.416 s | **1.151x** | 13.2% |
+| `12,139` | 18.656 s | 15.527 s | **1.201x** | 16.8% |
+
+The absolute timings are machine-dependent. The important transfer statement is stronger and cleaner:
+
+```text
+one frozen rule
+one pinned upstream revision
+no K-specific retuning
+complete canonical output equality
+positive median speedup at every tested K = 8..12
+```
+
+This closes the solved-case transfer gate that was set before any open-case experiment was attempted.
 
 ## 3. What Shakespeare has contributed
 
-The chain is now:
+The research chain is now:
 
 ```text
 literal search history
@@ -255,15 +270,17 @@ literal search history
     -> future repair requirements
     -> requirement antichain
     -> transversal feasibility
-    -> cost-selected two-slot certificate
-    -> configured solved-prime node reduction
-    -> C++ bitset cost survival
-    -> prepared minimal upstream patch
+    -> cost-selected exact two-slot certificate
+    -> deterministic node reduction
+    -> C++ cost survival
+    -> minimal patch to actual pinned upstream source
+    -> byte-identical canonical outputs K=8..12
+    -> net upstream find_cover speedups K=8..12
 ```
 
-This is stronger than translating an existing algorithm into new notation. The key structure was discovered by first computing exact future semantics, then explaining the resulting equivalence classes, then lowering that explanation back into a cheap certificate for the frontier solver.
+This is not merely a new notation for an existing algorithm. The key structure was found by first computing the correct future semantics, then explaining the resulting equivalence classes with a compact representation, and finally lowering that representation into a cheap certificate for the frontier solver.
 
-The cost red team is equally important: Shakespeare should not maximize semantic strength blindly. The operative objective is a Pareto frontier over
+The cost red team is equally important. Shakespeare should not maximize semantic strength blindly. The operative objective is a Pareto frontier over
 
 \[
 \text{semantic strength},\quad
@@ -277,21 +294,32 @@ The cost red team is equally important: Shakespeare should not maximize semantic
 Using the `sonnet/` rubric:
 
 1. **re-expression:** achieved;
-2. **compression:** achieved in exact state/node counts on configured solved parameters;
-3. **structural discovery:** achieved — future-requirement/transversal structure produces pruning not present in the upstream bound and survives a C++ realization;
+2. **compression:** achieved on actual pinned upstream searches across solved configurations;
+3. **structural discovery:** achieved — future-requirement/transversal structure yields a new exact pruning certificate and a reproducible implementation gain;
 4. **new mathematics:** not achieved — `LRC(13)` remains open.
 
-Phase 5b still does **not** improve the published Lonely Runner frontier.
+Nothing through Phase 5c improves the published Lonely Runner mathematical frontier.
 
-## 5. Next threshold
+## 5. Next threshold — Phase 6 frozen open-case probe
 
-The next step is now extremely specific:
+The protocol now permits a carefully bounded experiment on `K=13`.
 
-1. apply the prepared patch to the exact upstream `find_cover.h` revision;
-2. compile with the upstream command and threading setup;
-3. verify output identity or stable hashes over solved `K=8..10` primes;
-4. measure `find_cover` wall time and total proof-pipeline time;
-5. if the net gain survives, freeze the rule and extend to configured `K=11,12` primes;
-6. only after that transfer should the frozen rule be tried on exploratory `K=13` parameters.
+The rule must remain completely frozen. We will **not** retune the lookahead depth, threshold, presentation, or search heuristic after seeing open-case data.
 
-The decisive question has narrowed from mathematics to implementation: does the cheapest exact shadow discovered by Shakespeare remain a net win **inside the actual solver that defines the current frontier**?
+The first experiment should not launch the entire `K=13` initial sieve. Instead:
+
+1. use the current upstream `K=13` configured prime list unchanged;
+2. start at its first configured prime, `p=199`;
+3. expose exactly the same top-level worker decomposition used by `find_all_covers_parallel`;
+4. replay one worker baseline vs patched;
+5. compare complete worker canonical solution sets and wall time;
+6. expand to a few workers only if the first probe remains tractable;
+7. extrapolate total cost only after measuring worker imbalance.
+
+The first open-case question is therefore deliberately narrow:
+
+\[
+\boxed{\text{Does the frozen solved-case representation advantage transfer to one real }K=13\text{ worker?}}
+\]
+
+A positive answer would still not prove `LRC(13)`, but it would be the first experiment in this Sonnet to touch the actual open-case search without changing the representation discovered on solved instances.
