@@ -20,7 +20,7 @@ import itertools
 import math
 from typing import Callable, Generic, Hashable, Mapping, Sequence, TypeVar
 
-from .core import ProcessWord
+from .process.history import ProcessWord
 
 StepT = TypeVar("StepT")
 SymbolT = TypeVar("SymbolT", bound=Hashable)
@@ -54,13 +54,7 @@ class BoundaryProfile:
         return max(self.information_widths, default=0.0)
 
     def exponential_growth_rates(self) -> tuple[float, ...]:
-        """Return ``log(width[d]) / d`` for positive depths.
-
-        Natural logarithms are used so this can be compared with ordinary
-        exponential-growth/entropy rates.  Empty frontiers contribute
-        ``-inf``.
-        """
-
+        """Return ``log(width[d]) / d`` for positive depths."""
         rates: list[float] = []
         for depth, width in enumerate(self.widths[1:], start=1):
             rates.append(math.log(width) / depth if width > 0 else -math.inf)
@@ -72,7 +66,6 @@ def history_depth(
     step_cost: Mapping[StepT, float] | Callable[[StepT], float] | None = None,
 ) -> float:
     """Return unweighted or caller-weighted process depth of one history."""
-
     if step_cost is None:
         return float(history.depth)
 
@@ -96,22 +89,7 @@ def boundary_profile(
     max_depth: int | None = None,
     quotient_key: Callable[[ProcessWord[StepT]], Hashable] | None = None,
 ) -> BoundaryProfile:
-    """Compute finite frontier widths for a set of literal histories.
-
-    Parameters
-    ----------
-    histories:
-        Histories whose prefix closure defines the finite tree.
-    max_depth:
-        Optional truncation depth.  By default the deepest supplied history is
-        used.
-    quotient_key:
-        Optional caller-defined key for identifying prefixes at each depth.
-        This is the hook through which exact normal forms or task-sufficient
-        quotient labels can be reflected in the boundary geometry.  Shakespeare
-        does not infer such a quotient merely from symbolic equality.
-    """
-
+    """Compute finite frontier widths for a set of literal histories."""
     histories = tuple(histories)
     if max_depth is None:
         bound = max((history.depth for history in histories), default=0)
@@ -214,7 +192,6 @@ class PrefixCode(Generic[SymbolT]):
 
     def decode(self, bits: Sequence[int]) -> tuple[SymbolT, ...]:
         """Decode a concatenation of codewords; reject incomplete prefixes."""
-
         inverse = {code: symbol for symbol, code in self.codes.items()}
         out: list[SymbolT] = []
         prefix: tuple[int, ...] = ()
@@ -251,13 +228,7 @@ class _HuffmanNode(Generic[SymbolT]):
 
 
 def huffman_prefix_code(weights: Mapping[SymbolT, float]) -> PrefixCode[SymbolT]:
-    """Build a deterministic binary Huffman code for a finite weighted boundary.
-
-    The symbol set is fixed by the caller.  This routine therefore optimizes
-    code depth *after* the representation/task layer has decided which outcomes
-    remain distinguishable; it does not discover new process primitives.
-    """
-
+    """Build a deterministic binary Huffman code for a finite weighted boundary."""
     if not weights:
         raise ValueError("at least one symbol is required")
 
