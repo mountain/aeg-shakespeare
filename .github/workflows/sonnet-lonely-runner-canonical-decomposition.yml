@@ -1,13 +1,16 @@
 name: Sonnet Lonely Runner Canonical Decomposition
 
 # Phase 8A/8B rebuilds the exact center<=2 four-speed task geometry and performs
-# local center-3 red-team refinement. Phase 8C additionally certifies minimum raw
-# process-generated completion residuals for the six genuinely branching parents.
-# This is intentionally manual-only: routine CI still parses and audits the
-# mathematical essays, but does not repeat the heavy exact census on every PR
-# synchronization or across the five-version Python matrix.
+# local center-3 red-team refinement. Phase 8C certifies minimum raw
+# process-generated completion residuals, and Phase 8C.2 quotients over-refined
+# raw signatures by exact task semantics. This PR trigger is temporary so the
+# new research gate is attached to an auditable commit; it is restored to
+# workflow_dispatch-only after the result is recorded.
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
 
 jobs:
   canonical-decomposition:
@@ -40,6 +43,12 @@ jobs:
         run: |
           python -m pytest -q tests/research/test_lonely_runner_minimal_completion_residuals.py
 
-      - name: Print Phase 8B/8C local refinement records
+      - name: Run Phase 8C.2 residual-objectification calibration
+        env:
+          AEG_RUN_LR_CANONICAL_DECOMPOSITION: "1"
         run: |
-          python sonnet/lonely-runner/python/local_contact_refinement.py
+          python -m pytest -q tests/research/test_lonely_runner_residual_objectification.py
+
+      - name: Print Phase 8C.2 objectification records
+        run: |
+          python sonnet/lonely-runner/python/residual_objectification.py
