@@ -1,22 +1,34 @@
 import sympy as sp
 
 from aeg_shakespeare import (
-    Add,
+    PresentationCost,
     ProcessSystem,
-    Scale,
+    ProcessWord,
+    SearchBudget,
     decompose,
-    discover_quadratic_return_sectors,
+    discover_krylov_relation,
+    discover_relation_kernel,
     discover_return_relation,
     homogeneous_monomials,
-    normalize_affine_history,
+    interpret_history,
 )
 
 
-def test_p0_affine_normalization():
-    a, b, s = sp.symbols("a b s")
-    nf = normalize_affine_history([Add(a), Scale(s), Add(b)])
-    assert sp.simplify(nf.scale - s) == 0
-    assert sp.simplify(nf.shift - (s * a + b)) == 0
+def test_process_word_interpreter_supports_affine_calibration_without_affine_api():
+    history = ProcessWord(("add_a", "scale_s", "add_b"))
+    a, b, s, x = sp.symbols("a b s x")
+
+    def transition(state, step):
+        if step == "add_a":
+            return sp.expand(state + a)
+        if step == "scale_s":
+            return sp.expand(s * state)
+        if step == "add_b":
+            return sp.expand(state + b)
+        raise ValueError(step)
+
+    result = interpret_history(history, x, transition)
+    assert sp.expand(result - (s * x + s * a + b)) == 0
 
 
 def oscillator():
@@ -24,43 +36,59 @@ def oscillator():
     return x, p, ProcessSystem((x, p), {x: p, p: -x}, name="R")
 
 
-def test_p2_oscillator_return_relation():
-    x, _, R = oscillator()
-    relation = discover_return_relation(R, x, max_order=4)
+def test_return_relation_api_discovers_oscillator_calibration():
+    x, _, system = oscillator()
+    relation = discover_return_relation(system, x, max_order=4)
     assert relation is not None
     assert relation.order == 2
     D = sp.Symbol("D")
     assert sp.expand(relation.as_expr(D) - (1 + D**2)) == 0
 
 
-def test_p3_discovers_degree_three_return_sectors():
-    x, p, R = oscillator()
+def test_generic_relation_kernel_recovers_degree_three_calibration():
+    x, p, system = oscillator()
     basis = homogeneous_monomials((x, p), 3)
-    sectors = discover_quadratic_return_sectors(R, basis, max_rate=4)
-    rates = {sector.rate for sector in sectors}
-    assert rates == {1, 3}
 
-    for sector in sectors:
-        for primitive in sector.primitives:
-            assert sp.expand(R.derive(R.derive(primitive)) + sector.rate**2 * primitive) == 0
+    discovered = {}
+    for rate in range(1, 5):
+        kernel = discover_relation_kernel(system, basis, (rate**2, 0, 1))
+        if kernel.primitives:
+            discovered[rate] = kernel
+
+    assert set(discovered) == {1, 3}
+    for rate, kernel in discovered.items():
+        for primitive in kernel.primitives:
+            assert sp.expand(system.derive(system.derive(primitive)) + rate**2 * primitive) == 0
 
 
-def test_p3_duffing_forcing_decomposes_into_return_sectors():
-    x, p, R = oscillator()
+def test_duffing_expression_is_only_a_calibration_of_generic_decompose():
+    x, p, system = oscillator()
     basis = homogeneous_monomials((x, p), 3)
-    sectors = discover_quadratic_return_sectors(R, basis, max_rate=4)
-    primitives = [expr for sector in sectors for expr in sector.primitives]
+    primitives = []
+    for rate in (1, 3):
+        primitives.extend(
+            discover_relation_kernel(system, basis, (rate**2, 0, 1)).primitives
+        )
+
     coeffs = decompose(x**3, primitives, (x, p))
     reconstructed = sp.expand(sum(c * q for c, q in zip(coeffs, primitives)))
     assert sp.expand(reconstructed - x**3) == 0
 
 
-def test_p1_krylov_recovers_return_relation_before_spectrum():
-    from aeg_shakespeare import discover_krylov_relation
-
+def test_krylov_backend_recovers_return_relation_before_spectrum():
     X = sp.Matrix([[0, -1], [1, 0]])
     v = sp.Matrix([1, 0])
     relation = discover_krylov_relation(X, v)
     assert relation is not None
     z = sp.Symbol("X")
     assert sp.expand(relation.as_polynomial(z) - (1 + z**2)) == 0
+
+
+def test_budget_and_cost_are_public_problem_independent_objects():
+    budget = SearchBudget(max_history_depth=4, max_expression_degree=3)
+    assert budget.max_history_depth == 4
+
+    cheaper = PresentationCost(grammar=2, relations=1, history=3, decoder=1)
+    expensive = PresentationCost(grammar=3, relations=1, history=4, decoder=1)
+    assert cheaper.dominates(expensive)
+    assert cheaper.scalarize() == 7
