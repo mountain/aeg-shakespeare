@@ -1,0 +1,193 @@
+"""Sonnet 001 Phase 8E: controlled old/new wall interleaving closes the placement gap.
+
+Question
+--------
+Phase 8D found the correct amount of center-3 decision structure by locally
+grafting six completion decoders, but its history placement was worse than the
+separately frozen fresh center-3 tree (`peak/worst = 75/12` versus `72/10`).
+Phase 8D.2 showed that reweighting the old 21-wall prefix alone cannot close this
+gap in the sampled family.
+
+Can the gap be closed without importing the full center-3 arrangement, by
+allowing exactly the seven already-discovered completion walls to interleave with
+the old 21 wall predicates before complete old-parent resolution?
+
+Primitive data
+--------------
+The program receives:
+
+- the 849 exact center-2 persistent parents and 21 old task-relevant wall signs;
+- the seven new completion walls frozen by Phase 8C;
+- exact center-2 multiplicative difference constraints;
+- the two Phase-8B history-reindex task updates;
+- the six frozen Phase-8C.2 completion decoders;
+- the historical 55-input current-task usage distribution and, for optional
+  refinement weighting, the 288 local completion-child masses.
+
+It does **not** receive the full 72,241-state center-3 arrangement, a fresh
+center-3 tree topology, any additional center-3 wall, deeper contact layers, or
+`K=13` data.
+
+Classical lineage
+-----------------
+Huffman's construction optimizes finite prefix decisions once an alphabet and
+weighting are fixed [Huffman-1952].  The Lonely Runner computational setting is
+described in [Sungkawichai-Trakulthongchai-2026].  The joint old/new predicate
+construction and its activation interpretation are **Shakespeare
+reconstructions**, not claims made by those sources.
+
+Shakespeare reconstruction
+---------------------------
+For every center-2 full sign system, exact difference constraints enumerate only
+the feasible sign combinations of the seven frozen new walls.  This expands the
+849 old persistent parents into a finite joint representation of
+
+    21 old wall signs + 7 new completion-wall signs.
+
+Stable parents assign the same task to every feasible new-wall variant.  The two
+history-reindex parents use their already-certified updated task.  The six
+completion parents obtain task semantics only through their frozen Phase-8C.2
+decoders.
+
+The resulting exact world contains 2,753 feasible items and 75 final task
+semantics.  A generic exact decision-tree search may query any of the 28
+predicates.  A new-wall node whose live item set still contains several old
+parents is recorded as a cross-parent activation.
+
+Three proposal weights are tested: current usage only (`lambda=0`), and small
+refinement mixtures `1/16` and `1/4`.  Final history geometry is evaluated
+explicitly rather than inferred from the scalar proposal weight.
+
+Calibration statement
+---------------------
+Passing this bounded test certifies that:
+
+1. exact old constraints plus the seven frozen new walls produce 2,753 feasible
+   joint items and exactly 75 final task semantics, without a full center-3
+   census;
+2. with **current usage only** (`lambda=0`), controlled interleaving yields
+   `376 tree nodes / 125 internal nodes / 200 terminal-merged DAG nodes`, current
+   weighted depth `135`, `peak=72`, and `worst=10`;
+3. those are exactly all previously frozen structural target metrics of the
+   independently constructed fresh center-3 time-first tree, although no tree
+   isomorphism is claimed;
+4. the `lambda=0` tree contains 16 new-wall internal nodes, including four
+   cross-parent activations, and activates its first new wall at depth five;
+5. the seven new walls occur first at depths `5,6,7,7,8,8,9` in that tree;
+6. controlled interleaving improves completion-child total depth from the local
+   graft's `2933` to `2708` while keeping current total depth `135`;
+7. adding refinement weight (`lambda=1/16` or `1/4`) moves new-wall activation
+   earlier (depth four) and improves completion-child total depth further to
+   `1972`, but raises peak frontier to `87`; and
+8. the result therefore closes the **placement** gap through predicate
+   interleaving, not through more completion primitives or a new observer
+   connection.
+
+Proof map
+---------
+1. ``test_controlled_interleaving_recovers_fresh_structural_metrics_without_full_census``
+   rebuilds the 2,753-item joint feasible representation, checks the exact three
+   tree profiles, verifies the `lambda=0` fresh-metric match, and certifies the
+   new-wall/cross-parent activation counts and depths.
+
+Boundary
+--------
+The matching `376/125/200/72/10` metrics do not prove that the controlled tree is
+identical to the separately frozen fresh tree; only the declared structural
+metrics coincide.  The construction also uses task-relative completion decoders
+already learned in Phases 8C/8C.2, so it is not a derivation of center-3
+semantics from center-2 geometry alone.
+
+The 2,753-item world is a partial representation generated by exactly seven
+frozen new walls.  It is smaller and conceptually different from the complete
+72,241-state center-3 wall arrangement.  No claim is made that these seven walls
+remain sufficient at center 4 or for a different task.
+
+Finally, this is an interleaving/history result, not evidence for a discrete
+`ObserverConnection`: no canonical observer frame is transported here.
+
+References
+----------
+[Huffman-1952] David A. Huffman, "A Method for the Construction of
+Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101;
+DOI 10.1109/JRPROC.1952.273898.
+
+[Sungkawichai-Trakulthongchai-2026] Touch Sungkawichai, Tanupat
+Trakulthongchai, "Eleven, twelve, and thirteen lonely runners,"
+arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
+"""
+
+from __future__ import annotations
+
+import importlib.util
+import os
+from fractions import Fraction
+from pathlib import Path
+import sys
+
+import pytest
+
+
+RUN_FULL = os.environ.get("AEG_RUN_LR_CONTROLLED_INTERLEAVING") == "1"
+pytestmark = pytest.mark.skipif(
+    not RUN_FULL,
+    reason="opt-in Sonnet 001 controlled-interleaving exact search",
+)
+
+
+def _load_module():
+    root = Path(__file__).parents[2]
+    script_dir = root / "sonnet" / "lonely-runner" / "python"
+    script_path = script_dir / "controlled_interleaving.py"
+    sys.path.insert(0, str(script_dir))
+    try:
+        spec = importlib.util.spec_from_file_location("sonnet_controlled_interleaving", script_path)
+        assert spec is not None and spec.loader is not None
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
+        return module
+    finally:
+        sys.path.remove(str(script_dir))
+
+
+def test_controlled_interleaving_recovers_fresh_structural_metrics_without_full_census():
+    interleaving = _load_module()
+    result = interleaving.analyze_controlled_interleaving()
+    assert len(result.new_walls) == 7
+
+    by_lambda = {candidate.mixture: candidate for candidate in result.candidates}
+    baseline = by_lambda[Fraction(0)]
+    assert baseline.expanded_items == 2_753
+    assert baseline.final_tasks == 75
+    assert baseline.current_weighted_depth == 135
+    assert baseline.completion_weighted_depth == 2_708
+    assert baseline.tree_nodes == 376
+    assert baseline.internal_nodes == 125
+    assert baseline.terminal_merged_dag_nodes == 200
+    assert baseline.peak_frontier == 72
+    assert baseline.worst_depth == 10
+    assert baseline.widths == (1, 3, 3, 9, 27, 48, 63, 72, 66, 45, 39)
+    assert baseline.new_wall_internal_nodes == 16
+    assert baseline.cross_parent_new_wall_nodes == 4
+    assert baseline.earliest_new_wall_depth == 5
+    assert sorted(
+        depth
+        for _wall, depth, count in baseline.new_wall_activation
+        if count > 0
+    ) == [5, 6, 7, 7, 8, 8, 9]
+
+    for mixture in (Fraction(1, 16), Fraction(1, 4)):
+        weighted = by_lambda[mixture]
+        assert weighted.expanded_items == 2_753
+        assert weighted.final_tasks == 75
+        assert weighted.current_weighted_depth == 136
+        assert weighted.completion_weighted_depth == 1_972
+        assert weighted.tree_nodes == 376
+        assert weighted.internal_nodes == 125
+        assert weighted.terminal_merged_dag_nodes == 200
+        assert weighted.peak_frontier == 87
+        assert weighted.worst_depth == 10
+        assert weighted.new_wall_internal_nodes == 16
+        assert weighted.cross_parent_new_wall_nodes == 8
+        assert weighted.earliest_new_wall_depth == 4
