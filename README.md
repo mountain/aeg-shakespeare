@@ -8,12 +8,12 @@ It is not primarily an ODE solver and does not take eigenvectors, Fourier modes,
 
 ## Status
 
-Latest PyPI release: **0.0.1**, the first **pre-alpha research preview**.  
-Current `main` development version: **0.0.2.dev0**.
+Latest PyPI release: **0.0.2**, a **pre-alpha research preview**.  
+Current `main` release version: **0.0.2**.
 
 The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not yet covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, and conceptual layer separation take priority over interface stability during this phase.
 
-See [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
+See [`docs/34-release-0.0.2.md`](docs/34-release-0.0.2.md) for this release contract, [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
 ## Install
 
@@ -28,7 +28,8 @@ python -m pip install -e '.[dev]'
 ```
 
 PyPI distribution: `aeg-shakespeare`  
-Python package: `aeg_shakespeare`
+Python package: `aeg_shakespeare`  
+Supported CPython versions: **3.10 through 3.14**
 
 SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
 
@@ -161,7 +162,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-CI additionally installs the built wheel into a fresh virtual environment and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
+CI tests the same release gate on CPython 3.10 through 3.14, installs the built wheel into a fresh virtual environment, and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
 
 The evolving mathematical story is indexed in [`docs/README.md`](docs/README.md).
 
