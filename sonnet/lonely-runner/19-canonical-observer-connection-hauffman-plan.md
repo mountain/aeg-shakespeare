@@ -1,24 +1,24 @@
-# Phase 8 plan — from persistent Hauffman geometry to canonical observer transport
+# Phase 8 — from persistent Hauffman geometry to canonical observer transport
 
-**Status:** planned crossover experiment; still inside Gate A.  
+**Status:** Phase 8A implementation staged; exact opt-in research gate not yet recorded as passed.  
+**Branch:** `research/canonical-observer-api`  
 **Starting point:** Phase 7i persistent Hauffman quotient at four-speed, center-2 -> center-3 contact-depth refinement.  
 **Open frontier policy:** `K=13` remains a frozen holdout and is not used for proposal generation, observer design, decomposition tuning, or cost selection.
 
-## 1. Why this is the next question
+## 1. Why this crossover matters
 
-Phase 7b--7i established a sequence that is already stronger than a static coding experiment:
+Phase 7b--7i established
 
 ```text
 A/M contact calculus
-    -> contact walls / pair-difference geometry
+    -> pair-difference geometry
     -> exact task quotient
     -> Hauffman space-time optimization
     -> local contact-depth refinement
-    -> persistent terminal residuals
-    -> persistent decision DAG pressure
+    -> persistent terminal residuals.
 ```
 
-The key center-2 -> center-3 fact is now:
+The frozen center-2 -> center-3 result is
 
 ```text
 849 center-2 task-safe parents
@@ -27,98 +27,111 @@ The key center-2 -> center-3 fact is now:
       6 genuine semantic splits
 ```
 
-Only 26 of the 5,823 full center-2 realizable sign systems lie under the eight affected task-safe parents; refining those locally produces 298 center-3 realizable children and recovers exactly the semantics that the complete 72,241-state center-3 census finds.
+Only 26 of 5,823 full center-2 realizable sign systems lie below the eight
+affected parents; local refinement produces 298 center-3 children and recovers
+the 75 semantics known from the complete 72,241-state census.
 
-Phase 7i then showed that retaining eight refinement-sensitive residual identities enlarges the current quotient only
+Phase 7i additionally showed that retaining eight refinement-sensitive residual
+identities enlarges the current quotient only `60 -> 68`, with no extra current
+Hauffman tree queries, nodes, or worst depth.
 
-\[
-60\to68
-\]
+The Phase-8 question is therefore falsifiable:
 
-while adding zero wall queries, zero tree nodes, and zero worst depth under the frozen center-2 Hauffman tree.
+> can the canonical-observer language developed independently on continuous
+> classical problems reconstruct this sparse discrete transport/completion
+> structure *before* the refined task space is expanded?
 
-This suggests a more structural interpretation:
+This interpretation is Shakespeare/AEG-specific.  The classical Lonely Runner
+and Huffman references orient the underlying problem and coding objective; they
+do not assert the observer-connection interpretation [Sungkawichai-Trakulthongchai-2026; Huffman-1952].
 
-> a persistent task representation may not need to be rebuilt when the process language deepens; most local observers may transport unchanged, a small set may move inside the same observer family, and only genuine residual directions may require representation completion.
+## 2. Observation-locality rule
 
-That is the precise point where the Sonnet-001 Hauffman/history line can cross-calibrate the AEG Analysis programme of
-
-\[
-\text{local canonicalization}
-\to
-\text{observer connection}
-\to
-\text{canonical decomposition}
-\to
-\text{minimal completion}.
-\]
-
-The purpose of Phase 8 is to test this correspondence, not to assume it.
-
-## 2. Working hypothesis: the 841 / 2 / 6 split is a canonical decomposition
-
-Use the center-2 persistent task-safe state as the current restricted representation.  Introduce the next contact layer as a local process perturbation/refinement.
-
-The working correspondence is:
-
-\[
-\boxed{
-\begin{array}{rcl}
-841\text{ stable parents}
-&\leftrightarrow&
-\text{renormalizable / trivial-transport sector},\\[1mm]
-2\text{ uniform replacements}
-&\leftrightarrow&
-\text{observer-transport / resonant sector},\\[1mm]
-6\text{ semantic splits}
-&\leftrightarrow&
-\text{representation-completion sector}.
-\end{array}}
-\]
-
-This is deliberately a falsifiable identification.  In particular, a state belongs to the `transport` sector only if the new contact layer changes the canonical witness/observer parameter without increasing the dimension of the local representation family.  A state belongs to the `completion` sector only if no update inside the current observer family can preserve exact next-layer task semantics.
-
-The complete center-3 census is used only as an oracle/red team after the local classification is produced.
-
-## 3. Observation-locality rule for this experiment
-
-A Phase-8 classifier may use only information already objectified at center 2 plus the newly introduced local contact layer:
+A Phase-8 classifier may use only:
 
 - the center-2 task-safe state;
 - its certified first-witness/contact prefix;
-- its pair-difference constraint closure;
-- the new center-3 contact events and their local order relations;
-- finite local contact/process jets needed to compare these events with the existing causal prefix;
+- pair-difference constraint closure;
+- newly admitted center-3 contact events;
+- local order relations between new events and the old causal prefix;
 - declared first-witness task semantics.
 
-It may **not** use:
+It may not use the full center-3 census, precomputed center-3 task labels, deeper
+future contact layers, a complete propagator/history, or `K=13` data while
+choosing the classification rule.
 
-- the full 72,241-state center-3 census while selecting the classification rule;
-- precomputed center-3 task labels;
-- future center depths;
-- `K=13` data;
-- a complete propagator/history encoded into the observer.
+This is the Sonnet-001 form of the Observation Localization Principle.
 
-This is the Sonnet-001 instance of the Observation Localization Principle.
+## 3. Phase 8A — discrete canonical decomposition
 
-## 4. Phase 8A — recover stable / transport / completion locally
+### 3.1 Local observations
 
-Build a local decomposition routine over each of the 849 center-2 task-safe parents.
+The existing Phase-7h causal detector already supplies two local predicates:
 
-The routine should first reproduce the two already justified local mechanisms from Phase 7h:
+`A = forced_earlier`
+: a new contact is provably at or before the old first-witness event.
 
-1. **forced earlier insertion** — a new event is provably at or before the old witness;
-2. **effective unresolved crossing** — a new event can exchange order with an event in the old causal prefix, excluding process-semantically irrelevant swaps such as pure enter-enter crossings.
+`B = effective_unresolved_crossing`
+: a genuinely new contact wall can change the old causal prefix and the old
+  pair-difference representation does not decide its side.  Pure enter-enter
+  swaps are removed by the exact first-witness causality argument.
 
-Then refine the output semantics from a binary `affected / unaffected` detector to a three-way classification:
+The Phase-8A classification is fixed **before any center-3 child semantics are
+examined**:
 
 ```text
-stable
-transport-only
-completion-required
+stable              = not A and not B
+transport-only      = A and not B
+completion-required = B
 ```
 
-Acceptance target:
+Working correspondence to the generic record:
+
+```text
+CanonicalDecomposition.renormalizable <- stable
+CanonicalDecomposition.resonant       <- transport-only
+CanonicalDecomposition.completion     <- completion-required
+```
+
+The field names are being cross-calibrated here; this experiment does not yet
+prove a general theorem identifying discrete state refinement with smooth
+renormalization/resonance.
+
+### 3.2 Implementation now staged
+
+`sonnet/lonely-runner/python/local_contact_refinement.py` now exposes
+
+```python
+analyze_center2_to_center3()
+```
+
+which performs the old-state-only classification first, asserts that it is a
+disjoint exhaustive partition, and only afterwards locally refines affected
+states as a red team.
+
+The opt-in executable mathematical essay is
+
+```text
+tests/research/test_lonely_runner_canonical_observer_decomposition.py
+```
+
+It wraps the three state sets in the same generic `CanonicalDecomposition` carrier
+used by the Riccati/coupled/Kepler calibrations.  The essay follows the repository
+literate-programming template, contains a Proof map and claim boundary, and cites
+both the modern Lonely Runner frontier and Huffman's original coding paper.
+
+The heavy gate is intentionally excluded from routine five-version CI:
+
+```text
+.github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
+```
+
+The workflow installs the current package and runs the essay with
+`AEG_RUN_LR_CANONICAL_DECOMPOSITION=1` on Python 3.12.
+
+### 3.3 Acceptance target
+
+The pre-refinement classifier must recover exactly
 
 ```text
 stable              841
@@ -126,188 +139,180 @@ transport-only        2
 completion-required   6
 ```
 
-with zero false positives and zero false negatives against the frozen center-3 census.
+and the later local red team must independently show:
 
-A failure is scientifically useful: it means the continuous `renormalize / transport / complete` decomposition does not yet have the claimed discrete analogue in this task.
+```text
+2 transport-only parents -> one changed semantic each, no branching
+6 completion parents     -> multiple new semantics each
+26 old full systems reopened
+298 center-3 children evaluated
+75 total center-3 witness semantics recovered
+```
 
-## 5. Phase 8B — objectify the transport-only sector
+Until the opt-in gate is executed successfully, these remain acceptance targets
+encoded as assertions, not a newly recorded experimental result.
 
-For each of the two uniform-replacement parents, construct an explicit local observer state whose parameters encode the current canonical witness/contact frame.
+## 4. Phase 8B — objectify same-family transport
 
-The test is not merely whether the new witness can be recomputed.  It must show:
+If 8A passes, each of the two uniform-replacement parents must be represented by
+an explicit local observer state whose parameter update:
 
-1. the observer remains inside the same declared representation family;
-2. the new contact layer induces an update of observer parameters;
-3. no new sign/residual coordinate is required to preserve exact next-layer task semantics;
-4. the update depends only on the local state and new contact layer.
+1. remains inside the same declared representation family;
+2. depends only on old local state plus the new contact layer;
+3. changes the canonical witness/contact frame;
+4. requires no new sign/residual coordinate.
 
-This is the discrete analogue of maintaining a canonicalization condition under process evolution.
+If either case requires representation enlargement, it must be reclassified as
+completion rather than protected by analogy with smooth observer transport.
 
-If a uniform replacement cannot be represented without enlarging the observer family, it must be reclassified as completion rather than forced into the connection analogy.
+## 5. Phase 8C — minimal completion of the six splits
 
-## 6. Phase 8C — derive minimal completion from the six split parents
+For each predicted completion parent:
 
-For each genuinely splitting parent:
-
-1. identify the smallest new contact distinction that separates its center-3 semantic children;
+1. find the smallest new contact distinction separating its semantic children;
 2. treat that distinction as a candidate completion residual;
-3. close it under the existing pair-difference consistency/task semantics required by the local state;
-4. verify exact reconstruction of the center-3 child semantics.
+3. close only what pair-difference consistency and task semantics require;
+4. certify exact reconstruction of the local center-3 child semantics.
 
-The target is not to replay the full center-3 sign system.  The desired result is a minimal local enlargement of the old persistent terminal object.
+The desired output is a structured residual grammar no larger than necessary.
+Opaque persistence IDs remain an acceptable baseline, not the target theory.
 
-A strong success criterion is that the union of the six local completions, together with the two transported observers, reconstructs the existing one-step persistent quotient pressure:
+A strong result would reconstruct or improve the known one-step persistent
+pressure
 
 ```text
 60 current witness labels
     + eight refinement-sensitive residual identities
-    -> 68 persistent labels
+    -> 68 persistent labels.
 ```
 
-and retains the known 26-old-system -> 298-child local-update route.
+## 6. Phase 8D — persistent Hauffman DAG
 
-The exact shape need not be literally eight opaque IDs; a smaller or more structured residual grammar is preferable if it certifies the same future semantics.
-
-## 7. Phase 8D — persistent Hauffman DAG as discrete observer transport
-
-Once 8A--8C pass, build the center-2 -> center-3 representation as an explicit persistent DAG.
-
-Nodes should record:
-
-- current task semantic;
-- persistent residual, if any;
-- canonical observer parameters needed for local transport;
-- outgoing process/refinement decisions only where required;
-- provenance/certificates for reuse, transport, or completion.
-
-Measure **incremental** history geometry rather than independently optimizing a fresh center-3 tree:
+After 8A--8C, construct an explicit center-2 -> center-3 persistent DAG.  Measure
+incremental rather than fresh-tree geometry:
 
 ```text
-old DAG nodes reused
-new DAG nodes allocated
-transport-only node updates
+old nodes reused
+new nodes allocated
+transport-only updates
 completion nodes allocated
 extra wall queries on affected paths
-incremental boundary volume
-incremental peak frontier
-incremental expected depth
-incremental worst depth
+incremental boundary volume / peak width
+incremental expected / worst depth
 ```
 
-The optimization objective is a Pareto frontier over current task cost and future refinement cost.  A static current-task minimum is not automatically preferred.
+The optimization target remains a Pareto frontier.  A current-task-minimal
+representation is not automatically optimal for a continuing process whose
+observation language will deepen.
 
-## 8. Phase 8E — only then test a moving contact observer / ODE formulation
+## 7. Phase 8E — moving contact observer / ODE only after the discrete gate
 
-Do not begin by imposing a continuous ODE on the whole sign graph.
+Do not impose a continuous observer ODE on the full sign graph in advance.
 
-If the discrete transport/completion decomposition succeeds, search for a lower-dimensional moving contact frame whose state consists only of the currently critical causal contacts, for example:
+If 8A--8D show that transport and completion are genuinely sparse, then search
+for a small active contact frame containing only causally critical contacts, for
+example the current witness boundary, nearest effective enter/exit events, and
+nearest unresolved task-relevant crossing.  The A/M law transports their event
+times; chart changes occur only at relevant wall crossings.
 
-```text
-current witness boundary
-nearest effective enter/exit events
-nearest unresolved task-relevant crossing
-scale / relative-contact normalization
-```
-
-A candidate canonicalization may normalize a small active contact frame while the A/M contact law transports its event times.  Chart changes occur only when another event crosses the active frame.
-
-The hypothesis is that many fixed wall queries can then be replaced by:
+The hoped-for computation becomes
 
 ```text
 small observer-state transport
-    + sparse wall/chart transitions
-    + occasional representation completion.
+    + sparse chart/wall transitions
+    + occasional minimal completion
 ```
 
-This would be the genuine ODE/connection form of the Sonnet-001 representation.  It should be attempted only after the finite persistent-DAG experiment identifies what information the observer must actually carry.
+rather than repeated querying of a large fixed wall arrangement.
 
-## 9. Relation to Hauffman optimization
+## 8. Relation to Hauffman optimization
 
-Hauffman should remain a variational principle, but the candidate objects change.
-
-Earlier:
-
-```text
-fixed admissible walls
-    -> choose query order
-    -> minimize space/time tree geometry.
-```
-
-Phase 8 target:
-
-```text
-locally canonical observer family
-    -> transport observer while representation remains adequate
-    -> complete only at genuine residuals
-    -> choose objectification / branching decisions
-    -> minimize incremental persistent-DAG space/time cost.
-```
-
-A useful eventual process-action diagnostic may have the schematic form
+Earlier Sonnet stages used Hauffman/history geometry to choose the order of
+fixed admissible process decisions.  Phase 8 asks for a more persistent
+variational problem:
 
 \[
 \mathcal S
-=
-\sum_n
+=\sum_n
 \left[
 C_{\rm frontier}(g_n)
 +\lambda C_{\rm transport}(g_n\to g_{n+1})
 +\mu C_{\rm completion}(D_{{\rm comp},n})
-\right],
+\right].
 \]
 
-but the full Pareto geometry should remain primary until such a scalarization is independently calibrated.
+This scalar expression is only a schematic diagnostic.  The multi-axis Pareto
+geometry remains primary until an independent calibration justifies a
+scalarization.  Ordinary Huffman coding is recovered only in the static limit
+where the observer family and decision alphabet are fixed and weighted branch
+depth is the operative cost [Huffman-1952].
 
-Ordinary Huffman coding is then a special static limit in which the observer family and decision alphabet are fixed and only weighted branch depth is optimized.
+## 9. API discipline
 
-## 10. API pressure generated by Phase 8
-
-This Sonnet should not define the public observer API by itself.  It can, however, pressure-test the same minimal concepts being developed in the classical AEG Analysis line:
+Sonnet 001 must pressure-test, not dictate, the public API.  The current
+cross-domain candidates are deliberately small:
 
 ```text
-ProcessDirection / local process jet
-Canonicalization
-CanonicalObserver
-ObserverConnection / local transport
-CanonicalDecomposition
-CompletionResult
-persistent task residual
-incremental history geometry
+ProcessDirection
+ConstraintCanonicalization   # one backend only
+ObserverConnection           # generic provenance
+CanonicalDecomposition       # backend-neutral result shape
 ```
 
-The strongest evidence for API promotion would be that the same `canonicalization -> transport -> decomposition -> completion` skeleton works both here and in independent classical calibrations such as Restricted Riccati, coupled scalar processes, and Restricted Kepler.
+No `ObserverBundle`, generic `Canonicalization` base protocol, curvature,
+holonomy, universal completion engine, or numerical observer ODE is promoted by
+this phase.
 
-## 11. Order of execution
+The new Phase-8A essay is included in
+`tests/test_canonical_observer_essay_hygiene.py`, so its narrative sections,
+reference resolution, and Proof-map/test correspondence are checked even when
+the heavy mathematics is skipped in routine CI.
 
-Recommended order:
+## 10. Execution order
 
 ```text
-8A  local three-way decomposition of the frozen 849 parents
+8A  run manual exact three-way classification gate
     ↓
-8B  explicit same-family transport for the two uniform replacements
+8B  objectify same-family transport for the two replacements
     ↓
-8C  minimal completion for the six semantic splits
+8C  derive minimal residuals for the six splits
     ↓
-8D  explicit persistent DAG and incremental Hauffman geometry
+8D  build persistent DAG and incremental Hauffman geometry
     ↓
 freeze discrete semantics
     ↓
-8E  moving contact-frame / observer-ODE experiment
+8E  test a moving contact-frame / observer-ODE formulation
 ```
 
-Do not move to five runners, a deeper contact alphabet, or open-case tuning before 8A--8D establish whether observer transport actually explains the already-known local refinement structure.
+Do not move to five runners, deeper contact alphabets, or open-case tuning before
+8A--8D establish whether observer transport actually explains the known local
+refinement structure.
 
-## 12. Claim boundary
+## 11. Claim boundary
 
-Nothing in this plan asserts that a Canonical Observer Connection already exists for Lonely Runner, nor that the `841 / 2 / 6` split must match the continuous canonical decomposition exactly.
+No new Lonely Runner case is proved here.  No Canonical Observer Connection is
+yet established for Lonely Runner.  The `841/2/6` mapping remains a bounded
+cross-domain hypothesis until the dedicated opt-in gate passes and the 8B/8C
+semantic conditions are checked.
 
-The intended experiment is the stronger one:
+The intended methodological statement is narrower:
 
 \[
 \boxed{
 \text{known persistent Hauffman refinement data}
-\quad\text{acts as a frozen oracle for testing observer-connection theory.}
+\text{ is a frozen oracle for testing observer-connection theory.}
 }
 \]
 
-If the theory independently reconstructs the sparse transport/completion structure, Sonnet 001 becomes a cross-domain calibration connecting continuous AEG Analysis with discrete history geometry.  If it fails, the failure localizes which part of the observer-connection language is genuinely specific to smooth systems and which part survives process discretization.
+A success would connect continuous AEG Analysis with discrete history geometry;
+a failure would delimit where the smooth observer language stops transferring.
+
+## 12. References
+
+[Sungkawichai-Trakulthongchai-2026] T. Sungkawichai, T. Trakulthongchai,
+"Eleven, twelve, and thirteen lonely runners," arXiv:2604.23906 (2026),
+https://arxiv.org/abs/2604.23906 .
+
+[Huffman-1952] David A. Huffman, "A Method for the Construction of
+Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101;
+DOI 10.1109/JRPROC.1952.273898.
