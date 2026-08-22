@@ -16,6 +16,10 @@ The classification is computed *before* any center-3 child semantics are
 examined.  Local refinement is then used as the red-team oracle that checks the
 three-way prediction against the exact new task behavior.
 
+For Phase 8B the result also exposes the exact old/new witness records of the two
+non-branching cases.  These records are observational evidence only: the script
+does not label their detailed change as an observer connection in advance.
+
 It deliberately does *not* enumerate all 72,241 center-3 realizable systems.
 The frozen full-census numbers are used only as assertions/red-team targets.
 """
@@ -30,6 +34,28 @@ import pair_difference_refinement as pd
 
 
 @dataclass(frozen=True)
+class TransportCaseAnalysis:
+    """Post-classification witness record for one non-branching affected parent."""
+
+    parent: tuple[int, ...]
+    old_task: tuple[object, ...]
+    new_task: tuple[object, ...]
+    old_full_system_count: int
+
+    @property
+    def event_index_shift(self) -> int:
+        return int(self.new_task[0]) - int(self.old_task[0])
+
+    @property
+    def same_boundary(self) -> bool:
+        return self.new_task[1] == self.old_task[1]
+
+    @property
+    def same_mode(self) -> bool:
+        return self.new_task[2] == self.old_task[2]
+
+
+@dataclass(frozen=True)
 class LocalRefinementAnalysis:
     """Exact center-2 -> center-3 local classification and red-team counts."""
 
@@ -37,6 +63,7 @@ class LocalRefinementAnalysis:
     stable_parents: frozenset[tuple[int, ...]]
     transport_only_parents: frozenset[tuple[int, ...]]
     completion_required_parents: frozenset[tuple[int, ...]]
+    transport_cases: tuple[TransportCaseAnalysis, ...]
     affected_full_system_count: int
     refined_child_count: int
     recovered_semantic_count: int
@@ -292,6 +319,17 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         for parent in completion_required
     )
 
+    transport_cases = tuple(
+        TransportCaseAnalysis(
+            parent=parent,
+            old_task=parent_task[parent],
+            new_task=next(iter(local_new_tasks[parent])),
+            old_full_system_count=len(parents[parent]),
+        )
+        for parent in sorted(transport_only)
+    )
+    assert len(transport_cases) == 2
+
     updated_semantics = set()
     for parent, task in parent_task.items():
         if parent in affected:
@@ -318,6 +356,7 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         stable_parents=frozenset(stable),
         transport_only_parents=frozenset(transport_only),
         completion_required_parents=frozenset(completion_required),
+        transport_cases=transport_cases,
         affected_full_system_count=len(affected_old_systems),
         refined_child_count=len(refined_children),
         recovered_semantic_count=len(updated_semantics),
@@ -337,6 +376,16 @@ def main() -> None:
     print(f"  old full systems reopened:   {result.affected_full_system_count:,} / 5,823")
     print(f"  refined center-3 children:   {result.refined_child_count:,}")
     print(f"  recovered center-3 semantics:{result.recovered_semantic_count:,}")
+    print()
+    print("transport-only post-classification witness records")
+    for case in result.transport_cases:
+        print(f"  parent:                {case.parent}")
+        print(f"    old task:            {case.old_task}")
+        print(f"    new task:            {case.new_task}")
+        print(f"    event-index shift:   {case.event_index_shift}")
+        print(f"    same boundary:       {case.same_boundary}")
+        print(f"    same mode:           {case.same_mode}")
+        print(f"    old full systems:    {case.old_full_system_count}")
     print()
     print("full center-3 census avoided: 72,241 systems")
     print(f"local semantic evaluation:     {result.refined_child_count:,} systems")
