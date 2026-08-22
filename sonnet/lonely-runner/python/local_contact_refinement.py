@@ -5,23 +5,25 @@ its certified first-witness contact prefixes, and the newly introduced center-3
 contact events.  It predicts which old task-safe parents must be reopened, then
 refines only the corresponding full sign systems.
 
-The Phase-8 addition makes the prediction itself explicit as a three-way local
-classification:
+Phase 8A first produced a three-way local classification
 
     stable              = not forced_earlier and not unresolved_crossing
-    transport_only      = forced_earlier and not unresolved_crossing
+    nonbranching_update = forced_earlier and not unresolved_crossing
     completion_required = unresolved_crossing
 
-The classification is computed *before* any center-3 child semantics are
-examined.  Local refinement is then used as the red-team oracle that checks the
-three-way prediction against the exact new task behavior.
+before any center-3 child semantics were examined.
 
-For Phase 8B the result also exposes the exact old/new witness records of the two
-non-branching cases.  These records are observational evidence only: the script
-does not label their detailed change as an observer connection in advance.
+The Phase-8B witness probe then red-teamed the middle class.  In both cases the
+canonical witness boundary and mode remain *identical*; only the event index is
+shifted by two because newly admitted contacts are inserted earlier in the
+history.  Therefore these cases are now named ``history_reindex`` rather than
+``transport``.  They remain inside the current representation and belong to the
+renormalizable sector of the generic ``CanonicalDecomposition``.  No discrete
+observer-connection sector has yet been observed in this calibration.
 
-It deliberately does *not* enumerate all 72,241 center-3 realizable systems.
-The frozen full-census numbers are used only as assertions/red-team targets.
+The script deliberately does *not* enumerate all 72,241 center-3 realizable
+systems.  The frozen full-census numbers are used only as assertions/red-team
+targets.
 """
 
 from __future__ import annotations
@@ -34,8 +36,8 @@ import pair_difference_refinement as pd
 
 
 @dataclass(frozen=True)
-class TransportCaseAnalysis:
-    """Post-classification witness record for one non-branching affected parent."""
+class HistoryReindexCaseAnalysis:
+    """Post-classification witness record for one nonbranching history update."""
 
     parent: tuple[int, ...]
     old_task: tuple[object, ...]
@@ -61,18 +63,30 @@ class LocalRefinementAnalysis:
 
     parent_count: int
     stable_parents: frozenset[tuple[int, ...]]
-    transport_only_parents: frozenset[tuple[int, ...]]
+    history_reindex_parents: frozenset[tuple[int, ...]]
     completion_required_parents: frozenset[tuple[int, ...]]
-    transport_cases: tuple[TransportCaseAnalysis, ...]
+    history_reindex_cases: tuple[HistoryReindexCaseAnalysis, ...]
     affected_full_system_count: int
     refined_child_count: int
     recovered_semantic_count: int
     verified_split_count: int
-    verified_replacement_count: int
+    verified_reindex_count: int
+
+    @property
+    def renormalizable_parents(self) -> frozenset[tuple[int, ...]]:
+        """States that remain in the current task representation."""
+
+        return self.stable_parents | self.history_reindex_parents
+
+    @property
+    def resonant_parents(self) -> frozenset[tuple[int, ...]]:
+        """No genuine same-family observer-transport sector is known here."""
+
+        return frozenset()
 
     @property
     def affected_parents(self) -> frozenset[tuple[int, ...]]:
-        return self.transport_only_parents | self.completion_required_parents
+        return self.history_reindex_parents | self.completion_required_parents
 
 
 def alpha(event: tuple[int, int, str]) -> Fraction:
@@ -150,11 +164,10 @@ def collision_wall(left, right):
 def analyze_center2_to_center3() -> LocalRefinementAnalysis:
     """Classify old task states locally, then red-team only affected states.
 
-    The stable / transport-only / completion-required partition is determined
-    solely from center-2 task states and newly admitted center-3 contact events.
-    Center-3 child semantics are evaluated only afterwards to verify that
-    transport-only parents undergo uniform replacement while completion parents
-    genuinely split.
+    The stable / nonbranching-update / completion-required partition is
+    determined solely from center-2 task states and newly admitted center-3
+    contact events.  Center-3 child semantics are evaluated only afterwards.
+    The middle class is then further audited to decide *what* changed.
     """
 
     ratios2 = pd.contact_ratios(2)
@@ -247,8 +260,7 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
                         return True
         return False
 
-    # PHASE 8 CLASSIFICATION: this partition uses only the old canonical task
-    # representation plus local data from the newly admitted contact layer.
+    # PHASE 8A LOCAL PARTITION: no center-3 child semantics have been evaluated.
     forced = {parent for parent in parents if forced_earlier(parent)}
     unresolved = {
         parent
@@ -256,18 +268,18 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         if effective_unresolved_crossing(parent)
     }
     stable = set(parents) - forced - unresolved
-    transport_only = forced - unresolved
+    nonbranching_update = forced - unresolved
     completion_required = unresolved
 
     assert len(stable) == 841
-    assert len(transport_only) == 2
+    assert len(nonbranching_update) == 2
     assert len(completion_required) == 6
-    assert not stable & transport_only
+    assert not stable & nonbranching_update
     assert not stable & completion_required
-    assert not transport_only & completion_required
-    assert stable | transport_only | completion_required == set(parents)
+    assert not nonbranching_update & completion_required
+    assert stable | nonbranching_update | completion_required == set(parents)
 
-    affected = transport_only | completion_required
+    affected = nonbranching_update | completion_required
     assert len(affected) == 8
 
     affected_full_indices = sorted(
@@ -308,27 +320,35 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
     assert sorted(len(tasks) for tasks in local_new_tasks.values()) == [1, 1, 3, 3, 5, 5, 5, 7]
 
     # RED TEAM: only now inspect new semantics.  The pre-refinement local
-    # classification must predict uniform replacement versus genuine splitting.
+    # partition must predict nonbranching update versus genuine splitting.
     assert all(
         len(local_new_tasks[parent]) == 1
         and next(iter(local_new_tasks[parent])) != parent_task[parent]
-        for parent in transport_only
+        for parent in nonbranching_update
     )
     assert all(
         len(local_new_tasks[parent]) > 1
         for parent in completion_required
     )
 
-    transport_cases = tuple(
-        TransportCaseAnalysis(
+    history_reindex_cases = tuple(
+        HistoryReindexCaseAnalysis(
             parent=parent,
             old_task=parent_task[parent],
             new_task=next(iter(local_new_tasks[parent])),
             old_full_system_count=len(parents[parent]),
         )
-        for parent in sorted(transport_only)
+        for parent in sorted(nonbranching_update)
     )
-    assert len(transport_cases) == 2
+    assert len(history_reindex_cases) == 2
+
+    # PHASE 8B RED TEAM: the two nonbranching changes do not move the canonical
+    # witness geometry at all.  They only reindex the same witness in the deeper
+    # contact history, so they belong to the renormalizable/decoder sector, not a
+    # genuine observer-transport/resonance sector.
+    assert all(case.same_boundary for case in history_reindex_cases)
+    assert all(case.same_mode for case in history_reindex_cases)
+    assert all(case.event_index_shift == 2 for case in history_reindex_cases)
 
     updated_semantics = set()
     for parent, task in parent_task.items():
@@ -339,7 +359,7 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
     assert len(updated_semantics) == 75
 
     split_count = sum(len(tasks) > 1 for tasks in local_new_tasks.values())
-    replacement_count = sum(
+    reindex_count = sum(
         len(tasks) == 1 and next(iter(tasks)) != parent_task[parent]
         for parent, tasks in local_new_tasks.items()
     )
@@ -348,20 +368,20 @@ def analyze_center2_to_center3() -> LocalRefinementAnalysis:
         for parent, tasks in local_new_tasks.items()
     )
     assert split_count == 6
-    assert replacement_count == 2
+    assert reindex_count == 2
     assert unchanged_affected_count == 0
 
     return LocalRefinementAnalysis(
         parent_count=len(parents),
         stable_parents=frozenset(stable),
-        transport_only_parents=frozenset(transport_only),
+        history_reindex_parents=frozenset(nonbranching_update),
         completion_required_parents=frozenset(completion_required),
-        transport_cases=transport_cases,
+        history_reindex_cases=history_reindex_cases,
         affected_full_system_count=len(affected_old_systems),
         refined_child_count=len(refined_children),
         recovered_semantic_count=len(updated_semantics),
         verified_split_count=split_count,
-        verified_replacement_count=replacement_count,
+        verified_reindex_count=reindex_count,
     )
 
 
@@ -370,15 +390,17 @@ def main() -> None:
 
     print("local contact-refinement canonical decomposition")
     print(f"  old task-safe parents:       {result.parent_count:,}")
-    print(f"    stable:                    {len(result.stable_parents):,}")
-    print(f"    transport-only:            {len(result.transport_only_parents):,}")
+    print(f"    stable identity:           {len(result.stable_parents):,}")
+    print(f"    history reindex:           {len(result.history_reindex_parents):,}")
     print(f"    completion-required:       {len(result.completion_required_parents):,}")
+    print(f"  canonical renormalizable:    {len(result.renormalizable_parents):,}")
+    print(f"  canonical resonant:          {len(result.resonant_parents):,}")
     print(f"  old full systems reopened:   {result.affected_full_system_count:,} / 5,823")
     print(f"  refined center-3 children:   {result.refined_child_count:,}")
     print(f"  recovered center-3 semantics:{result.recovered_semantic_count:,}")
     print()
-    print("transport-only post-classification witness records")
-    for case in result.transport_cases:
+    print("history-reindex witness records")
+    for case in result.history_reindex_cases:
         print(f"  parent:                {case.parent}")
         print(f"    old task:            {case.old_task}")
         print(f"    new task:            {case.new_task}")
