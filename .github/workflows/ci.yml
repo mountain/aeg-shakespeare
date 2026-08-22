@@ -43,12 +43,14 @@ jobs:
           from aeg_shakespeare.analysis.abelian import AbelianPeriodMatrix
           from aeg_shakespeare.analysis.am import AMFunctionTheory
           from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+          from aeg_shakespeare.presentation.morphism import PresentationMorphism
           from aeg_shakespeare.process.history import ProcessWord
 
           assert shakespeare.__version__ == version("aeg-shakespeare")
           assert ProcessWord is not None
           assert AMFunctionTheory is not None
           assert AlgebraicConstraintSet is not None
+          assert PresentationMorphism is not None
           assert AbelianPeriodMatrix is not None
           print("wheel smoke OK:", shakespeare.__version__)
           PY
