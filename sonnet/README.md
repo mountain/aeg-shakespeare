@@ -67,8 +67,24 @@ A `sonnet` should distinguish four levels of result:
 
 These levels should not be conflated. In particular, reproducing a classical solution in process language is calibration, not evidence that Shakespeare has solved the underlying representation problem.
 
-## First candidate
+## Sonnet 001 — Lonely Runner
 
-The first candidate under consideration is the next open fixed-dimensional case of the **Lonely Runner Conjecture**. It is attractive because its known computational frontier already exhibits an explicit tradeoff between symmetry reduction, label reconstruction, CRT lifting, and combinatorial branching — exactly the kind of presentation problem Shakespeare is designed to make explicit.
+The first active study is [`lonely-runner/`](lonely-runner/), targeting the next open fixed-dimensional case `LRC(13)` (14 total runners).
 
-The concrete formulation, literature status, baselines, and experiment design should live in its own subdirectory once frozen; this index deliberately does not commit to a particular attack before that work is audited.
+The literature audit sharpens the reason for choosing it. The 2026 computer-assisted proof through `LRC(12)` explicitly identifies the primary obstacle to `k=13` as efficient computation of the initial improper set `I(k,p,1)`, with stronger pruning of no-witness residue tuples as the needed direction.
+
+The study has now advanced through four layers:
+
+```text
+exact LRC / ansatz semantics
+    -> I(k,p,1) as fixed-cardinality set cover
+    -> exact ProcessJet future-task quotient
+    -> future-requirement antichain
+    -> strictly stronger prune on a reachable upstream MRV state
+```
+
+The first structural result is deliberately modest but concrete. On the real `find_cover` state semantics, a family of pairwise-disjoint future requirements can certify that more future speed choices are necessary than remaining slots, and this rejects reachable states that the current upstream optimistic coverage bound does not.
+
+Small complete-search calibrations preserve the exact canonical solution sets while producing additional prunes. The gains so far are too small to claim practical dominance; the next threshold is transfer to the actual solved `k=8..12` parameter sets with explicit accounting of pruning benefit versus certificate cost.
+
+Thus Sonnet 001 has reached level 3 **structural discovery at calibration scale**, but not level 4: `LRC(13)` remains open.
