@@ -1,6 +1,6 @@
 """Finite process presentations: history quotients, grammars, relations, and search."""
 
-from . import constraints, construction, grammar, history, relations, search
+from . import constraints, construction, grammar, history, morphism, relations, search
 
 __all__ = [
     "history",
@@ -9,4 +9,5 @@ __all__ = [
     "grammar",
     "relations",
     "search",
+    "morphism",
 ]
