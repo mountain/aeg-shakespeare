@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- adds the minimal public `presentation.morphism.PresentationMorphism` record after independent KdV, resistor-network, and braid/Markov calibrations;
+- keeps morphism validity explicitly task-relative through caller-defined semantics and certificates, and allows heterogeneous source/target presentation types;
+- deliberately does not yet expose universal verification, morphism composition, inverses, normal forms, or category/groupoid structure.
+
 ## 0.0.2 — semantic API and discovery expansion
 
 Second pre-alpha research release of AEG Shakespeare.

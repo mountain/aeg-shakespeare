@@ -43,6 +43,7 @@ def test_representative_namespaced_entry_points_are_importable():
     assert hasattr(shakespeare.presentation.relations, "discover_relation_kernel")
     assert hasattr(shakespeare.presentation.search, "PresentationCost")
     assert hasattr(shakespeare.presentation.search, "pareto_frontier")
+    assert hasattr(shakespeare.presentation.morphism, "PresentationMorphism")
 
     assert hasattr(shakespeare.discovery, "discover_polynomial_invariants")
     assert hasattr(shakespeare.discovery, "generate_pairing_observers")
