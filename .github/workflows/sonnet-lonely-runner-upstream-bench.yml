@@ -9,6 +9,11 @@ on:
       - .github/workflows/sonnet-lonely-runner-upstream-bench.yml
       - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
       - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-upstream-bench.yml
+      - sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp
+      - sonnet/lonely-runner/patches/phase5-two-slot-find-cover.patch
 
 jobs:
   benchmark:
