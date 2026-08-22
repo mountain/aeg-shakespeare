@@ -1,9 +1,9 @@
-from aeg_shakespeare import (
-    ProcessWord,
+from aeg_shakespeare.presentation.history import (
     enumerate_process_words,
     histories_task_equivalent,
     history_process_jet_signature,
 )
+from aeg_shakespeare.process.history import ProcessWord
 
 
 def word(*steps):
