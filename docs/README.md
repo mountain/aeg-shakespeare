@@ -15,7 +15,8 @@ The documentation is organized as a mathematical/programming narrative rather th
 11. `10-release-0.0.1.md` — first research-preview release contract.
 12. `11-references-and-test-essays.md` — rigorous citation and executable-essay policy.
 13. `12-test-essay-template.py.txt` — template for substantial classical/research tests.
-14. `REFERENCES.md` — shared mathematical bibliography.
-15. `RELEASE_CHECKLIST.md` — release gates.
+14. `13-abelian-history-periods.md` — holomorphic differentials, period-history interpretation, symmetric pendulum square lattice, and the Jacobian threshold.
+15. `REFERENCES.md` — shared mathematical bibliography.
+16. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
