@@ -1,5 +1,6 @@
 """Process-first representation discovery backends."""
 
+from .coefficient_extension import factor_process_relation_over_extension
 from .polynomial import (
     ObservableQuotient,
     ObservableRelation,
@@ -28,6 +29,7 @@ from .structured import (
 )
 
 __all__ = [
+    "factor_process_relation_over_extension",
     "ObservableQuotient",
     "ObservableRelation",
     "PolynomialInvariant",
