@@ -4,7 +4,8 @@ Question
 --------
 Galilean mechanics exposed a nonzero central generator residual that disappears
 at the level of visible phase-space maps.  Does an independent physical system
-produce the same structural pressure on the frozen finite-family API?
+produce the same structural pressure, and can the resulting finite residual now
+be carried by the same minimal ``ProcessCocycle`` abstraction?
 
 Primitive data
 --------------
@@ -21,8 +22,8 @@ Hamiltonian level the magnetic-translation generators are
     K_x = p_x - beta y / 2,
     K_y = p_y + beta x / 2.
 
-No magnetic-translation-group class, cocycle API, projective representation,
-cohomology machinery, or spectral theory is supplied.
+No magnetic-translation-group class, projective representation, cohomology
+machinery, or spectral theory is supplied.
 
 Classical lineage
 -----------------
@@ -35,27 +36,28 @@ in a lifted realization.
 
 Shakespeare reconstruction
 ---------------------------
-``ProcessFamily`` still sees the visible translation law ``a+b``.  We then build
-a separate lifted realization whose phase coordinate changes by
+``ProcessFamily`` sees the visible translation law ``a+b``.  The calibrated
+lifted realization changes a phase/history coordinate by
 
     (beta / (2 hbar)) (a_x y - a_y x).
 
-Composing lifted translations in the two orders yields the same visible point
-but different central phase histories.  Relative to the direct ``a+b`` step,
+The corresponding finite central residual is represented by ``ProcessCocycle``:
 
-    omega(a,b) = beta/(2 hbar) * (a wedge b)
+    omega(a,b) = beta/(2 hbar) * (a wedge b).
 
-is the additive phase residual, and it obeys the exact 2-cocycle identity
+The generic cocycle verifier checks
 
     omega(a,b) + omega(a+b,c)
       = omega(b,c) + omega(a,b+c).
 
-The commutator residual is
+The generic central-commutator helper then returns
 
     omega(a,b) - omega(b,a)
       = beta/hbar * (a wedge b),
 
-which is proportional to the magnetic flux through the oriented parallelogram.
+while the visible endpoint is unchanged.  The explicit lifted-state
+calculation independently certifies that the API residual equals the actual
+phase/history discrepancy of this realization.
 
 At the Hamiltonian layer the same pressure appears infinitesimally:
 
@@ -70,12 +72,11 @@ Calibration statement
 ---------------------
 Passing this file certifies that:
 
-1. the frozen ``ProcessFamily`` API correctly represents ordinary visible planar
-   translation composition;
-2. an independent lifted magnetic realization has an exact area-dependent
-   central composition residual satisfying the 2-cocycle identity;
-3. the two translation orders have identical visible state but differ by the
-   expected central flux phase;
+1. ``ProcessFamily`` correctly represents ordinary visible planar translation;
+2. ``ProcessCocycle`` represents the exact area-dependent lifted residual and
+   certifies its 2-cocycle law;
+3. the generic central-commutator residual equals the explicit flux-dependent
+   phase difference between the two translation orders;
 4. the magnetic-translation generators commute with the uniform-field
    Hamiltonian and satisfy ``{K_x,K_y}=-beta``;
 5. the central bracket has zero visible Hamiltonian vector field, so visible
@@ -83,23 +84,16 @@ Passing this file certifies that:
 
 New reusable abstraction
 -------------------------
-None in this PR.  This is the first independent organism after the Galilean
-example to reproduce the same ``visible law + hidden central residual`` pressure.
-
-Unresolved manual choice
-------------------------
-The evidence now strongly suggests a small finite central-residual/cocycle
-abstraction, but this test deliberately leaves its exact API shape undecided.
-In particular, the Galilean residual has so far been exposed most naturally at
-the generator/affine-response level, while magnetic translations expose an
-explicit finite 2-cocycle.  The common interface should be designed from both,
-not inferred from the magnetic example alone.
+This example now shares the minimal ``ProcessCocycle`` abstraction with the
+independent Galilean mass calibration.  The physical realization and cocycle
+formula remain problem-specific.
 
 Boundary
 --------
 This is not a construction of the full magnetic translation group, a theorem
-about all gauges, or a quantum representation theory.  The lifted phase model is
-a calibrated symbolic realization used to expose composition residuals.
+about all gauges, or a quantum representation theory.  ``ProcessCocycle`` stores
+one additive finite composition residual; it does not quotient cocycles by
+coboundaries or turn the package into a cohomology engine.
 
 References
 ----------
@@ -112,7 +106,12 @@ A1602-A1606 (1964), DOI: 10.1103/PhysRev.134.A1602.
 
 import sympy as sp
 
-from aeg_shakespeare import ProcessFamily
+from aeg_shakespeare.central import (
+    ProcessCocycle,
+    central_commutator_residual,
+    verify_process_cocycle,
+)
+from aeg_shakespeare.families import ProcessFamily
 
 
 def _pair_add(left, right):
@@ -174,11 +173,23 @@ def test_magnetic_translation_has_flux_cocycle_but_ordinary_visible_composition(
         identity=(sp.S.Zero, sp.S.Zero),
     )
 
-    # The frozen family API sees only ordinary planar translation.
     assert translations.parameters_equivalent(
         translations.compose_parameters(a, b),
         (ax + bx, ay + by),
     )
+
+    cocycle = ProcessCocycle(
+        translations,
+        lambda left, right: sp.expand(
+            beta * _wedge(left, right) / (2 * hbar)
+        ),
+        label="magnetic flux phase",
+    )
+    assert verify_process_cocycle(
+        cocycle,
+        ((a, b, c),),
+        normalization_parameters=(a,),
+    ).exact
 
     state = (x, y, theta)
     after_b_then_a = _lifted_translation(
@@ -194,24 +205,11 @@ def test_magnetic_translation_has_flux_cocycle_but_ordinary_visible_composition(
         hbar=hbar,
     )
 
-    # Visible position agrees; only the lifted phase/history remembers order.
     assert sp.simplify(after_b_then_a[0] - direct_ab[0]) == 0
     assert sp.simplify(after_b_then_a[1] - direct_ab[1]) == 0
-
-    omega_ab = sp.expand(beta * _wedge(a, b) / (2 * hbar))
-    assert sp.simplify(after_b_then_a[2] - direct_ab[2] - omega_ab) == 0
-
-    # The additive central residual is an exact 2-cocycle.
-    omega = lambda left, right: sp.expand(
-        beta * _wedge(left, right) / (2 * hbar)
-    )
-    cocycle_residual = sp.expand(
-        omega(a, b)
-        + omega(_pair_add(a, b), c)
-        - omega(b, c)
-        - omega(a, _pair_add(b, c))
-    )
-    assert sp.simplify(cocycle_residual) == 0
+    assert sp.simplify(
+        after_b_then_a[2] - direct_ab[2] - cocycle.value(a, b)
+    ) == 0
 
     after_a_then_b = _lifted_translation(
         b,
@@ -221,9 +219,12 @@ def test_magnetic_translation_has_flux_cocycle_but_ordinary_visible_composition(
     )
     assert sp.simplify(after_b_then_a[0] - after_a_then_b[0]) == 0
     assert sp.simplify(after_b_then_a[1] - after_a_then_b[1]) == 0
+
+    commutator = central_commutator_residual(cocycle, a, b)
     expected_commutator_phase = sp.expand(beta * _wedge(a, b) / hbar)
+    assert sp.simplify(commutator - expected_commutator_phase) == 0
     assert sp.simplify(
-        after_b_then_a[2] - after_a_then_b[2] - expected_commutator_phase
+        after_b_then_a[2] - after_a_then_b[2] - commutator
     ) == 0
 
 
@@ -233,8 +234,6 @@ def test_magnetic_translation_generators_retain_central_bracket_invisible_to_flo
     mass = sp.symbols("m", positive=True)
     a, b = sp.symbols("a b", real=True)
 
-    # Symmetric-gauge realization.  Mechanical momenta enter H, while K_x,K_y
-    # generate magnetic translations.
     pi_x = px + beta * y / 2
     pi_y = py - beta * x / 2
     H = sp.expand((pi_x**2 + pi_y**2) / (2 * mass))
@@ -253,8 +252,6 @@ def test_magnetic_translation_generators_retain_central_bracket_invisible_to_flo
         sp.S.Zero,
     )
 
-    # Explicit finite canonical flows commute visibly even though the generators
-    # retain the nonzero central bracket.
     def flow_kx(parameter, state):
         sx, sy, spx, spy = state
         return (
