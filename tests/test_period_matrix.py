@@ -3,7 +3,8 @@ import math
 import pytest
 import sympy as sp
 
-from aeg_shakespeare import AbelianCycleSystem, hyperelliptic_profile, lift_square_root_path
+from aeg_shakespeare.analysis.abelian import AbelianCycleSystem, lift_square_root_path
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def test_cycle_system_rejects_sheet_open_base_loops():
