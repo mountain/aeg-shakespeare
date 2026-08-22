@@ -124,12 +124,14 @@ F=F_{\rm ren}+F_{\rm res}+F_{\rm comp}
 
 as three caller-defined parts plus evidence.
 
-The reusable record does not prescribe the decomposition backend.  This is
-already necessary: Riccati and coupled-scalar examples partition Lie directions,
-whereas Restricted Kepler partitions a finite Fourier/function module.
+The reusable record does not prescribe the decomposition backend.  Riccati and
+coupled-scalar examples partition Lie directions; Restricted Kepler partitions a
+finite Fourier/function module; Sonnet 001 Phase 8A now adds a finite persistent
+task-state carrier.
 
-The current evidence says the *shape of the result* is reusable while the
-mechanism discovering the parts is not yet universal.
+The current evidence therefore supports the *shape of the result* across four
+qualitatively different carriers while leaving the mechanism discovering the
+parts domain-specific.
 
 ## 6. Calibration A — Restricted Riccati
 
@@ -301,15 +303,68 @@ Kepler orthogonality/osculation gauge.  Classical central-force, perturbation,
 and trigonometric references are carried by the executable essay
 [Goldstein-Poole-Safko-2002; Arnold-1989; DLMF-4.21].
 
-## 9. Current API judgment
+## 9. Calibration D — Sonnet 001 Phase 8A discrete persistent states
 
-After the three killer calibrations and the first A/M re-expression:
+Executable essay:
+
+```text
+tests/research/test_lonely_runner_canonical_observer_decomposition.py
+```
+
+Starting only from the center-2 persistent task representation and the newly
+admitted center-3 contact layer, define
+
+```text
+A = forced_earlier
+B = effective_unresolved_crossing
+
+stable              = not A and not B
+transport-only      = A and not B
+completion-required = B
+```
+
+before evaluating any center-3 child semantics.
+
+The dedicated exact gate recovered
+
+```text
+841 stable
+2 non-branching changed-witness states
+6 genuinely branching states
+```
+
+as a disjoint exhaustive partition of 849 task-safe parents.  Only afterwards,
+refining 26 old full systems into 298 local children verified that the two
+non-branching states each have one changed witness while all six completion
+states split; the local update recovers all 75 center-3 semantics.
+
+Recorded evidence:
+
+```text
+workflow run 32583659546
+Python 3.12.14
+1 passed in 5.82 s
+```
+
+The duration is provenance only.  Full claim boundary is in
+`sonnet/lonely-runner/20-phase8a-discrete-canonical-decomposition.md`.
+
+This result strengthens `CanonicalDecomposition` as a backend-neutral result
+shape.  It does **not** establish a discrete `ObserverConnection`: the two
+non-branching cases must still be inspected to determine whether the observer
+state itself moves or whether only history/witness indexing changes.
+
+## 10. Current API judgment
+
+After the three killer classical calibrations, the A/M negative control, and the
+Phase-8A discrete red team:
 
 ### Strongest candidates to retain
 
 - `ProcessDirection`;
-- generic-provenance `ObserverConnection`;
-- evidence-bearing `CanonicalDecomposition`.
+- generic-provenance `ObserverConnection` for calibrated continuous transports;
+- evidence-bearing `CanonicalDecomposition` across Lie, module, and finite task
+  carriers.
 
 ### Provisional backend
 
@@ -318,17 +373,18 @@ After the three killer calibrations and the first A/M re-expression:
 ### Explicitly not promoted yet
 
 - generic `Canonicalization` base class/protocol;
+- a discrete observer-connection protocol;
 - stationary/cost canonicalization;
 - observer bundle;
 - local process-jet class;
 - curvature/holonomy;
-- universal Lie/module completion API;
+- universal Lie/module/task-state completion API;
 - numerical observer ODE integration.
 
-## 10. Literate-programming gate
+## 11. Literate-programming and consistency gate
 
-The new mathematical essays are now required by CI to contain all repository
-essay sections:
+The new mathematical essays are required by CI to contain all repository essay
+sections:
 
 ```text
 Question
@@ -341,30 +397,37 @@ Boundary
 References
 ```
 
-The hygiene test also checks that citation keys resolve to entries with useful
-locators and that every test function named in the Proof map exists (and every
-mathematical test function is represented in that Proof map):
+The hygiene test checks citation keys/locators and Proof-map/test correspondence:
 
 ```text
 tests/test_canonical_observer_essay_hygiene.py
 ```
 
-This gate is intentionally scoped to the new vertical slice until the older
-classical/research corpus has been audited for the same standard.
+Cross-artifact mathematical consistency is now an explicit repository proof
+obligation in `docs/11-references-and-test-essays.md`.  The branch maintains an
+auditable statement/code/test/reference/status map in
 
-## 11. Next development order
+```text
+docs/37-canonical-observer-claim-ledger.md
+```
 
-The first audit of Pendulum and the two-frequency oscillator has now been
-recorded in `docs/36-classical-reexpression-audit.md`: both are important
-negative controls against overusing the new vocabulary.
+so a formula, sign convention, API name, or epistemic-status change cannot be
+treated as a prose-only cleanup.
 
-The next genuinely new pressure should therefore come from Sonnet 001 Phase 8,
-which will test whether the persistent Hauffman `841/2/6` split can be
-rediscovered by the same canonical-decomposition language in a discrete history
-domain.  Curvature/holonomy and a generic canonicalization protocol remain
-deferred.
+## 12. Next development order
 
-## 12. References
+Pendulum and the two-frequency oscillator remain important negative controls,
+as recorded in `docs/36-classical-reexpression-audit.md`.
+
+Phase 8A has now passed.  The next task is Phase 8B: inspect the two
+non-branching changed-witness states and decide whether they exhibit true
+same-family observer transport or merely a history/event-index reparameterization.
+No discrete `ObserverConnection` should be introduced before this distinction is
+settled.
+
+Curvature/holonomy and a generic canonicalization protocol remain deferred.
+
+## 13. References
 
 [Hall-2015] Brian C. Hall, *Lie Groups, Lie Algebras, and Representations: An
 Elementary Introduction*, 2nd ed., Graduate Texts in Mathematics 222, Springer,
@@ -389,3 +452,11 @@ Safko, *Classical Mechanics*, 3rd ed., Addison-Wesley, 2002, Chapter 3,
 
 [DLMF-4.21] NIST Digital Library of Mathematical Functions, §4.21,
 "Identities" for trigonometric functions, https://dlmf.nist.gov/4.21 .
+
+[Huffman-1952] David A. Huffman, "A Method for the Construction of
+Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101;
+DOI 10.1109/JRPROC.1952.273898.
+
+[Sungkawichai-Trakulthongchai-2026] Touch Sungkawichai, Tanupat
+Trakulthongchai, "Eleven, twelve, and thirteen lonely runners,"
+arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
