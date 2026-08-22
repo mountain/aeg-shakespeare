@@ -114,20 +114,20 @@ Theory of the Theta Functions*, Cambridge University Press, 1897.
 
 import dataclasses
 
-import sympy as sp
 import pytest
+import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.analysis.abelian import (
     SampledRiemannProfile,
     abel_jacobi_history_increment,
     compute_period_matrix,
     construct_real_branch_cycles,
-    hyperelliptic_profile,
     normalized_abelian_torus,
     real_branch_cut_presentation,
     sampled_intersection_form,
     sampled_riemann_profile,
 )
+from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
 
 
 def generated_genus_two_riemann_profile(samples: int = 512):
