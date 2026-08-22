@@ -1,6 +1,6 @@
 """Budgets, costs, Pareto filtering, and presentation search."""
 
-from ..core import SearchBudget
+from .budget import SearchBudget
 from ..cost import PresentationCost
 from ..search import (
     ConstructedPrimitivePresentation,
