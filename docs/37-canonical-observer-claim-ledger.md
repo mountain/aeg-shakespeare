@@ -4,217 +4,158 @@
 
 ## 1. Purpose
 
-For this research line, mathematical prose, executable code, test claims, and
-bibliography are one artifact with several views.  A change is incomplete if it
-updates only one view.
+For this research line, mathematical prose, executable code, test claims, and bibliography are one artifact with several views.  A change is incomplete if it updates only one view.
 
-The ledger records, for each promoted or calibrated statement:
+The ledger records
 
 ```text
 mathematical statement
     <-> implementation owner
     <-> executable certificate
     <-> cited classical lineage
-    <-> epistemic status
+    <-> epistemic status.
 ```
 
-It does **not** make prose correctness mechanically decidable.  Its purpose is to
-make discrepancies visible and reviewable.  The routine CI gate
-`tests/test_canonical_observer_essay_hygiene.py` checks the mechanically
-auditable subset: required essay sections, citation resolution/locators, and
-Proof-map/test correspondence.
+Routine CI checks the mechanically auditable subset through `tests/test_canonical_observer_essay_hygiene.py`; dedicated heavy workflows certify bounded research censuses that should not run across the full Python matrix.
 
-## 2. Process direction
+## 2. `ProcessDirection`
 
 ### Statement
 
-Given a declared process frame `X_i`,
+For a declared process frame `X_i`,
 
 \[
-\mathscr D=\sum_i u^i X_i.
+\mathscr D=\sum_i u^iX_i.
 \]
 
-The assignment ODE is a shadow obtained by applying `D` to assignment symbols;
-`ProcessDirection` itself is not a trajectory, solver, or observer connection.
+Assignment ODEs are obtained by applying `D` to assignment symbols; `ProcessDirection` itself is not a path, solver, observer connection, or reparameterization quotient.
 
-### Implementation owner
+### Owner / certificates
 
 ```text
 src/aeg_shakespeare/process/local/direction.py
-    ProcessDirection.apply
-    ProcessDirection.assignment_rules
-    ProcessDirection.as_system
-```
 
-### Executable certificates
-
-```text
 tests/classical/test_am_process_direction.py
-    test_am_process_direction_has_the_expected_assignment_shadow
-
 tests/classical/test_restricted_riccati_canonical_observer.py
-    test_process_direction_precedes_assignment_ode
-
 tests/classical/test_coupled_scalar_canonical_observer.py
-    test_bidirectional_cross_coupling_forces_matrix_completion
 ```
 
-### Classical lineage
+### Lineage
 
-- Hall 2015 for matrix Lie group/algebra background.
-- Coddington--Levinson 1955 for the ordinary linear-ODE shadow.
+Hall 2015; Coddington--Levinson 1955 for the classical affine/linear-ODE shadows.
 
 ### Status
 
-**Implemented/calibrated.**  No claim of universal closed-form integration or
-reparameterization invariance.
+**Implemented/calibrated.**
 
 ---
 
-## 3. Exact constraint canonicalization
+## 3. `ConstraintCanonicalization`
 
 ### Statement
 
-A local observer may be selected by exact constraints
+The first implemented canonicalization backend uses exact local equations
 
 \[
-\Phi(z,g)=0.
+\Phi(z,g)=0,
 \]
 
-Along declared base rates, maintaining the constraints gives
+and obtains observer rates by differentiating them along declared base rates and solving uniquely for `dot g`.
 
-\[
-D_z\Phi\,\dot z+D_g\Phi\,\dot g=0.
-\]
-
-When the symbolic local solution for `dot g` is unique, it defines the first
-implemented observer-connection backend.
-
-### Implementation owner
+### Owner / certificates
 
 ```text
 src/aeg_shakespeare/presentation/canonicalization.py
-    ConstraintCanonicalization.differentiated_constraints
-    ConstraintCanonicalization.induced_connection
-```
 
-There is deliberately **no generic `Canonicalization` alias or base protocol** at
-this stage.
-
-### Executable certificates
-
-```text
 tests/classical/test_restricted_riccati_canonical_observer.py
-    test_affine_root_canonicalization_induces_observer_connection
-
 tests/classical/test_coupled_scalar_canonical_observer.py
-    test_relative_scale_canonicalization_induces_connection
 ```
+
+There is deliberately no generic `Canonicalization` alias or base protocol.
 
 ### Status
 
-**Implemented backend, not universal definition.**  Kepler
-orthogonality/osculation is the explicit red team showing that future
-canonicalization backends need not be algebraic constraints.
+**Implemented backend, not universal definition.**  Restricted Kepler remains the explicit red team against pretending that osculation/orthogonality must share this exact-equation backend.
 
 ---
 
-## 4. Observer connection
+## 4. `ObserverConnection`
 
 ### Statement
 
-Observer dynamics is recorded as transport induced by maintaining the chosen
-local canonical representation.  The current object stores provenance, base
-rates, observer rates, and residual certificates; it does not yet assert a full
-principal-bundle connection theory.
+`ObserverConnection` records local observer motion induced by maintaining canonicalization.  It carries canonicalization provenance, base rates, observer rates, and exact residuals.
 
-### Implementation owner
+### Owner / positive certificates
 
 ```text
 src/aeg_shakespeare/analysis/connection.py
-    ObserverConnection
+
+tests/classical/test_restricted_riccati_canonical_observer.py
+tests/classical/test_coupled_scalar_canonical_observer.py
 ```
 
-### Executable certificates
+### Negative discrete certificate
 
-Riccati and coupled-scalar tests above require
+Sonnet 001 Phase 8B inspected the two center-depth updates initially suspected of being same-family transport.  Both retain exactly the same witness boundary and mode and only shift the event rank by `+2`.  They are history/decoder reindexing, not observer motion.
 
 ```text
-connection.certified == True
+sonnet/lonely-runner/21-phase8b-history-reindex-red-team.md
+workflow run 32584153291
 ```
-
-and check the exact induced parameter rates.
 
 ### Status
 
-**Evidence-bearing local transport record for continuous calibrations.**
-Curvature, holonomy, horizontal projection, composition, and path-ordered
-numerical transport remain unpromoted.  Sonnet 001 has not yet earned a discrete
-`ObserverConnection`; Phase 8B must first objectify same-family transport.
+**Evidence-bearing local transport record for continuous calibrations only.**  Sonnet 001 currently provides no discrete `ObserverConnection` evidence.  Curvature, holonomy, composition, horizontal projection, and numerical path-ordered transport remain unpromoted.
 
 ---
 
-## 5. Canonical decomposition
+## 5. `CanonicalDecomposition`
 
 ### Statement
 
-The working AEG Analysis split is
+The working result shape is
 
 \[
 F=F_{\rm ren}+F_{\rm res}+F_{\rm comp},
 \]
 
-read operationally as
+with a caller/domain-specific certificate.  The API records the split but does not prescribe a universal discovery algorithm.
 
-```text
-renormalize / remain in current representation,
-transport / resonant observer motion,
-complete / enlarge the representation.
-```
-
-The current API records a claimed split plus evidence; it does not prescribe a
-universal projection/decomposition algorithm.
-
-### Implementation owner
+### Owner
 
 ```text
 src/aeg_shakespeare/analysis/decomposition.py
-    CanonicalDecomposition
 ```
 
 ### Independent carrier calibrations
 
-```text
-Restricted Riccati
-    Lie-direction carrier
-    Q is completion relative to affine observer family
+| Calibration | Carrier | Exact calibrated split |
+| --- | --- | --- |
+| Restricted Riccati | Lie directions | affine tangent / empty resonant sector / `Q` completion |
+| coupled scalar registers | multivariable Lie directions | diagonal ruler / empty resonant sector / cross completion |
+| Restricted Kepler | finite function module | `n=0 / n=1 / n=2` |
+| Sonnet 001 Phase 8A/8B | persistent finite task states | `843 / 0 / 6` |
 
-Coupled scalar registers
-    multivariable Lie-direction carrier
-    E12,E21 are completion relative to independent scalar rulers
+For Sonnet 001:
 
-Restricted Kepler
-    finite function-module carrier
-    n=0 / n=1 / n=2 -> renormalizable / resonant / completion
+\[
+\boxed{
+843\;F_{\rm ren}
+=841\text{ identity-stable}+2\text{ history reindex},
+\quad0\;F_{\rm res},
+\quad6\;F_{\rm comp}.
+}
+\]
 
-Lonely Runner Phase 8A
-    finite persistent task-state carrier
-    exact local partition 841 / 2 / 6
-```
+The earlier working map `841 / 2 / 6 -> renormalizable / resonant / completion` was explicitly rejected by Phase 8B and must not be cited as the final canonical decomposition.
 
 ### Status
 
-**Reusable result shape supported by four qualitatively different carrier
-calibrations.**  Phase 8A adds the first discrete persistent-history carrier and
-passes its dedicated exact gate.  This strengthens the evidence for the result
-shape, but does not imply a universal discovery backend or categorical
-unification of Lie, function-module, and finite task-state completion.
+**Reusable result shape supported by four qualitatively different carriers.**  Universal projection/decomposition or categorical unification remains open.
 
 ---
 
-## 6. Riccati completion and bracket convention
-
-### Statement
+## 6. Riccati completion
 
 With repository convention
 
@@ -225,47 +166,38 @@ With repository convention
 and
 
 \[
-A=\partial_x,\quad M=x\partial_x,\quad Q=x^2\partial_x,
+A=\partial_x,
+\quad M=x\partial_x,
+\quad Q=x^2\partial_x,
 \]
 
-we have
+the executable bracket table is
 
 \[
 [A,M]=A,
-\qquad
-[A,Q]=2M,
-\qquad
-[M,Q]=Q.
+\qquad[A,Q]=2M,
+\qquad[M,Q]=Q.
 \]
 
-### Executable certificate
+Certificate:
 
 ```text
 tests/classical/test_restricted_riccati_canonical_observer.py
-    test_restricted_affine_observer_leaves_q_as_completion_direction
 ```
 
-### Classical lineage
+Lineage: Cariñena--Marmo--Nasarre 1998; Hall 2015.
 
-Cariñena--Marmo--Nasarre 1998; Hall 2015.
-
-### Status
-
-**Implemented exact bracket certificate.**  The classical `sl(2)` identification
-is a shadow checked after the restricted affine decomposition.
+Status: **implemented exact classical-shadow certificate after restricted decomposition.**
 
 ---
 
 ## 7. Coupled-scalar sign audit
 
-### Statement
-
 With
 
 \[
 E_{12}=y\partial_x,
-\qquad
-E_{21}=x\partial_y,
+\qquad E_{21}=x\partial_y,
 \]
 
 and the repository commutator convention,
@@ -274,33 +206,20 @@ and the repository commutator convention,
 \boxed{[E_{12},E_{21}]=M_2-M_1.}
 \]
 
-### Implementation / certificate
+Owner/certificate:
 
 ```text
 src/aeg_shakespeare/process/local/frame.py
-    ProcessFrame.commutator
-
 tests/classical/test_coupled_scalar_canonical_observer.py
-    test_bidirectional_cross_coupling_forces_matrix_completion
 ```
 
-### Consistency note
+The externally supplied AEG Analysis v0.2 note contains one line with the opposite sign `M1-M2`.  Repository code/tests/docs consistently use the executable sign.  The external note should be corrected in its next revision; the `gl(2)`/`aff(2)` generation statement is unchanged.
 
-The externally supplied AEG Analysis v0.2 research note currently contains one
-line with the opposite sign `M1-M2`.  Repository code/tests/docs use the
-executable convention above.  The external note should be corrected at its next
-revision; the structural statement that bidirectional shears generate the full
-matrix algebra is unchanged.
-
-### Status
-
-**Known documentation discrepancy, localized and recorded.**
+Status: **known documentation discrepancy, localized and recorded.**
 
 ---
 
 ## 8. Restricted Kepler three-sector calibration
-
-### Statement
 
 For
 
@@ -316,7 +235,7 @@ For
 +\frac{b^2}{2}\cos2\psi,
 \]
 
-with
+and
 
 \[
 L_K1=1,
@@ -324,173 +243,152 @@ L_K1=1,
 \quad L_K\cos2\psi=-3\cos2\psi.
 \]
 
-The restricted calibration labels these three sectors renormalizable,
-resonant/transport, and completion respectively.  `R` then forces the companion
-`sin(2 psi)` and hence the degree-two five-dimensional closed module.
-
-### Executable certificate
+Executable certificate:
 
 ```text
 tests/classical/test_restricted_kepler_canonical_decomposition.py
 ```
 
-### Classical lineage
+Lineage: Goldstein--Poole--Safko 2002; Arnold 1989; NIST DLMF §4.21.
 
-Goldstein--Poole--Safko 2002, Arnold 1989, NIST DLMF §4.21.
-
-### Status
-
-**Bounded first-order calibration.**  Not a general perturbation theorem and not
-a generic osculation/canonicalization backend.
+Status: **bounded first-order function-module calibration, not a general perturbation theorem.**
 
 ---
 
 ## 9. Negative controls
 
-### A/M
+- **A/M:** `ProcessDirection` is needed; `ObserverConnection` is not.
+- **Pendulum:** `pair(q,e)` is a task-relative scalar observable, not a dynamic observer state.
+- **Two-frequency oscillator:** coefficient-field refinement is exact but not automatically `F_comp`; the real/extended presentations remain Pareto-incomparable in the red-team profile.
+- **Galilean / magnetic translations:** central cocycle residuals pressure future lift/holonomy concepts but are not by themselves observer connections.
+- **Sonnet 001 Phase 8B:** a changed event/history index with invariant witness boundary and mode is decoder renormalization, not observer transport.
 
-`ProcessDirection` is needed; `ObserverConnection` is not.  This prevents
-conflating physical/process trajectory with observer transport.
-
-### Pendulum
-
-The selected `pair(q,e)` is a task-relative scalar **observable**, not the
-dynamic observer state of the connection programme.
-
-### Two-frequency oscillator
-
-Coefficient-field refinement from two quadratic factors to four linear factors
-is an exact presentation refinement but is not forced process completion; both
-presentations remain Pareto-incomparable under the red-team cost profile.
-
-### Galilean / magnetic translations
-
-Central cocycle residuals pressure future lift/holonomy concepts but are not, by
-themselves, observer connections.
-
-### Status
-
-**Implemented/audited boundaries.**  These negative controls are part of the API
-evidence, not exclusions to be erased by later refactoring.
+Status: **implemented/audited boundaries; these negative cases are part of the API evidence.**
 
 ---
 
-## 10. Sonnet 001 Phase 8A
+## 10. Sonnet 001 Phase 8A/8B
 
-### Pre-refinement classification
+### Pre-refinement behavioral partition
 
-Using only the center-2 persistent task state plus new center-3 contact events,
-let
+Using only old center-2 persistent state plus newly admitted center-3 events:
 
 ```text
 A = forced_earlier
 B = effective_unresolved_crossing
+
+stable              = not A and not B
+nonbranching_update = A and not B
+completion_pressure = B
 ```
 
-and define
+This yields exactly
 
 ```text
-stable              = not A and not B
-transport-only      = A and not B
-completion-required = B.
+841 / 2 / 6
 ```
 
-### Implementation owner
+before center-3 child semantics are evaluated.
+
+### Phase-8B witness audit
+
+The two nonbranching cases are
+
+```text
+(11, ((1,1,'exit'),), 'interval') -> (13, ((1,1,'exit'),), 'interval')
+(12, ((1,1,'exit'),), 'interval') -> (14, ((1,1,'exit'),), 'interval')
+```
+
+so both preserve boundary and mode and change only event rank by `+2`.
+
+### Corrected canonical sectors
+
+```text
+843 renormalizable
+  0 resonant / observer transport
+  6 completion
+```
+
+### Owner / essay / notes
 
 ```text
 sonnet/lonely-runner/python/local_contact_refinement.py
     analyze_center2_to_center3
-```
 
-The classification is computed before center-3 child semantics are evaluated.
-Only afterwards are affected parents locally refined as a red-team oracle.
-
-### Executable essay
-
-```text
 tests/research/test_lonely_runner_canonical_observer_decomposition.py
+
+sonnet/lonely-runner/20-phase8a-discrete-canonical-decomposition.md
+sonnet/lonely-runner/21-phase8b-history-reindex-red-team.md
 ```
 
 ### Exact gate
 
 ```text
 workflow: .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
-run id:   32583659546
+run id:   32584153291
 Python:   3.12.14
-result:   1 passed in 5.82 s
+result:   1 passed in 7.95 s
 ```
 
-The duration is provenance, not a performance result.
-
-### Established result
+The same run verifies:
 
 ```text
-841 stable
-2 transport-only, each one uniform changed witness
-6 completion-required, each genuinely branching
 26 old full systems reopened
 298 center-3 children evaluated
-75 final witness semantics recovered
+75 final witness semantics recovered.
 ```
 
-Full research narrative and boundary:
-
-```text
-sonnet/lonely-runner/20-phase8a-discrete-canonical-decomposition.md
-```
+Timing is provenance only.
 
 ### Status
 
-**Exact bounded Phase-8A cross-domain calibration passed.**  The result
-establishes the pre-refinement three-way local partition and its post hoc local
-semantic red team.  It does not yet establish that the two non-branching updates
-form a true same-family observer connection; that is Phase 8B.
+**Exact bounded 8A/8B calibration passed.**  It supports the renormalizable/completion distinction and explicitly rejects the proposed discrete transport interpretation for the two nonbranching states.
 
 ---
 
-## 11. Reference ledger
+## 11. Next research row — Phase 8C
 
-Full bibliographic entries live in the executable essays that use them.  Core
-anchors for this branch are:
+Target: make the six `F_comp` states constructive.
 
-- Brian C. Hall, *Lie Groups, Lie Algebras, and Representations*, 2nd ed.,
-  Springer, 2015; DOI 10.1007/978-3-319-13467-3.
-- V. I. Arnold, *Mathematical Methods of Classical Mechanics*, 2nd ed., Springer,
-  1989; DOI 10.1007/978-1-4757-2063-1.
-- Earl A. Coddington, Norman Levinson, *Theory of Ordinary Differential
-  Equations*, McGraw-Hill, 1955; "Linear Differential Equations" begins p. 62;
-  ISBN 978-0-07-099256-6.
-- J. F. Cariñena, G. Marmo, J. Nasarre, "The nonlinear superposition principle
-  and the Wei-Norman method," arXiv:physics/9802041 (1998),
-  https://arxiv.org/abs/physics/9802041 .
-- Herbert Goldstein, Charles P. Poole Jr., John L. Safko, *Classical Mechanics*,
-  3rd ed., Addison-Wesley, 2002, Chapter 3, ISBN 0-201-65702-3.
-- NIST Digital Library of Mathematical Functions, §4.21,
-  https://dlmf.nist.gov/4.21 .
-- David A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes,"
-  *Proceedings of the IRE* 40(9) (1952), 1098--1101;
-  DOI 10.1109/JRPROC.1952.273898.
-- Touch Sungkawichai, Tanupat Trakulthongchai, "Eleven, twelve, and thirteen
-  lonely runners," arXiv:2604.23906 (2026),
-  https://arxiv.org/abs/2604.23906 .
+Required result:
 
-These fields have been checked against publisher/catalogue, DLMF, arXiv, or
-journal/DOI records as appropriate.  Project-specific interpretations remain
-separately labeled in the executable essays.
+```text
+completion parent
+    -> minimal new contact/sign residual signature
+    -> exact pair-difference closure
+    -> exact child-task reconstruction
+    -> cost comparison with opaque persistent-ID baseline.
+```
 
-## 12. Review rule
+Status: **planned / not yet established.**
 
-Before merging or promoting any item in this ledger:
+---
 
-1. update the mathematical statement here if its semantics changed;
-2. update the implementation owner and executable certificate in the same
-   branch;
-3. keep the essay Proof map synchronized with real test functions;
-4. verify every classical/historical claim has a resolvable reference with a
-   useful locator;
-5. label Shakespeare interpretation separately from cited classical facts;
-6. run routine CI plus any dedicated opt-in research gate required by the row;
-7. update the row's epistemic status only after the relevant gate has passed.
+## 12. Reference ledger
 
-A discrepancy is a blocked research artifact, not a documentation cleanup for
-later.
+Full entries live in the executable essays.  Core anchors:
+
+- Brian C. Hall, *Lie Groups, Lie Algebras, and Representations*, 2nd ed., Springer, 2015; DOI 10.1007/978-3-319-13467-3.
+- V. I. Arnold, *Mathematical Methods of Classical Mechanics*, 2nd ed., Springer, 1989; DOI 10.1007/978-1-4757-2063-1.
+- Earl A. Coddington, Norman Levinson, *Theory of Ordinary Differential Equations*, McGraw-Hill, 1955; linear differential equations begin p. 62; ISBN 978-0-07-099256-6.
+- J. F. Cariñena, G. Marmo, J. Nasarre, "The nonlinear superposition principle and the Wei-Norman method," arXiv:physics/9802041 (1998), https://arxiv.org/abs/physics/9802041 .
+- Herbert Goldstein, Charles P. Poole Jr., John L. Safko, *Classical Mechanics*, 3rd ed., Addison-Wesley, 2002, Chapter 3, ISBN 0-201-65702-3.
+- NIST Digital Library of Mathematical Functions, §4.21, https://dlmf.nist.gov/4.21 .
+- David A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101; DOI 10.1109/JRPROC.1952.273898.
+- Touch Sungkawichai, Tanupat Trakulthongchai, "Eleven, twelve, and thirteen lonely runners," arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
+
+Project-specific interpretations are labeled separately in the essays and must not be attributed to these references.
+
+## 13. Review rule
+
+Before merging or promoting any row:
+
+1. update this mathematical statement if semantics changed;
+2. update implementation owner and executable certificate in the same branch;
+3. keep Proof map synchronized with real test functions;
+4. verify bibliographic claims and locators against authoritative records;
+5. distinguish Shakespeare interpretation from cited classical facts;
+6. run routine CI plus any required dedicated research gate;
+7. change epistemic status only after those gates pass.
+
+A discrepancy is a blocked research artifact, not documentation cleanup for later.
