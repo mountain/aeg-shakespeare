@@ -39,8 +39,10 @@ nontrivial invariant direction
 
     I = V^2 - c U^2 + 2 U^3 - 2 a U.
 
-Only after that direction is discovered do we introduce a leaf value ``B`` and
-eliminate the source assignments. The first-order quotient must then recover
+A nullspace direction is only defined up to nonzero scalar. After discovery we
+therefore apply the representation-independent convention that the coefficient
+of ``V^2`` is one. Only then do we introduce a leaf value ``B`` and eliminate
+the source assignments. The first-order quotient must recover
 
     Y^2 = B + c X^2 + 2 a X - 2 X^3.
 
@@ -66,7 +68,8 @@ Passing this file certifies that:
 
 1. the traveling-wave process has exactly one nontrivial polynomial first
    integral within the declared degree-three budget;
-2. that invariant is discovered without an energy template;
+2. that invariant direction is discovered without an energy template and then
+   normalized only by its ``V^2`` coefficient;
 3. the invariant leaf eliminates exactly to the expected cubic quotient;
 4. the generic quotient has genus one;
 5. the solitary-wave parameter leaf is detected as a discriminant-zero
@@ -123,15 +126,19 @@ def test_kdv_traveling_wave_discovers_genus_one_and_soliton_degeneration():
     invariant = discovery.invariants[0]
     assert invariant.certified
 
+    # A nullspace vector is projective data. Fix its scalar only after discovery
+    # by requiring unit coefficient on the velocity-square term.
+    kinetic_scale = sp.expand(invariant.expression).coeff(V, 2)
+    assert kinetic_scale != 0
+    normalized_invariant = sp.expand(invariant.expression / kinetic_scale)
+
     expected_invariant = sp.expand(V**2 - c * U**2 + 2 * U**3 - 2 * a * U)
-    invariant_ratio = sp.cancel(invariant.expression / expected_invariant)
-    assert invariant_ratio != 0
-    assert not invariant_ratio.free_symbols
+    assert sp.expand(normalized_invariant - expected_invariant) == 0
 
     B, X, Y = sp.symbols("B X Y")
     leaf = AlgebraicConstraintSet(
         (U, V, c, a, B),
-        (invariant.expression - B,),
+        (normalized_invariant - B,),
     )
     quotient = discover_first_order_process_quotient(
         system,
