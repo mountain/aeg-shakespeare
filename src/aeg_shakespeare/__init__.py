@@ -8,6 +8,7 @@ from .construction import (
     SymbolicOperation,
     generate_primitive_proposals,
 )
+from .constraints import AlgebraicConstraintSet, constraint_prolongation
 from .core import (
     ProcessSystem,
     ProcessWord,
@@ -23,8 +24,10 @@ from .function_theory import (
     AMPowerWeight,
     AMPrimitive,
     AMState,
+    HyperellipticProfile,
     ProcessFunctionModule,
     affine_am_frame,
+    hyperelliptic_profile,
     polynomial_am_module,
 )
 from .grammar import (
@@ -91,6 +94,8 @@ __all__ = [
     "RejectedPrimitiveProposal",
     "SymbolicOperation",
     "generate_primitive_proposals",
+    "AlgebraicConstraintSet",
+    "constraint_prolongation",
     "ProcessSystem",
     "ProcessWord",
     "SearchBudget",
@@ -103,8 +108,10 @@ __all__ = [
     "AMPowerWeight",
     "AMPrimitive",
     "AMState",
+    "HyperellipticProfile",
     "ProcessFunctionModule",
     "affine_am_frame",
+    "hyperelliptic_profile",
     "polynomial_am_module",
     "GeneratedGrammar",
     "GeneratedPresentation",

@@ -2,7 +2,7 @@
 
 **Shakespeare** is a process-representation library for building and searching compact process presentations.
 
-It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, operation-generated primitive proposals, bounded search, exact relation discovery, finite grammar generation, representation costs, Pareto presentation search, and optional process-generated function theories.
+It is not primarily an ODE solver and it does not treat eigenvectors, Fourier modes, or a particular coordinate system as the starting ontology. The public library exposes problem-independent objects for ordered process histories, explicit history relations, finite task quotients, finite history geometry, operation-generated primitive proposals, algebraic constraints, bounded search, exact relation discovery, finite grammar generation, representation costs, Pareto presentation search, and optional process-generated function theories.
 
 > Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
 
@@ -34,9 +34,11 @@ The library core is intentionally problem-independent. Current public building b
 - `history_depth`, `boundary_profile`, `BoundaryProfile` — finite history geometry: process depth as the radial axis and prefix-frontier width/information as boundary observables, with an optional caller-supplied exact/task quotient key;
 - `huffman_prefix_code`, `PrefixCode`, `PrefixCodeMetrics` — one optional prefix-representation strategy that redistributes code depth after the task-relevant symbol set and weights have been fixed;
 - `SymbolicOperation`, `PrimitiveConstruction`, `PrimitiveProposal`, `generate_primitive_proposals` — bounded primitive proposal generation that retains construction trees and costs instead of identifying proposals by final symbolic value;
+- `AlgebraicConstraintSet`, `constraint_prolongation` — exact polynomial quotient reduction and repeated process preservation of algebraic constraints;
 - `ProcessFrame` — a generic symbolic frame of multiple ordered process generators, without assuming a universal Lie algebra or commutativity;
 - `ProcessFunctionModule` — a generic finite process-function module with explicit action tables and exact frame certificates;
 - `AMFunctionTheory` — the first concrete optional function theory, where **A means Addition and M means Multiplication**; it exposes their finite relation, `[A,M]=A`, the power-weight lattice, resonant primitives, PBW reordering, and ordered A/M path flow;
+- `hyperelliptic_profile` / `HyperellipticProfile` — a small algebraic-quotient profiler for process reductions of the form `y^2=P(x)`, recording degree, discriminant, generic genus, and degeneration locus without pretending to be a general algebraic-geometry engine;
 - `interpret_history` — attach caller-defined semantics to a history;
 - `ProcessSystem` — a derivation-style symbolic backend for a local process generator;
 - `SearchBudget` — explicit finite limits for local representation search;
@@ -57,7 +59,7 @@ The physical and mathematical calibration problems do **not** define the package
 
 ## Current research boundary
 
-Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations, plus the first concrete process-generated function-theory branch.
+Shakespeare now has a first end-to-end bounded loop from declared operations to evaluated presentations, plus the first concrete process-generated function-theory branch and the first first-principles constrained-mechanics calibration.
 
 At the literal-history layer, `ProcessWord` remains ordered history and oriented relations are applied explicitly. `normalize_word` keeps the complete rewrite trace and returns cycles or step-budget exhaustion as certificates rather than assuming termination.
 
@@ -69,11 +71,13 @@ At the primitive-construction layer, caller-declared operations generate bounded
 
 At the symbolic local-process layer, each proposed seed can grow an exact process grammar. If closure succeeds, Shakespeare discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact target decoders. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
+At the constraint/quotient layer, polynomial relations can be maintained and reduced exactly. The first canonical pendulum calibration starts from planar position/velocity plus a rigid-rod relation and unresolved radial force—without `theta`, `sin`, or `cos`. Constraint prolongation determines the force, energy reduction yields a quotient `Y^2=2(E-U)(1-U^2)`, and the generic quotient is detected as genus one with degenerations at `E=±1`.
+
 At the search layer, the resulting candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The Pareto frontier can therefore preserve a trade-off between construction cost, grammar width, process depth, relation complexity, and decoding rather than collapsing them to one score.
 
-At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. It is intentionally downstream of the generic process machinery. Its resonance structure already forces logarithmic/Jordan-type extensions, but Shakespeare does not assume that every problem should reduce to A/M. Classical tests such as the pendulum are expected to probe when elliptic/Abelian or other function theories give a more natural process presentation.
+At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. It is intentionally downstream of the generic process machinery. Its resonance structure forces logarithmic/Jordan-type extensions, while the pendulum calibration demonstrates a different route in which a constrained process forces a genus-one algebraic quotient. Shakespeare therefore does not assume that every problem should reduce to A/M.
 
-The next threshold is **adaptive proposal priority/objectification** together with a systematic classical calibration suite. Repeated history subtrees, relation compression, task signatures, boundary usage measures, and function-theory closure should help determine which constructions deserve to become new primitives and which function language is adequate for the task.
+The next threshold is **adaptive proposal priority/objectification** together with a systematic classical calibration suite. Repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure should help determine which constructions deserve to become new primitives and which function language is adequate for the task.
 
 ## Development
 
@@ -84,7 +88,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md), [`docs/05-primitive-construction.md`](docs/05-primitive-construction.md), and [`docs/06-addition-multiplication-function-theory.md`](docs/06-addition-multiplication-function-theory.md) for the current computational formulation.
+See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md), [`docs/05-primitive-construction.md`](docs/05-primitive-construction.md), [`docs/06-addition-multiplication-function-theory.md`](docs/06-addition-multiplication-function-theory.md), and [`docs/07-classical-calibration-program.md`](docs/07-classical-calibration-program.md) for the current computational formulation.
 
 ## License
 
