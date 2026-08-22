@@ -25,3 +25,18 @@ jobs:
         run: python -m build
       - name: Check distribution metadata
         run: python -m twine check dist/*
+      - name: Verify built wheel outside source tree
+        shell: bash
+        run: |
+          python -m venv /tmp/aeg-shakespeare-release-smoke
+          /tmp/aeg-shakespeare-release-smoke/bin/python -m pip install --upgrade pip
+          /tmp/aeg-shakespeare-release-smoke/bin/python -m pip install dist/*.whl
+          cd /tmp
+          /tmp/aeg-shakespeare-release-smoke/bin/python - <<'PY'
+          import aeg_shakespeare as shakespeare
+          assert shakespeare.__version__ == "0.0.1"
+          assert hasattr(shakespeare, "ProcessWord")
+          assert hasattr(shakespeare, "AMFunctionTheory")
+          assert hasattr(shakespeare, "AlgebraicConstraintSet")
+          print("wheel smoke OK:", shakespeare.__version__)
+          PY
