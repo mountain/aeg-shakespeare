@@ -1,5 +1,11 @@
 """AEG Shakespeare: process-representation discovery library."""
 
+from .central import (
+    CocycleVerification,
+    ProcessCocycle,
+    central_commutator_residual,
+    verify_process_cocycle,
+)
 from .construction import (
     PrimitiveConstruction,
     PrimitiveProposal,
@@ -153,6 +159,10 @@ from .signature import (
 )
 
 __all__ = [
+    "CocycleVerification",
+    "ProcessCocycle",
+    "central_commutator_residual",
+    "verify_process_cocycle",
     "PrimitiveConstruction",
     "PrimitiveProposal",
     "PrimitiveProposalResult",
