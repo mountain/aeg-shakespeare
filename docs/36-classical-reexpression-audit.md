@@ -14,11 +14,13 @@ therefore adversarial:
 > mathematically forced, where it is only a harmless reformulation, and where it
 > would be actively misleading.
 
-This note records the first audit pass.
+This note records the first audit pass.  Its mathematical evidence is the
+executable essays named below; classical background is attributed separately in
+§9 rather than being conflated with the Shakespeare interpretation.
 
 ## 2. A/M — positive process-direction calibration, negative connection control
 
-The new executable essay
+The executable essay
 
 ```text
 tests/classical/test_am_process_direction.py
@@ -59,8 +61,13 @@ continuous realization exists.
 
 ## 3. Pendulum — scalar observable selection is not a dynamic observer
 
-The pendulum discovery sequence already performs a strong canonical-selection
-experiment:
+The pendulum discovery sequence, especially
+
+```text
+tests/classical/test_pendulum_structured_observers.py
+```
+
+already performs a strong canonical-selection experiment:
 
 ```text
 primitive q,v,e + pairing
@@ -92,8 +99,13 @@ this vertical slice because it touches existing 0.0.x research surface.
 
 ## 4. Two-frequency oscillator — refinement is not automatically completion
 
-The oscillator coefficient-extension red team begins from an already closed
-four-dimensional process grammar with relation
+The executable red team
+
+```text
+tests/classical/test_two_frequency_oscillator_refinement_red_team.py
+```
+
+begins from an already closed four-dimensional process grammar with relation
 
 \[
 (D^2+1)(D^2+2)=0.
@@ -210,3 +222,43 @@ If the same decomposition shape survives that discrete history geometry, the
 case for a reusable canonical-observer layer becomes much stronger.  If it does
 not, the continuous API should remain domain-limited rather than forcing a false
 unification.
+
+## 9. References and executable sources
+
+The primary evidence for this audit is executable, not bibliographic:
+
+- `tests/classical/test_am_process_direction.py` — process direction versus ODE
+  shadow; cited classical sources: Hall 2015 and Coddington--Levinson 1955.
+- `tests/classical/test_pendulum_structured_observers.py` — structured scalar
+  observable selection; cited sources include Arnold 1989 and Cox--Little--O'Shea
+  2015.
+- `tests/classical/test_two_frequency_oscillator_refinement_red_team.py` — exact
+  relation refinement and Pareto non-dominance; cited sources include Arnold
+  1989 and Axler 2015.
+- `tests/classical/test_restricted_riccati_canonical_observer.py` — affine
+  canonicalization and forced quadratic completion; cited sources include
+  Cariñena--Marmo--Nasarre 1998 and Hall 2015.
+- `tests/classical/test_coupled_scalar_canonical_observer.py` — relative-ruler
+  transport and matrix completion; cited sources include Hall 2015 and Arnold
+  1989.
+- `tests/classical/test_restricted_kepler_canonical_decomposition.py` —
+  function-module decomposition; cited sources include Goldstein--Poole--Safko
+  2002, Arnold 1989, and NIST DLMF §4.21.
+
+Bibliographic anchors used by the new essays:
+
+- Brian C. Hall, *Lie Groups, Lie Algebras, and Representations*, 2nd ed.,
+  Springer, 2015; DOI 10.1007/978-3-319-13467-3.
+- V. I. Arnold, *Mathematical Methods of Classical Mechanics*, 2nd ed.,
+  Springer, 1989; DOI 10.1007/978-1-4757-2063-1.
+- J. F. Carinena, G. Marmo, J. Nasarre, "The nonlinear superposition principle
+  and the Wei-Norman method," arXiv:physics/9802041 (1998),
+  https://arxiv.org/abs/physics/9802041 .
+- Herbert Goldstein, Charles P. Poole Jr., John L. Safko, *Classical Mechanics*,
+  3rd ed., Addison-Wesley, 2002, Chapter 3, ISBN 0-201-65702-3.
+- NIST Digital Library of Mathematical Functions, §4.21,
+  https://dlmf.nist.gov/4.21 .
+
+The conceptual labels "static observable", "canonical observer transport", and
+"minimal process completion" are Shakespeare/AEG interpretations.  None should
+be read as terminology asserted by these classical sources.
