@@ -4,7 +4,8 @@ Addition/Multiplication (A/M) is the first concrete arithmetic theory.
 Algebraic quotient profiles provide a second route for processes whose reduced
 geometry forces elliptic/Abelian or higher-genus function languages.  The
 Abelian layer then exposes canonical holomorphic differentials, history lifts,
-cycle intersections, and period data from which Jacobian structures can grow.
+cycle intersections, branch-cut cycle constructions, and period data from
+which Jacobian structures can grow.
 """
 
 from .abelian import (
@@ -40,6 +41,13 @@ from .periods import (
     integrate_lifted_differential,
     lift_square_root_path,
 )
+from .real_branch_cycles import (
+    ConstructedRealBranchCycles,
+    RealBranchCutPresentation,
+    RealBranchCycleSpec,
+    construct_real_branch_cycles,
+    real_branch_cut_presentation,
+)
 from .weierstrass import WeierstrassCubicProfile, weierstrass_cubic_profile
 
 __all__ = [
@@ -72,6 +80,11 @@ __all__ = [
     "LiftedSquareRootPath",
     "integrate_lifted_differential",
     "lift_square_root_path",
+    "ConstructedRealBranchCycles",
+    "RealBranchCutPresentation",
+    "RealBranchCycleSpec",
+    "construct_real_branch_cycles",
+    "real_branch_cut_presentation",
     "WeierstrassCubicProfile",
     "weierstrass_cubic_profile",
 ]

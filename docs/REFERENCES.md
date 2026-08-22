@@ -38,6 +38,8 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Farkas-Kra-1992]** Hershel M. Farkas and Irwin Kra, *Riemann Surfaces*, 2nd ed., Graduate Texts in Mathematics 71, Springer, 1992. DOI: `10.1007/978-1-4612-2034-3`.
 
+**[Frauendiener-Klein-2015]** J. Frauendiener and C. Klein, “Computational approach to hyperelliptic Riemann surfaces,” *Letters in Mathematical Physics* 105 (2015), 379–400. DOI: `10.1007/s11005-015-0743-4`; arXiv:`1408.2201`. The paper treats hyperelliptic surfaces from branch-point lists or cut systems, constructs a canonical homology basis algorithmically, and computes periods of the holomorphic differentials; see especially the Introduction and Section 2.
+
 **[McMullen-Riemann-Surfaces]** Curtis T. McMullen, *Riemann Surfaces*, Harvard Math 213b course notes. In the hyperelliptic discussion the canonical holomorphic basis is written explicitly as `x^i dx/y`. https://abel.math.harvard.edu/~ctm/math213b/home/course/course.pdf
 
 **[Hartshorne-1977]** Robin Hartshorne, *Algebraic Geometry*, Graduate Texts in Mathematics 52, Springer, 1977. DOI: `10.1007/978-1-4757-3849-0`.
