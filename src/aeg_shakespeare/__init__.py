@@ -17,6 +17,17 @@ from .core import (
     interpret_history,
 )
 from .cost import PresentationCost
+from .discovery import (
+    ObservableQuotient,
+    ObservableRelation,
+    PolynomialInvariant,
+    PolynomialInvariantDiscovery,
+    PolynomialObserverBasis,
+    discover_first_order_process_quotient,
+    discover_observable_relations,
+    discover_polynomial_invariants,
+    generate_polynomial_observer_basis,
+)
 from .frame import ProcessFrame
 from .function_theory import (
     AMFunctionTheory,
@@ -132,6 +143,15 @@ __all__ = [
     "homogeneous_monomials",
     "interpret_history",
     "PresentationCost",
+    "ObservableQuotient",
+    "ObservableRelation",
+    "PolynomialInvariant",
+    "PolynomialInvariantDiscovery",
+    "PolynomialObserverBasis",
+    "discover_first_order_process_quotient",
+    "discover_observable_relations",
+    "discover_polynomial_invariants",
+    "generate_polynomial_observer_basis",
     "ProcessFrame",
     "AMFunctionTheory",
     "AMPathFlow",
