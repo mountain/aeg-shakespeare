@@ -2,7 +2,7 @@
 
 Version `0.0.1` is the first installable research preview of AEG Shakespeare.
 
-It is intentionally **pre-alpha**.  The package is ready to be installed and used as an experimental toolkit, but its public API is not yet stable and may change between `0.0.x` releases.
+It is intentionally **pre-alpha**. The package is ready to be installed and used as an experimental toolkit, but its public API is not yet stable and may change between `0.0.x` releases.
 
 ## What is being released
 
@@ -19,7 +19,7 @@ The release exposes reusable machinery for:
 - the first concrete Addition/Multiplication (A/M) function-theory layer;
 - small algebraic-quotient profiles used by classical calibration tests.
 
-Named classical systems are not package-level solvers.  Pendulum, oscillator, Duffing-like, and related examples remain executable essays under `tests/`.
+Named classical systems are not package-level solvers. Pendulum, oscillator, Duffing-like, and related examples remain executable mathematical essays under `tests/`.
 
 ## Compatibility contract
 
@@ -34,15 +34,36 @@ The first compatibility target is the *conceptual layer separation* rather than 
 
 ## Release verification
 
-A release candidate must pass:
+A release candidate must pass both a software gate and a mathematical-auditability gate.
+
+Software gate:
 
 1. tests on Python 3.10, 3.11, and 3.12;
-2. source distribution and wheel builds;
-3. `twine check` on all distributions;
-4. installation of the built wheel into a fresh virtual environment;
-5. import/version smoke checks from outside the repository source tree.
+2. all public quickstart examples;
+3. source distribution and wheel builds;
+4. `twine check` on all distributions;
+5. installation of the built wheel into a fresh virtual environment;
+6. import/version smoke checks from outside the repository source tree.
 
-The tag-triggered publishing workflow is designed for PyPI Trusted Publishing.  PyPI must be configured to trust the `mountain/aeg-shakespeare` repository, workflow `.github/workflows/publish.yml`, and `pypi` GitHub environment before the first tag is pushed.
+Mathematical-auditability gate:
+
+1. every substantial file under `tests/classical/` or `tests/research/` reads as a complete mathematical vignette;
+2. each vignette states primitive data, theorem/calibration claim, proof map, and boundary;
+3. established classical and historical statements carry rigorous references;
+4. Shakespeare interpretations are labelled as project interpretations rather than attributed to classical sources.
+
+See `docs/11-references-and-test-essays.md`, `docs/12-test-essay-template.py.txt`, and `docs/REFERENCES.md`.
+
+## Publishing
+
+The tag-triggered publishing workflow is designed for PyPI Trusted Publishing. PyPI must be configured to trust:
+
+- GitHub owner: `mountain`;
+- repository: `aeg-shakespeare`;
+- workflow: `.github/workflows/publish.yml`;
+- GitHub environment: `pypi`.
+
+The OIDC `id-token: write` permission is scoped only to the publish job. No PyPI API token should be committed to the repository.
 
 ## Release sequence
 
@@ -51,12 +72,10 @@ Once the Trusted Publisher is configured:
 ```text
 main green
   -> create tag v0.0.1
-  -> GitHub Actions builds distribution
+  -> GitHub Actions builds and smoke-tests the distribution
   -> PyPI Trusted Publishing uploads aeg-shakespeare 0.0.1
 ```
 
-No PyPI API token should be committed to the repository.
-
 ## Public-domain status
 
-The repository is released under the public-domain dedication in `LICENSE` (the Unlicense text).  See the repository metadata and README for the same intent.
+The repository is released under the public-domain dedication in `LICENSE` (the Unlicense text). Scholarly citation remains a separate obligation; software citation metadata is in `CITATION.cff` and mathematical references are maintained in the literate tests and `docs/REFERENCES.md`.
