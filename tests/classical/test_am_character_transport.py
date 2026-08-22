@@ -62,7 +62,7 @@ This is an obstruction/calibration result, not noncommutative harmonic analysis.
 
 import sympy as sp
 
-from aeg_shakespeare.families import (
+from aeg_shakespeare.process.finite import (
     FamilyAction,
     ProcessCharacter,
     ProcessFamily,
