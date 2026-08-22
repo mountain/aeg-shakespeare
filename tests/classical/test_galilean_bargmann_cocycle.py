@@ -60,7 +60,7 @@ Groups", *Annals of Mathematics* 59 (1954), 1-46.
 
 import sympy as sp
 
-from aeg_shakespeare import (
+from aeg_shakespeare.process.finite import (
     ProcessCocycle,
     ProcessFamily,
     central_commutator_residual,
