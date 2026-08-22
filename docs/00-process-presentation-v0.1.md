@@ -6,7 +6,7 @@
 
 Shakespeare is not an ODE solver and is not organized as a collection of solved problems. Its library question is:
 
-> Given a caller-defined process grammar, ordered histories, symbolic semantics, finite search bounds, and a task/cost model, what reusable operations can discover or verify a cheaper process presentation?
+> Given caller-defined primitive process semantics, seed objects, finite search bounds, and eventually a task/cost model, what reusable operations can discover or verify a cheaper process presentation?
 
 The public API must stay problem-independent. Concrete systems such as affine add/multiply, oscillator, Duffing, or matrix examples are calibration tests of the same common machinery.
 
@@ -32,26 +32,27 @@ where:
 
 The current package implements only small exact fragments of this object.
 
-## 3. Public computational primitives
+## 3. Current public computational pipeline
 
-The reusable layer now consists of:
+The reusable layer now supports a concrete seed-to-presentation path:
 
-1. `ProcessWord`: an ordered process history with no built-in physical interpretation.
-2. `interpret_history`: caller-supplied semantics `transition(state, step) -> state`.
-3. `ProcessSystem`: a derivation-style symbolic backend for one local process generator.
-4. `SearchBudget`: explicit bounds on history depth, expression degree, relation order, and primitive proposals.
-5. `discover_return_relation`: bounded exact recurrence discovery in one generated process orbit.
-6. `discover_operator_relation`: discover the shortest polynomial relation obeyed by a finite process action by searching dependence among `I, A, A^2, ...`.
-7. `factor_process_relation`: factor a discovered process polynomial into pairwise-coprime primary factors while retaining multiplicity.
-8. `discover_relation_kernel`: find finite-grammar primitives satisfying any supplied process relation.
-9. `discover_relation_decomposition`: combine 6–8 so the caller supplies only a finite closed grammar, not a relation template.
-10. `coefficient_vector` / `decompose`: exact coordinates in arbitrary independent polynomial grammars, so discovered composite primitives can become the grammar of a later search.
-11. `PresentationCost`: keep grammar, relation, history, decoder, and task-error costs explicit; scalarization is caller-controlled.
-12. `discover_krylov_relation`: a matrix backend/calibration showing how classical linear recurrence structure can emerge from process histories without making eigen/Jordan data the discovery API.
+1. `ProcessWord` stores an ordered process history with no built-in physical interpretation.
+2. `interpret_history` supplies caller-defined finite semantics.
+3. `ProcessSystem` is the current derivation-style symbolic backend for one local process generator.
+4. `SearchBudget` bounds history depth, expression degree, relation order, and primitive additions.
+5. `discover_generated_grammar` starts from seed expressions and repeatedly applies the process action, adding only exact new directions. If a bound prevents closure, escaped expressions are returned as residual certificates.
+6. `discover_operator_relation` discovers the shortest grammar-wide process polynomial by searching dependence among `I, A, A^2, ...`.
+7. `factor_process_relation` factorizes the discovered process polynomial while retaining repeated process depth.
+8. `discover_relation_kernel` converts each relation factor into explicit primitive expressions.
+9. `discover_relation_decomposition` performs 6–8 for any caller-supplied finite closed grammar.
+10. `discover_generated_presentation` combines 5–9: from seeds alone it returns a generated grammar, discovered relation components, reusable primitives, and exact coordinates for the original seeds when the finite closure succeeds.
+11. `coefficient_vector` / `decompose` work in arbitrary independent polynomial grammars, allowing discovered composite primitives to be reused in later searches.
+12. `PresentationCost` keeps grammar, relation, history, decoder, and task-error costs explicit; scalarization is caller-controlled.
+13. `discover_krylov_relation` remains a matrix backend/calibration showing how classical linear recurrence structure can emerge from process histories before spectral interpretation.
 
 The package deliberately does not expose `Oscillator`, `Duffing`, `AddMultiplyProblem`, or similar domain objects as core abstractions.
 
-## 4. Template-free finite-grammar discovery
+## 4. Template-free finite-grammar relation discovery
 
 Let a finite grammar
 
@@ -85,59 +86,96 @@ with repeated factors retained inside their primary factors. For each factor Sha
 
 returns explicit primitive expressions, and certifies whether the resulting components span the original grammar.
 
-The key point is methodological: the caller does not propose `p_i` or a frequency/eigenvalue template. The relation is discovered from process closure and only then factorized.
+The caller does not propose `p_i` or a frequency/eigenvalue template. The relation is discovered from process closure and only then factorized.
 
-### Current calibration evidence
+## 5. Generated grammar from seeds
 
-The tests use a simple recurrent process only as a regression probe. On its degree-two polynomial grammar the generic routine discovers
+The next layer removes the requirement that the caller provide the ambient finite basis.
+
+Given seed expressions
 
 \[
-D^3+4D=D(D^2+4),
+f_1,\ldots,f_m,
 \]
 
-and the `D`-kernel contains the invariant composite `x^2+p^2`.
+Shakespeare grows process images
 
-On the degree-three grammar it discovers
+\[
+f_i,\;Df_i,\;D^2f_i,\ldots
+\]
+
+but retains a new expression only when it adds an exact independent direction to the current grammar. The result is a generated grammar
+
+\[
+G=\langle f_1,\ldots,f_m\rangle_D
+\]
+
+truncated only by explicit `SearchBudget` limits.
+
+Two outcomes are intentionally distinct:
+
+- **finite closure:** every `D(b)` for `b` in the discovered basis lies back in the basis span. Relation decomposition can then run exactly;
+- **budget escape:** a new process image lies outside the span but cannot be admitted because depth, expression degree, or primitive budget has been exhausted. The expression is returned in `residuals`; Shakespeare does not project it away.
+
+`GeneratedGrammar.growth_profile()` records the cumulative number of independent directions discovered at each process depth. This gives a first computable proxy for process-language growth while keeping the escaping expressions visible.
+
+## 6. Calibration evidence
+
+The tests use simple systems only as regression probes of the generic machinery.
+
+For a recurrent two-assignment process, starting from the single seed `x^3` and supplying **neither an ambient monomial basis nor a relation template**, `discover_generated_presentation` finds a four-direction closed grammar, then discovers
 
 \[
 D^4+10D^2+9=(D^2+1)(D^2+9),
 \]
 
-then recovers compact primitives equivalent to
+and returns compact primitives including expressions equivalent to
 
 \[
-x^3-3xp^2,\qquad 3x^2p-p^3,
+x^3-3xp^2,\qquad 3x^2p-p^3.
 \]
 
-without receiving either quadratic return template as input. These are tests of the generic relation-decomposition routine, not package-level domain features.
+The original seed is returned with exact coordinates in this new primitive grammar.
 
-## 5. Computational discipline
+A separate nonlinear growth test uses the generic rule `D(x)=x^2`. With polynomial degree capped at three, the generated grammar grows as
+
+\[
+x,\quad x^2,\quad 2x^3,
+\]
+
+and returns `6x^4` as an explicit residual rather than silently embedding the process in an unbounded function space. This is a deliberate calibration of the distinction between finite process closure and representation growth.
+
+## 7. Computational discipline
 
 1. **Bounded search.** General word/rewrite problems need not be decidable. Shakespeare searches only bounded depth, degree, coefficient size, and grammar size.
 2. **History before quotient.** Equal symbolic expressions do not imply identical process histories.
 3. **Relations before eigenvalues.** Process-return relations are primary; spectral/eigen representations are optional downstream encodings.
 4. **Backend, not ontology.** Sparse linear algebra may discover relations; SymPy may verify them. The returned certificate is an explicit process relation.
-5. **Task matters.** A quotient is accepted only relative to declared task sufficiency.
-6. **Problems are tests.** Named physical/mathematical examples belong in `tests/` unless they motivate a genuinely reusable abstraction.
-7. **Discovered grammars must be reusable.** Coordinate/decomposition routines accept arbitrary polynomial bases rather than assuming the monomial basis that generated them.
+5. **No silent projection.** A process image that escapes the current grammar is returned as a residual.
+6. **Task matters.** A quotient is accepted only relative to declared task sufficiency.
+7. **Problems are tests.** Named physical/mathematical examples belong in `tests/` unless they motivate a genuinely reusable abstraction.
+8. **Discovered grammars must be reusable.** Coordinate/decomposition routines accept arbitrary polynomial bases rather than assuming the monomial basis that generated them.
 
-## 6. Current research boundary
+## 8. Current research boundary
 
-The previous prototype required the caller to declare a relation family and then searched its kernel. That limitation has now been removed for a finite closed grammar: Shakespeare can discover the grammar-wide relation and its primary relation factors itself.
+Two earlier choices are no longer required in the finite exact case:
 
-The remaining major limitation is one level earlier:
+- the caller need not provide a relation template;
+- the caller need not provide an ambient finite basis if a finite grammar can be generated from the declared seeds within budget.
 
-> the ambient finite grammar is still supplied by the caller.
+The next unresolved choice is earlier still:
 
-The next research threshold is therefore **grammar search**, not another problem-specific solver. Shakespeare should propose composite generators, score the resulting grammar/relation/history/decoder trade-off, and feed accepted proposals back into the same relation-discovery machinery.
+> **which seeds/primitives should be proposed in the first place?**
 
-## 7. Next library steps
+That is the next representation-search problem. A future search loop should generate candidate primitives from allowed operations, compare the grammar/relation/history/decoder trade-off, accept Pareto-improving proposals, and feed them back through the same generated-grammar and relation-decomposition machinery.
 
-- a generic `PresentationCandidate` / grammar object rather than passing bare expression tuples;
-- costed primitive-basis search inside a relation component (short expression + short process table);
-- bounded grammar proposal search across operation-generated expressions;
-- layered `Relation` and rewrite IR for finite process words;
+## 9. Next library steps
+
+- a generic `PresentationCandidate` carrying grammar, relation, decoder, and cost certificates;
+- transparent structural cost estimators for expressions, process tables, and relations;
+- bounded primitive proposals across operation-generated expressions;
+- Pareto search over alternative generated presentations;
+- layered `Relation` and rewrite IR for finite noncommutative process words;
 - equality-saturation / completion backend behind a generic normalization interface;
 - finite process-jet signatures for task congruence;
-- decoder and sufficiency certificates;
-- presentation-search loop returning Pareto candidates rather than a problem-specific answer.
+- decoder and sufficiency certificates beyond exact seed reconstruction.
