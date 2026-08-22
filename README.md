@@ -24,6 +24,23 @@ Current version: **0.0.1**.
 
 SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
 
+## Reading the source
+
+Shakespeare uses a **literate-programming** discipline. Mathematically substantial Python modules should explain the mathematical pressure that created an abstraction before presenting its implementation. In particular, source docstrings and classical tests should preserve the historical and conceptual reversal that the project is investigating:
+
+```text
+classical historical path:
+    analytic difficulty -> special construction -> geometry/algebra
+
+Shakespeare reconstruction:
+    primitive process -> history/constraint/invariant -> quotient geometry
+    -> adequate function language -> classical formula as a shadow
+```
+
+This means, for example, that the canonical pendulum calibration begins from constrained position/velocity dynamics rather than from `theta`, `sin(theta)`, or a preselected elliptic function. Likewise, the A/M layer begins from **Addition and Multiplication** and their finite/noncommutative process relations before logarithms or other familiar function names are introduced.
+
+The detailed source-writing convention is in [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md). Classical tests are intended to read as executable mathematical essays: primitive input, structural discovery, exact assertion, and only then the classical shadow.
+
 ## Public API direction
 
 The library core is intentionally problem-independent. Current public building blocks include:
@@ -71,11 +88,11 @@ At the primitive-construction layer, caller-declared operations generate bounded
 
 At the symbolic local-process layer, each proposed seed can grow an exact process grammar. If closure succeeds, Shakespeare discovers the grammar-wide return relation, factors it, constructs primitive subgrammars, and returns exact target decoders. If nonlinear growth escapes the grammar, residual expressions remain visible rather than being projected away.
 
-At the constraint/quotient layer, polynomial relations can be maintained and reduced exactly. The first canonical pendulum calibration starts from planar position/velocity plus a rigid-rod relation and unresolved radial force—without `theta`, `sin`, or `cos`. Constraint prolongation determines the force, energy reduction yields a quotient `Y^2=2(E-U)(1-U^2)`, and the generic quotient is detected as genus one with degenerations at `E=±1`.
+At the constraint/quotient layer, polynomial relations can be maintained and reduced exactly. The canonical pendulum calibration starts from planar position/velocity plus a rigid-rod relation and unresolved radial force—without `theta`, `sin`, or `cos`. Constraint prolongation determines the force, energy reduction yields a quotient `Y^2=2(E-U)(1-U^2)`, and the generic quotient is detected as genus one with degenerations at `E=±1`.
 
 At the search layer, the resulting candidates are filtered by task sufficiency and compared by explicit multi-axis cost. The Pareto frontier can therefore preserve a trade-off between construction cost, grammar width, process depth, relation complexity, and decoding rather than collapsing them to one score.
 
-At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. It is intentionally downstream of the generic process machinery. Its resonance structure forces logarithmic/Jordan-type extensions, while the pendulum calibration demonstrates a different route in which a constrained process forces a genus-one algebraic quotient. Shakespeare therefore does not assume that every problem should reduce to A/M.
+At the optional function-theory layer, Addition/Multiplication (A/M) supplies the first concrete arithmetic calculus. It is intentionally downstream of the generic process machinery. Its resonance structure forces logarithmic/Jordan-type extensions, while the pendulum and even-power oscillator calibrations demonstrate another route in which constrained or invariant processes force algebraic curves of different genera. Shakespeare therefore does not assume that every problem should reduce to A/M.
 
 The next threshold is **adaptive proposal priority/objectification** together with a systematic classical calibration suite. Repeated history subtrees, relation compression, task signatures, boundary usage measures, algebraic quotient geometry, and function-theory closure should help determine which constructions deserve to become new primitives and which function language is adequate for the task.
 
@@ -88,8 +105,15 @@ python -m build
 python -m twine check dist/*
 ```
 
-See [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md), [`docs/01-ordered-process-rewriting.md`](docs/01-ordered-process-rewriting.md), [`docs/02-task-signatures.md`](docs/02-task-signatures.md), [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md), [`docs/04-costed-presentation-search.md`](docs/04-costed-presentation-search.md), [`docs/05-primitive-construction.md`](docs/05-primitive-construction.md), [`docs/06-addition-multiplication-function-theory.md`](docs/06-addition-multiplication-function-theory.md), and [`docs/07-classical-calibration-program.md`](docs/07-classical-calibration-program.md) for the current computational formulation.
+The evolving mathematical story is recorded in `docs/`. In particular, see:
+
+- [`docs/00-process-presentation-v0.1.md`](docs/00-process-presentation-v0.1.md)
+- [`docs/03-history-geometry-huffman.md`](docs/03-history-geometry-huffman.md)
+- [`docs/06-addition-multiplication-function-theory.md`](docs/06-addition-multiplication-function-theory.md)
+- [`docs/07-classical-calibration-program.md`](docs/07-classical-calibration-program.md)
+- [`docs/08-function-theory-genus-hierarchy.md`](docs/08-function-theory-genus-hierarchy.md)
+- [`docs/09-literate-programming-and-mathematical-lineage.md`](docs/09-literate-programming-and-mathematical-lineage.md)
 
 ## License
 
-MIT.
+Shakespeare is dedicated to the **public domain** using the Unlicense public-domain dedication text in [`LICENSE`](LICENSE). The intent is unrestricted use, modification, publication, redistribution, and reuse of both the software and its accompanying mathematical exposition.
