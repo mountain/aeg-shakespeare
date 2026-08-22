@@ -33,8 +33,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 29. `28-magnetic-translation-central-residual.md` — independent magnetic-translation red team: flux 2-cocycle, central magnetic bracket, commuting visible flows, and comparison with Galilean mass residuals.
 30. `29-process-cocycle-api.md` — minimal shared public cocycle layer forced by Galilean mass and magnetic flux residuals, with finite composition primary and infinitesimal brackets retained as derived realizations.
 31. `30-semantic-public-api-refactor.md` — Phase A.1 semantic namespace refactor, root contraction, compatibility bridge, and separation from later physical file movement.
-32. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-33. `REFERENCES.md` — shared mathematical bibliography.
-34. `RELEASE_CHECKLIST.md` — release gates.
+32. `31-internal-namespace-migration.md` — Phase A.2 migration of repository tests off the legacy root bridge, with an AST-based hygiene gate.
+33. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+34. `REFERENCES.md` — shared mathematical bibliography.
+35. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
