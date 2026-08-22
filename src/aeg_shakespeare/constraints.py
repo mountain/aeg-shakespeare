@@ -1,12 +1,33 @@
 """Exact algebraic constraints and quotient reduction.
 
-Many process systems are not naturally expressed on a free assignment algebra.
-Rigid bodies, constrained mechanics, algebraic state models, and quotient
-representations carry polynomial relations that must be preserved explicitly.
+Mathematical lineage
+--------------------
+Classical mechanics is often presented *after* coordinates have already solved
+part of the geometry: a pendulum becomes an angle, a rigid body becomes a chart,
+and the remaining equations are written on that chosen coordinate space.  The
+Shakespeare reconstruction reverses that order.  It keeps the primitive
+assignments and their relations visible, then asks which dynamics preserve the
+relations and what quotient those relations force.
 
-``AlgebraicConstraintSet`` is intentionally generic.  It supplies exact ideal
-membership/reduction through a Groebner backend without turning any named
-mechanical problem into a package abstraction.
+This is why constraints are not treated as side conditions.  A relation such as
+``q.q - 1 = 0`` is part of the process presentation.  Requiring its successive
+process images to vanish can determine otherwise unresolved process terms; only
+later may a familiar coordinate description appear as a classical shadow.
+
+Implementation
+--------------
+``AlgebraicConstraintSet`` represents the polynomial quotient exactly through a
+Groebner backend. ``constraint_prolongation`` records the successive history
+``r, D r, D^2 r, ...`` without assuming a named mechanical model.
+
+Boundary
+--------
+This module does not claim that every useful constraint is polynomial, nor that
+Groebner reduction is the ontology of equality.  It is one exact backend for a
+relation layer whose meaning is supplied by the process presentation.
+
+See ``docs/07-classical-calibration-program.md`` and
+``docs/09-literate-programming-and-mathematical-lineage.md``.
 """
 
 from __future__ import annotations
