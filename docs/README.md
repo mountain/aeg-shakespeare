@@ -24,7 +24,8 @@ The documentation is organized as a mathematical/programming narrative rather th
 20. `19-polynomial-discovery-layer.md` — bounded observer grammars, template-free polynomial first integrals, and exact observable-quotient elimination.
 21. `20-observer-quotient-selection.md` — costed first-order quotient search and Pareto selection inside a declared observer family.
 22. `21-structured-observer-proposals.md` — minimal structured pairing constructions, backend lowering, and Pendulum III observer generation.
-23. `REFERENCES.md` — shared mathematical bibliography.
-24. `RELEASE_CHECKLIST.md` — release gates.
+23. `22-oscillator-additive-process-module.md` — finite additive process closure, basis-accident red team, and relation-before-spectrum discipline.
+24. `REFERENCES.md` — shared mathematical bibliography.
+25. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
