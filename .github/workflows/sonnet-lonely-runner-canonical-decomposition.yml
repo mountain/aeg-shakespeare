@@ -2,14 +2,13 @@ name: Sonnet Lonely Runner Canonical Decomposition
 
 # Phase 8A rebuilds the exact center<=2 four-speed task geometry and performs
 # local center-3 red-team refinement.  It is not part of the routine five-version
-# CI matrix.  Besides manual dispatch, a push on the dedicated research branch
-# triggers it only when this workflow file itself changes; ordinary branch
-# commits therefore do not repeatedly pay the census cost.
+# CI matrix.  Besides manual dispatch, it runs on a pull request only when this
+# workflow file itself changes.  Ordinary source/docs commits therefore do not
+# repeatedly pay the census cost, while the dedicated research run remains
+# attached to an auditable PR/commit.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/canonical-observer-api
+  pull_request:
     paths:
       - .github/workflows/sonnet-lonely-runner-canonical-decomposition.yml
 
