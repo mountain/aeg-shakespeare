@@ -91,9 +91,10 @@ keeps two distinct states:
 3. the clock chain's information contract is read off exactly:
    ``R -> R/omega_A Z`` forgets winding (kernel ``omega_A Z``), and the real
    phase embeds in ``C/Lambda`` because ``R cap Lambda = omega_A Z``;
-4. the decoder formula's ``0/0`` at ``U = +/-1`` is shown to be a chart
-   artifact: the energy identity keeps two distinct Cartesian states there,
-   so the physical cover is unramified;
+4. the decoder formula's ``0/0`` at ``U = +/-1`` is a chart artifact;
+   on the real E = 0 physical loop only ``U = -1`` is reached, where the
+   energy identity keeps the two distinct states ``v_x = +/-sqrt(2)``, so
+   the physical cover is unramified;
 5. sheet transport is certified: the true Cartesian velocity is continuous
    through ``q_x = 0``, the mark flips once per traverse of the base loop, and
    the marked state closes after two traverses -- the nontrivial double cover.
@@ -114,9 +115,9 @@ normalizations:
    (exact symbolic plus the theorem-level derivation);
 3. ``P(z + omega_A) = P(z)``, ``P(z + i omega_A) = P(z)``, and no real period
    lies in ``(0, omega_A)`` (sampled numerical plus the lattice theorem);
-4. the decoder chart degenerates at ``U = +/-1`` while the energy identity
-   ``v_x^2 = 2 (E - U) - Y^2`` keeps two distinct Cartesian states there: the
-   physical cover is unramified (exact symbolic);
+4. the decoder chart degenerates at ``U = +/-1``; on the real E = 0
+   physical loop, ``U = -1`` has the two distinct Cartesian lifts
+   ``v_x = +/-sqrt(2)``, so the physical cover is unramified (exact symbolic);
 5. the true Cartesian velocity is continuous through ``q_x = 0``, the mark
    flips once per traverse of the base loop (``q_x(0) = +1``,
    ``q_x(omega_A) = -1``), and the marked state closes after two traverses
@@ -239,6 +240,17 @@ def flow_Y(z):
     )
 
 
+def physical_qx(z):
+    """Signed Cartesian continuation with q_x(0) = 1."""
+    u = z / mp.sqrt(2)
+    return mp.ellipfun("cn", u, -1) * mp.ellipfun("dn", u, -1)
+
+
+def physical_vx(z):
+    """Derivative of the signed Cartesian continuation."""
+    return -mp.sqrt(2) * lemniscatic_sn(z / mp.sqrt(2)) ** 3
+
+
 def flow_point(z):
     return (flow_U(z), flow_Y(z))
 
@@ -250,7 +262,7 @@ def lemniscatic_constant():
 def primitive_real_period():
     """omega_A = sqrt(2) varpi: the primitive real period of the carrier flow.
 
-    Equivalently omega_A = 2 sqrt(2) K(i), twice the sn^2 half-period 2K
+    Equivalently omega_A = 2 sqrt(2) K(i): the sn^2 half-period 2K
     transported to the z-coordinate.
     """
 
@@ -393,14 +405,6 @@ def test_decoder_chart_degenerates_but_the_cover_is_unramified():
 # ---------------------------------------------------------------------------
 
 
-def true_vx(t):
-    """True Cartesian velocity along the leftward physical trajectory,
-    from the exact energy identity v_x^2 = 2 (E - U) - Y^2 with E = 0."""
-
-    uu, yy = flow_point(t)
-    return -mp.sqrt(-2 * uu - yy**2)  # leftward: v_x < 0 on (0, omega_A)
-
-
 def test_sheet_transport_through_qx_zero_and_mark_monodromy():
     """The true Cartesian velocity is continuous through q_x = 0; the mark
     flips once per traverse of the base loop; the marked state closes after
@@ -415,23 +419,26 @@ def test_sheet_transport_through_qx_zero_and_mark_monodromy():
     # The turning point: U = -1, Y = 0, and the true v_x = -sqrt(2) there.
     assert abs(flow_U(t_q) + 1) < mp.mpf("1e-25")
     assert abs(flow_Y(t_q)) < mp.mpf("1e-25")
-    assert abs(true_vx(t_q) + mp.sqrt(2)) < mp.mpf("1e-12")
+    assert abs(physical_vx(t_q) + mp.sqrt(2)) < mp.mpf("1e-12")
 
-    # Continuity of the true velocity through the bottom (no jump, no flip).
-    assert abs(true_vx(t_q - eps) - true_vx(t_q + eps)) < mp.mpf("1e-12")
-    assert mp.re(true_vx(t_q - eps)) < 0 and mp.re(true_vx(t_q + eps)) < 0
+    # The signed continuation is an actual Cartesian lift:
+    # q_x^2 + U^2 = 1 and d q_x / dt = v_x.
+    for t in (mp.mpf("0.31"), t_q - eps, t_q + eps, mp.mpf("2.4")):
+        assert abs(physical_qx(t) ** 2 + flow_U(t) ** 2 - 1) < mp.mpf("1e-25")
+        assert abs(mp.diff(physical_qx, t) - physical_vx(t)) < mp.mpf("1e-25")
 
-    # Sheet transport: q_x(t) = sqrt(1 - U^2) starts at +1, reaches -1 after
-    # one traverse (v_x < 0 forces q_x decreasing through 0 at the bottom),
-    # and returns to +1 after two traverses.  One loop flips the mark.
-    qx = lambda t: mp.sqrt(1 - flow_U(t) ** 2)
-    assert abs(qx(mp.mpf(0)) - 1) < mp.mpf("1e-25")
-    assert abs(flow_U(omega_A)) < mp.mpf("1e-25")  # one traverse: U returns
-    assert abs(flow_U(2 * omega_A)) < mp.mpf("1e-25")  # two traverses
-    # q_x evaluated on the physical continuation: +1, then -1, then +1.
-    assert qx(0) == 1
-    assert abs(-qx(omega_A) + 1) < mp.mpf("1e-25")  # physical q_x(omega_A) = -1
-    assert abs(qx(2 * omega_A) - 1) < mp.mpf("1e-25")  # physical q_x = +1 again
+    # The true velocity is continuous through the bottom (no ramification).
+    assert abs(physical_vx(t_q - eps) - physical_vx(t_q + eps)) < mp.mpf("1e-12")
+    assert mp.re(physical_vx(t_q - eps)) < 0
+    assert mp.re(physical_vx(t_q + eps)) < 0
+
+    # The Jacobi continuation carries the sign rather than reselecting the
+    # principal square root: +1 -> -1 after one carrier loop -> +1 after two.
+    assert abs(flow_U(omega_A)) < mp.mpf("1e-25")
+    assert abs(flow_U(2 * omega_A)) < mp.mpf("1e-25")
+    assert abs(physical_qx(0) - 1) < mp.mpf("1e-25")
+    assert abs(physical_qx(omega_A) + 1) < mp.mpf("1e-25")
+    assert abs(physical_qx(2 * omega_A) - 1) < mp.mpf("1e-25")
 
 
 # ---------------------------------------------------------------------------
