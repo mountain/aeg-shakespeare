@@ -1,0 +1,47 @@
+name: Sonnet Lonely Runner Five-Speed Transfer
+
+# Phase 12 is intentionally validated once on Python 3.12 rather than multiplied
+# across the routine five-version CI matrix.  The full exact census, lazy-DAG
+# reconstruction, and domain sweep are substantially heavier than smoke checks.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "sonnet/lonely-runner/python/five_speed_dimension_transfer.py"
+      - "sonnet/lonely-runner/python/five_speed_lazy_task_dag.py"
+      - "sonnet/lonely-runner/python/five_speed_clean_separator_sweep.py"
+      - "sonnet/lonely-runner/34-five-speed-dimension-transfer.md"
+      - "sonnet/lonely-runner/35-five-speed-lazy-task-dag.md"
+      - "sonnet/lonely-runner/36-five-speed-clean-separator-stability.md"
+      - "tests/research/test_lonely_runner_five_speed_dimension_transfer.py"
+      - "tests/research/test_lonely_runner_five_speed_lazy_task_dag.py"
+      - "tests/research/test_lonely_runner_five_speed_clean_separator_sweep.py"
+      - ".github/workflows/sonnet-lonely-runner-five-speed-transfer.yml"
+
+jobs:
+  five-speed-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      AEG_RUN_LR_FIVE_SPEED_TRANSFER: "1"
+      AEG_RUN_LR_FIVE_SPEED_LAZY_DAG: "1"
+      AEG_RUN_LR_FIVE_SPEED_CLEAN_SWEEP: "1"
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependency
+        run: python -m pip install pytest
+
+      - name: Run exact five-speed transfer calibrations
+        run: |
+          python -m pytest -q \
+            tests/research/test_lonely_runner_five_speed_dimension_transfer.py \
+            tests/research/test_lonely_runner_five_speed_lazy_task_dag.py \
+            tests/research/test_lonely_runner_five_speed_clean_separator_sweep.py
