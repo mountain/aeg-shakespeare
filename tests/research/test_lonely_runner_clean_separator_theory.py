@@ -77,20 +77,20 @@ def test_clean_separability_can_hold_with_partial_signatures():
 def test_recursive_obstruction_covers_every_possible_clean_root():
     m = _load()
 
-    # c0 and c1 are both legal root queries.  Each choice sends one branch into
-    # a mixed-task pair that has no clean coordinate left.  The resulting
-    # obstruction is therefore genuinely recursive rather than merely atomic at
-    # the original root.
+    # A/B/C form the atomic three-task obstruction from the first red team,
+    # while c0 and c1 are two independent-looking clean root coordinates that
+    # are constant on that obstructed core.  Region D makes both coordinates
+    # nonconstant at the root.  Thus either legal clean root sends its negative
+    # branch into the same pairwise-separable-but-not-clean core.
     regions = (
-        m.PartialRegion("A", "A", (-1, -1, None, 0)),
-        m.PartialRegion("B", "B", (-1, 1, 0, None)),
-        m.PartialRegion("C", "C", (1, -1, 1, None)),
-        m.PartialRegion("D", "D", (1, 1, None, 1)),
+        m.PartialRegion("A", "A", (-1, -1, 0, None, 0)),
+        m.PartialRegion("B", "B", (-1, -1, 1, 0, None)),
+        m.PartialRegion("C", "C", (-1, -1, None, 1, 1)),
+        m.PartialRegion("D", "D", (1, 1, None, None, None)),
     )
 
-    # Pairwise separability is intentionally stronger than needed for the red
-    # team: failure is caused by incompatibility of clean recursive placement,
-    # not by an inseparable task pair.
+    # Every cross-task pair is separable.  D is separated from the core by c0
+    # or c1; the three core pairs are separated by c2/c3/c4 respectively.
     assert m.pairwise_task_separable(regions)
     assert set(m.clean_coordinates(regions, frozenset(range(4)))) == {0, 1}
 
@@ -102,4 +102,8 @@ def test_recursive_obstruction_covers_every_possible_clean_root():
         failure.coordinate
         for failure in result.obstruction.candidate_failures
     } == {0, 1}
+    assert all(
+        failure.obstruction.atomic
+        for failure in result.obstruction.candidate_failures
+    )
     assert m.verify_obstruction(regions, result.obstruction)
