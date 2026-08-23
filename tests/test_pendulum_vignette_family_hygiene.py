@@ -2,8 +2,9 @@
 
 This is a plumbing test, not a mathematical claim.  It protects only the
 family-level knowledge contract: one stable entry guide, explicit stage
-coverage, independent essay boundaries, and evidence/reconstruction labels.
-The mathematical identities remain certified by the pendulum essays themselves.
+coverage, independent essay boundaries, retrieval routing, and
+evidence/reconstruction labels.  The mathematical identities remain certified
+by the pendulum essays themselves.
 """
 
 from __future__ import annotations
@@ -15,6 +16,7 @@ from pathlib import Path
 _ROOT = Path(__file__).parent
 _REPO = _ROOT.parent
 _GUIDE = _REPO / "docs" / "vignettes" / "simple-pendulum.md"
+_VIGNETTE_INDEX = _REPO / "docs" / "VIGNETTES.md"
 _CLASSICAL_README = _ROOT / "classical" / "README.md"
 
 _PENDULUM_ESSAYS = (
@@ -80,6 +82,10 @@ def test_family_guide_names_every_executable_stage_and_evidence_boundary():
         assert required_phrase in guide, f"family guide omits boundary {required_phrase!r}"
 
 
-def test_classical_directory_exposes_the_family_level_start_here_guide():
+def test_repository_entry_points_route_to_the_family_guide_and_new_fiber_stage():
     readme = _CLASSICAL_README.read_text(encoding="utf-8")
+    index = _VIGNETTE_INDEX.read_text(encoding="utf-8")
+
     assert "docs/vignettes/simple-pendulum.md" in readme
+    assert "docs/vignettes/simple-pendulum.md" in index
+    assert "test_pendulum_observable_quotient_fiber.py" in index
