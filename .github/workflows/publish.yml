@@ -26,24 +26,24 @@ jobs:
       - name: Smoke-test built wheel
         shell: bash
         run: |
-          python -m venv /tmp/aeg-shakespeare-publish-smoke
-          /tmp/aeg-shakespeare-publish-smoke/bin/python -m pip install --upgrade pip
-          /tmp/aeg-shakespeare-publish-smoke/bin/python -m pip install dist/*.whl
+          python -m venv /tmp/process-geometry-publish-smoke
+          /tmp/process-geometry-publish-smoke/bin/python -m pip install --upgrade pip
+          /tmp/process-geometry-publish-smoke/bin/python -m pip install dist/*.whl
           cd /tmp
-          /tmp/aeg-shakespeare-publish-smoke/bin/python - <<'PY'
+          /tmp/process-geometry-publish-smoke/bin/python - <<'PY'
           from importlib.metadata import version
-          import aeg_shakespeare as shakespeare
+          import aeg_shakespeare as pg
           from aeg_shakespeare.analysis.abelian import AbelianPeriodMatrix
           from aeg_shakespeare.analysis.am import AMFunctionTheory
           from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
           from aeg_shakespeare.process.history import ProcessWord
 
-          assert shakespeare.__version__ == version("aeg-shakespeare")
+          assert pg.__version__ == version("process-geometry")
           assert ProcessWord is not None
           assert AMFunctionTheory is not None
           assert AlgebraicConstraintSet is not None
           assert AbelianPeriodMatrix is not None
-          print("publish wheel smoke OK:", shakespeare.__version__)
+          print("publish wheel smoke OK:", pg.__version__)
           PY
       - name: Upload distributions
         uses: actions/upload-artifact@v4
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/aeg-shakespeare
+      url: https://pypi.org/p/process-geometry
     permissions:
       id-token: write
       contents: read
