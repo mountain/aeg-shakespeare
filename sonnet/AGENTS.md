@@ -91,3 +91,23 @@ For every substantial Sonnet phase, record:
 - what the experiment teaches about Shakespeare itself.
 
 The final item matters: a Sonnet is not only a problem-solving attempt; it is also a calibration of the framework's ability to discover useful presentations.
+
+## Framework extraction discipline
+
+Sonnet work may prototype new framework structures freely, but it must not turn a problem-local success directly into a public API commitment.
+
+When a reusable structure appears:
+
+1. keep the first implementation research-local while its semantics are still entangled with the problem;
+2. record an extraction candidate describing the minimal semantics, a positive case, a negative/adversarial case, and the unresolved boundary;
+3. move the abstraction into Experimental only after there is evidence that it is useful beyond the originating local design;
+4. require independent cross-problem pressure and red teams before proposing public promotion;
+5. treat public API promotion as a semantic commitment, not as a reward for code stability or repeated local reuse.
+
+The authoritative lifecycle and promotion gates are in `docs/GOVERNANCE.md`. The default rule is:
+
+```text
+Sonnet -> extraction candidate -> Experimental -> maturing -> Public API
+```
+
+There is no direct `Sonnet -> Public API` path without an explicitly documented exception.
