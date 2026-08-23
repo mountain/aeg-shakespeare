@@ -1,0 +1,23 @@
+name: Sonnet Lonely Runner Phase 9D Persistent Update
+
+# One auditable center-4 persistent update run. The PR trigger is temporary.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/sonnet-lonely-runner-phase9d-persistent-update.yml
+
+jobs:
+  phase9d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Phase 9D center4 persistent update
+        run: |
+          python sonnet/lonely-runner/python/center4_persistent_update.py
