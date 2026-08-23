@@ -8,9 +8,8 @@ center-3 persistent cells for reopening under the center-4 contact layer:
 
     2,744 stable / 2 nonbranching pressure / 7 completion pressure.
 
-Do the exact center-4 first-witness semantics confirm those predicted roles?  And
-what process-wall language is actually required to decide the refined semantics
-inside the nine pressure cells?
+Do exact center-4 first-witness semantics confirm those predicted roles?  What
+wall language does the lazy event-order oracle inspect while deciding them?
 
 Primitive data
 --------------
@@ -27,9 +26,9 @@ fresh center-4 decision tree, deeper contact layers, or `K=13` data.
 Classical lineage
 -----------------
 The surrounding Lonely Runner computational frontier is described in
-[Sungkawichai-Trakulthongchai-2026].  The event-order branching oracle and the
-interpretation of latent constraint provenance as representation state are
-**Shakespeare reconstructions**, not claims of that source.
+[Sungkawichai-Trakulthongchai-2026].  The event-order branching oracle and its
+representation interpretation are **Shakespeare reconstructions**, not claims of
+that source.
 
 Shakespeare reconstruction
 ---------------------------
@@ -39,15 +38,11 @@ syntax is materialized.  If one event-time comparison is unresolved, branch only
 on the corresponding process-generated collision wall, tighten the exact
 closure, and continue.  Stop immediately when the first-witness task is decided.
 
-This is therefore a lazy semantic refinement rather than a Cartesian product of
-all center-4 wall strata.
-
-The union of all semantic leaves below a current persistent cell supplies its
-exact center-4 task set.  Queried collision walls are separately classified as:
-
-- genuinely new center-4 ratios; or
-- latent older walls whose ratios already existed by center 3 but whose signs
-  were not explicit in the Phase-8E 28-predicate signature.
+This is a lazy semantic refinement rather than a Cartesian product of all
+center-4 wall strata.  The union of semantic leaves below a current cell supplies
+its exact center-4 task set.  Queried walls are recorded as an **algorithm trace**
+only; Phase 9C and an independent local full-stratum oracle determine which of
+those distinctions are actually required by the task representation.
 
 Calibration statement
 ---------------------
@@ -57,40 +52,37 @@ Passing this bounded semantic red team certifies that:
    first-witness semantic;
 2. both preserve the old witness boundary and mode and shift only event rank by
    `+2`, so they are history/decoder reindexing rather than observer transport;
-3. all seven Phase-9A completion-pressure cells genuinely branch, with sorted
-   task multiplicities `2,2,3,3,4,4,4`;
+3. all seven Phase-9A completion-pressure cells genuinely branch and each has
+   exactly three center-4 task semantics;
 4. the corrected center-4 canonical sectors are therefore
    `2,746 renormalizable / 0 resonant / 7 completion`;
-5. the nine local expansions terminate in 107 exact semantic leaves in total;
-6. every one of the seven genuine completion cases queries at least one latent
-   older wall in addition to center-4 process-generated walls; and
-7. the result therefore exposes a future-sufficiency distinction: the explicit
-   Phase-8E task/sign signature alone is not enough for this center-4 semantic
-   refinement, whereas the retained exact closure provenance supplies the
-   missing latent distinctions on demand.
+5. every branching case encounters at least one genuinely new center-4 wall;
+6. the current lazy oracle also encounters latent older walls in each branching
+   case, but this is **not** interpreted as minimum-representation necessity; and
+7. Phase 9C / the independent full-stratum red team are required before any
+   queried wall is called a necessary completion primitive.
 
 Proof map
 ---------
-1. ``test_center4_local_semantics_confirm_pressure_roles_and_expose_latent_state``
+1. ``test_center4_local_semantics_confirm_pressure_roles_and_record_lazy_wall_trace``
    runs the lazy event-order oracle on only the nine Phase-9A pressure cells,
-   checks the exact uniform/branching roles, witness reindex behavior, task
-   multiplicities and semantic-leaf count, and verifies that every completion
-   case requires latent older-wall information.
+   checks the exact uniform/branching roles, witness reindex behavior, the
+   seven-by-three task profile, and records the new/latent queried-wall trace.
 
 Boundary
 --------
-The queried-wall set is the union of walls encountered by the current lazy
-first-witness branching procedure; it is not yet a minimum completion support.
-Phase 9C must perform a task-separating minimization before any wall count is
-called a minimal representation.
+The queried-wall set is an algorithm trace, not a minimum completion support.
+In particular, a latent older wall touched by this oracle may be eliminated by a
+smaller task-relative representation.  Phase 9C subsequently does exactly that:
+all seven task-minimal completions collapse to one genuinely new center-4 wall.
 
-Likewise, `latent older wall required by the semantic oracle` does not mean that
-all such signs must be stored eagerly.  The current representation retains exact
-closure atoms, from which these distinctions can be materialized only when
-needed.  The result establishes pressure for future-sufficient constraint
-provenance, not a public `ConstraintCell` API.
+The exact task multiplicity statement is independently red-teamed by local full
+center-4 stratum refinement in
+`sonnet/lonely-runner/python/center4_local_full_oracle.py`; the independent
+oracle agrees with the lazy task set on all nine pressure cells.
 
-No new Lonely Runner theorem or discrete observer connection is established.
+No new Lonely Runner theorem, public constraint-cell API, or discrete observer
+connection is established.
 
 References
 ----------
@@ -135,22 +127,30 @@ def _load_module():
         sys.path.remove(str(script_dir))
 
 
-def test_center4_local_semantics_confirm_pressure_roles_and_expose_latent_state():
+def test_center4_local_semantics_confirm_pressure_roles_and_record_lazy_wall_trace():
     semantic = _load_module()
     result = semantic.analyze_center4_semantic_redteam()
 
     assert len(result.cases) == 9
     assert len(result.uniform_cases) == 2
     assert len(result.branching_cases) == 7
-    assert sorted(case.task_count for case in result.branching_cases) == [
-        2, 2, 3, 3, 4, 4, 4
-    ]
+    assert sorted(case.task_count for case in result.branching_cases) == [3] * 7
 
-    assert all(case.phase9a_role == "nonbranching-pressure" for case in result.uniform_cases)
+    assert all(
+        case.phase9a_role == "nonbranching-pressure"
+        for case in result.uniform_cases
+    )
     assert all(case.same_boundary_and_mode for case in result.uniform_cases)
-    assert all(case.new_tasks[0][0] - case.old_task[0] == 2 for case in result.uniform_cases)
+    assert all(
+        case.new_tasks[0][0] - case.old_task[0] == 2
+        for case in result.uniform_cases
+    )
 
-    assert all(case.phase9a_role == "completion-pressure" for case in result.branching_cases)
-    assert sum(case.semantic_leaf_count for case in result.cases) == 107
+    assert all(
+        case.phase9a_role == "completion-pressure"
+        for case in result.branching_cases
+    )
     assert all(case.new_center4_walls for case in result.branching_cases)
+    # This is intentionally a trace assertion, not a necessity claim.  Phase 9C
+    # eliminates these latent older queries from every minimum support.
     assert all(case.latent_older_walls for case in result.branching_cases)
