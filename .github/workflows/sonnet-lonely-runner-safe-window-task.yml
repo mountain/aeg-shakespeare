@@ -9,9 +9,11 @@ on:
     paths:
       - "sonnet/lonely-runner/python/safe_window_task_transfer.py"
       - "sonnet/lonely-runner/python/safe_window_argmin_motif.py"
+      - "sonnet/lonely-runner/python/safe_window_argmin_representation_compare.py"
       - "sonnet/lonely-runner/38-safe-window-task-relative-completion.md"
       - "tests/research/test_lonely_runner_safe_window_task_transfer.py"
       - "tests/research/test_lonely_runner_safe_window_argmin_motif.py"
+      - "tests/research/test_lonely_runner_safe_window_argmin_representation_compare.py"
       - ".github/workflows/sonnet-lonely-runner-safe-window-task.yml"
 
 jobs:
@@ -37,4 +39,5 @@ jobs:
         run: |
           python -m pytest -q -s \
             tests/research/test_lonely_runner_safe_window_task_transfer.py \
-            tests/research/test_lonely_runner_safe_window_argmin_motif.py
+            tests/research/test_lonely_runner_safe_window_argmin_motif.py \
+            tests/research/test_lonely_runner_safe_window_argmin_representation_compare.py
