@@ -1,12 +1,8 @@
 name: Sonnet Lonely Runner Phase 9B-9C Consistency
 
-# One-shot independent local full-stratum oracle. The PR trigger is temporary;
-# restore manual-only after this audit resolves the 9B/9C multiplicity conflict.
+# Heavy independent consistency oracle. Manual-only after the one-shot audit.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase9bc-consistency.yml
 
 jobs:
   consistency:
