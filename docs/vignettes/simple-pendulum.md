@@ -22,6 +22,8 @@ The labels `P0`–`P11` are family-local navigation identifiers. They do not ren
 
 **Theory boundary:** `docs/52-canonical-completion-hypothesis.md` is a governed T1 foundational candidate. Its stronger completion interpretation is not part of the executable pendulum facts.
 
+**History-planning bridge:** `docs/54-pendulum-canonical-history-cost.md` records the T0 result that the marked clock form supplies a presentation-invariant edge measure only after task quotienting; it does not identify canonicalization with Huffman optimization.
+
 ---
 
 ## 1. The problem, independently stated
