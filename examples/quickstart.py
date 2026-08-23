@@ -1,4 +1,4 @@
-"""Minimal AEG Shakespeare quickstart using the semantic public namespaces.
+"""Minimal Process Geometry quickstart using the semantic public namespaces.
 
 The example is intentionally small and problem-independent. It demonstrates
 three layers without asking the reader to accept a named classical solver:
@@ -8,9 +8,9 @@ Addition/Multiplication analysis branch.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.am import AMFunctionTheory
-from aeg_shakespeare.presentation.history import WordRewriteRule, normalize_word
-from aeg_shakespeare.process.history import ProcessWord
+from process_geometry.analysis.am import AMFunctionTheory
+from process_geometry.presentation.history import WordRewriteRule, normalize_word
+from process_geometry.process.history import ProcessWord
 
 
 # Literal histories come first. This example relation is merely caller-declared;
