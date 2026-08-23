@@ -17,11 +17,11 @@ Y^2 = 2 (E - U) (1 - U^2),   D U = Y,   D Y = 3 U^2 - 2 E U - 1,
 omega = dU / Y,   omega(D) = 1,
 ```
 
-the chord-tangent composition `(+)` is the elliptic group law, and the flow objectifies the translation schema `tau_t: p -> p (+) S(t)` with `S(t) = P(t) (+) P(0)`. The executable essay certifies:
+the chord-tangent composition `(+)` is the elliptic group law. The flow admits a lifted translation schema `tilde_tau_t: p -> p (+) S(t)` with `S(t) = P(t) (+) P(0)`; its projection to the actual geometric action identifies clocks differing by a real period. The executable essay certifies:
 
 1. the exact Weierstrass reduction (with `j = 1728` on the lemniscatic leaf `E = 0`);
 2. the exact Euler addition theorem on the carrier, in chord and tangent form: `omega(P (+) Q) = omega(P) + omega(Q)` as an exact one-form identity modulo the curve ideal;
-3. the twisted subgroup law of the closed-form lemniscatic flow `U(t) = -sn^2(t/sqrt(2), i)`: `P(t1) (+) P(t2) = P(t1+t2) (+) P(0)`, with `P(0) = (0,0)` a 2-torsion point, so the untwisted orbit is an exact one-parameter subgroup (sampled numerical certificate);
+3. the closed-form lemniscatic flow `U(t) = -sn^2(t/sqrt(2), i)` numerically obeys the base-point correction `P(t1) (+) P(t2) = P(t1+t2) (+) P(0)`, with `P(0) = (0,0)` a 2-torsion point; after correction, the expected one-parameter subgroup law is sampled numerically;
 4. three red teams: an unmarked endpoint merges distinct Cartesian continuations; a fixed curve point does not identify the flow schema (period ambiguity and the torsion twist); coordinatewise addition leaves the carrier.
 
 ## 2. The structural reading
@@ -33,12 +33,24 @@ The analogy with AEG is exact in shape, not merely verbal:
 | lower-rank objects: Translation `T_a` | lower-rank objects: carrier points `p` |
 | objectified schema: `R_k(T_a) = T_(ka)` | objectified schema: `tau_t: p -> p (+) S(t)` |
 | composition: repeated addition / `D_k D_l = D_(kl)` | composition: chord-tangent `(+)` |
-| cross relation: `D_k T_a = T_(ka) D_k` (noncommutative) | cross relation: the torsion twist `P(t1)(+)P(t2) = P(t1+t2)(+)P(0)` (commutative) |
-| rank lowering: displacement / clock sum | rank lowering: the clock `omega` integral, kernel = period lattice |
+| cross relation: `D_k T_a = T_(ka) D_k` (noncommutative) | base-point/torsor correction: `P(t1)(+)P(t2) = P(t1+t2)(+)P(0)` |
+| rank lowering: displacement / clock sum | lifted clock `t`; geometric phase `[t]`; Abel-Jacobi value modulo the period lattice |
 | fixed-output red team: `T_6` identifies no schema | fixed-point red team: `P(t)` identifies no `tau_t` |
 | continuation red team: `abs(q)` merges S and P | continuation red team: unmarked `(U,Y)` merges the Z2 fiber |
 
-Both domains therefore support the same T1 refinement already recorded in `docs/52`: the thing objectified at the next rank is a stable *process/action on lower-rank semantic objects*, not a point. The geometric calibration adds one new datum the arithmetic one could not: the kernel of rank lowering is here the *period lattice* — the same obstruction data that the marked-carrier hypothesis (`C,D,omega`) places in its group/completion layer. Euler's addition theorem is the exact certificate that this lowering is a homomorphism.
+Both domains therefore support the same T1 refinement already recorded in `docs/52`: the thing objectified at the next rank is a stable *process/action on lower-rank semantic objects*, not a point. The geometric calibration adds one new datum the arithmetic one could not: lowering from lifted history to the actual geometric action forgets the *period lattice*. More precisely, the real flow has a lifted clock `t in R`, while the action on the real carrier retains only `[t] in R / T_p Z`; after complexification the Abel-Jacobi coordinate lies in `C / Lambda`. The period group is the kernel of the projection from lifted clocks to geometric actions, not the kernel of a map from an unlifted action back to a bare real clock. Euler's addition theorem is the exact invariant-differential certificate behind Abel-Jacobi additivity modulo periods.
+
+## 2.1 The three clock levels
+
+The type distinction is part of the information contract:
+
+```text
+lifted real clock R
+    -> geometric real action R / T_p Z
+    -> complex Abel-Jacobi torus C / Lambda
+```
+
+A lifted schema retains history/covering data and may lower to a bare real clock. An unlifted geometric action cannot: `tau_t = tau_(t+T_p)`. Thus the period group measures precisely what is forgotten when process history is quotiented to state action.
 
 ## 3. What remains open (kill conditions, unchanged)
 
