@@ -103,7 +103,7 @@ def _optimal_expected_cost(weights, query_costs):
     return value(full)
 
 
-def test_unit_depth_huffman_is_only_a_special_case_of_costed_planning():
+def test_unit_cost_bellman_value_matches_the_known_huffman_calibration():
     weights = tuple(map(sp.Rational, (6, 3, 1)))
     states = (frozenset((0,)), frozenset((1,)), frozenset((2,)))
     splits = {
