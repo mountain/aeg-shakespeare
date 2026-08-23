@@ -7,14 +7,11 @@ The four public namespaces are:
 Process  ->  Presentation  ->  Discovery  ->  Analysis
 ```
 
-The arrows describe the intended conceptual dependency: a process exists before
-one chooses a finite presentation; discovery searches alternative presentations;
-analysis consumes successful presentations to build adequate function/geometric
-languages.
+The arrows describe the intended conceptual dependency: a process exists before one chooses a finite presentation; discovery searches alternative presentations and observer constructions; analysis consumes successful presentations to build adequate function/geometric languages.
 
-The canonical Python package is `process_geometry`. The historical
-`aeg_shakespeare` package is a deprecated compatibility alias only; it is not a
-second implementation owner.
+The canonical Python package is `process_geometry`. The historical `aeg_shakespeare` package is a deprecated compatibility alias only; it is not a second implementation owner.
+
+The terminology in this document follows `docs/42–45` and the naming rules in `docs/48-foundation-naming-audit.md`. In particular, **task/process quotient**, **jet**, and **objectification** are now reserved for their stronger foundation meanings.
 
 ## 1. `process_geometry.process`
 
@@ -36,8 +33,7 @@ Finite parameterized process structure:
 - `ProcessCocycle`, `CocycleVerification`, `verify_process_cocycle`
 - `central_commutator_residual`
 
-This namespace deliberately does not imply a universal group, topology,
-measure, representation, or cohomology hierarchy.
+This namespace deliberately does not imply a universal group, topology, measure, representation, or cohomology hierarchy.
 
 ### `process.local`
 
@@ -46,30 +42,35 @@ Local/infinitesimal realizations:
 - `ProcessSystem`
 - `ProcessFrame`
 
-A finite process family and a local generator may be related in a mathematical
-vignette, but Process Geometry does not yet impose a universal finite-to-infinitesimal
-bridge.
+A finite process family and a local generator may be related in a mathematical vignette, but Process Geometry does not yet impose a universal finite-to-infinitesimal bridge.
 
 ## 2. `process_geometry.presentation`
 
-A presentation records how process/history information is objectified,
-quotiented, reconstructed, transformed, and costed.
+A presentation records an explicit realization of process/history structure: relations, task-sufficiency evidence, reconstruction, transformation, and cost. A presentation may participate in semantic compression, but the current API does not equate ordinary presentation construction with the stronger `docs/44` notion of objectification.
 
 ### `presentation.history`
 
+History rewriting and bounded task distinguishability:
+
 - `WordRewriteRule`, `rewrite_once`, `normalize_word`
 - `RewriteStep`, `RewriteResult`
-- `ProcessJetSignature`, `process_jet_signature`
-- `history_process_jet_signature`, `histories_task_equivalent`
+- `TaskContinuationSignature`, `task_continuation_signature`
+- `history_task_continuation_signature`, `histories_task_equivalent`
 - `history_depth`, `boundary_profile`
 - `BoundaryProfile`, `PrefixCode`, `PrefixCodeMetrics`, `huffman_prefix_code`
 
+Historical 0.0.x names `ProcessJetSignature`, `process_jet_signature`, and `history_process_jet_signature` remain compatibility aliases. They are no longer canonical because the implemented object is a bounded continuation signature, not a differential jet.
+
 ### `presentation.construction`
+
+Candidate primitive construction with preserved provenance:
 
 - `SymbolicOperation`
 - `PrimitiveConstruction`
 - `PrimitiveProposal`, `PrimitiveProposalResult`, `RejectedPrimitiveProposal`
 - `generate_primitive_proposals`
+
+`PrimitiveProposal` means **candidate primitive**. It has not, merely by being proposed, satisfied semantic-stability, higher-rank composition, or compositional rank-lowering requirements and therefore is not an `ObjectifiedPrimitive`.
 
 ### `presentation.constraints`
 
@@ -95,17 +96,9 @@ quotiented, reconstructed, transformed, and costed.
 
 - `PresentationMorphism`
 
-`PresentationMorphism` is the minimal task-relative record promoted after three
-independent calibrations: KdV tau/rewrite presentations, resistor-network
-Schur/Y-Delta transformations, and braid/Markov moves. It binds a source
-presentation, target presentation, declared task semantics, caller-defined
-certificate, and optional construction witness.
+`PresentationMorphism` is the minimal task-relative record promoted after three independent calibrations: KdV tau/rewrite presentations, resistor-network Schur/Y-Delta transformations, and braid/Markov moves. It binds a source presentation, target presentation, declared task semantics, caller-defined certificate, and optional construction witness.
 
-The public object deliberately does **not** define a universal verifier,
-composition law, inverse, normal-form relation, category/groupoid structure, or
-same-type requirement for source and target. In particular, a morphism may connect
-presentations with different carrier dimensions when the declared task semantics
-provides the comparison.
+The public object deliberately does **not** define a universal verifier, composition law, inverse, normal-form relation, category/groupoid structure, or same-type requirement for source and target. In particular, a morphism may connect presentations with different carrier dimensions when the declared task semantics provides the comparison.
 
 ### `presentation.search`
 
@@ -115,26 +108,43 @@ provides the comparison.
 - `pareto_frontier`
 - exact reconstruction / primitive-proposal search entry points
 
+Formal API text uses **presentation cost** rather than `representation cost`: representation remains a broad informal umbrella, while `PresentationCost` evaluates a concrete declared realization.
+
 ## 3. `process_geometry.discovery`
 
-Discovery contains bounded algorithms for proposing or selecting alternative
-representations. It is not process ontology.
+Discovery contains bounded algorithms for proposing or selecting alternative presentations, observers, observables, and quotient candidates. It is not process ontology.
 
 Current implementation families include:
 
-- polynomial observer bases, invariants, and quotient elimination;
-- structured pairing observers;
-- first-order observer quotient selection;
+- polynomial observable bases and invariant discovery;
+- structured pairing observer proposals;
+- algebraic elimination of source variables into observable relations;
+- first-order observer-presentation selection;
 - explicit coefficient-language extension experiments.
 
-The package already has internal modules (`polynomial`, `structured`,
-`selection`, `coefficient_extension`). Their existence does not promote every
-backend object into a stable public abstraction.
+The theory-aligned public names for the first-order polynomial path are:
+
+- `ObservableAlgebraicQuotient`
+- `discover_first_order_observable_quotient`
+- `FirstOrderObservablePresentation`
+- `search_first_order_observer_presentations`
+- `structural_first_order_observer_presentation_cost`
+
+These names are deliberately qualified. The polynomial backend constructs an algebraic presentation of selected observables; it does **not** construct the history/task quotient
+
+\[
+\mathcal H(P)/{\sim_Q}
+\]
+
+from `docs/42–43`.
+
+Historical backend names `ObservableQuotient`, `discover_first_order_process_quotient`, `search_first_order_process_quotients`, and `structural_first_order_quotient_cost` remain aliases during the 0.0.x transition.
+
+`Observable` and `Observer` are also not interchangeable: an observable is a quantity read from a process; an observer may be a broader protocol or structured mechanism that determines distinguishability.
 
 ## 4. `process_geometry.analysis`
 
-Analysis contains mathematical languages supported by successful process
-presentations.
+Analysis contains mathematical languages supported by successful process presentations. In the foundation (`docs/45`), its eventual theoretical role is the study of variation on induced process structures, not merely a collection of classical solver backends.
 
 ### `analysis.module`
 
@@ -160,6 +170,10 @@ presentations.
 - `AbelianCycleSystem`, `AbelianPeriodMatrix`, `compute_period_matrix`;
 - Abel-Jacobi history increments and `NormalizedAbelianTorus`.
 
+### Experimental local analysis
+
+`analysis.connection.ObserverConnection` and `presentation.canonicalization.ConstraintCanonicalization` are qualified experimental structures motivated by the Canonical Observer line. Their names do not assert that a universal observer connection/canonicalization theory has already been promoted.
+
 These objects are intentionally not re-exported from the package root.
 
 ## 5. Root contract
@@ -184,9 +198,7 @@ During the `0.0.x` migration, old root-level symbols such as
 from process_geometry import ProcessWord
 ```
 
-remain available lazily and emit `DeprecationWarning`. They exist only as a
-transition bridge from the earliest flat API and are not part of the declared
-root contract.
+remain available lazily and emit `DeprecationWarning`. They exist only as a transition bridge from the earliest flat API and are not part of the declared root contract.
 
 Separately, the historical namespace remains temporarily importable:
 
@@ -195,16 +207,7 @@ import aeg_shakespeare
 from aeg_shakespeare.process.history import ProcessWord
 ```
 
-Importing `aeg_shakespeare` emits `DeprecationWarning`. The compatibility layer
-aliases canonical modules rather than owning implementations, so representative
-deep imports must preserve object identity:
-
-```python
-from process_geometry.process.history import ProcessWord as NewProcessWord
-from aeg_shakespeare.process.history import ProcessWord as OldProcessWord
-
-assert NewProcessWord is OldProcessWord
-```
+Importing `aeg_shakespeare` emits `DeprecationWarning`. The compatibility layer aliases canonical modules rather than owning implementations, so representative deep imports preserve object identity.
 
 New code should not use the historical namespace.
 
@@ -222,28 +225,8 @@ process <- presentation <- discovery
 More precisely:
 
 - `process` must not depend on presentation-search or analysis concepts;
-- `presentation` may consume process objects but must not require optional
-  function theories;
+- `presentation` may consume process objects but must not require optional function theories;
 - `discovery` may consume process/presentation machinery to search alternatives;
-- `analysis` may consume process/presentation outputs, but core process ontology
-  must not know about Abelian periods, Fourier transforms, or other downstream
-  languages.
+- `analysis` may consume process/presentation outputs, but core process ontology must not know about Abelian periods, Fourier transforms, or other downstream languages.
 
-The namespace migration adds a second, orthogonal ownership invariant:
-
-```text
-process_geometry  <-  aeg_shakespeare compatibility alias
-```
-
-Canonical implementation code under `src/process_geometry/**` must never import
-or depend on `aeg_shakespeare`. The reverse dependency is the entire purpose of
-the compatibility alias.
-
-## 7. Research concepts are not automatically API concepts
-
-The Process Geometry foundation now discusses distinguishability topology,
-semantic compression, objectification, rank lowering, and analytic closure.
-Those research concepts do **not** become public classes merely because the
-software namespace now matches the project name. Any generic abstraction must
-still pass the lifecycle in `GOVERNANCE.md`: Sonnet -> extraction candidate ->
-Experimental -> maturing -> Public API.
+The foundation adds a second discipline: **large theory words are not API rewards**. Names such as `ProcessGeometry`, `Objectification`, `ProcessRank`, `RankLowering`, `ObserverTopology`, and `AnalyticClosure` remain unclaimed until independent executable structures and red teams justify them.
