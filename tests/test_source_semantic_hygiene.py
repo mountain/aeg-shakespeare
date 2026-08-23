@@ -4,7 +4,7 @@ import ast
 from pathlib import Path
 
 
-_SRC_ROOT = Path(__file__).parents[1] / "src" / "aeg_shakespeare"
+_SRC_ROOT = Path(__file__).parents[1] / "src" / "process_geometry"
 _ALLOWED_COMPATIBILITY = {
     _SRC_ROOT / "core.py",
     _SRC_ROOT / "_legacy_api.py",
@@ -22,11 +22,9 @@ def _imported_names(node: ast.ImportFrom) -> set[str]:
 
 
 def _package_parts_for(path: Path) -> list[str]:
-    """Return the package containing ``path`` relative to ``aeg_shakespeare``."""
+    """Return the package containing ``path`` relative to ``process_geometry``."""
     relative = path.relative_to(_SRC_ROOT)
-    if relative.name == "__init__.py":
-        return ["aeg_shakespeare", *relative.parent.parts]
-    return ["aeg_shakespeare", *relative.parent.parts]
+    return ["process_geometry", *relative.parent.parts]
 
 
 def _resolved_import_module(path: Path, node: ast.ImportFrom) -> str:
@@ -55,11 +53,11 @@ def test_source_does_not_reintroduce_semantic_dependencies_on_core_or_frame_shim
                 continue
             names = _imported_names(node)
             resolved = _resolved_import_module(path, node)
-            if resolved == "aeg_shakespeare.core" and names & _SEMANTIC_CORE_NAMES:
+            if resolved == "process_geometry.core" and names & _SEMANTIC_CORE_NAMES:
                 offenders.append(
                     f"{path.relative_to(_SRC_ROOT)} imports {sorted(names & _SEMANTIC_CORE_NAMES)} from core"
                 )
-            if resolved == "aeg_shakespeare.frame" and "ProcessFrame" in names:
+            if resolved == "process_geometry.frame" and "ProcessFrame" in names:
                 offenders.append(
                     f"{path.relative_to(_SRC_ROOT)} imports ProcessFrame from legacy frame shim"
                 )
@@ -79,7 +77,7 @@ def test_core_backend_import_is_limited_to_homogeneous_monomials_outside_compati
         for node in ast.walk(tree):
             if not isinstance(node, ast.ImportFrom):
                 continue
-            if _resolved_import_module(path, node) != "aeg_shakespeare.core":
+            if _resolved_import_module(path, node) != "process_geometry.core":
                 continue
             extra = _imported_names(node) - {"homogeneous_monomials"}
             if extra:
