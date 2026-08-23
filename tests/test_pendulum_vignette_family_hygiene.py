@@ -1,10 +1,10 @@
 """Mechanical hygiene for the multi-file pendulum vignette family.
 
-This is a plumbing test, not a mathematical claim.  It protects only the
+This is a plumbing test, not a mathematical claim. It protects only the
 family-level knowledge contract: one stable entry guide, explicit stage
 coverage, independent essay boundaries, retrieval routing, and
-evidence/reconstruction labels.  The mathematical identities remain certified
-by the pendulum essays themselves.
+reconstruction/evidence labels. Mathematical identities remain certified by
+the pendulum essays themselves.
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ _PENDULUM_ESSAYS = (
     _ROOT / "classical" / "test_pendulum_observer_selection.py",
     _ROOT / "classical" / "test_pendulum_structured_observers.py",
     _ROOT / "classical" / "test_pendulum_observable_quotient_fiber.py",
+    _ROOT / "classical" / "test_pendulum_local_branch_decoder.py",
     _ROOT / "classical" / "test_pendulum_period_history.py",
     _ROOT / "classical" / "test_pendulum_period_contour.py",
     _ROOT / "classical" / "test_pendulum_period_matrix.py",
@@ -74,6 +75,7 @@ def test_family_guide_names_every_executable_stage_and_evidence_boundary():
         "exact symbolic",
         "sampled numerical",
         "Z2",
+        "local branch decoder",
         "reconstruction",
         "A/M lift canonicalization",
         "Representation-invariant elliptic object",
@@ -82,7 +84,7 @@ def test_family_guide_names_every_executable_stage_and_evidence_boundary():
         assert required_phrase in guide, f"family guide omits boundary {required_phrase!r}"
 
 
-def test_repository_entry_points_route_to_the_family_guide_and_new_fiber_stage():
+def test_repository_entry_points_route_to_the_family_guide_and_fiber_stage():
     readme = _CLASSICAL_README.read_text(encoding="utf-8")
     index = _VIGNETTE_INDEX.read_text(encoding="utf-8")
 
