@@ -16,6 +16,7 @@ import re
 _ROOT = Path(__file__).parent
 _ESSAYS = (
     _ROOT / "classical" / "test_restricted_riccati_canonical_observer.py",
+    _ROOT / "classical" / "test_riccati_canonical_horizontal_lift.py",
     _ROOT / "classical" / "test_coupled_scalar_canonical_observer.py",
     _ROOT / "classical" / "test_restricted_kepler_canonical_decomposition.py",
     _ROOT / "classical" / "test_am_process_direction.py",
