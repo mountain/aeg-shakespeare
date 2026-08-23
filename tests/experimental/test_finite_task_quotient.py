@@ -59,13 +59,22 @@ def test_bounded_signature_can_miss_a_distinction_that_exact_quotient_finds():
     assert quotient.witness_between(x_class, y_class) == ("tick", "tick")
 
 
-def test_exact_quotient_merges_future_equivalent_duplicates():
+def test_exact_quotient_merges_states_by_future_semantics_not_identity():
     quotient = minimize_finite_task_process(STATES, STEPS, transition, observe)
 
+    # Literal duplicates merge.
     assert quotient.class_of("x") == quotient.class_of("x-copy")
+
+    # More importantly, y and v also merge: y first moves to v, and from then on
+    # both remain forever task-silent. Their state identities and one-step
+    # histories differ, but no future task observation can distinguish them.
+    assert quotient.class_of("y") == quotient.class_of("v")
+
+    # x is distinguishable from that silent class after two ticks; u is
+    # distinguishable after one tick.
     assert quotient.class_of("x") != quotient.class_of("y")
     assert quotient.class_of("u") != quotient.class_of("v")
-    assert quotient.class_count == 5
+    assert quotient.class_count == 4
 
 
 def test_every_distinct_quotient_pair_has_a_sound_future_witness():
@@ -91,6 +100,9 @@ def test_induced_transition_is_well_defined_on_merged_class():
     assert target_class == quotient.class_of("u")
     assert quotient.class_of(transition("x", "tick")) == target_class
     assert quotient.class_of(transition("x-copy", "tick")) == target_class
+
+    silent_class = quotient.class_of("y")
+    assert quotient.transition_class(silent_class, "tick") == silent_class
 
 
 def test_rejects_transition_that_leaves_declared_finite_carrier():
