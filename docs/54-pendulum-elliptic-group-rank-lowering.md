@@ -20,7 +20,7 @@ omega = dU / Y,   omega(D) = 1,
 the chord-tangent composition `(+)` is the elliptic group law. The flow admits a lifted translation schema `tilde_tau_t: p -> p (+) S(t)` with `S(t) = P(t) (+) P(0)`; its projection to the actual geometric action identifies clocks differing by a real period. The executable essay certifies:
 
 1. the exact Weierstrass reduction (with `j = 1728` on the lemniscatic leaf `E = 0`);
-2. the exact Euler addition theorem on the carrier, in chord and tangent form: `omega(P (+) Q) = omega(P) + omega(Q)` as an exact one-form identity modulo the curve ideal;
+2. the exact Euler addition theorem on the carrier, in chord and tangent form: the group-law pullback of the invariant differential splits as the sum of the two factor differentials, so the Abel-Jacobi integral is additive modulo periods;
 3. the closed-form lemniscatic flow `U(t) = -sn^2(t/sqrt(2), i)` numerically obeys the base-point correction `P(t1) (+) P(t2) = P(t1+t2) (+) P(0)`, with `P(0) = (0,0)` a 2-torsion point; after correction, the expected one-parameter subgroup law is sampled numerically;
 4. three red teams: an unmarked endpoint merges distinct Cartesian continuations; a fixed curve point does not identify the flow schema (period ambiguity and the torsion twist); coordinatewise addition leaves the carrier.
 
