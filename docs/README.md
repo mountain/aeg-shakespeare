@@ -2,6 +2,8 @@
 
 The documentation is organized as a mathematical/programming narrative rather than as a flat API reference.
 
+**Governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. It is the standing policy for future generic abstraction and public API promotion.
+
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
 3. `02-task-signatures.md` — bounded task-sufficient quotients.
