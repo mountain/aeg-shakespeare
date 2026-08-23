@@ -1,45 +1,48 @@
-# Phase 8 — persistent Hauffman geometry: closure and scaling gate
+# Persistent Hauffman geometry and canonical decomposition — closure plan
 
-**Status:** center-2 -> center-3 representation loop closed. Phases 8A, 8C, 8C.2, 8D, 8D.2, 8E.0, and 8E passed; Phase 8B rejected the proposed discrete observer-transport interpretation.  
+**Status:** the four-runner contact-center refinement programme is closed through an exact infinite-tail certificate. Phase 8 closed center 2 -> 3; Phase 9 replayed the rules unchanged at center 3 -> 4; Phase 10 proves that every contact event at every center `n >= 5` is task-irrelevant to the resulting first-witness representation.  
 **Branch:** `research/canonical-observer-api`  
-**Result notes:** [`20-phase8a-discrete-canonical-decomposition.md`](20-phase8a-discrete-canonical-decomposition.md), [`21-phase8b-history-reindex-red-team.md`](21-phase8b-history-reindex-red-team.md), [`22-phase8c-minimum-completion-residuals.md`](22-phase8c-minimum-completion-residuals.md), [`23-phase8c2-residual-objectification.md`](23-phase8c2-residual-objectification.md), [`24-phase8d-persistent-dag-increment.md`](24-phase8d-persistent-dag-increment.md), [`25-phase8d2-refinement-aware-placement.md`](25-phase8d2-refinement-aware-placement.md), [`26-phase8e0-activation-geometry.md`](26-phase8e0-activation-geometry.md), [`27-phase8e-controlled-interleaving.md`](27-phase8e-controlled-interleaving.md)  
-**Open frontier policy:** `K=13` remains a frozen holdout and is not used for representation development.
+**Result notes:** [`20`](20-phase8a-discrete-canonical-decomposition.md), [`21`](21-phase8b-history-reindex-red-team.md), [`22`](22-phase8c-minimum-completion-residuals.md), [`23`](23-phase8c2-residual-objectification.md), [`24`](24-phase8d-persistent-dag-increment.md), [`25`](25-phase8d2-refinement-aware-placement.md), [`26`](26-phase8e0-activation-geometry.md), [`27`](27-phase8e-controlled-interleaving.md), [`28`](28-phase9-10-center4-scaling-and-infinite-tail-closure.md).  
+**Holdout:** `K=13` remains frozen and was not used for representation development.
 
-## 1. Frozen canonical decomposition
+## 1. What survived two refinement steps
 
-The exact center-2 -> center-3 task-state decomposition is
+The frozen reconstruction pipeline is now
+
+```text
+current persistent presentation
+    -> local next-layer effect detection
+    -> CanonicalDecomposition
+    -> minimum process-generated completion support
+    -> task-relative objectification
+    -> global history placement / controlled interleaving
+    -> exact semantic red team
+    -> repeat without changing the rules.
+```
+
+At center 2 -> 3:
 
 \[
 \boxed{843F_{\rm ren}\oplus0F_{\rm res}\oplus6F_{\rm comp}.}
 \]
 
-More explicitly:
-
-```text
-841 identity-stable
-  2 history/decoder reindex
-  6 genuine completion states.
-```
-
-Phase 8B established that the two nonbranching cases preserve the same witness boundary and mode and only shift event rank by `+2`. They are decoder/history renormalization, not observer motion. Sonnet 001 therefore still supplies **no discrete evidence for `ObserverConnection`**.
-
-## 2. Completion pipeline now established
-
-The six genuine completion states were made constructive in three steps.
-
-### 2.1 Minimum raw process support
-
-Exact conflict-cover search over new center-3 contact-wall signs gives minimum support sizes
+At center 3 -> 4:
 
 \[
-\boxed{1,2,2,2,3,4}.
+\boxed{2746F_{\rm ren}\oplus0F_{\rm res}\oplus7F_{\rm comp}.}
 \]
 
-Every selected primitive wall is genuinely new at center 3.
+In both steps the apparent nonbranching sector is only history/decoder reindexing: witness boundary and mode remain fixed and event rank shifts by `+2`.  Therefore Sonnet 001 supplies **no discrete evidence for `ObserverConnection`**.
 
-### 2.2 Task-relative residual objectification
+## 2. Phase 8 — center-3 representation closure
 
-Four raw supports already equal their task quotient. Two are over-refined:
+The six center-3 completion states require minimum raw wall supports
+
+\[
+1,2,2,2,3,4,
+\]
+
+all genuinely new at center 3.  Two minimum raw grammars over-refine their tasks and are objectified by exact quotients
 
 \[
 11\to7,
@@ -47,302 +50,270 @@ Four raw supports already equal their task quotient. Two are over-refined:
 13\to3.
 \]
 
-Exact adaptive decoding quotients both while querying only the selected completion walls. In the `13 -> 3` case four raw walls are available but decoder worst depth is only three.
-
-Hence the frozen completion pipeline is
-
-\[
-\boxed{
-F_{\rm comp}
-\to
-\text{minimum process-generated support}
-\to
-\text{task-relative objectified residual}.
-}
-
-No universal `Completion` or `ResidualQuotient` API is inferred.
-
-## 3. Persistent graft and cost red team
-
-The frozen center-2 persistent Hauffman representation has
+A local persistent graft has
 
 ```text
-68 persistent labels
-328 tree/boundary nodes
-109 internal query nodes
-177 terminal-merged DAG nodes
-peak/worst = 72/9.
+376 tree nodes / 125 internals / 200 terminal-merged DAG nodes
+peak/worst = 75/12,
 ```
 
-Grafting the six frozen completion decoders below their six old leaves gives
+while a fresh center-3 tree has the same `376/125` inventory but `72/10`.  Old-prefix reweighting alone cannot close the placement gap.
+
+Controlled interleaving over only
 
 ```text
+21 old wall signs + 7 generated completion-wall signs
+```
+
+creates 2,753 exact feasible items and 75 task semantics, and recovers
+
+```text
+weighted depth 135
 376 tree nodes
-125 internal nodes
-200 terminal-merged DAG nodes
-peak/worst = 75/12.
+125 internals
+200 DAG nodes
+peak/worst 72/10.
 ```
-
-Thus one new contact layer requires only `+23` explicit DAG objects after semantic merging.
-
-The separately frozen fresh center-3 time-first tree has the same `376/125` total/internal decision structure but `peak/worst = 72/10`. This isolates two different questions:
-
-\[
-\boxed{\text{local completion determines how much structure is required},}
-\]
-
-\[
-\boxed{\text{history placement determines where that structure sits}.}
-\]
-
-The old 55-input current-usage distribution hits none of the eight refinement-sensitive states and is therefore a blind refinement-cost control. Conditional on the 298 locally reopened children, the exact new-wall workload is
-
-\[
-544/298\approx1.8255
-\]
-
-queries per reopened child, or
-
-\[
-544/288=17/9\approx1.8889
-\]
-
-per genuine completion child, with worst extra depth three.
-
-Current usage and continuation/refinement workloads must therefore remain separate cost axes.
-
-## 4. Phase 8D.2 — old-prefix reweighting is insufficient
-
-Seven exact current/refinement mixtures were tested while keeping the architecture
-
-```text
-old persistent prefix
-    -> full old parent resolution
-    -> local completion decoder.
-```
-
-A tiny refinement weight can improve completion time and worst depth at almost no current expected-depth cost, but can badly enlarge the frontier. For example `lambda=1/16` changes
-
-```text
-current total:       135 -> 136
-completion total:   2933 -> 2146
-worst depth:          12 -> 9
-peak frontier:        75 -> 93.
-```
-
-After duplicate profiles are collapsed, every sampled profile is Pareto-nondominated across current time, refinement time, volume, peak, and worst depth. No sampled old-prefix-first candidate reaches both `peak <= 72` and `worst <= 10`.
-
-Therefore the bottleneck is architectural, not scalar weighting.
-
-## 5. Phase 8E.0 — clean activation geometry
-
-Relative to the frozen old tree, define a new wall to be **cleanly activatable** at a node when at least one completion user survives and every surviving non-user already has a fixed sign on that wall.
-
-The seven walls have earliest clean depths
-
-\[
-\boxed{3,3,5,7,8,9,9}.
-\]
-
-However no wall has a **shared clean activation**: even the two walls used by four completion parents become zero-collateral only after a single actual user remains.
-
-Thus cross-parent sharing cannot be obtained merely by lifting a new query to a pre-existing zero-collateral old node. It must allow temporary collateral splitting followed by semantic reconvergence.
-
-Recorded certification: workflow run `32587582896`, activation essay `1 passed in 36.33 s`.
-
-## 6. Phase 8E — controlled interleaving closes the placement gap
-
-Construct a joint representation using only
-
-```text
-21 old task-relevant wall signs
-+7 frozen Phase-8C completion-wall signs.
-```
-
-Exact center-2 multiplicative constraints generate only feasible new-wall variants. After quotienting duplicates under the 849 old parents, the joint representation contains
-
-\[
-\boxed{2,753\text{ feasible items}}
-\]
-
-and exactly
-
-\[
-\boxed{75\text{ final task semantics}}.
-\]
-
-No full 72,241-state center-3 arrangement or fresh tree topology is supplied.
-
-With the original current-usage weights only (`lambda=0`), exact search over all 28 predicates gives
-
-```text
-current weighted depth total  135
-completion-child depth total 2708
-tree/boundary nodes           376
-internal query nodes          125
-terminal-merged DAG nodes     200
-peak frontier                  72
-worst depth                    10.
-```
-
-Hence the controlled representation reconstructs **all frozen structural metrics** of the separately constructed fresh center-3 time-first tree without constructing the full fresh arrangement.
-
-The decision inventory is unchanged:
-
-```text
-109 old-wall internal nodes
- 16 new-wall internal nodes
----
-125 total internals.
-```
-
-The successful tree merely changes their partial order and sharing. Four of the 16 new-wall nodes are cross-parent activations, and the first new wall appears at depth five. The seven walls first occur at depths
-
-\[
-\boxed{5,6,7,7,8,8,9}.
-\]
 
 Thus
 
 \[
 \boxed{
-\text{completion discovers the required decisions};
+\text{completion determines decision content};
 \quad
-\text{interleaving/reconvergence optimizes their history partial order}.
+\text{interleaving/reconvergence determines history partial order and sharing}.
 }
 
-Recorded certification: workflow run `32587582896`, controlled-interleaving essay `1 passed in 152.67 s`.
+## 3. Phase 9A — frozen-rule scaling to center 4
 
-## 7. What Phase 8 has established for Shakespeare
+The Phase-8E 28-predicate visible language is materialized as
 
-The complete bounded reconstruction is now
+\[
+\boxed{2753\text{ persistent cells},\quad75\text{ tasks},\quad13609\text{ exact closure atoms}.}
+\]
+
+The generalized detector is first replayed on center 2 -> 3 and reproduces the exact `841/2/6` sets.  Applied unchanged to center 3 -> 4 it gives
+
+\[
+\boxed{2744\text{ stable}+2\text{ nonbranching pressure}+7\text{ completion pressure}.}
+\]
+
+Only `9/2753 ≈ 0.327%` of current cells are reopened.
+
+## 4. Phase 9B — semantic red team and an important correction
+
+The two nonbranching cells are again history reindexing.  All seven completion cells genuinely branch.
+
+A stale essay draft had recorded task multiplicities `2,2,3,3,4,4,4`.  That assertion was rejected.  The current lazy oracle gives
+
+\[
+\boxed{3,3,3,3,3,3,3}.
+\]
+
+An independent local full-stratum center-4 oracle agrees with the lazy task set on all nine pressure cells, so the corrected profile is frozen.
+
+The lazy oracle also queries latent older walls.  Phase 9C later removes all of them from every minimum support.  Therefore
+
+\[
+\boxed{
+\text{solver/certificate trace}\neq\text{task-minimal representation ontology}.
+}
+\]
+
+Exact closure provenance remains a useful research backend, but the Sonnet evidence does not force a public `ConstraintCell` ontology.
+
+## 5. Phase 9C — one shared center-4 primitive
+
+Every one of the seven center-4 completion cells has minimum support size one, and all choose the same genuinely new ternary wall:
+
+\[
+\boxed{\frac{u_4}{u_3}\ ?\ \frac{19}{11}.}
+\]
+
+For every branching cell,
 
 ```text
-old persistent representation
-    -> local next-layer effect detection
-    -> canonical decomposition
-    -> minimum process-generated completion
-    -> task-relative residual objectification
-    -> persistent graft
-    -> current/refinement cost red team
-    -> activation geometry
-    -> controlled old/new interleaving with semantic reconvergence
-    -> fresh structural placement metrics recovered.
+sign(u4/u3 - 19/11) = -1, 0, +1
 ```
 
-This is a stronger result than merely discovering a smaller solver tree: the full 72,241-state next-layer arrangement was not required to reconstruct the frozen fresh-tree structural metrics.
+maps one-to-one to its three exact task semantics.  Every minimum support has `(new, latent)=(1,0)`.
 
-## 8. API consequence
+No universal one-wall-per-layer law is inferred.
 
-The reusable research surface remains deliberately narrow:
+## 6. Phase 9D — center-4 persistent update
+
+Appending the discovered wall globally produces the 29-predicate center-4 presentation:
+
+```text
+center 3 baseline
+  cells/tasks              2753 / 75
+  tree/internal/DAG         376 / 125 / 200
+  peak/worst/weighted        72 / 10 / 135
+
+center 4
+  cells/tasks              3067 / 81
+  closure atoms            14967
+  tree/internal/DAG         391 / 130 / 211
+  peak/worst/weighted        75 / 10 / 135.
+```
+
+The semantic update therefore costs only
+
+\[
+\boxed{\Delta\text{internal}=5,\quad\Delta\text{DAG}=11,\quad\Delta\text{task}=6}
+\]
+
+while current-use weighted depth stays exactly 135.  The new predicate occurs at five internal nodes, two cross-parent, with earliest activation depth six.
+
+## 7. Phase 10A/B — center 5 is an exact no-op
+
+The unchanged center 4 -> 5 detector gives
+
+\[
+\boxed{3067\text{ stable}+0+0.}
+\]
+
+This zero-pressure result is independently red-teamed by comparing every center-5 enter/exit event against the current witness on every exact closure atom:
+
+\[
+14967\times8=119736.
+\]
+
+The exact result is
+
+```text
+strictly later      119736
+earlier/equal            0
+unresolved               0.
+```
+
+So the complete center-5 contact alphabet cannot change any first-witness semantic.
+
+## 8. Phase 10C — finite representation closes the infinite contact tail
+
+For each positive-speed runner the earliest event among all centers `n >= 5` is its center-5 enter event:
+
+\[
+\alpha_{5,\mathrm{enter}}
+=5-\delta
+=\frac{24}{5}.
+\]
+
+For every future event,
+
+\[
+\alpha_{n,\mathrm{kind}}\ge\frac{24}{5}.
+\]
+
+The finite anchor certificate checks only
+
+\[
+14967\times4=59868
+\]
+
+closure-atom/runner comparisons.  All are strictly later than the current first witness; none are earlier/equal or unresolved.
+
+Hence
+
+\[
+\boxed{
+\text{the finite 29-predicate center-4 presentation is sufficient for the first-witness semantics of the entire infinite remaining contact alphabet.}
+}
+\]
+
+There is no reason to scan center 6, 7, 8, ... separately.
+
+## 9. What this says about Shakespeare
+
+The strongest structural result from Sonnet 001 is now
+
+```text
+open-ended process history
+    -> task-safe quotient
+    -> sparse generated completion
+    -> task objectification
+    -> history interleaving/reconvergence
+    -> repeated frozen-rule update
+    -> finite semantic closure of an infinite future tail.
+```
+
+This is more informative than a smaller solver tree.  The presentation itself becomes a finite sufficient statistic for an infinite task-relevant future.
+
+But several boundaries remain essential:
+
+- certificate/provenance information can be richer than visible task representation;
+- history placement is separate from primitive decision discovery;
+- current-use cost, future-refinement cost, and frontier geometry are separate axes;
+- Sonnet history reindexing is not observer transport;
+- one successful discrete process is not enough to promote activation/reconvergence into `src/`.
+
+## 10. Current API judgment
+
+Retain as research roles:
 
 ```text
 ProcessDirection
-ConstraintCanonicalization      # one backend
-ObserverConnection              # only when a canonical observer actually moves
-CanonicalDecomposition          # backend-neutral result shape.
+ConstraintCanonicalization      # first concrete backend
+ObserverConnection              # only where the canonical observer truly moves
+CanonicalDecomposition          # backend-neutral result shape
 ```
 
-Sonnet 001 does **not** justify a discrete observer connection.
-
-The new pressure lies in the presentation/history layer. Future examples may justify a small abstraction around
+Do **not** yet promote:
 
 ```text
-predicate activation
-semantic reconvergence
-history interleaving certificate.
+Completion
+ResidualQuotient
+ConstraintCell
+PersistentDAG
+Activation/Reconnection
+scalarized future cost
+discrete ObserverConnection.
 ```
 
-One Sonnet is not sufficient to promote it into `src/`.
+Phase 9–10 strengthens the presentation/history theory, not the observer-connection theory.
 
-Likewise, current time, refinement time, and frontier-space geometry must remain separate cost axes; no new public scalar cost is frozen.
+## 11. Next research gate
 
-## 9. Scaling gate — center 3 -> center 4 without redesign
+The contact-center axis is closed.  Continuing to center 6 would be redundant.
 
-The center-2 -> center-3 loop is now closed. Further center-3 tuning would risk overfitting the representation language.
+The next useful experiment should be **independent pressure**, not another Lonely Runner depth layer:
 
-The next Sonnet experiment must therefore reuse the frozen procedure **without changing its rules**:
+1. choose an unrelated process problem where a representation genuinely grows and later distinctions can reconverge;
+2. ask whether the same separation
+   `generated completion -> task objectification -> history interleaving/reconvergence`
+   appears without importing Sonnet-specific walls;
+3. only then consider a public activation/reconvergence abstraction.
 
-```text
-current persistent representation
-    -> detect locally affected states from next contact layer
-    -> classify renormalization / genuine completion
-    -> derive minimum raw new-wall support
-    -> objectify task-relative residuals
-    -> graft locally
-    -> measure conditional refinement workload
-    -> permit controlled interleaving only from newly certified walls
-    -> compare with a fresh center-4 oracle only after construction.
-```
+Separately, the original observation-path / observer-ODE programme should return to a problem with an actually moving canonical frame.  Sonnet 001 is now a negative control for conflating history geometry with observer connection.
 
-Acceptance questions:
+`K=13` remains a frozen holdout rather than a representation-development target.
 
-1. Does the affected fraction remain sparse?
-2. Does `F_res` remain empty or does a genuine same-family transport case finally appear?
-3. How many new process-generated walls are required per completion state?
-4. Can task objectification again reduce raw syntax?
-5. Does local completion again recover the correct amount of decision structure?
-6. Can controlled interleaving again recover or approach fresh placement without full arrangement construction?
-7. How do tree/DAG increment and conditional refinement workload scale?
-
-**Guardrail:** none of the center-2 -> center-3 thresholds, counts, or hand-selected wall identities may be hard-coded as proposal heuristics for center 4. Only the reusable process/constraint/task rules are allowed.
-
-## 10. Separate API promotion gate
-
-Even if center-3 -> center-4 succeeds, `activation/reconvergence` should not automatically become public API. A second unrelated discrete/process calibration should pressure the same retained semantics before promotion, following Shakespeare's existing abstraction discipline.
-
-## 11. Relation to the observer-ODE line
-
-The original observer-ODE idea remains valid for problems where a canonical observer actually moves. Sonnet 001 has instead revealed a different mechanism:
+## 12. Execution ledger
 
 ```text
-history reindex
-completion
-objectification
-interleaving/reconvergence.
-```
-
-These should remain distinct. A future discrete observer-connection claim requires an intrinsic canonical frame that changes inside a fixed observer family; neither history interleaving nor decision-DAG sharing substitutes for that condition.
-
-## 12. Execution order
-
-```text
-8A    local 841 / 2 / 6 behavioral classification             PASSED
-8B    discrete observer-transport interpretation              REJECTED
-      corrected canonical sectors = 843 / 0 / 6
-8C    minimum raw completion support                          PASSED
-      sizes = 1,2,2,2,3,4
-8C.2  task-relative residual objectification                  PASSED
-      strict quotients 11->7 and 13->3
-8D    local persistent-DAG graft                              PASSED
-      177 -> 200 DAG nodes; 328 -> 376 tree nodes
-8D.2  refinement-aware old-prefix placement                   PASSED
-      genuine time/frontier Pareto tradeoff
-8E.0  clean activation geometry                               PASSED
-      depths 3,3,5,7,8,9,9; no shared-clean activation
-8E    controlled interleaving                                 PASSED
-      2,753-item joint world; 376/125/200; peak/worst 72/10
-NEXT  center-3 -> center-4 replay with frozen rules
-LATER second unrelated activation/reconvergence calibration
-FUTURE search separately for a genuine discrete moving observer.
+8A    841 / 2 / 6 local classification                         PASSED
+8B    discrete observer-transport interpretation               REJECTED
+8C    center-3 minimum raw support 1,2,2,2,3,4                 PASSED
+8C.2  task objectification 11->7, 13->3                        PASSED
+8D    persistent graft 376/125/200                             PASSED
+8D.2  old-prefix cost red team                                 PASSED
+8E.0  clean activation; no shared-clean activation             PASSED
+8E    controlled interleaving recovers 72/10                   PASSED
+9A    frozen detector -> 2744 / 2 / 7                          PASSED
+9B    2 reindex + seven 3-task completions                     PASSED
+9C    seven one-wall completions, common 19/11 wall            PASSED
+9D    3067 cells / 81 tasks / 391/130/211                      PASSED
+10A   center-5 pressure = 3067 / 0 / 0                         PASSED
+10B   119736 center-5 comparisons all strictly later           PASSED
+10C   59868 anchors close every contact center n>=5             PASSED
 ```
 
 ## 13. Claim boundary
 
-No new Lonely Runner theorem is proved. Matching the frozen fresh-tree metrics does not prove tree isomorphism or universal optimality.
-
-The exact bounded Phase-8 statement is:
-
-\[
-\boxed{
-\text{old persistent geometry + seven process-generated completion walls + local task decoders suffice to reconstruct the frozen center-3 structural placement metrics without constructing the full center-3 arrangement.}
-}
-\]
+No new Lonely Runner theorem is proved.  The infinite-tail closure concerns the declared four-runner relative-speed process and its first-witness contact semantics.  It is not a proof that all Lonely Runner questions reduce to 29 predicates, nor a universal finite-presentation theorem.
 
 ## 14. References
 
-[Karp-1972] Richard M. Karp, "Reducibility among Combinatorial Problems," in R. E. Miller and J. W. Thatcher (eds.), *Complexity of Computer Computations*, The IBM Research Symposia Series, Plenum Press, 1972, pp. 85--103; DOI 10.1007/978-1-4684-2001-2_9.
+[Huffman-1952] David A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101; DOI 10.1109/JRPROC.1952.273898.
 
 [Sungkawichai-Trakulthongchai-2026] Touch Sungkawichai, Tanupat Trakulthongchai, "Eleven, twelve, and thirteen lonely runners," arXiv:2604.23906 (2026), https://arxiv.org/abs/2604.23906 .
-
-[Huffman-1952] David A. Huffman, "A Method for the Construction of Minimum-Redundancy Codes," *Proceedings of the IRE* 40(9) (1952), 1098--1101; DOI 10.1109/JRPROC.1952.273898.
