@@ -1,14 +1,9 @@
 name: Sonnet Lonely Runner Phase 9B Semantic Red Team
 
-# One auditable center4 local semantic red team. Only the nine Phase-9A pressure
-# cells are refined by symbolic event-order branching; no full center4 wall
-# arrangement is built. A compact exact exception line is exposed through step
-# metadata so connector inspection does not depend on full job logs.
+# Heavy exact semantic red team. Manual-only after the center-3 -> center-4
+# calibration; routine CI must not rebuild the persistent constraint cells.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase9b-semantic-redteam.yml
 
 jobs:
   phase9b:
@@ -24,22 +19,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run Phase 9B probe and capture exception
-        id: probe
-        env:
-          PYTHONFAULTHANDLER: "1"
+      - name: Run Phase 9B exact local semantic red team
         run: |
-          set +e
-          python sonnet/lonely-runner/python/center4_semantic_redteam.py > phase9b.log 2>&1
-          status=$?
-          summary=$(tail -n 1 phase9b.log | sed 's/[[:space:]][[:space:]]*/ /g' | cut -c1-230)
-          echo "status=$status" >> "$GITHUB_OUTPUT"
-          echo "summary=$summary" >> "$GITHUB_OUTPUT"
-          exit 0
-
-      - name: "Phase9B exception — ${{ steps.probe.outputs.summary }}"
-        run: echo "${{ steps.probe.outputs.summary }}"
-
-      - name: Propagate probe failure
-        if: steps.probe.outputs.status != '0'
-        run: exit 1
+          python sonnet/lonely-runner/python/center4_semantic_redteam.py
