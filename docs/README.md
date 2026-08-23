@@ -2,7 +2,9 @@
 
 The documentation is organized as a mathematical/programming narrative rather than as a flat API reference.
 
-**Governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. It is the standing policy for future generic abstraction and public API promotion.
+**Theory:** `THEORY_MAP.md` is the living map of the larger Process Geometry research picture. It synthesizes the current foundation, marks theory/code maturity, and is explicitly expected to evolve as Sonnets and calibrations sharpen or contradict it.
+
+**Governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; the Theory Map informs API review without becoming a frozen software specification.
 
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
