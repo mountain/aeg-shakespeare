@@ -30,6 +30,7 @@ The current foundation is developed primarily in:
 - `48-foundation-naming-audit.md`
 - `49-theory-implementation-structural-alignment.md`
 - `50-aeg-translation-objectification-rank-lowering.md`
+- `51-aeg-addition-multiplication-rank-transition.md`
 
 Those notes contain the argument and structural audits. This file is the compact map used for engineering review.
 
@@ -88,6 +89,8 @@ presentation                       +--> metric/uniform structure when justified
 ```
 
 The map is deliberately not a single mandatory pipeline. A finite discrete process may stop at an exact quotient. A symbolic dynamical system may naturally reach entropy. A continuous process may support differential structure. A higher-rank language is not legitimate merely because a new symbol was introduced: its legal compositions must remain grounded by rank-lowering semantics.
+
+The second arithmetic calibration adds an important caution to the schematic `C_r -> objectification` arrow: the thing objectified at the next rank may be a stable **process/action on lower-rank semantic objects**, not only one point or equivalence class of `C_r`. That refinement is currently evidence from AEG, not yet a generic replacement for the mother picture.
 
 ---
 
@@ -192,15 +195,26 @@ A stable lower-rank semantic process becomes a new reusable primitive.
 
 This is **not** satisfied by `PrimitiveProposal` alone. A proposal is only a candidate. Objectification matters when the new object participates in a new compositional language.
 
-The first concrete calibration now exists in the Addition/translation model organism. A signed unit-history class with net displacement \(n\) is promoted to a research-local translation primitive
+The first concrete calibration exists in the Addition/translation model organism. A signed unit-history class with net displacement \(n\) is promoted to a research-local translation primitive
 
 \[
 T_n:x\mapsto x+n.
 \]
 
-The primitive denotes the lower semantic class, not one particular `S/P` history. The calibration is deliberately research-local and does not establish a generic objectification API.
+The primitive denotes the lower semantic class, not one particular `S/P` history.
 
-**Maturity:** first concrete AEG/Addition research calibration; generic V2 theory remains a research program and has no Experimental/Public abstraction.
+The second arithmetic calibration sharpens V2. Multiplication by a positive integer \(k\) is not obtained by objectifying one fixed repeated sum such as \(T_2^3=T_6\). The same output can arise from a different process, for example \(T_3^2=T_6\). What remains stable is the **uniform repeated-Addition action**
+
+\[
+R_k(T_a)=T_a^k=T_{ka}
+\qquad\forall a,
+\]
+
+which is an endomorphism of the Translation process. The research-local Multiplication primitive \(D_k\) objectifies this action schema.
+
+This creates explicit refinement pressure: the domain of objectification may need to include stable lower-rank processes/actions such as elements of `End(C_r)` or another process carrier, not only semantic points/classes in `C_r`. One arithmetic example is not enough to choose the generic abstraction.
+
+**Maturity:** two concrete AEG rank-objectification calibrations; generic V2 theory remains a research program and has no Experimental/Public abstraction.
 
 ### V3 — Higher-rank free composition
 
@@ -214,9 +228,15 @@ T_2T_2T_{-1}
 
 produce translation by \(+3\) without requiring \(T_3\) to have been supplied as a retained seed.
 
-This is the generative gain that distinguishes ontology growth from memoization. The example is intentionally only the successor-history -> Addition/translation abstraction step; it does not yet realize Addition -> Multiplication.
+The second calibration supplies the genuinely multiplicative next step. Retained primitives such as
 
-**Maturity:** first concrete research calibration plus arithmetic/hyperoperation theoretical lineage; no generic higher-rank grammar API.
+\[
+D_2,\quad D_3
+\]
+
+freely generate an unseen multiplicative composite whose lower action is multiplication by six. More importantly, the research essay admits mixed Translation/Dilation words, so the higher-rank language can express how Multiplication acts on Addition objects rather than merely forming a second isolated commutative monoid.
+
+**Maturity:** two-step arithmetic research calibration from unit histories -> Translation -> Multiplication/action; no generic higher-rank grammar API.
 
 ### V4 — Compositional rank lowering
 
@@ -240,7 +260,33 @@ remain valid after lowering to the lower semantic quotient.
 
 A red team using only absolute displacement shows why terminal compression is insufficient: \(S\) and \(P\) appear equal under \(|q|\), but continuation by \(S\) separates them.
 
-**Maturity:** first complete concrete V4 research calibration; no generic Experimental/Public rank-lowering interpretation object.
+The Addition -> Multiplication calibration forces a richer target. A nontrivial dilation \(D_k(x)=kx\) cannot lower to any fixed Translation object \(T_b(x)=x+b\). Pure multiplicative words therefore lower to endomorphisms of the Translation process,
+
+\[
+\phi_k(T_a)=T_{ka},
+\]
+
+while arbitrary mixed Translation/Dilation words lower to the positive affine monoid
+
+\[
+\operatorname{Aff}_+(\mathbb Z)
+\cong
+\mathbb Z\rtimes\mathbb N_{>0}.
+\]
+
+This lowering preserves all three exact relation families:
+
+\[
+T_aT_b=T_{a+b},
+\qquad
+D_kD_\ell=D_{k\ell},
+\qquad
+\boxed{D_kT_a=T_{ka}D_k}.
+\]
+
+The cross relation is the first calibrated V4 law that is genuinely noncommutative across two arithmetic process ranks.
+
+**Maturity:** two consecutive concrete arithmetic V4 calibrations, including an action/endomorphism semantic completion and mixed cross-rank relation soundness; no generic Experimental/Public rank-lowering interpretation object.
 
 ### V5 — Cross-rank closure
 
@@ -250,9 +296,33 @@ When additional horizontal structure exists, stronger compatibility can be asked
 - **topological closure** — continuous lowering between induced geometries;
 - **analytic closure** — coherent comparison of local variation across ranks.
 
-The translation calibration establishes only the semantic V4 layer. It does not yet supply a meaningful cross-rank differential comparison.
+The second arithmetic calibration now supplies the explicit rank pair that the earlier theory was missing. Its finite relation
 
-**Maturity:** research hypotheses / program.
+\[
+D_kT_a=T_{ka}D_k
+\]
+
+is the positive-integer slice of the existing A/M finite law
+
+\[
+S_sT_t=T_{e^s t}S_s,
+\]
+
+whose infinitesimal shadow in the current analysis layer is
+
+\[
+[A,M]=A.
+\]
+
+This alignment makes the first V5 analytic-closure experiment well posed, but it does **not** prove analytic closure. No higher-rank differential/variation object and no canonical comparison transport \(\Lambda\) have yet been defined for a diagram such as
+
+\[
+D_{\mathrm{low}}\circ L
+\stackrel{?}{=}
+\Lambda\circ D_{\mathrm{high}}.
+\]
+
+**Maturity:** explicit semantic rank pair plus exact finite/infinitesimal AEG bridge; analytic closure remains a research hypothesis and the next vertical executable target.
 
 ---
 
@@ -286,7 +356,7 @@ Provides mathematical languages for variation and global structure supported by 
 
 Hosts explicitly unstable theory-to-code probes. Experimental is not a fifth stable ontology layer and is never re-exported from the package root merely because an experiment works.
 
-The exact finite task quotient is the first Experimental probe added specifically to close a Theory Map implementation gap rather than to support one named classical problem. The first V2–V4 calibration remains research-local rather than entering Experimental after only one domain.
+The exact finite task quotient is the first Experimental probe added specifically to close a Theory Map implementation gap rather than to support one named classical problem. Both current AEG V2–V4 rank-transition calibrations remain research-local rather than entering Experimental before independent domains establish the right abstraction.
 
 ---
 
@@ -296,9 +366,10 @@ AEG has two roles that must remain distinct.
 
 First, it is the current **model organism** for Process Geometry:
 
-- the signed-translation calibration now makes one objectification/rank-lowering step executable;
-- the arithmetic/hyperoperation tower motivates further rank raising, especially Addition -> Multiplication;
-- A/M and related work display a native language of variation and analysis;
+- the signed-translation calibration makes the first objectification/rank-lowering step executable;
+- the Addition -> Multiplication calibration makes the second rank transition executable and shows that a higher primitive may objectify an endomorphism/action on lower-rank semantic objects;
+- the second transition forces the mixed semidirect relation `D_k T_a = T_(ka) D_k`, which is the discrete slice of the existing A/M finite relation;
+- A/M and related work display a native language of variation and analysis, so analytic closure can now be asked across an explicit rank boundary;
 - the same lineage therefore pressures both the vertical and horizontal axes.
 
 Second, a stronger conjecture asks whether arithmetic-generated geometries provide universal covers or standard models for a much broader class of process geometries.
@@ -327,7 +398,7 @@ Every substantial proposed abstraction should be located using one of these stat
 | **research hypothesis** | plausible theoretical structure not yet earned by implementation/evidence |
 | **open conjecture** | stronger claim whose truth is not assumed by the framework |
 
-A code symbol and a theory node need not have the same maturity. For example, a concrete `ObserverConnection` class can exist while the general observer-connection theory remains experimental. Likewise `FiniteTaskQuotient` can be exact in its finite deterministic class while the general theory of task quotients remains broader and unsettled. The V2–V4 signed-translation example can be a complete concrete calibration while `Objectification` and `RankLowering` remain intentionally absent as package abstractions.
+A code symbol and a theory node need not have the same maturity. For example, a concrete `ObserverConnection` class can exist while the general observer-connection theory remains experimental. Likewise `FiniteTaskQuotient` can be exact in its finite deterministic class while the general theory of task quotients remains broader and unsettled. The two current AEG V2–V4 examples can form a consecutive arithmetic rank calibration while `Objectification`, `ProcessRank`, and `RankLowering` remain intentionally absent as package abstractions.
 
 ---
 
@@ -369,20 +440,22 @@ When theory and code disagree, record the disagreement explicitly. Do not silent
 
 ## 9. Current high-value structural questions
 
-Two narrow implementation questions have now been answered:
+The following narrow implementation questions have now been answered:
 
 1. bounded `TaskContinuationSignature` can be complemented by an exact/minimized task quotient in the finite deterministic class;
-2. a complete V1 -> V4 cycle can be realized concretely for signed unit histories objectified as Addition/translation primitives, including continuation congruence, new free composition, compositional lowering, relation soundness, and a negative control.
+2. a complete V1 -> V4 cycle can be realized concretely for signed unit histories objectified as Addition/translation primitives, including continuation congruence, new free composition, compositional lowering, relation soundness, and a negative control;
+3. the next Multiplication object should not objectify one fixed repeated sum but the uniform repeated-Addition endomorphism `R_k(T_a) = T_(ka)`;
+4. pure multiplicative free composition lowers naturally to endomorphisms of the Translation process, while mixed Addition/Multiplication composition requires the richer affine semantic completion `Z ⋊ N_{>0}`;
+5. the noncommutative AEG cross relation `D_k T_a = T_(ka) D_k` lowers soundly for arbitrary generated mixed histories, and the same finite law already underlies the existing A/M calculus.
 
-The next high-value questions are:
+The next high-value questions are therefore:
 
-1. can Addition/translation objects themselves be reorganized by a genuinely multiplicative/dilation process so that **Addition -> Multiplication** becomes an explicit second rank transition rather than another translation relation?
-2. what is the correct lower semantic target for that multiplicative rank—translation objects, endomorphisms of the translation process, or a richer A/M presentation?
-3. can every free higher-rank multiplicative composite lower compositionally, including the noncommutative translation/dilation interaction forced by AEG?
-4. only after that, does the existing A/M calculus supply a first convincing V5 **analytic closure** diagram across explicit ranks?
-5. independently, what concrete observer-neighborhood object is the smallest legitimate H2 topological-threshold experiment?
-6. can exact task quotients plus `BoundaryProfile`/Huffman separate intrinsic distinguishability complexity from realization overhead in a calibration where both are independently known?
-7. which current `PresentationMorphism` semantics survive when used between ranks rather than only between presentations at one level?
+1. what is the smallest correct **higher-rank variation object** for a smooth Multiplication/Dilation rank, and what exactly is the lower variation object it should map into?
+2. can one construct a canonical comparison map `Lambda` so that a first V5 diagram `D_low ∘ L ≃ Lambda ∘ D_high` commutes, or does the semidirect/noncommutative relation force an adjoint or connection correction term?
+3. what is the first clean red team where naive derivative commutation across ranks fails while a corrected analytic-closure law survives?
+4. independently, what concrete observer-neighborhood object is the smallest legitimate H2 topological-threshold experiment?
+5. can exact task quotients plus `BoundaryProfile`/Huffman separate intrinsic distinguishability complexity from realization overhead in a calibration where both are independently known?
+6. which current `PresentationMorphism` semantics survive when used between ranks rather than only between presentations at one level?
 
 These are research questions, not a backlog of API classes to create.
 

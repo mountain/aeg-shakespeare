@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- adds `docs/51-aeg-addition-multiplication-rank-transition.md` and a research executable essay for the second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects rather than one fixed additive composite;
+- lowers pure multiplicative words to Translation endomorphisms and arbitrary mixed Translation/Dilation words to the positive affine monoid, with exact relation soundness for `T_a T_b = T_(a+b)`, `D_k D_l = D_(kl)`, and the AEG cross relation `D_k T_a = T_(ka) D_k`;
+- records two second-rank red teams: one fixed additive result cannot identify the multiplicative process schema, and a nontrivial dilation cannot lower to any single Translation object; connects the finite cross relation to the existing A/M finite law and `[A, M] = A` without claiming V5 analytic closure;
 - adds `docs/50-aeg-translation-objectification-rank-lowering.md` and a research executable essay providing the first complete concrete V1→V4 calibration: continuation-stable semantic compression, objectification into reusable Addition/translation primitives, free higher-rank composition, compositional lowering, and relation soundness;
 - adds an adversarial absolute-displacement compression showing that terminal equality is insufficient when continuation can recover a discarded distinction;
 - refines `docs/THEORY_MAP.md` so V2–V4 now record one complete AEG/Addition research calibration while generic objectification, rank, and lowering abstractions remain intentionally unpromoted;
