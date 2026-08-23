@@ -1,7 +1,7 @@
 name: Sonnet Lonely Runner Phase 9B-9C Consistency
 
-# One-shot current-head self-consistency audit. Remove or make manual-only after
-# the 9B multiplicity profile and 9C minimum-support profile agree.
+# One-shot independent local full-stratum oracle. The PR trigger is temporary;
+# restore manual-only after this audit resolves the 9B/9C multiplicity conflict.
 on:
   workflow_dispatch:
   pull_request:
@@ -19,19 +19,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run current-head 9B and 9C consistency audit
+      - name: Run independent center4 local full-stratum oracle
         run: |
-          python - <<'PY'
-          import sys
-          sys.path.insert(0, 'sonnet/lonely-runner/python')
-          import center4_semantic_redteam as s
-          import center4_minimal_completion as c
-          sem = s.analyze_center4_semantic_redteam()
-          profile = sorted(case.task_count for case in sem.branching_cases)
-          print('9B branching multiplicities:', profile)
-          assert profile == [2, 2, 3, 3, 4, 4, 4]
-          comp = c.analyze_center4_minimal_completion()
-          print('9C cases:', [(x.task_count, x.minimum_wall_count, len(x.new_center4_coordinates), len(x.latent_older_coordinates), x.minimum_class_count) for x in comp.cases])
-          for x in comp.cases:
-              assert x.minimum_class_count >= x.task_count
-          PY
+          python sonnet/lonely-runner/python/center4_local_full_oracle.py
