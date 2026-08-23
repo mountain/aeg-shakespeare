@@ -55,8 +55,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 47. `47-release-0.0.4.md` — makes `process_geometry` the canonical Python namespace, reduces `aeg_shakespeare` to an identity-preserving compatibility alias, and establishes one-way namespace ownership and release hygiene.
 48. `48-foundation-naming-audit.md` — maps the current program vocabulary to the `42–45` foundation; reserves task quotient, jet, objectification, rank, and lowering for their stronger meanings and introduces compatibility-safe canonical names where current code collides with them.
 49. `49-theory-implementation-structural-alignment.md` — audits H0–H4 and V0–V5 against executable code, distinguishes implemented nodes from calibrated shadows and missing semantics, and selects exact finite task quotienting as the first substantive theory-to-code alignment target.
-50. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
-51. `REFERENCES.md` — shared mathematical bibliography.
-52. `RELEASE_CHECKLIST.md` — release gates.
+50. `50-aeg-translation-objectification-rank-lowering.md` — first complete research-local V1→V4 calibration: signed unit histories compress by net translation semantics, become reusable Addition/translation primitives, freely compose at a new semantic rank, and lower compositionally with relation soundness plus a continuation-congruence red team.
+51. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
+52. `REFERENCES.md` — shared mathematical bibliography.
+53. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
