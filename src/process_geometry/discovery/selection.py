@@ -1,11 +1,14 @@
-"""Costed search over first-order algebraic observer quotients.
+"""Costed search over first-order algebraic observer presentations.
 
-This module connects the discovery front-end to Shakespeare's multi-axis
+This module connects the discovery front-end to Process Geometry's multi-axis
 presentation search. The task here is deliberately narrow: among a
-caller-declared family of observer candidates, find those whose first process
-jet ``(F, D F)`` closes by certified algebraic relations on a declared leaf,
-and compare the resulting presentations without imposing a universal scalar
-objective.
+caller-declared family of observer candidates, find those whose first-order
+observable pair ``(F, D F)`` closes by certified algebraic relations on a
+declared leaf, and compare the resulting presentations without imposing a
+universal scalar objective.
+
+This is not a search over task/process quotients in the sense of
+``H(P)/~_Q``. The historical ``*_process_quotient*`` names remain 0.0.x aliases.
 """
 
 from __future__ import annotations
@@ -24,16 +27,19 @@ from ..presentation.search import (
     pareto_frontier,
 )
 from ..process.local import ProcessSystem
-from .polynomial import ObservableQuotient, discover_first_order_process_quotient
+from .polynomial import (
+    ObservableAlgebraicQuotient,
+    discover_first_order_observable_quotient,
+)
 
 
 @dataclass(frozen=True)
 class FirstOrderObservablePresentation:
-    """One observer together with its discovered first-order algebraic quotient."""
+    """One observable together with its discovered first-order algebraic presentation."""
 
     observable: sp.Expr
     derivative: sp.Expr
-    quotient: ObservableQuotient
+    quotient: ObservableAlgebraicQuotient
 
     @property
     def algebraically_closed(self) -> bool:
@@ -57,7 +63,7 @@ def _relation_complexity(
     return float(int(polynomial.total_degree()) + len(polynomial.terms()))
 
 
-def structural_first_order_quotient_cost(
+def structural_first_order_observer_presentation_cost(
     presentation: FirstOrderObservablePresentation,
 ) -> PresentationCost:
     """Default multi-axis cost for a first-order algebraic observer presentation."""
@@ -90,7 +96,7 @@ def _fresh_symbol(base: str, forbidden: set[sp.Symbol]) -> sp.Symbol:
     return candidate
 
 
-def search_first_order_process_quotients(
+def search_first_order_observer_presentations(
     system: ProcessSystem,
     observer_candidates: Sequence[sp.Expr],
     *,
@@ -107,14 +113,14 @@ def search_first_order_process_quotients(
     if not observer_candidates:
         raise ValueError("at least one observer candidate is required")
 
-    score = cost_model or structural_first_order_quotient_cost
+    score = cost_model or structural_first_order_observer_presentation_cost
     forbidden = set(constraints.variables)
     evaluated: list[PresentationCandidate[FirstOrderObservablePresentation]] = []
 
     for index, observable in enumerate(observer_candidates):
         observable_symbol = _fresh_symbol(f"U{index}", forbidden)
         derivative_symbol = _fresh_symbol(f"Y{index}", forbidden)
-        quotient = discover_first_order_process_quotient(
+        quotient = discover_first_order_observable_quotient(
             system,
             observable,
             observable_symbol=observable_symbol,
@@ -144,3 +150,8 @@ def search_first_order_process_quotients(
         evaluated=evaluated_tuple,
         pareto=pareto_frontier(evaluated_tuple),
     )
+
+
+# Historical 0.0.x backend names.
+structural_first_order_quotient_cost = structural_first_order_observer_presentation_cost
+search_first_order_process_quotients = search_first_order_observer_presentations
