@@ -226,9 +226,7 @@ def test_radial_canonicalization_uniquely_derives_the_observer_angular_rate():
 
 
 def test_kepler_horizontal_lift_exposes_radial_shape_dynamics_and_angular_momentum():
-    X, U, V, mu = sp.symbols("X U V mu", positive=True)
-    # X>0 is the selected radial chart. U,V may have either sign; redeclare
-    # unconstrained stand-ins for the algebra below where needed.
+    X, mu = sp.symbols("X mu", positive=True)
     U0, V0 = sp.symbols("U0 V0")
 
     omega = V0 / X
@@ -242,8 +240,8 @@ def test_kepler_horizontal_lift_exposes_radial_shape_dynamics_and_angular_moment
     U_dot = sp.simplify(radial_acceleration + omega * V0)
     V_dot = sp.simplify(transverse_acceleration - omega * U0)
 
-    assert U_dot == -mu / X**2 + V0**2 / X
-    assert V_dot == -U0 * V0 / X
+    assert sp.simplify(U_dot - (-mu / X**2 + V0**2 / X)) == 0
+    assert sp.simplify(V_dot - (-U0 * V0 / X)) == 0
 
     h = sp.expand(X * V0)
     h_dot = sp.simplify(X_dot * V0 + X * V_dot)
@@ -251,5 +249,5 @@ def test_kepler_horizontal_lift_exposes_radial_shape_dynamics_and_angular_moment
 
     h_symbol = sp.Symbol("h")
     radial_u_dot = sp.simplify(U_dot.subs(V0, h_symbol / X))
-    assert radial_u_dot == h_symbol**2 / X**3 - mu / X**2
+    assert sp.simplify(radial_u_dot - (h_symbol**2 / X**3 - mu / X**2)) == 0
     assert sp.simplify(omega.subs(V0, h_symbol / X) - h_symbol / X**2) == 0
