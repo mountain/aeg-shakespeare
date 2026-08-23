@@ -21,7 +21,7 @@ and used `T_p = 2 sqrt(2) varpi` as the real period. Global analysis of the `E =
 1. the Jacobi half-period relations for `k = i` (each identity certified at 30 digits), which pin the primitive period lattice of the flow `(U, Y) = (-sn^2, -sqrt(2) sn cn dn)` as `p1 = 2 sqrt(2) K(i)` and `p2 = 2 sqrt(2) i K'(i)`, equal to `<omega_A, omega_A (1 + i)>` with `omega_A = sqrt(2) varpi`;
 2. the exact sigma symmetry `sigma(U, Y) = (-U, iY)` with `sigma*omega = i omega`, so the primitive basis satisfies `omega_B = i omega_A`: the lattice is the square lattice `Lambda = Z omega_A + Z i omega_A` with `tau = i`;
 3. `P(z + omega_A) = P(z)` and `P(z + i omega_A) = P(z)`, with no real period in `(0, omega_A)` (sampled witnesses plus the invoked period theorem);
-4. the decoder chart degenerates at `U = +/-1` (`0/0`), while the exact energy identity `v_x^2 = 2 (E - U) - Y^2` keeps two distinct Cartesian states there (`v_x = +/- sqrt(2)`): the physical cover is **unramified**;
+4. the decoder chart degenerates at `U = +/-1` (`0/0`); on the real `E = 0` physical loop only `U = -1` is reached, and the exact energy identity keeps the two distinct lifts `v_x = +/- sqrt(2)` there: the physical cover is **unramified**;
 5. sheet transport: the true Cartesian velocity is continuous through `q_x = 0`, the mark flips once per traverse of the base loop (`q_x(0) = +1`, `q_x(omega_A) = -1`), and the marked state closes after two traverses (`q_x(2 omega_A) = +1`): the physical cover is the **nontrivial unramified double cover** of the real carrier loop;
 6. the clock chain reads off exactly: `R -> R/omega_A Z` forgets winding (kernel `omega_A Z`), the real phase embeds in `C/Lambda` (`R cap Lambda = omega_A Z`), and the physical pendulum phase `R / 2 omega_A Z` double-covers the curve phase.
 
@@ -45,7 +45,7 @@ The third arrow is a complexification (it adds the imaginary period `i omega_A`)
 
 ### 2.3 Chart failure is not ramification
 
-The decoder formula `v_x = -sigma U Y / sqrt(1 - U^2)` diverges `0/0` at `U = +/-1`, and a fixed section `sigma = sign(q_x)` cannot be extended continuously through `q_x = 0`. Neither fact implies ramification of the physical cover: at the turning point the energy identity keeps two distinct states (`v_x = +/- sqrt(2)`), so the two sheets do not merge. The correct statement is *sheet transport*: continuity of the Cartesian state forces the label to change chart across `q_x = 0`, and one traverse of the base loop flips the fiber — the monodromy of the unramified double cover around the whole loop, not around a branch point.
+The decoder formula `v_x = -sigma U Y / sqrt(1 - U^2)` becomes `0/0` at `U = +/-1`, and a fixed section `sigma = sign(q_x)` cannot be extended continuously through `q_x = 0`. On the real `E = 0` physical loop only `U = -1` is reached; there the energy identity gives the two distinct states `v_x = +/- sqrt(2)`, so the sheets do not merge. The signed Jacobi continuation `q_x(z) = cn(z/sqrt(2), i) dn(z/sqrt(2), i)` satisfies `q_x^2 = 1-U^2` and `dq_x/dz = v_x`, and yields `q_x(0)=1`, `q_x(omega_A)=-1`, `q_x(2 omega_A)=1`. This is sheet transport: monodromy of the unramified double cover around the whole base loop, not around a branch point.
 
 ## 3. What remains open (unchanged kill conditions)
 
