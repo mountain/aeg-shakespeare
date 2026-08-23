@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "process-geometry"
-version = "0.0.4"
+version = "0.0.5.dev0"
 description = "A process-first mathematical library for task-relative presentations, discovery, and analysis."
 readme = "README.md"
 requires-python = ">=3.10"
