@@ -1,6 +1,6 @@
 # Public API map
 
-Shakespeare exposes a semantic API hierarchy rather than a flat symbol catalog.
+Process Geometry exposes a semantic API hierarchy rather than a flat symbol catalog.
 The four public namespaces are:
 
 ```text
@@ -12,7 +12,11 @@ one chooses a finite presentation; discovery searches alternative presentations;
 analysis consumes successful presentations to build adequate function/geometric
 languages.
 
-## 1. `aeg_shakespeare.process`
+The canonical Python package is `process_geometry`. The historical
+`aeg_shakespeare` package is a deprecated compatibility alias only; it is not a
+second implementation owner.
+
+## 1. `process_geometry.process`
 
 ### `process.history`
 
@@ -43,10 +47,10 @@ Local/infinitesimal realizations:
 - `ProcessFrame`
 
 A finite process family and a local generator may be related in a mathematical
-vignette, but Shakespeare does not yet impose a universal finite-to-infinitesimal
+vignette, but Process Geometry does not yet impose a universal finite-to-infinitesimal
 bridge.
 
-## 2. `aeg_shakespeare.presentation`
+## 2. `process_geometry.presentation`
 
 A presentation records how process/history information is objectified,
 quotiented, reconstructed, transformed, and costed.
@@ -111,7 +115,7 @@ provides the comparison.
 - `pareto_frontier`
 - exact reconstruction / primitive-proposal search entry points
 
-## 3. `aeg_shakespeare.discovery`
+## 3. `process_geometry.discovery`
 
 Discovery contains bounded algorithms for proposing or selecting alternative
 representations. It is not process ontology.
@@ -124,11 +128,10 @@ Current implementation families include:
 - explicit coefficient-language extension experiments.
 
 The package already has internal modules (`polynomial`, `structured`,
-`selection`, `coefficient_extension`). A later refactor may narrow the
-`discovery.__init__` surface further; Phase A intentionally does not combine
-that mechanical change with the root namespace migration.
+`selection`, `coefficient_extension`). Their existence does not promote every
+backend object into a stable public abstraction.
 
-## 4. `aeg_shakespeare.analysis`
+## 4. `process_geometry.analysis`
 
 Analysis contains mathematical languages supported by successful process
 presentations.
@@ -161,32 +164,53 @@ These objects are intentionally not re-exported from the package root.
 
 ## 5. Root contract
 
-The declared root public surface is only:
+The declared canonical root public surface is only:
 
 ```python
-import aeg_shakespeare as sh
+import process_geometry as pg
 
-sh.process
-sh.presentation
-sh.discovery
-sh.analysis
-sh.__version__
+pg.process
+pg.presentation
+pg.discovery
+pg.analysis
+pg.__version__
 ```
 
-`aeg_shakespeare.__all__` contains only those names.
+`process_geometry.__all__` contains only those names.
 
-During the `0.0.x` migration, legacy imports such as
+During the `0.0.x` migration, old root-level symbols such as
 
 ```python
-from aeg_shakespeare import ProcessWord
+from process_geometry import ProcessWord
 ```
 
 remain available lazily and emit `DeprecationWarning`. They exist only as a
-transition bridge and are not part of the new public root contract.
+transition bridge from the earliest flat API and are not part of the declared
+root contract.
+
+Separately, the historical namespace remains temporarily importable:
+
+```python
+import aeg_shakespeare
+from aeg_shakespeare.process.history import ProcessWord
+```
+
+Importing `aeg_shakespeare` emits `DeprecationWarning`. The compatibility layer
+aliases canonical modules rather than owning implementations, so representative
+deep imports must preserve object identity:
+
+```python
+from process_geometry.process.history import ProcessWord as NewProcessWord
+from aeg_shakespeare.process.history import ProcessWord as OldProcessWord
+
+assert NewProcessWord is OldProcessWord
+```
+
+New code should not use the historical namespace.
 
 ## 6. Dependency discipline
 
-The desired long-term dependency direction is:
+The desired conceptual dependency direction is:
 
 ```text
 process <- presentation <- discovery
@@ -205,6 +229,21 @@ More precisely:
   must not know about Abelian periods, Fourier transforms, or other downstream
   languages.
 
-The facade packages introduced in Phase A enforce the public ontology first.
-Physical source-file relocation is deferred to a later mechanical phase so that
-architecture and file movement can be reviewed separately.
+The namespace migration adds a second, orthogonal ownership invariant:
+
+```text
+process_geometry  <-  aeg_shakespeare compatibility alias
+```
+
+Canonical implementation code under `src/process_geometry/**` must never import
+or depend on `aeg_shakespeare`. The reverse dependency is the entire purpose of
+the compatibility alias.
+
+## 7. Research concepts are not automatically API concepts
+
+The Process Geometry foundation now discusses distinguishability topology,
+semantic compression, objectification, rank lowering, and analytic closure.
+Those research concepts do **not** become public classes merely because the
+software namespace now matches the project name. Any generic abstraction must
+still pass the lifecycle in `GOVERNANCE.md`: Sonnet -> extraction candidate ->
+Experimental -> maturing -> Public API.
