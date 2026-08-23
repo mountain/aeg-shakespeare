@@ -46,10 +46,17 @@ Classical lineage
 The algebra used here is classical: two quadratic extensions of ``C(U)`` give a
 biquadratic/V_4 extension, and the three nontrivial involution quotients are the
 three quadratic subextensions.  A smooth hyperelliptic model ``w^2=P_d(U)``
-with squarefree ``d=5`` has genus two.  At the special equal-weight/symmetric
-point ``c=1, E=0`` the third quotient reduces to the Bolza model
+with squarefree ``d=5`` has genus two; see [Farkas-Kra-1992] or
+[McMullen-Riemann-Surfaces] for the hyperelliptic/Riemann-surface background.
+
+At the special equal-weight/symmetric point ``c=1, E=0`` the third quotient
+reduces to
 
     w^2 = U^5 - U.
+
+This is the standard affine Bolza model.  Katz and Sabourau explicitly describe
+the Bolza surface as the smooth completion of ``y^2=x^5-x`` in Section 2 of
+[Katz-Sabourau-2006].
 
 The Process Geometry content of the experiment is not that these algebraic facts
 are new.  It is the provenance of the two sheets: one comes from the physical
@@ -77,6 +84,19 @@ Theory-map effect
 None.  This is problem-local evidence and a red team for stronger completion
 language.  In particular it does not promote a generic observer metric,
 ``CanonicalCompletion``, or genus-two API.
+
+References
+----------
+[Farkas-Kra-1992] H. M. Farkas and I. Kra, *Riemann Surfaces*, 2nd ed.,
+Springer, 1992. DOI 10.1007/978-1-4612-2034-3.
+
+[McMullen-Riemann-Surfaces] C. T. McMullen, *Riemann Surfaces*, Harvard Math
+213b course notes, hyperelliptic discussion.
+
+[Katz-Sabourau-2006] M. G. Katz and S. Sabourau, “An optimal systolic inequality
+for CAT(0) metrics in genus two,” *Pacific Journal of Mathematics* 227 (2006),
+95–107. Section 2 identifies the Bolza surface with the smooth completion of
+``y^2=x^5-x``.
 """
 
 import sympy as sp
