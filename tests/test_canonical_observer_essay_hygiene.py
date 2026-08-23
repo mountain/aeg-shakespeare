@@ -26,6 +26,9 @@ _ESSAYS = (
     _ROOT / "research" / "test_lonely_runner_refinement_aware_huffman.py",
     _ROOT / "research" / "test_lonely_runner_activation_geometry.py",
     _ROOT / "research" / "test_lonely_runner_controlled_interleaving.py",
+    _ROOT / "research" / "test_lonely_runner_center4_constraint_cells.py",
+    _ROOT / "research" / "test_lonely_runner_center4_semantic_redteam.py",
+    _ROOT / "research" / "test_lonely_runner_center4_minimal_completion.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
