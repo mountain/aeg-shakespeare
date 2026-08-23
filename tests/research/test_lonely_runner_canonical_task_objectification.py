@@ -54,6 +54,26 @@ def test_canonical_task_projection_removes_history_only_wall_pressure():
     assert result.mode_only.task_count == 2
     assert len(result.mode_only.minimum_coordinates) == 12
 
+    for projection in (
+        result.full_certificate,
+        result.history_free_certificate,
+        result.canonical_witness,
+        result.mode_only,
+    ):
+        assert projection.full_sign_cells == 4_343
+        assert len(projection.deletion_witnesses) == len(
+            projection.minimum_coordinates
+        )
+        for witness in projection.deletion_witnesses:
+            index = witness.coordinate_index
+            assert witness.left_task != witness.right_task
+            assert (
+                witness.left_signature[:index]
+                + witness.left_signature[index + 1 :]
+                == witness.right_signature[:index]
+                + witness.right_signature[index + 1 :]
+            )
+
     assert result.canonical_sign_cells == 1_431
     assert result.removed_history_coordinates == (
         (1, 2, Fraction(4)),

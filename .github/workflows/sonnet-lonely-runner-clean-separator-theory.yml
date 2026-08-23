@@ -8,10 +8,13 @@ on:
   pull_request:
     paths:
       - "sonnet/lonely-runner/python/clean_separator_theory.py"
+      - "sonnet/lonely-runner/python/five_speed_dimension_transfer.py"
+      - "sonnet/lonely-runner/python/five_speed_clean_separator_sweep.py"
       - "sonnet/lonely-runner/python/five_speed_clean_certificate.py"
       - "sonnet/lonely-runner/python/five_speed_basis_vs_full_probe.py"
       - "sonnet/lonely-runner/37-clean-separator-criterion-and-completion-obstruction.md"
       - "sonnet/lonely-runner/38-first-critical-boundary-remains-clean.md"
+      - "sonnet/lonely-runner/39-second-critical-boundary-and-basis-cleanliness.md"
       - "tests/research/test_lonely_runner_clean_separator_theory.py"
       - "tests/research/test_lonely_runner_five_speed_clean_certificate.py"
       - "tests/research/test_lonely_runner_five_speed_basis_vs_full_probe.py"

@@ -292,12 +292,19 @@ def verify_tree(
     def visit(indices: frozenset[int], node: CleanTree) -> bool:
         tasks = {items[index].task for index in indices}
         if node.coordinate is None:
-            return len(tasks) == 1 and node.task == next(iter(tasks))
+            return (
+                not node.children
+                and len(tasks) == 1
+                and node.task == next(iter(tasks))
+            )
 
         coordinate = node.coordinate
-        if coordinate not in clean_coordinates(items, indices):
+        if node.task is not None or coordinate not in clean_coordinates(items, indices):
             return False
         expected = dict(_partition(items, indices, coordinate))
+        child_signs = tuple(sign for sign, _child in node.children)
+        if len(child_signs) != len(set(child_signs)):
+            return False
         actual = dict(node.children)
         if set(expected) != set(actual):
             return False
@@ -320,6 +327,8 @@ def verify_obstruction(
     by_name = {region.name: index for index, region in enumerate(items)}
 
     def visit(certificate: CleanObstruction) -> bool:
+        if len(certificate.region_names) != len(set(certificate.region_names)):
+            return False
         try:
             indices = frozenset(by_name[name] for name in certificate.region_names)
         except KeyError:
@@ -331,6 +340,12 @@ def verify_obstruction(
             return False
 
         candidates = set(clean_coordinates(items, indices))
+        failure_coordinates = tuple(
+            failure.coordinate
+            for failure in certificate.candidate_failures
+        )
+        if len(failure_coordinates) != len(set(failure_coordinates)):
+            return False
         failures = {failure.coordinate: failure for failure in certificate.candidate_failures}
         if set(failures) != candidates:
             return False

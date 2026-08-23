@@ -45,6 +45,31 @@ def test_canonical_27_wall_objectification_is_smaller_than_old_persistent_carrie
     assert (1, 2, Fraction(16, 11)) not in coordinates
 
 
+def test_full_sign_deletion_certificates_replay_through_independent_refiner() -> None:
+    compilation = _load()
+    compiler = compilation.lazy.analyze_lazy_compiler()
+    task_by_signature = {}
+    for region in compilation._terminal_regions():
+        for signature, _closure in compilation._refine_signature(
+            region.closure,
+            compiler.generated_coordinates,
+        ):
+            previous = task_by_signature.setdefault(signature, region.task)
+            assert previous == region.task
+
+    assert len(task_by_signature) == 4_343
+    for witness in compiler.deletion_witnesses:
+        assert task_by_signature[witness.left_signature] == witness.left_task
+        assert task_by_signature[witness.right_signature] == witness.right_task
+        index = witness.coordinate_index
+        assert (
+            witness.left_signature[:index]
+            + witness.left_signature[index + 1 :]
+            == witness.right_signature[:index]
+            + witness.right_signature[index + 1 :]
+        )
+
+
 @pytest.mark.skipif(
     os.environ.get("AEG_RUN_LR_CANONICAL_GLOBAL_COMPILATION") != "1",
     reason="opt-in exact 2,211-cell Hauffman dynamic program",

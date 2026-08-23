@@ -22,6 +22,13 @@ The script measures the growth of:
 * full legacy-certificate and canonical-witness task bases;
 * optional full static sign-cell materialization.
 
+Partial-sign singleton conflicts are used only to propose lower-bound witness
+pairs.  Every retained coordinate is then certified strongly: after deleting
+that coordinate, two different-task terminal closures are synchronously refined
+to the same complete sign vector on all other process-generated coordinates.
+Thus the minimum claims do not assume that unresolved coordinates vary
+independently.
+
 The static-cell pass is intentionally optional because its blow-up is itself the
 scaling red team.  This script is research-local and proves no new Lonely Runner
 case.
@@ -49,6 +56,9 @@ class Bound:
 Closure = tuple[tuple[Bound | None, ...], ...]
 Coordinate = tuple[int, int, Fraction]
 Task = tuple[int, tuple[tuple[int, int, str], ...], str]
+HistoryFreeTask = tuple[tuple[tuple[int, int, str], ...], str]
+CanonicalTask = tuple[tuple[tuple[int, str], ...], str]
+ProjectedTask = Task | HistoryFreeTask | CanonicalTask | str
 
 
 @dataclass(frozen=True)
@@ -65,10 +75,35 @@ class TerminalRegion:
 
 
 @dataclass(frozen=True)
+class DeletionWitness:
+    """Replayable full-grammar necessity certificate for one coordinate.
+
+    ``common_signs`` follows the complete generated-coordinate order with
+    ``coordinate_index`` omitted.  The two terminal closures have different
+    projected tasks, realize this same sign vector on every retained coordinate,
+    and force the two recorded opposite signs on the omitted coordinate.
+
+    Refined closures are deliberately not retained: terminal IDs plus the common
+    sign vector replay the refinement while keeping the result compact and made
+    only of ordinary serializable tuples, integers, and strings.
+    """
+
+    coordinate_index: int
+    left_terminal_id: int
+    right_terminal_id: int
+    left_projected_task: ProjectedTask
+    right_projected_task: ProjectedTask
+    common_signs: tuple[int, ...]
+    left_coordinate_sign: int
+    right_coordinate_sign: int
+
+
+@dataclass(frozen=True)
 class ProjectionSummary:
     task_count: int
     minimum_coordinates: tuple[Coordinate, ...]
     conflict_pairs: int
+    deletion_witnesses: tuple[DeletionWitness, ...]
 
 
 @dataclass(frozen=True)
@@ -78,6 +113,7 @@ class FiveSpeedTransferResult:
     max_event_index: int
     max_contact_center: int
     generated_coordinates: int
+    coordinate_grammar: tuple[Coordinate, ...]
     full_certificate: ProjectionSummary
     history_free_certificate: ProjectionSummary
     canonical_witness: ProjectionSummary
@@ -415,9 +451,18 @@ def _minimum_for_projection(
     signatures,
     project,
 ) -> ProjectionSummary:
+    """Find a sufficient basis, then strongly certify every lower-bound index.
+
+    A singleton conflict in the partial terminal signatures is only a candidate
+    necessity witness: unresolved coordinates may be jointly correlated.  The
+    synchronous completion pass below closes that loophole by finding a common
+    full sign vector on every other generated coordinate.
+    """
+
     projected = tuple(project(region.task) for region in terminals)
-    mandatory_indices = set()
-    conflicts = []
+    mandatory_indices: set[int] = set()
+    singleton_pairs: dict[int, list[tuple[int, int]]] = {}
+    conflicts: list[tuple[int, ...]] = []
 
     for first, second in combinations(range(len(terminals)), 2):
         if projected[first] == projected[second]:
@@ -432,22 +477,40 @@ def _minimum_for_projection(
         assert separators
         conflicts.append(separators)
         if len(separators) == 1:
-            mandatory_indices.add(separators[0])
+            coordinate_index = separators[0]
+            mandatory_indices.add(coordinate_index)
+            singleton_pairs.setdefault(coordinate_index, []).append(
+                (first, second)
+            )
 
+    # This proves sufficiency in the declared coordinate grammar.  Necessity is
+    # established separately by full-sign deletion witnesses, not inferred from
+    # the partial singleton signatures.
     assert all(
-        any(index in mandatory_indices for index in separators)
+        not mandatory_indices.isdisjoint(separators)
         for separators in conflicts
     )
+    conflict_count = len(conflicts)
+    del conflicts
 
     minimum = tuple(
         coordinate
         for index, coordinate in enumerate(coordinates)
         if index in mandatory_indices
     )
+    deletion_witnesses = _build_deletion_witnesses(
+        terminals,
+        coordinates,
+        projected,
+        project,
+        mandatory_indices,
+        singleton_pairs,
+    )
     return ProjectionSummary(
         task_count=len(set(projected)),
         minimum_coordinates=minimum,
-        conflict_pairs=len(conflicts),
+        conflict_pairs=conflict_count,
+        deletion_witnesses=deletion_witnesses,
     )
 
 
@@ -467,6 +530,256 @@ def _add_sign(
     if sign == 1:
         return _add_edge(closure, second, first, 1 / ratio, True)
     raise AssertionError(sign)
+
+
+def _synchronous_full_sign_completion(
+    left: Closure,
+    right: Closure,
+    coordinates: tuple[Coordinate, ...],
+    deleted_index: int,
+) -> tuple[Closure, Closure, tuple[int, ...]] | None:
+    """Complete two closures to one shared sign vector off one coordinate."""
+
+    active = tuple(
+        index
+        for index in range(len(coordinates))
+        if index != deleted_index
+    )
+    failed: set[tuple[Closure, Closure, tuple[int, ...]]] = set()
+
+    def visit(
+        left_closure: Closure,
+        right_closure: Closure,
+        remaining: tuple[int, ...],
+        assigned: tuple[tuple[int, int], ...],
+    ) -> tuple[Closure, Closure, tuple[int, ...]] | None:
+        key = (left_closure, right_closure, remaining)
+        if key in failed:
+            return None
+
+        if not remaining:
+            sign_by_index = dict(assigned)
+            common_signs = tuple(sign_by_index[index] for index in active)
+            return left_closure, right_closure, common_signs
+
+        # Propagate a sign already forced on either side before introducing a
+        # three-way branch.  This keeps the exact search small and deterministic.
+        selected_position = None
+        selected_relations = None
+        for position, index in enumerate(remaining):
+            first, second, ratio = coordinates[index]
+            left_sign = _relation(
+                left_closure,
+                (first, second),
+                ratio,
+            )
+            right_sign = _relation(
+                right_closure,
+                (first, second),
+                ratio,
+            )
+            if left_sign is not None or right_sign is not None:
+                selected_position = position
+                selected_relations = left_sign, right_sign
+                break
+
+        if selected_position is None:
+            selected_position = 0
+            selected_relations = None, None
+
+        index = remaining[selected_position]
+        rest = (
+            remaining[:selected_position]
+            + remaining[selected_position + 1 :]
+        )
+        left_sign, right_sign = selected_relations
+        if left_sign is not None and right_sign is not None:
+            if left_sign != right_sign:
+                failed.add(key)
+                return None
+            candidate_signs = (left_sign,)
+        elif left_sign is not None:
+            candidate_signs = (left_sign,)
+        elif right_sign is not None:
+            candidate_signs = (right_sign,)
+        else:
+            candidate_signs = (0, -1, 1)
+
+        for sign in candidate_signs:
+            next_left = left_closure
+            next_right = right_closure
+            if left_sign is None:
+                next_left = _add_sign(next_left, coordinates[index], sign)
+            if right_sign is None:
+                next_right = _add_sign(next_right, coordinates[index], sign)
+            if next_left is None or next_right is None:
+                continue
+            result = visit(
+                next_left,
+                next_right,
+                rest,
+                assigned + ((index, sign),),
+            )
+            if result is not None:
+                return result
+
+        failed.add(key)
+        return None
+
+    return visit(left, right, active, ())
+
+
+def _replay_deletion_witness(
+    terminals: tuple[TerminalRegion, ...],
+    coordinates: tuple[Coordinate, ...],
+    project,
+    witness: DeletionWitness,
+) -> bool:
+    """Replay one compact witness without rerunning the witness search."""
+
+    if not 0 <= witness.coordinate_index < len(coordinates):
+        return False
+    if not 0 <= witness.left_terminal_id < len(terminals):
+        return False
+    if not 0 <= witness.right_terminal_id < len(terminals):
+        return False
+    if len(witness.common_signs) != len(coordinates) - 1:
+        return False
+    if any(sign not in (-1, 0, 1) for sign in witness.common_signs):
+        return False
+    if witness.left_coordinate_sign not in (-1, 0, 1):
+        return False
+    if witness.right_coordinate_sign not in (-1, 0, 1):
+        return False
+    if witness.left_coordinate_sign == witness.right_coordinate_sign:
+        return False
+
+    left_region = terminals[witness.left_terminal_id]
+    right_region = terminals[witness.right_terminal_id]
+    left_task = project(left_region.task)
+    right_task = project(right_region.task)
+    if left_task != witness.left_projected_task:
+        return False
+    if right_task != witness.right_projected_task:
+        return False
+    if left_task == right_task:
+        return False
+
+    active = tuple(
+        index
+        for index in range(len(coordinates))
+        if index != witness.coordinate_index
+    )
+    left_closure = left_region.closure
+    right_closure = right_region.closure
+    for index, sign in zip(active, witness.common_signs):
+        left_closure = _add_sign(left_closure, coordinates[index], sign)
+        right_closure = _add_sign(right_closure, coordinates[index], sign)
+        if left_closure is None or right_closure is None:
+            return False
+
+    for index, sign in zip(active, witness.common_signs):
+        first, second, ratio = coordinates[index]
+        if _relation(left_closure, (first, second), ratio) != sign:
+            return False
+        if _relation(right_closure, (first, second), ratio) != sign:
+            return False
+
+    first, second, ratio = coordinates[witness.coordinate_index]
+    return (
+        _relation(left_closure, (first, second), ratio)
+        == witness.left_coordinate_sign
+        and _relation(right_closure, (first, second), ratio)
+        == witness.right_coordinate_sign
+    )
+
+
+def _build_deletion_witnesses(
+    terminals: tuple[TerminalRegion, ...],
+    coordinates: tuple[Coordinate, ...],
+    projected: tuple[ProjectedTask, ...],
+    project,
+    mandatory_indices: set[int],
+    singleton_pairs: dict[int, list[tuple[int, int]]],
+) -> tuple[DeletionWitness, ...]:
+    """Produce one full-coordinate indistinguishability witness per index."""
+
+    witnesses = []
+    for coordinate_index in sorted(mandatory_indices):
+        witness = None
+        for left_terminal_id, right_terminal_id in singleton_pairs[
+            coordinate_index
+        ]:
+            completion = _synchronous_full_sign_completion(
+                terminals[left_terminal_id].closure,
+                terminals[right_terminal_id].closure,
+                coordinates,
+                coordinate_index,
+            )
+            if completion is None:
+                continue
+            left_closure, right_closure, common_signs = completion
+            first, second, ratio = coordinates[coordinate_index]
+            left_sign = _relation(left_closure, (first, second), ratio)
+            right_sign = _relation(right_closure, (first, second), ratio)
+            assert left_sign is not None and right_sign is not None
+            assert left_sign != right_sign
+            witness = DeletionWitness(
+                coordinate_index=coordinate_index,
+                left_terminal_id=left_terminal_id,
+                right_terminal_id=right_terminal_id,
+                left_projected_task=projected[left_terminal_id],
+                right_projected_task=projected[right_terminal_id],
+                common_signs=common_signs,
+                left_coordinate_sign=left_sign,
+                right_coordinate_sign=right_sign,
+            )
+
+            # Verify every stored bit against the already refined exact closures.
+            # Rebuilding those closures from scratch is deliberately reserved for
+            # the compact replay path below, avoiding 185 duplicate refinements in
+            # the default analysis.
+            active = tuple(
+                index
+                for index in range(len(coordinates))
+                if index != coordinate_index
+            )
+            for index, sign in zip(active, common_signs):
+                other_first, other_second, other_ratio = coordinates[index]
+                assert (
+                    _relation(
+                        left_closure,
+                        (other_first, other_second),
+                        other_ratio,
+                    )
+                    == sign
+                )
+                assert (
+                    _relation(
+                        right_closure,
+                        (other_first, other_second),
+                        other_ratio,
+                    )
+                    == sign
+                )
+
+            # Replay every compact certificate from terminal IDs and stored
+            # signs.  The search-side refined closures above are not trusted as
+            # the only validation path.
+            assert _replay_deletion_witness(
+                terminals,
+                coordinates,
+                project,
+                witness,
+            )
+            break
+        assert witness is not None, (
+            "partial singleton candidate has no full-sign deletion witness: "
+            f"coordinate {coordinate_index}"
+        )
+        witnesses.append(witness)
+
+    return tuple(witnesses)
 
 
 def _refine_signature(
@@ -570,6 +883,7 @@ def analyze_five_speed_transfer(
         max_event_index=max(region.task[0] for region in terminals),
         max_contact_center=max_center,
         generated_coordinates=len(coordinates),
+        coordinate_grammar=coordinates,
         full_certificate=full,
         history_free_certificate=history_free,
         canonical_witness=canonical,

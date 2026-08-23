@@ -1,5 +1,13 @@
 # Phase 12A — five-speed dimension transfer exposes static-materialization blow-up
 
+> **Phase-15A certificate correction.**  Partial-region singleton separators
+> are now used only to propose a basis.  For the base `u5/u1<21/4` domain, the
+> 86/36/36/27 coordinate counts are re-certified by synchronized exact
+> completion in the full 98-coordinate grammar, with one deletion witness per
+> retained coordinate.  Wider sweep counts require their own corresponding
+> strong certificates.  See
+> [`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).
+
 **Status:** exact bounded dimension-transfer calibration implemented.  
 **Implementation:** `sonnet/lonely-runner/python/five_speed_dimension_transfer.py`.  
 **Executable calibration:** `tests/research/test_lonely_runner_five_speed_dimension_transfer.py` (opt-in via `AEG_RUN_LR_FIVE_SPEED_TRANSFER=1`).  

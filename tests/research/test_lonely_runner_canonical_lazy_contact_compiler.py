@@ -72,6 +72,31 @@ def _frozen_global_task_coordinates():
     }
 
 
+def test_partial_singleton_separator_is_not_a_generic_minimality_proof() -> None:
+    """Freeze the smallest joint-refinement counterexample to the old argument."""
+
+    # Partial task regions A=(-, ?, ?) and B=(+, ?, ?) make coordinate 0 look
+    # like their unique forced separator.  Their feasible completions show that
+    # coordinates 1 and 2 jointly separate the tasks without coordinate 0.
+    completions = {
+        "A": {(-1, -1, -1), (-1, 1, 1)},
+        "B": {(1, -1, 1), (1, 1, -1)},
+    }
+    partial = {"A": (-1, None, None), "B": (1, None, None)}
+    forced_separator_indices = {
+        index
+        for index, (left, right) in enumerate(zip(partial["A"], partial["B"]))
+        if left is not None and right is not None and left != right
+    }
+    assert forced_separator_indices == {0}
+
+    projected = {
+        task: {(signature[1], signature[2]) for signature in signatures}
+        for task, signatures in completions.items()
+    }
+    assert projected["A"].isdisjoint(projected["B"])
+
+
 def test_lazy_compiler_closes_without_a_supplied_contact_horizon() -> None:
     compiler = _load_compiler()
     result = compiler.analyze_lazy_compiler()
@@ -87,6 +112,30 @@ def test_lazy_compiler_closes_without_a_supplied_contact_horizon() -> None:
     assert len(result.generated_coordinates) == 33
     assert len(result.minimum_task_coordinates) == 27
     assert result.unique_separator_witnesses == 27
+    assert result.full_sign_cells == 4_343
+    assert result.exact_deletion_witnesses == 27
+
+    # The old singleton test on partial terminal regions is only a discovery
+    # heuristic.  Exact minimality now has a stronger, independently replayable
+    # shape: each selected coordinate has two complete generated-sign cells of
+    # different tasks that agree after deleting exactly that coordinate.
+    assert {
+        witness.coordinate_index
+        for witness in result.deletion_witnesses
+    } == {
+        result.generated_coordinates.index(coordinate)
+        for coordinate in result.minimum_task_coordinates
+    }
+    for witness in result.deletion_witnesses:
+        index = witness.coordinate_index
+        assert witness.left_task != witness.right_task
+        assert witness.left_signature[index] != witness.right_signature[index]
+        assert (
+            witness.left_signature[:index]
+            + witness.left_signature[index + 1 :]
+            == witness.right_signature[:index]
+            + witness.right_signature[index + 1 :]
+        )
 
 
 def test_lazy_minimum_is_exactly_the_old_global_task_wall_set() -> None:

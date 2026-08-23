@@ -21,11 +21,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install package
+      - name: Install package and test dependency
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e .
+          python -m pip install -e . pytest
 
-      - name: Run Phase 9A persistent constraint-cell probe
+      - name: Run Phase 9A exact executable check
+        env:
+          AEG_RUN_LR_CENTER4_CELLS: "1"
         run: |
-          python sonnet/lonely-runner/python/persistent_constraint_cells.py
+          python -m pytest -q -s tests/research/test_lonely_runner_center4_constraint_cells.py

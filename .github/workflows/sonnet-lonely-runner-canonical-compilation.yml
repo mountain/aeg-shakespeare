@@ -1,0 +1,46 @@
+name: Sonnet Lonely Runner Canonical Compilation
+
+# Phase 11B--11C exact materialization and placement checks.  These are kept
+# out of the routine multi-version matrix but must run when their compiler,
+# task projection, verifier, or executable essays change.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "sonnet/lonely-runner/python/canonical_lazy_contact_compiler.py"
+      - "sonnet/lonely-runner/python/canonical_global_compilation.py"
+      - "sonnet/lonely-runner/python/canonical_task_objectification.py"
+      - "sonnet/lonely-runner/31-canonical-lazy-compiler-rediscovers-wall-geometry.md"
+      - "sonnet/lonely-runner/32-canonical-global-compilation-recovers-hauffman-geometry.md"
+      - "sonnet/lonely-runner/33-canonical-task-objectification.md"
+      - "tests/research/test_lonely_runner_canonical_lazy_contact_compiler.py"
+      - "tests/research/test_lonely_runner_canonical_global_compilation.py"
+      - "tests/research/test_lonely_runner_canonical_task_objectification.py"
+      - ".github/workflows/sonnet-lonely-runner-canonical-compilation.yml"
+
+jobs:
+  canonical-compilation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      AEG_RUN_LR_CANONICAL_GLOBAL_COMPILATION: "1"
+      AEG_RUN_LR_CANONICAL_TASK_HUFFMAN: "1"
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependency
+        run: python -m pip install pytest
+
+      - name: Run exact canonical compiler and task checks
+        run: |
+          python -m pytest -q -s \
+            tests/research/test_lonely_runner_canonical_lazy_contact_compiler.py \
+            tests/research/test_lonely_runner_canonical_global_compilation.py \
+            tests/research/test_lonely_runner_canonical_task_objectification.py

@@ -1,0 +1,64 @@
+name: Sonnet Lonely Runner Lift-Survival Probe
+
+# Directional frontier experiment.  It measures how many deterministic
+# I(13,199,1) seeds from one complete worker survive the first l=2 lift, using
+# both a lexicographic prefix and an equidistant sample across the sorted set.
+# This is not a J-empty certificate and is never routine CI.
+on:
+  workflow_dispatch:
+
+jobs:
+  lift-survival-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      UPSTREAM_SHA: 755b116b2e6090cd4a83187a696f863388b7d746
+      PROBE_P: 199
+      PROBE_WORKER: 0
+      SAMPLE_LIMIT: 2000
+      PROBE_TIMEOUT_SECONDS: 300
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned upstream
+        run: |
+          git clone --quiet https://github.com/vzsky/13-lonely-runners.git upstream
+          git -C upstream checkout --quiet "$UPSTREAM_SHA"
+          test "$(git -C upstream rev-parse HEAD)" = "$UPSTREAM_SHA"
+
+      - name: Compile pinned lift-sample harness
+        run: |
+          g++ -O3 -std=c++23 -pthread -march=native \
+            -I"$GITHUB_WORKSPACE/upstream/src" \
+            sonnet/lonely-runner/cpp/upstream_find_cover_harness.cpp \
+            -o /tmp/lr-lift-survival
+
+      - name: Run bounded deterministic samples
+        run: |
+          timeout "${PROBE_TIMEOUT_SECONDS}s" \
+            /tmp/lr-lift-survival worker-lift-sample \
+              "$PROBE_P" "$PROBE_WORKER" "$SAMPLE_LIMIT" \
+            | tee /tmp/lift-survival.txt
+          {
+            echo '## K=13 first-lift survival probe'
+            echo
+            echo "- pinned upstream: \`$UPSTREAM_SHA\`"
+            echo "- worker: \`$PROBE_WORKER\`"
+            echo "- sample size: \`$SAMPLE_LIMIT\` per protocol"
+            echo '- protocols: lexicographic prefix and equidistant lexicographic stratification'
+            echo
+            echo '```text'
+            cat /tmp/lift-survival.txt
+            echo '```'
+            echo
+            echo 'Directional evidence only: this is neither a complete worker lift nor a J-empty certificate.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload probe record
+        uses: actions/upload-artifact@v4
+        with:
+          name: lonely-runner-k13-lift-survival-probe
+          path: /tmp/lift-survival.txt
+          retention-days: 90

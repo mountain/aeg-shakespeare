@@ -1,5 +1,13 @@
 # Phase 11B1 — canonical lazy compiler rediscovers the global wall geometry
 
+> **Phase-15A certificate correction.**  A unique forced separator between two
+> partial terminal regions is not a valid general proof of coordinate
+> minimality.  The 27-coordinate numerical conclusion survives a stronger
+> check: all 4,343 feasible cells of the complete 33-coordinate sign grammar are
+> materialized, the selected projection is task-pure, and every selected
+> coordinate has a full-sign deletion witness.  See
+> [`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).
+
 **Status:** exact bounded symbolic calibration passed.  
 **Implementation:** `sonnet/lonely-runner/python/canonical_lazy_contact_compiler.py`.  
 **Executable red team:** `tests/research/test_lonely_runner_canonical_lazy_contact_compiler.py`.  

@@ -18,6 +18,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run Phase 9C minimum completion search
+      - name: Install test dependency
+        run: python -m pip install pytest
+
+      - name: Run Phase 9C exact executable check
+        env:
+          AEG_RUN_LR_CENTER4_MINIMAL_COMPLETION: "1"
         run: |
-          python sonnet/lonely-runner/python/center4_minimal_completion.py
+          python -m pytest -q -s tests/research/test_lonely_runner_center4_minimal_completion.py
