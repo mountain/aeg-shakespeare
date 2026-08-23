@@ -21,6 +21,7 @@ _ESSAYS = (
     _ROOT / "classical" / "test_coupled_diagonal_canonical_horizontal_lift.py",
     _ROOT / "classical" / "test_restricted_kepler_canonical_decomposition.py",
     _ROOT / "classical" / "test_kepler_radial_canonical_horizontal_lift.py",
+    _ROOT / "classical" / "test_perturbed_kepler_eccentricity_canonicalization.py",
     _ROOT / "classical" / "test_am_process_direction.py",
     _ROOT / "research" / "test_lonely_runner_canonical_observer_decomposition.py",
     _ROOT / "research" / "test_lonely_runner_minimal_completion_residuals.py",
