@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- adds `docs/55-pendulum-lifted-clock-global-quotient.md` and a research executable essay globalizing the lifted-clock/geometric-phase chain of `docs/54` (PR #79) on the lemniscatic leaf;
+- certifies the exact sigma symmetry `sigma(U,Y)=(-U,iY)` with `sigma*omega = i omega` (hence `tau = i`), the complex-flow carrier ODE `dU/dz = Y`, and the square period lattice `Lambda = Z T_p + Z i T_p` with the Jacobi identities `K(i) = varpi/2` and `T_p = 4 sqrt(2) K(i)`;
+- certifies the branch-locus degeneration: the local decoder chart fails exactly at `U = +/-1`, the Z2 mark flips across each turning point (mark monodromy -1 around each branch point), and the real period loop lifts to a closed marked loop;
+- reads off the clock-chain information contract: `R -> R/T_p Z` forgets winding, and the real phase embeds in `C/Lambda` because `R cap Lambda = T_p Z` — the third arrow is a complexification, not a further quotient;
+- keeps the result research-local: no Theory Map node/edge change, no public or experimental API pressure, and no promotion of TR-0001; the E = 0 leaf is the declared scope, other energy leaves remain open;
 - adds `docs/51-aeg-addition-multiplication-rank-transition.md` and a research executable essay for the second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects rather than one fixed additive composite;
 - lowers pure multiplicative words to Translation endomorphisms and arbitrary mixed Translation/Dilation words to the positive affine monoid, with exact relation soundness for `T_a T_b = T_(a+b)`, `D_k D_l = D_(kl)`, and the AEG cross relation `D_k T_a = T_(ka) D_k`;
 - records two second-rank red teams: one fixed additive result cannot identify the multiplicative process schema, and a nontrivial dilation cannot lower to any single Translation object; connects the finite cross relation to the existing A/M finite law and `[A, M] = A` without claiming V5 analytic closure;

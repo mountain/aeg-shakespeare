@@ -60,10 +60,13 @@ The documentation is organized as a mathematical/programming narrative rather th
 50. `50-aeg-translation-objectification-rank-lowering.md` — first complete research-local V1→V4 calibration: signed unit histories compress by net translation semantics, become reusable Addition/translation primitives, freely compose at a new semantic rank, and lower compositionally with relation soundness plus a continuation-congruence red team.
 51. `51-aeg-addition-multiplication-rank-transition.md` — second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects, pure multiplicative words lower to Translation endomorphisms, mixed A/M words lower to the positive affine monoid, and `D_k T_a = T_(ka) D_k` aligns exactly with the existing finite/infinitesimal A/M calculus without yet claiming analytic closure.
 52. `52-canonical-completion-hypothesis.md` — first governed T1 theory record: a candidate marked-carrier -> global-completion line with competing hypotheses, information-loss boundaries, kill conditions, and explicit prohibition on premature API promotion.
-53. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
-54. `REFERENCES.md` — shared mathematical bibliography.
-55. `RELEASE_CHECKLIST.md` — release gates.
-56. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
-57. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
+53. `53-process-volume-frontier-coarea-hypothesis.md` — governed T1 theory edge: the candidate coarea/frontier connection between H3 and H4 (discrete volume-frontier identity vs. classical action-period identity), without identifying energy with computational complexity.
+54. `54-pendulum-elliptic-group-rank-lowering.md` — research note (PR #79): the elliptic group law of the pendulum carrier as a second, geometric calibration of V3–V4; Euler's addition theorem certified exactly as compositional rank lowering of the flow-translation schema, with red teams and no map/API promotion.
+55. `55-pendulum-lifted-clock-global-quotient.md` — research note: globalizes the lifted-clock/geometric-phase chain of docs/54 on the lemniscatic leaf — sigma symmetry with tau = i, the square period lattice, Jacobi period identities, mark monodromy -1 through the branch points, and the exact clock-chain kernels (quotient then embedding).
+56. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
+57. `REFERENCES.md` — shared mathematical bibliography.
+58. `RELEASE_CHECKLIST.md` — release gates.
+59. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
+60. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.

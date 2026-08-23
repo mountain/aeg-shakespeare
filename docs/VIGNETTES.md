@@ -59,6 +59,16 @@ The index is deliberately conservative: an entry records where to start reading;
 - `docs/15-period-matrix-and-riemann-shape.md`
 - `docs/16-lifted-cycle-intersection.md`
 
+**Group law / vertical-axis sequence:**
+
+- `tests/research/test_pendulum_elliptic_group_rank_lowering.py`
+- `docs/54-pendulum-elliptic-group-rank-lowering.md`
+
+**Lifted clock / branch-locus sequence:**
+
+- `tests/research/test_pendulum_lifted_clock_global_quotient.py`
+- `docs/55-pendulum-lifted-clock-global-quotient.md`
+
 **Current open-theory entry:** `docs/52-canonical-completion-hypothesis.md`.
 
 **Theory role:** major H4/global-analysis calibration. The executable family now explicitly records the `Z2` information loss of the selected observable quotient; the stronger canonical-completion interpretation remains governed separately as T1 research.

@@ -4,7 +4,7 @@
 
 This is the stable *start here* page for the simple-pendulum material in Process Geometry. The executable mathematics remains distributed across focused essays, while this page keeps the physical problem, normalization, dependency order, information loss, evidence level, reconstruction status, and open theory boundaries in one place.
 
-The labels `P0`–`P9` are family-local navigation identifiers. They do not rename historical files and do not imply theory maturity.
+The labels `P0`–`P11` are family-local navigation identifiers. They do not rename historical files and do not imply theory maturity.
 
 ---
 
@@ -122,8 +122,10 @@ This bridge is part of the educational contract: the polynomial process in the t
 | **P7** | continue one explicit lifted contour and integrate a period | `test_pendulum_period_contour.py` | sampled numerical with refinement check |
 | **P8** | measure two explicit periods and normalized genus-one period matrix | `test_pendulum_period_matrix.py` | sampled numerical |
 | **P9** | distinguish projected crossings from surface intersections; recover symplectic orientation | `test_pendulum_cycle_intersection.py` | sampled numerical + orientation red team |
+| **P10** | exact Weierstrass reduction, chord-tangent group law, Euler/Abel-Jacobi additivity, lifted clock -> geometric phase quotient, objectification red teams | `tests/research/test_pendulum_elliptic_group_rank_lowering.py` (PR #79) | exact symbolic on the carrier; sampled numerical for the closed-form flow |
+| **P11** | global lifted-clock quotient: sigma symmetry with tau = i, square period lattice, Jacobi period identities, mark monodromy -1 through the branch points, clock-chain kernels | `tests/research/test_pendulum_lifted_clock_global_quotient.py` | exact symbolic for the symmetry/degeneration; sampled numerical for the complex periods |
 
-The historical titles (`Discovery I/II/III`, `Pendulum II/III/IV/V`) arose at different times. `P0`–`P9` is the dependency map going forward; file names remain unchanged.
+The historical titles (`Discovery I/II/III`, `Pendulum II/III/IV/V`) arose at different times. `P0`–`P11` is the dependency map going forward; file names remain unchanged.
 
 ---
 
@@ -381,7 +383,7 @@ The larger marked-carrier -> global-completion proposal remains T1 in `docs/52-c
 
 ## 9. Next priorities
 
-1. **Branch transport through the decoder boundary.** Specify how the local sign/chart data continue through `U=+/-1`, and distinguish state continuation from history continuation.
+1. **Branch transport through the decoder boundary.** Specify how the local sign/chart data continue through `U=+/-1`, and distinguish state continuation from history continuation. *Partially delivered on the `E=0` leaf:* `tests/research/test_pendulum_lifted_clock_global_quotient.py` certifies the decoder degeneration at `U=+/-1`, the mark monodromy `-1` through each turning point, and the lifted-clock/geometric-phase quotient; other energy leaves and full Cartesian continuation into other sheets remain open.
 2. **Cross-presentation calibration.** Compare the observable cubic with an independently derived classical reduction while tracking the differential/process clock and the exact equivalence notion.
 3. **Generic-energy continuation.** Repeat cycle/period analysis away from `E=0` and through controlled degenerations.
 4. **A/M mechanical bridge.** Define the second-order A/M process data needed for mechanics to arise from the calculus rather than from a post hoc reading.
@@ -415,6 +417,17 @@ None of these priorities, by itself, requires a new Public API abstraction.
 3. `test_pendulum_period_matrix.py`;
 4. `test_pendulum_cycle_intersection.py`;
 5. `docs/13-abelian-history-periods.md` through `docs/16-lifted-cycle-intersection.md`.
+
+### Vertical axis / group law
+
+1. `tests/research/test_pendulum_elliptic_group_rank_lowering.py`;
+2. `docs/54-pendulum-elliptic-group-rank-lowering.md`;
+3. the AEG analogues `docs/50-aeg-translation-objectification-rank-lowering.md` and `docs/51-aeg-addition-multiplication-rank-transition.md`.
+
+### Lifted clock and branch locus
+
+1. `tests/research/test_pendulum_lifted_clock_global_quotient.py`;
+2. `docs/55-pendulum-lifted-clock-global-quotient.md`.
 
 ### Foundational hypothesis
 
