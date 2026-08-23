@@ -5,6 +5,7 @@ mathematical behavior belongs in literate tests; these checks certify the
 canonical ``process_geometry`` namespace and the temporary legacy alias.
 """
 
+import importlib
 from importlib.metadata import version
 
 import pytest
@@ -63,8 +64,13 @@ def test_legacy_root_symbol_is_lazy_and_warns_during_transition():
 
 
 def test_aeg_shakespeare_alias_preserves_deep_object_identity():
+    import aeg_shakespeare as legacy
+
+    # The compatibility package may already have been imported during test
+    # collection. Reload it so this test validates the deprecation signal
+    # deterministically rather than depending on import order.
     with pytest.warns(DeprecationWarning, match="deprecated compatibility namespace"):
-        import aeg_shakespeare as legacy
+        importlib.reload(legacy)
 
     from aeg_shakespeare.analysis.am import AMFunctionTheory as LegacyAMFunctionTheory
     from aeg_shakespeare.presentation.morphism import (
