@@ -2,6 +2,8 @@
 
 This file governs research work under `sonnet/` in the Shakespeare problem-driven research program.
 
+The larger Process Geometry theory is intentionally still developing. `docs/THEORY_MAP.md` is the current **living map**, not a frozen specification. Sonnets may support, refine, or contradict that map. API extraction is more constrained: once a Sonnet proposes a reusable Experimental or Public abstraction, the proposal must explain its position and impact in the Theory Map as required by `docs/GOVERNANCE.md`.
+
 ## Problem-native first
 
 A Sonnet must not begin by inheriting the ontology of an existing solver, proof script, numerical package, or literature-standard coordinate system merely because that implementation is available.
@@ -88,9 +90,10 @@ For every substantial Sonnet phase, record:
 - cost axes;
 - red teams;
 - claim boundary;
-- what the experiment teaches about Process Geometry itself.
+- what the experiment teaches about Process Geometry itself;
+- when material, whether the result **supports, refines, splits, contradicts, or leaves unchanged** the current `docs/THEORY_MAP.md`.
 
-The final item matters: a Sonnet is not only a problem-solving attempt; it is also a calibration of the framework's ability to discover useful presentations.
+The final two items matter: a Sonnet is not only a problem-solving attempt; it is also a calibration of both the framework and the evolving theory behind it. Contradicting the Theory Map is allowed and valuable when evidence supports the contradiction.
 
 ## Framework extraction discipline
 
@@ -100,14 +103,18 @@ When a reusable structure appears:
 
 1. keep the first implementation research-local while its semantics are still entangled with the problem;
 2. record an extraction candidate describing the minimal semantics, a positive case, a negative/adversarial case, and the unresolved boundary;
-3. move the abstraction into Experimental only after there is evidence that it is useful beyond the originating local design;
-4. require independent cross-problem pressure and red teams before proposing public promotion;
-5. treat public API promotion as a semantic commitment, not as a reward for code stability or repeated local reuse.
+3. locate the candidate in `docs/THEORY_MAP.md`: state which node/arrow it appears to realize and which part of that interpretation remains hypothetical;
+4. move the abstraction into Experimental only after there is evidence that it is useful beyond the originating local design;
+5. require independent cross-problem pressure and red teams before proposing public promotion;
+6. for any Experimental/Public API proposal, include the mandatory **Theory Impact** review required by `docs/GOVERNANCE.md`;
+7. treat public API promotion as a semantic commitment, not as a reward for code stability, repeated local reuse, or an attractive theory-aligned name.
 
-The authoritative lifecycle and promotion gates are in `docs/GOVERNANCE.md`. The default rule is:
+The authoritative lifecycle and promotion gates are in `docs/GOVERNANCE.md`; the larger evolving research picture is in `docs/THEORY_MAP.md`. The default rule is:
 
 ```text
 Sonnet -> extraction candidate -> Experimental -> maturing -> Public API
 ```
 
 There is no direct `Sonnet -> Public API` path without an explicitly documented exception.
+
+A Sonnet result may justify changing the Theory Map before it justifies changing the public API. Those are separate decisions.
