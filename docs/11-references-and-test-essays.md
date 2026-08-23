@@ -32,7 +32,7 @@ References are evidence, not decoration.
 - If a statement is the project's own interpretation, label it **Shakespeare interpretation** rather than attaching a classical citation that appears to endorse the new claim.
 - If a result is derived directly in the test, the derivation is primary; a reference is still useful for the classical shadow but must not replace the executable proof.
 
-Bibliographic fields themselves must be audited.  A syntactically complete entry with the wrong edition, page range, DOI, URL, authorship, or publication year is a failed reference, not a cosmetic defect.  Prefer the publisher, journal/DOI landing page, arXiv record, DLMF, or another authoritative catalogue when checking those fields.
+Bibliographic fields themselves must be audited. A syntactically complete entry with the wrong edition, page range, DOI, URL, authorship, or publication year is a failed reference, not a cosmetic defect. Prefer the publisher, journal/DOI landing page, arXiv record, DLMF, or another authoritative catalogue when checking those fields.
 
 ## 3. Citation format inside Python tests
 
@@ -106,8 +106,7 @@ API / release documentation
 bibliographic references
 ```
 
-These views must agree on the mathematical object, notation, sign convention,
-hypotheses, status, and claim boundary.  In particular:
+These views must agree on the mathematical object, notation, sign convention, hypotheses, status, and claim boundary. In particular:
 
 - a formula changed in code must be audited wherever the same formula is stated in prose;
 - a changed commutator/order convention must be reflected in every affected equation and test;
@@ -116,9 +115,9 @@ hypotheses, status, and claim boundary.  In particular:
 - a heavy/full-census oracle must be distinguished from the cheaper algorithm being claimed;
 - a project interpretation must not acquire the epistemic status of a cited classical theorem merely by repetition.
 
-For research lines with several moving pieces, maintain a **claim ledger** mapping each important mathematical statement to its implementation owner, executable certificate, references, and epistemic status.  A row may be promoted only when all of those links are current.  The canonical-observer line provides the first concrete example in `docs/37-canonical-observer-claim-ledger.md`.
+For research lines with several moving pieces, maintain a **claim ledger** mapping each important mathematical statement to its implementation owner, executable certificate, references, and epistemic status. A row may be promoted only when all of those links are current. The canonical-observer line provides the first concrete example in `docs/37-canonical-observer-claim-ledger.md`.
 
-Mechanical CI can enforce only part of this obligation.  It should check what is cheaply decidable — required essay sections, citation-key resolution, Proof-map/test correspondence, namespace/API hygiene — while executable mathematics certifies identities and semantic invariants.  Human/research review remains responsible for checking that the prose means exactly what the code proves.
+Mechanical CI can enforce only part of this obligation. It should check what is cheaply decidable — required essay sections, citation-key resolution, Proof-map/test correspondence, namespace/API hygiene — while executable mathematics certifies identities and semantic invariants. Human/research review remains responsible for checking that the prose means exactly what the code proves.
 
 ## 7. Release policy
 
@@ -131,3 +130,23 @@ For the `0.0.x` series, a mathematical calibration should not be considered comp
 - its epistemic status has been updated only after those gates pass.
 
 A technically useful unit test is exempt from the essay form only when it makes no substantive mathematical claim beyond implementation behavior.
+
+## 8. Standalone and retrieval completeness
+
+A completed mathematical vignette has obligations beyond proof and citation. It also serves as an independent educational text and a durable knowledge-retrieval entry.
+
+A reader who lands directly on the vignette should be able to identify the standard mathematical problem, objects, assumptions, notation, motivation, conventional vocabulary, Process Geometry reconstruction, exact executable claim, and boundary without reconstructing repository chronology.
+
+Substantial vignettes should therefore expose useful retrieval vocabulary from three directions when applicable:
+
+```text
+problem/domain names
+classical mathematical names and aliases
+Process Geometry structural names
+```
+
+A linked family of tests should designate one stable vignette entry point rather than relying on filenames such as `II`, `III`, or `red_team` to communicate the original problem.
+
+This retrieval role is epistemically neutral. Mentioning a term such as `Jacobian`, `elliptic curve`, `holonomy`, or `canonical clock` for searchability does not promote a conjectural interpretation into a theorem.
+
+The full standalone/retrieval policy and completion checklist are in `docs/VIGNETTE_CONTRACT.md`; the problem-oriented entry index is `docs/VIGNETTES.md`. The updated template is `docs/12-test-essay-template.py.txt`.
