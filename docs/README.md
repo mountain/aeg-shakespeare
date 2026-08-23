@@ -4,7 +4,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 
 **Theory:** `THEORY_MAP.md` is the living map of the larger Process Geometry research picture. It synthesizes the current foundation, marks theory/code maturity, and is explicitly expected to evolve as Sonnets and calibrations sharpen or contradict it.
 
-**Governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; the Theory Map informs API review without becoming a frozen software specification.
+**Theory governance:** `THEORY_GOVERNANCE.md` governs how mathematical claims enter and move inside the Theory Map. It separates epistemic maturity (`T0`–`T4`) from structural role (`local` / `reusable` / `foundational`), treats theory-map arrows as auditable information contracts, controls strong vocabulary such as `canonical` and `universal`, requires kill conditions for substantial claims, and makes conservative extension the default. `THEORY_RECORD_TEMPLATE.md` provides the standard node/edge record format.
+
+**Software governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; theory-map promotion and API promotion remain separate gates.
 
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
@@ -57,8 +59,11 @@ The documentation is organized as a mathematical/programming narrative rather th
 49. `49-theory-implementation-structural-alignment.md` — audits H0–H4 and V0–V5 against executable code, distinguishes implemented nodes from calibrated shadows and missing semantics, and selects exact finite task quotienting as the first substantive theory-to-code alignment target.
 50. `50-aeg-translation-objectification-rank-lowering.md` — first complete research-local V1→V4 calibration: signed unit histories compress by net translation semantics, become reusable Addition/translation primitives, freely compose at a new semantic rank, and lower compositionally with relation soundness plus a continuation-congruence red team.
 51. `51-aeg-addition-multiplication-rank-transition.md` — second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects, pure multiplicative words lower to Translation endomorphisms, mixed A/M words lower to the positive affine monoid, and `D_k T_a = T_(ka) D_k` aligns exactly with the existing finite/infinitesimal A/M calculus without yet claiming analytic closure.
-52. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
-53. `REFERENCES.md` — shared mathematical bibliography.
-54. `RELEASE_CHECKLIST.md` — release gates.
+52. `52-canonical-completion-hypothesis.md` — first governed T1 theory record: a candidate marked-carrier -> global-completion line with competing hypotheses, information-loss boundaries, kill conditions, and explicit prohibition on premature API promotion.
+53. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
+54. `REFERENCES.md` — shared mathematical bibliography.
+55. `RELEASE_CHECKLIST.md` — release gates.
+56. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
+57. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
