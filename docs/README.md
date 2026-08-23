@@ -45,8 +45,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 39. `38-resistor-network-presentation-morphism.md` — non-KdV calibration: DtN task quotient, Y–Delta discovered from response equality, Schur-complement semantic confluence, and weak-observer red team.
 40. `39-braid-markov-presentation-morphism.md` — topology calibration: braid/Markov moves, Burau/Alexander closure semantics, cross-dimension stabilization, and weak topological observer red team.
 41. `40-presentation-morphism-api.md` — minimal public `PresentationMorphism` contract promoted after the KdV, resistor-network, and braid/Markov calibrations.
-42. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-43. `REFERENCES.md` — shared mathematical bibliography.
-44. `RELEASE_CHECKLIST.md` — release gates.
+42. `42-process-geometry-from-distinguishability.md` — first-principles research program: distinguishability -> topology -> entropy/complexity -> presentation, with continuous extension toward observer-relative differential structure and a clean separation from Arithmetic Universality.
+43. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+44. `REFERENCES.md` — shared mathematical bibliography.
+45. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
