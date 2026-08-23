@@ -2,10 +2,13 @@
 
 ## Unreleased
 
+- adds `docs/50-aeg-translation-objectification-rank-lowering.md` and a research executable essay providing the first complete concrete V1→V4 calibration: continuation-stable semantic compression, objectification into reusable Addition/translation primitives, free higher-rank composition, compositional lowering, and relation soundness;
+- adds an adversarial absolute-displacement compression showing that terminal equality is insufficient when continuation can recover a discarded distinction;
+- refines `docs/THEORY_MAP.md` so V2–V4 now record one complete AEG/Addition research calibration while generic objectification, rank, and lowering abstractions remain intentionally unpromoted;
 - adds `docs/49-theory-implementation-structural-alignment.md`, mapping H0–H4 and V0–V5 in the living Theory Map to current executable implementations, calibrated shadows, and missing semantics;
 - adds an explicit `process_geometry.experimental` incubation namespace without changing the stable root API;
 - adds `FiniteTaskQuotient` / `minimize_finite_task_process`, an exact finite deterministic H1/V1 calibration using stable partition refinement and future distinguishing continuations, deliberately narrower than a generic Process Geometry task quotient;
-- refines `docs/THEORY_MAP.md` so H1/V1 now distinguish bounded public task-continuation evidence from the exact finite Experimental quotient slice;
+- refines `docs/THEORY_MAP.md` so H1/V1 distinguish bounded public task-continuation evidence from the exact finite Experimental quotient slice;
 - aligns current program vocabulary with the Process Geometry foundation in `docs/42–45` and records the mapping in `docs/48-foundation-naming-audit.md`;
 - makes `TaskContinuationSignature`, `task_continuation_signature`, and `history_task_continuation_signature` the canonical names for the bounded future-task signature, retaining the historical `ProcessJet*` names as 0.0.x aliases so `jet` remains available for genuinely differential/local structure;
 - exposes qualified discovery names `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, `search_first_order_observer_presentations`, and `structural_first_order_observer_presentation_cost`, while retaining historical backend aliases;
