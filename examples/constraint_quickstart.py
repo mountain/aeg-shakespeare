@@ -2,12 +2,12 @@
 
 A relation is treated as part of the represented presentation space, not merely
 as an expression to simplify away. The Groebner backend supplies an exact
-quotient certificate while Shakespeare keeps that equality layer explicit.
+quotient certificate while Process Geometry keeps that equality layer explicit.
 """
 
 import sympy as sp
 
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
 
 x, y = sp.symbols("x y")
 quotient = AlgebraicConstraintSet(
