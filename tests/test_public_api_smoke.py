@@ -9,54 +9,54 @@ from importlib.metadata import version
 
 import pytest
 
-import aeg_shakespeare as shakespeare
+import aeg_shakespeare as pg
 
 
 def test_public_version_matches_distribution_metadata():
-    assert shakespeare.__version__ == version("aeg-shakespeare")
+    assert pg.__version__ == version("process-geometry")
 
 
 def test_root_public_surface_is_only_the_semantic_router():
-    assert shakespeare.__all__ == [
+    assert pg.__all__ == [
         "process",
         "presentation",
         "discovery",
         "analysis",
         "__version__",
     ]
-    assert "ProcessWord" not in dir(shakespeare)
-    assert "AbelianPeriodMatrix" not in dir(shakespeare)
+    assert "ProcessWord" not in dir(pg)
+    assert "AbelianPeriodMatrix" not in dir(pg)
 
 
 def test_representative_namespaced_entry_points_are_importable():
-    assert hasattr(shakespeare.process.history, "ProcessWord")
-    assert hasattr(shakespeare.process.finite, "ProcessFamily")
-    assert hasattr(shakespeare.process.finite, "ProcessCharacter")
-    assert hasattr(shakespeare.process.finite, "FamilyAction")
-    assert hasattr(shakespeare.process.finite, "ProcessCocycle")
-    assert hasattr(shakespeare.process.local, "ProcessSystem")
-    assert hasattr(shakespeare.process.local, "ProcessFrame")
+    assert hasattr(pg.process.history, "ProcessWord")
+    assert hasattr(pg.process.finite, "ProcessFamily")
+    assert hasattr(pg.process.finite, "ProcessCharacter")
+    assert hasattr(pg.process.finite, "FamilyAction")
+    assert hasattr(pg.process.finite, "ProcessCocycle")
+    assert hasattr(pg.process.local, "ProcessSystem")
+    assert hasattr(pg.process.local, "ProcessFrame")
 
-    assert hasattr(shakespeare.presentation.history, "normalize_word")
-    assert hasattr(shakespeare.presentation.constraints, "AlgebraicConstraintSet")
-    assert hasattr(shakespeare.presentation.grammar, "discover_generated_presentation")
-    assert hasattr(shakespeare.presentation.relations, "discover_relation_kernel")
-    assert hasattr(shakespeare.presentation.search, "PresentationCost")
-    assert hasattr(shakespeare.presentation.search, "pareto_frontier")
-    assert hasattr(shakespeare.presentation.morphism, "PresentationMorphism")
+    assert hasattr(pg.presentation.history, "normalize_word")
+    assert hasattr(pg.presentation.constraints, "AlgebraicConstraintSet")
+    assert hasattr(pg.presentation.grammar, "discover_generated_presentation")
+    assert hasattr(pg.presentation.relations, "discover_relation_kernel")
+    assert hasattr(pg.presentation.search, "PresentationCost")
+    assert hasattr(pg.presentation.search, "pareto_frontier")
+    assert hasattr(pg.presentation.morphism, "PresentationMorphism")
 
-    assert hasattr(shakespeare.discovery, "discover_polynomial_invariants")
-    assert hasattr(shakespeare.discovery, "generate_pairing_observers")
-    assert hasattr(shakespeare.discovery, "search_first_order_process_quotients")
+    assert hasattr(pg.discovery, "discover_polynomial_invariants")
+    assert hasattr(pg.discovery, "generate_pairing_observers")
+    assert hasattr(pg.discovery, "search_first_order_process_quotients")
 
-    assert hasattr(shakespeare.analysis.module, "ProcessFunctionModule")
-    assert hasattr(shakespeare.analysis.am, "AMFunctionTheory")
-    assert hasattr(shakespeare.analysis.algebraic, "hyperelliptic_profile")
-    assert hasattr(shakespeare.analysis.abelian, "AbelianPeriodMatrix")
-    assert hasattr(shakespeare.analysis.abelian, "normalized_abelian_torus")
+    assert hasattr(pg.analysis.module, "ProcessFunctionModule")
+    assert hasattr(pg.analysis.am, "AMFunctionTheory")
+    assert hasattr(pg.analysis.algebraic, "hyperelliptic_profile")
+    assert hasattr(pg.analysis.abelian, "AbelianPeriodMatrix")
+    assert hasattr(pg.analysis.abelian, "normalized_abelian_torus")
 
 
 def test_legacy_root_symbol_is_lazy_and_warns_during_transition():
     with pytest.warns(DeprecationWarning, match="legacy root-level import"):
-        legacy = shakespeare.ProcessWord
-    assert legacy is shakespeare.process.history.ProcessWord
+        legacy = pg.ProcessWord
+    assert legacy is pg.process.history.ProcessWord
