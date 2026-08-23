@@ -59,10 +59,11 @@ The documentation is organized as a mathematical/programming narrative rather th
 49. `49-theory-implementation-structural-alignment.md` — audits H0–H4 and V0–V5 against executable code, distinguishes implemented nodes from calibrated shadows and missing semantics, and selects exact finite task quotienting as the first substantive theory-to-code alignment target.
 50. `50-aeg-translation-objectification-rank-lowering.md` — first complete research-local V1→V4 calibration: signed unit histories compress by net translation semantics, become reusable Addition/translation primitives, freely compose at a new semantic rank, and lower compositionally with relation soundness plus a continuation-congruence red team.
 51. `51-aeg-addition-multiplication-rank-transition.md` — second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects, pure multiplicative words lower to Translation endomorphisms, mixed A/M words lower to the positive affine monoid, and `D_k T_a = T_(ka) D_k` aligns exactly with the existing finite/infinitesimal A/M calculus without yet claiming analytic closure.
-52. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
-53. `REFERENCES.md` — shared mathematical bibliography.
-54. `RELEASE_CHECKLIST.md` — release gates.
-55. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
-56. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
+52. `52-canonical-completion-hypothesis.md` — first governed T1 theory record: a candidate marked-carrier -> global-completion line with competing hypotheses, information-loss boundaries, kill conditions, and explicit prohibition on premature API promotion.
+53. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
+54. `REFERENCES.md` — shared mathematical bibliography.
+55. `RELEASE_CHECKLIST.md` — release gates.
+56. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
+57. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
