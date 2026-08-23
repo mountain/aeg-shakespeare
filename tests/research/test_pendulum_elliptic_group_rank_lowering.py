@@ -48,9 +48,11 @@ calibration.  There, Multiplication objectified the uniform repeated-Addition
 schema ``R_k(T_a) = T_(ka)``: the objectified thing was an *action* on
 lower-rank semantic objects, not one of its outputs.  Here the pendulum flow
 objectifies the translation schema ``tau_t: p -> p (+) S(t)`` on the carrier
-group: again an action, not a point.  Rank lowering is then the clock map
-``tau_t -> t``, and Euler's addition theorem is exactly the statement that this
-lowering is a homomorphism.
+group: again an action, not a point.  The process clock lives first on a lifted translation ``tilde_tau_t``.  Its
+projection to the actual geometric action forgets the real period:
+``R -> R / T_p Z``.  Euler's addition theorem certifies the corresponding
+Abel-Jacobi additivity modulo the period lattice; a bare real clock is not a
+well-defined function of the unlifted action.
 
 Primitive data
 --------------
@@ -100,13 +102,12 @@ reading attached:
 2. the chord-tangent law is verified to preserve the carrier and to satisfy
    associativity/inverse spot checks with exact rational arithmetic;
 3. Euler's addition theorem is certified exactly as a one-form identity modulo
-   the curve ideal -- the rank-lowering certificate ``omega(P (+) Q)
-   = omega(P) + omega(Q)``;
-4. on the lemniscatic leaf the flow is realized in closed form and shown to be
-   a one-parameter subgroup twisted by the 2-torsion base point;
-5. the objectification semantics is attached: the schema ``tau_t`` (flow
-   translation) is objectified, schemas compose by ``(+)``, and lowering is the
-   clock sum with kernel the period lattice;
+   the curve ideal, hence the Abel-Jacobi integral is additive modulo periods;
+4. on the lemniscatic leaf the flow is realized in closed form and numerically
+   sampled as a one-parameter subgroup after a 2-torsion base-point correction;
+5. the objectification semantics separates lifted translations carrying
+   ``t in R`` from geometric actions carrying only ``[t] in R / T_p Z``; the
+   projection has period kernel, while the lifted clock composes additively;
 6. three red teams certify what the objectified primitive is *not*.
 
 Calibration statement
@@ -119,20 +120,20 @@ Passing this file certifies, for the declared carrier and normalizations:
    ``y^2 = x^3 - x`` with ``g2 = 4, g3 = 0, j = 1728`` (exact symbolic);
 2. the chord-tangent composition keeps the carrier and satisfies exact
    rational associativity and inverse spot checks (exact rational);
-3. Euler's addition theorem holds exactly on the carrier, in both chord and
-   tangent form (exact symbolic, modulo the curve ideal);
+3. Euler's addition theorem holds exactly as an invariant-differential
+   identity on the carrier, in both chord and tangent form; consequently the
+   Abel-Jacobi integral is additive modulo the period lattice;
 4. the lemniscatic flow ``U(t) = -sn^2(t/sqrt(2), i)`` satisfies the carrier
-   ODE, and obeys the twisted subgroup law
-   ``P(t1) (+) P(t2) = P(t1+t2) (+) P(0)``; the untwisted orbit
-   ``S(t) = P(t) (+) P(0)`` is an exact one-parameter subgroup (sampled
-   numerical, 30-digit mpmath);
-5. the objectified schema ``tau_t`` composes by clock addition and lowers to
-   the clock sum compositionally (executable semantics plus the exact
-   certificate of item 3);
+   ODE, and numerically obeys the 2-torsion base-point correction
+   ``P(t1) (+) P(t2) = P(t1+t2) (+) P(0)``; after correction, the expected
+   one-parameter subgroup law is sampled at 30-digit precision;
+5. lifted schemas ``tilde_tau_t`` compose by clock addition, while their
+   projection to geometric actions identifies ``t`` and ``t + T_p``; thus the
+   period group is the kernel of projection, not the kernel of a map from an
+   unlifted action to a bare real clock;
 6. three red teams hold: an unmarked endpoint merges distinct Cartesian
-   continuations; a fixed curve point does not identify the flow schema
-   (period ambiguity and the torsion twist); coordinatewise addition leaves
-   the carrier.
+   continuations; a geometric action does not determine a unique lifted clock;
+   coordinatewise addition leaves the carrier.
 
 Proof map
 ---------
@@ -144,8 +145,8 @@ preservation, exact polynomial identity).
 ``test_rational_group_law_spot_checks`` checks item 2 (associativity/inverse,
 exact rational arithmetic).
 ``test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup`` checks item 4.
-``test_flow_translation_schemas_compose_and_lower_compositionally`` checks
-item 5.
+``test_lifted_flow_translation_schemas_compose_and_lower_compositionally``
+and ``test_period_is_kernel_of_projection_not_of_clock_lowering`` check item 5.
 ``test_red_team_unmarked_endpoint_merges_distinct_continuations``,
 ``test_red_team_fixed_curve_point_does_not_identify_the_flow_schema``, and
 ``test_red_team_coordinatewise_addition_leaves_the_carrier`` check item 6.
@@ -503,13 +504,12 @@ def test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup():
 
 
 @dataclass(frozen=True)
-class FlowTranslation:
-    """Research-local objectification of the flow-translation schema.
+class LiftedFlowTranslation:
+    """A flow translation together with a chosen real-clock lift.
 
-    ``tau_t`` acts on carrier points by the untwisted subgroup:
-    ``p -> p (+) S(t)`` with ``S(t) = P(t) (+) P(0)``.  This mirrors the AEG
-    discipline: the objectified thing is the schema (an action), not one of
-    its outputs.
+    The geometric action depends only on clock modulo T_p. Retaining the real
+    clock is additional history/covering data, not information recoverable
+    from the action on the carrier.
     """
 
     clock: mp.mpf
@@ -517,49 +517,92 @@ class FlowTranslation:
     def apply(self, point):
         return chord_add(point, _subgroup_point(self.clock))
 
-    def compose(self, later: "FlowTranslation") -> "FlowTranslation":
-        return FlowTranslation(self.clock + later.clock)
+    def compose(
+        self, later: "LiftedFlowTranslation"
+    ) -> "LiftedFlowTranslation":
+        return LiftedFlowTranslation(self.clock + later.clock)
 
-    def lower(self) -> mp.mpf:
-        """Rank lowering: the schema lowers to its process clock."""
+    def lower_to_clock(self) -> mp.mpf:
+        """Return the retained covering-clock coordinate."""
 
         return self.clock
+
+    def project(self) -> "GeometricFlowTranslation":
+        """Forget the lift and retain only the action phase modulo period."""
+
+        return GeometricFlowTranslation(_normalize_phase(self.clock))
+
+
+@dataclass(frozen=True)
+class GeometricFlowTranslation:
+    """The actual carrier action, parameterized only modulo the real period."""
+
+    phase: mp.mpf
+
+    def apply(self, point):
+        return chord_add(point, _subgroup_point(self.phase))
+
+    def compose(
+        self, later: "GeometricFlowTranslation"
+    ) -> "GeometricFlowTranslation":
+        return GeometricFlowTranslation(_normalize_phase(self.phase + later.phase))
+
+
+def _real_period():
+    varpi = mp.gamma(mp.mpf(1) / 4) ** 2 / (2 * mp.sqrt(2 * mp.pi))
+    return 2 * mp.sqrt(2) * varpi
+
+
+def _normalize_phase(t):
+    period = _real_period()
+    phase = mp.fmod(t, period)
+    return phase + period if phase < 0 else phase
 
 
 def _subgroup_point(t):
     return chord_add(flow_point(t), (mp.mpf(0), mp.mpf(0)))
 
 
-def test_flow_translation_schemas_compose_and_lower_compositionally():
-    """Schemas compose by clock addition and lower homomorphically.
+def _point_distance(left, right):
+    return abs(left[0] - right[0]) + abs(left[1] - right[1])
 
-    The exact mathematical certificate for the homomorphism is the Euler
-    identity of ``test_euler_addition_identity_is_exact_for_chord_composition``;
-    this test makes the process semantics executable: higher-rank words of
-    schemas compose by ``(+)`` and lower to the sum of clocks, with the
-    period lattice as the kernel (see the fixed-point red team).
+
+def test_lifted_flow_translation_schemas_compose_and_lower_compositionally():
+    """The retained covering clocks compose additively.
+
+    Euler's exact differential identity supplies the mathematical compatibility
+    with Abel-Jacobi addition; this executable layer deliberately records the
+    extra clock lift rather than pretending to recover it from the action.
     """
 
-    tau_1 = FlowTranslation(mp.mpf("0.3"))
-    tau_2 = FlowTranslation(mp.mpf("0.7"))
+    tau_1 = LiftedFlowTranslation(mp.mpf("0.3"))
+    tau_2 = LiftedFlowTranslation(mp.mpf("0.7"))
     start = _subgroup_point(mp.mpf("0.1"))
 
-    # Higher-rank free composition through the framework's ProcessWord.
     word = ProcessWord((tau_1, tau_2))
-    lowered = ProcessWord[FlowTranslation]()
-    total = mp.mpf(0)
-    for step in word:
-        total = total + step.lower()
+    total = sum((step.lower_to_clock() for step in word), mp.mpf(0))
 
-    # Compositional rank lowering: applying the composed schema equals
-    # applying the schemas in word order, and lowering is the clock sum.
     applied = tau_2.apply(tau_1.apply(start))
     composed = tau_1.compose(tau_2).apply(start)
-    assert abs(applied[0] - composed[0]) + abs(applied[1] - composed[1]) < mp.mpf(
+    assert _point_distance(applied, composed) < mp.mpf("1e-12")
+    assert total == tau_1.lower_to_clock() + tau_2.lower_to_clock()
+    assert abs(total - mp.mpf("1.0")) < mp.mpf("1e-30")
+
+
+def test_period_is_kernel_of_projection_not_of_clock_lowering():
+    """Equal geometric actions can carry distinct real-clock lifts."""
+
+    t = mp.mpf("0.4")
+    period = _real_period()
+    lifted = LiftedFlowTranslation(t)
+    shifted = LiftedFlowTranslation(t + period)
+    start = _subgroup_point(mp.mpf("0.2"))
+
+    assert lifted.lower_to_clock() != shifted.lower_to_clock()
+    assert abs(lifted.project().phase - shifted.project().phase) < mp.mpf("1e-25")
+    assert _point_distance(lifted.apply(start), shifted.apply(start)) < mp.mpf(
         "1e-12"
     )
-    assert total == tau_1.lower() + tau_2.lower()
-    assert abs(total - mp.mpf("1.0")) < mp.mpf("1e-30")
 
 
 # ---------------------------------------------------------------------------
