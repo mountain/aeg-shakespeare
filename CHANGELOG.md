@@ -2,11 +2,27 @@
 
 ## Unreleased
 
+- adds `docs/51-aeg-addition-multiplication-rank-transition.md` and a research executable essay for the second arithmetic rank transition: Multiplication objectifies a uniform repeated-Addition endomorphism on Translation objects rather than one fixed additive composite;
+- lowers pure multiplicative words to Translation endomorphisms and arbitrary mixed Translation/Dilation words to the positive affine monoid, with exact relation soundness for `T_a T_b = T_(a+b)`, `D_k D_l = D_(kl)`, and the AEG cross relation `D_k T_a = T_(ka) D_k`;
+- records two second-rank red teams: one fixed additive result cannot identify the multiplicative process schema, and a nontrivial dilation cannot lower to any single Translation object; connects the finite cross relation to the existing A/M finite law and `[A, M] = A` without claiming V5 analytic closure;
+- adds `docs/50-aeg-translation-objectification-rank-lowering.md` and a research executable essay providing the first complete concrete V1→V4 calibration: continuation-stable semantic compression, objectification into reusable Addition/translation primitives, free higher-rank composition, compositional lowering, and relation soundness;
+- adds an adversarial absolute-displacement compression showing that terminal equality is insufficient when continuation can recover a discarded distinction;
+- refines `docs/THEORY_MAP.md` so V2–V4 now record one complete AEG/Addition research calibration while generic objectification, rank, and lowering abstractions remain intentionally unpromoted;
+- adds `docs/49-theory-implementation-structural-alignment.md`, mapping H0–H4 and V0–V5 in the living Theory Map to current executable implementations, calibrated shadows, and missing semantics;
+- adds an explicit `process_geometry.experimental` incubation namespace without changing the stable root API;
+- adds `FiniteTaskQuotient` / `minimize_finite_task_process`, an exact finite deterministic H1/V1 calibration using stable partition refinement and future distinguishing continuations, deliberately narrower than a generic Process Geometry task quotient;
+- refines `docs/THEORY_MAP.md` so H1/V1 distinguish bounded public task-continuation evidence from the exact finite Experimental quotient slice;
+- aligns current program vocabulary with the Process Geometry foundation in `docs/42–45` and records the mapping in `docs/48-foundation-naming-audit.md`;
+- makes `TaskContinuationSignature`, `task_continuation_signature`, and `history_task_continuation_signature` the canonical names for the bounded future-task signature, retaining the historical `ProcessJet*` names as 0.0.x aliases so `jet` remains available for genuinely differential/local structure;
+- exposes qualified discovery names `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, `search_first_order_observer_presentations`, and `structural_first_order_observer_presentation_cost`, while retaining historical backend aliases;
+- reserves strong theory words such as task/process quotient, objectification, process rank, rank lowering, and analytic closure until their full semantics are implemented rather than promoting new classes by nomenclature alone;
+- further migration of repository-owned historical tests/docs from `aeg_shakespeare` remains follow-up work; no new implementation may depend on the deprecated namespace.
+
 ## 0.0.4 — canonical `process_geometry` namespace
 
-Second identity-migration release of Process Geometry. This release makes `process_geometry` the single implementation owner while preserving `aeg_shakespeare` as a deprecated compatibility alias. It also captures the current Process Geometry foundation and the first executable vertical-rank calibrations without promoting those research concepts into the Public API.
+Second identity-migration release of Process Geometry.
 
-### Namespace and release identity
+Highlights:
 
 - makes `process_geometry` the canonical Python import namespace;
 - moves the complete implementation tree under `src/process_geometry`;
@@ -15,20 +31,7 @@ Second identity-migration release of Process Geometry. This release makes `proce
 - changes public quickstarts, wheel smoke tests, and publish smoke tests to use `process_geometry` as the primary namespace;
 - retains `aeg_shakespeare` only as a deprecated compatibility path for code written against `0.0.1`–`0.0.3`;
 - establishes the dependency direction `process_geometry <- aeg_shakespeare alias` and adds release/hygiene requirements preventing canonical implementation code from depending on the historical namespace;
-- leaves the semantic public pipeline `Process -> Presentation -> Discovery -> Analysis` unchanged.
-
-### Foundation and executable research included in this snapshot
-
-- adds `docs/42–45`, `docs/THEORY_MAP.md`, and the associated naming/alignment audits that distinguish the horizontal distinguishability axis from the vertical semantic-compression/objectification/rank-lowering axis;
-- adds an explicit `process_geometry.experimental` incubation namespace without changing the stable root API;
-- adds `FiniteTaskQuotient` / `minimize_finite_task_process`, an exact finite deterministic H1/V1 calibration using stable partition refinement and future distinguishing continuations, deliberately narrower than a generic Process Geometry task quotient;
-- makes `TaskContinuationSignature`, `task_continuation_signature`, and `history_task_continuation_signature` the canonical names for the bounded future-task signature, retaining historical `ProcessJet*` names as `0.0.x` aliases so `jet` remains available for genuinely differential/local structure;
-- exposes qualified discovery names `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, `search_first_order_observer_presentations`, and `structural_first_order_observer_presentation_cost`, while retaining historical backend aliases;
-- adds `docs/50-aeg-translation-objectification-rank-lowering.md` and its executable research essay: signed unit histories compress by exact translation semantics, become reusable Translation objects, freely compose at a new rank, and lower compositionally with relation soundness plus a continuation-congruence red team;
-- adds `docs/51-aeg-addition-multiplication-rank-transition.md` and its executable research essay: Multiplication objectifies the uniform repeated-Addition endomorphism `R_k(T_a) = T_(ka)`, pure multiplicative words lower to Translation endomorphisms, and mixed Translation/Dilation words lower to the positive affine monoid;
-- verifies exact soundness of `T_a T_b = T_(a+b)`, `D_k D_l = D_(kl)`, and the AEG cross relation `D_k T_a = T_(ka) D_k`, connecting the finite second-rank relation to the existing A/M finite law and `[A, M] = A` without claiming V5 analytic closure;
-- reserves strong theory words such as generic task/process quotient, objectification, process rank, rank lowering, observer topology, and analytic closure until their full semantics earn an Experimental or Public abstraction;
-- keeps further migration of repository-owned historical tests/docs from `aeg_shakespeare` as follow-up work; no new implementation may depend on the deprecated namespace.
+- leaves the semantic public pipeline `Process -> Presentation -> Discovery -> Analysis` unchanged and promotes no new Process Geometry research abstractions solely because of the namespace migration.
 
 Historical PyPI distributions named `aeg-shakespeare` should not be installed alongside current `process-geometry` releases because they ship their own `aeg_shakespeare` package and may shadow the compatibility alias.
 
