@@ -1,24 +1,51 @@
-# AEG Shakespeare
+# Process Geometry
 
-**Shakespeare** is a process-representation library for building and searching compact process presentations.
+**Process Geometry** is an experimental process-first mathematical library for constructing, comparing, and discovering task-sufficient presentations of processes, and for developing the analytic language supported by those presentations.
 
-It is not primarily an ODE solver and does not take eigenvectors, Fourier modes, a preferred coordinate system, or a particular special-function vocabulary as its starting ontology. The project starts from process structure, asks how that structure can be represented compactly, searches alternative presentations, and only then admits the analytic or geometric language forced by a successful presentation.
+The project does not assume that a process arrives with a preferred coordinate system, vector space, Fourier basis, eigenmode decomposition, or special-function vocabulary. It starts from primitive process structure and asks:
 
-> Process ODE describes computation in a representation; Shakespeare provides machinery for searching for representations in which that computation is cheaper to express.
+1. what histories or compositions can occur;
+2. which distinctions matter to an observer or task;
+3. what quotient, local, topological, or higher-rank structure those distinctions induce;
+4. how that structure can be materialized as an economical **Presentation**;
+5. what analysis becomes natural once a successful presentation is found.
+
+The current research foundation has two complementary axes:
+
+```text
+horizontal:
+    distinguishability
+      -> exact quotient / topology
+      -> entropy / metric / differential structure when justified
+      -> task-sufficient presentations
+
+vertical:
+    free process
+      -> semantic compression
+      -> objectification
+      -> new primitive / higher rank
+      -> free higher-rank composition
+      -> compositional rank lowering
+```
+
+The vertical axis is constrained by a strong semantic requirement: every legal higher-rank composition must admit a coherent interpretation back into lower-rank process semantics. Where topology or analysis exists, stronger continuity and analytic-closure questions can be asked across ranks.
+
+AEG remains the first major model organism for this program because the arithmetic/hyperoperation tower naturally exhibits objectification and rank raising while also supporting function theory and analysis. The stronger conjecture that arithmetic-generated geometries provide universal or standard models is **not** assumed by the package.
 
 ## Status
 
-Latest PyPI release: **0.0.2**, a **pre-alpha research preview**.  
-Current `main` release version: **0.0.2**.
+Current release target: **`process-geometry==0.0.3`**, a pre-alpha research preview.
 
-The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not yet covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, and conceptual layer separation take priority over interface stability during this phase.
+Historical releases `0.0.1` and `0.0.2` were published on PyPI under the distribution name **`aeg-shakespeare`**. Starting with `0.0.3`, the release identity is **`process-geometry`**.
 
-See [`docs/34-release-0.0.2.md`](docs/34-release-0.0.2.md) for this release contract, [`docs/10-release-0.0.1.md`](docs/10-release-0.0.1.md) for the first-release contract, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
+The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, conceptual layer separation, and research traceability take priority over interface stability during this phase.
+
+See [`docs/46-release-0.0.3.md`](docs/46-release-0.0.3.md) for the current release contract, [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) for research-to-API promotion rules, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
 ## Install
 
 ```bash
-python -m pip install aeg-shakespeare
+python -m pip install process-geometry
 ```
 
 For development:
@@ -27,11 +54,25 @@ For development:
 python -m pip install -e '.[dev]'
 ```
 
-PyPI distribution: `aeg-shakespeare`  
-Python package: `aeg_shakespeare`  
-Supported CPython versions: **3.10 through 3.14**
+Distribution identity and import identity are intentionally separated in `0.0.3`:
 
-SymPy is an algebra/discovery backend. Shakespeare keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
+```text
+PyPI distribution:     process-geometry
+GitHub repository:     mountain/process-geometry
+Python import package: aeg_shakespeare   (temporary compatibility namespace)
+```
+
+So current imports remain:
+
+```python
+import aeg_shakespeare as pg
+```
+
+Do not install historical `aeg-shakespeare` releases side-by-side with `process-geometry==0.0.3`: both currently provide the same `aeg_shakespeare` import tree. Existing environments should uninstall the historical distribution before installing the new one.
+
+Supported CPython versions: **3.10 through 3.14**.
+
+SymPy is an algebra/discovery backend. Process Geometry keeps its own process-level semantics and does not define process equality by `sympy.simplify()`.
 
 ## Public API direction
 
@@ -88,18 +129,53 @@ from aeg_shakespeare.discovery import discover_polynomial_invariants
 from aeg_shakespeare.analysis.am import AMFunctionTheory
 ```
 
-The package root is now intentionally only a namespace router:
+The package root is intentionally only a namespace router:
 
 ```python
-import aeg_shakespeare as sh
+import aeg_shakespeare as pg
 
-sh.process
-sh.presentation
-sh.discovery
-sh.analysis
+pg.process
+pg.presentation
+pg.discovery
+pg.analysis
 ```
 
-Legacy root-level imports from the early `0.0.x` research-preview surface remain available lazily during the migration and emit `DeprecationWarning`; they are no longer part of the declared public root surface. See [`docs/API.md`](docs/API.md) for the detailed map and migration notes.
+Legacy root-level imports from the early `0.0.x` research-preview surface remain available lazily and emit `DeprecationWarning`; they are no longer part of the declared public root surface. See [`docs/API.md`](docs/API.md) for the detailed map and migration notes.
+
+## Why “Process Geometry”
+
+The name is not shorthand for “put a manifold on a dynamical system.” The current foundation distinguishes several levels.
+
+At the exact discrete level, future or task distinguishability can induce a continuation-stable quotient. Myhill–Nerode provides the canonical calibration: future-equivalence classes of a regular language are exactly the states of its unique minimal DFA.
+
+Topology enters only when observer-relative neighborhoods admit coherent local refinement and are compatible with process evolution. It then supplies robustness, boundary, convergence, continuity, connectedness, compactness, quotient/covering/homotopy structure, and the substrate for topological entropy.
+
+Across ranks, semantic compression may objectify a stable lower-rank process into a new primitive. That primitive can participate in a new free composition language, but the new language is grounded only if arbitrary legal composites admit **compositional rank lowering** back to lower-rank semantics.
+
+This gives Process Geometry both a horizontal and a vertical structure: geometry of distinctions within a process level, and geometry of objectification and semantic interpretation across process levels.
+
+See:
+
+- [`docs/42-process-geometry-from-distinguishability.md`](docs/42-process-geometry-from-distinguishability.md)
+- [`docs/43-myhill-nerode-and-the-topological-threshold.md`](docs/43-myhill-nerode-and-the-topological-threshold.md)
+- [`docs/44-objectification-semantic-compression-and-rank-lowering.md`](docs/44-objectification-semantic-compression-and-rank-lowering.md)
+- [`docs/45-lineage-objectification-and-analytic-closure.md`](docs/45-lineage-objectification-and-analytic-closure.md)
+
+## Shakespeare and Sonnets
+
+**Shakespeare** is retained as the repository's problem-driven research program, not as the software distribution identity.
+
+`sonnet/` contains sustained investigations of difficult or open problems. A Sonnet may freely prototype problem-local mathematics and interfaces, but it does not standardize the public API. Reusable structures move through the governance lifecycle:
+
+```text
+Sonnet
+  -> extraction candidate
+  -> Experimental
+  -> maturing
+  -> Public API
+```
+
+The purpose is to let real problems force common structure without freezing the first successful local abstraction.
 
 ## Quick start
 
@@ -121,20 +197,20 @@ The examples are entry points, not mathematical proofs. Complete classical and r
 
 ## Reading the source
 
-Shakespeare uses a **literate-programming** discipline. Mathematically substantial Python modules and tests should explain the mathematical pressure that created an abstraction before presenting its implementation.
+Process Geometry uses a **literate-programming** discipline. Mathematically substantial Python modules and tests should explain the mathematical pressure that created an abstraction before presenting its implementation.
 
 ```text
 classical historical path:
     analytic difficulty -> special construction -> geometry/algebra
 
-Shakespeare reconstruction:
+process-first reconstruction:
     primitive process -> history/constraint/invariant -> quotient geometry
     -> adequate function language -> classical formula as a shadow
 ```
 
 The canonical pendulum calibration therefore begins from constrained position/velocity dynamics rather than from `theta`, `sin(theta)`, or a preselected elliptic function. Likewise, the A/M layer begins from **Addition and Multiplication** and their finite/noncommutative process relations before logarithms or familiar harmonic-analysis names are introduced.
 
-A substantial test in `tests/classical/` or `tests/research/` is expected to be a complete mathematical vignette: question, primitive data, classical lineage, Shakespeare reconstruction, calibration statement, proof map, claim boundary, and bibliographic references.
+A substantial test in `tests/classical/` or `tests/research/` is expected to be a complete mathematical vignette: question, primitive data, classical lineage, Process Geometry reconstruction, calibration statement, proof map, claim boundary, and bibliographic references.
 
 See:
 
@@ -155,9 +231,9 @@ Recent calibrations have established several deliberately limited layers:
 
 `PresentationMorphism` was promoted only after independent KdV, resistor-network, and braid/Markov calibrations forced different aspects of the same role: cross-presentation completeness, task-semantic rather than syntactic confluence, and transformations between presentation spaces of different dimensions. The public object remains only an evidence-bearing record; composition and a universal verification semantics are still outside the API.
 
-The separation is intentional. For example, `ProcessCocycle` is a finite-process object; generic cohomology classes, central-extension groups, projective representations, and an automatic finite-to-infinitesimal bridge are not currently public abstractions. Likewise, the existence of oscillator spectral shadows does not make maximal spectral splitting a universal presentation objective.
+The separation is intentional. Current foundation notes about generic `ProcessGeometry`, observer topology, objectification, rank lowering, and analytic closure are research programs, **not** newly promoted public classes. Under [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md), such structures must survive independent domains and red teams before entering the public API.
 
-Physical and mathematical calibration problems do **not** define the package API. Pendulum, oscillator, Galilean mechanics, magnetic translations, KdV, resistor networks, and braid/Markov systems live in tests as probes of the common machinery.
+Physical and mathematical calibration problems do not define the package API. Pendulum, oscillator, Galilean mechanics, magnetic translations, KdV, resistor networks, braid/Markov systems, and Sonnets are probes of common machinery.
 
 ## Development and release checks
 
@@ -168,12 +244,12 @@ python -m build
 python -m twine check dist/*
 ```
 
-CI tests the same release gate on CPython 3.10 through 3.14, installs the built wheel into a fresh virtual environment, and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
+CI tests the same release gate on CPython 3.10 through 3.14, installs the built wheel into a fresh virtual environment, verifies `importlib.metadata.version("process-geometry")`, and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
 
 The evolving mathematical story is indexed in [`docs/README.md`](docs/README.md).
 
 ## License and citation
 
-Shakespeare is dedicated to the **public domain** using the Unlicense public-domain dedication text in [`LICENSE`](LICENSE). The intent is unrestricted use, modification, publication, redistribution, and reuse of both the software and its accompanying mathematical exposition.
+Process Geometry is dedicated to the **public domain** using the Unlicense public-domain dedication text in [`LICENSE`](LICENSE). The intent is unrestricted use, modification, publication, redistribution, and reuse of both the software and its accompanying mathematical exposition.
 
 Scholarly attribution is separate from software licensing. Mathematical and historical sources are cited in the literate tests and [`docs/REFERENCES.md`](docs/REFERENCES.md); software citation metadata is provided in [`CITATION.cff`](CITATION.cff).

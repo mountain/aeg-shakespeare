@@ -1,4 +1,8 @@
-"""AEG Shakespeare: process-first representation infrastructure.
+"""Process Geometry compatibility namespace.
+
+The distribution is published as ``process-geometry``.  During the 0.0.x
+transition the import namespace remains ``aeg_shakespeare`` so release identity
+can migrate independently from the larger source/import namespace change.
 
 The root package is intentionally a small navigation surface.  Public concepts
 are organized into four semantic namespaces:
@@ -8,7 +12,7 @@ are organized into four semantic namespaces:
 ``discovery`` -> how better presentations are searched,
 ``analysis`` -> what analytic/geometric language a presentation supports.
 
-Legacy root-level symbol imports from the 0.0.x research-preview API remain
+Legacy root-level symbol imports from the early 0.0.x research-preview API remain
 available lazily during the namespace migration, but they are no longer part of
 ``__all__`` and emit ``DeprecationWarning``.
 """
@@ -20,7 +24,7 @@ import warnings
 
 from . import analysis, discovery, presentation, process
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 __all__ = [
     "process",

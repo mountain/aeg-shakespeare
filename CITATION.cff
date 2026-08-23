@@ -1,20 +1,22 @@
 cff-version: 1.2.0
-message: "If you use AEG Shakespeare in research, please cite the software and the specific mathematical sources named by the relevant literate tests."
+message: "If you use Process Geometry in research, please cite the software and the specific mathematical sources named by the relevant literate tests."
 authors:
-  - name: "AEG Shakespeare contributors"
-title: "AEG Shakespeare"
+  - name: "Process Geometry contributors"
+title: "Process Geometry"
 type: software
-version: 0.0.2
-date-released: 2026-08-22
-repository-code: "https://github.com/mountain/aeg-shakespeare"
+version: 0.0.3
+date-released: 2026-08-23
+repository-code: "https://github.com/mountain/process-geometry"
 license: Unlicense
 keywords:
+  - process geometry
   - process representation
+  - semantic compression
   - symbolic mathematics
   - algebraic constraints
   - function theory
   - AEG
 abstract: >-
-  An experimental process-representation toolkit for ordered histories,
-  relation discovery, algebraic quotients, representation search, and
-  process-generated function theories.
+  An experimental process-first mathematical toolkit for histories,
+  task-relative quotients, presentation discovery, semantic compression,
+  and process-adapted analysis.

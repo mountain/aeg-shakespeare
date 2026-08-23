@@ -2,9 +2,28 @@
 
 ## Unreleased
 
+- namespace migration from `aeg_shakespeare` to a Process Geometry-native import path remains intentionally deferred; the `0.0.3` release changes distribution identity first.
+
+## 0.0.3 — Process Geometry release identity
+
+First pre-alpha release under the **Process Geometry** distribution identity.
+
+Highlights:
+
+- renames the PyPI distribution from `aeg-shakespeare` to `process-geometry` while preserving the existing `aeg_shakespeare` import namespace for this transition release;
+- moves the repository identity to `mountain/process-geometry` and updates package, citation, CI, and publish metadata accordingly;
+- retains the semantic public pipeline `Process -> Presentation -> Discovery -> Analysis`;
 - adds the minimal public `presentation.morphism.PresentationMorphism` record after independent KdV, resistor-network, and braid/Markov calibrations;
-- keeps morphism validity explicitly task-relative through caller-defined semantics and certificates, and allows heterogeneous source/target presentation types;
-- deliberately does not yet expose universal verification, morphism composition, inverses, normal forms, or category/groupoid structure.
+- keeps morphism validity explicitly task-relative through caller-defined semantics and certificates, allows heterogeneous source/target presentation types, and deliberately postpones universal verification, composition, inverses, normal forms, and category/groupoid structure;
+- adds the first-principles Process Geometry foundation: exact distinguishability quotients, the Myhill–Nerode minimal-presentation calibration, and the topological threshold;
+- adds the vertical objectification program: semantic compression, new primitives, free higher-rank composition, and compositional rank lowering;
+- records the lineage against algebraic theories, operads, Baez–Dolan slicing, polygraphs/computads, definitional extension, abstract interpretation, and sheaf-style locality;
+- distinguishes semantic, topological, and analytic cross-rank closure, with AEG retained as the first model organism rather than as a package-wide arithmetic restriction;
+- keeps Shakespeare/Sonnet as the problem-driven research program rather than the software distribution identity.
+
+Historical releases `0.0.1` and `0.0.2` were published under the PyPI distribution name `aeg-shakespeare`. The new `process-geometry` distribution should not be installed side-by-side with the historical distribution because both currently provide the same transitional `aeg_shakespeare` import package.
+
+`0.0.x` APIs remain experimental and may change without compatibility guarantees.
 
 ## 0.0.2 — semantic API and discovery expansion
 

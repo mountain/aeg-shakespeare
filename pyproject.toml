@@ -3,14 +3,14 @@ requires = ["setuptools>=70", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aeg-shakespeare"
-version = "0.0.2"
-description = "A process-representation library for discovering compact presentations from histories and relations."
+name = "process-geometry"
+version = "0.0.3"
+description = "A process-first mathematical library for task-relative presentations, discovery, and analysis."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 authors = [
-  {name = "Shakespeare contributors"}
+  {name = "Process Geometry contributors"}
 ]
 dependencies = [
   "sympy>=1.13"
@@ -35,7 +35,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/mountain/aeg-shakespeare"
+Repository = "https://github.com/mountain/process-geometry"
 
 [tool.setuptools.packages.find]
 where = ["src"]
