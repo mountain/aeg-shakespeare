@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- adds `docs/55-pendulum-lifted-clock-global-quotient.md` and a research executable essay globalizing the lifted-clock/geometric-phase chain of `docs/54` on the lemniscatic leaf;
+- certifies the exact sigma symmetry `sigma(U,Y)=(-U,iY)` with `sigma*omega = i omega` (hence `tau = i`), the complex-flow carrier ODE `dU/dz = Y`, and — from the invoked Jacobi half-period relations with `K(i) = varpi/2` — the primitive square period lattice `Lambda = Z omega_A + Z i omega_A` with `omega_A = sqrt(2) varpi`;
+- certifies the decoder-boundary analysis: the local chart becomes `0/0` at `U = +/-1`, but on the real `E = 0` loop the reached point `U = -1` has two distinct Cartesian lifts `v_x = +/- sqrt(2)`; the signed Jacobi continuation `q_x = cn dn` proves sheet transport `+1 -> -1 -> +1`, so the physical cover is the nontrivial unramified double cover of the real carrier loop and closes after `2 omega_A`;
+- reads off the clock-chain information contract: `R -> R/omega_A Z` forgets winding, and the real phase embeds in `C/Lambda` because `R cap Lambda = omega_A Z` — the third arrow is a complexification, not a further quotient; corrects the merged P10 period naming (`T_p = 2 omega_A` is the physical pendulum period, not the primitive carrier period);
+- keeps the result research-local: no Theory Map node/edge change, no public or experimental API pressure, and no promotion of TR-0001; the E = 0 leaf is the declared scope, other energy leaves remain open;
 - adds `docs/54-pendulum-elliptic-group-rank-lowering.md` and a research executable essay providing a second, geometric (non-arithmetic) calibration of V3–V4: the elliptic group law of the pendulum observable carrier as compositional rank lowering of the flow-translation schema;
 - certifies the exact Weierstrass reduction of the carrier cubic (lemniscatic leaf `j = 1728`), the chord-tangent group law with exact rational associativity/inverse spot checks, and Euler's addition theorem exactly as an invariant-differential identity modulo the curve ideal in both chord and tangent form, yielding Abel-Jacobi additivity modulo periods;
 - realizes the `E = 0` flow in closed form `U(t) = -sn^2(t/sqrt(2), i)` and numerically samples the 2-torsion base-point correction `P(t1) (+) P(t2) = P(t1+t2) (+) P(0)` and the expected corrected one-parameter subgroup law;

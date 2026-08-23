@@ -62,10 +62,11 @@ The documentation is organized as a mathematical/programming narrative rather th
 52. `52-canonical-completion-hypothesis.md` — first governed T1 theory record: a candidate marked-carrier -> global-completion line with competing hypotheses, information-loss boundaries, kill conditions, and explicit prohibition on premature API promotion.
 53. `53-process-volume-frontier-coarea-hypothesis.md` — governed T1 theory edge: the candidate coarea/frontier connection between H3 and H4 (discrete volume-frontier identity vs. classical action-period identity), without identifying energy with computational complexity.
 54. `54-pendulum-elliptic-group-rank-lowering.md` — research note: the elliptic group law of the pendulum carrier as a second, geometric calibration of V3–V4; Euler's addition theorem certified exactly as compositional rank lowering of the flow-translation schema, with red teams and no map/API promotion.
-55. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
-56. `REFERENCES.md` — shared mathematical bibliography.
-57. `RELEASE_CHECKLIST.md` — release gates.
-58. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
-59. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
+55. `55-pendulum-lifted-clock-global-quotient.md` — research note: realizes the lifted-clock/geometric-phase chain of docs/54 globally on the lemniscatic leaf — sigma symmetry with tau = i, the Jacobi-derived primitive square lattice `omega_A = sqrt(2) varpi`, the unramified mark cover with sheet transport through q_x = 0, the exact clock-chain kernels, and the correction of the merged P10 period naming.
+56. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
+57. `REFERENCES.md` — shared mathematical bibliography.
+58. `RELEASE_CHECKLIST.md` — release gates.
+59. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
+60. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
