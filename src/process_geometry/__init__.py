@@ -19,7 +19,7 @@ import warnings
 
 from . import analysis, discovery, presentation, process
 
-__version__ = "0.0.4"
+__version__ = "0.0.5.dev0"
 
 __all__ = [
     "process",
