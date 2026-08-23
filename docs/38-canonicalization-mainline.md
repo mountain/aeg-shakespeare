@@ -1,12 +1,12 @@
 # Canonicalization mainline
 
-**Status:** C1 and C2 merged; C3 physical Kepler moving-frame calibration active.  
-**Main baseline after C2:** `270c0d55bec06645a7765d9de70df6e40b08cc45`.  
-**Primary question:** can local canonicalization select a distinguished representation path whose induced observer ODE reduces representation complexity before any completion step is invoked?
+**Status:** C1–C3 passed and merged; C4 is parked as an unvalidated follow-up.  
+**Main baseline:** `6ce0bb41467880b4b3bb9153c44c44ccaf0bd52b`.  
+**Next programme step:** return to Sonnet 001 and reuse the validated canonicalization results there; do not continue expanding this calibration line first.
 
-## 1. Mainline order
+## 1. Frozen mainline result
 
-The intended AEG Analysis order is frozen as
+The validated AEG Analysis order is
 
 ```text
 primitive process calculus
@@ -19,84 +19,49 @@ primitive process calculus
 -> repeat until task closure.
 ```
 
-Completion and Hauffman/history geometry are downstream mechanisms. They must not replace the logically prior question of which representation path should be used to observe the original process.
-
-## 2. Canonicalization is local, not future-aware optimization
-
 For the current exact-constraint backend,
 
 \[
-\Phi(j^kF(x),g)=0,
+\Phi(j^kF(x),g)=0
 \]
 
-uses only finite current process data and observer parameters. Maintaining the normalization along the physical flow gives
+uses finite local process data and observer parameters only. Maintaining the normalization gives
 
 \[
 D_x\Phi\,F + D_g\Phi\,\dot g = 0,
 \]
 
-and, on a regular stratum,
+hence, on a regular stratum,
 
 \[
 \dot g = -(D_g\Phi)^{-1}D_x\Phi\,F.
 \]
 
-The observer ODE is therefore derived from the local normalization. It is not selected after inspecting the future trajectory or full propagator.
+The observer ODE is therefore a consequence of canonicalization, not a future-aware optimizer or an externally supplied dynamics.
 
-## 3. C1 — Riccati horizontal lift: passed and merged
+## 2. C1 — Riccati horizontal lift: merged
 
-Executable essay:
+PR #50, squash commit `29cb2803da1aa2557f323a91a2fa0903a57abd41`.
 
-```text
-tests/classical/test_riccati_canonical_horizontal_lift.py
-```
-
-Merged in PR #50, squash commit `29cb2803da1aa2557f323a91a2fa0903a57abd41`.
-
-Calibration:
+For
 
 \[
 \dot x=(x-t)(x-t-1),
 \]
 
-with affine observer `x=q+s y` and root normalization
+local root normalization derives `r_dot=1,d_dot=0` and the canonical lift
 
 \[
-\Phi_0=a+br+cr^2=0,
-\qquad
-\Phi_1=a+b(r+d)+c(r+d)^2=0.
+\dot y=y^2-y-1.
 \]
 
-The executable result is:
+Arbitrary affine observer rates reconstruct the same base process, while first-order coefficient-jet complexity changes from `2` in fixed/noncanonical controls to `0` canonically.
 
-- arbitrary local affine observer rates give different lifts of the same base Riccati process;
-- instantaneous root normalization reduces the physical shape to
-  \[
-  \kappa y(y-1),\qquad\kappa=cd;
-  \]
-- differentiating only the root constraints induces
-  \[
-  r'=1,\qquad d'=0;
-  \]
-- the canonical lift is
-  \[
-  \dot y=y^2-y-1;
-  \]
-- first-order coefficient-jet complexity is `2` in fixed and noncanonical controls and `0` canonically.
+## 3. C2 — coupled two-register horizontal lift: merged
 
-No new public API was needed.
+PR #51, squash commit `270c0d55bec06645a7765d9de70df6e40b08cc45`.
 
-## 4. C2 — coupled two-register horizontal lift: passed and merged
-
-Executable essay:
-
-```text
-tests/classical/test_coupled_diagonal_canonical_horizontal_lift.py
-```
-
-Merged in PR #51, squash commit `270c0d55bec06645a7765d9de70df6e40b08cc45`.
-
-Calibration:
+For
 
 \[
 \dot x=e^{-2t}y,
@@ -104,71 +69,41 @@ Calibration:
 \dot y=e^{2t}x,
 \]
 
-with determinant-one diagonal observer
+with determinant-one observer `u=p x, v=q y`, local balance plus `pq=1` derives
 
 \[
-u=p x,\qquad v=q y,\qquad pq=1,
+p'=p,
+\qquad q'=-q,
 \]
 
-and local balance
+and the canonical lift
 
 \[
-b_{12}p^2-b_{21}q^2=0.
-\]
-
-The executable result is:
-
-- many determinant-one diagonal observer paths reconstruct the same base process;
-- balance collapses the two cross-coupling coefficients to one modulus while `pq=1` fixes common scale gauge;
-- frozen observer rates fail to preserve the normalization;
-- differentiating the two local constraints induces
-  \[
-  p'=p,
-  \qquad
-  q'=-q;
-  \]
-- the canonical lift is
-  \[
-  \dot u=u+v,
-  \qquad
-  \dot v=u-v;
-  \]
-- coefficient-jet complexity is again `2 -> 0` relative to fixed/noncanonical controls;
-- the one-way-coupling stratum is excluded rather than silently forced into this canonicalization.
-
-C2 therefore rejects the explanation that C1 was merely a one-dimensional Riccati/root accident. No new public API was needed.
-
-## 5. C3 — Kepler radial moving frame: active physical pressure test
-
-Current executable essay:
-
-```text
-tests/classical/test_kepler_radial_canonical_horizontal_lift.py
-```
-
-Start from the planar Cartesian Kepler process and an arbitrary rotating observer. Define
-
-\[
-X=\cos\theta\,x+\sin\theta\,y,
+\dot u=u+v,
 \qquad
-Y=-\sin\theta\,x+\cos\theta\,y,
+\dot v=u-v.
 \]
 
-with analogous rotated velocities `U,V`. The only canonicalization is local radial alignment
+The same `2 -> 0` coefficient-jet reduction occurs, so C1 is not merely a one-dimensional root-normalization accident.
+
+## 4. C3 — Kepler radial moving frame: merged
+
+PR #52, squash commit `6ce0bb41467880b4b3bb9153c44c44ccaf0bd52b`.
+
+Starting from the planar Cartesian Kepler flow, use only the local radial alignment
 
 \[
-\Phi=Y=0,
+Y=0,
+\qquad X>0.
 \]
 
-on the branch `X>0`.
-
-No polar-coordinate ODE or angular-rate formula is supplied. Differentiating the normalization should force
+Differentiating that normalization uniquely gives
 
 \[
 \dot\theta=\frac{V}{X}=\frac{h}{X^2}.
 \]
 
-The intended exact horizontal-lift result is
+The canonical moving frame exposes
 
 \[
 \dot X=U,
@@ -178,7 +113,7 @@ The intended exact horizontal-lift result is
 \dot V=-\frac{UV}{X},
 \]
 
-so the observer angle disappears from the shape subsystem. Then
+with no remaining observer-angle dependence, and then
 
 \[
 h=XV,
@@ -186,23 +121,13 @@ h=XV,
 \dot h=0,
 \]
 
-and the original Cartesian flow is represented as
+so the Cartesian flow becomes a radial shape ODE plus a conserved parameter and an observer reconstruction quadrature.
 
-\[
-\dot X=U,
-\qquad
-\dot U=\frac{h^2}{X^3}-\frac{\mu}{X^2},
-\qquad
-\dot\theta=\frac{h}{X^2},
-\qquad
-\dot h=0.
-\]
+This is the first physical verification that canonicalization selects a distinguished observation path without changing the physical solution set.
 
-C3 is a physical moving-frame calibration. It does not yet claim an osculating-element backend or perturbed-Kepler `F_ren/F_res/F_comp` split.
+## 5. What is now established
 
-## 6. What C1+C2 already establish
-
-The mainline is no longer supported by one example. Two independent executable systems now share the same causal structure:
+Three independent executable calibrations support the same causal structure:
 
 ```text
 many representation paths
@@ -210,26 +135,26 @@ many representation paths
 -> differentiated normalization
 -> induced observer ODE
 -> distinguished horizontal lift
--> exact reduction in representation variation.
+-> reduced representation variation / shape-gauge separation.
 ```
 
-This supports the semantic role of canonicalization and observer connection. It still does **not** establish a universal optimizer/minimum principle.
+This is sufficient evidence to treat canonicalization as the primary research route. It does **not** prove a universal minimum principle or justify a large new public API.
 
-## 7. Remaining validation gates
+## 6. Parked C4 — perturbed Kepler eccentricity frame
 
-A serious canonicalization calibration must continue to distinguish:
+The branch `research/canonicalization-c4-eccentricity-frame` contains an unvalidated follow-up essay:
 
-1. **gauge multiplicity:** many representation paths exist over the same base process;
-2. **locality:** no future trajectory or propagator enters the canonicalization;
-3. **derivation:** observer motion follows from maintaining the normalization;
-4. **advantage:** the canonical path reduces a declared exact representation-complexity measure or separates shape from gauge variables;
-5. **honest completion:** residual directions that cannot be absorbed by observer motion remain explicit rather than being gauged away by definition.
+```text
+tests/classical/test_perturbed_kepler_eccentricity_canonicalization.py
+```
 
-After C3, the next Kepler step should introduce perturbation and ask whether the canonical physical frame naturally exposes `F_ren`, `F_res`, and `F_comp` before reconnecting to the existing restricted function-module completion essay.
+It explores whether alignment with the local eccentricity/Laplace–Runge–Lenz vector makes perturbation-induced eccentricity-magnitude change appear as `F_ren` and periapsis rotation as `F_res`, with zero completion in that carrier.
 
-## 8. API discipline
+This work is **parked, not accepted**. It has not completed the same red-team / CI / merge cycle as C1–C3, and no claim from it should be treated as part of the validated mainline.
 
-The current public/research surface remains
+## 7. API discipline
+
+The validated reusable surface remains
 
 ```text
 ProcessDirection
@@ -238,18 +163,19 @@ ObserverConnection
 CanonicalDecomposition
 ```
 
-Do not add a generic `Canonicalization`, `CanonicalLift`, `HorizontalPath`, `RepresentationComplexity`, bundle, curvature, or holonomy object merely because C1 and C2 succeeded. C3 is still using the exact-constraint backend. A generic canonicalization protocol should wait for an independent calibration that forces a genuinely different backend such as osculation, orthogonality, projection, or stationarity.
+Do not add `CanonicalLift`, `HorizontalPath`, a generic `Canonicalization` protocol, curvature/holonomy, or a universal representation-complexity functional merely from C1–C3.
 
-## 9. Reference boundary
+The next useful pressure should come from applying these validated semantics back to Sonnet 001: first choose/derive the canonical observation path, then ask what residual representation growth and Hauffman/history organization remain.
 
-Moving-frame normalization has classical antecedents, including Fels and Olver's moving-coframe algorithm. Riccati Lie-system structure, matrix linear dynamics, and central-force reduction are classical. The specific AEG/Shakespeare ordering
+## 8. Reference boundary
+
+Moving-frame normalization, Riccati Lie-system structure, matrix linear dynamics, central-force reduction, and eccentricity-vector mechanics all have classical antecedents. The project-specific contribution being tested is the ordering
 
 ```text
 local canonicalization
 -> derived observer ODE
 -> canonical process path
--> representation-complexity / shape-gauge comparison
--> completion only for genuine residuals
+-> decomposition / completion only after the path is fixed.
 ```
 
-is the project reconstruction and must remain explicitly distinguished from the classical source claims.
+All executable essays must continue to separate classical source claims from this AEG/Shakespeare reconstruction.
