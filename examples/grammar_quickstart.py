@@ -1,16 +1,16 @@
 """Generated-grammar quickstart using the semantic public namespaces.
 
-The process rule is supplied first. Shakespeare grows the finite presentation
-from a seed, discovers a grammar-wide return relation, factors it, and returns a
-presentation. The example deliberately avoids naming the classical spectral
-interpretation of the recurrence.
+The process rule is supplied first. Process Geometry grows the finite
+presentation from a seed, discovers a grammar-wide return relation, factors it,
+and returns a presentation. The example deliberately avoids naming the
+classical spectral interpretation of the recurrence.
 """
 
 import sympy as sp
 
-from aeg_shakespeare.presentation.grammar import discover_generated_presentation
-from aeg_shakespeare.presentation.search import SearchBudget
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.presentation.grammar import discover_generated_presentation
+from process_geometry.presentation.search import SearchBudget
+from process_geometry.process.local import ProcessSystem
 
 x, p = sp.symbols("x p")
 system = ProcessSystem((x, p), {x: p, p: -x}, name="R")
