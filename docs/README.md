@@ -49,8 +49,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 43. `43-myhill-nerode-and-the-topological-threshold.md` — exact discrete anchor: Myhill–Nerode gives distinguishability -> minimal presentation before topology, while the topological threshold requires local refinement and process continuity and adds robustness, boundary, compactness, covering/homotopy, and topological entropy.
 44. `44-objectification-semantic-compression-and-rank-lowering.md` — vertical Process Geometry program: semantic compression -> objectification -> new primitives -> free higher-rank composition, constrained by compositional rank lowering back to grounded lower-rank semantics; separates ontology growth from the horizontal distinguishability geometry.
 45. `45-lineage-objectification-and-analytic-closure.md` — lineage/red-team map against operads, Baez–Dolan slice constructions, polygraphs, definitional extension, abstract interpretation, and sheaves; identifies AEG as a model organism that couples rank raising to a native analysis of variation, and proposes semantic/topological/analytic closure across ranks.
-46. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-47. `REFERENCES.md` — shared mathematical bibliography.
-48. `RELEASE_CHECKLIST.md` — release gates.
+46. `46-release-0.0.3.md` — first release contract under the `process-geometry` distribution identity; keeps `aeg_shakespeare` as a temporary import namespace while retargeting GitHub/PyPI metadata and publishing.
+47. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+48. `REFERENCES.md` — shared mathematical bibliography.
+49. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
