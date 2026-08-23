@@ -31,19 +31,22 @@ The index is deliberately conservative: an entry records where to start reading;
 
 ## Simple pendulum: constrained mechanics to elliptic / Abelian structure
 
-**Problem / domains:** planar pendulum, holonomic constraint, first integrals, algebraic curves, elliptic integrals/functions, periods.
+**Problem / domains:** planar pendulum, holonomic constraint, first integrals, algebraic curves, elliptic integrals/functions, periods, state reduction and reconstruction.
 
-**Classical search terms:** simple pendulum, energy integral, elliptic curve, elliptic integral, genus one, Abelian differential, period lattice, Weierstrass form.
+**Classical search terms:** simple pendulum, nonlinear pendulum, energy integral, elliptic curve, elliptic integral, genus one, Abelian differential, period lattice, Weierstrass form, reflection symmetry.
 
-**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, canonical differential, lifted history, period obstruction.
+**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, quotient fiber, reconstruction boundary, canonical differential, lifted history, period obstruction.
 
-**Entry point:** `tests/classical/test_pendulum_process_geometry.py`.
+**Start here:** `docs/vignettes/simple-pendulum.md` — independent physical problem statement, nondimensional bridge, P0–P9 family dependency map, exact-vs-sampled evidence levels, reconstruction boundary, and open obligations.
 
-**Discovery / quotient sequence:**
+**Executable foundation:** `tests/classical/test_pendulum_process_geometry.py`.
+
+**Discovery / representation sequence:**
 
 - `tests/classical/test_pendulum_discovery_layer.py`
 - `tests/classical/test_pendulum_observer_selection.py`
 - `tests/classical/test_pendulum_structured_observers.py`
+- `tests/classical/test_pendulum_observable_quotient_fiber.py`
 
 **Global analytic sequence:**
 
@@ -58,7 +61,7 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Current open-theory entry:** `docs/52-canonical-completion-hypothesis.md`.
 
-**Theory role:** major H4/global-analysis calibration. The canonical-completion interpretation remains governed separately from the executable pendulum facts.
+**Theory role:** major H4/global-analysis calibration. The executable family now explicitly records the `Z2` information loss of the selected observable quotient; the stronger canonical-completion interpretation remains governed separately as T1 research.
 
 ---
 
