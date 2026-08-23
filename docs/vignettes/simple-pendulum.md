@@ -123,7 +123,7 @@ This bridge is part of the educational contract: the polynomial process in the t
 | **P8** | measure two explicit periods and normalized genus-one period matrix | `test_pendulum_period_matrix.py` | sampled numerical |
 | **P9** | distinguish projected crossings from surface intersections; recover symplectic orientation | `test_pendulum_cycle_intersection.py` | sampled numerical + orientation red team |
 | **P10** | exact Weierstrass reduction, chord-tangent group law, Euler/Abel-Jacobi additivity, lifted clock -> geometric phase quotient, objectification red teams | `tests/research/test_pendulum_elliptic_group_rank_lowering.py` | exact symbolic on the carrier; sampled numerical for the closed-form flow |
-| **P11** | global lifted-clock quotient: sigma symmetry with tau = i, square period lattice, Jacobi period identities, mark monodromy -1 through the branch points, clock-chain kernels | `tests/research/test_pendulum_lifted_clock_global_quotient.py` | exact symbolic for the symmetry/degeneration; sampled numerical for the complex periods |
+| **P11** | lifted-clock lattice and unramified mark cover: sigma symmetry with tau = i, Jacobi period relations giving the primitive square lattice, sheet transport through q_x = 0, clock-chain kernels | `tests/research/test_pendulum_lifted_clock_global_quotient.py` | exact symbolic for the symmetry/degeneration; theorem-invoked lattice with sampled numerical certification |
 
 The historical titles (`Discovery I/II/III`, `Pendulum II/III/IV/V`) arose at different times. `P0`–`P11` is the dependency map going forward; file names remain unchanged.
 
@@ -383,7 +383,7 @@ The larger marked-carrier -> global-completion proposal remains T1 in `docs/52-c
 
 ## 9. Next priorities
 
-1. **Branch transport through the decoder boundary.** Specify how the local sign/chart data continue through `U=+/-1`, and distinguish state continuation from history continuation. *Partially delivered on the `E=0` leaf:* `tests/research/test_pendulum_lifted_clock_global_quotient.py` certifies the decoder degeneration at `U=+/-1`, the mark monodromy `-1` through each turning point, and the lifted-clock/geometric-phase quotient; other energy leaves and full Cartesian continuation into other sheets remain open.
+1. **Branch transport through the decoder boundary.** Specify how the local sign/chart data continue through `U=+/-1`, and distinguish state continuation from history continuation. *Partially delivered on the `E=0` leaf:* `tests/research/test_pendulum_lifted_clock_global_quotient.py` certifies the decoder degeneration at `U=+/-1` as a chart artifact (the energy identity keeps two distinct states there), the sheet transport of the Z2 mark through `q_x = 0` on the nontrivial unramified double cover, and the lifted-clock/geometric-phase quotient with the primitive period `sqrt(2) varpi`; other energy leaves and the complex global cover remain open.
 2. **Cross-presentation calibration.** Compare the observable cubic with an independently derived classical reduction while tracking the differential/process clock and the exact equivalence notion.
 3. **Generic-energy continuation.** Repeat cycle/period analysis away from `E=0` and through controlled degenerations.
 4. **A/M mechanical bridge.** Define the second-order A/M process data needed for mechanics to arise from the calculus rather than from a post hoc reading.
