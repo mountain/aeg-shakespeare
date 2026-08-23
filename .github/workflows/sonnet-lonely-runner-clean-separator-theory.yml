@@ -1,0 +1,40 @@
+name: Sonnet Lonely Runner Clean-Separator Theory
+
+# Phase 13 has fast abstract red teams plus one heavier five-speed exact
+# application.  Run the latter once on Python 3.12 instead of multiplying it
+# across the routine compatibility matrix.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "sonnet/lonely-runner/python/clean_separator_theory.py"
+      - "sonnet/lonely-runner/python/five_speed_clean_certificate.py"
+      - "sonnet/lonely-runner/37-clean-separator-criterion-and-completion-obstruction.md"
+      - "tests/research/test_lonely_runner_clean_separator_theory.py"
+      - "tests/research/test_lonely_runner_five_speed_clean_certificate.py"
+      - ".github/workflows/sonnet-lonely-runner-clean-separator-theory.yml"
+
+jobs:
+  clean-separator-theory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      AEG_RUN_LR_CLEAN_CERTIFICATE: "1"
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependency
+        run: python -m pip install pytest
+
+      - name: Run clean-separator red teams and five-speed probe
+        run: |
+          python -m pytest -q -s \
+            tests/research/test_lonely_runner_clean_separator_theory.py \
+            tests/research/test_lonely_runner_five_speed_clean_certificate.py
