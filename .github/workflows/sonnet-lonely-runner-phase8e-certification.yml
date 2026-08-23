@@ -1,0 +1,39 @@
+name: Sonnet Lonely Runner Phase 8E Certification
+
+# Manual certification for the Phase 8E.0 activation-geometry essay and Phase
+# 8E controlled-interleaving essay. Routine CI audits their literate structure
+# without repeating the exact feasibility and 28-predicate DP searches on every
+# pull-request synchronization.
+on:
+  workflow_dispatch:
+
+jobs:
+  phase8e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package and pytest
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest
+
+      - name: Run Phase 8E.0 activation-geometry essay
+        env:
+          AEG_RUN_LR_CONTROLLED_INTERLEAVING: "1"
+        run: |
+          python -m pytest -q tests/research/test_lonely_runner_activation_geometry.py
+
+      - name: Run Phase 8E controlled-interleaving essay
+        env:
+          AEG_RUN_LR_CONTROLLED_INTERLEAVING: "1"
+        run: |
+          python -m pytest -q tests/research/test_lonely_runner_controlled_interleaving.py

@@ -1,0 +1,20 @@
+name: Sonnet Lonely Runner Phase 10C Tail Closure
+
+# Heavy infinite-tail closure certificate. Manual-only after the one-shot run.
+on:
+  workflow_dispatch:
+
+jobs:
+  phase10c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Phase 10C infinite-tail closure certificate
+        run: |
+          python sonnet/lonely-runner/python/infinite_contact_tail_closure.py

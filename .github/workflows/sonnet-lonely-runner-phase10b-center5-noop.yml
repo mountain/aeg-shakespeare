@@ -1,0 +1,20 @@
+name: Sonnet Lonely Runner Phase 10B Center5 No-op
+
+# Heavy exact semantic no-op certificate. Manual-only after the one-shot run.
+on:
+  workflow_dispatch:
+
+jobs:
+  phase10b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Phase 10B center5 semantic no-op certificate
+        run: |
+          python sonnet/lonely-runner/python/center5_semantic_noop.py

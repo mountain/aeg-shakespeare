@@ -1,0 +1,36 @@
+name: Sonnet Lonely Runner Refinement Placement
+
+# Research-only Phase 8D.2 calibration. The seven-point exact placement sweep is
+# manual-only; routine CI audits its executable essay without repeating the
+# expensive exact old-tree searches on every pull-request synchronization.
+on:
+  workflow_dispatch:
+
+jobs:
+  placement-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest
+
+      - name: Run Phase 8D.2 executable mathematical essay
+        env:
+          AEG_RUN_LR_REFINEMENT_PLACEMENT: "1"
+        run: |
+          python -m pytest -q tests/research/test_lonely_runner_refinement_aware_huffman.py
+
+      - name: Print Phase 8D.2 placement profile
+        run: |
+          python sonnet/lonely-runner/python/refinement_aware_huffman.py

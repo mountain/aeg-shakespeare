@@ -1,0 +1,20 @@
+name: Sonnet Lonely Runner Phase 9B-9C Consistency
+
+# Heavy independent consistency oracle. Manual-only after the one-shot audit.
+on:
+  workflow_dispatch:
+
+jobs:
+  consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Shakespeare
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run independent center4 local full-stratum oracle
+        run: |
+          python sonnet/lonely-runner/python/center4_local_full_oracle.py
