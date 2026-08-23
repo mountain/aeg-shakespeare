@@ -121,16 +121,25 @@ def test_small_amplitude_process_volume_has_harmonic_limit():
     assert sp.simplify(sp.limit(dimensionless_period, epsilon, 0, dir="+")) == 2 * sp.pi
 
 
-def test_separatrix_has_finite_bulk_volume_and_divergent_period():
-    epsilon = sp.symbols("epsilon", positive=True)
-    m = epsilon / 2
+def test_separatrix_has_finite_bulk_volume_and_divergent_clock():
+    # Use the separatrix trajectory directly instead of relying on a CAS limit
+    # of elliptic_k at its singular endpoint.
+    theta = sp.symbols("theta", real=True)
 
-    volume = 16 * (sp.elliptic_e(m) - (1 - m) * sp.elliptic_k(m))
-    dimensionless_period = 4 * sp.elliptic_k(m)
+    # At epsilon=2, the positive dimensionless momentum branch on
+    # -pi < theta < pi is p/A0 = 2*cos(theta/2).  The enclosed phase area is
+    # twice the positive-branch integral.
+    separatrix_volume = sp.integrate(
+        4 * sp.cos(theta / 2),
+        (theta, -sp.pi, sp.pi),
+    )
+    assert sp.simplify(separatrix_volume - 16) == 0
 
-    # E(m)->1 and (1-m)K(m)->0 as m->1-, hence V->16.
-    assert sp.simplify(sp.limit(volume, epsilon, 2, dir="-")) == 16
-    assert sp.limit(dimensionless_period, epsilon, 2, dir="-") == sp.oo
+    # Dimensionless travel time on the positive branch is
+    # dtheta/(2*cos(theta/2)); an antiderivative is
+    # log(sec(theta/2)+tan(theta/2)), which diverges at theta -> pi-.
+    clock_primitive = sp.log(sp.sec(theta / 2) + sp.tan(theta / 2))
+    assert sp.limit(clock_primitive, theta, sp.pi, dir="-") == sp.oo
 
 
 def test_local_action_form_energy_derivative_is_the_process_clock_form():
