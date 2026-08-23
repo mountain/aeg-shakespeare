@@ -8,7 +8,28 @@ The name **Process Geometry** should not depend on the conjecture that arithmeti
 
 A process determines what histories can occur. An observer or task determines which differences between those histories can be detected. Exact future distinguishability may already induce a canonical process-compatible quotient and, in favorable discrete cases, a minimal presentation. When distinguishability is supplied at varying observational resolutions and satisfies suitable local refinement conditions, it can further induce topology. Once a compatible process action is present, the growth of robust distinctions leads toward topological entropy and intrinsic complexity. Stronger regularity may then support metric, differential, and connection structures.
 
-The first-principles program is therefore not a single compulsory chain but a hierarchy with two early branches:
+This note develops the **horizontal** axis of Process Geometry: how distinctions within a fixed process rank become quotient, locality, topology, complexity, and analysis.
+
+A second, equally fundamental **vertical** axis is developed in `44-objectification-semantic-compression-and-rank-lowering.md`: semantic compression can objectify stable lower-rank processes into new primitives, which then generate a higher-rank process language whose legal compositions must admit coherent rank-lowering interpretation back to grounded lower-rank semantics.
+
+Together the two axes give the current mother picture:
+
+```text
+vertical ontology growth
+
+Sigma_r -> free histories -> semantic compression -> objectification -> Sigma_(r+1)
+                 |                                              |
+                 |                                              v
+                 |                                      free higher-rank histories
+                 |                                              |
+                 |                         compositional rank lowering
+                 |<---------------------------------------------+
+                 |
+                 +--> horizontal distinguishability geometry at each rank
+                      exact quotient / topology / entropy / metric / differential structure
+```
+
+Within the horizontal axis, the first-principles program is not a single compulsory chain but a hierarchy with two early branches:
 
 ```text
 Process / histories
@@ -31,9 +52,9 @@ minimal task presentation              topology
 
 The central methodological claim is:
 
-> Geometry enters the theory because distinguishability can acquire stable local and global structure under process continuation, not because a manifold, metric, coordinate system, or arithmetic model was supplied in advance.
+> Geometry enters the theory because process generation and observer-relative distinguishability acquire stable relational, local, and compositional structure—not because a manifold, metric, coordinate system, or arithmetic model was supplied in advance.
 
-`43-myhill-nerode-and-the-topological-threshold.md` provides the first exact calibration and sharpens the point where topology becomes legitimate.
+`43-myhill-nerode-and-the-topological-threshold.md` provides the first exact horizontal calibration and sharpens the point where topology becomes legitimate. `44-objectification-semantic-compression-and-rank-lowering.md` supplies the vertical rank-raising constraint that was missing from the earlier formulation.
 
 This is the sense in which Process Geometry may be a general theory independent of the stronger Arithmetic Universality program.
 
@@ -405,7 +426,7 @@ A first-principles reading is:
 - **Discovery** searches over quotients, observers, and realizations;
 - **Analysis** studies structures and dynamics on, or between, the induced geometries.
 
-Thus representation search is not an adjacent feature. It is the computational problem of finding economical realizations of task-relative process structure.
+The vertical program in `44` adds an important extension: presentation search may also decide which semantic composites deserve primitive status and how higher-rank presentations lower compositionally to lower-rank semantics. Thus representation search can become ontology search rather than only coordinate search.
 
 ---
 
@@ -510,11 +531,13 @@ Sonnet 002 is a natural stress test because one algebraic/dynamical process may 
 
 The general Process Geometry program does not assume Addition, Multiplication, hyperoperations, number systems, or arithmetic coordinates.
 
-Arithmetic enters through a separate and stronger research hypothesis.
+Arithmetic enters through two separate research roles.
 
-AEG began from arithmetic-expression processes and found that Addition/Multiplication and their higher relatives generate striking geometric structures. The current universality conjecture asks, roughly, whether arithmetic-generated process geometries may provide universal covers or standard Lie-type models for a much broader class of process geometries.
+First, the arithmetic/hyperoperation tower is a **model organism for the vertical objectification program**: repeated lower-rank process structure can become semantically stabilized, objectified, and reused as a higher-rank primitive, provided higher-rank compositions admit coherent lower-rank interpretation.
 
-Schematically, the stronger conjectural layer has the form
+Second, a stronger and logically independent **Arithmetic Geometric Universality** conjecture asks whether arithmetic-generated process geometries provide universal covers or standard Lie-type models for a much broader class of process geometries.
+
+Schematically, the stronger geometric conjectural layer has the form
 
 \[
 \mathcal G
@@ -524,7 +547,7 @@ Schematically, the stronger conjectural layer has the form
 
 with the additional hypothesis that important classes of \(\widetilde{\mathcal G}\) arise from the arithmetic/hyperoperation tower.
 
-This must remain logically separate:
+These claims must remain separate:
 
 \[
 \boxed{
@@ -534,11 +557,17 @@ This must remain logically separate:
 
 \[
 \boxed{
-\text{Arithmetic Universality is a conjecture about distinguished models within it.}
+\text{Objectification Universality concerns how process ontologies grow;}
 }
 \]
 
-If Arithmetic Universality fails, the first-principles case for Process Geometry should remain intact.
+\[
+\boxed{
+\text{Arithmetic Geometric Universality concerns distinguished geometric models.}
+}
+\]
+
+Failure of either universality conjecture should not invalidate the first-principles Process Geometry program.
 
 ---
 
@@ -556,7 +585,7 @@ Provide exact finite calibrations of observer-relative distinguishability.
 
 ### Presentation
 
-Realizes a task-sufficient quotient or other process structure in a computational carrier.
+Realizes a task-sufficient quotient or other process structure in a computational carrier. Under the vertical program it may eventually also record generator rank and semantic lowering obligations, but this is not yet public API.
 
 ### PresentationMorphism
 
@@ -564,17 +593,17 @@ Carries evidence that two possibly heterogeneous presentations preserve declared
 
 ### Cost / Pareto search
 
-Measures the operational cost of realizations. A future theory should distinguish implementation cost from intrinsic distinguishability complexity.
+Measures the operational cost of realizations. A future theory should distinguish implementation cost from intrinsic distinguishability complexity and include cross-rank lowering/verification cost.
 
 ### Discovery
 
-Searches for useful quotients, invariants, observers, and presentations rather than taking the conventional coordinates as ontology.
+Searches for useful quotients, invariants, observers, presentations, and potentially objectification candidates rather than taking the conventional coordinates or primitive ontology as fixed.
 
 ### Analysis
 
 Studies continuous/local structures and may eventually host observer-relative differential and connection constructions.
 
-No new generic API follows automatically from this note. Under `docs/GOVERNANCE.md`, concepts such as a general `Observer`, `ProcessGeometry`, `EntropyProfile`, or `ObserverConnection` must be incubated and cross-domain tested before public promotion.
+No new generic API follows automatically from these notes. Under `docs/GOVERNANCE.md`, concepts such as a general `Observer`, `ProcessGeometry`, `SemanticObject`, `Rank`, `Lowering`, `EntropyProfile`, or `ObserverConnection` must be incubated and cross-domain tested before public promotion.
 
 ---
 
@@ -598,27 +627,32 @@ When is process evolution continuous in the observer-induced topology? What does
 
 Does discriminatory order of observers systematically correspond to quotient order and topology refinement? Where does this fail?
 
-### Q5. Intrinsic complexity
+### Q5. Objectification
+
+Which semantic classes are stable and compositional enough to become new primitives rather than merely quotient states or macros?
+
+### Q6. Compositional rank lowering
+
+When does a higher-rank free language admit an interpretation into lower-rank semantics that preserves generator meaning, composition, and relations?
+
+### Q7. Intrinsic complexity
 
 Can task-relative distinguishability growth provide rigorous lower bounds on the size, memory, branching, or code length of any task-sufficient presentation?
 
-### Q6. Presentation overhead
+### Q8. Cross-rank complexity
 
-Can we define a useful excess-cost quantity measuring how far a concrete presentation lies above an intrinsic process-complexity lower bound?
+When does objectification actually reduce total cost after discovery, higher-rank search, and rank-lowering verification are all counted?
 
-### Q7. Differential emergence
+### Q9. Differential emergence
 
 Which continuous process geometries admit canonical local variations, derivatives, observer paths, or connections without importing an arbitrary ambient linear structure?
 
-### Q8. Cross-observer transport
-
-When do different observer-induced geometries admit canonical comparison maps or local-to-global formulas?
-
-### Q9. Cross-domain survival
+### Q10. Cross-domain survival
 
 Can the same foundations explain at least:
 
 - Myhill–Nerode exact minimization;
+- arithmetic objectification/rank raising;
 - Sonnet 001 history/representation compression;
 - Sonnet 002 arithmetic observers;
 - Sonnet 003 engineering task/model equivalence;
@@ -633,18 +667,23 @@ If the framework cannot survive this cross-domain pressure, `Process Geometry` i
 The following statements are deliberately **not** claimed.
 
 1. Every task quotient needs topology.
-2. Every process has a canonical metric.
-3. Every observer-induced indistinguishability relation is an equivalence relation.
-4. Every such relation generates a Hausdorff topology.
-5. Every observer topology makes process evolution continuous.
-6. Every process topology carries a differentiable or manifold structure.
-7. Topological entropy equals computational complexity in general.
-8. Shannon entropy equals minimal runtime or memory cost.
-9. Every representation is a presentation.
-10. Every presentation is lossless.
-11. Every observer family admits a canonical connection.
-12. Every Process Geometry has a classical universal cover.
-13. Arithmetic-generated geometries are already known to be universal.
+2. Every semantic quotient should be objectified.
+3. Every recurring pattern deserves primitive status.
+4. Lowering a high-rank primitive individually is enough; composition and relation soundness are required.
+5. Every objectification is conservative or invertible.
+6. Every process has a canonical metric.
+7. Every observer-induced indistinguishability relation is an equivalence relation.
+8. Every such relation generates a Hausdorff topology.
+9. Every observer topology makes process evolution continuous.
+10. Every process topology carries a differentiable or manifold structure.
+11. Topological entropy equals computational complexity in general.
+12. Shannon entropy equals minimal runtime or memory cost.
+13. Every representation is a presentation.
+14. Every presentation is lossless.
+15. Every observer family admits a canonical connection.
+16. Every Process Geometry has a classical universal cover.
+17. Arithmetic already proves Objectification Universality.
+18. Arithmetic-generated geometries are already known to be universal.
 
 The theory should become stronger by proving additional structure in specific classes, not by assuming the strongest geometry at the outset.
 
@@ -662,34 +701,38 @@ Use Myhill–Nerode, task signatures, continuation-stable history quotients, and
 
 Construct observer neighborhood systems and test basis/refinement conditions, separation axioms, quotient descent, and continuity of process evolution. Include deliberate non-\(T_0\), non-Hausdorff, and discontinuous red teams.
 
-### Stage C — intrinsic complexity versus presentation cost
+### Stage C — objectification and rank lowering
 
-Use source coding, automata minimization, symbolic dynamics, and bounded task quotients as calibrations where lower bounds are known independently.
+Use arithmetic, compiler/IR, automata abstraction, and rewrite-system calibrations to distinguish semantic objectification from macros/caching and require coherent lowering of novel high-rank compositions.
 
-### Stage D — continuous local structure
+### Stage D — intrinsic complexity versus presentation cost
+
+Use source coding, automata minimization, symbolic dynamics, bounded task quotients, and cross-rank cost accounting as calibrations where lower bounds are known independently.
+
+### Stage E — continuous local structure
 
 Study observer-induced neighborhoods for ODE/flow problems and determine when local process variations recover a meaningful differential calculus.
 
-### Stage E — observer connection
+### Stage F — observer connection
 
 Use multi-observer problems, especially arithmetic local/global structure and engineering cross-model tasks, to test whether transport between induced geometries has stable common semantics.
 
-### Stage F — arithmetic universality
+### Stage G — universality questions
 
-Only after the general Process Geometry layer is independently viable should arithmetic-generated universal/standard models be tested as a stronger classification hypothesis.
+Only after the general horizontal and vertical Process Geometry layers are independently viable should Objectification Universality and Arithmetic Geometric Universality be tested as stronger hypotheses.
 
 ---
 
 ## 16. Working definition
 
-A deliberately conservative working definition is:
+A deliberately conservative working definition is now:
 
-> **Process Geometry studies intrinsic structures forced by process histories, continuation, observer-relative distinguishability, and task-relative quotients, together with presentations that realize those structures for reasoning and computation.**
+> **Process Geometry studies how process histories are generated, semantically identified, and—when stable—objectified into higher-rank primitives whose compositions remain interpretable at lower ranks; within and between these ranks it studies the intrinsic structures induced by observer-relative distinguishability, including task quotients, topology, complexity, and—where justified—metric and differential geometry.**
 
-A more operational version is:
+A shorter operational version is:
 
-> **Recover the structure forced by what a process can distinguish; where that structure becomes local, recover its geometry; then find economical task-sufficient presentations.**
+> **Discover what distinctions a process must preserve, compress stable semantics into reusable objects, let those objects generate new process spaces, and preserve meaning through compositional rank lowering.**
 
-The decisive point is that `geometry` is not decorative language. It names the local and global structure that becomes available once distinguishability supports robust neighborhoods, quotients, refinement, continuity, topology, entropy, and—where additional regularity permits—metric and differential structure.
+The decisive point is that `geometry` is not decorative language. It names the relational structure of free generation and semantic identification, the local/global structure that appears when distinguishability becomes topological, and the cross-rank structure introduced when compressed meanings become new generators.
 
-The project should now test this claim rather than assume it.
+The project should now test this two-axis theory rather than assume it.
