@@ -11,7 +11,7 @@ The arrows describe the intended conceptual dependency: a process exists before 
 
 The canonical Python package is `process_geometry`. The historical `aeg_shakespeare` package is a deprecated compatibility alias only; it is not a second implementation owner.
 
-The terminology in this document follows `docs/42–45` and the naming rules in `docs/48-foundation-naming-audit.md`. In particular, **task/process quotient**, **jet**, and **objectification** are now reserved for their stronger foundation meanings.
+The terminology in this document follows `docs/42–45` and the naming rules in `docs/48-foundation-naming-audit.md`. In particular, **task/process quotient**, **jet**, and **objectification** are reserved for their stronger foundation meanings.
 
 ## 1. `process_geometry.process`
 
@@ -230,3 +230,32 @@ More precisely:
 - `analysis` may consume process/presentation outputs, but core process ontology must not know about Abelian periods, Fourier transforms, or other downstream languages.
 
 The foundation adds a second discipline: **large theory words are not API rewards**. Names such as `ProcessGeometry`, `Objectification`, `ProcessRank`, `RankLowering`, `ObserverTopology`, and `AnalyticClosure` remain unclaimed until independent executable structures and red teams justify them.
+
+## 7. `process_geometry.experimental`
+
+Experimental is not a fifth stable layer in the public pipeline. It is an explicitly unstable incubation namespace governed by `docs/GOVERNANCE.md` and reviewed against `docs/THEORY_MAP.md`.
+
+The first theory-to-code alignment probe is:
+
+- `FiniteTaskQuotient`
+- `DistinguishingContinuation`
+- `minimize_finite_task_process`
+
+For a **finite deterministic** state carrier, finite step alphabet, total closed transition rule, and hashable task observation, this experiment computes the exact coarsest continuation-stable task quotient. It also constructs the induced quotient transition and supplies a future continuation distinguishing every pair of distinct quotient classes.
+
+This is intentionally stronger than bounded `TaskContinuationSignature`: there is no continuation-depth cutoff in the declared finite class. It is also intentionally narrower than a generic Process Geometry task quotient: no claims are made about infinite, nondeterministic, probabilistic, continuous, approximate, or resource-bounded processes.
+
+Example:
+
+```python
+from process_geometry.experimental import minimize_finite_task_process
+
+quotient = minimize_finite_task_process(
+    states,
+    steps,
+    transition,
+    observe,
+)
+```
+
+Experimental symbols are not re-exported from `process_geometry` root and carry no compatibility promise. Their purpose is to test whether a Theory Map node has acquired enough executable semantics to survive broader calibrations.

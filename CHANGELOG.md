@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- adds `docs/49-theory-implementation-structural-alignment.md`, mapping H0–H4 and V0–V5 in the living Theory Map to current executable implementations, calibrated shadows, and missing semantics;
+- adds an explicit `process_geometry.experimental` incubation namespace without changing the stable root API;
+- adds `FiniteTaskQuotient` / `minimize_finite_task_process`, an exact finite deterministic H1/V1 calibration using stable partition refinement and future distinguishing continuations, deliberately narrower than a generic Process Geometry task quotient;
+- refines `docs/THEORY_MAP.md` so H1/V1 now distinguish bounded public task-continuation evidence from the exact finite Experimental quotient slice;
 - aligns current program vocabulary with the Process Geometry foundation in `docs/42–45` and records the mapping in `docs/48-foundation-naming-audit.md`;
 - makes `TaskContinuationSignature`, `task_continuation_signature`, and `history_task_continuation_signature` the canonical names for the bounded future-task signature, retaining the historical `ProcessJet*` names as 0.0.x aliases so `jet` remains available for genuinely differential/local structure;
 - exposes qualified discovery names `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, `search_first_order_observer_presentations`, and `structural_first_order_observer_presentation_cost`, while retaining historical backend aliases;

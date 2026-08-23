@@ -28,8 +28,9 @@ The current foundation is developed primarily in:
 - `44-objectification-semantic-compression-and-rank-lowering.md`
 - `45-lineage-objectification-and-analytic-closure.md`
 - `48-foundation-naming-audit.md`
+- `49-theory-implementation-structural-alignment.md`
 
-Those notes contain the argument. This file is the compact map used for engineering review.
+Those notes contain the argument and structural audits. This file is the compact map used for engineering review.
 
 ---
 
@@ -101,7 +102,7 @@ Current software has strong concrete support here through `process.history`, `pr
 
 ### H1 — Exact task/future distinguishability
 
-**Question:** Which histories are indistinguishable under every declared task-relevant continuation?
+**Question:** Which histories or states are indistinguishable under every declared task-relevant continuation?
 
 The canonical exact calibration is Myhill–Nerode:
 
@@ -113,15 +114,28 @@ The canonical exact calibration is Myhill–Nerode:
 \text{minimal DFA presentation}.
 \]
 
-Current `TaskContinuationSignature` machinery is only a **bounded finite witness** for this idea. It is not yet a generic exact quotient/minimization framework.
+The public `TaskContinuationSignature` machinery remains a **bounded finite witness** for this idea: it compares all continuations only through a declared finite depth.
 
-**Maturity:** theorem-level external calibration; partial bounded implementation.
+The Experimental namespace now contains a narrower but exact finite slice:
+
+```text
+process_geometry.experimental.FiniteTaskQuotient
+process_geometry.experimental.minimize_finite_task_process
+```
+
+For a finite deterministic state carrier with a finite step alphabet and a total task observation, stable partition refinement computes the coarsest equivalence preserving the task under **all** finite continuations. The quotient carries an induced deterministic transition, and every pair of distinct quotient classes is accompanied by an explicit distinguishing continuation.
+
+This exact finite slice does **not** establish a generic quotient/minimization framework for infinite, nondeterministic, probabilistic, continuous, approximate, or resource-bounded processes.
+
+**Maturity:** theorem-level classical anchor; bounded public witness; exact finite Experimental implementation.
 
 ### H2 — Topological threshold
 
 **Question:** When do finite-resolution distinctions form stable local neighborhoods, and when is process evolution compatible with them?
 
 Topology is not assumed for every process. It becomes justified only when observer neighborhoods satisfy suitable refinement/locality conditions. Stronger structures such as uniformity, quasi-uniformity, metric structure, or separation axioms may or may not be present.
+
+The exact finite H1 quotient does not by itself provide locality or topology.
 
 **Maturity:** foundational research program; no generic topology API.
 
@@ -131,7 +145,9 @@ Topology is not assumed for every process. It becomes justified only when observ
 
 This layer connects topological/metric entropy, coding, history growth, and the proposed distinction between intrinsic complexity and implementation overhead.
 
-**Maturity:** classical anchors exist; Process Geometry correspondence remains a research question.
+Current `BoundaryProfile`/Huffman machinery provides useful finite growth and coding calibrations, but no generic Process Geometry entropy object or intrinsic-complexity lower-bound contract exists.
+
+**Maturity:** classical anchors and concrete coding shadows exist; Process Geometry correspondence remains a research question.
 
 ### H4 — Analysis of variation
 
@@ -157,15 +173,21 @@ Current history, grammar, rewrite, and construction machinery provide several co
 
 ### V1 — Semantic compression
 
-Histories may be identified only relative to declared semantics. This is stronger than syntactic simplification, common-subexpression elimination, or short coding.
+Histories or states may be identified only relative to declared semantics. This is stronger than syntactic simplification, common-subexpression elimination, or short coding.
 
-**Maturity:** partially represented through task signatures, explicit relations, presentation certificates, and problem-local quotients; no generic semantic-compression object.
+The new finite deterministic `FiniteTaskQuotient` is the first generic package object that fully realizes this idea in one explicit process class: its classes are determined by equality of task observations under every finite continuation, not by state identity or syntax.
+
+Other repository mechanisms—rewrite normalization, observable elimination, finite coding, and ordinary primitive proposals—remain distinct and should not be called semantic compression unless their declared semantics justify the identification.
+
+**Maturity:** exact finite Experimental implementation plus bounded/public and problem-local shadows; no generic semantic-compression abstraction across process classes.
 
 ### V2 — Objectification
 
 A stable lower-rank semantic process becomes a new reusable primitive.
 
 This is **not** satisfied by `PrimitiveProposal` alone. A proposal is only a candidate. Objectification matters when the new object participates in a new compositional language.
+
+The H1/V1 exact quotient does not imply objectification: quotient classes are semantic states, not automatically next-rank generators.
 
 **Maturity:** theory and research program; not a public API abstraction.
 
@@ -189,7 +211,7 @@ Every legal higher-rank composite must admit coherent interpretation in an expli
 
 Generator-by-generator expansion is insufficient. Relations must lower soundly as well.
 
-**Maturity:** defining theoretical constraint; no generic public implementation.
+**Maturity:** defining theoretical constraint; no generic public or Experimental implementation.
 
 ### V5 — Cross-rank closure
 
@@ -229,7 +251,11 @@ Searches candidate observables, presentations, languages, quotients, or structur
 
 Provides mathematical languages for variation and global structure supported by successful presentations.
 
-The next structural-development stage should ask where this software layering matches the Theory Map and where it only provides local shadows.
+### Experimental
+
+Hosts explicitly unstable theory-to-code probes. Experimental is not a fifth stable ontology layer and is never re-exported from the package root merely because an experiment works.
+
+The exact finite task quotient is the first Experimental probe added specifically to close a Theory Map implementation gap rather than to support one named classical problem.
 
 ---
 
@@ -269,7 +295,7 @@ Every substantial proposed abstraction should be located using one of these stat
 | **research hypothesis** | plausible theoretical structure not yet earned by implementation/evidence |
 | **open conjecture** | stronger claim whose truth is not assumed by the framework |
 
-A code symbol and a theory node need not have the same maturity. For example, a concrete `ObserverConnection` class can exist while the general observer-connection theory remains experimental.
+A code symbol and a theory node need not have the same maturity. For example, a concrete `ObserverConnection` class can exist while the general observer-connection theory remains experimental. Likewise `FiniteTaskQuotient` can be exact in its finite deterministic class while the general theory of task quotients remains broader and unsettled.
 
 ---
 
@@ -311,14 +337,16 @@ When theory and code disagree, record the disagreement explicitly. Do not silent
 
 ## 9. Current high-value structural questions
 
-After the naming audit, the next theory/implementation alignment should investigate at least:
+The first structural-alignment pass has answered one narrow part of the previous list: bounded `TaskContinuationSignature` can indeed be complemented by an exact/minimized task quotient in the finite deterministic class. The broader H1 problem remains open outside that class.
 
-1. whether bounded `TaskContinuationSignature` can lead to an exact/minimized task quotient layer;
-2. what concrete observer-neighborhood object would be the smallest legitimate topological-threshold experiment;
-3. whether presentation cost can be separated into intrinsic distinguishability complexity and realization overhead in a calibration where both are independently known;
-4. what exact executable structure constitutes the first genuine objectification rather than a `PrimitiveProposal`;
-5. how to represent a higher-rank grammar together with compositional rank lowering and relation soundness;
-6. whether AEG supplies the first calibration of semantic + analytic closure across ranks;
+The next high-value questions are:
+
+1. what exact executable structure constitutes the first genuine objectification rather than a `PrimitiveProposal`;
+2. how to represent a higher-rank grammar together with compositional rank lowering and relation soundness;
+3. which small AEG calibration can demonstrate V2 -> V3 -> V4 without hiding the lowering semantics in hand-written formulas;
+4. what concrete observer-neighborhood object would be the smallest legitimate topological-threshold experiment;
+5. whether the exact finite task quotient plus `BoundaryProfile`/Huffman can separate intrinsic distinguishability complexity from realization overhead in a calibration where both are independently known;
+6. whether AEG then supplies a first calibration of semantic + analytic closure across explicit ranks;
 7. which current `PresentationMorphism` semantics survive when used between ranks rather than only between presentations at one level.
 
 These are research questions, not a backlog of API classes to create.
