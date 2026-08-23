@@ -97,20 +97,23 @@ def test_semantic_compression_identifies_history_not_syntax():
         assert interpret_lower(short, initial) == interpret_lower(long, initial)
 
 
-def test_translation_semantics_is_stable_under_arbitrary_continuation():
+def test_translation_semantics_is_stable_under_bounded_free_continuations():
     left = ProcessWord(("S", "P", "S"))
     right = ProcessWord(("S",))
-    continuations = (
-        ProcessWord(),
-        ProcessWord(("S",)),
-        ProcessWord(("P", "P", "S")),
-    )
 
     assert displacement(left) == displacement(right)
-    for continuation in continuations:
-        assert displacement(left.compose(continuation)) == displacement(
-            right.compose(continuation)
-        )
+
+    # The algebraic reason is q(hk)=q(h)+q(k).  This finite exhaustive sweep is
+    # only an executable calibration of that identity, not the proof itself.
+    for length in range(5):
+        for items in product(("S", "P"), repeat=length):
+            continuation = ProcessWord(tuple(items))
+            assert displacement(left.compose(continuation)) == displacement(
+                right.compose(continuation)
+            )
+            assert displacement(left.compose(continuation)) == (
+                displacement(left) + displacement(continuation)
+            )
 
 
 def test_objectified_primitives_open_a_new_free_composition_space():
