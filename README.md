@@ -34,8 +34,7 @@ AEG remains the first major model organism for this program because the arithmet
 
 ## Status
 
-Latest PyPI release: **`process-geometry==0.0.3`**.  
-Current `main` release target: **`process-geometry==0.0.4`**, a pre-alpha research preview.
+Current release: **`process-geometry==0.0.4`**, a pre-alpha research preview.
 
 Historical releases `0.0.1` and `0.0.2` were published on PyPI under the distribution name **`aeg-shakespeare`**. Starting with `0.0.3`, the distribution identity is **`process-geometry`**. Starting with `0.0.4`, the canonical Python import namespace is **`process_geometry`**.
 
