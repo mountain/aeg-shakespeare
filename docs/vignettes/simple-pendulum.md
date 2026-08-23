@@ -122,8 +122,9 @@ This bridge is part of the educational contract: the polynomial process in the t
 | **P7** | continue one explicit lifted contour and integrate a period | `test_pendulum_period_contour.py` | sampled numerical with refinement check |
 | **P8** | measure two explicit periods and normalized genus-one period matrix | `test_pendulum_period_matrix.py` | sampled numerical |
 | **P9** | distinguish projected crossings from surface intersections; recover symplectic orientation | `test_pendulum_cycle_intersection.py` | sampled numerical + orientation red team |
+| **P10** | exact Weierstrass reduction, chord-tangent group law, Euler/Abel-Jacobi additivity, lifted clock -> geometric phase quotient, objectification red teams | `tests/research/test_pendulum_elliptic_group_rank_lowering.py` | exact symbolic on the carrier; sampled numerical for the closed-form flow |
 
-The historical titles (`Discovery I/II/III`, `Pendulum II/III/IV/V`) arose at different times. `P0`–`P9` is the dependency map going forward; file names remain unchanged.
+The historical titles (`Discovery I/II/III`, `Pendulum II/III/IV/V`) arose at different times. `P0`–`P10` is the dependency map going forward; file names remain unchanged.
 
 ---
 
@@ -375,7 +376,7 @@ through the vertical decoder boundary, with physical-time restoration and initia
 
 ### 8.6 Canonical completion theory
 
-The larger marked-carrier -> global-completion proposal remains T1 in `docs/52-canonical-completion-hypothesis.md`. Pendulum supplies calibration evidence and explicit information-loss boundaries, not a universality theorem.
+The larger marked-carrier -> global-completion proposal remains T1 in `docs/52-canonical-completion-hypothesis.md`. Pendulum supplies calibration evidence and explicit information-loss boundaries, not a universality theorem. The group/completion layer of that chain is now partially executable: `tests/research/test_pendulum_elliptic_group_rank_lowering.py` certifies the elliptic group law and Abel-Jacobi additivity on the carrier, while separating a lifted real clock from the geometric phase modulo its period. This is a concrete history-to-action quotient, not a canonicity claim; see `docs/54-pendulum-elliptic-group-rank-lowering.md`.
 
 ---
 
@@ -415,6 +416,12 @@ None of these priorities, by itself, requires a new Public API abstraction.
 3. `test_pendulum_period_matrix.py`;
 4. `test_pendulum_cycle_intersection.py`;
 5. `docs/13-abelian-history-periods.md` through `docs/16-lifted-cycle-intersection.md`.
+
+### Vertical axis / group law
+
+1. `tests/research/test_pendulum_elliptic_group_rank_lowering.py`;
+2. `docs/54-pendulum-elliptic-group-rank-lowering.md`;
+3. the AEG analogues `docs/50-aeg-translation-objectification-rank-lowering.md` and `docs/51-aeg-addition-multiplication-rank-transition.md`.
 
 ### Foundational hypothesis
 
