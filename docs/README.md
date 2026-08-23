@@ -45,8 +45,12 @@ The documentation is organized as a mathematical/programming narrative rather th
 39. `38-resistor-network-presentation-morphism.md` — non-KdV calibration: DtN task quotient, Y–Delta discovered from response equality, Schur-complement semantic confluence, and weak-observer red team.
 40. `39-braid-markov-presentation-morphism.md` — topology calibration: braid/Markov moves, Burau/Alexander closure semantics, cross-dimension stabilization, and weak topological observer red team.
 41. `40-presentation-morphism-api.md` — minimal public `PresentationMorphism` contract promoted after the KdV, resistor-network, and braid/Markov calibrations.
-42. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-43. `REFERENCES.md` — shared mathematical bibliography.
-44. `RELEASE_CHECKLIST.md` — release gates.
+42. `42-process-geometry-from-distinguishability.md` — first-principles horizontal program: exact task quotients, observer-relative locality, topology, entropy/complexity, and the continuous extension toward differential structure, independent of Arithmetic Universality.
+43. `43-myhill-nerode-and-the-topological-threshold.md` — exact discrete anchor: Myhill–Nerode gives distinguishability -> minimal presentation before topology, while the topological threshold requires local refinement and process continuity and adds robustness, boundary, compactness, covering/homotopy, and topological entropy.
+44. `44-objectification-semantic-compression-and-rank-lowering.md` — vertical Process Geometry program: semantic compression -> objectification -> new primitives -> free higher-rank composition, constrained by compositional rank lowering back to grounded lower-rank semantics; separates ontology growth from the horizontal distinguishability geometry.
+45. `45-lineage-objectification-and-analytic-closure.md` — lineage/red-team map against operads, Baez–Dolan slice constructions, polygraphs, definitional extension, abstract interpretation, and sheaves; identifies AEG as a model organism that couples rank raising to a native analysis of variation, and proposes semantic/topological/analytic closure across ranks.
+46. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+47. `REFERENCES.md` — shared mathematical bibliography.
+48. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
