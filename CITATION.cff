@@ -4,7 +4,7 @@ authors:
   - name: "Process Geometry contributors"
 title: "Process Geometry"
 type: software
-version: 0.0.3
+version: 0.0.4
 date-released: 2026-08-23
 repository-code: "https://github.com/mountain/process-geometry"
 license: Unlicense

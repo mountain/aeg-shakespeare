@@ -1,7 +1,7 @@
 """Compatibility shim for the pre-refactor finite-family module path.
 
-New code should import from ``aeg_shakespeare.process.finite``.  The
-implementation now physically lives under that semantic namespace.
+New code should import from ``process_geometry.process.finite``. The
+implementation physically lives under that semantic namespace.
 """
 
 from .process.finite.families import (

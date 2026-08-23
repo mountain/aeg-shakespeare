@@ -2,7 +2,26 @@
 
 ## Unreleased
 
-- namespace migration from `aeg_shakespeare` to a Process Geometry-native import path remains intentionally deferred; the `0.0.3` release changes distribution identity first.
+- further migration of repository-owned historical tests/docs from `aeg_shakespeare` remains follow-up work; no new implementation may depend on the deprecated namespace.
+
+## 0.0.4 — canonical `process_geometry` namespace
+
+Second identity-migration release of Process Geometry.
+
+Highlights:
+
+- makes `process_geometry` the canonical Python import namespace;
+- moves the complete implementation tree under `src/process_geometry`;
+- reduces `src/aeg_shakespeare` to a temporary compatibility alias rather than keeping a second implementation copy;
+- preserves deep Python object identity between representative legacy and canonical imports;
+- changes public quickstarts, wheel smoke tests, and publish smoke tests to use `process_geometry` as the primary namespace;
+- retains `aeg_shakespeare` only as a deprecated compatibility path for code written against `0.0.1`–`0.0.3`;
+- establishes the dependency direction `process_geometry <- aeg_shakespeare alias` and adds release/hygiene requirements preventing canonical implementation code from depending on the historical namespace;
+- leaves the semantic public pipeline `Process -> Presentation -> Discovery -> Analysis` unchanged and promotes no new Process Geometry research abstractions solely because of the namespace migration.
+
+Historical PyPI distributions named `aeg-shakespeare` should not be installed alongside current `process-geometry` releases because they ship their own `aeg_shakespeare` package and may shadow the compatibility alias.
+
+`0.0.x` APIs remain experimental and may change without compatibility guarantees.
 
 ## 0.0.3 — Process Geometry release identity
 

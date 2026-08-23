@@ -1,15 +1,16 @@
 """Release-level smoke tests for the semantic public API.
 
 The package root is a navigation surface, not a flat symbol catalog. Deeper
-mathematical behavior belongs in literate tests; these checks certify namespace
-shape, representative imports, and the temporary 0.0.x compatibility bridge.
+mathematical behavior belongs in literate tests; these checks certify the
+canonical ``process_geometry`` namespace and the temporary legacy alias.
 """
 
+import importlib
 from importlib.metadata import version
 
 import pytest
 
-import aeg_shakespeare as pg
+import process_geometry as pg
 
 
 def test_public_version_matches_distribution_metadata():
@@ -60,3 +61,27 @@ def test_legacy_root_symbol_is_lazy_and_warns_during_transition():
     with pytest.warns(DeprecationWarning, match="legacy root-level import"):
         legacy = pg.ProcessWord
     assert legacy is pg.process.history.ProcessWord
+
+
+def test_aeg_shakespeare_alias_preserves_deep_object_identity():
+    import aeg_shakespeare as legacy
+
+    # The compatibility package may already have been imported during test
+    # collection. Reload it so this test validates the deprecation signal
+    # deterministically rather than depending on import order.
+    with pytest.warns(DeprecationWarning, match="deprecated compatibility namespace"):
+        importlib.reload(legacy)
+
+    from aeg_shakespeare.analysis.am import AMFunctionTheory as LegacyAMFunctionTheory
+    from aeg_shakespeare.presentation.morphism import (
+        PresentationMorphism as LegacyPresentationMorphism,
+    )
+    from aeg_shakespeare.process.history import ProcessWord as LegacyProcessWord
+
+    assert legacy.process is pg.process
+    assert legacy.presentation is pg.presentation
+    assert legacy.discovery is pg.discovery
+    assert legacy.analysis is pg.analysis
+    assert LegacyProcessWord is pg.process.history.ProcessWord
+    assert LegacyPresentationMorphism is pg.presentation.morphism.PresentationMorphism
+    assert LegacyAMFunctionTheory is pg.analysis.am.AMFunctionTheory

@@ -1,8 +1,8 @@
 """Compatibility shim for the pre-refactor central-residual module path.
 
 New code should import finite process cocycles from
-``aeg_shakespeare.process.finite``.  The implementation now physically lives
-under that semantic namespace.
+``process_geometry.process.finite``. The implementation physically lives under
+that semantic namespace.
 """
 
 from .process.finite.cocycle import (

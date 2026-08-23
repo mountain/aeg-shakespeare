@@ -2,14 +2,16 @@
 
 These files are intentionally small, runnable entry points into the semantic public API. They are not substitutes for the complete mathematical essays in `tests/classical/` and `tests/research/`.
 
-All examples use the namespaced API rather than legacy root-level imports:
+All public examples use the canonical namespaced API:
 
 ```text
-aeg_shakespeare.process
-aeg_shakespeare.presentation
-aeg_shakespeare.discovery
-aeg_shakespeare.analysis
+process_geometry.process
+process_geometry.presentation
+process_geometry.discovery
+process_geometry.analysis
 ```
+
+The deprecated `aeg_shakespeare` namespace is tested only as a compatibility alias and should not appear in new examples.
 
 - `quickstart.py` — literal process history, explicit presentation rewriting, and A/M (Addition/Multiplication) analysis.
 - `constraint_quickstart.py` — exact equality modulo an algebraic presentation constraint ideal.

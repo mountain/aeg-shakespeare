@@ -34,13 +34,14 @@ AEG remains the first major model organism for this program because the arithmet
 
 ## Status
 
-Current release target: **`process-geometry==0.0.3`**, a pre-alpha research preview.
+Latest PyPI release: **`process-geometry==0.0.3`**.  
+Current `main` release target: **`process-geometry==0.0.4`**, a pre-alpha research preview.
 
-Historical releases `0.0.1` and `0.0.2` were published on PyPI under the distribution name **`aeg-shakespeare`**. Starting with `0.0.3`, the release identity is **`process-geometry`**.
+Historical releases `0.0.1` and `0.0.2` were published on PyPI under the distribution name **`aeg-shakespeare`**. Starting with `0.0.3`, the distribution identity is **`process-geometry`**. Starting with `0.0.4`, the canonical Python import namespace is **`process_geometry`**.
 
 The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, conceptual layer separation, and research traceability take priority over interface stability during this phase.
 
-See [`docs/46-release-0.0.3.md`](docs/46-release-0.0.3.md) for the current release contract, [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) for research-to-API promotion rules, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
+See [`docs/47-release-0.0.4.md`](docs/47-release-0.0.4.md) for the current release contract, [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) for research-to-API promotion rules, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
 ## Install
 
@@ -54,21 +55,29 @@ For development:
 python -m pip install -e '.[dev]'
 ```
 
-Distribution identity and import identity are intentionally separated in `0.0.3`:
+The canonical identities for `0.0.4` are:
 
 ```text
 PyPI distribution:     process-geometry
 GitHub repository:     mountain/process-geometry
-Python import package: aeg_shakespeare   (temporary compatibility namespace)
+Python import package: process_geometry
 ```
 
-So current imports remain:
+Use:
 
 ```python
-import aeg_shakespeare as pg
+import process_geometry as pg
 ```
 
-Do not install historical `aeg-shakespeare` releases side-by-side with `process-geometry==0.0.3`: both currently provide the same `aeg_shakespeare` import tree. Existing environments should uninstall the historical distribution before installing the new one.
+The historical import path remains temporarily available as a compatibility alias:
+
+```python
+import aeg_shakespeare  # deprecated; aliases process_geometry
+```
+
+The alias preserves deep object identity: a class imported through `aeg_shakespeare.process.history` is the same Python object as the class imported through `process_geometry.process.history`. The compatibility package contains no second implementation tree and emits `DeprecationWarning` on import.
+
+Do not install historical `aeg-shakespeare` distributions side-by-side with `process-geometry`: old distributions provide their own `aeg_shakespeare` package and can shadow the compatibility alias shipped by current Process Geometry releases.
 
 Supported CPython versions: **3.10 through 3.14**.
 
@@ -82,7 +91,7 @@ The public surface is organized as a mathematical pipeline rather than a flat ca
 Process  ->  Presentation  ->  Discovery  ->  Analysis
 ```
 
-### `aeg_shakespeare.process`
+### `process_geometry.process`
 
 What the process **is**.
 
@@ -90,7 +99,7 @@ What the process **is**.
 - `process.finite` — finite parameterized families, characters, actions, and additive process cocycles;
 - `process.local` — local/infinitesimal realizations such as `ProcessSystem` and `ProcessFrame`.
 
-### `aeg_shakespeare.presentation`
+### `process_geometry.presentation`
 
 How process history is **objectified, quotiented, compressed, transformed, and compared**.
 
@@ -104,13 +113,13 @@ How process history is **objectified, quotiented, compressed, transformed, and c
 
 The first `PresentationMorphism` API is intentionally minimal: it records source, target, declared task semantics, a caller-defined certificate, and optional construction provenance. It does not yet define universal verification, composition, inverses, normal forms, or a category/groupoid structure.
 
-### `aeg_shakespeare.discovery`
+### `process_geometry.discovery`
 
 How alternative presentations are **searched**.
 
 The current discovery package contains bounded polynomial invariant/quotient search, structured observer proposals, first-order quotient selection, and explicit coefficient-language extension experiments. These are search procedures, not process ontology.
 
-### `aeg_shakespeare.analysis`
+### `process_geometry.analysis`
 
 What analytic or geometric language a successful presentation **supports**.
 
@@ -122,17 +131,17 @@ What analytic or geometric language a successful presentation **supports**.
 A representative import therefore looks like:
 
 ```python
-from aeg_shakespeare.process.history import ProcessWord
-from aeg_shakespeare.presentation.grammar import discover_generated_presentation
-from aeg_shakespeare.presentation.morphism import PresentationMorphism
-from aeg_shakespeare.discovery import discover_polynomial_invariants
-from aeg_shakespeare.analysis.am import AMFunctionTheory
+from process_geometry.process.history import ProcessWord
+from process_geometry.presentation.grammar import discover_generated_presentation
+from process_geometry.presentation.morphism import PresentationMorphism
+from process_geometry.discovery import discover_polynomial_invariants
+from process_geometry.analysis.am import AMFunctionTheory
 ```
 
 The package root is intentionally only a namespace router:
 
 ```python
-import aeg_shakespeare as pg
+import process_geometry as pg
 
 pg.process
 pg.presentation
@@ -140,7 +149,7 @@ pg.discovery
 pg.analysis
 ```
 
-Legacy root-level imports from the early `0.0.x` research-preview surface remain available lazily and emit `DeprecationWarning`; they are no longer part of the declared public root surface. See [`docs/API.md`](docs/API.md) for the detailed map and migration notes.
+Legacy root-level symbol imports from the early `0.0.x` research-preview surface remain available lazily and emit `DeprecationWarning`; they are no longer part of the declared public root surface. The separate `aeg_shakespeare` namespace is also deprecated and exists only as a migration alias. See [`docs/API.md`](docs/API.md) for the detailed map and migration notes.
 
 ## Why “Process Geometry”
 
@@ -244,7 +253,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-CI tests the same release gate on CPython 3.10 through 3.14, installs the built wheel into a fresh virtual environment, verifies `importlib.metadata.version("process-geometry")`, and imports the package from outside the repository source tree. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
+CI tests the same release gate on CPython 3.10 through 3.14, installs the built wheel into a fresh virtual environment, verifies `importlib.metadata.version("process-geometry")`, imports `process_geometry` from outside the repository source tree, and then verifies the temporary `aeg_shakespeare` alias preserves representative object identity. See [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
 
 The evolving mathematical story is indexed in [`docs/README.md`](docs/README.md).
 
