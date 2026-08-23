@@ -4,7 +4,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 
 **Theory:** `THEORY_MAP.md` is the living map of the larger Process Geometry research picture. It synthesizes the current foundation, marks theory/code maturity, and is explicitly expected to evolve as Sonnets and calibrations sharpen or contradict it.
 
-**Governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; the Theory Map informs API review without becoming a frozen software specification.
+**Theory governance:** `THEORY_GOVERNANCE.md` governs how mathematical claims enter and move inside the Theory Map. It separates epistemic maturity (`T0`–`T4`) from structural role (`local` / `reusable` / `foundational`), treats theory-map arrows as auditable information contracts, controls strong vocabulary such as `canonical` and `universal`, requires kill conditions for substantial claims, and makes conservative extension the default. `THEORY_RECORD_TEMPLATE.md` provides the standard node/edge record format.
+
+**Software governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; theory-map promotion and API promotion remain separate gates.
 
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
@@ -60,5 +62,7 @@ The documentation is organized as a mathematical/programming narrative rather th
 52. `API.md` — living semantic public/experimental API map: Process → Presentation → Discovery → Analysis, plus explicitly unstable Experimental probes.
 53. `REFERENCES.md` — shared mathematical bibliography.
 54. `RELEASE_CHECKLIST.md` — release gates.
+55. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
+56. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
