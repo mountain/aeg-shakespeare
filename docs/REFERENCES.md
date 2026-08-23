@@ -42,6 +42,10 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[DLMF-22]** NIST Digital Library of Mathematical Functions, Chapter 22, “Jacobian Elliptic Functions.” https://dlmf.nist.gov/22
 
+**[Euler-1761]** L. Euler, “Observationes de comparatione arcuum curvarum irrectificibilium,” *Novi Commentarii Academiae Scientiarum Petropolitanae* 6 (1761), 58–84. Historical source of the addition theorem for elliptic integrals.
+
+**[Siegel-1969]** C. L. Siegel, *Topics in Complex Function Theory, Vol. I: Elliptic Functions and Uniformization Theory*, Wiley-Interscience, 1969. Chapter I treats Euler's addition theorem and Abel's theorem for elliptic integrals and their role in uniformization.
+
 **[DLMF-23.2]** NIST Digital Library of Mathematical Functions, §23.2, “Definitions and Periodic Properties,” including lattices and double periodicity of the Weierstrass `wp` function. https://dlmf.nist.gov/23.2
 
 **[DLMF-23.3]** NIST Digital Library of Mathematical Functions, §23.3, “Differential Equations,” including Weierstrass invariants, discriminant, roots, and the cubic differential equation. https://dlmf.nist.gov/23.3
