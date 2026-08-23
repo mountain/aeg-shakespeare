@@ -8,6 +8,10 @@ A calibration also serves as a durable knowledge entry. A reader arriving direct
 
 The named problem is never a package-level solver. A classical example is admitted here to test common Process Geometry abstractions, to provide a red team or degeneration, or because the problem is a useful pedagogical anchor. It does **not** need to promote a new theory node or public abstraction in order to be valuable.
 
+For multi-file mathematical families, prefer one stable family-level guide over forcing every proof step into one oversized test. The first such complete guide is:
+
+- `docs/vignettes/simple-pendulum.md` — physical problem, nondimensional bridge, P0–P9 executable dependency map, quotient-fiber/reconstruction boundary, evidence levels, and open obligations.
+
 See:
 
 - `docs/VIGNETTES.md` — problem-oriented retrieval index;
