@@ -1,22 +1,46 @@
-"""<Title>: <one-sentence mathematical claim>
+"""<Human-recognizable problem title>: <one-sentence mathematical claim>
 
-Question
---------
-<What mathematical/representation question is the test answering?>
+Retrieval
+---------
+Problem: <standard problem name>
+Domains: <e.g. classical mechanics; algebraic geometry>
+Classical names / aliases: <terms a reader may search>
+Structural themes: <mathematical structures, not only repository names>
+Process Geometry roles: <quotient / presentation / history / observer / ...>
+Prerequisites: <minimum substantial background>
+Related vignettes: <stable paths, if any>
+Theory Map relation: <calibrates/supports/red-teams/... or unchanged>
+
+Problem statement
+-----------------
+<State the original mathematical problem independently of Process Geometry.
+Identify objects, assumptions or parameter regime, the question, and the output
+or phenomenon of interest.>
+
+Why this problem is here
+------------------------
+<State what pressure the vignette supplies: calibration, negative control,
+degeneration, cross-domain probe, counterexample, theory-edge test, or a
+pedagogically canonical example.>
 
 Primitive data
 --------------
-<List exactly what the program receives.  Explicitly list important classical
+<List exactly what the program receives. Explicitly list important classical
 objects that are *not* supplied as input.>
+
+Notation and prerequisites
+--------------------------
+<Define project-local notation and state any substantial prerequisite that a
+direct reader should know.>
 
 Classical lineage
 -----------------
-<Explain the conventional/historical route to the mathematics.  Cite sources
+<Explain the conventional/historical route to the mathematics. Cite sources
 with keys such as [Author-Year] or [DLMF-Section].>
 
-Shakespeare reconstruction
----------------------------
-<Explain the reversed process-first route being tested.  Label project-specific
+Process Geometry reconstruction
+-------------------------------
+<Explain the process-first route being tested. Label project-specific
 interpretations as such rather than attributing them to classical sources.>
 
 Calibration statement
@@ -28,19 +52,22 @@ Proof map
 1. <assertion group -> mathematical step>
 2. ...
 
-Boundary
---------
-<State what is not established by the test.>
+Boundary and reconstruction
+---------------------------
+<State what is not established by the test. If a quotient or projection loses
+information, say what is forgotten and whether a decoder/reconstruction exists.>
 
-References
-----------
+References and onward links
+---------------------------
 [Author-Year] Full bibliographic entry, edition/volume, publisher/journal,
 chapter/section/theorem/DOI/stable URL as appropriate.
+
+<Give the next useful vignette/theory record when this file belongs to a family.>
 """
 
 # GIVEN: primitive process data only.
 
-# DISCOVER: derive structure using public Shakespeare machinery.
+# DISCOVER: derive structure using public Process Geometry machinery.
 
 # ASSERT: certify the new-formalism structural statement.
 
