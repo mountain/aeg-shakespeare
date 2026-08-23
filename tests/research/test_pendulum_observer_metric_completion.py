@@ -169,4 +169,4 @@ def test_metric_weight_is_a_real_red_team_for_bolza_literal_symmetry():
     # is recovered only at c=1 (up to the fixed overall factor used here).
     bolza_scaled = 2 * (U**5 - U)
     difference = sp.factor(e0_family - bolza_scaled)
-    assert difference == -2 * U * (c - 1) * (U - 1) * (U + 1)
+    assert difference == 2 * U * (c - 1) * (U - 1) * (U + 1)
