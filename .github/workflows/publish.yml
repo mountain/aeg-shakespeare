@@ -32,17 +32,27 @@ jobs:
           cd /tmp
           /tmp/process-geometry-publish-smoke/bin/python - <<'PY'
           from importlib.metadata import version
-          import aeg_shakespeare as pg
-          from aeg_shakespeare.analysis.abelian import AbelianPeriodMatrix
-          from aeg_shakespeare.analysis.am import AMFunctionTheory
-          from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-          from aeg_shakespeare.process.history import ProcessWord
+          import warnings
+
+          import process_geometry as pg
+          from process_geometry.analysis.abelian import AbelianPeriodMatrix
+          from process_geometry.analysis.am import AMFunctionTheory
+          from process_geometry.presentation.constraints import AlgebraicConstraintSet
+          from process_geometry.process.history import ProcessWord
 
           assert pg.__version__ == version("process-geometry")
           assert ProcessWord is not None
           assert AMFunctionTheory is not None
           assert AlgebraicConstraintSet is not None
           assert AbelianPeriodMatrix is not None
+
+          with warnings.catch_warnings():
+              warnings.simplefilter("ignore", DeprecationWarning)
+              import aeg_shakespeare as legacy
+              from aeg_shakespeare.process.history import ProcessWord as LegacyProcessWord
+
+          assert legacy.process is pg.process
+          assert LegacyProcessWord is ProcessWord
           print("publish wheel smoke OK:", pg.__version__)
           PY
       - name: Upload distributions
