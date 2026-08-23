@@ -63,7 +63,7 @@ Highlights:
 
 - reorganizes the public API into the semantic pipeline `Process -> Presentation -> Discovery -> Analysis`;
 - contracts the package root to namespace navigation while retaining lazy `0.0.x` compatibility shims;
-- physically consolidates finite family/character/action/cocycle implementation under `process/finite`;
+- physically consolidates finite process families, characters, actions, and process cocycles under `process.finite`;
 - moves literal histories and local process realizations to canonical `process.history` / `process.local` ownership and moves search budgets to `presentation`;
 - adds bounded polynomial invariant and observable-quotient discovery;
 - adds structured pairing-based observer proposals and Pareto selection of first-order algebraic quotients;
