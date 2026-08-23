@@ -144,7 +144,8 @@ preservation, exact polynomial identity).
 ``test_euler_addition_identity_is_exact_for_tangent_doubling`` check item 3.
 ``test_rational_group_law_spot_checks`` checks item 2 (associativity/inverse,
 exact rational arithmetic).
-``test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup`` checks item 4.
+``test_lemniscatic_flow_has_sampled_base_point_corrected_subgroup_law`` checks
+item 4.
 ``test_lifted_flow_translation_schemas_compose_and_lower_compositionally``
 and ``test_period_is_kernel_of_projection_not_of_clock_lowering`` check item 5.
 ``test_red_team_unmarked_endpoint_merges_distinct_continuations``,
@@ -403,7 +404,7 @@ def test_rational_group_law_spot_checks():
 
 
 # ---------------------------------------------------------------------------
-# 5. Lemniscatic flow: a one-parameter subgroup twisted by 2-torsion
+# 5. Lemniscatic flow: sampled subgroup law with 2-torsion base-point correction
 # ---------------------------------------------------------------------------
 
 mp.mp.dps = 30
@@ -452,8 +453,8 @@ def chord_add(pt1, pt2):
     return (u3, -y3)
 
 
-def test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup():
-    """E = 0 closed form: on-carrier ODE and the torsion-twisted subgroup law.
+def test_lemniscatic_flow_has_sampled_base_point_corrected_subgroup_law():
+    """E = 0 closed form: on-carrier ODE and base-point-corrected group law.
 
     Sampled numerical certificates at 30-digit precision.
     """
@@ -467,7 +468,7 @@ def test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup():
 
     base = (mp.mpf(0), mp.mpf(0))  # P(0) = (0,0), a 2-torsion point
 
-    # Twisted subgroup law: P(t1) (+) P(t2) = P(t1+t2) (+) P(0).
+    # Base-point correction: P(t1) (+) P(t2) = P(t1+t2) (+) P(0).
     for t1, t2 in ((mp.mpf("0.3"), mp.mpf("0.7")),
                    (mp.mpf("1.1"), mp.mpf("0.9")),
                    (mp.mpf("0.5"), mp.mpf("0.5"))):
@@ -475,7 +476,7 @@ def test_lemniscatic_flow_is_a_twisted_one_parameter_subgroup():
         right = chord_add(flow_point(t1 + t2), base)
         assert abs(left[0] - right[0]) + abs(left[1] - right[1]) < mp.mpf("1e-12")
 
-    # Untwisted orbit S(t) = P(t) (+) P(0) is an exact one-parameter subgroup.
+    # The expected subgroup law for S(t) = P(t) (+) P(0), sampled numerically.
     def S(t):
         return chord_add(flow_point(t), base)
 
