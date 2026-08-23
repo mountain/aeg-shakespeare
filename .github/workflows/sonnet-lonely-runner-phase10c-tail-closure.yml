@@ -1,11 +1,8 @@
 name: Sonnet Lonely Runner Phase 10C Tail Closure
 
-# One auditable finite certificate for the infinite contact-event tail.
+# Heavy infinite-tail closure certificate. Manual-only after the one-shot run.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase10c-tail-closure.yml
 
 jobs:
   phase10c:
