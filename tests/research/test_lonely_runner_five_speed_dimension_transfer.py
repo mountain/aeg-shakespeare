@@ -1,4 +1,4 @@
-"""Opt-in executable calibration for Sonnet 001 Phase 12A."""
+"""Executable checks for Sonnet 001 Phase 12A."""
 
 from __future__ import annotations
 
@@ -11,10 +11,6 @@ import pytest
 
 
 RUN_FULL = os.environ.get("AEG_RUN_LR_FIVE_SPEED_TRANSFER") == "1"
-pytestmark = pytest.mark.skipif(
-    not RUN_FULL,
-    reason="opt-in Sonnet 001 five-speed dimension-transfer calibration",
-)
 
 
 def _load():
@@ -36,6 +32,18 @@ def _load():
         sys.path.remove(str(script_dir))
 
 
+def test_five_speed_transfer_module_and_nontrivial_threshold_smoke():
+    module = _load()
+    assert module.K == 5
+    assert module.DELTA.numerator == 1 and module.DELTA.denominator == 6
+    assert module.RMAX > 5
+    assert module.RMAX < 6
+
+
+@pytest.mark.skipif(
+    not RUN_FULL,
+    reason="opt-in Sonnet 001 five-speed dimension-transfer calibration",
+)
 def test_five_speed_canonical_transfer_and_static_materialization_red_team():
     module = _load()
     result = module.analyze_five_speed_transfer(include_static_cells=True)
