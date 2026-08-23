@@ -45,7 +45,7 @@ def test_next_probe_crosses_a_process_generated_critical_boundary():
     not RUN_FULL,
     reason="opt-in Sonnet 001 exact clean-separability frontier probe",
 )
-def test_generic_clean_criterion_recertifies_baseline_and_classifies_first_probe():
+def test_generic_clean_criterion_recertifies_baseline_and_first_critical_probe():
     module = _load()
     baseline, probe = module.analyze_baseline_and_probe()
 
@@ -62,15 +62,20 @@ def test_generic_clean_criterion_recertifies_baseline_and_classifies_first_probe
     assert baseline.max_event_index == 47
     assert baseline.max_contact_center == 7
 
-    # The probe is discovery data.  The adapter independently verifies either
-    # the returned clean tree or the recursive obstruction certificate.  The
-    # test only requires exact pairwise task sufficiency plus a definite clean /
-    # obstructed classification, not a predeclared outcome.
+    # Crossing 47/7 admits a genuinely new center-8 causal ordering, but the
+    # generic exact criterion still finds a zero-completion tree.
     assert probe.rmax == Fraction(48, 7)
+    assert probe.symbolic_states == 16_747
+    assert probe.terminal_regions == 6_203
+    assert probe.generated_coordinates == 111
+    assert probe.canonical_tasks == 50
+    assert probe.minimum_coordinates == 48
     assert probe.pairwise_separable
-    assert probe.canonical_tasks > 1
-    assert probe.minimum_coordinates > 0
-    assert (probe.clean_tree_nodes is None) != probe.clean
-    assert (probe.obstruction_atomic is None) == probe.clean
-
-    print("PHASE13_PROBE", probe)
+    assert probe.clean
+    assert probe.clean_states_visited == 745
+    assert probe.clean_tree_nodes == 745
+    assert probe.clean_max_depth == 16
+    assert probe.root_coordinate == (0, 3, Fraction(5))
+    assert probe.obstruction_atomic is None
+    assert probe.max_event_index == 49
+    assert probe.max_contact_center == 8
