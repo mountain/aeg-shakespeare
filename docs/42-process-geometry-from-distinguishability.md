@@ -4,43 +4,36 @@
 
 ## 0. Thesis
 
-The name **Process Geometry** should not depend on the conjecture that arithmetic processes generate universal geometric models.  It has a more primitive source.
+The name **Process Geometry** should not depend on the conjecture that arithmetic processes generate universal geometric models. It has a more primitive source.
 
-A process determines what histories can occur.  An observer or task determines which differences between those histories can be detected.  Detectability induces local neighborhoods and quotients; under suitable stability conditions those neighborhoods generate topology.  The growth of distinguishable histories leads to entropy and intrinsic complexity.  A presentation is then a concrete, auditable realization of this observer-relative process structure for reasoning and computation.
+A process determines what histories can occur. An observer or task determines which differences between those histories can be detected. Exact future distinguishability may already induce a canonical process-compatible quotient and, in favorable discrete cases, a minimal presentation. When distinguishability is supplied at varying observational resolutions and satisfies suitable local refinement conditions, it can further induce topology. Once a compatible process action is present, the growth of robust distinctions leads toward topological entropy and intrinsic complexity. Stronger regularity may then support metric, differential, and connection structures.
 
-The proposed first-principles chain is therefore
+The first-principles program is therefore not a single compulsory chain but a hierarchy with two early branches:
 
-\[
-\boxed{
-\text{Process}
-\longrightarrow
-\text{Distinguishability}
-\longrightarrow
-\text{Topology}
-\longrightarrow
-\text{Entropy / Complexity}
-\longrightarrow
-\text{Presentation}.
-}
-\]
+```text
+Process / histories
+        |
+        v
+observer or task distinguishability
+        |
+        +------------------------------+
+        |                              |
+        v                              v
+exact continuation-stable quotient     local/refinable neighborhoods
+        |                              |
+        v                              v
+minimal task presentation              topology
+                                       |
+                                       +--> continuity / boundary / compactness
+                                       +--> entropy / intrinsic complexity
+                                       +--> metric / differential structure when justified
+```
 
-For continuous process families the same chain may continue as
+The central methodological claim is:
 
-\[
-\boxed{
-\text{Topology}
-\longrightarrow
-\text{Local variation}
-\longrightarrow
-\text{Differential structure}
-\longrightarrow
-\text{Observer connection / curvature}.
-}
-\]
+> Geometry enters the theory because distinguishability can acquire stable local and global structure under process continuation, not because a manifold, metric, coordinate system, or arithmetic model was supplied in advance.
 
-The central claim of this note is methodological rather than axiomatic:
-
-> Geometry enters the theory because distinguishability is local and compositional, not because a manifold, metric, coordinate system, or arithmetic model was supplied in advance.
+`43-myhill-nerode-and-the-topological-threshold.md` provides the first exact calibration and sharpens the point where topology becomes legitimate.
 
 This is the sense in which Process Geometry may be a general theory independent of the stronger Arithmetic Universality program.
 
@@ -48,7 +41,7 @@ This is the sense in which Process Geometry may be a general theory independent 
 
 ## 1. Primitive process structure
 
-Let \(P\) denote a process.  At the most permissive level, no ambient vector space, manifold, metric, or numerical coordinate system is assumed.
+Let \(P\) denote a process. At the most permissive level, no ambient vector space, manifold, metric, or numerical coordinate system is assumed.
 
 A process supplies some combination of:
 
@@ -61,7 +54,7 @@ A process supplies some combination of:
 - actions and symmetries;
 - future reachability.
 
-Write \(\mathcal H(P)\) for a suitable history object.  Depending on the domain, \(\mathcal H(P)\) may be a path space, prefix tree, transition graph, rewrite category, groupoid, flow space, or another construction.  The notation is intentionally noncommittal.
+Write \(\mathcal H(P)\) for a suitable history object. Depending on the domain, \(\mathcal H(P)\) may be a path space, prefix tree, transition graph, rewrite category, groupoid, flow space, or another construction. The notation is intentionally noncommittal.
 
 The important point is that the process itself already gives relative structure among histories:
 
@@ -74,13 +67,13 @@ The important point is that the process itself already gives relative structure 
 \text{relation}.
 \]
 
-Algebra records which compositions exist and which laws they satisfy.  Geometry begins when we ask how histories sit relative to one another under the distinctions that matter to an observer or task.
+Algebra records which compositions exist and which laws they satisfy. Geometry begins when we ask how histories sit relative to one another under the distinctions that matter to an observer or task.
 
 ---
 
 ## 2. Distinguishability as the primitive geometric datum
 
-Let \(O\) be an observer.  Here an observer is not assumed to be a scalar-valued function.  It may be a measurement protocol, a finite experiment, a task predicate, a future continuation test, a family of queries, or a structured interaction with the process.
+Let \(O\) be an observer. Here an observer is not assumed to be a scalar-valued function. It may be a measurement protocol, a finite experiment, a task predicate, a future continuation test, a family of queries, or a structured interaction with the process.
 
 For two states or histories \(x,y\), write informally
 
@@ -90,7 +83,7 @@ x \sim_{O,T,\varepsilon} y
 
 when observer \(O\), using observation depth \(T\) and resolution \(\varepsilon\), cannot distinguish them.
 
-The exact meaning of \(T\) and \(\varepsilon\) is domain-dependent.  In a discrete task, \(\varepsilon\) may be absent and \(T\) may mean future depth.  In a continuous measurement problem, \(T\) may be an observation window and \(\varepsilon\) a tolerance.  In a symbolic process, the pair may be replaced by a finite query budget.
+The exact meaning of \(T\) and \(\varepsilon\) is domain-dependent. In a discrete task, \(\varepsilon\) may be absent and \(T\) may mean future depth. In a continuous measurement problem, \(T\) may be an observation window and \(\varepsilon\) a tolerance. In a symbolic process, the pair may be replaced by a finite query budget.
 
 For fixed observation resources, define an indistinguishability neighborhood around \(x\):
 
@@ -100,7 +93,7 @@ U_{O,T,\varepsilon}(x)
 \{y : y \sim_{O,T,\varepsilon} x\}.
 \]
 
-This object is more primitive than a metric ball.  A metric may later generate such neighborhoods, but the research program should not assume that every useful process geometry first possesses a metric.
+This object is more primitive than a metric ball. A metric may later generate such neighborhoods, but the research program should not assume that every useful process geometry first possesses a metric.
 
 The first foundational question is therefore:
 
@@ -128,7 +121,9 @@ Then the task-relative quotient
 
 is a natural candidate for a process geometry at the task resolution \(Q\).
 
-This quotient is already present in Shakespeare's history/task-signature work.  The new point is to interpret it as one member of a broader observer-induced geometric hierarchy rather than only as a compression device.
+In discrete settings the quotient may be useful before topology enters at all. The Myhill–Nerode theorem gives the canonical example: future-equivalence classes of a regular language form the states of its unique minimal deterministic automaton. This shows that distinguishability can determine a minimal presentation directly, provided the equivalence is stable under continuation.
+
+This quotient pattern is already present in Shakespeare's history/task-signature work. The broader program is to determine when it remains purely combinatorial and when it naturally acquires local/topological structure.
 
 ---
 
@@ -136,23 +131,30 @@ This quotient is already present in Shakespeare's history/task-signature work.  
 
 Topology should enter only after the observer structure justifies it.
 
-Suppose a family of observers \(\mathcal O\) provides enough neighborhoods \(U(x)\) that locality is stable under appropriate refinement.  Then one may define a topology \(\tau_{\mathcal O}\) generated by those neighborhoods, or a related structure when symmetry or transitivity fails.
+Suppose a family of observers \(\mathcal O\) provides enough neighborhoods \(U(x)\) that locality is stable under appropriate refinement. Then one may define a topology \(\tau_{\mathcal O}\) generated by those neighborhoods, or a related structure when symmetry or transitivity fails.
 
 The intended interpretation is:
 
 > An open condition is one that can be recognized with finite observational margin and remains recognizable under sufficiently small observational variation.
 
-This gives a process-native meaning to open sets.  They are not imported from \(\mathbb R^n\); they encode robust local distinguishability.
+This gives a process-native meaning to open sets. They are not imported from \(\mathbb R^n\); they encode robust local distinguishability.
 
-This viewpoint suggests a hierarchy:
+The topological threshold requires at least the logic of a neighborhood basis: point inclusion, compatible finite refinement, and local inheritance. Resource-indexed observers should refine coherently as observational power increases. If an exact task quotient is already present, the local structure must descend consistently to that quotient. Most importantly for **Process Geometry**, admissible process evolution should be continuous or its discontinuity should itself be treated as meaningful process structure.
+
+Thus the hierarchy is better written as
 
 \[
 (P,\mathcal O)
 \longmapsto
 \text{distinguishability structure}
 \longmapsto
-\tau_{\mathcal O}.
+\begin{cases}
+\text{exact process quotient},\\
+\text{local/topological structure},
+\end{cases}
 \]
+
+rather than assuming topology is mandatory for every process.
 
 Several red-team cases are important:
 
@@ -160,9 +162,25 @@ Several red-team cases are important:
 2. directed or irreversible processes may generate asymmetric neighborhood structures;
 3. partial observation may generate non-Hausdorff quotients;
 4. observer families may be too weak to separate points;
-5. different observer budgets may define a filtration rather than one final topology.
+5. different observer budgets may define a filtration rather than one final topology;
+6. a valid topology may still be poorly matched to the process if evolution is discontinuous in it.
 
-These are not failures of Process Geometry.  They specify which geometric category is actually induced.
+These are not failures of Process Geometry. They specify which geometric category is actually induced and whether topology is the correct layer.
+
+### 3.1 What topology adds
+
+Once justified, topology adds structure that an exact task quotient alone does not provide:
+
+- **robustness and boundary** through interior, closure, and boundary;
+- **convergence and limiting behavior** without choosing coordinates;
+- **continuity** as stability of process evolution and presentation maps;
+- **connectedness and decomposition** into robust components;
+- **compactness** as a local-to-global finite-subcover principle;
+- **quotients, coverings, homotopy, and fundamental-group structure** when their hypotheses hold;
+- an open-set domain on which local data and eventual sheaf-like gluing questions can be posed;
+- the coordinate-free substrate for topological dynamics and topological entropy.
+
+Topology itself does not supply a metric, completion, derivative, sheaf, or entropy. Each requires additional structure. In particular, the standard universal-cover language used elsewhere in the AEG research program requires its own existence hypotheses; Arithmetic Universality must not silently assume that every process geometry has a classical universal cover.
 
 ---
 
@@ -176,7 +194,7 @@ Define
 O_1 \preceq O_2
 \]
 
-when every distinction available to \(O_1\) is also available to \(O_2\).  In exact quotient language, this means
+when every distinction available to \(O_1\) is also available to \(O_2\). In exact quotient language, this means
 
 \[
 x \sim_{O_2} y
@@ -212,13 +230,15 @@ This suggests a foundational structure that should be investigated before introd
 
 If stable, this structure would give a precise mathematical home to weak observers, task-relative quotients, and later observer connections.
 
+Separation axioms may then be read operationally. \(T_0\) means that distinct points differ by some open observable property; stronger separation axioms demand correspondingly stronger robust discrimination. Non-Hausdorffness may therefore record real observational deficiency rather than mathematical error.
+
 ---
 
 ## 5. Entropy as growth of distinguishable histories
 
-Once distinguishability is explicit, entropy enters without being bolted on as a secondary information-theoretic metaphor.
+Once topology and compatible dynamics are explicit, entropy enters without being bolted on as a secondary information-theoretic metaphor.
 
-For a discrete dynamical system \(f:X\to X\), classical topological entropy measures the exponential growth rate of orbit distinctions under increasing observation time.  In open-cover language, for a finite open cover \(\mathcal U\), form
+For a discrete dynamical system \(f:X\to X\), classical topological entropy measures the exponential growth rate of orbit distinctions under increasing observation time. In open-cover language, for a finite open cover \(\mathcal U\), form
 
 \[
 \mathcal U^{(n)}
@@ -238,11 +258,11 @@ h(f,\mathcal U)
 \log N(\mathcal U^{(n)})
 \]
 
-when the limit or appropriate limsup exists.  Taking the supremum over covers yields \(h_{\mathrm{top}}(f)\) under the usual hypotheses.
+when the limit or appropriate limsup exists. Taking the supremum over covers yields \(h_{\mathrm{top}}(f)\) under the usual hypotheses.
 
 In process language the interpretation is direct:
 
-> How quickly does the number of histories that remain distinguishable to an observer grow with observation depth?
+> How quickly does the number of robust distinctions required to track histories grow under process evolution?
 
 This suggests an observer-relative counting function
 
@@ -263,12 +283,12 @@ The precise construction must depend on the process class; the notation is a res
 
 ### 5.1 Topological versus probabilistic distinguishability
 
-When a process also carries a probability measure \(\mu\), a finite observer partition \(\mathcal P\) yields Shannon entropy for increasingly long observation histories.  The asymptotic rate is the classical route to metric/Kolmogorov--Sinai entropy.
+When a process also carries a probability measure \(\mu\), a finite observer partition \(\mathcal P\) yields Shannon entropy for increasingly long observation histories. The asymptotic rate is the classical route to metric/Kolmogorov--Sinai entropy.
 
 This motivates the distinction:
 
 ```text
-topological entropy    possible distinguishability growth
+topological entropy    possible robust distinguishability growth
 metric entropy         probable distinguishability growth
 coding cost            materialized distinguishability
 ```
@@ -279,7 +299,7 @@ The three should not be identified, but their relationship is central to the res
 
 ## 6. Intrinsic complexity and representation lower bounds
 
-Suppose a task-relevant observation depth \(n\) leaves \(N(n)\) mutually distinguishable classes.  Any exact finite code that must distinguish all classes needs at least
+Suppose a task-relevant observation depth \(n\) leaves \(N(n)\) mutually distinguishable classes. Any exact finite code that must distinguish all classes needs at least
 
 \[
 \log_2 N(n)
@@ -301,11 +321,13 @@ then the required description length grows at least linearly:
 \frac{h}{\log 2}n.
 \]
 
-This is the bridge from process entropy to presentation complexity.
+This is one bridge from process entropy to presentation complexity.
 
-The important research conjecture is not that every current software cost metric equals entropy.  Rather:
+The important research conjecture is not that every current software cost metric equals entropy. Rather:
 
 > A significant part of the irreducible cost of a task-sufficient presentation should be bounded below by the growth of task-relevant distinguishability.
+
+Myhill–Nerode shows an exact finite-state version of this principle: the number of future-distinguishability classes is exactly the minimum number of deterministic states required. Source coding gives another exact/asymptotic calibration for description length. Topological entropy suggests a richer dynamical analogue, but the computational correspondence remains a research question.
 
 This suggests separating
 
@@ -335,15 +357,15 @@ R(\Pi)
 \frac{C(\Pi)}{C_{\mathrm{intrinsic}}}.
 \]
 
-These expressions are placeholders until the relevant coding and cost models are fixed.  The research goal is to identify domains where such lower bounds can be made exact or operational.
+These expressions are placeholders until the relevant coding and cost models are fixed. The research goal is to identify domains where such lower bounds can be made exact or operational.
 
 ---
 
-## 7. Why Presentation follows Geometry
+## 7. Why Presentation follows Distinguishability and Geometry
 
 A process geometry is not yet a computation.
 
-Given an observer/task-relative structure \(\mathcal G_Q(P)\), a concrete system needs a realizable object
+In the exact discrete branch, a task quotient may itself determine a canonical presentation, as in Myhill–Nerode. In richer settings, given an observer/task-relative structure \(\mathcal G_Q(P)\), a concrete system needs a realizable object
 
 \[
 \phi:
@@ -356,7 +378,7 @@ The target \(\Pi\) may be a finite automaton, tree, graph, integer lattice, grou
 
 This is the natural role of a **Presentation**.
 
-Presentation is therefore stronger than arbitrary representation.  A hash, embedding, serialization, or coordinate array may represent an object without preserving the task distinctions that justify it.  In the intended theory:
+Presentation is therefore stronger than arbitrary representation. A hash, embedding, serialization, or coordinate array may represent an object without preserving the task distinctions that justify it. In the intended theory:
 
 > A presentation is an auditable realization of process distinctions sufficient for a declared task, with explicit reconstruction, certificate, or semantic boundary where needed.
 
@@ -377,20 +399,21 @@ is not merely software layering.
 A first-principles reading is:
 
 - **Process** supplies histories and primitive dynamics;
-- **Geometry** is induced by observer-relative distinguishability;
-- **Presentation** materializes that geometry;
+- **Distinguishability** determines what information the task or observer requires;
+- **Geometry** appears when those distinctions acquire stable quotient/local/global structure;
+- **Presentation** materializes the required structure;
 - **Discovery** searches over quotients, observers, and realizations;
 - **Analysis** studies structures and dynamics on, or between, the induced geometries.
 
-Thus representation search is not an adjacent feature.  It is the computational problem of finding economical realizations of task-relative process geometry.
+Thus representation search is not an adjacent feature. It is the computational problem of finding economical realizations of task-relative process structure.
 
 ---
 
 ## 8. History geometry, Huffman coding, and entropy
 
-The Sonnet 001 history/Huffman line fits naturally into this chain.
+The Sonnet 001 history/Huffman line fits naturally into this hierarchy.
 
-A history tree supplies prefix structure.  A task quotient determines which branches remain distinguishable.  Without probabilities, the growth of distinguishable branches is a topological-complexity question.  With a probability distribution on histories, Shannon entropy measures expected information, and prefix coding provides a concrete materialization.
+A history tree supplies prefix structure. A task quotient determines which branches remain distinguishable. Without probabilities, the growth of distinguishable branches is a topological/combinatorial complexity question. With a probability distribution on histories, Shannon entropy measures expected information, and prefix coding provides a concrete materialization.
 
 For a discrete history distribution \(p(h)\), Huffman coding satisfies the familiar bound
 
@@ -410,15 +433,15 @@ In Process Geometry language:
 \boxed{
 \text{distinguishability}
 \to
-\text{history topology/tree}
+\text{history structure}
 \to
-\text{entropy}
+\text{entropy where defined}
 \to
 \text{economical presentation}.
 }
 \]
 
-This does not claim that every process presentation is a code.  It shows that coding theory is one exact calibration where intrinsic distinguishability and materialized representation cost can be compared sharply.
+This does not claim that every process presentation is a code. It shows that coding theory is one exact calibration where intrinsic distinguishability and materialized representation cost can be compared sharply.
 
 ---
 
@@ -438,7 +461,7 @@ The proposed direction is:
 \text{differential structure}.
 \]
 
-The essential reversal relative to a coordinate-first treatment is that “nearby” should first be justified by process/observer structure.  Only then should one ask how observable quantities change along admissible local process variations.
+The essential reversal relative to a coordinate-first treatment is that “nearby” should first be justified by process/observer structure. Only then should one ask how observable quantities change along admissible local process variations.
 
 This creates a possible bridge to the current AEG Analysis program:
 
@@ -449,13 +472,13 @@ This creates a possible bridge to the current AEG Analysis program:
 - observer connection and transport;
 - curvature as obstruction to compatible local transport.
 
-No claim is made here that every distinguishability topology admits a differentiable structure.  The differential layer is an additional structure available only for suitable process classes.
+No claim is made here that every distinguishability topology admits a differentiable structure. The differential layer is an additional structure available only for suitable process classes.
 
 ---
 
 ## 10. Observer connection as comparison of induced geometries
 
-Fix a process \(P\) and vary the observer.  One obtains a family
+Fix a process \(P\) and vary the observer. One obtains a family
 
 \[
 \{\mathcal G_O(P)\}_{O\in\mathcal O}.
@@ -479,7 +502,7 @@ Possible structures include:
 - continuation along a family of observers;
 - obstruction/curvature when transports around a loop fail to close.
 
-Sonnet 002 is a natural stress test because one algebraic/dynamical process may be viewed through real, complex, rational, height, and \(p\)-adic observers.  Sonnet 003 can provide the complementary engineering stress test: varying process models while fixing task semantics.
+Sonnet 002 is a natural stress test because one algebraic/dynamical process may be viewed through real, complex, rational, height, and \(p\)-adic observers. Sonnet 003 can provide the complementary engineering stress test: varying process models while fixing task semantics.
 
 ---
 
@@ -489,7 +512,7 @@ The general Process Geometry program does not assume Addition, Multiplication, h
 
 Arithmetic enters through a separate and stronger research hypothesis.
 
-AEG began from arithmetic-expression processes and found that Addition/Multiplication and their higher relatives generate striking geometric structures.  The current universality conjecture asks, roughly, whether arithmetic-generated process geometries may provide universal covers or standard Lie-type models for a much broader class of process geometries.
+AEG began from arithmetic-expression processes and found that Addition/Multiplication and their higher relatives generate striking geometric structures. The current universality conjecture asks, roughly, whether arithmetic-generated process geometries may provide universal covers or standard Lie-type models for a much broader class of process geometries.
 
 Schematically, the stronger conjectural layer has the form
 
@@ -537,11 +560,11 @@ Realizes a task-sufficient quotient or other process structure in a computationa
 
 ### PresentationMorphism
 
-Carries evidence that two possibly heterogeneous presentations preserve declared task semantics.  In geometric language it is an evidence-bearing relation between realizations, not yet a general morphism category.
+Carries evidence that two possibly heterogeneous presentations preserve declared task semantics. In geometric language it is an evidence-bearing relation between realizations, not yet a general morphism category.
 
 ### Cost / Pareto search
 
-Measures the operational cost of realizations.  A future theory should distinguish implementation cost from intrinsic distinguishability complexity.
+Measures the operational cost of realizations. A future theory should distinguish implementation cost from intrinsic distinguishability complexity.
 
 ### Discovery
 
@@ -551,7 +574,7 @@ Searches for useful quotients, invariants, observers, and presentations rather t
 
 Studies continuous/local structures and may eventually host observer-relative differential and connection constructions.
 
-No new generic API follows automatically from this note.  Under `docs/GOVERNANCE.md`, concepts such as a general `Observer`, `ProcessGeometry`, `EntropyProfile`, or `ObserverConnection` must be incubated and cross-domain tested before public promotion.
+No new generic API follows automatically from this note. Under `docs/GOVERNANCE.md`, concepts such as a general `Observer`, `ProcessGeometry`, `EntropyProfile`, or `ObserverConnection` must be incubated and cross-domain tested before public promotion.
 
 ---
 
@@ -559,34 +582,43 @@ No new generic API follows automatically from this note.  Under `docs/GOVERNANCE
 
 The proposed name becomes mathematically meaningful only if the following questions produce nontrivial answers.
 
-### Q1. Distinguishability -> topology
+### Q1. Exact distinguishability -> minimal quotient
+
+Beyond regular languages, which process/task classes admit a coarsest continuation-stable task-complete quotient analogous to Myhill–Nerode?
+
+### Q2. Distinguishability -> topology
 
 For which process/observer classes do finite distinguishability neighborhoods generate a topology, uniformity, quasi-uniformity, or another canonical local structure?
 
-### Q2. Observer refinement
+### Q3. Process compatibility
 
-Does discriminatory order of observers systematically correspond to quotient order and topology refinement?  Where does this fail?
+When is process evolution continuous in the observer-induced topology? What does discontinuity mean operationally?
 
-### Q3. Intrinsic complexity
+### Q4. Observer refinement
+
+Does discriminatory order of observers systematically correspond to quotient order and topology refinement? Where does this fail?
+
+### Q5. Intrinsic complexity
 
 Can task-relative distinguishability growth provide rigorous lower bounds on the size, memory, branching, or code length of any task-sufficient presentation?
 
-### Q4. Presentation overhead
+### Q6. Presentation overhead
 
 Can we define a useful excess-cost quantity measuring how far a concrete presentation lies above an intrinsic process-complexity lower bound?
 
-### Q5. Differential emergence
+### Q7. Differential emergence
 
 Which continuous process geometries admit canonical local variations, derivatives, observer paths, or connections without importing an arbitrary ambient linear structure?
 
-### Q6. Cross-observer transport
+### Q8. Cross-observer transport
 
 When do different observer-induced geometries admit canonical comparison maps or local-to-global formulas?
 
-### Q7. Cross-domain survival
+### Q9. Cross-domain survival
 
 Can the same foundations explain at least:
 
+- Myhill–Nerode exact minimization;
 - Sonnet 001 history/representation compression;
 - Sonnet 002 arithmetic observers;
 - Sonnet 003 engineering task/model equivalence;
@@ -600,16 +632,19 @@ If the framework cannot survive this cross-domain pressure, `Process Geometry` i
 
 The following statements are deliberately **not** claimed.
 
-1. Every process has a canonical metric.
-2. Every observer-induced indistinguishability relation is an equivalence relation.
-3. Every such relation generates a Hausdorff topology.
-4. Every process topology carries a differentiable or manifold structure.
-5. Topological entropy equals computational complexity in general.
-6. Shannon entropy equals minimal runtime or memory cost.
-7. Every representation is a presentation.
-8. Every presentation is lossless.
-9. Every observer family admits a canonical connection.
-10. Arithmetic-generated geometries are already known to be universal.
+1. Every task quotient needs topology.
+2. Every process has a canonical metric.
+3. Every observer-induced indistinguishability relation is an equivalence relation.
+4. Every such relation generates a Hausdorff topology.
+5. Every observer topology makes process evolution continuous.
+6. Every process topology carries a differentiable or manifold structure.
+7. Topological entropy equals computational complexity in general.
+8. Shannon entropy equals minimal runtime or memory cost.
+9. Every representation is a presentation.
+10. Every presentation is lossless.
+11. Every observer family admits a canonical connection.
+12. Every Process Geometry has a classical universal cover.
+13. Arithmetic-generated geometries are already known to be universal.
 
 The theory should become stronger by proving additional structure in specific classes, not by assuming the strongest geometry at the outset.
 
@@ -619,13 +654,13 @@ The theory should become stronger by proving additional structure in specific cl
 
 A disciplined build order is:
 
-### Stage A — finite/discrete exact calibrations
+### Stage A — exact discrete calibration
 
-Use history quotients, prefix trees, finite observer families, exact task signatures, and coding examples to establish the distinguishability/topology/complexity chain without analytic ambiguity.
+Use Myhill–Nerode, task signatures, continuation-stable history quotients, and automata minimization to establish the direct distinguishability -> minimal-presentation branch.
 
-### Stage B — observer lattice and refinement
+### Stage B — topological threshold
 
-Construct explicit examples where weak/strong observers produce nested quotients and identify failures of simple lattice behavior.
+Construct observer neighborhood systems and test basis/refinement conditions, separation axioms, quotient descent, and continuity of process evolution. Include deliberate non-\(T_0\), non-Hausdorff, and discontinuous red teams.
 
 ### Stage C — intrinsic complexity versus presentation cost
 
@@ -649,14 +684,12 @@ Only after the general Process Geometry layer is independently viable should ari
 
 A deliberately conservative working definition is:
 
-> **Process Geometry studies structures induced by the histories, relations, distinguishability, observers, and task-relative quotients of a process, together with presentations that realize those structures for reasoning and computation.**
+> **Process Geometry studies intrinsic structures forced by process histories, continuation, observer-relative distinguishability, and task-relative quotients, together with presentations that realize those structures for reasoning and computation.**
 
 A more operational version is:
 
-> **Recover the geometry induced by what a process can distinguish, then find economical presentations of that geometry.**
+> **Recover the structure forced by what a process can distinguish; where that structure becomes local, recover its geometry; then find economical task-sufficient presentations.**
 
-The first version is suitable as a research definition.  The second states the computational program.
-
-The decisive point is that `geometry` is not decorative language.  It names the local and global structure generated by distinguishability: neighborhoods, quotients, refinement, entropy, topology, and—where additional regularity permits—metric and differential structure.
+The decisive point is that `geometry` is not decorative language. It names the local and global structure that becomes available once distinguishability supports robust neighborhoods, quotients, refinement, continuity, topology, entropy, and—where additional regularity permits—metric and differential structure.
 
 The project should now test this claim rather than assume it.
