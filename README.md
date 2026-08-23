@@ -101,23 +101,27 @@ What the process **is**.
 
 ### `process_geometry.presentation`
 
-How process history is **objectified, quotiented, compressed, transformed, and compared**.
+How process structure is **related, compressed under declared semantics, materialized, transformed, and compared**.
 
-- `presentation.history` — explicit rewriting, task signatures, and finite history geometry;
-- `presentation.construction` — construction-history-preserving primitive proposals;
-- `presentation.constraints` — exact algebraic quotient constraints;
+- `presentation.history` — explicit rewriting, bounded task-continuation signatures, and finite history geometry;
+- `presentation.construction` — construction-history-preserving candidate primitive proposals;
+- `presentation.constraints` — exact algebraic presentation constraints;
 - `presentation.grammar` — generated finite process grammars;
 - `presentation.relations` — exact process relations, factors, kernels, and decompositions;
 - `presentation.morphism` — task-relative, certificate-carrying transformations between possibly heterogeneous presentations;
-- `presentation.search` — budgets, representation cost, Pareto filtering, and presentation search.
+- `presentation.search` — budgets, presentation cost, Pareto filtering, and presentation search.
+
+A candidate primitive is not called **objectified** merely because it has been proposed: the stronger foundation notion additionally requires a higher-rank compositional language with coherent rank-lowering semantics.
 
 The first `PresentationMorphism` API is intentionally minimal: it records source, target, declared task semantics, a caller-defined certificate, and optional construction provenance. It does not yet define universal verification, composition, inverses, normal forms, or a category/groupoid structure.
 
 ### `process_geometry.discovery`
 
-How alternative presentations are **searched**.
+How alternative presentations, observers, and observable structures are **searched**.
 
-The current discovery package contains bounded polynomial invariant/quotient search, structured observer proposals, first-order quotient selection, and explicit coefficient-language extension experiments. These are search procedures, not process ontology.
+The current discovery package contains bounded polynomial invariant discovery, structured observer proposals, algebraic observable-quotient construction, first-order observer-presentation selection, and explicit coefficient-language extension experiments. These are search procedures, not process ontology.
+
+The canonical names distinguish algebraic observable quotients from task/process quotients: `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, and `search_first_order_observer_presentations`. Historical backend names remain aliases during the `0.0.x` transition.
 
 ### `process_geometry.analysis`
 
@@ -132,9 +136,10 @@ A representative import therefore looks like:
 
 ```python
 from process_geometry.process.history import ProcessWord
+from process_geometry.presentation.history import TaskContinuationSignature
 from process_geometry.presentation.grammar import discover_generated_presentation
 from process_geometry.presentation.morphism import PresentationMorphism
-from process_geometry.discovery import discover_polynomial_invariants
+from process_geometry.discovery import search_first_order_observer_presentations
 from process_geometry.analysis.am import AMFunctionTheory
 ```
 
@@ -169,6 +174,9 @@ See:
 - [`docs/43-myhill-nerode-and-the-topological-threshold.md`](docs/43-myhill-nerode-and-the-topological-threshold.md)
 - [`docs/44-objectification-semantic-compression-and-rank-lowering.md`](docs/44-objectification-semantic-compression-and-rank-lowering.md)
 - [`docs/45-lineage-objectification-and-analytic-closure.md`](docs/45-lineage-objectification-and-analytic-closure.md)
+- [`docs/48-foundation-naming-audit.md`](docs/48-foundation-naming-audit.md)
+
+The naming audit is intentionally conservative: it reserves strong theory words such as **task quotient**, **jet**, **objectification**, **process rank**, and **rank lowering** until the corresponding semantics are actually implemented.
 
 ## Shakespeare and Sonnets
 
@@ -234,8 +242,8 @@ The current implementation supports a bounded loop from declared process structu
 Recent calibrations have established several deliberately limited layers:
 
 - finite families, scalar characters, family actions, and additive process cocycles live in the **process** layer;
-- rewriting, task quotients, construction histories, grammars, relations, task-relative presentation morphisms, and Pareto cost live in the **presentation** layer;
-- invariant/observer/quotient/language proposals live in **discovery**;
+- rewriting, bounded task-distinguishability signatures, construction histories, grammars, relations, task-relative presentation morphisms, and Pareto cost live in the **presentation** layer;
+- invariant, observer, algebraic-observable, and language proposals live in **discovery**;
 - A/M calculus, algebraic quotient profiles, Abelian integrals, lifted cycles, period matrices, and normalized history quotients live in **analysis**.
 
 `PresentationMorphism` was promoted only after independent KdV, resistor-network, and braid/Markov calibrations forced different aspects of the same role: cross-presentation completeness, task-semantic rather than syntactic confluence, and transformations between presentation spaces of different dimensions. The public object remains only an evidence-bearing record; composition and a universal verification semantics are still outside the API.
