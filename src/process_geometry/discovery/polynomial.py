@@ -1,11 +1,12 @@
-"""Bounded polynomial discovery for process observables, invariants, and quotients.
+"""Bounded polynomial discovery for process observables, invariants, and algebraic quotients.
 
 Mathematical pressure
 ---------------------
-The first Shakespeare layers can preserve ordered histories, exact constraints,
-finite grammars, and presentation costs once a useful representation has been
-proposed. A remaining gap appears earlier: classical analysis often hands the
-solver a good observable or first integral before the real calculation begins.
+The first Process Geometry layers can preserve ordered histories, exact
+constraints, finite grammars, and presentation costs once a useful presentation
+has been proposed. A remaining gap appears earlier: classical analysis often
+hands the solver a good observable or first integral before the real calculation
+begins.
 
 This module provides a deliberately small exact backend for removing part of
 that prior choice. It searches a bounded polynomial observer grammar, discovers
@@ -13,10 +14,12 @@ first integrals as null directions of the represented process modulo declared
 constraints, and eliminates source assignments to expose exact relations among
 chosen process observables.
 
-The polynomial grammar is a search proposal language, not a claim that every
-useful observer is polynomial. Likewise Groebner elimination and exact linear
-algebra are discovery/certificate backends rather than Shakespeare's ontology
-of process equality.
+The elimination result is called an ``ObservableAlgebraicQuotient`` to keep it
+distinct from the history/task quotient H(P)/~_Q in the Process Geometry
+foundation. The polynomial grammar is a search proposal language, not a claim
+that every useful observer is polynomial. Likewise Groebner elimination and
+exact linear algebra are discovery/certificate backends rather than process
+ontology.
 """
 
 from __future__ import annotations
@@ -233,7 +236,13 @@ class ObservableRelation:
 
 
 @dataclass(frozen=True)
-class ObservableQuotient:
+class ObservableAlgebraicQuotient:
+    """Algebraic presentation obtained by eliminating source variables.
+
+    This is a quotient/image in the algebraic-presentation sense. It is not the
+    continuation-stable task quotient of process histories from ``docs/42--43``.
+    """
+
     symbols: tuple[sp.Symbol, ...]
     observables: tuple[sp.Expr, ...]
     parameters: tuple[sp.Symbol, ...]
@@ -252,7 +261,7 @@ def discover_observable_relations(
     constraints: AlgebraicConstraintSet,
     source_variables: Sequence[sp.Symbol],
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableQuotient:
+) -> ObservableAlgebraicQuotient:
     observables = tuple(sp.expand(sp.sympify(item)) for item in observables)
     symbols = tuple(symbols)
     source_variables = tuple(source_variables)
@@ -315,7 +324,7 @@ def discover_observable_relations(
             )
         )
 
-    return ObservableQuotient(
+    return ObservableAlgebraicQuotient(
         symbols=symbols,
         observables=observables,
         parameters=parameters,
@@ -324,7 +333,7 @@ def discover_observable_relations(
     )
 
 
-def discover_first_order_process_quotient(
+def discover_first_order_observable_quotient(
     system: ProcessSystem,
     observable: sp.Expr,
     *,
@@ -332,7 +341,9 @@ def discover_first_order_process_quotient(
     derivative_symbol: sp.Symbol,
     constraints: AlgebraicConstraintSet,
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableQuotient:
+) -> ObservableAlgebraicQuotient:
+    """Eliminate source variables from the first-order observable pair ``(F, DF)``."""
+
     return discover_observable_relations(
         (sp.sympify(observable), system.derive(observable)),
         (observable_symbol, derivative_symbol),
@@ -340,3 +351,9 @@ def discover_first_order_process_quotient(
         source_variables=system.assignments,
         parameters=parameters,
     )
+
+
+# Historical 0.0.x backend names. They remain aliases so prior experiments keep
+# executable provenance while the canonical vocabulary stays unambiguous.
+ObservableQuotient = ObservableAlgebraicQuotient
+discover_first_order_process_quotient = discover_first_order_observable_quotient

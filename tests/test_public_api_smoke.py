@@ -2,7 +2,8 @@
 
 The package root is a navigation surface, not a flat symbol catalog. Deeper
 mathematical behavior belongs in literate tests; these checks certify the
-canonical ``process_geometry`` namespace and the temporary legacy alias.
+canonical ``process_geometry`` namespace, foundation-aligned names, and the
+temporary historical alias.
 """
 
 import importlib
@@ -39,6 +40,8 @@ def test_representative_namespaced_entry_points_are_importable():
     assert hasattr(pg.process.local, "ProcessFrame")
 
     assert hasattr(pg.presentation.history, "normalize_word")
+    assert hasattr(pg.presentation.history, "TaskContinuationSignature")
+    assert hasattr(pg.presentation.history, "task_continuation_signature")
     assert hasattr(pg.presentation.constraints, "AlgebraicConstraintSet")
     assert hasattr(pg.presentation.grammar, "discover_generated_presentation")
     assert hasattr(pg.presentation.relations, "discover_relation_kernel")
@@ -48,13 +51,35 @@ def test_representative_namespaced_entry_points_are_importable():
 
     assert hasattr(pg.discovery, "discover_polynomial_invariants")
     assert hasattr(pg.discovery, "generate_pairing_observers")
-    assert hasattr(pg.discovery, "search_first_order_process_quotients")
+    assert hasattr(pg.discovery, "ObservableAlgebraicQuotient")
+    assert hasattr(pg.discovery, "discover_first_order_observable_quotient")
+    assert hasattr(pg.discovery, "search_first_order_observer_presentations")
 
     assert hasattr(pg.analysis.module, "ProcessFunctionModule")
     assert hasattr(pg.analysis.am, "AMFunctionTheory")
     assert hasattr(pg.analysis.algebraic, "hyperelliptic_profile")
     assert hasattr(pg.analysis.abelian, "AbelianPeriodMatrix")
     assert hasattr(pg.analysis.abelian, "normalized_abelian_torus")
+
+
+def test_foundation_aligned_names_preserve_historical_backend_identity():
+    assert (
+        pg.presentation.history.TaskContinuationSignature
+        is pg.presentation.history.ProcessJetSignature
+    )
+    assert (
+        pg.presentation.history.task_continuation_signature
+        is pg.presentation.history.process_jet_signature
+    )
+    assert pg.discovery.ObservableAlgebraicQuotient is pg.discovery.ObservableQuotient
+    assert (
+        pg.discovery.discover_first_order_observable_quotient
+        is pg.discovery.discover_first_order_process_quotient
+    )
+    assert (
+        pg.discovery.search_first_order_observer_presentations
+        is pg.discovery.search_first_order_process_quotients
+    )
 
 
 def test_legacy_root_symbol_is_lazy_and_warns_during_transition():
