@@ -46,10 +46,16 @@ def test_pairwise_completion_overrefines_the_real_three_way_closer_task():
     result = module.analyze_argmin_representation_compare()
 
     assert len(result.pairwise_coordinates) == 3
+    assert result.feasible_complete_sign_states == 13
     assert result.minimum_group_tasks == 7
-    assert result.feasible_complete_sign_states > result.minimum_group_tasks
-    assert result.overrefined_states > 0
-    assert result.worst_depth >= 2
+    assert result.overrefined_states == 6
+    assert result.weighted_depth_uniform_states == 26
+    assert result.tree_nodes == 13
+    assert result.internal_nodes == 4
+    assert result.worst_depth == 2
+    assert result.peak_frontier == 9
+    assert result.widths == (1, 3, 9)
+    assert result.terminal_merged_dag_nodes == 11
     assert result.minimum_group_value_count == 7
 
     print("PHASE14_ARGMIN_COMPARE", result)
