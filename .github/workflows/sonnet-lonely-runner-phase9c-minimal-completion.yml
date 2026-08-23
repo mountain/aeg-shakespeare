@@ -1,12 +1,8 @@
 name: Sonnet Lonely Runner Phase 9C Minimal Completion
 
-# One auditable Phase 9C run. The PR trigger is temporary and will be removed
-# after the exact center-4 minimum-support profile is recorded.
+# Heavy exact minimum-support search. Manual-only after the center-4 calibration.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase9c-minimal-completion.yml
 
 jobs:
   phase9c:
