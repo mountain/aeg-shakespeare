@@ -1,8 +1,13 @@
-"""Cost objects for process-representation search.
+"""Cost objects for process-presentation search.
 
-Costs stay multi-axis by default.  A caller may scalarize them later, but the
+Costs stay multi-axis by default. A caller may scalarize them later, but the
 library does not hide trade-offs between grammar size, relation complexity,
 history depth, decoder complexity, and task error.
+
+``representation`` is intentionally not used as the formal object name here:
+within the Process Geometry foundation a ``Presentation`` is the auditable,
+task-sufficient realization being costed, while representation remains a broad
+informal umbrella term.
 """
 
 from __future__ import annotations
@@ -13,7 +18,7 @@ from typing import Mapping
 
 @dataclass(frozen=True)
 class PresentationCost:
-    """Multi-axis cost of a process presentation."""
+    """Multi-axis operational cost of one concrete process presentation."""
 
     grammar: float = 0.0
     relations: float = 0.0
@@ -33,9 +38,9 @@ class PresentationCost:
     def scalarize(self, weights: Mapping[str, float] | None = None) -> float:
         """Return a caller-controlled weighted sum.
 
-        Missing weights default to ``1``.  Shakespeare does not prescribe one
-        universal scalar objective because different tasks may value grammar,
-        history, and decoding differently.
+        Missing weights default to ``1``. Process Geometry does not prescribe
+        one universal scalar objective because different tasks may value
+        grammar, history, and decoding differently.
         """
 
         weights = weights or {}
