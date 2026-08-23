@@ -1,5 +1,12 @@
 # Phase 11C — canonical task objectification removes history-only wall pressure
 
+> **Phase-15A terminology and certificate correction.**  The projection called
+> `canonical witness` below is a boundary/mode **task label**.  It does not by
+> itself reconstruct event rank, lifted contact center, or witness time.  The
+> 27/19/19/12 coordinate counts have also been re-certified with complete-sign
+> deletion witnesses rather than relying on partial singleton separators.  See
+> [`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).
+
 **Status:** exact bounded task-projection calibration implemented.  
 **Implementation:** `sonnet/lonely-runner/python/canonical_task_objectification.py`.  
 **Fast executable check:** `tests/research/test_lonely_runner_canonical_task_objectification.py`.  

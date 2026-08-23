@@ -73,18 +73,31 @@ The first active study is [`lonely-runner/`](lonely-runner/), targeting the next
 
 The literature audit sharpens the reason for choosing it. The 2026 computer-assisted proof through `LRC(12)` explicitly identifies the primary obstacle to `k=13` as efficient computation of the initial improper set `I(k,p,1)`, with stronger pruning of no-witness residue tuples as the needed direction.
 
-The study has now advanced through four layers:
+The study now contains two exact research lines:
 
 ```text
-exact LRC / ansatz semantics
-    -> I(k,p,1) as fixed-cardinality set cover
-    -> exact ProcessJet future-task quotient
-    -> future-requirement antichain
-    -> strictly stronger prune on a reachable upstream MRV state
+modular proof line
+    I(k,p,1) set cover -> future requirements -> exact two-slot prune
+    -> pinned upstream K=8..12 transfer -> three K=13,p=199 workers
+
+continuous representation line
+    canonical torus contact process -> generated pair-ratio grammar
+    -> task-relative compilation -> lazy DAG -> Clean / obstruction
 ```
 
-The first structural result is deliberately modest but concrete. On the real `find_cover` state semantics, a family of pairwise-disjoint future requirements can certify that more future speed choices are necessary than remaining slots, and this rejects reachable states that the current upstream optimistic coverage bound does not.
+The modular line found an exact two-slot transversal certificate that preserves
+complete canonical outputs and yields net speedups on the pinned upstream solver.
+The continuous line subsequently developed exact K4/K5 bounded-domain models of
+canonicalization, task quotienting, selective materialization, and grammar-relative
+clean separability.
 
-Small complete-search calibrations preserve the exact canonical solution sets while producing additional prunes. The gains so far are too small to claim practical dominance; the next threshold is transfer to the actual solved `k=8..12` parameter sets with explicit accounting of pruning benefit versus certificate cost.
+These lines have not yet rejoined.  In particular, the K4/K5 contact results do
+not currently induce a new prune or lift certificate for `I(13,p,1)`.  The global
+closure audit also shows that the current upstream K13 prime manifest, even if
+fully certified, would not meet the final finite-product threshold.
 
-Thus Sonnet 001 has reached level 3 **structural discovery at calibration scale**, but not level 4: `LRC(13)` remains open.
+The authoritative current audit is
+[`lonely-runner/40-global-closure-contract-and-theory-audit.md`](lonely-runner/40-global-closure-contract-and-theory-audit.md).
+Sonnet 001 has reached level 3 **structural discovery** in several exact bounded
+settings, but not level 4: `LRC(13)` remains open and no public API promotion is
+proposed.

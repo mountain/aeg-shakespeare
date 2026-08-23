@@ -1,5 +1,12 @@
 # Phase 12C — clean-separator recursion is stable under five-speed domain widening
 
+> **Phase-15A claim boundary.**  The `Clean` conclusions below remain exact for
+> the declared partial-sign systems.  However, a partial singleton-separator
+> argument is not a generic proof that the reported basis is cardinality-minimum
+> in the complete sign grammar.  Only the base `u5/u1<21/4` counts have received
+> the stronger full-coordinate deletion certification so far.  See
+> [`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).
+
 **Status:** exact bounded domain-sweep calibration implemented.  
 **Implementation:** `sonnet/lonely-runner/python/five_speed_clean_separator_sweep.py`.  
 **Executable calibration:** `tests/research/test_lonely_runner_five_speed_clean_separator_sweep.py` (opt-in).  

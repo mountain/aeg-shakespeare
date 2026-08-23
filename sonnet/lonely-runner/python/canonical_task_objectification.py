@@ -12,17 +12,22 @@ This calibration now asks a different question: what happens when the task is
 itself quotiented by representation provenance *after* the process has already
 been canonicalized?
 
-The main canonical projection keeps only
+The main canonical projection keeps only the task label
 
     ((runner, enter/exit), ...), mode
 
 at the first witness.  It drops both the event rank and the universal-cover
-contact-center sheet.  The same 261 exact terminal regions and the same 33
-process-generated candidate coordinates are used; only the observer/task changes.
+contact-center sheet.  This label is not a self-contained Lonely Runner witness:
+recovering the actual time or lifted boundary requires the input speeds and a
+replay decoder, whose cost is outside this calibration.  The same 261 exact
+terminal regions and the same 33 process-generated candidate coordinates are
+used; only the observer/task changes.
 
-All minimum-coordinate claims below have exact singleton-separator lower-bound
-witnesses, as in Phase 11B1.  The optional Hauffman placement reuses the exact
-decision-tree objective from Phase 11B2.
+Partial-region singleton separators are used only to propose a basis.  Every
+minimum-coordinate claim is re-certified in the complete 33-coordinate sign
+grammar by task sufficiency plus one full-sign deletion witness per selected
+coordinate.  The optional Hauffman placement reuses the exact decision-tree
+objective from Phase 11B2.
 """
 
 from __future__ import annotations
@@ -43,6 +48,8 @@ class ProjectionSummary:
     task_count: int
     minimum_coordinates: tuple[lazy.Coordinate, ...]
     conflict_pairs: int
+    full_sign_cells: int
+    deletion_witnesses: tuple[lazy.DeletionWitness, ...]
 
 
 @dataclass(frozen=True)
@@ -82,14 +89,25 @@ def history_free_certificate(task: lazy.Task) -> ProjectedTask:
     return boundary, mode
 
 
-def canonical_witness(task: lazy.Task) -> ProjectedTask:
-    """Drop history rank and universal-cover sheet from the witness record."""
+def canonical_boundary_mode_task(task: lazy.Task) -> ProjectedTask:
+    """Project to a boundary/mode task label, not a replay-free witness."""
 
     _event_index, boundary, mode = task
     local_boundary = tuple(
         sorted((runner, kind) for runner, _center, kind in boundary)
     )
     return local_boundary, mode
+
+
+def canonical_witness(task: lazy.Task) -> ProjectedTask:
+    """Compatibility name for :func:`canonical_boundary_mode_task`.
+
+    Historical Phase-11 notes called this projection a ``canonical witness``.
+    It is only a task label: event rank, contact sheet, and witness time are not
+    reconstructible from the returned value alone.
+    """
+
+    return canonical_boundary_mode_task(task)
 
 
 def mode_only(task: lazy.Task) -> ProjectedTask:
@@ -115,6 +133,7 @@ def _minimum_for_projection(
     terminals: tuple[lazy.TerminalRegion, ...],
     coordinates: tuple[lazy.Coordinate, ...],
     signatures: tuple[tuple[int | None, ...], ...],
+    full_task_by_signature: dict[tuple[int, ...], lazy.Task],
     project,
 ) -> ProjectionSummary:
     projected = tuple(project(region.task) for region in terminals)
@@ -148,10 +167,32 @@ def _minimum_for_projection(
         for index, coordinate in enumerate(coordinates)
         if index in mandatory_indices
     )
+
+    projected_full_tasks = {
+        signature: project(task)
+        for signature, task in full_task_by_signature.items()
+    }
+    selected_indices = tuple(sorted(mandatory_indices))
+    task_by_selected_signature = {}
+    for signature, task in projected_full_tasks.items():
+        selected = tuple(signature[index] for index in selected_indices)
+        previous = task_by_selected_signature.setdefault(selected, task)
+        assert previous == task, "selected coordinates do not determine projection"
+
+    deletion_witnesses = lazy._deletion_witnesses(
+        projected_full_tasks,
+        mandatory_indices,
+    )
+    assert {
+        witness.coordinate_index
+        for witness in deletion_witnesses
+    } == mandatory_indices
     return ProjectionSummary(
         task_count=len(set(projected)),
         minimum_coordinates=minimum,
         conflict_pairs=len(conflicts),
+        full_sign_cells=len(projected_full_tasks),
+        deletion_witnesses=deletion_witnesses,
     )
 
 
@@ -161,7 +202,7 @@ def _canonical_sign_cells(
 ):
     task_by_signature = {}
     for region in terminals:
-        task = canonical_witness(region.task)
+        task = canonical_boundary_mode_task(region.task)
         for signature, _closure in globalc._refine_signature(
             region.closure,
             coordinates,
@@ -216,29 +257,34 @@ def analyze_task_objectification(
     terminals = globalc._terminal_regions()
     coordinates = compiler.generated_coordinates
     signatures = _terminal_signatures(terminals, coordinates)
+    full_task_by_signature = lazy._full_task_sign_cells(terminals, coordinates)
 
     full = _minimum_for_projection(
         terminals,
         coordinates,
         signatures,
+        full_task_by_signature,
         full_certificate,
     )
     history_free = _minimum_for_projection(
         terminals,
         coordinates,
         signatures,
+        full_task_by_signature,
         history_free_certificate,
     )
     canonical = _minimum_for_projection(
         terminals,
         coordinates,
         signatures,
-        canonical_witness,
+        full_task_by_signature,
+        canonical_boundary_mode_task,
     )
     mode = _minimum_for_projection(
         terminals,
         coordinates,
         signatures,
+        full_task_by_signature,
         mode_only,
     )
 

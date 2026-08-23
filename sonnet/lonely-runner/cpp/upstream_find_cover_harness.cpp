@@ -11,6 +11,7 @@
 // Top-level-worker usage:
 //   ./harness worker-info 199
 //   ./harness worker-dump 199 0 > worker.txt 2> worker.meta
+//   ./harness worker-lift-sample 199 0 2000
 //
 // `worker-dump` times only the upstream Dfs worker computation.  Timing metadata
 // goes to stderr while the complete sorted canonical solution set goes to stdout,
@@ -28,6 +29,7 @@
 #include <vector>
 
 #include "find_cover.h"
+#include "lift.h"
 
 namespace
 {
@@ -207,6 +209,73 @@ template <int P, int K> void worker_dump(std::size_t worker_index)
   print_rows<K>(rows);
 }
 
+template <int P, int K>
+void worker_lift_sample(std::size_t worker_index, std::size_t sample_limit)
+{
+  using Dfs = find_cover::Dfs<P, K>;
+
+  WorkerSetup<P, K> setup;
+  if (worker_index >= setup.coord2_candidates.size())
+    throw std::out_of_range("worker index out of range");
+  if (sample_limit == 0) throw std::invalid_argument("sample limit must be positive");
+
+  const int choice = setup.coord2_candidates[worker_index];
+  SpeedSet<K> local_elems = setup.first_elems;
+  local_elems.insert(choice + 1);
+  Dfs dfs(typename Dfs::State{
+      setup.first_covered | find_cover::context<P, K>.cover(choice),
+      local_elems,
+      setup.choices[worker_index],
+  });
+
+  const auto solve_start = std::chrono::steady_clock::now();
+  dfs.run();
+  const auto solve_finish = std::chrono::steady_clock::now();
+
+  // The upstream carrier is an unordered_set.  Sort before sampling so the
+  // declared prefix is semantic and reproducible across hash-table layouts.
+  const auto rows = sorted_rows<K>(dfs.solutions);
+  const std::size_t sampled = std::min(sample_limit, rows.size());
+  const auto measure = [&](auto row_index)
+  {
+    std::size_t surviving_seeds = 0;
+    std::size_t lifted_classes = 0;
+    for (std::size_t sample = 0; sample < sampled; ++sample)
+    {
+      const SpeedSet<K> seed(rows[row_index(sample)]);
+      const auto lifts = lift::lift<2, 1, P, K>(seed);
+      if (!lifts.empty()) ++surviving_seeds;
+      lifted_classes += lifts.size();
+    }
+    return std::pair{surviving_seeds, lifted_classes};
+  };
+
+  const auto lift_start = std::chrono::steady_clock::now();
+  const auto prefix = measure([](std::size_t sample) { return sample; });
+  const auto stratified = measure(
+      [&](std::size_t sample) { return sample * rows.size() / sampled; });
+  const auto lift_finish = std::chrono::steady_clock::now();
+
+  const double solve_ms =
+      std::chrono::duration<double, std::milli>(solve_finish - solve_start).count();
+  const double lift_ms =
+      std::chrono::duration<double, std::milli>(lift_finish - lift_start).count();
+  std::cout << std::fixed << std::setprecision(3)
+            << "P=" << P << " K=" << K
+            << " worker=" << worker_index
+            << " second=" << choice + 1
+            << " solutions=" << rows.size()
+            << " sampled=" << sampled
+            << " prefix_order=lexicographic"
+            << " prefix_surviving_seeds=" << prefix.first
+            << " prefix_lifted_classes=" << prefix.second
+            << " stratified_order=equidistant_lexicographic"
+            << " stratified_surviving_seeds=" << stratified.first
+            << " stratified_lifted_classes=" << stratified.second
+            << " solve_ms=" << solve_ms
+            << " lift_ms=" << lift_ms << '\n';
+}
+
 template <class F> void dispatch_case(int p, F&& f)
 {
   switch (p)
@@ -228,7 +297,8 @@ int main(int argc, char** argv)
   {
     std::cerr
         << "usage: harness dump P | harness bench P REPEATS [WARMUPS] | "
-           "harness worker-info P | harness worker-dump P INDEX\n";
+           "harness worker-info P | harness worker-dump P INDEX | "
+           "harness worker-lift-sample P INDEX LIMIT\n";
     return 2;
   }
 
@@ -266,6 +336,17 @@ int main(int argc, char** argv)
     const auto worker_index = static_cast<std::size_t>(std::stoull(argv[3]));
     dispatch_case(p, [worker_index]<int P, int K> {
       worker_dump<P, K>(worker_index);
+    });
+    return 0;
+  }
+
+  if (mode == "worker-lift-sample")
+  {
+    if (argc != 5) return 2;
+    const auto worker_index = static_cast<std::size_t>(std::stoull(argv[3]));
+    const auto sample_limit = static_cast<std::size_t>(std::stoull(argv[4]));
+    dispatch_case(p, [worker_index, sample_limit]<int P, int K> {
+      worker_lift_sample<P, K>(worker_index, sample_limit);
     });
     return 0;
   }

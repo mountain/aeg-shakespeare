@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 import importlib.util
 from pathlib import Path
 import sys
@@ -107,3 +108,48 @@ def test_recursive_obstruction_covers_every_possible_clean_root():
         for failure in result.obstruction.candidate_failures
     )
     assert m.verify_obstruction(regions, result.obstruction)
+
+
+def test_verifiers_reject_duplicate_certificate_fields():
+    m = _load()
+    clean_regions = (
+        m.PartialRegion("A", "A", (-1,)),
+        m.PartialRegion("B", "B", (1,)),
+    )
+    clean = m.analyze_clean_separability(clean_regions)
+    assert clean.tree is not None
+    duplicate_child_tree = replace(
+        clean.tree,
+        children=clean.tree.children + (clean.tree.children[0],),
+    )
+    assert not m.verify_tree(clean_regions, duplicate_child_tree)
+
+    obstructed_regions = (
+        m.PartialRegion("A", "A", (-1, None, 0)),
+        m.PartialRegion("B", "B", (1, 0, None)),
+        m.PartialRegion("C", "C", (None, 1, 1)),
+    )
+    obstructed = m.analyze_clean_separability(obstructed_regions)
+    assert obstructed.obstruction is not None
+    duplicate_region_names = replace(
+        obstructed.obstruction,
+        region_names=("A", "A", "B", "C"),
+    )
+    assert not m.verify_obstruction(obstructed_regions, duplicate_region_names)
+
+    recursive_regions = (
+        m.PartialRegion("A", "A", (-1, -1, 0, None, 0)),
+        m.PartialRegion("B", "B", (-1, -1, 1, 0, None)),
+        m.PartialRegion("C", "C", (-1, -1, None, 1, 1)),
+        m.PartialRegion("D", "D", (1, 1, None, None, None)),
+    )
+    recursive = m.analyze_clean_separability(recursive_regions)
+    assert recursive.obstruction is not None
+    duplicate_failure = replace(
+        recursive.obstruction,
+        candidate_failures=(
+            recursive.obstruction.candidate_failures
+            + (recursive.obstruction.candidate_failures[0],)
+        ),
+    )
+    assert not m.verify_obstruction(recursive_regions, duplicate_failure)

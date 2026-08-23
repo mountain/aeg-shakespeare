@@ -15,6 +15,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run Phase 10C infinite-tail closure certificate
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Run Phase 10C exact executable check
+        env:
+          AEG_RUN_LR_INFINITE_TAIL: "1"
         run: |
-          python sonnet/lonely-runner/python/infinite_contact_tail_closure.py
+          python -m pytest -q -s tests/research/test_lonely_runner_infinite_contact_tail_closure.py

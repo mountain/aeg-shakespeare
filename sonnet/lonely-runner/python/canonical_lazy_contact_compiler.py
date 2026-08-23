@@ -10,12 +10,15 @@ order, their equality locus generates an exact rational pair-ratio coordinate.
 The continuous parameter domain is split only as much as needed to identify the
 next simultaneous/minimal event group.
 
-After every symbolic history has reached a first witness, a second exact pass
-asks which generated coordinates are forced by task separation.  A coordinate
-is mandatory when some two terminal regions with different tasks have that
-coordinate as their unique available separator.  If the mandatory set separates
-all cross-task terminal pairs, it is an exact minimum: every mandatory coordinate
-has its own lower-bound witness, and the whole mandatory set is sufficient.
+After every symbolic history has reached a first witness, a second pass proposes
+coordinates from partial-region separators.  Partial-region singleton separators
+are only a discovery heuristic: unresolved coordinates may separate refinements
+jointly, so they are not a general minimality proof.  The result is therefore
+certified independently after materializing the complete generated sign grammar.
+Every retained coordinate has a deletion witness: two full sign cells of
+different tasks agree on every other generated coordinate.  The retained set is
+also checked to determine the task on every full sign cell.  Together these are
+an exact lower and upper certificate for the declared coordinate grammar.
 
 This is a research-local compiler.  It does not establish a public API or a new
 Lonely Runner theorem.
@@ -59,6 +62,15 @@ class TerminalRegion:
 
 
 @dataclass(frozen=True)
+class DeletionWitness:
+    coordinate_index: int
+    left_signature: tuple[int, ...]
+    right_signature: tuple[int, ...]
+    left_task: Task
+    right_task: Task
+
+
+@dataclass(frozen=True)
 class LazyCompilerResult:
     symbolic_states: int
     terminal_regions: int
@@ -68,6 +80,9 @@ class LazyCompilerResult:
     generated_coordinates: tuple[Coordinate, ...]
     minimum_task_coordinates: tuple[Coordinate, ...]
     unique_separator_witnesses: int
+    full_sign_cells: int
+    exact_deletion_witnesses: int
+    deletion_witnesses: tuple[DeletionWitness, ...]
 
 
 def _tighter(left: Bound, right: Bound | None) -> bool:
@@ -303,6 +318,113 @@ def _terminal_separator_sets(
     return tuple(conflicts)
 
 
+def _add_sign(
+    closure: Closure,
+    coordinate: Coordinate,
+    sign: int,
+) -> Closure | None:
+    """Intersect one exact ratio closure with a ternary coordinate sign."""
+
+    first, second, ratio = coordinate
+    if sign == -1:
+        return _add_edge(closure, first, second, ratio, True)
+    if sign == 0:
+        result = _add_edge(closure, first, second, ratio, False)
+        if result is None:
+            return None
+        return _add_edge(result, second, first, 1 / ratio, False)
+    if sign == 1:
+        return _add_edge(closure, second, first, 1 / ratio, True)
+    raise ValueError(f"invalid ternary sign: {sign}")
+
+
+def _refine_signature(
+    closure: Closure,
+    coordinates: tuple[Coordinate, ...],
+) -> tuple[tuple[int, ...], ...]:
+    """Materialize every feasible full sign cell inside one exact closure."""
+
+    signs: list[int | None] = [None] * len(coordinates)
+    output: set[tuple[int, ...]] = set()
+
+    def visit(depth: int, current: Closure) -> None:
+        if depth == len(coordinates):
+            signature = tuple(int(sign) for sign in signs if sign is not None)
+            assert len(signature) == len(coordinates)
+            output.add(signature)
+            return
+
+        first, second, ratio = coordinates[depth]
+        forced = _relation(current, (first, second), ratio)
+        if forced is not None:
+            signs[depth] = forced
+            visit(depth + 1, current)
+            signs[depth] = None
+            return
+
+        for sign in (-1, 0, 1):
+            child = _add_sign(current, coordinates[depth], sign)
+            if child is None:
+                continue
+            signs[depth] = sign
+            visit(depth + 1, child)
+        signs[depth] = None
+
+    visit(0, closure)
+    return tuple(sorted(output))
+
+
+def _full_task_sign_cells(
+    terminals: tuple[TerminalRegion, ...],
+    coordinates: tuple[Coordinate, ...],
+) -> dict[tuple[int, ...], Task]:
+    """Return the task on every feasible cell of the complete sign grammar."""
+
+    task_by_signature: dict[tuple[int, ...], Task] = {}
+    for region in terminals:
+        for signature in _refine_signature(region.closure, coordinates):
+            previous = task_by_signature.setdefault(signature, region.task)
+            assert previous == region.task, (
+                "complete generated sign grammar does not determine the task"
+            )
+    return task_by_signature
+
+
+def _deletion_witnesses(
+    task_by_signature: dict[tuple[int, ...], Task],
+    coordinate_indices: set[int],
+) -> tuple[DeletionWitness, ...]:
+    """Find coordinates forced in every sufficient subset of the full grammar.
+
+    A returned index has two complete sign cells with different tasks whose
+    signatures become identical after deleting exactly that index.  No subset
+    of the declared full grammar can distinguish that pair without the indexed
+    coordinate.
+    """
+
+    witnesses: list[DeletionWitness] = []
+    for index in sorted(coordinate_indices):
+        by_deleted_signature: dict[
+            tuple[int, ...], tuple[tuple[int, ...], Task]
+        ] = {}
+        for signature, task in task_by_signature.items():
+            deleted = signature[:index] + signature[index + 1 :]
+            previous = by_deleted_signature.get(deleted)
+            if previous is not None and previous[1] != task:
+                witnesses.append(
+                    DeletionWitness(
+                        coordinate_index=index,
+                        left_signature=previous[0],
+                        right_signature=signature,
+                        left_task=previous[1],
+                        right_task=task,
+                    )
+                )
+                break
+            by_deleted_signature[deleted] = (signature, task)
+    return tuple(witnesses)
+
+
 def analyze_lazy_compiler() -> LazyCompilerResult:
     """Generate and minimize task predicates without a center horizon."""
 
@@ -382,12 +504,36 @@ def analyze_lazy_compiler() -> LazyCompilerResult:
         if index in mandatory_indices
     )
 
-    # Every singleton separator is a lower-bound witness: its coordinate must
-    # occur in any task-separating subset.  If all conflicts are hit by this set,
-    # the lower bound is attained and the set is globally cardinality-minimum.
+    # This is a useful partial-region discovery check, but not by itself a
+    # lower-bound proof: unresolved coordinates can separate refinements jointly.
     assert all(
         any(index in mandatory_indices for index in separators)
         for separators in conflicts
+    )
+
+    # Independent exact certificate in the complete 33-coordinate sign grammar.
+    # The selected coordinates must determine every full-cell task (upper bound),
+    # and every selected coordinate must have a full-cell deletion witness (lower
+    # bound).  The latter is stronger than a singleton separator between partial
+    # terminal regions.
+    task_by_signature = _full_task_sign_cells(terminal_tuple, coordinates)
+    task_by_selected_signature: dict[tuple[int, ...], Task] = {}
+    selected_indices = tuple(sorted(mandatory_indices))
+    for signature, task in task_by_signature.items():
+        selected = tuple(signature[index] for index in selected_indices)
+        previous = task_by_selected_signature.setdefault(selected, task)
+        assert previous == task, "selected coordinates do not determine the task"
+
+    deletion_witnesses = _deletion_witnesses(
+        task_by_signature,
+        mandatory_indices,
+    )
+    deletion_witness_indices = {
+        witness.coordinate_index
+        for witness in deletion_witnesses
+    }
+    assert deletion_witness_indices == mandatory_indices, (
+        "every selected coordinate needs a complete-sign deletion witness"
     )
 
     tasks = {region.task for region in terminal_tuple}
@@ -400,6 +546,9 @@ def analyze_lazy_compiler() -> LazyCompilerResult:
         generated_coordinates=coordinates,
         minimum_task_coordinates=mandatory,
         unique_separator_witnesses=len(mandatory_indices),
+        full_sign_cells=len(task_by_signature),
+        exact_deletion_witnesses=len(deletion_witnesses),
+        deletion_witnesses=deletion_witnesses,
     )
 
 
@@ -413,6 +562,8 @@ def main() -> None:
     print(f"  max contact center:       {result.max_contact_center}")
     print(f"  generated coordinates:    {len(result.generated_coordinates)}")
     print(f"  exact minimum coordinates:{len(result.minimum_task_coordinates)}")
+    print(f"  full generated sign cells: {result.full_sign_cells}")
+    print(f"  deletion witnesses:        {result.exact_deletion_witnesses}")
     for coordinate in result.minimum_task_coordinates:
         print("   ", coordinate)
 

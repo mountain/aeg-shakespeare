@@ -1,7 +1,27 @@
 # Lonely Runner — Sonnet 001
 
-**Status:** Phase 6 — the frozen solved-case certificate has crossed the theorem frontier and preserved exact outputs on the first three real `K=13,p=199` upstream workers.  
+**Status:** Phase 15A audit — `LRC(13)` is open; the bounded K4/K5 representation mechanisms are partially closed and research-local.
 **Target open case:** `LRC(13)`, i.e. **14 total runners**.
+
+**Authoritative status and Theory Map audit:**
+[`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).
+
+The original Phase 0--6 solver line below is retained as an auditable historical
+chain.  Phases 7--14 then developed a second, continuous canonical-contact line:
+
+```text
+Phase 7       A/M primitive restart and pair-difference geometry
+Phases 8--10  task-relative completion, persistent DAG, deeper-contact pressure
+Phase 11      canonical torus restart and horizon-free compiler
+Phase 12      five-speed transfer and lazy task DAG
+Phase 13      exact finite Clean criterion and obstruction
+Phase 14      safe-window task change and argmin representation red team
+Phase 15A     four-layer closure contract, certificate hardening, global audit
+```
+
+The two lines have not yet been joined by a theorem preserving the modular
+`I(13,p,1)`/lift task.  Therefore none of the Phase 7--14 bounded contact results
+is a proof of the open case.
 
 ## 1. Problem
 
@@ -357,3 +377,26 @@ The next representation-development cycle should therefore move **back** to `K<=
 Any new rule must again be selected and frozen on solved instances before it is allowed to touch `K=13`.
 
 Launching the remaining 11 `p=199` workers now would mostly measure brute-force scale. It may later be useful for end-to-end accounting, but it is not the next best experiment for the Shakespeare representation hypothesis.
+
+## 6. Phase 7--15A continuation and current pivot
+
+The post-Phase-6 programme followed the requirement above and restarted from
+problem-native continuous contact dynamics.  It produced exact bounded results,
+including a horizon-free canonical compiler, K4/K5 task-minimum query grammars,
+lazy task DAGs, and the finite `Clean` obstruction theorem.  Phase 14 showed that
+completion and clean separability change when the stopping task changes even if
+the physical process is fixed.
+
+Phase 15A red-teamed the complete chain in the global proof architecture.  Its
+two decisive conclusions are:
+
+1. the continuous representation line has no proved task-preserving bridge back
+   to the modular `I(13,p,1) -> lift -> J(13,p)` chain; and
+2. the current upstream K13 prime list is not large enough to meet the exact
+   final product threshold, even assuming every listed prime were certified.
+
+The active research task is therefore lift-aware initial search on solved-case
+calibrations, followed by frozen K13 validation.  Blind extension of the local
+ratio windows is no longer the default mainline.  Full details and the exact
+closure gates are in
+[`40-global-closure-contract-and-theory-audit.md`](40-global-closure-contract-and-theory-audit.md).

@@ -280,3 +280,25 @@ def test_global_m_scale_changes_only_reconstruction_time() -> None:
     assert scaled.mode == base.mode
     assert scaled.decoded_lift_boundary == base.decoded_lift_boundary
     assert scaled.time == base.time / scale
+
+
+def test_boundary_mode_task_label_is_not_a_self_contained_witness() -> None:
+    """Dropping event rank and deck sheet also drops witness reconstruction."""
+
+    first = canonical_first_witness((1, 2, 3, 5), final_k=4)
+    second = canonical_first_witness((1, 3, 4, 5), final_k=4)
+
+    first_label = (first.boundary, first.mode)
+    second_label = (second.boundary, second.mode)
+    assert first_label == second_label == (((3, "exit"),), "interval")
+
+    assert (first.event_index, first.time, first.decoded_lift_boundary) == (
+        6,
+        Fraction(6, 25),
+        ((3, 1, "exit"),),
+    )
+    assert (second.event_index, second.time, second.decoded_lift_boundary) == (
+        11,
+        Fraction(11, 25),
+        ((3, 2, "exit"),),
+    )
