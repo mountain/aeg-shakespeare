@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- aligns current program vocabulary with the Process Geometry foundation in `docs/42–45` and records the mapping in `docs/48-foundation-naming-audit.md`;
+- makes `TaskContinuationSignature`, `task_continuation_signature`, and `history_task_continuation_signature` the canonical names for the bounded future-task signature, retaining the historical `ProcessJet*` names as 0.0.x aliases so `jet` remains available for genuinely differential/local structure;
+- exposes qualified discovery names `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, `search_first_order_observer_presentations`, and `structural_first_order_observer_presentation_cost`, while retaining historical backend aliases;
+- reserves strong theory words such as task/process quotient, objectification, process rank, rank lowering, and analytic closure until their full semantics are implemented rather than promoting new classes by nomenclature alone;
 - further migration of repository-owned historical tests/docs from `aeg_shakespeare` remains follow-up work; no new implementation may depend on the deprecated namespace.
 
 ## 0.0.4 — canonical `process_geometry` namespace
