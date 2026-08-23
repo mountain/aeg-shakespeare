@@ -10,6 +10,11 @@ center-4 task semantics, and rebuilds the task decision geometry over the joint
 The purpose is to distinguish representation content from placement again at the
 next contact layer.  No fresh center-4 decision tree or full global center-4
 arrangement is supplied.
+
+``build_center4_persistent_cells`` is intentionally research-local.  It exposes
+the certified center-4 persistent state so the next contact layer can continue
+from the representation actually constructed here rather than reconstructing a
+fresh center-4 arrangement.
 """
 
 from __future__ import annotations
@@ -114,7 +119,20 @@ def _new_wall_placement(tree, signatures, old_length: int):
     return occurrences, cross_parent, earliest
 
 
-def analyze_center4_persistent_update() -> Center4PersistentUpdate:
+def build_center4_persistent_cells():
+    """Return the certified center-4 state built from the Phase-8E state.
+
+    The return value is
+
+        old center-2 relevant-coordinate indices,
+        seven center-3 completion walls,
+        center-3 persistent cells,
+        the unique center-4 completion wall,
+        center-4 persistent cells.
+
+    No fresh center-4 arrangement is constructed.
+    """
+
     old_relevant, center3_walls, center3_cells = pcc.build_center3_persistent_cells()
     pressure = pcc.detect_next_layer_pressure(
         center3_cells,
@@ -134,14 +152,6 @@ def analyze_center4_persistent_update() -> Center4PersistentUpdate:
     assert new_wall.ratio == Fraction(19, 11)
     assert all(case.new_center4_coordinates == selected for case in completion_result.cases)
     assert all(not case.latent_older_coordinates for case in completion_result.cases)
-
-    # Freeze the center-3 baseline from the same persistent-cell artifact.
-    weights3 = _usage_weights(old_relevant, center3_walls, center3_cells)
-    tree3, cost3, widths3, signatures3, tasks3 = _tree_metrics(center3_cells, weights3)
-    del tree3, signatures3
-    assert cost3 == (135, 376, 10, 125)
-    assert max(widths3) == 72
-    assert tasks3 == 75
 
     atom_groups = defaultdict(list)
     provenance = defaultdict(int)
@@ -182,6 +192,28 @@ def analyze_center4_persistent_update() -> Center4PersistentUpdate:
         )
         for signature in sorted(atom_groups)
     )
+    assert len(cells4) == 3_067
+    assert len({cell.task for cell in cells4}) == 81
+
+    return old_relevant, center3_walls, center3_cells, new_wall, cells4
+
+
+def analyze_center4_persistent_update() -> Center4PersistentUpdate:
+    (
+        old_relevant,
+        center3_walls,
+        center3_cells,
+        new_wall,
+        cells4,
+    ) = build_center4_persistent_cells()
+
+    # Freeze the center-3 baseline from the same persistent-cell artifact.
+    weights3 = _usage_weights(old_relevant, center3_walls, center3_cells)
+    tree3, cost3, widths3, signatures3, tasks3 = _tree_metrics(center3_cells, weights3)
+    del tree3, signatures3
+    assert cost3 == (135, 376, 10, 125)
+    assert max(widths3) == 72
+    assert tasks3 == 75
 
     weights4 = _usage_weights(old_relevant, center3_walls, cells4, new_wall)
     tree4, cost4, widths4, signatures4, tasks4 = _tree_metrics(cells4, weights4)
