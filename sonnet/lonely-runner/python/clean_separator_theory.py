@@ -99,21 +99,42 @@ def _validate(regions: tuple[PartialRegion, ...]) -> int:
 
 
 def pairwise_task_separable(regions: Iterable[PartialRegion]) -> bool:
-    """Whether every cross-task pair has some jointly-defined opposite sign."""
+    """Whether every cross-task pair has a jointly-defined opposite sign.
+
+    The direct definition is quadratic in the number of regions.  For the
+    five-speed application that would waste hundreds of millions of Python-level
+    sign comparisons, so this implementation precomputes one integer bitmask per
+    `(coordinate, sign)` class.  Each region then unions the opposite-sign masks
+    of its defined coordinates and checks that every different-task region is
+    covered.  Semantics are identical to the pairwise definition.
+    """
 
     items = tuple(regions)
-    _validate(items)
-    for first_index, first in enumerate(items):
-        for second in items[first_index + 1 :]:
-            if first.task == second.task:
+    width = _validate(items)
+    count = len(items)
+    all_mask = (1 << count) - 1
+
+    sign_masks = [[0, 0, 0] for _ in range(width)]
+    task_masks: dict[Task, int] = {}
+    for index, region in enumerate(items):
+        bit = 1 << index
+        task_masks[region.task] = task_masks.get(region.task, 0) | bit
+        for coordinate, sign in enumerate(region.signs):
+            if sign is not None:
+                sign_masks[coordinate][sign + 1] |= bit
+
+    for region in items:
+        separated = 0
+        for coordinate, sign in enumerate(region.signs):
+            if sign is None:
                 continue
-            if not any(
-                left is not None
-                and right is not None
-                and left != right
-                for left, right in zip(first.signs, second.signs)
-            ):
-                return False
+            negative, zero, positive = sign_masks[coordinate]
+            defined = negative | zero | positive
+            separated |= defined & ~sign_masks[coordinate][sign + 1]
+
+        different_task = all_mask ^ task_masks[region.task]
+        if different_task & (all_mask ^ separated):
+            return False
     return True
 
 
