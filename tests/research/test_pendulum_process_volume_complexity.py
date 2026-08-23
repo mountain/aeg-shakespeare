@@ -55,6 +55,9 @@ with ``V=Omega/A0``, it is
 
     dV/depsilon = T/t0.
 
+These are classical action-angle/elliptic-integral facts; see [Arnold-1989] for
+Hamiltonian action-angle theory and [DLMF-19] for complete elliptic integrals.
+
 At the libration separatrix ``epsilon -> 2-``, ``V -> 16`` while ``T`` diverges.
 This gives a clean example in which a finite bulk phase volume coexists with an
 unbounded shell/clock measure.
@@ -81,6 +84,14 @@ Theory-map effect
 None.  This is a local calibration supplying evidence for a separately governed
 H3<->H4 theory-edge hypothesis.  It creates no generic complexity or spacetime
 API.
+
+References
+----------
+[Arnold-1989] V. I. Arnold, *Mathematical Methods of Classical Mechanics*,
+2nd ed., Springer, 1989. DOI 10.1007/978-1-4757-2063-1.
+
+[DLMF-19] NIST Digital Library of Mathematical Functions, Chapter 19,
+“Elliptic Integrals.” https://dlmf.nist.gov/19 .
 """
 
 import sympy as sp
