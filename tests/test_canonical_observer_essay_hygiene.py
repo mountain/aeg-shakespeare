@@ -30,6 +30,7 @@ _ESSAYS = (
     _ROOT / "research" / "test_lonely_runner_center4_semantic_redteam.py",
     _ROOT / "research" / "test_lonely_runner_center4_minimal_completion.py",
     _ROOT / "research" / "test_lonely_runner_center4_persistent_update.py",
+    _ROOT / "research" / "test_lonely_runner_infinite_contact_tail_closure.py",
 )
 _REQUIRED_SECTIONS = (
     "Question\n--------",
