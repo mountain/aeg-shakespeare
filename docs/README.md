@@ -46,8 +46,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 40. `39-braid-markov-presentation-morphism.md` — topology calibration: braid/Markov moves, Burau/Alexander closure semantics, cross-dimension stabilization, and weak topological observer red team.
 41. `40-presentation-morphism-api.md` — minimal public `PresentationMorphism` contract promoted after the KdV, resistor-network, and braid/Markov calibrations.
 42. `42-process-geometry-from-distinguishability.md` — first-principles research program: distinguishability -> topology -> entropy/complexity -> presentation, with continuous extension toward observer-relative differential structure and a clean separation from Arithmetic Universality.
-43. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-44. `REFERENCES.md` — shared mathematical bibliography.
-45. `RELEASE_CHECKLIST.md` — release gates.
+43. `43-myhill-nerode-and-the-topological-threshold.md` — exact discrete anchor and refinement of the foundation: Myhill–Nerode gives distinguishability -> minimal presentation before topology, while the topological threshold requires local refinement and process continuity and adds robustness, boundary, compactness, covering/homotopy, and topological entropy.
+44. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+45. `REFERENCES.md` — shared mathematical bibliography.
+46. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
