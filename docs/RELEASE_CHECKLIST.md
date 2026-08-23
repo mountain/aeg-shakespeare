@@ -8,10 +8,12 @@ For a `0.0.x` release candidate:
 - [ ] sdist and wheel build successfully;
 - [ ] `twine check dist/*` passes;
 - [ ] the built wheel installs in a fresh environment and imports outside the source tree;
-- [ ] representative semantic public entry points pass smoke tests without relying on legacy root compatibility;
-- [ ] quickstart examples run against the public API;
+- [ ] representative semantic public entry points pass smoke tests through the canonical `process_geometry` namespace;
+- [ ] public quickstart examples use `process_geometry` and run successfully;
+- [ ] the canonical implementation tree `src/process_geometry/**` has no dependency on `aeg_shakespeare`;
+- [ ] the temporary `aeg_shakespeare` compatibility namespace imports from the built wheel, emits its deprecation signal, and preserves representative deep object identity with `process_geometry`;
+- [ ] historical `aeg-shakespeare` distributions are not installed alongside the release smoke environment;
 - [ ] new substantial `tests/classical/` and `tests/research/` files are complete mathematical essays with rigorous references;
 - [ ] README and release note state that `0.0.x` APIs are experimental;
-- [ ] for `0.0.3`, the transitional `aeg_shakespeare` import namespace is tested from the `process-geometry` wheel and the historical `aeg-shakespeare` distribution is not installed alongside it;
-- [ ] PyPI Trusted Publisher (or pending publisher before the first `process-geometry` release) is configured with owner `mountain`, repository `process-geometry`, workflow `publish.yml`, and environment `pypi`;
+- [ ] PyPI Trusted Publisher is configured with owner `mountain`, repository `process-geometry`, workflow `publish.yml`, and environment `pypi`;
 - [ ] no package credentials or API tokens are stored in the repository.
