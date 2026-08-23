@@ -6,7 +6,7 @@ The documentation is organized as a mathematical/programming narrative rather th
 
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
-3. `02-task-signatures.md` — bounded task-sufficient quotients.
+3. `02-task-signatures.md` — bounded task-continuation signatures as finite distinguishability certificates.
 4. `03-history-geometry-huffman.md` — depth, boundary, and prefix representations.
 5. `04-costed-presentation-search.md` — multi-axis presentation search.
 6. `05-primitive-construction.md` — construction-history-preserving proposals.
@@ -51,8 +51,9 @@ The documentation is organized as a mathematical/programming narrative rather th
 45. `45-lineage-objectification-and-analytic-closure.md` — lineage/red-team map against operads, Baez–Dolan slice constructions, polygraphs, definitional extension, abstract interpretation, and sheaves; identifies AEG as a model organism that couples rank raising to a native analysis of variation, and proposes semantic/topological/analytic closure across ranks.
 46. `46-release-0.0.3.md` — first release contract under the `process-geometry` distribution identity; keeps `aeg_shakespeare` as a temporary import namespace while retargeting GitHub/PyPI metadata and publishing.
 47. `47-release-0.0.4.md` — makes `process_geometry` the canonical Python namespace, reduces `aeg_shakespeare` to an identity-preserving compatibility alias, and establishes one-way namespace ownership and release hygiene.
-48. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
-49. `REFERENCES.md` — shared mathematical bibliography.
-50. `RELEASE_CHECKLIST.md` — release gates.
+48. `48-foundation-naming-audit.md` — maps the current program vocabulary to the `42–45` foundation; reserves task quotient, jet, objectification, rank, and lowering for their stronger meanings and introduces compatibility-safe canonical names where current code collides with them.
+49. `API.md` — living semantic public API map: Process → Presentation → Discovery → Analysis.
+50. `REFERENCES.md` — shared mathematical bibliography.
+51. `RELEASE_CHECKLIST.md` — release gates.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
