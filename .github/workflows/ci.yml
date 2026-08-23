@@ -33,24 +33,24 @@ jobs:
       - name: Verify built wheel outside source tree
         shell: bash
         run: |
-          python -m venv /tmp/aeg-shakespeare-release-smoke
-          /tmp/aeg-shakespeare-release-smoke/bin/python -m pip install --upgrade pip
-          /tmp/aeg-shakespeare-release-smoke/bin/python -m pip install dist/*.whl
+          python -m venv /tmp/process-geometry-release-smoke
+          /tmp/process-geometry-release-smoke/bin/python -m pip install --upgrade pip
+          /tmp/process-geometry-release-smoke/bin/python -m pip install dist/*.whl
           cd /tmp
-          /tmp/aeg-shakespeare-release-smoke/bin/python - <<'PY'
+          /tmp/process-geometry-release-smoke/bin/python - <<'PY'
           from importlib.metadata import version
-          import aeg_shakespeare as shakespeare
+          import aeg_shakespeare as pg
           from aeg_shakespeare.analysis.abelian import AbelianPeriodMatrix
           from aeg_shakespeare.analysis.am import AMFunctionTheory
           from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
           from aeg_shakespeare.presentation.morphism import PresentationMorphism
           from aeg_shakespeare.process.history import ProcessWord
 
-          assert shakespeare.__version__ == version("aeg-shakespeare")
+          assert pg.__version__ == version("process-geometry")
           assert ProcessWord is not None
           assert AMFunctionTheory is not None
           assert AlgebraicConstraintSet is not None
           assert PresentationMorphism is not None
           assert AbelianPeriodMatrix is not None
-          print("wheel smoke OK:", shakespeare.__version__)
+          print("wheel smoke OK:", pg.__version__)
           PY
