@@ -1,11 +1,8 @@
 name: Sonnet Lonely Runner Phase 9D Persistent Update
 
-# One auditable center-4 persistent update run. The PR trigger is temporary.
+# Heavy exact persistent update. Manual-only after the center-4 calibration.
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/sonnet-lonely-runner-phase9d-persistent-update.yml
 
 jobs:
   phase9d:
