@@ -1,4 +1,4 @@
-"""History rewriting, task signatures, and finite history geometry."""
+"""History rewriting, task distinguishability, and finite history geometry."""
 
 from ..history_geometry import (
     BoundaryProfile,
@@ -17,11 +17,14 @@ from ..rewrite import (
 )
 from ..signature import (
     ProcessJetSignature,
+    TaskContinuationSignature,
     enumerate_process_words,
     histories_task_equivalent,
     history_process_jet_signature,
+    history_task_continuation_signature,
     process_jet_signature,
     signatures_equivalent,
+    task_continuation_signature,
 )
 
 __all__ = [
@@ -30,12 +33,16 @@ __all__ = [
     "WordRewriteRule",
     "normalize_word",
     "rewrite_once",
-    "ProcessJetSignature",
+    "TaskContinuationSignature",
+    "task_continuation_signature",
+    "history_task_continuation_signature",
     "enumerate_process_words",
     "histories_task_equivalent",
-    "history_process_jet_signature",
-    "process_jet_signature",
     "signatures_equivalent",
+    # Historical 0.0.x aliases; ``jet`` is reserved for later differential use.
+    "ProcessJetSignature",
+    "process_jet_signature",
+    "history_process_jet_signature",
     "BoundaryProfile",
     "PrefixCode",
     "PrefixCodeMetrics",
