@@ -1,4 +1,4 @@
-"""Checkpointed adjoints: continuous chart covariance and discrete history cost.
+"""C0 classical baseline: checkpointed-adjoint chart covariance.
 
 Problem: reverse/adjoint differentiation of a time-stepped nonlinear ODE with
 too little memory to retain every primal state.
@@ -10,6 +10,11 @@ Process Geometry roles: H4 observer/chart covariance, task-sufficient history
 quotient, invariant resource cocycle, Bellman optimization.
 Theory Map relation: a research calibration; no generic API or universality
 claim is proposed.
+
+Status: this file freezes the conventional comparison target for the A/M-first
+calibration in ``test_am_checkpoint_differential_quotient.py``.  Passing it is
+evidence of compatibility with classical tangent/cotangent transport and
+Revolve, not evidence that A/M process calculus derived either construction.
 
 The smooth layer uses one explicit Euler step of u' = u^2 - 2 and the nonlinear
 A/M chart w = u + u^3.  The target step is the exact conjugate h F h^{-1}, not
