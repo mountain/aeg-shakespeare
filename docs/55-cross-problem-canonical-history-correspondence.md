@@ -3,6 +3,11 @@
 **Status:** T0 cross-problem synthesis backed by exact research-local tests; no
 Theory Map or API promotion.
 
+**Subsequent correction:** `docs/56-am-universal-history-recalibration.md`
+retains the quotient-carrier split below but rejects using that split to
+separate canonicalization from Hauffman/Bellman optimization on a common
+universal history lift.
+
 ## 1. Question
 
 The pendulum produced a clean bridge:
