@@ -6,6 +6,11 @@
   dimension/task/oracle contract; the first executable gate proves exact Ito
   generator covariance for `w=u+u^3`, exposes the nonzero residual left by a
   naive deterministic chain rule, and recovers that rule at zero noise;
+- executes the depth-two A/M presentation census for the stochastic Sonnet,
+  retaining literal syntax before exact polynomial quotienting and certifying
+  strict orientation on the full stopping interval rather than by samples; the
+  exact `604 -> 60 -> 16` result has only affine survivors and gives a bounded
+  negative certificate for nonlinear presentation discovery;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual

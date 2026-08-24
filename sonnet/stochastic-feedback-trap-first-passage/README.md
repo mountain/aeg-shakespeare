@@ -35,3 +35,13 @@ P6  blind task-morphism discovery or bounded negative certificate
 Every gate may close negatively.  In particular, failure of a bounded A/M
 grammar to discover the nonlinear morphism is not repaired by supplying
 `w=u+u^3` as an answer label.
+
+Phase 1 is implemented in `phase1_presentation_census.py` and
+`01-phase1-presentation-census.md`.  It retains literal tree counts before exact
+polynomial quotienting and requires exact strict-monotonicity certificates on
+the full task interval.
+
+Its exact result is `604 literal -> 60 semantic -> 16 strictly increasing`, and
+all 16 survivors are affine.  Hence the frozen depth-two grammar contains no
+admissible nonlinear presentation and does not contain the held-out `u+u^3`.
+This negative certificate must remain visible when depth three is opened.
