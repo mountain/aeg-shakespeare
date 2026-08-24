@@ -21,6 +21,11 @@
   exact Itô generator transport, labelled sections, initial point, and clock
   produce one task class, while the no-Itô-correction red team splits exactly
   into 87 affine passes and 155 nonlinear failures;
+- freezes and executes an independent stochastic first-passage numerical gate:
+  transported-node backward BVPs in one affine and two nonlinear charts converge
+  to a common value near 0.572194, direct Euler-Maruyama estimates agree within
+  sampling/time-step error, and uniform target-coordinate meshes expose the
+  predicted finite-resolution coordinate artifact;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual

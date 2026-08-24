@@ -73,3 +73,10 @@ generator covariance alone is not a Bellman or solver certificate.
 execution: a backward BVP and independently evolved Monte Carlo paths compare
 the source chart with two nonlinear charts, while a uniform target-coordinate
 mesh is retained as an expected coordinate-artifact red team.
+
+Execution in `07-phase3-first-passage-results.md` finds a common refined BVP
+value near `0.572194`: the two nonlinear 401-node values differ from the source
+by only `3.51e-6` and `1.14e-6`. Independent Euler-Maruyama estimates agree at
+their declared sampling/time-step precision. Uniform target-coordinate meshes
+produce the expected finite-resolution split, so node count is not promoted to
+a coordinate-free physical cost.
