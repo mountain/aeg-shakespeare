@@ -68,3 +68,8 @@ Itô transports and one task-equivalence class. The no-Itô-correction red team
 splits exactly as predicted: 87 affine passes and 155 nonlinear failures. The
 next gate must test numerical first-passage observables independently; symbolic
 generator covariance alone is not a Bellman or solver certificate.
+
+`06-phase3-first-passage-contract.md` now freezes that numerical gate before
+execution: a backward BVP and independently evolved Monte Carlo paths compare
+the source chart with two nonlinear charts, while a uniform target-coordinate
+mesh is retained as an expected coordinate-artifact red team.
