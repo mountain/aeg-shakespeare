@@ -46,6 +46,16 @@ def expressions_through_depth_one() -> tuple[Expression, ...]:
     return tuple(sorted(set(atoms) | binary))
 
 
+def expressions_through_depth_two() -> tuple[Expression, ...]:
+    lower = expressions_through_depth_one()
+    binary = {
+        Expression.binary(operation, left, right)
+        for operation in OPERATIONS
+        for left, right in combinations_with_replacement(lower, 2)
+    }
+    return tuple(sorted(set(lower) | binary))
+
+
 def projective_generator_coefficients() -> tuple[tuple[int, ...], ...]:
     """Nonzero {-1,0,1}^4 vectors modulo multiplication by -1."""
 
@@ -100,4 +110,3 @@ PHASE0_FIREWALL = OracleFirewall(
         }
     ),
 )
-
