@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from itertools import combinations_with_replacement
+from math import comb
 
 import sympy as sp
 
@@ -96,6 +97,42 @@ def literal_am_grammar(max_depth: int = 2) -> tuple[AMPresentation, ...]:
     return tuple(cumulative)
 
 
+def literal_depth_counts(max_depth: int) -> tuple[int, ...]:
+    """Count literal commutative trees exactly without materializing them."""
+
+    if max_depth < 0:
+        raise ValueError("max_depth must be nonnegative")
+    exact = [4]
+    cumulative_before_previous = 0
+    cumulative_previous = 4
+    for _depth in range(1, max_depth + 1):
+        count = 2 * (
+            comb(cumulative_previous + 1, 2)
+            - comb(cumulative_before_previous + 1, 2)
+        )
+        exact.append(count)
+        cumulative_before_previous = cumulative_previous
+        cumulative_previous += count
+    return tuple(exact)
+
+
+def semantic_am_grammar(max_depth: int) -> tuple[sp.Expr, ...]:
+    """Complete exact semantic closure using one representative per value."""
+
+    if max_depth < 0:
+        raise ValueError("max_depth must be nonnegative")
+    u = sp.Symbol("u", real=True)
+    semantic = {sp.Integer(-1), sp.Integer(0), sp.Integer(1), u}
+    for _depth in range(1, max_depth + 1):
+        basis = tuple(semantic)
+        generated: set[sp.Expr] = set()
+        for left, right in combinations_with_replacement(basis, 2):
+            generated.add(sp.expand(left + right))
+            generated.add(sp.expand(left * right))
+        semantic.update(generated)
+    return tuple(sorted(semantic, key=sp.srepr))
+
+
 def certify_strict_increase(
     presentation: sp.Expr,
     coordinate: sp.Symbol,
@@ -149,5 +186,7 @@ __all__ = [
     "PresentationCensus",
     "certify_strict_increase",
     "depth_two_presentation_census",
+    "literal_depth_counts",
     "literal_am_grammar",
+    "semantic_am_grammar",
 ]

@@ -45,3 +45,8 @@ Its exact result is `604 literal -> 60 semantic -> 16 strictly increasing`, and
 all 16 survivors are affine.  Hence the frozen depth-two grammar contains no
 admissible nonlinear presentation and does not contain the held-out `u+u^3`.
 This negative certificate must remain visible when depth three is opened.
+
+`02-phase1b-depth-three-contract.md` freezes that enlargement before execution.
+The exact cumulative literal count is 365,424; a complete semantic closure over
+the 60 depth-two values avoids materializing redundant syntax while preserving
+every reachable polynomial.

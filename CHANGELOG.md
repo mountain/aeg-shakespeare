@@ -11,6 +11,9 @@
   strict orientation on the full stopping interval rather than by samples; the
   exact `604 -> 60 -> 16` result has only affine survivors and gives a bounded
   negative certificate for nonlinear presentation discovery;
+- freezes the depth-three stochastic-presentation enlargement before execution:
+  365,424 literal trees are counted combinatorially while a complete semantic
+  closure over the 60 depth-two values avoids redundant materialization;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual
