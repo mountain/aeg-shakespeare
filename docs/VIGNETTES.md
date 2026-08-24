@@ -120,6 +120,31 @@ The index is deliberately conservative: an entry records where to start reading;
 
 ---
 
+## Planar circular restricted three-body problem: costed lifted histories
+
+**Problem / domains:** planar circular restricted three-body problem, Jacobi
+integral, Hill regions, collision-punctured configuration space, numerical
+trajectory histories.
+
+**Classical search terms:** PCR3BP / CR3BP, Lagrange point `L1`, zero-velocity
+curve, free group `F2`, pair of pants, `Gamma(2)`, hyperbolic uniformization.
+
+**Process Geometry themes:** observer gates, universal-history lift,
+dimensionless physical clock, word cost versus deck-translation cost,
+Bellman/Huffman claim boundary.
+
+**Start here:**
+`sonnet/pcr3bp-history-cost/00-phase0-history-cost.md`.
+
+**Executable calibration:**
+`tests/research/test_pcr3bp_history_cost_phase0.py`.
+
+**Theory role:** phase-0 numerical red team for identifying word length,
+hyperbolic length, and physical time.  It refines the separation of H0, H2, and
+H3; it does not assert complete symbolic dynamics or arithmetic universality.
+
+---
+
 ## Galilean mechanics and magnetic translations
 
 **Problem / domains:** Galilean boosts, central extensions, Bargmann mass, magnetic translations, flux cocycles.
