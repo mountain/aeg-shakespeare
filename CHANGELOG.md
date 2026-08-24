@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- calibrates the S2-prime moving-observer contract on a known Riccati control:
+  differentiated normalization induces observer motion, shape plus transport
+  reconstructs exactly, and an out-of-grammar cubic survives as residual
+  payload; this remains research-local and is not AM-native discovery;
 - records PR #81's pendulum/cross-problem canonical-history bridge and the
   separation of task quotienting from costed Hauffman/Bellman optimization;
 - records PR #82's AM universal-history correction, dimensional/covariant
