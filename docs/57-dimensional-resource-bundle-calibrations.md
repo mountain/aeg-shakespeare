@@ -300,6 +300,12 @@ holonomy, not merely different local units related by a flat gauge.  Until such
 an example is calibrated, connection covariance is supported but curvature
 remains interpretive.
 
+That next probe is carried out in
+`58-noether-canonicalization-and-history-payloads.md`.  Magnetic and Berry
+examples show that nontrivial holonomy exists but need not itself be an ordered
+cost; this refines the primitive object from a resource bundle to a more general
+bundle of task-evaluated history payloads.
+
 ## 10. Governance
 
 ```text
