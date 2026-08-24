@@ -232,11 +232,11 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Process Geometry themes:** smooth chart covariance, cotangent transport, lifted execution history, task-sufficient checkpoint state, invariant resource cost, Bellman optimization.
 
-**Start here:** `tests/research/test_am_checkpoint_differential_quotient.py` — A/M-first derivation of value, first variation, cotangent pullback, differential task quotient, and finite semidirect-order red team.
+**Start here:** `tests/research/test_am_checkpoint_differential_quotient.py` — A/M-first derivation of value, first variation, cotangent pullback, and task-local germs; then a fixed-segmentation pullback-cache Bellman gate with an explicit whole-chain dominance red team.
 
 **Classical baseline:** `tests/research/test_checkpointed_adjoint_canonicalization.py` — smooth-chart covariance and binomial Revolve counts; compatibility evidence only.
 
-**Theory role:** first research-local V5 analytic-closure pressure connecting A/M history variation, differential task quotient, objectified segment jets, and resource-bounded history. It is not a complete Revolve controller, a Huffman theorem, a generic checkpoint API, or evidence that A/M universality has been established.
+**Theory role:** first research-local V5 analytic-closure pressure connecting A/M history variation, differential task germs, objectified pullbacks, and resource-bounded history. The static local Bellman table is not a global Pareto frontier: for the frozen terminal-only task, a two-scalar whole-chain pullback dominates all segmentwise caches. It is not a complete Revolve controller, a Huffman theorem, a generic checkpoint API, or evidence that A/M universality has been established.
 
 ---
 
