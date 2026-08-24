@@ -11,7 +11,9 @@ firewall before any frontier search is run.
 
 ```text
 P0  finite grammar + oracle firewall + certificate contract
-P1  exact visible-symmetry census (S1 baseline)
+P1a exact depth-0/1 visible-symmetry census (S1 baseline)
+P1b exact depth-2 census or certified narrowing
+    + unrestricted linear-stabilizer red team before S2
 P2  observer search for hidden exact symmetry (S2 frontier)
 P3  boundary payload / AM-Noether construction (S3)
 P4  path dependence and holonomy (S4-S5)
@@ -24,4 +26,3 @@ The phase labels S1--S6 are defined in `00-problem-frontier.md`.
 
 Phase 0 does not claim that a hidden example exists.  A complete negative
 certificate inside the frozen bound is a successful research result.
-
