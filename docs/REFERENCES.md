@@ -92,7 +92,7 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 ## Automatic differentiation and checkpointing
 
-**[Griewank-Walther-2008]** Andreas Griewank and Andrea Walther, *Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation*, 2nd ed., SIAM, 2008. DOI: `10.1137/1.9780898717761`. Classical reference for reverse accumulation, checkpointing, and time-memory recomputation tradeoffs.
+**[Griewank-Walther-2000]** Andreas Griewank and Andrea Walther, “Algorithm 799: Revolve: An Implementation of Checkpointing for the Reverse or Adjoint Mode of Computational Differentiation,” *ACM Transactions on Mathematical Software* 26(1) (2000), 19–45. DOI: `10.1145/347837.347846`. Primary source for the provably optimal serial binomial checkpointing schedule and its runtime controller.\n\n**[Griewank-Walther-2008]** Andreas Griewank and Andrea Walther, *Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation*, 2nd ed., SIAM, 2008. DOI: `10.1137/1.9780898717761`. Classical reference for reverse accumulation, checkpointing, and time-memory recomputation tradeoffs.
 
 ## Project interpretation
 
