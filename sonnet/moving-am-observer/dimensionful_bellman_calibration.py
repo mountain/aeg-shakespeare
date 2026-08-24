@@ -8,11 +8,15 @@ from functools import lru_cache
 import mpmath as mp
 
 
-mp.mp.dps = 60
-U_START = mp.mpf("1")
-U_END = mp.mpf("-1")
-DEFAULT_LENGTH = mp.mpf("3.5")
-DEFAULT_SPEED = mp.mpf("1.4")
+# A private context is part of the certificate contract.  Research tests in the
+# same interpreter legitimately use other precisions; mutating ``mp.mp.dps``
+# would make this calibration depend on collection/import order.
+MATH = mp.mp.clone()
+MATH.dps = 60
+U_START = MATH.mpf("1")
+U_END = MATH.mpf("-1")
+DEFAULT_LENGTH = MATH.mpf("3.5")
+DEFAULT_SPEED = MATH.mpf("1.4")
 
 
 @dataclass(frozen=True)
@@ -69,7 +73,7 @@ def w_rate(w, *, length=DEFAULT_LENGTH, speed=DEFAULT_SPEED):
 def clock_u(u, *, length=DEFAULT_LENGTH, speed=DEFAULT_SPEED):
     """Physical elapsed time, in units carried by ``L/V``."""
 
-    return length / speed * mp.quad(
+    return length / speed * MATH.quad(
         lambda coordinate: 1 / (2 - coordinate**2),
         [u, U_START],
     )
@@ -78,7 +82,7 @@ def clock_u(u, *, length=DEFAULT_LENGTH, speed=DEFAULT_SPEED):
 def clock_w(w, *, length=DEFAULT_LENGTH, speed=DEFAULT_SPEED):
     """The same clock independently integrated in the nonlinear chart."""
 
-    return mp.quad(
+    return MATH.quad(
         lambda coordinate: 1 / (-w_rate(
             coordinate, length=length, speed=speed
         )),
@@ -133,7 +137,7 @@ def optimal_resettable_first_hit_task(
     @lru_cache(maxsize=None)
     def solve(lower, upper):
         if upper - lower <= 1:
-            return mp.mpf(0), None
+            return MATH.mpf(0), None
         mass = sum(weights[lower:upper])
         candidates = []
         for cut in range(lower + 1, upper):
