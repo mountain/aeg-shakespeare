@@ -14,7 +14,7 @@ P0  finite grammar + oracle firewall + certificate contract
 P1a exact depth-0/1 visible-symmetry census (S1 baseline)
 P1b exact depth-2 census or certified narrowing
     + unrestricted linear-stabilizer red team before S2
-P2  observer search for hidden exact symmetry (S2 frontier)
+P2  static observer no-go; choose moving/task/completion/higher-jet continuation
 P3  boundary payload / AM-Noether construction (S3)
 P4  path dependence and holonomy (S4-S5)
 P5  task extraction and new optimization consequence (S6)
