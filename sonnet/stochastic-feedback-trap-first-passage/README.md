@@ -62,3 +62,9 @@ It tests all 242 monotone charts, retains generator, endpoints and labels,
 initial point, and clock, and requires omission of the Itô correction to split
 exactly into affine passes and nonlinear failures. A passing full transport
 would establish a canonical task class, not a preferred polynomial spelling.
+
+Execution in `05-phase2-task-quotient-results.md` gives `242/242` exact full
+Itô transports and one task-equivalence class. The no-Itô-correction red team
+splits exactly as predicted: 87 affine passes and 155 nonlinear failures. The
+next gate must test numerical first-passage observables independently; symbolic
+generator covariance alone is not a Bellman or solver certificate.

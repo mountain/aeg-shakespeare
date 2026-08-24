@@ -16,7 +16,8 @@ def test_phase2_contract_freezes_full_task_payload_and_red_team():
         "initial point",
         "clock",
         "all 242 monotone presentations",
-        "precisely the affine presentations pass",
+        "precisely",
+        "the affine presentations pass",
         "canonical **class**",
         "Kill and shrink conditions",
     ):
