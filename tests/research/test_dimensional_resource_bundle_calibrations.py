@@ -21,6 +21,7 @@ generic resource bundle, canonical metric, or Bellman API.
 
 from dataclasses import dataclass
 from fractions import Fraction
+from math import hypot, isclose
 
 
 @dataclass(frozen=True)
@@ -246,3 +247,80 @@ def test_discrete_optical_arrival_separates_geometric_length_from_process_time()
         for length, index in detour_edges
     ) == detour_time
 
+
+def _layered_optical_length(crossing_x):
+    """Optical length through one flat interface at y=0.
+
+    The endpoints are (0, 4) and (8, -12), with indices 25 and 39.
+    The deliberately Pythagorean geometry makes x=3 an exact stationary ray.
+    """
+
+    upper = 25 * hypot(crossing_x, 4)
+    lower = 39 * hypot(8 - crossing_x, 12)
+    return upper + lower
+
+
+def test_fermat_layered_medium_gives_snell_and_a_unique_global_minimum():
+    crossing_x = 3
+    upper_length = 5
+    lower_length = 13
+
+    # d(OPL)/dx = n1 sin(theta1) - n2 sin(theta2) = 0: Snell's law.
+    upper_tangential_momentum = Fraction(25 * crossing_x, upper_length)
+    lower_tangential_momentum = Fraction(39 * (8 - crossing_x), lower_length)
+    assert upper_tangential_momentum == lower_tangential_momentum == 15
+
+    # Each sqrt(a^2+x^2) term is strictly convex for nonzero layer depth.
+    # Hence the stationary crossing is the unique global minimizer, not merely
+    # a sampled-path winner.  The exact second derivative is positive.
+    second_derivative = (
+        Fraction(25 * 4 * 4, upper_length**3)
+        + Fraction(39 * 12 * 12, lower_length**3)
+    )
+    assert second_derivative > 0
+    assert _layered_optical_length(crossing_x) < _layered_optical_length(2)
+    assert _layered_optical_length(crossing_x) < _layered_optical_length(4)
+
+    # Uniformly rescaling every geometric length scales OPL, while rescaling
+    # c by the same unit conversion leaves physical arrival time unchanged.
+    optical_length = Fraction(25 * upper_length + 39 * lower_length)
+    unit_scale = Fraction(100)
+    light_speed = Fraction(7)
+    assert optical_length * unit_scale / (light_speed * unit_scale) == (
+        optical_length / light_speed
+    )
+
+
+def test_continuous_fermat_equation_is_optical_metric_geodesic_equation():
+    # In Euclidean arclength s, Fermat's Euler-Lagrange equation is
+    #     d(n T)/ds = grad(n).
+    # This exact local jet lies in n(y)=1+y/2 at y=2, so n=2 and grad n=(0,1/2).
+    tangent = (Fraction(3, 5), Fraction(4, 5))
+    normal = (Fraction(-4, 5), Fraction(3, 5))
+    refractive_index = Fraction(2)
+    gradient = (Fraction(0), Fraction(1, 2))
+
+    normal_gradient = _dot(gradient, normal)
+    curvature = normal_gradient / refractive_index
+    acceleration = tuple(curvature * component for component in normal)
+    index_derivative = _dot(gradient, tangent)
+    momentum_derivative = tuple(
+        index_derivative * tangent[i] + refractive_index * acceleration[i]
+        for i in range(2)
+    )
+
+    assert _dot(tangent, tangent) == 1
+    assert _dot(tangent, acceleration) == 0
+    assert curvature == Fraction(3, 20)
+    assert momentum_derivative == gradient
+
+    # The variational density n(x)|dx/du| is one-homogeneous in velocity;
+    # positive reparameterization changes density and du inversely, preserving
+    # the optical length.  This is path geometry rather than clock-coordinate
+    # dependence.
+    speed = hypot(float(tangent[0]), float(tangent[1]))
+    parameter_scale = 7
+    assert isclose(
+        float(refractive_index) * speed,
+        float(refractive_index) * (parameter_scale * speed) / parameter_scale,
+    )
