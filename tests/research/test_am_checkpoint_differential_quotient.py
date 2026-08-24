@@ -1,12 +1,12 @@
-"""A/M-first checkpointing A1--A2: history jets and first-order task germs.
+"""A/M-first checkpointing A1--A3: history jets and materialized task germs.
 
 Problem
 -------
-For a nonlinear time step written only with Addition and Multiplication, what
-is the smallest materialized history object sufficient for a declared
-first-order reverse/adjoint task?  The classical route starts from a Jacobian.
-This calibration starts from a free A/M expression history and derives value,
-JVP, and VJP compositionally.
+For a nonlinear time step written only with Addition and Multiplication, can a
+declared first-order reverse/adjoint payload be generated from the history
+itself, and when is caching that payload preferable to replay?  The classical
+route starts from a Jacobian.  This calibration starts from a free A/M
+expression history and derives value, JVP, and VJP compositionally.
 
 Domains / classical names
 -------------------------
@@ -16,12 +16,13 @@ checkpointing, affine group, semidirect product.
 Process Geometry roles
 ----------------------
 Free A/M history, analytic rank-lowering pressure, first-order differential
-task germ, objectification candidate, and minimal process completion.  Theory
-Map relation: research-local pressure on V5, not a closed V5 square.
+task germ, explicit abstract materialization contract, and Bellman-selected
+local cache.  Theory Map relation: research-local pressure on V5, not a closed
+V5 square.
 
 Primitive firewall
 ------------------
-Discovery receives only named inputs, constants, and binary Add/Mul nodes.
+The evaluator receives only named inputs, constants, and binary Add/Mul nodes.
 ``AMExpression.jvp`` uses the Addition rule and Multiplication Leibniz rule.
 ``AMExpression.vjp`` dualizes those same rules and explicitly accumulates
 cotangents at shared named leaves.  Neither path calls symbolic
@@ -37,13 +38,21 @@ The endpoint counterexample concerns cross-program/segment objectification; it
 does not show that a classical fixed-program checkpoint containing state and
 step index is insufficient.  Scalar JVP/VJP duality is standard AD, so this
 calibration establishes an A/M-generated classical shadow, not a new adjoint
-theory, a Pareto advantage, V5 closure, or A/M universality.
+theory, a single-query Pareto advantage, V5 closure, or A/M universality.  The
+A3 Bellman gate compares payload representations for repeated reverse queries
+at the same declared basepoints under a frozen segmentation and representation
+grammar; it is not a global Pareto frontier or a checkpoint scheduler.  Its
+costs are normalized algebraic-RAM work and persistent scalar storage; peak
+scratch space, scalar bit complexity, and the common physical forward pass are
+outside this gate.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from fractions import Fraction
+from functools import lru_cache
+from itertools import product
 from typing import Mapping
 
 import sympy as sp
@@ -75,6 +84,39 @@ class FirstOrderTaskGerm:
     endpoint: Fraction
     pullback: tuple[tuple[str, Fraction], ...]
     primitive_cost: int
+
+
+@dataclass(frozen=True)
+class SegmentExecution:
+    """One forward segment and its task-local A/M germ."""
+
+    expression: "AMExpression"
+    inputs: tuple[tuple[str, Fraction], ...]
+    germ: FirstOrderTaskGerm
+
+
+@dataclass(frozen=True)
+class ReversePullbackPayload:
+    """Compact persistent cache used by this declared local reverse task."""
+
+    pullback: tuple[tuple[str, Fraction], ...]
+
+
+@dataclass(frozen=True)
+class MaterializationOption:
+    """Normalized persistent-storage/work contract for one segment cache."""
+
+    mode: str
+    persistent_scalar_storage: int
+    normalized_build_work: int
+    normalized_per_reverse_work: int
+
+
+@dataclass(frozen=True)
+class MaterializationPlan:
+    normalized_total_work: int
+    persistent_scalar_storage: int
+    modes: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -216,6 +258,179 @@ def first_order_task_germ(
     )
 
 
+def execute_segments(
+    expressions: tuple[AMExpression, ...],
+    *,
+    initial: Fraction,
+    step: Fraction,
+) -> tuple[SegmentExecution, ...]:
+    """Run the physical history and materialize exact candidate germs."""
+
+    state = Fraction(initial)
+    executions = []
+    for expression in expressions:
+        inputs = {"x": state, "h": Fraction(step)}
+        germ = first_order_task_germ(expression, inputs, ("x", "h"))
+        executions.append(
+            SegmentExecution(expression, tuple(inputs.items()), germ)
+        )
+        state = germ.endpoint
+    return tuple(executions)
+
+
+def reverse_pullback_payload(
+    germ: FirstOrderTaskGerm,
+) -> ReversePullbackPayload:
+    """Project the semantic germ to the components used by local reverse."""
+
+    return ReversePullbackPayload(germ.pullback)
+
+
+def materialization_options(
+    execution: SegmentExecution,
+) -> tuple[MaterializationOption, MaterializationOption]:
+    """Compare raw replay with a cached pullback in a normalized cost model.
+
+    Both options use the same task convention: the shared step parameter,
+    fixed program identity, and segmentation are task metadata.  A raw cache
+    persistently stores one scalar input state.  Reconstructing a local
+    pullback performs one normalized forward and one reverse A/M rule per
+    primitive, plus one scalar application per declared input.
+
+    The semantic germ remains the auditable object containing basepoint and
+    endpoint.  Its materialized reverse cache stores only the unit pullback
+    components actually read by ``reverse_materialized_segments``.  It pays a
+    fresh normalized forward/reverse construction once, then only applies the
+    stored pullback for each same-basepoint query.  These numbers specify an
+    algebraic-RAM contract; they do not measure the recursive Python methods.
+    """
+
+    payload = reverse_pullback_payload(execution.germ)
+    input_count = len(payload.pullback)
+    primitive_cost = execution.germ.primitive_cost
+    raw = MaterializationOption(
+        mode="raw",
+        persistent_scalar_storage=1,
+        normalized_build_work=0,
+        normalized_per_reverse_work=2 * primitive_cost + input_count,
+    )
+    pullback = MaterializationOption(
+        mode="pullback",
+        persistent_scalar_storage=len(payload.pullback),
+        normalized_build_work=2 * primitive_cost,
+        normalized_per_reverse_work=input_count,
+    )
+    return raw, pullback
+
+
+def static_materialization_bellman(
+    executions: tuple[SegmentExecution, ...],
+    *,
+    scalar_budget: int,
+    reverse_queries: int,
+) -> MaterializationPlan:
+    """Multiple-choice Bellman gate for payload representation only.
+
+    This is deliberately not a complete checkpoint scheduler or a global
+    cache optimizer: segmentation is frozen and every segment receives either
+    a raw-state or pullback payload.  C0 owns the classical
+    save/restore/recompute schedule.  A future gate may combine the two state
+    spaces only after the query family is rich enough to survive the
+    whole-chain-germ red team.
+    """
+
+    if scalar_budget < 0 or reverse_queries < 1:
+        raise ValueError("budget must be nonnegative and queries positive")
+
+    @lru_cache(maxsize=None)
+    def solve(index: int, remaining: int):
+        if index == len(executions):
+            return 0, 0, ()
+        candidates = []
+        for option in materialization_options(executions[index]):
+            if option.persistent_scalar_storage > remaining:
+                continue
+            suffix = solve(
+                index + 1,
+                remaining - option.persistent_scalar_storage,
+            )
+            if suffix is None:
+                continue
+            suffix_work, suffix_storage, suffix_modes = suffix
+            local_work = (
+                option.normalized_build_work
+                + reverse_queries * option.normalized_per_reverse_work
+            )
+            candidates.append(
+                (
+                    local_work + suffix_work,
+                    option.persistent_scalar_storage + suffix_storage,
+                    (option.mode,) + suffix_modes,
+                )
+            )
+        if not candidates:
+            return None
+        return min(candidates, key=lambda item: (item[0], item[1], item[2]))
+
+    result = solve(0, scalar_budget)
+    if result is None:
+        raise ValueError("scalar budget cannot materialize one payload per segment")
+    return MaterializationPlan(*result)
+
+
+def reverse_materialized_segments(
+    executions: tuple[SegmentExecution, ...],
+    modes: tuple[str, ...],
+    terminal_covector: Fraction,
+) -> tuple[Fraction, Fraction]:
+    """Return pullbacks for initial state and the shared step parameter."""
+
+    if len(executions) != len(modes):
+        raise ValueError("one materialization mode is required per segment")
+    state_covector = Fraction(terminal_covector)
+    step_covector = Fraction(0)
+    for execution, mode in zip(reversed(executions), reversed(modes), strict=True):
+        if mode == "raw":
+            pulled = execution.expression.vjp(dict(execution.inputs), state_covector)
+        elif mode == "pullback":
+            unit = dict(execution.germ.pullback)
+            pulled = {name: value * state_covector for name, value in unit.items()}
+        else:
+            raise ValueError(f"unknown materialization mode: {mode}")
+        state_covector = pulled["x"]
+        step_covector += pulled["h"]
+    return state_covector, step_covector
+
+
+def whole_chain_pullback_payload(
+    executions: tuple[SegmentExecution, ...],
+) -> ReversePullbackPayload:
+    """Collapse a terminal-only scalar task to its global unit pullback."""
+
+    state, step = reverse_materialized_segments(
+        executions,
+        ("raw",) * len(executions),
+        Fraction(1),
+    )
+    return ReversePullbackPayload((
+        ("x", state),
+        ("h", step),
+    ))
+
+
+def power_euler_am_history(power: int) -> AMExpression:
+    """A heterogeneous polynomial step built in the same A/M grammar."""
+
+    if power < 1:
+        raise ValueError("power must be positive")
+    x = AMExpression.input("x")
+    h = AMExpression.input("h")
+    power_history = x
+    for _ in range(power - 1):
+        power_history = power_history * x
+    return x + h * (power_history + AMExpression.constant(-2))
+
+
 def test_am_rules_generate_euler_value_all_jvps_vjp_and_pairing():
     expression = euler_am_history()
     inputs = {"x": Fraction(3, 5), "h": Fraction(1, 10)}
@@ -345,3 +560,154 @@ def test_first_order_germ_has_a_hessian_and_global_completion_boundary():
 
     nearby = {"x": Fraction(3, 2)}
     assert square.evaluate(nearby) != tangent_line_at_one.evaluate(nearby)
+
+
+def test_a3_all_raw_pullback_mixtures_reconstruct_the_same_adjoint():
+    expressions = tuple(power_euler_am_history(power) for power in (1, 2, 4))
+    initial = Fraction(1, 2)
+    step = Fraction(1, 20)
+    executions = execute_segments(
+        expressions,
+        initial=initial,
+        step=step,
+    )
+    terminal_covector = Fraction(13, 11)
+    expected = reverse_materialized_segments(
+        executions,
+        ("raw",) * len(executions),
+        terminal_covector,
+    )
+
+    composed = expressions[0]
+    for expression in expressions[1:]:
+        composed = expression.substitute({"x": composed})
+    composed_inputs = {"x": initial, "h": step}
+    forward_pairing_oracle = (
+        terminal_covector
+        * composed.jvp(composed_inputs, {"x": 1, "h": 0}).tangent,
+        terminal_covector
+        * composed.jvp(composed_inputs, {"x": 0, "h": 1}).tangent,
+    )
+    assert expected == forward_pairing_oracle
+
+    for modes in product(("raw", "pullback"), repeat=len(executions)):
+        assert reverse_materialized_segments(
+            executions, modes, terminal_covector
+        ) == expected
+
+
+def test_a3_materialization_contract_charges_only_persistent_payload_components():
+    execution = execute_segments(
+        (power_euler_am_history(2),),
+        initial=Fraction(1, 2),
+        step=Fraction(1, 20),
+    )[0]
+    raw, pullback = materialization_options(execution)
+
+    assert raw.persistent_scalar_storage == 1
+    assert pullback.persistent_scalar_storage == 2  # dx and dh only.
+    assert (
+        pullback.normalized_build_work
+        == 2 * execution.expression.primitive_cost
+    )
+    assert (
+        raw.normalized_per_reverse_work
+        - pullback.normalized_per_reverse_work
+        == pullback.normalized_build_work
+    )
+
+
+def test_a3_static_bellman_has_query_dependent_transition_in_frozen_grammar():
+    expressions = tuple(power_euler_am_history(power) for power in (1, 2, 4))
+    executions = execute_segments(
+        expressions,
+        initial=Fraction(1, 2),
+        step=Fraction(1, 20),
+    )
+    raw_budget = len(executions)
+    one_pullback_budget = raw_budget + 1
+
+    # For one reverse query, building a pullback merely prepays exactly the
+    # replay work and consumes more storage, so all-raw is uniquely non-dominated
+    # inside the frozen option set.
+    once = static_materialization_bellman(
+        executions,
+        scalar_budget=one_pullback_budget,
+        reverse_queries=1,
+    )
+    assert once.modes == ("raw", "raw", "raw")
+    assert once.normalized_total_work == 32
+    assert once.persistent_scalar_storage == 3
+
+    # Reusing the same physical trajectory for three adjoint queries makes one
+    # cached pullback worthwhile in the normalized table.  With room for
+    # exactly one, the DP recovers the optimizer implied by the declared costs.
+    repeated = static_materialization_bellman(
+        executions,
+        scalar_budget=one_pullback_budget,
+        reverse_queries=3,
+    )
+    assert repeated.modes == ("raw", "raw", "pullback")
+    assert repeated.normalized_total_work == 72
+    assert repeated.persistent_scalar_storage == one_pullback_budget
+
+    all_pullback = static_materialization_bellman(
+        executions,
+        scalar_budget=2 * len(executions),
+        reverse_queries=3,
+    )
+    assert all_pullback.modes == ("pullback", "pullback", "pullback")
+    assert all_pullback.normalized_total_work == 44
+    assert all_pullback.normalized_total_work < repeated.normalized_total_work
+
+    try:
+        static_materialization_bellman(
+            executions,
+            scalar_budget=raw_budget - 1,
+            reverse_queries=3,
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("budget below one raw state per segment must fail")
+
+
+def test_a3_terminal_only_whole_chain_germ_defeats_the_local_bellman_grammar():
+    expressions = tuple(power_euler_am_history(power) for power in (1, 2, 4))
+    executions = execute_segments(
+        expressions,
+        initial=Fraction(1, 2),
+        step=Fraction(1, 20),
+    )
+    queries = 3
+    local = static_materialization_bellman(
+        executions,
+        scalar_budget=2 * len(executions),
+        reverse_queries=queries,
+    )
+    global_payload = whole_chain_pullback_payload(executions)
+
+    # The current task asks only for the pullback of the final scalar endpoint
+    # on one fixed trajectory.  A global unit pullback therefore answers every
+    # query, but cannot answer future intermediate-stop or local-injection
+    # tasks.  This option lies outside the deliberately frozen local grammar.
+    global_storage = len(global_payload.pullback)
+    global_build_work = sum(
+        materialization_options(execution)[0].normalized_per_reverse_work
+        for execution in executions
+    )
+    global_work = global_build_work + queries * global_storage
+    seed = Fraction(13, 11)
+    unit = dict(global_payload.pullback)
+    assert (unit["x"] * seed, unit["h"] * seed) == (
+        reverse_materialized_segments(
+            executions,
+            ("raw",) * len(executions),
+            seed,
+        )
+    )
+    assert global_storage == 2
+    assert global_storage < local.persistent_scalar_storage
+    assert global_build_work == 32
+    assert global_work == 38
+    assert global_work < local.normalized_total_work
