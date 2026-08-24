@@ -56,3 +56,9 @@ polynomials yield 242 strictly increasing presentations, including 155
 nonlinear ones.  The held-out control enters, but is one of 155.  Depth three
 therefore solves coverage and fails uniqueness; stopped-process task semantics,
 not answer-shaped ranking, must supply the next quotient.
+
+`04-phase2-task-quotient-contract.md` freezes that quotient before execution.
+It tests all 242 monotone charts, retains generator, endpoints and labels,
+initial point, and clock, and requires omission of the Itô correction to split
+exactly into affine passes and nonlinear failures. A passing full transport
+would establish a canonical task class, not a preferred polynomial spelling.
