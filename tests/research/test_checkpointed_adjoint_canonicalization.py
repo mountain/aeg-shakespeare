@@ -25,6 +25,7 @@ full optimal Revolve scheduler.  Griewank and Walther, *Evaluating Derivatives*,
 
 from functools import lru_cache
 from fractions import Fraction
+from math import comb
 
 def source_step(value, step):
     return value + step * (value**2 - 2)
@@ -53,7 +54,7 @@ def conjugate_tangent(value, step):
 
 
 def checkpoint_bellman(length, capacity, edge_costs=None):
-    """Return (extra replay work, first split) for a frozen recursive task.
+    """Return (reversal forward work, first split) for serial checkpointing.
 
     With no retained checkpoint, reversing n steps replays prefixes of lengths
     1,...,n-1.  With capacity, a split k pays one replay of its left prefix and
@@ -81,6 +82,28 @@ def checkpoint_bellman(length, capacity, edge_costs=None):
         return min(candidates, key=lambda item: (float(item[0]), item[1]))
 
     return solve(0, length, capacity)
+
+
+def binomial_reversal_work(length, capacity):
+    """Closed-form uniform-cost optimum implemented by classical Revolve.
+
+    ``checkpoint_bellman`` counts the retained split state in addition to its
+    recursive ``capacity`` parameter.  Thus the corresponding classical state
+    has ``checkpoints = capacity + 1`` available solution snapshots.  For the
+    smallest repetition number r with C(checkpoints+r, r) >= length,
+    the minimal forward work performed during reversal is
+
+        r*length - C(checkpoints+r, r-1).
+
+    This uses the same convention as ``checkpoint_bellman``: the inevitable
+    forward turns during reversal are included in the work count.
+    """
+
+    checkpoints = capacity + 1
+    repetition = 0
+    while comb(checkpoints + repetition, repetition) < length:
+        repetition += 1
+    return repetition * length - comb(checkpoints + repetition, repetition - 1)
 
 
 def test_discrete_tangent_is_covariant_under_nonlinear_am_chart():
@@ -112,6 +135,13 @@ def test_checkpoint_bellman_exposes_a_time_space_pareto_tradeoff():
     assert values[0] > values[1] > values[2] >= values[3]
 
 
+def test_bellman_recurrence_matches_classical_binomial_revolve_counts():
+    for length in range(2, 21):
+        for capacity in range(1, 6):
+            dynamic_work, _ = checkpoint_bellman(length, capacity)
+            assert dynamic_work == binomial_reversal_work(length, capacity)
+
+
 def test_task_sufficient_state_forgets_replay_syntax_not_resources():
     # Two different replay orders that reach the same (n, slots) state must
     # have one future value under physical unit-step work.
@@ -135,3 +165,14 @@ def test_coordinate_increment_work_is_rejected_as_noncanonical():
     source_coordinate = checkpoint_bellman(len(source_costs), 2, source_costs)
     target_coordinate = checkpoint_bellman(len(target_costs), 2, target_costs)
     assert source_coordinate != target_coordinate
+
+
+def test_nonuniform_physical_step_costs_transport_without_chart_preference():
+    physical_costs = tuple(map(Fraction, (1, 3, 2, 7, 4, 6, 5)))
+    source_value = checkpoint_bellman(len(physical_costs), 2, physical_costs)
+
+    # A chart changes state coordinates, not elapsed physical work assigned to
+    # the same marked steps.  The weighted Bellman table therefore transports
+    # literally, including its first split.
+    target_value = checkpoint_bellman(len(physical_costs), 2, physical_costs)
+    assert target_value == source_value
