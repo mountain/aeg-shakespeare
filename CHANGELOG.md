@@ -26,6 +26,10 @@
   to a common value near 0.572194, direct Euler-Maruyama estimates agree within
   sampling/time-step error, and uniform target-coordinate meshes expose the
   predicted finite-resolution coordinate artifact;
+- closes the stochastic calibration with a dimensionful regenerative Bellman
+  task: three charts independently select `left-reset`, optimal values agree
+  within 5e-6 and scale as `L/V`, while swapped labels and coordinate-distance
+  charging expose the required task and resource failures;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual

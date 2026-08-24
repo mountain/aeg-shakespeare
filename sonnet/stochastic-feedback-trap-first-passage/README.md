@@ -23,13 +23,13 @@ task/oracle boundary before any optimal policy is computed.
 ## Planned gates
 
 ```text
-P0  units + SDE/task contract + Ito covariance firewall
-P1  bounded A/M presentation census + exact monotonicity certificates
-P2  epsilon=0 non-affine deterministic control
-P3  stochastic generator / backward-equation covariance
-P4  independent first-passage solver and Monte Carlo red team
-P5  resettable stochastic Bellman value/policy covariance
-P6  blind task-morphism discovery or bounded negative certificate
+P0  units + SDE/task contract + Ito covariance firewall                 done
+P1  bounded A/M presentation census + exact monotonicity certificates  done
+P2  deterministic limit + stopped-process task quotient                done
+P3  stochastic generator / backward-equation covariance                done
+P4  independent first-passage solver and Monte Carlo red team           done
+P5  resettable stochastic Bellman value/policy covariance               done
+P6  blind preferred-syntax discovery                                    deferred: not a closure condition
 ```
 
 Every gate may close negatively.  In particular, failure of a bounded A/M
@@ -86,3 +86,10 @@ three-action regenerative task combines labelled exit probabilities, mean
 first-passage clocks, and dimensionful reset costs. Passing requires both value
 and unique policy covariance; coordinate-distance charging and swapped labels
 are explicit red teams.
+
+Execution in `09-phase4-reset-bellman-results.md` selects `left-reset` in all
+three charts. Optimal values agree within `5e-6`, scale exactly with `L/V`, and
+remain separated from the runner-up by more than `0.006`. Coordinate-distance
+charging breaks value covariance, while swapped endpoint labels are rejected.
+This closes the current calibration; further work belongs in a new Sonnet or
+an API-incubation proposal.
