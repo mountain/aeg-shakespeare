@@ -6,6 +6,31 @@
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual
   payload; this remains research-local and is not AM-native discovery;
+- executes the first blind S2-prime gate: bounded A/M expression histories
+  derive coefficient jets compositionally, and an exact frozen normalization
+  grammar uniquely recovers the oriented moving Riccati observer while static
+  candidates fail and cubic completion payload survives;
+- freezes three normalization families and runs a held-out selector: affine and
+  asymmetric-quadratic controls select exact moving observers, a cubic carrier
+  is rejected without truncation, and a centered quadratic exposes two
+  equal-cost canonical lifts, proving flatness alone does not ensure canonicity;
+- quotients the centered-quadratic minimum slice by its exact clock-preserving
+  affine chart morphism: both lifts carry the same physical stopping sections
+  and become one task-relative canonical class, while a coordinate-squared
+  penalty is exposed as a non-invariant false selector;
+- blindly discovers that task-preserving morphism from a bounded A/M grammar
+  using section, reconstruction, and dynamics certificates together; a
+  corrupted-dynamics control fails, and the quotient remains unchanged when
+  the observer grammar grows from depth one to depth two;
+- restores dimensions to the moving centered process and executes the complete
+  clock/Bellman covariance check in `u` and nonlinear `w=u+u^3`: equal-clock
+  values and policies agree, value scales as `L/V`, while equal-coordinate
+  grids change both optimized value and tree;
+- archives the calibration's physical realization as an overdamped particle in
+  a feedback-synthesized translating nonlinear potential, distinguishes local
+  saddle-node relevance from global exactness and equivariance from Noether
+  conservation, and closes the affine deterministic phase before a separate
+  stochastic first-passage continuation;
 - records PR #81's pendulum/cross-problem canonical-history bridge and the
   separation of task quotienting from costed Hauffman/Bellman optimization;
 - records PR #82's AM universal-history correction, dimensional/covariant
