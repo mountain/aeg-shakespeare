@@ -205,6 +205,61 @@ chooses the longer path.  Changing meters to centimeters scales (L) and
 This separates curved/nonuniform state geometry from the transported process
 ruler.  Bellman requires the latter, not a flat physical coordinate space.
 
+### 7.1 Fermat calibration: from path comparison to variation
+
+The discrete comparison alone does not verify Fermat's principle.  For two
+homogeneous layers, parameterize a broken ray by its interface crossing (x):
+
+\[
+\mathcal L(x)=n_1\sqrt{x^2+a^2}
+ +n_2\sqrt{(D-x)^2+b^2}.
+\]
+
+The executable choice (a=4), (b=12), (D=8), (n_1=25), (n_2=39) has the exact
+stationary crossing (x=3), since
+
+\[
+n_1\sin\theta_1=25\frac35=15
+=39\frac5{13}=n_2\sin\theta_2.
+\]
+
+Thus Fermat stationarity gives Snell's law.  Moreover,
+
+\[
+\mathcal L''(x)=
+\frac{n_1a^2}{(x^2+a^2)^{3/2}}
++\frac{n_2b^2}{((D-x)^2+b^2)^{3/2}}>0,
+\]
+
+so in this positive, single-interface setting the stationary ray is the unique
+global minimum.  This convexity clause matters: Fermat's general principle is
+stationary optical length, and caustics or conjugate points can produce maxima
+or saddle rays.
+
+For a smooth refractive index, varying
+
+\[
+\mathcal L[\gamma]=\int n(\gamma)\lVert\dot\gamma\rVert\,du
+\]
+
+gives, in Euclidean arclength,
+
+\[
+\frac{d}{ds}(nT)=\nabla n.
+\]
+
+The test verifies this equation with an exact rational local jet in a graded
+medium.  Equivalently, rays are geodesics of the optical metric
+(g_{\mathrm{opt}}=n^2g), while physical travel time is
+(T=\mathcal L/c).  Positive reparameterization leaves (\mathcal L) invariant;
+changing length units scales both optical length and (c), leaving travel time
+unchanged.
+
+This sharpens the resource-bundle interpretation: the canonical path cost is
+not bare geometric length but the additive optical cocycle (n\,ds), paired with
+the clock conversion (1/c).  Bellman composition and Fermat variation are the
+discrete and continuous optimization faces of the same transported ruler.
+
 ## 8. Cross-problem verdict
 
 | Problem | Carrier | Resource bundle | Transport/scalarization result |
@@ -213,7 +268,7 @@ ruler.  Bellman requires the latter, not a flat physical coordinate space.
 | hard particles | collision-time/argmin carrier | physical time × query count | Pareto frontier precedes scalarization |
 | translation | net-displacement quotient | compile × run × storage | objectification is amortized ruler change |
 | Abelian periods | additive lift / period quotient | lattice resource vector | transported task dual restores covariance |
-| local-clock/optics | arrival-state graph | local time fibers | transport is necessary for correct Bellman |
+| local-clock/optics | arrival graph / optical metric | local time fibers / optical-length cocycle | transport repairs Bellman; Fermat gives its continuous variation |
 
 The examples coordinate with the proposed framework at distinct interfaces.
 Together they support a stronger statement than analogy:
@@ -253,4 +308,3 @@ Role: cross-problem dimensional calibration
 Theory Map Change: none
 Experimental/Public API pressure: none
 ```
-
