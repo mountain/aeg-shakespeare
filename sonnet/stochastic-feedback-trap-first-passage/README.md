@@ -80,3 +80,9 @@ by only `3.51e-6` and `1.14e-6`. Independent Euler-Maruyama estimates agree at
 their declared sampling/time-step precision. Uniform target-coordinate meshes
 produce the expected finite-resolution split, so node count is not promoted to
 a coordinate-free physical cost.
+
+`08-phase4-reset-bellman-contract.md` freezes the final closure experiment. A
+three-action regenerative task combines labelled exit probabilities, mean
+first-passage clocks, and dimensionful reset costs. Passing requires both value
+and unique policy covariance; coordinate-distance charging and swapped labels
+are explicit red teams.
