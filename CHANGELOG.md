@@ -14,6 +14,9 @@
 - freezes the depth-three stochastic-presentation enlargement before execution:
   365,424 literal trees are counted combinatorially while a complete semantic
   closure over the 60 depth-two values avoids redundant materialization;
+- executes that closure: 1,519 semantic polynomials leave 242 exact monotone
+  presentations and 155 nonlinear survivors; `u+u^3` is included but not
+  unique, so grammar coverage succeeds while canonical selection fails;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual

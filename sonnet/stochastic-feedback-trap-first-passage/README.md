@@ -50,3 +50,9 @@ This negative certificate must remain visible when depth three is opened.
 The exact cumulative literal count is 365,424; a complete semantic closure over
 the 60 depth-two values avoids materializing redundant syntax while preserving
 every reachable polynomial.
+
+Execution is recorded in `03-phase1b-depth-three-results.md`: 1,519 semantic
+polynomials yield 242 strictly increasing presentations, including 155
+nonlinear ones.  The held-out control enters, but is one of 155.  Depth three
+therefore solves coverage and fails uniqueness; stopped-process task semantics,
+not answer-shaped ranking, must supply the next quotient.

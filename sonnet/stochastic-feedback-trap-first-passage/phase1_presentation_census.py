@@ -180,12 +180,32 @@ def depth_two_presentation_census() -> PresentationCensus:
     )
 
 
+def depth_three_presentation_census() -> PresentationCensus:
+    """Execute the frozen semantic depth-three enlargement."""
+
+    coordinate = sp.Symbol("u", real=True)
+    ordered = semantic_am_grammar(3)
+    certificates = tuple(
+        certificate
+        for presentation in ordered
+        if (certificate := certify_strict_increase(presentation, coordinate)).certified
+    )
+    counts = literal_depth_counts(3)
+    return PresentationCensus(
+        exact_depth_counts=counts,
+        literal_count=sum(counts),
+        semantic_presentations=ordered,
+        monotone_certificates=certificates,
+    )
+
+
 __all__ = [
     "AMPresentation",
     "MonotonicityCertificate",
     "PresentationCensus",
     "certify_strict_increase",
     "depth_two_presentation_census",
+    "depth_three_presentation_census",
     "literal_depth_counts",
     "literal_am_grammar",
     "semantic_am_grammar",
