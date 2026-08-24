@@ -232,9 +232,11 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Process Geometry themes:** smooth chart covariance, cotangent transport, lifted execution history, task-sufficient checkpoint state, invariant resource cost, Bellman optimization.
 
-**Start here:** `tests/research/test_checkpointed_adjoint_canonicalization.py`.
+**Start here:** `tests/research/test_am_checkpoint_differential_quotient.py` — A/M-first derivation of value, first variation, cotangent pullback, differential task quotient, and finite semidirect-order red team.
 
-**Theory role:** first research-local bridge between H4 continuous presentation covariance and a discrete resource-bounded history quotient. It is not a complete Revolve scheduler, a Huffman theorem, or evidence for a generic checkpoint API.
+**Classical baseline:** `tests/research/test_checkpointed_adjoint_canonicalization.py` — smooth-chart covariance and binomial Revolve counts; compatibility evidence only.
+
+**Theory role:** first research-local V5 analytic-closure pressure connecting A/M history variation, differential task quotient, objectified segment jets, and resource-bounded history. It is not a complete Revolve controller, a Huffman theorem, a generic checkpoint API, or evidence that A/M universality has been established.
 
 ---
 
