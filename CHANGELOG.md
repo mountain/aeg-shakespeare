@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+- opens the stochastic feedback-trap first-passage Sonnet with a frozen
+  dimension/task/oracle contract; the first executable gate proves exact Ito
+  generator covariance for `w=u+u^3`, exposes the nonzero residual left by a
+  naive deterministic chain rule, and recovers that rule at zero noise;
+- executes the depth-two A/M presentation census for the stochastic Sonnet,
+  retaining literal syntax before exact polynomial quotienting and certifying
+  strict orientation on the full stopping interval rather than by samples; the
+  exact `604 -> 60 -> 16` result has only affine survivors and gives a bounded
+  negative certificate for nonlinear presentation discovery;
+- freezes the depth-three stochastic-presentation enlargement before execution:
+  365,424 literal trees are counted combinatorially while a complete semantic
+  closure over the 60 depth-two values avoids redundant materialization;
+- executes that closure: 1,519 semantic polynomials leave 242 exact monotone
+  presentations and 155 nonlinear survivors; `u+u^3` is included but not
+  unique, so grammar coverage succeeds while canonical selection fails;
+- executes the full stopped-process quotient over all 242 monotone charts:
+  exact Itô generator transport, labelled sections, initial point, and clock
+  produce one task class, while the no-Itô-correction red team splits exactly
+  into 87 affine passes and 155 nonlinear failures;
+- freezes and executes an independent stochastic first-passage numerical gate:
+  transported-node backward BVPs in one affine and two nonlinear charts converge
+  to a common value near 0.572194, direct Euler-Maruyama estimates agree within
+  sampling/time-step error, and uniform target-coordinate meshes expose the
+  predicted finite-resolution coordinate artifact;
+- closes the stochastic calibration with a dimensionful regenerative Bellman
+  task: three charts independently select `left-reset`, optimal values agree
+  within 5e-6 and scale as `L/V`, while swapped labels and coordinate-distance
+  charging expose the required task and resource failures;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual
