@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- records PR #81's pendulum/cross-problem canonical-history bridge and the
+  separation of task quotienting from costed Hauffman/Bellman optimization;
+- records PR #82's AM universal-history correction, dimensional/covariant
+  Bellman and Fermat/Noether calibrations, and magnetic/Berry history payloads;
+- records PR #83's separation of the classical AD control from the exact
+  supported A/M process-frame symmetry slice and its AMJet/Noether boundary;
+- executes the predicted equal-clock versus equal-coordinate pendulum section
+  red team: (X=U^3) preserves clock-measured stopping policy and Bellman value,
+  while coordinate spacing changes both;
+- adds a recent-research index for docs 53--61; docs 55 retains its explicit
+  correction banner pointing to docs 56;
+
 - adds `docs/55-pendulum-lifted-clock-global-quotient.md` and a research executable essay globalizing the lifted-clock/geometric-phase chain of `docs/54` on the lemniscatic leaf;
 - certifies the exact sigma symmetry `sigma(U,Y)=(-U,iY)` with `sigma*omega = i omega` (hence `tau = i`), the complex-flow carrier ODE `dU/dz = Y`, and — from the invoked Jacobi half-period relations with `K(i) = varpi/2` — the primitive square period lattice `Lambda = Z omega_A + Z i omega_A` with `omega_A = sqrt(2) varpi`;
 - certifies the decoder-boundary analysis: the local chart becomes `0/0` at `U = +/-1`, but on the real `E = 0` loop the reached point `U = -1` has two distinct Cartesian lifts `v_x = +/- sqrt(2)`; the signed Jacobi continuation `q_x = cn dn` proves sheet transport `+1 -> -1 -> +1`, so the physical cover is the nontrivial unramified double cover of the real carrier loop and closes after `2 omega_A`;

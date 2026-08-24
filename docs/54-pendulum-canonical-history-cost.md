@@ -145,6 +145,11 @@ The expected result is that equal-(U) trees change under reparameterization,
 whereas the clock-measured quotient and its optimal cost agree.  Failure of the
 latter would reject this proposed interface.
 
+**Experiment completed:** `docs/61-pendulum-section-reparameterization-redteam.md`
+executes this prediction for (X=U^3). Equal-clock sections give the same
+optimized value and policy below (10^{-30}) tolerance; equal-coordinate
+sections change both. The result is local to one regular libration branch.
+
 ## 7. Governance
 
 ```text

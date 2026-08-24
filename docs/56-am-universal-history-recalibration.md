@@ -213,6 +213,12 @@ disagree while their canonically lifted costs agree.  Failure of lifted
 agreement would reject the current conjecture or show that the alleged AM ruler
 is not canonical.
 
+The first end-to-end instance is executed in
+`docs/61-pendulum-section-reparameterization-redteam.md`: one lifted pendulum
+history, task stopping sections, clock costs, and finite Bellman optimization
+commute under (X=U^3), while equal-coordinate controls do not. This supports one
+comparison square only; it is not evidence that all eight arrows commute.
+
 ## 7. Effect on the previous audit
 
 This note **refines and partially corrects**

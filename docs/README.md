@@ -70,3 +70,22 @@ The documentation is organized as a mathematical/programming narrative rather th
 60. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
+
+## Recent T0 research notes
+
+The numbered architecture list above predates several fast-moving research
+calibrations. These are indexed without renumbering that stable list:
+
+- `53-process-volume-frontier-coarea-hypothesis.md` — process-volume/coarea candidate;
+- `54-pendulum-canonical-history-cost.md` — marked pendulum clock as task-history edge measure;
+- `55-cross-problem-canonical-history-correspondence.md` — heterogeneous audit with correction banner;
+- `56-am-universal-history-recalibration.md` — lift-first universal-history correction;
+- `57-dimensional-resource-bundle-calibrations.md` — dimensional resources and covariant Bellman;
+- `58-noether-canonicalization-and-history-payloads.md` — Noether, curvature, magnetic and Berry probes;
+- `59-noether-blind-discovery-prototype.md` — classical AD control baseline;
+- `60-optical-am-process-symmetry-audit.md` — exact supported A/M symmetry slice;
+- `61-pendulum-section-reparameterization-redteam.md` — equal-clock stopping experiment.
+
+Open Sonnet research is indexed by its own README and phase notes under
+`sonnet/`.
+
