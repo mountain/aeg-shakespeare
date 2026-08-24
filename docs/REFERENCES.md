@@ -90,6 +90,10 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Gray-2015]** Jeremy Gray, *The Real and the Complex: A History of Analysis in the 19th Century*, Springer, 2015. See the treatment of elliptic functions, Riemann surfaces, and the algebraic/analytic interaction.
 
+## Automatic differentiation and checkpointing
+
+**[Griewank-Walther-2008]** Andreas Griewank and Andrea Walther, *Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation*, 2nd ed., SIAM, 2008. DOI: `10.1137/1.9780898717761`. Classical reference for reverse accumulation, checkpointing, and time-memory recomputation tradeoffs.
+
 ## Project interpretation
 
 Claims labelled **Shakespeare interpretation** are not claims made by the references above. The references establish classical mathematics and historical context; the process-first reinterpretation is the research program implemented and tested in this repository.
