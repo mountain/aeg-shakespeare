@@ -41,6 +41,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 
+import sympy as sp
+
+from process_geometry.analysis.am import AMFunctionTheory, AMState
 from process_geometry.process.history import ProcessWord
 
 
@@ -245,6 +248,27 @@ def test_finite_am_order_requires_the_semidirect_correction():
     assert left == AffineDifferentialPrimitive(scale=2, shift=2)
 
 
+def test_checkpoint_primitive_lowers_to_the_existing_am_process_frame():
+    a, v = sp.symbols("a v", real=True)
+    theory = AMFunctionTheory(a, v)
+    state = AMState(a, v)
+
+    # The research-local finite primitive is not a parallel calculus.  Its
+    # noncommutative relation lowers to the existing A/M finite action.
+    residual = theory.finite_relation_residual(
+        state,
+        amount=1,
+        log_scale=sp.log(2),
+    )
+    assert all(sp.simplify(component) == 0 for component in residual)
+
+    # The same order correction has the existing infinitesimal shadow
+    # [A,M]=A.  This bridge is post-hoc validation of the generated checkpoint
+    # primitive, not derivative input to AMExpression.jet.
+    probe = a**3 * sp.exp(v) + a * v
+    assert sp.simplify(theory.commutator(probe) - theory.A(probe)) == 0
+
+
 def test_first_jet_objectification_has_a_hessian_completion_boundary():
     x = AMExpression.state()
     square = x * x
@@ -258,4 +282,3 @@ def test_first_jet_objectification_has_a_hessian_completion_boundary():
     # global-function quotient.
     nearby = Fraction(3, 2)
     assert square.jet(nearby).value != tangent_line_at_one.jet(nearby).value
-
