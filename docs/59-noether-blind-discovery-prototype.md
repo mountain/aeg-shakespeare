@@ -1,6 +1,8 @@
 # Noether blind discovery prototype — first falsifiable step
 
-**Status:** T0 executable prototype; research-local; no API promotion.
+**Status:** T0 classical automatic-differentiation control baseline;
+research-local; no API promotion.  This note does not use A/M process space;
+the exact supported A/M slice and its stopping boundary are audited in note 60.
 
 ## 1. Goal
 
@@ -82,7 +84,8 @@ separates path shape from clock parameterization.
 
 ## 4. What has and has not been achieved
 
-This is the first move from post-hoc calibration to constrained discovery:
+Within the conventional tangent representation, this is a move from post-hoc
+calibration to constrained discovery:
 
 \[
 \text{raw density}
@@ -100,6 +103,12 @@ generators, boundary/interface symmetries, gauge transformations, or task
 resource maps.  The current scope is deliberately restricted to coordinate
 translations so that failure is observable and the detector cannot fit an
 unbounded explanatory structure.
+
+More importantly, it does not establish A/M discovery.  The input already
+assumes ordinary position/velocity coordinates and the implementation obtains
+ordinary partial derivatives by automatic differentiation.  Its proper role is
+the classical control oracle against which an independent A/M route must be
+calibrated.
 
 ## 5. Next gates
 
