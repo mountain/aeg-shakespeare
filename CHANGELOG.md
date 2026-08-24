@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- opens the stochastic feedback-trap first-passage Sonnet with a frozen
+  dimension/task/oracle contract; the first executable gate proves exact Ito
+  generator covariance for `w=u+u^3`, exposes the nonzero residual left by a
+  naive deterministic chain rule, and recovers that rule at zero noise;
 - calibrates the S2-prime moving-observer contract on a known Riccati control:
   differentiated normalization induces observer motion, shape plus transport
   reconstructs exactly, and an out-of-grammar cubic survives as residual
