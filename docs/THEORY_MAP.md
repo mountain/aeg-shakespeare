@@ -214,7 +214,20 @@ which is an endomorphism of the Translation process. The research-local Multipli
 
 This creates explicit refinement pressure: the domain of objectification may need to include stable lower-rank processes/actions such as elements of `End(C_r)` or another process carrier, not only semantic points/classes in `C_r`. One arithmetic example is not enough to choose the generic abstraction.
 
-**Maturity:** two concrete AEG rank-objectification calibrations; generic V2 theory remains a research program and has no Experimental/Public abstraction.
+The finite thermodynamic calibration in
+`63-thermodynamic-objectification-and-partition-towers.md` adds a different
+boundary.  Any finite fibre map pushes Boltzmann mass forward, but it is
+task-objectification only when the fibre semantics is continuation-stable and
+the resulting object has grounded composition/lowering.  At one fixed scale,
+nested free-energy pushforwards flatten exactly when the outer measure is
+pulled back to the microscopic histories.  Therefore repeated log-sum-exp or
+coarse-graining alone is not evidence for a new process rank.  The measure,
+cost scale, and any retained holonomy are explicit objectification payloads,
+not intrinsic properties silently created by the quotient.
+
+**Maturity:** two concrete AEG rank-objectification calibrations plus one exact
+finite thermodynamic boundary/red team; generic V2 theory remains a research
+program and has no Experimental/Public abstraction.
 
 ### V3 — Higher-rank free composition
 
@@ -236,7 +249,17 @@ D_2,\quad D_3
 
 freely generate an unseen multiplicative composite whose lower action is multiplication by six. More importantly, the research essay admits mixed Translation/Dilation words, so the higher-rank language can express how Multiplication acts on Addition objects rather than merely forming a second isolated commutative monoid.
 
-**Maturity:** two-step arithmetic research calibration from unit histories -> Translation -> Multiplication/action; no generic higher-rank grammar API.
+The thermodynamic calibration also tests free **symmetric** assembly through
+the plethystic exponential.  It separates that construction from Boltzmann
+weighting: nested assemblies retain bracket type and degeneracy until a
+declared semantic quotient forgets them.  This is candidate V3 pressure, not a
+promotion.  If the task forgets brackets, the lowering map must still push
+their multiplicities forward rather than silently resetting every flat object
+to unit weight.
+
+**Maturity:** two-step arithmetic research calibration from unit histories ->
+Translation -> Multiplication/action, plus a finite formal-series assembly
+boundary; no generic higher-rank grammar API.
 
 ### V4 — Compositional rank lowering
 
@@ -456,6 +479,13 @@ The next high-value questions are therefore:
 4. independently, what concrete observer-neighborhood object is the smallest legitimate H2 topological-threshold experiment?
 5. can exact task quotients plus `BoundaryProfile`/Huffman separate intrinsic distinguishability complexity from realization overhead in a calibration where both are independently known?
 6. which current `PresentationMorphism` semantics survive when used between ranks rather than only between presentations at one level?
+7. when does a thermodynamic or plethystic objectification retain a genuinely
+   non-flattenable boundary—distinct scale, assembly type, relation,
+   reference measure, or task-visible holonomy—rather than merely regrouping
+   one finite mass pushforward?
+8. can the frozen PCR3BP return--partition--holonomy contract make those
+   obstruction coordinates presentation-covariant under its two gate systems,
+   or does the proposed classification language remain presentation-relative?
 
 These are research questions, not a backlog of API classes to create.
 
