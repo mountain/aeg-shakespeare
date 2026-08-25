@@ -70,6 +70,13 @@ before the next release snapshot.
   distinct from the full Bruhat--Tits tree, leaves \(p\)-adic
   continued-fraction algorithms unselected, and proposes no Theory Map or API
   promotion;
+- advances that Sonnet through its finite lattice-class gate: primitive
+  covectors modulo \(p^n\), quotiented by units, give exact normalized lattice
+  kernels and the complete standard-root ball; the earlier residue tower is
+  certified as the affine contact chart, while an inversion red team proves
+  that the missing \(p^{n-1}\) infinity-chart vertices are dynamically
+  necessary; the infinite boundary, continued-fraction selector, and generic
+  API remain open;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

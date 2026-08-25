@@ -75,7 +75,7 @@ deferred until its next oracle/evidence gate is affordable.
 
 | Study | Current state | Highest responsible claim | Authoritative entry / next gate |
 | --- | --- | --- | --- |
-| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 0 exact finite certificates | level-1 local-field re-expression plus an exact task-relative digit-canonicalization defect; no Bruhat--Tits reconstruction or preferred \(p\)-adic continued fraction | [finite certificate ledger](local-field-projective-process-geometry/01-phase0-finite-certificates.md); next construct the finite lattice-class oracle and compare its boundary truncations |
+| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 1 finite standard-root lattice ball | level-1 local-field re-expression with exact lattice/kernel and digit-canonicalization red teams; no infinite completion or preferred \(p\)-adic continued fraction | [finite lattice-ball ledger](local-field-projective-process-geometry/02-phase1-finite-lattice-ball.md); next compile the real continued-fraction/geodesic positive control |
 | [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
 | [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
 | [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
@@ -149,7 +149,10 @@ products.
 The first red team compares standard and balanced digit sections. Both
 reconstruct the same finite residue, while different declared cost rulers
 prefer different histories. The result supports task-relative
-canonicalization but rejects an observer-free preferred digit system. The
-study explicitly distinguishes its boundary refinement tree from the full
-Bruhat--Tits tree, leaves competing \(p\)-adic continued-fraction algorithms
+canonicalization but rejects an observer-free preferred digit system.
+Phase 1 then constructs the complete finite standard-root Bruhat--Tits ball
+from normalized lattice kernels. It proves that the earlier residue tower is
+exactly the affine contact chart, not the whole sphere, and that right
+inversion forces the missing infinity chart. The study still leaves the
+infinite boundary and competing \(p\)-adic continued-fraction algorithms
 unselected, and proposes no API extraction.
