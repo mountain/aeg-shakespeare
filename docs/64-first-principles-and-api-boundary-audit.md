@@ -308,3 +308,43 @@ shims during 0.0.x, while new repository code uses the Experimental owner.
 
 This order preserves the first-principles picture while allowing engineering
 to follow evidence rather than lead it.
+
+## 8. Effective-analysis correction
+
+The audit's two-axis verdict remains valid, but it underweighted a defining
+selection pressure: Process Geometry is intended to preserve the symbolic and
+numerical effectiveness that makes classical calculus useful in science and
+engineering.
+
+This does not add a third ontology axis.  It adds a cross-cutting admissibility
+condition:
+
+```text
+analysis-bearing presentation
+  = task-semantic adequacy
+  + symbolic effectiveness
+  + numerical effectiveness where claimed
+  + explicit certificates and failure semantics
+  + task-relative cost accounting
+  + compatible lift / quotient / lowering transport
+```
+
+The correction strengthens rather than weakens the conservative API judgment.
+It does not imply that every process has a differential calculus or that one
+generic analysis carrier has been found.  Instead it prevents abstract
+existence, one-backend simplification, one-point numerical agreement, or free
+accounting of an objectified primitive from being mistaken for a mature
+analysis claim.
+
+Canonicalization remains local and observer/task-relative; effective analysis
+supplies another selection criterion, not a global representative theorem.
+Lift-first now protects computational payload such as derivatives, adjoints,
+phase, branch, error, and holonomy as well as topological information.  The
+unit/ruler is part of numerical tolerance and cost semantics.  V5 analytic
+closure is correspondingly stratified into formal, certified, and effective
+levels.
+
+The governing contract and engineering gates are recorded in
+`65-effective-analysis-principle.md`.  This addendum refines the research
+program and review policy without changing the T-status or runtime API audited
+above.

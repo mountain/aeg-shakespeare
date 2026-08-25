@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- adopts the Effective Analysis Principle as a cross-cutting research and
+  engineering constraint: analysis-bearing presentations must state their
+  symbolic/numerical mode, closure, evaluator, certificates, units,
+  error/failure semantics, baseline, and total cost boundary; governance,
+  theory records, vignettes, API review, and release gates now enforce the
+  distinction between semantic adequacy, formal closure, numerical stability,
+  and computational economy without promoting a universal calculus;
 - audits the first-principles picture after notes 42--63: the horizontal
   distinguishability and vertical objectification axes form a clear theory
   spine, while transported history payloads, task resources, holonomy,

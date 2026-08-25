@@ -294,6 +294,15 @@ where \(\Lambda\) is a rank-comparison/transport map whose existence is a theore
 
 If such compatibility exists in substantial classes, **analytic closure** becomes a defining strength of the process tower.
 
+The Effective Analysis Principle sharpens this into three claim levels.  A
+formal commuting diagram is the first level.  The second adds an exact residual
+or controlled-error certificate and a red team.  The third, **effective
+analytic closure**, requires symbolic and numerical evaluations performed at
+the higher rank to lower coherently, with units, errors, failure semantics, and
+computational costs transported or compared explicitly.  The third level is a
+research target, not an implication of the diagram and not a current API
+promise.
+
 ---
 
 ## 5. Why analysis changes the status of the vertical tower
@@ -391,6 +400,9 @@ The lineage comparison suggests concrete tests.
 4. **Abstract-interpretation overlap.** Can semantic compression be formulated as a Galois connection while still explaining new generative freedom?
 5. **Analytic closure.** Construct one nontrivial AEG example where a higher-rank variation has a provably consistent lowered variation, and one red team where naive derivative commutation fails.
 6. **Cross-domain test.** Find a non-arithmetic process tower that independently exhibits objectification, new free composition, semantic lowering, and useful analysis at the higher rank.
+7. **Effective closure.** In a case passing the formal variation test, lower an
+   actual symbolic or numerical computation and audit certificates, units,
+   errors, failure behavior, and total cost against the lower-rank baseline.
 
 The sixth test is especially important. Without it, the vertical theory may remain an insightful reading of arithmetic rather than a general theory of processes.
 

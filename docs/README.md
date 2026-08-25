@@ -8,6 +8,13 @@ The documentation is organized as a mathematical/programming narrative rather th
 
 **Software governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; theory-map promotion and API promotion remain separate gates.
 
+**Effective analysis:** `65-effective-analysis-principle.md` makes symbolic and
+numerical calculability a cross-cutting success condition for analysis-bearing
+presentations.  It separates semantic adequacy, symbolic closure, numerical
+stability, certification, and computational economy; updates canonicalization,
+lift-first, unit/ruler, objectification, and V5 review without claiming a
+universal calculus.
+
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
 3. `02-task-signatures.md` — bounded task-continuation signatures as finite distinguishability certificates.
@@ -68,10 +75,13 @@ The documentation is organized as a mathematical/programming narrative rather th
 58. `RELEASE_CHECKLIST.md` — release gates.
 59. `THEORY_GOVERNANCE.md` — conservative governance for Theory Map nodes and edges: T0–T4 promotion, controlled vocabulary, falsification, conservative extension, and theory/software asymmetry.
 60. `THEORY_RECORD_TEMPLATE.md` — auditable node/edge record and promotion checklist for material Theory Map changes.
+61. `65-effective-analysis-principle.md` — governing Effective Analysis
+Principle and claim-relative engineering gates for symbolic/numerical
+calculation, certificates, units, errors, costs, and cross-rank transport.
 
 A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
 
-## Recent T0 research notes
+## Recent T0 research notes and governing syntheses
 
 The numbered architecture list above predates several fast-moving research
 calibrations. These are indexed without renumbering that stable list:
@@ -94,6 +104,9 @@ calibrations. These are indexed without renumbering that stable list:
 - `64-first-principles-and-api-boundary-audit.md` — synthesis of the two-axis
   foundation, the emerging task-covariant evaluation transversal, current
   theory gaps, and the conservative Experimental ownership refactor.
+- `65-effective-analysis-principle.md` — refinement of the mother picture to
+  two axes governed by a cross-cutting effective-analysis constraint, together
+  with research, vignette, promotion, and release standards.
 
 Open Sonnet research is indexed by its own README and phase notes under
 `sonnet/`.

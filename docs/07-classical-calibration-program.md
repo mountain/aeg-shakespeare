@@ -171,3 +171,32 @@ not assume in advance that one theory is universal.
 This is the intended role of classical tests: determine which process function
 language is *forced or economical* for a problem, and identify when distinct
 problems converge to the same representation geometry.
+
+## 7. Effective-analysis calibration standard
+
+Recovering the correct geometric shadow is necessary but no longer sufficient
+for an analysis-bearing calibration.  A mature comparison should test whether
+the process-adapted language preserves the operational strengths of classical
+calculus.
+
+For each candidate presentation, record separately:
+
+| Question | Required evidence when claimed |
+| --- | --- |
+| Semantic adequacy | task equivalence, preserved/forgotten payload, and reconstruction boundary |
+| Symbolic effectiveness | operator action, closure or forced extension, exact residual/property/round-trip certificate |
+| Numerical effectiveness | domain, units, scale-aware error or convergence, branch/singularity/nonconvergence behavior, independent reference |
+| Computational economy | workload and baseline; discovery/compilation, repeat evaluation, storage, dictionary, residual, and decoder/lowering cost |
+| Transport/closure | observer/presentation covariance and lift/quotient/rank-lowering compatibility where claimed |
+
+The conventional solution is therefore not only a value oracle.  It is a
+baseline for symbolic closure, numerical conditioning, and cost.  A
+process-first presentation that reconstructs the same formula but is less
+stable or more expensive remains mathematically informative, but its claimed
+computational advantage must be weakened.
+
+The default broad calibration suite should eventually contain an exact finite
+case, an independently checkable continuous/integrable case, and a
+nonintegrable, stiff, branched, singular, or nonconservative red team.  No
+single local test must cover the whole suite; breadth of evidence must track
+breadth of claim.

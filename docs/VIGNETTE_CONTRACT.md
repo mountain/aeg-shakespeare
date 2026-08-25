@@ -10,6 +10,16 @@ A Process Geometry vignette is more than a regression test and more than evidenc
 
 These duties are cumulative. A vignette may leave the Theory Map unchanged and still be excellent. Conversely, an important calibration is incomplete as a vignette if it cannot be understood or found without reconstructing repository history.
 
+When a vignette claims a process calculus, numerical method, or computational
+advantage, it has a fourth conditional duty:
+
+4. **Effective analysis** — state the symbolic/numerical mode, baseline,
+   evaluator, certificates, units, error/failure semantics, and cost boundary.
+
+This duty is claim-relative.  A purely semantic or exact finite vignette may
+mark numerical analysis `not applicable`; it may not silently turn an
+unmeasured property into a positive claim.
+
 > **A vignette should be independently readable, executably auditable, and retrievably identifiable.**
 
 This policy complements `09-literate-programming-and-mathematical-lineage.md`, `11-references-and-test-essays.md`, `THEORY_GOVERNANCE.md`, and `GOVERNANCE.md`.
@@ -27,6 +37,8 @@ A vignette may be one test module, a linked family of modules, or a test plus a 
 - What is classically known or expected?
 - What does Process Geometry reconstruct without assuming the answer?
 - What exactly is executable here?
+- If analysis is claimed, what is symbolically closed or numerically
+  evaluable, against which baseline and under which error/cost contract?
 - What remains unresolved?
 - Where should the reader go next?
 
@@ -96,6 +108,7 @@ Domains:
 Classical names / aliases:
 Structural themes:
 Process Geometry roles:
+Computational modes:
 Prerequisites:
 Related vignettes:
 Theory Map relation:
@@ -146,6 +159,9 @@ A vignette should be reviewed separately for:
 | Retrieval | Can the vignette be found under external and internal vocabularies? |
 | Theory relation | Is its Theory Map role stated without over-promotion? |
 | Reconstruction | If information is lost, is the decoder/information-loss boundary explicit? |
+| Symbolic effectiveness | If claimed, are operator action, closure/extension, and certificates explicit? |
+| Numerical effectiveness | If claimed, are domain, units, tolerances/errors, failure behavior, and reference checks explicit? |
+| Computational economy | If claimed, are workload, baseline, compilation/storage/decoder costs, and scope explicit? |
 
 Strength on one axis does not repair failure on another. A perfect regression test can still be a poor vignette; a beautiful essay can still lack an executable certificate.
 
@@ -227,6 +243,22 @@ Before calling a substantial vignette complete, check:
 - [ ] Proof map corresponds to actual assertions/certificates.
 - [ ] Claim boundary and information loss are explicit where relevant.
 - [ ] References are authoritative and correctly attributed.
+
+### Effective analysis, when claimed
+
+- [ ] Claim mode is identified: exact-symbolic, certified-approximate,
+      numerical, search-only, or record-only.
+- [ ] Function/observable language and process operators are explicit.
+- [ ] Closure, controlled extension, or known failure is tested.
+- [ ] Numerical domain, units, tolerances/error, branch/singularity, and
+      nonconvergence behavior are stated where applicable.
+- [ ] An independent reference, invariant, exact limit, or convergence study
+      supports numerical claims.
+- [ ] Workload and baseline are stated for efficiency claims.
+- [ ] Compilation/discovery, storage, dictionary, residual, and decoder/lowering
+      costs are charged when relevant.
+- [ ] Lifted payload and quotient/lowering information loss are compatible with
+      future calculations claimed by the vignette.
 
 ### Retrieval
 
