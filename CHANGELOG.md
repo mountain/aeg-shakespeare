@@ -25,6 +25,10 @@ before the next release snapshot.
 
 ### Detailed ledger
 
+- makes `docs/README.md` an exhaustive role-aware map, adds a status/claim/
+  next-gate ledger for every Sonnet study, freezes existing duplicate chronology
+  prefixes without renaming citation paths, and adds a fail-closed hygiene test
+  for future top-level documents and Sonnet directories;
 - adopts the Effective Analysis Principle as a cross-cutting research and
   engineering constraint: analysis-bearing presentations must state their
   symbolic/numerical mode, closure, evaluator, certificates, units,
