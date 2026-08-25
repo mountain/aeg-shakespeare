@@ -15,6 +15,16 @@ from .canonical_observer import (
     ConstraintCanonicalization,
     ObserverConnection,
 )
+from .structured_observables import (
+    PairableAtom,
+    PairingConstruction,
+    PairingSpec,
+    StructuredObservableProposal,
+    StructuredObservableProposalResult,
+    euclidean_pairing,
+    generate_pairing_observables,
+    nonstationary_observable_proposals,
+)
 
 __all__ = [
     "DistinguishingContinuation",
@@ -23,4 +33,12 @@ __all__ = [
     "ConstraintCanonicalization",
     "ObserverConnection",
     "CanonicalDecomposition",
+    "PairableAtom",
+    "PairingConstruction",
+    "PairingSpec",
+    "StructuredObservableProposal",
+    "StructuredObservableProposalResult",
+    "euclidean_pairing",
+    "generate_pairing_observables",
+    "nonstationary_observable_proposals",
 ]

@@ -139,8 +139,8 @@ multiple-angle identities, https://dlmf.nist.gov/4.21 .
 import sympy as sp
 
 from process_geometry.experimental import CanonicalDecomposition
-from aeg_shakespeare.analysis.module import ProcessFunctionModule
-from aeg_shakespeare.process.local import ProcessFrame
+from process_geometry.analysis.module import ProcessFunctionModule
+from process_geometry.process.local import ProcessFrame
 
 
 def rotation_frame(psi):

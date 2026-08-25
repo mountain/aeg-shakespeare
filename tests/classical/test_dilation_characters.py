@@ -47,7 +47,7 @@ This is a multiplicative character calibration, not a Mellin transform engine.
 
 import sympy as sp
 
-from aeg_shakespeare.process.finite import (
+from process_geometry.process.finite import (
     ProcessCharacter,
     ProcessFamily,
     verify_process_character,

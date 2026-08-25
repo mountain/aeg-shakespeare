@@ -106,7 +106,7 @@ A1602-A1606 (1964), DOI: 10.1103/PhysRev.134.A1602.
 
 import sympy as sp
 
-from aeg_shakespeare.process.finite import (
+from process_geometry.process.finite import (
     ProcessCocycle,
     ProcessFamily,
     central_commutator_residual,

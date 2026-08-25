@@ -1,14 +1,14 @@
-"""Costed search over first-order algebraic observer presentations.
+"""Costed search over first-order observable algebraic-image presentations.
 
 This module connects the discovery front-end to Process Geometry's multi-axis
 presentation search. The task here is deliberately narrow: among a
-caller-declared family of observer candidates, find those whose first-order
+caller-declared family of observable candidates, find those whose first-order
 observable pair ``(F, D F)`` closes by certified algebraic relations on a
 declared leaf, and compare the resulting presentations without imposing a
 universal scalar objective.
 
 This is not a search over task/process quotients in the sense of
-``H(P)/~_Q``. The historical ``*_process_quotient*`` names remain 0.0.x aliases.
+``H(P)/~_Q``. Historical observer/quotient names remain 0.0.x aliases.
 """
 
 from __future__ import annotations
@@ -28,8 +28,8 @@ from ..presentation.search import (
 )
 from ..process.local import ProcessSystem
 from .polynomial import (
-    ObservableAlgebraicQuotient,
-    discover_first_order_observable_quotient,
+    ObservableAlgebraicImage,
+    discover_first_order_observable_image,
 )
 
 
@@ -39,11 +39,17 @@ class FirstOrderObservablePresentation:
 
     observable: sp.Expr
     derivative: sp.Expr
-    quotient: ObservableAlgebraicQuotient
+    image: ObservableAlgebraicImage
+
+    @property
+    def quotient(self) -> ObservableAlgebraicImage:
+        """Historical 0.0.x spelling retained for executable provenance."""
+
+        return self.image
 
     @property
     def algebraically_closed(self) -> bool:
-        return bool(self.quotient.relations) and self.quotient.complete_certificates
+        return bool(self.image.relations) and self.image.complete_certificates
 
 
 def _expression_complexity(expr: sp.Expr) -> float:
@@ -59,20 +65,20 @@ def _relation_complexity(
     try:
         polynomial = sp.Poly(sp.expand(relation), *variables, domain="EX")
     except sp.PolynomialError as exc:
-        raise ValueError("quotient relation must be polynomial") from exc
+        raise ValueError("algebraic-image relation must be polynomial") from exc
     return float(int(polynomial.total_degree()) + len(polynomial.terms()))
 
 
-def structural_first_order_observer_presentation_cost(
+def structural_first_order_observable_presentation_cost(
     presentation: FirstOrderObservablePresentation,
 ) -> PresentationCost:
-    """Default multi-axis cost for a first-order algebraic observer presentation."""
+    """Default multi-axis cost for a first-order observable presentation."""
     relation_variables = (
-        presentation.quotient.symbols + presentation.quotient.parameters
+        presentation.image.symbols + presentation.image.parameters
     )
     relation_cost = sum(
         _relation_complexity(item.relation, relation_variables)
-        for item in presentation.quotient.relations
+        for item in presentation.image.relations
     )
     return PresentationCost(
         grammar=(
@@ -96,9 +102,9 @@ def _fresh_symbol(base: str, forbidden: set[sp.Symbol]) -> sp.Symbol:
     return candidate
 
 
-def search_first_order_observer_presentations(
+def search_first_order_observable_presentations(
     system: ProcessSystem,
-    observer_candidates: Sequence[sp.Expr],
+    observable_candidates: Sequence[sp.Expr],
     *,
     constraints: AlgebraicConstraintSet,
     parameters: Sequence[sp.Symbol] = (),
@@ -106,21 +112,21 @@ def search_first_order_observer_presentations(
         [FirstOrderObservablePresentation], PresentationCost
     ] | None = None,
 ) -> PresentationSearchResult[FirstOrderObservablePresentation]:
-    """Compare candidate observers by certified first-order algebraic closure."""
-    observer_candidates = tuple(
-        sp.expand(sp.sympify(candidate)) for candidate in observer_candidates
+    """Compare candidate observables by certified first-order algebraic closure."""
+    observable_candidates = tuple(
+        sp.expand(sp.sympify(candidate)) for candidate in observable_candidates
     )
-    if not observer_candidates:
-        raise ValueError("at least one observer candidate is required")
+    if not observable_candidates:
+        raise ValueError("at least one observable candidate is required")
 
-    score = cost_model or structural_first_order_observer_presentation_cost
+    score = cost_model or structural_first_order_observable_presentation_cost
     forbidden = set(constraints.variables)
     evaluated: list[PresentationCandidate[FirstOrderObservablePresentation]] = []
 
-    for index, observable in enumerate(observer_candidates):
+    for index, observable in enumerate(observable_candidates):
         observable_symbol = _fresh_symbol(f"U{index}", forbidden)
         derivative_symbol = _fresh_symbol(f"Y{index}", forbidden)
-        quotient = discover_first_order_observable_quotient(
+        image = discover_first_order_observable_image(
             system,
             observable,
             observable_symbol=observable_symbol,
@@ -131,7 +137,7 @@ def search_first_order_observer_presentations(
         payload = FirstOrderObservablePresentation(
             observable=observable,
             derivative=system.derive(observable),
-            quotient=quotient,
+            image=image,
         )
         evaluated.append(
             PresentationCandidate(
@@ -140,7 +146,7 @@ def search_first_order_observer_presentations(
                 sufficient=payload.algebraically_closed,
                 label=str(observable),
                 certificate=tuple(
-                    relation.relation for relation in quotient.relations
+                    relation.relation for relation in image.relations
                 ),
             )
         )
@@ -152,6 +158,10 @@ def search_first_order_observer_presentations(
     )
 
 
-# Historical 0.0.x backend names.
-structural_first_order_quotient_cost = structural_first_order_observer_presentation_cost
-search_first_order_process_quotients = search_first_order_observer_presentations
+# Historical 0.0.x names.
+structural_first_order_observer_presentation_cost = (
+    structural_first_order_observable_presentation_cost
+)
+structural_first_order_quotient_cost = structural_first_order_observable_presentation_cost
+search_first_order_observer_presentations = search_first_order_observable_presentations
+search_first_order_process_quotients = search_first_order_observable_presentations

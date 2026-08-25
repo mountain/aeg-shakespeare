@@ -105,8 +105,8 @@ ISBN 978-0-07-099256-6.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.am import AMFunctionTheory
-from aeg_shakespeare.process.local import ProcessDirection
+from process_geometry.analysis.am import AMFunctionTheory
+from process_geometry.process.local import ProcessDirection
 
 
 def test_am_process_direction_has_the_expected_assignment_shadow():

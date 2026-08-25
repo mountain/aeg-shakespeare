@@ -26,6 +26,12 @@ before the next release snapshot.
 
 ### Detailed ledger
 
+- recalibrates all 30 executable essays under `tests/classical` against the
+  Mathematical Core and the end-to-end pendulum standard; migrates their
+  imports to `process_geometry`, corrects the even-power oscillator's supplied
+  invariant/algebraic-carrier boundary, renames the public bounded polynomial
+  path around observables and algebraic images, retains 0.0.x aliases, and
+  moves the pendulum-local structured-pairing grammar to Experimental;
 - adds `docs/ENGINEERING_ARCHITECTURE.md` as the second required core entry:
   turns concrete physical/mathematical tasks into auditable solver plans,
   maps current software layers and algorithm regimes, fixes technical decisions

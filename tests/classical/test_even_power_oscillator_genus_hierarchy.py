@@ -1,16 +1,16 @@
-"""Even-power oscillators: one process family, a genus hierarchy of quotients.
+"""Even-power oscillators: one process family, a genus hierarchy of energy carriers.
 
 Question
 --------
-If Shakespeare receives only the polynomial process
+If Process Geometry receives only the polynomial process
 
     D x = p,
     D p = -x^(m-1)
 
 for even ``m``, can the complexity jump from elementary/trigonometric behavior
 to elliptic and then higher hyperelliptic behavior be seen first as a change in
-the geometry of the energy quotient, rather than by naming the expected special
-functions in advance?
+the geometry of the energy-leaf algebraic carrier, rather than by naming the
+expected special functions in advance?
 
 Primitive data
 --------------
@@ -20,7 +20,7 @@ the polynomial energy candidate
     H = p^2/2 + x^m/m.
 
 No trigonometric, elliptic, theta, hyperelliptic, or Abelian function is supplied
-to the quotient profiler.
+to the algebraic-curve profiler.
 
 Classical lineage
 -----------------
@@ -33,35 +33,38 @@ elliptic functions see [DLMF-19], [DLMF-22], and [Whittaker-Watson-1927].  For
 Riemann surfaces, Abelian integrals, and higher-genus geometry see
 [Forster-1981], [Farkas-Kra-1992], and [Mumford-1983].
 
-Shakespeare reconstruction
+Process Geometry reconstruction
 ---------------------------
-We first verify the invariant directly from the process.  On ``H=E`` we obtain
+We first verify the caller-supplied energy candidate directly from the process.
+On ``H=E`` we obtain
 
     p^2 = 2E - (2/m) x^m.
 
-Only then is the reduced relation viewed as ``Y^2=P_m(X)`` and profiled by its
-degree/discriminant.  For a square-free hyperelliptic model ``y^2=P_d(x)``, the
-smooth projective completion has generic genus ``floor((d-1)/2)`` in the cases
-used here.
+Only then is the energy-leaf relation viewed as ``Y^2=P_m(X)`` and profiled by
+its degree/discriminant. For a square-free hyperelliptic model
+``y^2=P_d(x)``, the smooth projective completion has generic genus
+``floor((d-1)/2)`` in the cases used here.
 
-**Shakespeare interpretation.**  The function-language hierarchy is read as a
-shadow of quotient geometry produced by the process.  This is a representation
-interpretation, not a claim that genus alone measures all process complexity.
+**Process Geometry interpretation.** The function-language hierarchy is read
+as a shadow of energy-leaf carrier geometry produced by the process. This is a
+representation interpretation, not a claim that genus alone measures all
+process complexity. No continuation task, semantic quotient, or decoder is
+constructed in this file.
 
 Calibration statement
 ---------------------
 Passing this file certifies:
 
-1. ``H`` is an exact process invariant for m=2,4,6;
-2. the quartic energy quotient is generically genus one and has discriminant
+1. the supplied ``H`` candidate is an exact process invariant for m=2,4,6;
+2. the quartic energy carrier is generically genus one and has discriminant
    ``-256 E^3`` in the chosen normalization;
-3. the m=2,4,6 quotient family has generic genera 0,1,2 respectively;
+3. the m=2,4,6 energy-carrier family has generic genera 0,1,2 respectively;
 4. those classifications are obtained without a named special-function input.
 
 Proof map
 ---------
 ``test_even_power_oscillator_energy_*`` checks the invariant.
-``test_quartic_oscillator_*`` checks the quartic quotient and discriminant.
+``test_quartic_oscillator_*`` checks the quartic carrier and discriminant.
 ``test_even_power_oscillators_generate_*`` checks the genus ladder.
 ``test_harmonic_quartic_sextic_*`` checks that the profiler receives only the
 algebraic energy relation.
@@ -69,9 +72,11 @@ algebraic energy relation.
 Boundary
 --------
 The tests do not construct explicit period matrices, Jacobians, theta
-functions, or analytic uniformizations.  They also do not prove a universal
-classification of ODEs by genus.  They certify only the displayed algebraic
-quotient family and its generic curve genera.
+functions, or analytic uniformizations. They also do not prove a universal
+classification of ODEs by genus. They certify only the displayed algebraic
+energy-leaf family and its generic curve genera. In particular, an algebraic
+carrier is not thereby an exact task-semantic quotient: future-equivalence,
+information loss, and reconstruction are not declared here.
 
 References
 ----------
@@ -100,9 +105,9 @@ Chapters XX-XXII.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.analysis.algebraic import hyperelliptic_profile
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.process.local import ProcessSystem
 
 
 def even_power_oscillator(power: int):
@@ -123,7 +128,7 @@ def even_power_oscillator(power: int):
     return x, p, system, energy
 
 
-def test_even_power_oscillator_energy_is_discovered_process_invariant_family():
+def test_even_power_oscillator_energy_candidate_is_exact_invariant_family():
     # GIVEN / ASSERT: the process itself certifies the energy invariant.
     for power in (2, 4, 6):
         x, p, system, energy = even_power_oscillator(power)
@@ -147,7 +152,7 @@ def test_quartic_oscillator_forces_genus_one_without_elliptic_function_input():
     assert sp.factor(profile.discriminant) == -256 * E**3
 
 
-def test_even_power_oscillators_generate_a_genus_hierarchy_from_process_quotients():
+def test_even_power_oscillators_generate_a_genus_hierarchy_of_energy_carriers():
     E, X, Y = sp.symbols("E X Y")
 
     profiles = {}

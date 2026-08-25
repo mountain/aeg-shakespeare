@@ -38,6 +38,7 @@ def test_representative_namespaced_entry_points_are_importable():
     assert hasattr(pg.process.finite, "ProcessCocycle")
     assert hasattr(pg.process.local, "ProcessSystem")
     assert hasattr(pg.process.local, "ProcessFrame")
+    assert hasattr(pg.process.local, "ProcessDirection")
 
     assert hasattr(pg.presentation.history, "normalize_word")
     assert hasattr(pg.presentation.history, "TaskContinuationSignature")
@@ -50,10 +51,10 @@ def test_representative_namespaced_entry_points_are_importable():
     assert hasattr(pg.presentation.morphism, "PresentationMorphism")
 
     assert hasattr(pg.discovery, "discover_polynomial_invariants")
-    assert hasattr(pg.discovery, "generate_pairing_observers")
-    assert hasattr(pg.discovery, "ObservableAlgebraicQuotient")
-    assert hasattr(pg.discovery, "discover_first_order_observable_quotient")
-    assert hasattr(pg.discovery, "search_first_order_observer_presentations")
+    assert hasattr(pg.discovery, "generate_polynomial_observable_basis")
+    assert hasattr(pg.discovery, "ObservableAlgebraicImage")
+    assert hasattr(pg.discovery, "discover_first_order_observable_image")
+    assert hasattr(pg.discovery, "search_first_order_observable_presentations")
 
     assert hasattr(pg.analysis.module, "ProcessFunctionModule")
     assert hasattr(pg.analysis.am, "AMFunctionTheory")
@@ -72,6 +73,7 @@ def test_experimental_is_the_canonical_owner_of_unsettled_slices():
     import process_geometry.experimental as experimental
     from process_geometry.analysis.connection import ObserverConnection
     from process_geometry.analysis.decomposition import CanonicalDecomposition
+    from process_geometry.discovery.structured import StructuredObserverProposal
     from process_geometry.presentation.canonicalization import (
         ConstraintCanonicalization,
     )
@@ -79,6 +81,7 @@ def test_experimental_is_the_canonical_owner_of_unsettled_slices():
     assert experimental.ConstraintCanonicalization is ConstraintCanonicalization
     assert experimental.ObserverConnection is ObserverConnection
     assert experimental.CanonicalDecomposition is CanonicalDecomposition
+    assert experimental.StructuredObservableProposal is StructuredObserverProposal
     assert ConstraintCanonicalization.__module__ == (
         "process_geometry.experimental.canonical_observer"
     )
@@ -88,6 +91,11 @@ def test_experimental_is_the_canonical_owner_of_unsettled_slices():
     assert CanonicalDecomposition.__module__ == (
         "process_geometry.experimental.canonical_observer"
     )
+    assert experimental.StructuredObservableProposal.__module__ == (
+        "process_geometry.experimental.structured_observables"
+    )
+    assert "StructuredObservableProposal" not in pg.discovery.__all__
+    assert "StructuredObserverProposal" not in pg.discovery.__all__
 
 
 def test_foundation_aligned_names_preserve_historical_backend_identity():
@@ -99,14 +107,33 @@ def test_foundation_aligned_names_preserve_historical_backend_identity():
         pg.presentation.history.task_continuation_signature
         is pg.presentation.history.process_jet_signature
     )
-    assert pg.discovery.ObservableAlgebraicQuotient is pg.discovery.ObservableQuotient
     assert (
-        pg.discovery.discover_first_order_observable_quotient
+        pg.discovery.PolynomialObservableBasis
+        is pg.discovery.PolynomialObserverBasis
+    )
+    assert (
+        pg.discovery.generate_polynomial_observable_basis
+        is pg.discovery.generate_polynomial_observer_basis
+    )
+    assert (
+        pg.discovery.ObservableAlgebraicImage
+        is pg.discovery.ObservableAlgebraicQuotient
+        is pg.discovery.ObservableQuotient
+    )
+    assert (
+        pg.discovery.discover_first_order_observable_image
+        is pg.discovery.discover_first_order_observable_quotient
         is pg.discovery.discover_first_order_process_quotient
     )
     assert (
-        pg.discovery.search_first_order_observer_presentations
+        pg.discovery.search_first_order_observable_presentations
+        is pg.discovery.search_first_order_observer_presentations
         is pg.discovery.search_first_order_process_quotients
+    )
+    assert (
+        pg.discovery.structural_first_order_observable_presentation_cost
+        is pg.discovery.structural_first_order_observer_presentation_cost
+        is pg.discovery.structural_first_order_quotient_cost
     )
 
 

@@ -1,17 +1,21 @@
-# Structured observer proposals: one pairing before any vector theory
+# Structured observable proposals: one pairing before any vector theory
 
-**Status:** first structured-construction calibration; deliberately narrower than a typed mathematical theory protocol.
+**Status:** Experimental; first structured-construction calibration, currently
+forced end-to-end only by the pendulum and deliberately narrower than a typed
+mathematical theory protocol.
 
 ## 1. Why this layer exists
 
 The first two pendulum discovery stages removed two manual choices:
 
 1. the energy was no longer supplied but discovered as a polynomial first integral;
-2. inside the declared coordinate family `(qx,qy)`, quotient/Pareto search selected `qy` rather than being told to prefer it.
+2. inside the declared coordinate family `(qx,qy)`, algebraic-image/Pareto
+   search selected `qy` rather than being told to prefer it.
 
-A prior choice remained: why should the observer family be the two coordinate components at all?
+A prior choice remained: why should the observable family be the two coordinate
+components at all?
 
-The primitive pendulum description contains more structure than four unrelated scalar assignments.  It contains a position `q`, a velocity `v`, a fixed gravity direction `e`, and a Euclidean pairing.  The next experiment asks whether that small amount of structure can propose scalar observers before coordinates become the representation ontology.
+The primitive pendulum description contains more structure than four unrelated scalar assignments.  It contains a position `q`, a velocity `v`, a fixed gravity direction `e`, and a Euclidean pairing.  The next experiment asks whether that small amount of structure can propose scalar observables before coordinates become the representation ontology.
 
 ## 2. Minimal abstraction only
 
@@ -22,9 +26,13 @@ It introduces only:
 - `PairableAtom(name, components, sort)` — a named structured atom with a finite backend realization;
 - `PairingSpec` — one caller-declared scalar pairing on a common sort;
 - `PairingConstruction` — the retained recipe `pair(left,right)`;
-- `StructuredObserverProposal` — the recipe together with its scalar backend lowering;
-- `generate_pairing_observers` — bounded depth-one proposal generation;
-- `nonstationary_observer_proposals` — a task filter for the present goal of finding an evolving scalar observer.
+- `StructuredObservableProposal` — the recipe together with its scalar backend lowering;
+- `generate_pairing_observables` — bounded depth-one proposal generation;
+- `nonstationary_observable_proposals` — a task filter for the present goal of finding an evolving scalar observable.
+
+These names are owned by `process_geometry.experimental`. The historical
+`process_geometry.discovery.structured` imports are compatibility shims, not
+the stable Discovery surface.
 
 No addition law, scalar multiplication, linear independence, basis, norm, matrix algebra, spectral theorem, or Fourier transform is assumed.
 
@@ -62,7 +70,7 @@ q_x^2+q_y^2,
 \quad 1.
 \]
 
-Thus the observer whose backend expression is `qy` retains the construction identity
+Thus the observable whose backend expression is `qy` retains the construction identity
 
 ```text
 pair(q,e)
@@ -92,7 +100,9 @@ the constructions
 
 have zero process derivative modulo the constraints.
 
-They are therefore insufficient for the **current task** of finding one evolving first-order observer.  They are not deleted from the proposal grammar and no new equality law is inferred.
+They are therefore insufficient for the **current task** of finding one
+evolving first-order observable. They are not deleted from the proposal grammar
+and no new equality law is inferred.
 
 The surviving candidates are
 
@@ -106,7 +116,8 @@ The surviving candidates are
 
 ## 5. Pendulum III
 
-The three surviving constructions enter the already existing first-order quotient search.
+The three surviving constructions enter the public first-order
+observable-presentation search.
 
 For
 
@@ -122,19 +133,22 @@ exact elimination gives
 \boxed{Y^2=(K-2U)(1-U^2).}
 \]
 
-The speed-squared observer also closes algebraically but requires a more expensive backend first jet; the vertical-velocity observer gives a substantially larger algebraic relation.  Under the transparent current structural cost, `pair(q,e)` is therefore the unique Pareto candidate.
+The speed-squared observable also closes algebraically but requires a more
+expensive backend first-order pair; the vertical-velocity observable gives a
+substantially larger algebraic relation. Under the transparent current
+structural cost, `pair(q,e)` is therefore the unique Pareto candidate.
 
 The important change is not the classical result.  It is the input boundary:
 
 ```text
 previous stage:
-    caller -> (qx,qy) -> quotient search -> qy
+    caller -> (qx,qy) -> algebraic-image search -> qy
 
 current stage:
     caller -> (q,v,e,pairing)
            -> structured scalar proposals
            -> task filter
-           -> quotient search
+           -> algebraic-image search
            -> pair(q,e)
            -> backend shadow qy
 ```
@@ -145,9 +159,12 @@ current stage:
 
 **Forbidden structures.** Preferred coordinate, angle, vector-space theory, basis-change machinery, spectrum, Fourier analysis, elliptic functions, target cubic.
 
-**Discovered structure.** A six-element structured scalar proposal grammar; three nonstationary candidates; `pair(q,e)` as the unique default Pareto first-order quotient observer.
+**Discovered structure.** A six-element structured scalar proposal grammar;
+three nonstationary candidates; `pair(q,e)` as the unique default Pareto
+first-order algebraic-image presentation.
 
-**New reusable abstraction.** Depth-one structured pairing construction with explicit recipe and separate backend lowering.
+**Experimental record.** Depth-one structured pairing construction with an
+explicit recipe and separate backend lowering; no stable grammar is claimed.
 
 **Unresolved manual choice.** The atoms `q,v,e`, their common pairable sort, and the Euclidean pairing are still supplied.  Independent examples must decide which parts deserve a broader algebraic abstraction.
 

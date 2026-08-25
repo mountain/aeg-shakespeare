@@ -112,14 +112,14 @@ References
 
 import sympy as sp
 
-from aeg_shakespeare.discovery import factor_process_relation_over_extension
-from aeg_shakespeare.presentation.grammar import discover_generated_presentation
-from aeg_shakespeare.presentation.relations import (
+from process_geometry.discovery import factor_process_relation_over_extension
+from process_geometry.presentation.grammar import discover_generated_presentation
+from process_geometry.presentation.relations import (
     decompose,
     discover_relation_kernel,
     factor_process_relation,
 )
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.process.local import ProcessSystem
 
 
 def _proportional(left, right, variables):

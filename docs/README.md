@@ -137,8 +137,10 @@ steps in the architecture narrative above:
   unresolved central-residual boundary;
 - `35-canonical-observer-vertical-slice.md` — local executable
   canonicalization/connection/decomposition evidence;
-- `36-classical-reexpression-audit.md` — audit separating classical
-  re-expression from problem-native structural discovery;
+- `36-classical-reexpression-audit.md` — complete second-pass audit of all
+  `tests/classical` essays against the Mathematical Core, Engineering
+  Architecture, and end-to-end pendulum calibration, with evidence classes,
+  information boundaries, and staged recalibration order;
 - `37-canonical-observer-claim-ledger.md` — claim-by-claim evidence and
   non-claim ledger for the canonical-observer programme;
 - `38-canonicalization-mainline.md` — qualified local canonicalization

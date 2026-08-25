@@ -1,4 +1,4 @@
-"""Bounded polynomial discovery for process observables, invariants, and algebraic quotients.
+"""Bounded polynomial discovery for process observables, invariants, and algebraic images.
 
 Mathematical pressure
 ---------------------
@@ -9,15 +9,15 @@ hands the solver a good observable or first integral before the real calculation
 begins.
 
 This module provides a deliberately small exact backend for removing part of
-that prior choice. It searches a bounded polynomial observer grammar, discovers
+that prior choice. It searches a bounded polynomial observable grammar, discovers
 first integrals as null directions of the represented process modulo declared
 constraints, and eliminates source assignments to expose exact relations among
 chosen process observables.
 
-The elimination result is called an ``ObservableAlgebraicQuotient`` to keep it
+The elimination result is called an ``ObservableAlgebraicImage`` to keep it
 distinct from the history/task quotient H(P)/~_Q in the Process Geometry
 foundation. The polynomial grammar is a search proposal language, not a claim
-that every useful observer is polynomial. Likewise Groebner elimination and
+that every useful observable is polynomial. Likewise Groebner elimination and
 exact linear algebra are discovery/certificate backends rather than process
 ontology.
 """
@@ -88,7 +88,7 @@ def _independent_polynomials(
 
 
 @dataclass(frozen=True)
-class PolynomialObserverBasis:
+class PolynomialObservableBasis:
     expressions: tuple[sp.Expr, ...]
     max_degree: int
     raw_candidate_count: int
@@ -103,13 +103,13 @@ class PolynomialObserverBasis:
             )
 
 
-def generate_polynomial_observer_basis(
+def generate_polynomial_observable_basis(
     assignments: Sequence[sp.Symbol],
     *,
     max_degree: int,
     constraints: AlgebraicConstraintSet | None = None,
     include_constant: bool = False,
-) -> PolynomialObserverBasis:
+) -> PolynomialObservableBasis:
     if max_degree < 0:
         raise ValueError("max_degree must be non-negative")
     assignments = tuple(assignments)
@@ -139,7 +139,7 @@ def generate_polynomial_observer_basis(
         for expression in raw
     ]
     independent = _independent_polynomials(reduced, coordinate_variables)
-    return PolynomialObserverBasis(
+    return PolynomialObservableBasis(
         expressions=independent,
         max_degree=max_degree,
         raw_candidate_count=len(raw),
@@ -160,13 +160,19 @@ class PolynomialInvariant:
 
 @dataclass(frozen=True)
 class PolynomialInvariantDiscovery:
-    observer_basis: PolynomialObserverBasis
+    observable_basis: PolynomialObservableBasis
     invariants: tuple[PolynomialInvariant, ...]
     derivative_rank: int
 
     @property
     def nullity(self) -> int:
-        return len(self.observer_basis.expressions) - self.derivative_rank
+        return len(self.observable_basis.expressions) - self.derivative_rank
+
+    @property
+    def observer_basis(self) -> PolynomialObservableBasis:
+        """Historical 0.0.x spelling retained for executable provenance."""
+
+        return self.observable_basis
 
 
 def discover_polynomial_invariants(
@@ -176,7 +182,7 @@ def discover_polynomial_invariants(
     max_degree: int,
     include_constant: bool = True,
 ) -> PolynomialInvariantDiscovery:
-    basis = generate_polynomial_observer_basis(
+    basis = generate_polynomial_observable_basis(
         system.assignments,
         max_degree=max_degree,
         constraints=constraints,
@@ -219,7 +225,7 @@ def discover_polynomial_invariants(
         )
 
     return PolynomialInvariantDiscovery(
-        observer_basis=basis,
+        observable_basis=basis,
         invariants=tuple(invariants),
         derivative_rank=int(derivative_matrix.rank()),
     )
@@ -236,11 +242,12 @@ class ObservableRelation:
 
 
 @dataclass(frozen=True)
-class ObservableAlgebraicQuotient:
-    """Algebraic presentation obtained by eliminating source variables.
+class ObservableAlgebraicImage:
+    """Algebraic image presentation obtained by eliminating source variables.
 
-    This is a quotient/image in the algebraic-presentation sense. It is not the
-    continuation-stable task quotient of process histories from ``docs/42--43``.
+    This is the algebraic image of a declared observable map. It is not the
+    continuation-stable task quotient of process histories from ``docs/42--43``
+    and does not by itself certify task adequacy.
     """
 
     symbols: tuple[sp.Symbol, ...]
@@ -261,7 +268,7 @@ def discover_observable_relations(
     constraints: AlgebraicConstraintSet,
     source_variables: Sequence[sp.Symbol],
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableAlgebraicQuotient:
+) -> ObservableAlgebraicImage:
     observables = tuple(sp.expand(sp.sympify(item)) for item in observables)
     symbols = tuple(symbols)
     source_variables = tuple(source_variables)
@@ -324,7 +331,7 @@ def discover_observable_relations(
             )
         )
 
-    return ObservableAlgebraicQuotient(
+    return ObservableAlgebraicImage(
         symbols=symbols,
         observables=observables,
         parameters=parameters,
@@ -333,7 +340,7 @@ def discover_observable_relations(
     )
 
 
-def discover_first_order_observable_quotient(
+def discover_first_order_observable_image(
     system: ProcessSystem,
     observable: sp.Expr,
     *,
@@ -341,7 +348,7 @@ def discover_first_order_observable_quotient(
     derivative_symbol: sp.Symbol,
     constraints: AlgebraicConstraintSet,
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableAlgebraicQuotient:
+) -> ObservableAlgebraicImage:
     """Eliminate source variables from the first-order observable pair ``(F, DF)``."""
 
     return discover_observable_relations(
@@ -353,7 +360,11 @@ def discover_first_order_observable_quotient(
     )
 
 
-# Historical 0.0.x backend names. They remain aliases so prior experiments keep
+# Historical 0.0.x names. They remain aliases so prior experiments keep
 # executable provenance while the canonical vocabulary stays unambiguous.
-ObservableQuotient = ObservableAlgebraicQuotient
-discover_first_order_process_quotient = discover_first_order_observable_quotient
+PolynomialObserverBasis = PolynomialObservableBasis
+generate_polynomial_observer_basis = generate_polynomial_observable_basis
+ObservableAlgebraicQuotient = ObservableAlgebraicImage
+ObservableQuotient = ObservableAlgebraicImage
+discover_first_order_observable_quotient = discover_first_order_observable_image
+discover_first_order_process_quotient = discover_first_order_observable_image

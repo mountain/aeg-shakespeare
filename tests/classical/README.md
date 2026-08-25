@@ -18,6 +18,12 @@ For multi-file mathematical families, prefer one stable family-level guide over 
 
 - `docs/vignettes/simple-pendulum.md` — physical problem, nondimensional bridge, P0–P13 executable dependency map, quotient-fiber/reconstruction boundary, evidence levels, and open obligations.
 
+The cross-family Mathematical-Core recalibration ledger is:
+
+- `docs/36-classical-reexpression-audit.md` — complete coverage of every
+  `test_*.py` essay in this directory; exact/numerical/declared-metric evidence,
+  task and information-contract boundaries, and the staged recalibration order.
+
 See:
 
 - `docs/VIGNETTES.md` — problem-oriented retrieval index;

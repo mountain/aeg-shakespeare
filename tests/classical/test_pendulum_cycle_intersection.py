@@ -91,7 +91,7 @@ import math
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.abelian import (
+from process_geometry.analysis.abelian import (
     AbelianCycleSystem,
     LiftedSquareRootPath,
     compute_period_matrix,
@@ -101,7 +101,7 @@ from aeg_shakespeare.analysis.abelian import (
     sampled_intersection_number,
     sampled_riemann_profile,
 )
-from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
+from process_geometry.analysis.algebraic import hyperelliptic_profile
 
 
 def pendulum_e0_curve():

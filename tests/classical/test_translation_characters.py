@@ -55,7 +55,7 @@ This is character verification, not Fourier analysis.
 
 import sympy as sp
 
-from aeg_shakespeare.process.finite import (
+from process_geometry.process.finite import (
     ProcessCharacter,
     ProcessFamily,
     verify_process_character,

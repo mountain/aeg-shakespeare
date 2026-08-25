@@ -6,6 +6,10 @@ This index is the human/model entry layer for substantial mathematical examples 
 
 For vignette completeness requirements, see [`VIGNETTE_CONTRACT.md`](VIGNETTE_CONTRACT.md).
 
+For the current all-family audit against `MATHEMATICAL_CORE.md` and
+`ENGINEERING_ARCHITECTURE.md`, see
+[`36-classical-reexpression-audit.md`](36-classical-reexpression-audit.md).
+
 The index is deliberately conservative: an entry records where to start reading; it does not promote the example's interpretation into the Theory Map or Public API.
 
 ---
@@ -25,6 +29,10 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Related:** `tests/classical/test_am_character_transport.py`, `tests/classical/test_dilation_characters.py`.
 
+**Current-core reading:** exact finite character laws and one exact local A/M
+calculus slice. `ProcessDirection` is not observer transport, and no task
+quotient, universal integrability, or universal function theory follows.
+
 **Theory role:** concrete model organism and calibration; not a claim that A/M is the universal function theory.
 
 ---
@@ -35,7 +43,12 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Classical search terms:** simple pendulum, nonlinear pendulum, energy integral, elliptic curve, elliptic integral, genus one, Abelian differential, period lattice, Weierstrass form, reflection symmetry.
 
-**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, A/M presentation transport, unit-framed universal history, dimensional resource lines, fundamental domains, action-period coarea, quotient fiber, task-relative continuation memory, reconstruction boundary, canonical differential, period obstruction.
+**Process Geometry themes:** constraint prolongation, polynomial invariant
+discovery, observable algebraic image, observable selection, Experimental
+structured proposals, A/M presentation transport, unit-framed universal
+history, dimensional resource lines, fundamental domains, action-period
+coarea, quotient fiber, task-relative continuation memory, reconstruction
+boundary, canonical differential, period obstruction.
 
 **Start here:** `docs/vignettes/simple-pendulum.md` — independent physical problem statement, nondimensional bridge, P0–P13 family dependency map, exact-vs-sampled evidence levels, reconstruction boundary, and open obligations.
 
@@ -111,6 +124,11 @@ The index is deliberately conservative: an entry records where to start reading;
 - `docs/23-oscillator-coefficient-extension.md`
 - `docs/24-oscillator-refinement-red-team.md`
 
+**Current-core reading:** the harmonic modules and relation factorizations are
+exact in declared coefficient languages. The even-power curves are energy-leaf
+algebraic carriers, not yet continuation-semantic task quotients; genus is not
+a universal complexity scalar. Coefficient refinement is not forced completion.
+
 **Theory role:** calibration and red team for function-theory hierarchy and the distinction between representation refinement and forced completion.
 
 ---
@@ -130,6 +148,11 @@ The index is deliberately conservative: an entry records where to start reading;
 - `tests/classical/test_restricted_kepler_canonical_decomposition.py`
 
 **Related:** `docs/35-canonical-observer-vertical-slice.md`, `docs/36-classical-reexpression-audit.md`, `docs/37-canonical-observer-claim-ledger.md`.
+
+**Current-core reading:** `observer` here means a local moving
+representation/frame chosen by a displayed normalization. It is distinct from
+an H1 task observer or task-sufficient history quotient; `canonical` remains
+relative to the declared grammar, branch, gauge, and local regular stratum.
 
 **Theory role:** principal calibration family for the current canonical-observer program. The pendulum scalar observable is deliberately retained as a negative control for dynamic observer language.
 
@@ -185,6 +208,11 @@ dynamics, a Ruelle zeta function, or arithmetic universality.
 - `docs/27-galilean-central-residual.md`
 - `docs/28-magnetic-translation-central-residual.md`
 - `docs/29-process-cocycle-api.md`
+
+**Current-core reading:** the finite cocycles exactly compose a declared
+central payload forgotten by visible motion. Cocycle representative, gauge,
+units, lifted task, and decoder remain problem-local; this is not yet a generic
+history-payload, holonomy, or connection theory.
 
 **Theory role:** independent pressure for retained central/history data and the public cocycle layer; not yet a generic holonomy/connection theory.
 

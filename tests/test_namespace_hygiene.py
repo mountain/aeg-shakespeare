@@ -19,6 +19,7 @@ _EXPERIMENTAL_COMPATIBILITY_SHIMS = {
     _CANONICAL_SRC / "presentation" / "canonicalization.py",
     _CANONICAL_SRC / "analysis" / "connection.py",
     _CANONICAL_SRC / "analysis" / "decomposition.py",
+    _CANONICAL_SRC / "discovery" / "structured.py",
 }
 
 
@@ -106,7 +107,7 @@ def test_internal_tests_do_not_use_legacy_root_symbol_imports():
 def test_stable_source_does_not_depend_on_experimental_ontology():
     """Experimental may depend inward; stable layers must not depend outward.
 
-    The three listed modules are one-way 0.0.x compatibility paths.  They own
+    The listed modules are one-way 0.0.x compatibility paths. They own
     no implementation and may disappear after the migration window.
     """
 
