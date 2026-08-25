@@ -15,6 +15,18 @@ stability, certification, and computational economy; updates canonicalization,
 lift-first, unit/ruler, objectification, and V5 review without claiming a
 universal calculus.
 
+**Knowledge artifacts:** `VIGNETTES.md` indexes standalone mathematical
+vignettes, while `VIGNETTE_CONTRACT.md` defines their statement, evidence,
+retrieval, and governance obligations.
+
+## Architecture and implementation narrative
+
+The numeric filename prefixes below are archival chronology markers, not unique
+document identifiers or maturity levels. Several numbers occur more than once
+because independent research lines were merged without rewriting history.
+Existing filenames remain stable for citation; new documents must not introduce
+additional prefix collisions.
+
 1. `00-process-presentation-v0.1.md` — process-presentation nucleus.
 2. `01-ordered-process-rewriting.md` — literal histories and explicit relations.
 3. `02-task-signatures.md` — bounded task-continuation signatures as finite distinguishability certificates.
@@ -79,9 +91,37 @@ universal calculus.
 Principle and claim-relative engineering gates for symbolic/numerical
 calculation, certificates, units, errors, costs, and cross-rank transport.
 
-A named classical problem should normally be read in `tests/classical/` or `tests/research/`, where the test itself is expected to be a complete, cited mathematical vignette.
+## Additional decision, calibration, and knowledge records
 
-## Recent T0 research notes and governing syntheses
+These records are first-class parts of the audit trail even though they are not
+steps in the architecture narrative above:
+
+- `27-finite-family-calibration-map.md` — family-level calibration ownership
+  and the evidence behind the first finite-family API slice;
+- `28-do-not-extend-this-api-yet.md` — explicit freeze record preserving the
+  unresolved central-residual boundary;
+- `35-canonical-observer-vertical-slice.md` — local executable
+  canonicalization/connection/decomposition evidence;
+- `36-classical-reexpression-audit.md` — audit separating classical
+  re-expression from problem-native structural discovery;
+- `37-canonical-observer-claim-ledger.md` — claim-by-claim evidence and
+  non-claim ledger for the canonical-observer programme;
+- `38-canonicalization-mainline.md` — qualified local canonicalization
+  mainline and its proof obligations;
+- `39-canonicalization-mechanism-closure.md` — mechanism-closure audit and
+  remaining genericity boundary;
+- `41-hard-particle-next-event-redteam.md` — independent next-event argmin
+  obstruction and red team;
+- `VIGNETTES.md` — retrieval index for standalone mathematical knowledge
+  units;
+- `VIGNETTE_CONTRACT.md` — durable completeness and evidence contract for
+  vignettes.
+
+A named classical problem should normally be read in `tests/classical/` or
+`tests/research/`, where the test itself is expected to be a complete, cited
+mathematical vignette.
+
+## Fast-moving research records and governing syntheses
 
 The numbered architecture list above predates several fast-moving research
 calibrations. These are indexed without renumbering that stable list:

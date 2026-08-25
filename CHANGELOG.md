@@ -2,6 +2,33 @@
 
 ## Unreleased
 
+### Release-facing overview
+
+- **Theory and governance:** adopts the Effective Analysis Principle, audits the
+  two-axis mother picture, and keeps task-covariant history evaluation as an
+  emerging T0/T1 transversal rather than a premature Core object.
+- **Experimental and software boundaries:** moves local canonical-observer
+  records to `process_geometry.experimental`, strengthens the exact finite
+  task-quotient certificate, and preserves compatibility shims without
+  widening the public API.
+- **Research:** advances moving/stochastic observer covariance, pendulum and
+  task-resource calibrations, thermodynamic objectification, PCR3BP, Lonely
+  Runner, and the new (S^6) source-verification Sonnet while retaining each
+  line's explicit claim boundary.
+- **Documentation and hygiene:** adds role- and status-based research indexes,
+  freezes legacy duplicate chronology prefixes, standardizes Huffman spelling,
+  and makes future documentation/Sonnet indexing a CI-checked obligation.
+
+The detailed ledger below remains intentionally exhaustive so that research
+claims, negative results, migrations, and evidence are not compressed away
+before the next release snapshot.
+
+### Detailed ledger
+
+- makes `docs/README.md` an exhaustive role-aware map, adds a status/claim/
+  next-gate ledger for every Sonnet study, freezes existing duplicate chronology
+  prefixes without renaming citation paths, and adds a fail-closed hygiene test
+  for future top-level documents and Sonnet directories;
 - adopts the Effective Analysis Principle as a cross-cutting research and
   engineering constraint: analysis-bearing presentations must state their
   symbolic/numerical mode, closure, evaluator, certificates, units,
