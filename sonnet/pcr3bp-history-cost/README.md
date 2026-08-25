@@ -9,7 +9,10 @@ Read in order:
 1. `00-phase0-history-cost.md` — physical process, free-group lift, and three
    inequivalent costs;
 2. `01-scale-jet-topology-and-coding-audit.md` — dimensional scale domain,
-   local scale-jet reconstruction, and Bellman/Huffman boundary.
+   local scale-jet reconstruction, and Bellman/Huffman boundary;
+3. `02-return-partition-holonomy-contract.md` — the frozen Phase 2 experiment
+   order: reconcile the two gate presentations, build a converged return and
+   absorbing ensemble, then audit scalar versus twisted partition data.
 
 Executable owners:
 
@@ -18,6 +21,10 @@ Executable owners:
 - `tests/research/test_pcr3bp_history_cost_phase0.py`;
 - `tests/research/test_pcr3bp_scale_jet_phase1.py`.
 
+Phase 2 currently has a contract but no claimed numerical result.  Its finite
+thermodynamic and cycle identities are calibrated independently in
+`docs/63-thermodynamic-objectification-and-partition-towers.md` before they are
+applied to PCR3BP data.
+
 The line remains research-local.  No public or Experimental API extraction is
 proposed.
-

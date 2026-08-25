@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- adds a research-local thermodynamic-objectification record and two exact
+  finite executable essays: same-scale weighted pushforward/flattening,
+  different-scale power sums, unit-cell carry arithmetic, the partition/coarea
+  cumulant bridge, plethystic free assembly, and a `Gamma(2)`-twisted finite
+  trace/determinant red team; the V2/V3 boundary is refined without a new API
+  or theory-maturity promotion;
+- freezes PCR3BP Phase 2 as a return--partition--holonomy experiment: reconcile
+  the Phase-0 and Phase-1 gate presentations first, then build a converged
+  sub-Markov return/absorbing ensemble and compare scalar with task-visible
+  twisted partition data; Bellman/Huffman and continuous zeta claims remain
+  explicitly downstream;
 - standardizes the repository on the canonical `Huffman` spelling across
   research notes, filenames, workflows, internal Python identifiers, and
   opt-in environment variables; numerical results and research claims are

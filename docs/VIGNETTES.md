@@ -136,7 +136,9 @@ Bellman/Huffman claim boundary.
 **Start here:**
 `sonnet/pcr3bp-history-cost/README.md`, then
 `sonnet/pcr3bp-history-cost/00-phase0-history-cost.md` and
-`sonnet/pcr3bp-history-cost/01-scale-jet-topology-and-coding-audit.md`.
+`sonnet/pcr3bp-history-cost/01-scale-jet-topology-and-coding-audit.md`.  The
+next computation is frozen, but not yet claimed executed, in
+`sonnet/pcr3bp-history-cost/02-return-partition-holonomy-contract.md`.
 
 **Executable calibration:**
 `tests/research/test_pcr3bp_history_cost_phase0.py` and
@@ -144,7 +146,9 @@ Bellman/Huffman claim boundary.
 
 **Theory role:** phase-0 numerical red team for identifying word length,
 hyperbolic length, and physical time.  It refines the separation of H0, H2, and
-H3; it does not assert complete symbolic dynamics or arithmetic universality.
+H3.  Phase 2 will test the thermodynamic-objectification V2/V3 boundary and
+gate-presentation covariance; it does not yet assert complete symbolic
+dynamics, a Ruelle zeta function, or arithmetic universality.
 
 ---
 
@@ -249,6 +253,36 @@ H3; it does not assert complete symbolic dynamics or arithmetic universality.
 - `docs/51-aeg-addition-multiplication-rank-transition.md`
 
 **Theory role:** current V1–V5 arithmetic model organism; generic rank/objectification theory remains more conservative than these examples.
+
+---
+
+## Finite thermodynamic objectification and twisted cycles
+
+**Problem / domains:** finite statistical mechanics, log-sum-exp
+coarse-graining, combinatorial multisets, integer partitions, weighted directed
+graphs, character-twisted cycle series.
+
+**Classical search terms:** partition function, free energy, thermodynamic
+semiring, tropical/min-plus limit, plethystic exponential, Euler product,
+transfer matrix, dynamical determinant, graph zeta.
+
+**Process Geometry themes:** task objectification, measure pushforward,
+same-scale flattening, unit-cell discretization, free higher-rank assembly,
+holonomy information loss, flattening obstruction.
+
+**Start here:**
+`docs/63-thermodynamic-objectification-and-partition-towers.md`.
+
+**Executable calibrations:**
+
+- `tests/research/test_thermodynamic_objectification_partition_tower.py`;
+- `tests/research/test_finite_twisted_cycle_partition.py`.
+
+**Theory role:** exact finite boundary calibration for V2/V3 and the existing
+coarea/frontier line.  The reusable interpretation is a research-local T1
+candidate;
+it does not define a generic partition API, prove a thermodynamic limit, or
+promote Arithmetic Geometric Universality.
 
 ---
 

@@ -88,6 +88,9 @@ calibrations. These are indexed without renumbering that stable list:
 - `62-task-covariant-complexity-coarea.md` — moving-unit action--period identity,
   exact Bellman/frontier volume, task-visible holonomy memory, and a global
   integrability obstruction.
+- `63-thermodynamic-objectification-and-partition-towers.md` — finite
+  thermodynamic pushforward and its same-scale flattening theorem, unit-cell
+  carry law, plethystic assembly boundary, and twisted finite-cycle red team.
 
 Open Sonnet research is indexed by its own README and phase notes under
 `sonnet/`.
