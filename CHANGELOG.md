@@ -26,6 +26,25 @@ before the next release snapshot.
 
 ### Detailed ledger
 
+- adds P13's first-principles pendulum unit-history audit: starts from the
+  Cartesian constrained process, treats the certified Abel cover as a
+  downstream lifted-clock model, separates the period lattice that cuts a
+  fundamental domain from the unit frame that measures it, proves exact scale
+  and covariant action-period transport, reads `dOmega=T dH` as a continuous
+  fundamental-domain/coarea calibration, and counts `2/1/0` task-visible bits
+  for two independent square-root sheets; retains the distinction between
+  continuous process volume and finite memory and makes no canonical A/M lift,
+  universal scalar-complexity, entropy, Bolza-completion, or API claim;
+- adds the P12 pendulum A/M marked-carrier bridge: exact affine/global carrier
+  and clock transport, local nonlinear clock covariance with the necessary
+  `h''(U)Y^2` second-jet correction for full dynamics, restoration of the
+  physical `sqrt(ell/g)` time scale, and an exact task-relative sheet-memory
+  result (`1` bit for full Cartesian continuation, `0` for a carrier-only
+  task); explains the Bolza special point as the third quotient after adjoining
+  a separate declared observer-metric sheet, not as an A/M presentation of the
+  pendulum carrier; keeps raw A/M discovery, a canonical pendulum moving
+  observer, intrinsic `AMJet`, generic-energy global analysis, and Theory/API
+  promotion explicitly open;
 - makes `docs/README.md` an exhaustive role-aware map, adds a status/claim/
   next-gate ledger for every Sonnet study, freezes existing duplicate chronology
   prefixes without renaming citation paths, and adds a fail-closed hygiene test
