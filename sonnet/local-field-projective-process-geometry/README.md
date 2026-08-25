@@ -1,8 +1,9 @@
 # Local-field projective process geometry
 
-**Status:** T0 research-local calibration; Phase 1 finite standard-root
-lattice ball complete; no infinite Bruhat--Tits completion, no preferred
-\(p\)-adic continued fraction, and no Experimental or Public API proposal.
+**Status:** T0 research-local calibration; Phase 2 real
+continued-fraction/Farey-path positive control complete; no infinite
+Bruhat--Tits completion, no preferred \(p\)-adic continued fraction, and no
+Experimental or Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -36,9 +37,10 @@ Read in order:
 3. [02-phase1-finite-lattice-ball.md](02-phase1-finite-lattice-ball.md)
    constructs the complete finite lattice-class ball, embeds the earlier
    residues as an affine contact chart, and records the inversion red team;
-4. [test_local_field_projective_process_geometry.py](../../tests/research/test_local_field_projective_process_geometry.py)
-   and [test_local_field_projective_lattice_ball.py](../../tests/research/test_local_field_projective_lattice_ball.py)
-   are the seconds-scale executable arguments.
+4. [03-phase2-real-continued-fraction-geodesic-control.md](03-phase2-real-continued-fraction-geodesic-control.md)
+   compiles ordinary continued-fraction prefixes into exact Farey frames,
+   Stern--Brocot paths, and real cylinders, with a continuation red team;
+5. the three linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -85,6 +87,23 @@ exchanges them with affine residues divisible by \(p\). Thus the affine
 residue tree is a task-sufficient patch for integral observation, but is not
 closed under the bilateral projective alphabet.
 
+Phase 2 supplies the real-place positive control. A canonical regular
+continued fraction compiles simultaneously into its literal right-reciprocal
+history, convergent matrix, oriented Farey frame, Stern--Brocot \(L/R\) path,
+and exact real cylinder. A digit \(a_i\) is a compressed run of unit turns, so
+stored-digit cost and materialized-path cost remain distinct.
+
+The terminal identity
+
+\[
+[1;2]=[1;1,1]=\frac32
+\]
+
+provides the new red team. The endpoint and canonical Stern--Brocot path
+agree, while the lifted matrices and approach-side cylinders differ; appending
+the same digit separates the values again. Endpoint equality is therefore not
+a continuation-stable history quotient for the native prefix-extension task.
+
 ## Claim boundary
 
 Phase 1 now constructs the complete **finite ball around the standard
@@ -94,8 +113,10 @@ continued-fraction certificate still concerns finite right-reciprocal
 histories; it does not select among competing \(p\)-adic digit algorithms or
 claim their convergence, finiteness, or Lagrange periodicity.
 
-At this stage the study **supports** H0/H1 and **refines** its H2
-interpretation: observer residue refinement is an affine chart, while
-inversion forces projective completion. It leaves the Theory Map file
+The real Stern--Brocot/Farey tree and the \(p\)-adic Bruhat--Tits tree are not
+identified. They share a rational projective history carrier but arise from
+different observer distinctions and continuation structures. Phase 2
+**sharpens** H1 through the terminal-split continuation witness and supports
+the place-relative H2 interpretation. It leaves the Theory Map file
 unchanged. The residue-resolution tower remains horizontal observer
 refinement, not a vertical arithmetic process-rank transition.

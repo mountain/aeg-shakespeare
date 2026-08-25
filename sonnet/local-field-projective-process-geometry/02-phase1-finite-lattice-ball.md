@@ -298,8 +298,10 @@ and all API maturity levels unchanged.
 
 ## 9. Next gate
 
-The next responsible step is the real positive control: compile ordinary
-continued-fraction prefixes into non-backtracking paths in the corresponding
-projective tree and verify finite cylinder/contact semantics before comparing
-any \(p\)-adic selector.  This keeps algorithm choice downstream of the
-geometry it is meant to navigate.
+This gate has now been executed in
+[`03-phase2-real-continued-fraction-geodesic-control.md`](03-phase2-real-continued-fraction-geodesic-control.md):
+ordinary continued-fraction prefixes are compiled into exact convergent
+matrices, Stern--Brocot paths, Farey frames, and ordered real cylinders.  The
+result is a positive control, not an identification of the real tree with the
+Bruhat--Tits tree.  The next gate is therefore a matched finite comparison of
+two genuinely different \(p\)-adic selectors on one frozen task.

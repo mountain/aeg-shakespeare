@@ -77,6 +77,13 @@ before the next release snapshot.
   that the missing \(p^{n-1}\) infinity-chart vertices are dynamically
   necessary; the infinite boundary, continued-fraction selector, and generic
   API remain open;
+- adds the real continued-fraction positive control for that Sonnet: canonical
+  regular digits compile exactly into convergent matrices, Farey frames,
+  Stern--Brocot paths, and ordered cylinders; an exhaustive finite path oracle
+  and the terminal-split red team separate endpoint equality from
+  continuation state and digit count from materialized-turn cost, without
+  identifying the real and Bruhat--Tits trees or selecting a \(p\)-adic
+  algorithm;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

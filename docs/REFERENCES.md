@@ -97,6 +97,12 @@ fractions,” *Journal of the London Mathematical Society* s2-31(1) (1985),
 69–80. DOI: 10.1112/jlms/s2-31.1.69. Gives the classical symbolic coding
 relating regular continued fractions and geodesic flow on the modular surface.
 
+**[Reutenauer-2019]** Christophe Reutenauer, “On the Stern--Brocot
+expansion of real numbers,” *Journal de Théorie des Nombres de Bordeaux*
+31(3) (2019), 697–722. DOI: 10.5802/jtnb.1104. Develops finite and infinite
+left/right paths in the Stern--Brocot tree and their continued-fraction and
+\(SL_2(\mathbb Z)\) interpretations.
+
 **[Bruhat-Tits-1972]** François Bruhat and Jacques Tits, “Groupes réductifs sur
 un corps local,” *Publications Mathématiques de l'IHÉS* 41 (1972), 5–251.
 DOI: 10.1007/BF02715544. Foundational source for the buildings attached to
