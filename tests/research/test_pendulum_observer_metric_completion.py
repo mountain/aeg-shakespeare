@@ -79,6 +79,26 @@ Passing this file certifies:
    Bolza polynomial, so this essay provides no metric-naturality or canonical
    completion theorem.
 
+Proof map
+---------
+``test_declared_am_metric_forces_the_horizontal_lift_and_line_element`` derives
+the metric sheet.  ``test_observer_metric_and_physical_velocity_form_two_``
+``quadratic_sheets`` constructs the biquadratic extension.
+``test_generic_observer_metric_completion_is_genus_two`` computes its generic
+genus.  ``test_equal_weight_symmetric_leaf_is_exactly_the_bolza_model`` proves
+the special Bolza identity, and ``test_metric_weight_is_a_real_red_team_for_``
+``bolza_literal_symmetry`` proves its dependence on the declared weight.
+
+Boundary
+--------
+The Bolza surface is not another A/M coordinate presentation ``X=h(U)`` of the
+pendulum elliptic carrier.  Such a chart remains in the same function field.
+Here a new square root ``Z^2=c+U^2`` is adjoined from a separately declared
+observer metric, then combined with the physical sheet by ``W=YZ``.  Thus the
+Bolza model has exact provenance as a special genus-two quotient of a declared
+fiber product, but it is neither the pendulum state space nor a canonical
+observer/completion selected by the mechanics.
+
 Theory-map effect
 -----------------
 None.  This is problem-local evidence and a red team for stronger completion

@@ -66,6 +66,32 @@ and nonnegative.  A synthetic sibling-turn test verifies that the oracle
 detects one backtracked edge as \(T=4,D=2,E=2,B=1\); zero audit values are
 therefore not caused by an insensitive metric.
 
+The construction has an information order that the word *prefix* can hide:
+
+\[
+h_i=(a_0,\ldots,a_{i-1})
+\longmapsto
+G_i=M(a_0)\cdots M(a_{i-1})
+\longmapsto
+V_i=[G_i\mathbb Z_p^2].
+\]
+
+The first object is literal history, the second is a composable projective
+evaluation payload, and the third is that payload evaluated in the standard
+lattice observer frame. Each arrow may forget information. The Bruhat--Tits
+tree in this phase is therefore neither the full history unfolding nor a
+coding tree, and no topological universal-cover claim is being made.
+
+For a continued-fraction prefix the next complete quotient is retained
+residual data because
+
+\[
+\alpha_0=G_i\cdot\alpha_i.
+\]
+
+The lattice vertex alone does not reconstruct the selector state or certify
+future continuation.
+
 ## 3. Digits are compressed even-length segments
 
 Each continued-fraction digit matrix has unit determinant.  After normalizing
@@ -214,7 +240,7 @@ Phase 4 therefore rejects three inferences:
 - **Numerical analysis:** not applicable; no floating-point or finite-precision
   \(p\)-adic approximation is used.
 
-## 9. Claim ledger and postmortem
+## 9. Claim ledger, core effect, and postmortem
 
 ### Exact finite statements
 
@@ -239,6 +265,30 @@ depth, while the selector controls how that direction is compressed and when
 the process certifies an outcome.  This narrows the next research problem
 rather than decorating it with an unsupported optimization vocabulary.
 
+### Mathematical Core effect — refine
+
+The phase refines the emerging task-covariant evaluation chain by locating a
+projective payload and its lattice evaluation strictly between literal history
+and the eventual task quotient. It supports the Core's separation of history
+unfolding, observer geometry, residual, and cost. The standard lattice is an
+observer frame and normalized valuation supplies the edge ruler; neither
+chooses a fundamental domain or selector.
+
+### Engineering Architecture effect — refine
+
+Exact finite LCA and path algorithms are adequate for the declared route
+audit. The negative result sharpens the finite stopping/coding gate: one may
+not run Bellman or Huffman merely because a tree and a shorter aggregate path
+have appeared. A common task, source/actions, terminal decoder, failure
+semantics, and cost unit must precede either optimization.
+
+### Theory Map effect — refine without promotion
+
+The finite projective tree supplies an H2 locality/metric calibration, while
+the zero-backtracking result blocks an unsupported H3 optimization inference.
+This refines the emerging evaluation transversal but leaves its T0/T1 maturity
+and all API levels unchanged.
+
 ### Claim boundary
 
 Phase 4 proves no general rational or \(p\)-adic ray theorem, convergence rate,
@@ -259,6 +309,12 @@ Huffman phase should begin only as a new, frozen task with all of the following:
 5. for Huffman specifically, a proved prefix-decoding map for the generated
    histories.
 
-Without those ingredients, the responsible continuation is to retain Phase
-4's zero-backtracking result as a closure certificate rather than optimize an
-undefined objective.
+Phase 5 takes only the independently complete Huffman subproblem: it freezes a
+finite source over fixed-depth projective cylinders, constructs an explicit
+binary prefix decoder, and keeps the coding tree separate from this geometry.
+See
+[Phase 5](06-phase5-projective-cylinders-discrete-coarea-coding.md).
+
+The selector-policy Bellman items above remain open. Without them, Phase 4's
+zero-backtracking result stays a closure certificate rather than an optimum of
+an undefined control problem.

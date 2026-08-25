@@ -92,6 +92,12 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 ## Local fields, projective dynamics, and continued fractions
 
+**[Huffman-1952]** David A. Huffman, “A Method for the Construction of
+Minimum-Redundancy Codes,” *Proceedings of the I.R.E.* 40(9) (1952),
+1098–1101. DOI: 10.1109/JRPROC.1952.273898. Classical finite-source baseline
+for the exact binary prefix-code construction used in the projective-cylinder
+coding calibration.
+
 **[Series-1985]** Caroline Series, “The modular surface and continued
 fractions,” *Journal of the London Mathematical Society* s2-31(1) (1985),
 69–80. DOI: 10.1112/jlms/s2-31.1.69. Gives the classical symbolic coding

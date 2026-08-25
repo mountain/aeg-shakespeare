@@ -369,6 +369,28 @@ H3 a concrete multi-ruler selector comparison, but no entropy or global
 optimality claim.  The Theory Map and all API maturity levels remain
 unchanged.
 
+The more precise Mathematical Core chain is
+
+```text
+literal selector history
+    -> composable prefix matrix
+    -> standard-frame lattice evaluation
+    -> finite projective contact
+    + retained next-complete-quotient residual
+```
+
+Ruban and Browkin are sections choosing representatives of the contact
+quotient. They are not unit frames or fundamental domains of the lattice tree.
+The reconstruction equation shows why the next complete quotient is decoder
+data rather than dispensable bookkeeping. This **refines** the Core's
+observer/payload/residual distinction without proposing a generic carrier.
+
+The Engineering Architecture effect is also **refine**: task adequacy is
+checked before multi-axis cost, all exact claims use rational arithmetic,
+cycle/horizon/termination remain separate failures or outcomes, and no
+selector enters optimization without a shared contract. The implementation is
+research-local, seconds-scale, and adds no dependency or API pressure.
+
 ## 13. Gate handoff
 
 The next responsible question was no longer whether \(p\)-adic continued

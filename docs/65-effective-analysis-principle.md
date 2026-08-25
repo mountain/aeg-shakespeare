@@ -5,6 +5,11 @@
 not claim that every process admits a calculus-bearing presentation, does not
 promote H4 or V5, and does not propose a generic API.
 
+**Operationalization:** `MATHEMATICAL_CORE.md` carries the current mathematical
+meaning, while `ENGINEERING_ARCHITECTURE.md` turns this principle into concrete
+problem contracts, algorithm/backend decisions, evidence, error/failure
+semantics, dependency policy, CI tiers, and solver-plan governance.
+
 ## 0. Purpose
 
 Process Geometry starts before coordinates, function spaces, differential

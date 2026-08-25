@@ -18,6 +18,8 @@ _DOCS = _REPO / "docs"
 _DOCS_INDEX = _DOCS / "README.md"
 _SONNET = _REPO / "sonnet"
 _SONNET_INDEX = _SONNET / "README.md"
+_ROOT_AGENT_GUIDANCE = _REPO / "AGENTS.md"
+_SONNET_AGENT_GUIDANCE = _SONNET / "AGENTS.md"
 
 _LEGACY_DUPLICATE_DOC_PREFIXES = {
     "27": {
@@ -87,6 +89,19 @@ def test_every_sonnet_study_is_named_by_the_study_ledger():
         "sonnet/README.md must name every study directory with a README: "
         + ", ".join(missing)
     )
+
+
+def test_agent_guidance_reads_core_architecture_before_theory_map():
+    for path in (_ROOT_AGENT_GUIDANCE, _SONNET_AGENT_GUIDANCE):
+        guidance = path.read_text(encoding="utf-8")
+        core_position = guidance.find("docs/MATHEMATICAL_CORE.md")
+        architecture_position = guidance.find("docs/ENGINEERING_ARCHITECTURE.md")
+        map_position = guidance.find("docs/THEORY_MAP.md")
+        assert 0 <= core_position < architecture_position < map_position, (
+            f"{path.relative_to(_REPO)} must require agents to read "
+            "docs/MATHEMATICAL_CORE.md, then "
+            "docs/ENGINEERING_ARCHITECTURE.md, before docs/THEORY_MAP.md"
+        )
 
 
 def test_no_new_top_level_document_prefix_collision_is_introduced():

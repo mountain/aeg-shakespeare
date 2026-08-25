@@ -35,9 +35,9 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Classical search terms:** simple pendulum, nonlinear pendulum, energy integral, elliptic curve, elliptic integral, genus one, Abelian differential, period lattice, Weierstrass form, reflection symmetry.
 
-**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, quotient fiber, reconstruction boundary, canonical differential, lifted history, period obstruction.
+**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, A/M presentation transport, unit-framed universal history, dimensional resource lines, fundamental domains, action-period coarea, quotient fiber, task-relative continuation memory, reconstruction boundary, canonical differential, period obstruction.
 
-**Start here:** `docs/vignettes/simple-pendulum.md` — independent physical problem statement, nondimensional bridge, P0–P9 family dependency map, exact-vs-sampled evidence levels, reconstruction boundary, and open obligations.
+**Start here:** `docs/vignettes/simple-pendulum.md` — independent physical problem statement, nondimensional bridge, P0–P13 family dependency map, exact-vs-sampled evidence levels, reconstruction boundary, and open obligations.
 
 **Executable foundation:** `tests/classical/test_pendulum_process_geometry.py`.
 
@@ -69,9 +69,60 @@ The index is deliberately conservative: an entry records where to start reading;
 - `tests/research/test_pendulum_lifted_clock_global_quotient.py`
 - `docs/55-pendulum-lifted-clock-global-quotient.md`
 
+**A/M presentation / task-memory sequence:**
+
+- `tests/research/test_pendulum_am_marked_carrier_bridge.py`
+- `tests/research/test_pendulum_observer_metric_completion.py` (declared metric
+  fiber product and noncanonical Bolza special point)
+- `docs/56-am-universal-history-recalibration.md`
+- `docs/61-pendulum-section-reparameterization-redteam.md`
+
+**Unit-framed history / fundamental-domain sequence:**
+
+- `tests/research/test_pendulum_unit_history_fundamental_domain.py`
+- `docs/53-process-volume-frontier-coarea-hypothesis.md`
+- `docs/56-am-universal-history-recalibration.md`
+- `docs/62-task-covariant-complexity-coarea.md`
+
 **Current open-theory entry:** `docs/52-canonical-completion-hypothesis.md`.
 
-**Theory role:** major H4/global-analysis calibration. The executable family now explicitly records the `Z2` information loss of the selected observable quotient; the stronger canonical-completion interpretation remains governed separately as T1 research.
+**Theory role:** major H4/global-analysis calibration. The executable family now places the marked elliptic carrier downstream of a unit-framed lifted history, separates lattice-defined fundamental domains from their dimensional ruler, and calibrates continuous action-period coarea separately from finite deck memory. Supplied chart transport and the task-relative `Z2` result remain exact. The Bolza surface is the noncanonical product-sign quotient of a separately declared metric sheet, not another pendulum/A/M presentation. A raw A/M-history lift, canonical pendulum observer/ruler, global nonlinear equivalence, and stronger completion interpretation remain open research.
+
+---
+
+## Local fields: projective histories, continued fractions, and finite coding
+
+**Problem / domains:** rational A/M/inversion histories viewed at real and
+\(p\)-adic places; finite Bruhat--Tits lattice balls; Ruban and Browkin I
+continued fractions; projective-cylinder refinement and source coding.
+
+**Classical search terms:** \(p\)-adic valuation, \(PGL_2(\mathbb Q_p)\),
+Bruhat--Tits tree, projective line over finite rings, Ruban continued fraction,
+Browkin continued fraction, Stern--Brocot tree, Huffman code.
+
+**Process Geometry themes:** place-relative observer rulers, literal history
+versus matrix payload, standard-frame projective evaluation, continuation
+residual, quotient sections, finite shell growth, task memory, geometry tree
+versus coding tree.
+
+**Start here:**
+`sonnet/local-field-projective-process-geometry/README.md`, followed by the
+numbered Phase 0--5 records.
+
+**Executable sequence:**
+
+- `tests/research/test_local_field_projective_process_geometry.py`
+- `tests/research/test_local_field_projective_lattice_ball.py`
+- `tests/research/test_real_continued_fraction_geodesic_control.py`
+- `tests/research/test_padic_continued_fraction_selector_comparison.py`
+
+**Theory role:** independent finite discrete calibration of the emerging
+task-covariant evaluation transversal. It separates full prefix history,
+composable projective matrix evaluation, the Bruhat--Tits observer tree,
+fixed-depth task cylinders, complete-quotient residuals, and a separately
+declared binary coding tree. The exact shell identity and finite Huffman task
+refine H2/H3 without an infinite-boundary, entropy-rate, selector-policy,
+preferred-algorithm, or API promotion claim.
 
 ---
 
