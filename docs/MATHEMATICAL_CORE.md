@@ -129,6 +129,21 @@ appropriate history jet, clock, frame transport, branch data, or connection.
 Only after these are declared may an induced observer equation be written on
 \(Z_Q\).
 
+In many exact problems the observer map itself factors through a composable
+evaluation payload:
+
+\[
+h\longmapsto c(h)\longmapsto e_o(c(h))\longmapsto
+[e_o(c(h))]_Q.
+\]
+
+Here \(c(h)\) can already identify literal histories, \(e_o\) evaluates it in
+an observer/base frame \(o\), and the final arrow applies the declared task
+quotient. These are separate information-loss boundaries. If continuation
+does not descend through one arrow, the missing datum must remain as a
+residual; a correct endpoint or contact evaluation alone does not certify
+future adequacy.
+
 A transported history datum is provisionally cocycle-like.  Schematically,
 
 \[
@@ -194,7 +209,7 @@ bits of residual state.  This is an exact distinguishability bound.  It is not
 by itself Shannon entropy, runtime, physical phase volume, or machine memory
 usage for a particular implementation.
 
-### 1.6 Continuous process volume and finite memory are different laws
+### 1.6 Continuous volume, discrete shells, and finite memory are different laws
 
 For a one-degree-of-freedom Hamiltonian family, classical action--period
 coarea gives
@@ -207,11 +222,33 @@ A thin action shell is therefore a full physical history-domain length
 multiplied by a transverse energy thickness.  This is the current exact
 continuous calibration of process volume.
 
+The finite projective-tree calibration supplies a different exact shell law.
+For the standard-root ball \(B_d\) in the \((p+1)\)-regular Bruhat--Tits tree,
+with sphere
+
+\[
+S_d=\mathbb P^1(\mathbb Z/p^d\mathbb Z),
+\]
+
+one has
+
+\[
+|S_d|=(p+1)p^{d-1},
+\qquad
+|B_d|-|B_{d-1}|=|S_d|.
+\]
+
+This is a discrete boundary-increment or coarea-like identity: one additional
+longitudinal refinement layer exposes a transverse finite frontier. It has no
+physical period or energy thickness, and it does not by itself supply a source
+probability or coding objective.
+
 The finite residual bound \(b_Q=\lceil\log_2N_Q\rceil\) is a separate exact
 statement.  Current evidence does **not** identify energy with computational
-space, action with entropy, or \(T\times S\) as one universal scalar
-complexity.  A future unification would have to specify the measure, stopping
-section, units, task evaluation, and limiting operation that connect the two.
+space, tree depth with transverse memory, action with entropy, or
+\(T\times S\) as one universal scalar complexity. A future unification would
+have to specify the measure, stopping section, units, task evaluation, and
+limiting operation that connect these laws.
 
 ---
 
@@ -424,7 +461,7 @@ For the finite two-sheet census, a task that sees both signs, only their
 product, or neither requires respectively
 
 \[
-2,quad 1,quad 0
+2,\quad 1,\quad 0
 \]
 
 bits.  The Bolza quotient retains the product bit and forgets the individual
@@ -433,7 +470,80 @@ on \(C_E\), and not a metric-independent canonical completion.
 
 ---
 
-## 3. Translation table
+## 3. Finite projective-tree calibration
+
+The local-field Sonnet supplies an independent exact discrete calibration of
+the first-principles schema. For an odd prime \(p\), a finite \(p\)-adic
+continued-fraction prefix has the information chain
+
+\[
+h_n=(a_0,\ldots,a_n)
+\longmapsto
+G_n=M(a_0)\cdots M(a_n)
+\longmapsto
+V_n=[G_n\mathbb Z_p^2],
+\qquad
+M(a)=\begin{pmatrix}a&1\\1&0\end{pmatrix}.
+\]
+
+The literal word \(h_n\) is full prefix history. The matrix \(G_n\) is a
+composable projective payload; different words may already have the same
+matrix evaluation. The lattice class \(V_n\) evaluates that payload at the
+standard \(p\)-adic lattice frame and forgets further right-integral and
+homothety data. Reduction to a fixed depth retains only a finite projective
+cylinder. These are successive constructions, not synonyms for one lift.
+
+The Bruhat--Tits tree is therefore an observer/evaluation geometry in this
+calibration. It is not automatically the full history unfolding, the
+topological universal cover of a supplied visible process, or the binary
+coding tree introduced for a later source task.
+
+The exact continued-fraction reconstruction law is
+
+\[
+\alpha_0=G_n\cdot\alpha_{n+1}.
+\]
+
+Thus \(\alpha_{n+1}\), the next complete quotient, is retained continuation
+residual/decoder data. A finite contact or lattice vertex may be correct for
+the declared observation and still be inadequate for reciprocal continuation.
+Ruban and Browkin supply the exact red team: they choose different sections of
+
+\[
+\mathbb Q_p\longrightarrow\mathbb Q_p/p\mathbb Z_p,
+\]
+
+their representatives have the same local contact, and reciprocal continuation
+can separate them into different terminal or cyclic outcomes.
+
+The standard lattice \(L_0=\mathbb Z_p^2\) fixes the base observer frame, while
+the normalization \(v_p(p)=1\) fixes the edge ruler. Neither choice selects a
+continued-fraction section, a task quotient, a fundamental domain, or a scalar
+objective. Conversely, Ruban and Browkin are representative sections, not unit
+frames or fundamental domains of the tree.
+
+At fixed depth \(d\), the projective cylinders form the exact frontier
+
+\[
+S_d=\mathbb P^1(\mathbb Z/p^d\mathbb Z),
+\qquad |S_d|=(p+1)p^{d-1}.
+\]
+
+A declared root-symmetric finite source gives each cylinder mass \(1/|S_d|\),
+and those masses push consistently through parent reduction. Only after this
+source and an explicit binary decoder are added does Huffman coding become a
+well-posed downstream problem. Changing the source law while keeping the same
+projective frontier changes the optimal Huffman tree, proving that geometry
+does not choose the coding objective.
+
+The finite selector audit additionally found zero backtracking and one common
+input-directed ray on its bounded rational corpus. That is a finite evaluation
+certificate, not a general ray theorem or Bellman optimum: the two selectors
+still have different stopping depths and outcome semantics.
+
+---
+
+## 4. Translation table
 
 | Mathematical object | Process interpretation |
 | --- | --- |
@@ -449,15 +559,21 @@ on \(C_E\), and not a metric-independent canonical completion.
 | \(d\Omega=T\,dH\) | continuous action--history-domain coarea law |
 | \(\lceil\log_2N_Q\rceil\) | finite exact continuation-memory lower bound |
 | Bolza quotient | product-sign quotient after an additional metric sheet |
+| \(G_n=M(a_0)\cdots M(a_n)\) | composable projective evaluation payload of a literal digit prefix |
+| \([G_n\mathbb Z_p^2]\) | payload evaluated at the standard local-field lattice frame |
+| \(\alpha_{n+1}\) | continuation residual in the exact projective decoder |
+| \(\mathbb P^1(\mathbb Z/p^d\mathbb Z)\) | fixed-resolution projective-cylinder task frontier |
+| \(|B_d|-|B_{d-1}|=|S_d|\) | exact discrete shell-increment calibration |
+| binary prefix code | separately declared decoder/cost tree for a finite source |
 
 This table is deliberately independent of any claim that an
 Addition/Multiplication presentation is required or canonical.
 
 ---
 
-## 4. Current claim boundary
+## 5. Current claim boundary
 
-### 4.1 Established in the declared calibrations
+### 5.1 Established in the declared calibrations
 
 - exact finite continuation equivalence and minimal quotienting in the finite
   deterministic class;
@@ -469,9 +585,15 @@ Addition/Multiplication presentation is required or canonical.
 - the classical action--period coarea law in the pendulum family;
 - exact finite residual bounds for the declared sheet tasks;
 - the algebraic provenance of the Bolza model from two separately declared
-  sheets.
+  sheets;
+- exact finite projective-lattice normal forms, parent refinement, sphere and
+  ball counts, and the discrete shell-increment identity;
+- exact rational Ruban/Browkin section-lift, reconstruction, cycle/termination,
+  and bounded path certificates;
+- exact finite root-symmetric cylinder mass transport and binary prefix-code
+  decoding under the declared source task.
 
-### 4.2 Calibrated interpretations, not mother-object theorems
+### 5.2 Calibrated interpretations, not mother-object theorems
 
 - the analytic Abel cover as a downstream model of lifted clock history;
 - the period lattice as a task-kernel model and elliptic functions as periodic
@@ -479,9 +601,13 @@ Addition/Multiplication presentation is required or canonical.
 - the common cocycle-like shape of transported clocks, resources, units,
   phases, and holonomies;
 - action/coarea and finite frontier identities as pressure toward a broader
-  process-volume theory.
+  process-volume theory;
+- projective matrix evaluation and lattice orbits as a second problem-local
+  model of payload between literal history and task quotient;
+- the finite Bruhat--Tits ball as observer geometry rather than a generic
+  history, cover, or coding object.
 
-### 4.3 Open
+### 5.3 Open
 
 - a canonical task-sufficient lift for a general non-Markovian process;
 - a general theorem selecting the carrier for transported history payloads;
@@ -490,6 +616,12 @@ Addition/Multiplication presentation is required or canonical.
 - a general relation between dimensional scale bundles, deck quotients, and
   stopping sections;
 - a universal continuous/discrete time--space complexity law;
+- a general relation among longitudinal refinement, transverse frontier
+  growth, task memory, and continuous coarea;
+- an infinite projective-boundary measure or entropy theorem forced by the
+  finite root-symmetric source;
+- a common selector-policy state, action grammar, terminal decoder, and cost
+  contract supporting Bellman comparison of \(p\)-adic sections;
 - generic-energy global pendulum reconstruction through all branch and
   degeneration boundaries;
 - any theorem making the Bolza construction canonical or universal;
@@ -497,32 +629,35 @@ Addition/Multiplication presentation is required or canonical.
 
 ---
 
-## 5. Red-team separations
+## 6. Red-team separations
 
 Any proposed extension of this core must preserve the following distinctions
 unless it proves a replacement theorem.
 
 1. A visible graph's universal cover is not automatically the full history
    unfolding of a non-Markovian process.
-2. The history tree is not the coding tree; a Huffman tree optimizes a declared
-   stopping/coding problem after probabilities and primitives are fixed.
-3. Equal visible endpoints need not have equal futures.
+2. A history tree, observer/evaluation tree, and coding tree are different; a
+   Huffman tree optimizes a declared source only after probabilities,
+   primitives, and a decoder are fixed.
+3. Equal visible endpoints or finite contacts need not have equal futures.
 4. A quotient carrier is not a decoder for information it has forgotten.
-5. A unit frame does not select a deck kernel or fundamental domain.
-6. A cover and lattice do not select a scalar word length or history cost; a
-   lattice-basis shear is an immediate red team.
-7. A locally regular observer coordinate need not be a global algebraic chart;
+5. A section choosing quotient representatives is not a unit frame or a
+   fundamental domain of an observer tree.
+6. A unit frame does not select a deck kernel or fundamental domain.
+7. A cover and lattice do not select a scalar word length or history cost; a
+   lattice-basis shear or changed source law is an immediate red team.
+8. A locally regular observer coordinate need not be a global algebraic chart;
    transporting a clock and transporting second-order dynamics have different
    jet obligations.
-8. Continuous coarea and finite continuation memory are not interchangeable
-   meanings of “space”.
-9. The Bolza product quotient is not the pendulum carrier.
-10. An executable analytic presentation does not by itself prove canonicality
-    or universality.
+9. Continuous coarea, discrete shell growth, and finite continuation memory
+   are not interchangeable meanings of “space”.
+10. The Bolza product quotient is not the pendulum carrier.
+11. An executable analytic or coding presentation does not by itself prove
+    canonicality or universality.
 
 ---
 
-## 6. Mathematical-understanding contract for future work
+## 7. Mathematical-understanding contract for future work
 
 A substantial theory contribution should be expressible in the following
 order before it proposes a new Theory Map noun:
@@ -567,7 +702,7 @@ stable Theory Map or software ontology.
 
 ---
 
-## 7. Relation to the current Theory Map
+## 8. Relation to the current Theory Map
 
 This document does not add a third stable axis or promote a generic history
 payload API.  It clarifies the mathematical content that the emerging
@@ -581,10 +716,14 @@ lift
   -> analytic or complexity structure when justified
 ```
 
-The pendulum supplies the first end-to-end exact calibration of this order.
-The generic carrier and the unification of its continuous and discrete shadows
-remain open.  `THEORY_MAP.md` should record that position and maturity; it
-should not replace the equations and boundaries recorded here.
+The pendulum supplies the first end-to-end continuous calibration of this
+order. The local-field projective line supplies an independent finite discrete
+calibration in which composable matrices, lattice evaluation, cylinder
+quotients, continuation residuals, shell growth, and a downstream code tree
+can be separated exactly. Together they refine the emerging transversal
+without selecting its generic carrier or unifying continuous and discrete
+shadows. `THEORY_MAP.md` should record that position and maturity; it should
+not replace the equations and boundaries recorded here.
 
 ## References and executable evidence
 
@@ -599,5 +738,9 @@ should not replace the equations and boundaries recorded here.
 - `docs/64-first-principles-and-api-boundary-audit.md`
 - `docs/65-effective-analysis-principle.md`
 - `docs/vignettes/simple-pendulum.md`
+- `sonnet/local-field-projective-process-geometry/README.md`
+- `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
+- `tests/research/test_local_field_projective_lattice_ball.py`
+- `tests/research/test_padic_continued_fraction_selector_comparison.py`

@@ -90,6 +90,42 @@ The index is deliberately conservative: an entry records where to start reading;
 
 ---
 
+## Local fields: projective histories, continued fractions, and finite coding
+
+**Problem / domains:** rational A/M/inversion histories viewed at real and
+\(p\)-adic places; finite Bruhat--Tits lattice balls; Ruban and Browkin I
+continued fractions; projective-cylinder refinement and source coding.
+
+**Classical search terms:** \(p\)-adic valuation, \(PGL_2(\mathbb Q_p)\),
+Bruhat--Tits tree, projective line over finite rings, Ruban continued fraction,
+Browkin continued fraction, Stern--Brocot tree, Huffman code.
+
+**Process Geometry themes:** place-relative observer rulers, literal history
+versus matrix payload, standard-frame projective evaluation, continuation
+residual, quotient sections, finite shell growth, task memory, geometry tree
+versus coding tree.
+
+**Start here:**
+`sonnet/local-field-projective-process-geometry/README.md`, followed by the
+numbered Phase 0--5 records.
+
+**Executable sequence:**
+
+- `tests/research/test_local_field_projective_process_geometry.py`
+- `tests/research/test_local_field_projective_lattice_ball.py`
+- `tests/research/test_real_continued_fraction_geodesic_control.py`
+- `tests/research/test_padic_continued_fraction_selector_comparison.py`
+
+**Theory role:** independent finite discrete calibration of the emerging
+task-covariant evaluation transversal. It separates full prefix history,
+composable projective matrix evaluation, the Bruhat--Tits observer tree,
+fixed-depth task cylinders, complete-quotient residuals, and a separately
+declared binary coding tree. The exact shell identity and finite Huffman task
+refine H2/H3 without an infinite-boundary, entropy-rate, selector-policy,
+preferred-algorithm, or API promotion claim.
+
+---
+
 ## Even-power and harmonic oscillators
 
 **Problem / domains:** harmonic oscillator, quartic/sextic oscillators, polynomial potentials, recurrence/modules, hyperelliptic curves.

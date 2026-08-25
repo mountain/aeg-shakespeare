@@ -8,13 +8,16 @@ complete finite ball.
 
 The implementation is deliberately research-local.  It is a finite oracle,
 not a p-adic number package and not a proposed Bruhat--Tits framework API.
-Classical lineage is recorded under [Serre-Trees-1980] and
-[Ludwig-Merten-2026] in docs/REFERENCES.md.
+Classical lineage is recorded under [Serre-Trees-1980],
+[Ludwig-Merten-2026], and [Huffman-1952] in docs/REFERENCES.md.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
+from fractions import Fraction
+from heapq import heapify, heappop, heappush
+from itertools import count
 from math import isqrt
 
 import pytest
@@ -125,6 +128,26 @@ class _NormalizedLatticeClass:
         )
 
     @property
+    def children(self) -> tuple["_NormalizedLatticeClass", ...]:
+        """Return the exact one-step projective-cylinder refinements."""
+
+        if self.depth == 0:
+            return _sphere(self.prime, 1)
+        if self.chart == "affine":
+            stride = self.prime**self.depth
+        else:
+            stride = self.prime ** (self.depth - 1)
+        return tuple(
+            type(self)(
+                self.prime,
+                self.depth + 1,
+                self.chart,
+                self.coordinate + digit * stride,
+            )
+            for digit in range(self.prime)
+        )
+
+    @property
     def lattice_basis(self) -> tuple[tuple[int, int], tuple[int, int]]:
         """Give an integral basis for the normalized p-adic lattice."""
 
@@ -212,6 +235,107 @@ def _rebuild(
     return first * u1 + second * v1, first * u2 + second * v2
 
 
+def _minimum_exact_bits(number_of_states: int) -> int:
+    """Return ceil(log2(number_of_states)) without floating point."""
+
+    if number_of_states <= 0:
+        raise ValueError("the task must have at least one state")
+    return (number_of_states - 1).bit_length()
+
+
+def _huffman_code_lengths(weights: tuple[Fraction, ...]) -> tuple[int, ...]:
+    """Compute exact binary Huffman lengths for one declared finite source.
+
+    The heap stores leaf memberships so the result is an actual coding-tree
+    calculation.  No Bruhat--Tits edge is silently reused as a binary edge.
+    """
+
+    if not weights:
+        raise ValueError("a source alphabet must be nonempty")
+    if any(weight <= 0 for weight in weights):
+        raise ValueError("source weights must be positive")
+    if sum(weights, start=Fraction(0)) != 1:
+        raise ValueError("source weights must sum to one")
+
+    serial = count()
+    heap = [
+        (Fraction(weight), next(serial), (index,))
+        for index, weight in enumerate(weights)
+    ]
+    heapify(heap)
+    lengths = [0] * len(weights)
+    while len(heap) > 1:
+        left_weight, _, left_leaves = heappop(heap)
+        right_weight, _, right_leaves = heappop(heap)
+        merged_leaves = left_leaves + right_leaves
+        for index in merged_leaves:
+            lengths[index] += 1
+        heappush(
+            heap,
+            (
+                left_weight + right_weight,
+                next(serial),
+                merged_leaves,
+            ),
+        )
+    return tuple(lengths)
+
+
+def _canonical_prefix_code(lengths: tuple[int, ...]) -> tuple[str, ...]:
+    """Materialize a deterministic prefix decoder from certified lengths."""
+
+    if not lengths:
+        raise ValueError("a code needs at least one symbol")
+    if len(lengths) == 1:
+        if lengths != (0,):
+            raise ValueError("a singleton source has zero-length code")
+        return ("",)
+    if any(length <= 0 for length in lengths):
+        raise ValueError("a nonsingleton prefix code needs positive lengths")
+
+    ordered = sorted((length, index) for index, length in enumerate(lengths))
+    codewords = [""] * len(lengths)
+    code = 0
+    previous_length = 0
+    for length, index in ordered:
+        code <<= length - previous_length
+        if code >= 1 << length:
+            raise ValueError("the lengths violate the binary Kraft bound")
+        codewords[index] = format(code, f"0{length}b")
+        code += 1
+        previous_length = length
+
+    if any(
+        right.startswith(left)
+        for left_index, left in enumerate(codewords)
+        for right_index, right in enumerate(codewords)
+        if left_index != right_index
+    ):
+        raise AssertionError("canonical code construction must be prefix-free")
+    return tuple(codewords)
+
+
+def _decode_prefix_stream(stream: str, codewords: tuple[str, ...]) -> tuple[int, ...]:
+    """Decode one binary stream or reject an incomplete/unknown suffix."""
+
+    if any(bit not in "01" for bit in stream):
+        raise ValueError("a binary code stream contains a non-bit")
+    decoder = {codeword: index for index, codeword in enumerate(codewords)}
+    if len(decoder) != len(codewords) or "" in decoder:
+        raise ValueError("stream decoding needs distinct nonempty codewords")
+
+    result = []
+    start = 0
+    for stop in range(1, len(stream) + 1):
+        word = stream[start:stop]
+        if word in decoder:
+            result.append(decoder[word])
+            start = stop
+    if start != len(stream):
+        raise ValueError("the stream has an incomplete or unknown suffix")
+    return tuple(result)
+
+
 def test_unit_projective_quotient_is_exactly_the_finite_kernel_quotient():
     """Raw primitive pairs collapse iff their normalized lattices agree."""
 
@@ -295,6 +419,130 @@ def test_reduction_builds_the_complete_rooted_bruhat_tits_ball():
             for _ in range(vertex.depth):
                 cursor = cursor.parent
             assert cursor == root
+
+
+def test_projective_cylinders_form_exact_refining_frontiers():
+    """Each positive-depth cylinder has p children; the root has p + 1."""
+
+    for prime in (2, 3, 5):
+        root = _NormalizedLatticeClass.root(prime)
+        assert root.children == _sphere(prime, 1)
+        assert len(root.children) == prime + 1
+
+        for depth in range(1, 4):
+            frontier = _sphere(prime, depth)
+            expected_size = (prime + 1) * prime ** (depth - 1)
+            assert len(frontier) == expected_size
+            assert all(len(vertex.children) == prime for vertex in frontier)
+            assert all(
+                child.parent == vertex
+                for vertex in frontier
+                for child in vertex.children
+            )
+            assert {
+                child
+                for vertex in frontier
+                for child in vertex.children
+            } == set(_sphere(prime, depth + 1))
+
+
+def test_discrete_shell_increment_and_task_memory_are_exact_but_distinct():
+    """Finite coarea-like shell growth does not identify depth with memory."""
+
+    for prime in (2, 3, 5, 7):
+        for depth in range(1, 5):
+            sphere_size = (prime + 1) * prime ** (depth - 1)
+            ball_size = 1 + (prime + 1) * (prime**depth - 1) // (prime - 1)
+            previous_ball_size = (
+                1
+                if depth == 1
+                else 1
+                + (prime + 1) * (prime ** (depth - 1) - 1) // (prime - 1)
+            )
+
+            assert len(_sphere(prime, depth)) == sphere_size
+            assert len(_ball(prime, depth)) == ball_size
+            assert ball_size - previous_ball_size == sphere_size
+            assert _minimum_exact_bits(sphere_size) == (
+                sphere_size - 1
+            ).bit_length()
+
+    assert tuple(
+        _minimum_exact_bits(len(_sphere(3, depth)))
+        for depth in range(1, 4)
+    ) == (2, 4, 6)
+
+
+def test_root_symmetric_cylinder_source_is_projectively_consistent():
+    """Uniform finite frontiers push exactly to their parent frontier."""
+
+    for prime in (2, 3, 5):
+        root = _NormalizedLatticeClass.root(prime)
+        for depth in range(1, 4):
+            frontier = _sphere(prime, depth)
+            mass = Fraction(1, len(frontier))
+            assert sum((mass for _ in frontier), start=Fraction(0)) == 1
+
+            if depth == 1:
+                pushed_mass = {root: sum(
+                    (mass for _ in frontier),
+                    start=Fraction(0),
+                )}
+                assert pushed_mass == {root: Fraction(1)}
+                continue
+
+            parent_frontier = _sphere(prime, depth - 1)
+            pushed_mass = {
+                parent: sum(
+                    (mass for child in frontier if child.parent == parent),
+                    start=Fraction(0),
+                )
+                for parent in parent_frontier
+            }
+            assert set(pushed_mass.values()) == {
+                Fraction(1, len(parent_frontier))
+            }
+
+
+def test_huffman_tree_depends_on_source_law_not_projective_geometry():
+    """One cylinder frontier supports different exact optimal binary trees."""
+
+    frontier = _sphere(3, 2)
+    assert len(frontier) == 12
+
+    uniform_weights = (Fraction(1, 12),) * 12
+    skewed_weights = (Fraction(1, 2),) + (Fraction(1, 22),) * 11
+    uniform_lengths = _huffman_code_lengths(uniform_weights)
+    skewed_lengths = _huffman_code_lengths(skewed_weights)
+
+    assert sorted(uniform_lengths) == [3] * 4 + [4] * 8
+    assert sum(
+        weight * length
+        for weight, length in zip(uniform_weights, uniform_lengths)
+    ) == Fraction(11, 3)
+    assert sum(
+        weight * length
+        for weight, length in zip(skewed_weights, skewed_lengths)
+    ) == Fraction(61, 22)
+    assert skewed_lengths[0] == 1
+    assert uniform_lengths != skewed_lengths
+
+    for lengths in (uniform_lengths, skewed_lengths):
+        codewords = _canonical_prefix_code(lengths)
+        message = tuple(range(len(frontier))) + (0, 5, 11)
+        stream = "".join(codewords[index] for index in message)
+        assert _decode_prefix_stream(stream, codewords) == message
+
+    with pytest.raises(ValueError, match="nonempty"):
+        _huffman_code_lengths(())
+    with pytest.raises(ValueError, match="positive"):
+        _huffman_code_lengths((Fraction(1), Fraction(0)))
+    with pytest.raises(ValueError, match="sum to one"):
+        _huffman_code_lengths((Fraction(1), Fraction(1)))
+    with pytest.raises(ValueError, match="non-bit"):
+        _decode_prefix_stream("102", ("0", "10", "11"))
+    with pytest.raises(ValueError, match="suffix"):
+        _decode_prefix_stream("1", ("0", "10", "11"))
 
 
 def test_phase0_residues_are_exactly_the_affine_patch_not_the_whole_sphere():

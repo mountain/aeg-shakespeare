@@ -120,6 +120,30 @@ before the next release snapshot.
   continuation state and digit count from materialized-turn cost, without
   identifying the real and Bruhat--Tits trees or selecting a \(p\)-adic
   algorithm;
+- advances the local-field Sonnet to a matched Ruban/Browkin I comparison:
+  both floor sections select rational lifts of the same exact two-chart
+  projective contact and reconstruct through the same `ProcessWord` matrices,
+  while reciprocal continuation separates them; bounded rational exhaustion,
+  prefix lattice-class certificates, the \(-1\) terminal/cycle witness, and a
+  competing local-cost witness reject a task-free preferred selector without
+  claiming new general finiteness, convergence, or periodicity;
+- closes that Sonnet's finite prefix-orbit geometry gate: exact lowest-common-
+  ancestor and tree-distance ledgers show zero backtracking in all 1,092
+  bounded selector/input/prime histories, while paired Ruban/Browkin prefixes
+  remain ancestor-comparable on one finite input direction; this separates
+  depth/compression/outcome differences from route choice and rejects a
+  Bellman/Huffman claim until a source law, policy action set, shared terminal
+  task, and decoding contract are frozen;
+- completes the Sonnet's finite projective-cylinder/source-coding gate:
+  exact child refinement and the discrete shell identity
+  `|B_d|-|B_{d-1}|=|S_d|` separate longitudinal depth from transverse task
+  memory; a root-symmetric finite source pushes consistently through parent
+  reduction, while uniform and skewed laws on the same twelve cylinders give
+  different exact Huffman trees and explicit decoding round trips; updates the
+  Mathematical Core, Engineering Architecture, and Theory Map to distinguish
+  literal history, composable matrix payload, projective evaluation tree, task
+  cylinder, retained complete-quotient residual, and coding tree without an
+  entropy, Bellman, infinite-boundary, or API promotion claim;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

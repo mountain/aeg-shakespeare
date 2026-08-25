@@ -162,6 +162,21 @@ task presentation + retained residual + decoder
 rather than a bare quotient.  If no decoder is needed, say why.  If global
 reconstruction is impossible or only local, expose that as failure semantics.
 
+When a problem has a composable evaluation layer, record the fuller chain:
+
+```text
+literal history
+    -> composable evaluation payload
+    -> observer/base-frame evaluation
+    -> task quotient + retained residual
+    -> decoder
+```
+
+Test adequacy at every information-losing arrow. Matrix equality, equal
+geometric endpoints, equal finite contacts, and equal task futures are
+different certificates unless a commuting or continuation theorem connects
+them.
+
 ### 2.5 Candidate presentation generation
 
 Candidate generation is bounded proposal search, not ontology.  Current
@@ -333,6 +348,18 @@ frontier, probability mass, prefix primitives, and cost unit are fixed.
 `TaskContinuationSignature` is a bounded witness, not an exact infinite-future
 quotient.  `BoundaryProfile` and Huffman machinery are exact for their declared
 finite inputs, not a generic entropy or continuous-complexity engine.
+
+Keep at least these trees separate in a solver record:
+
+```text
+literal history tree       admissible operation prefixes
+topological cover tree     reduced path classes, when a topology supplies it
+observer/evaluation tree   geometric states reached after evaluation
+coding tree                prefix decisions for a declared source and decoder
+```
+
+A map between two such trees is a construction requiring its own adequacy and
+cost certificate. Shared branching terminology or geodesicity is not that map.
 
 ### 4.3 Constrained polynomial and local differential systems
 
@@ -515,9 +542,19 @@ A good algorithm can remain problem-local; a mature mathematical law does not
 automatically define a software interface; a reusable component does not prove
 the general theory suggested by its name.
 
+### D15 — Geometric and coding trees require an explicit bridge
+
+Do not reuse a history, cover, or observer-geometry tree as a coding or control
+tree by name alone. Declare the source/state map, admissible decisions, cost
+unit, terminal semantics, and decoder. Changing probabilities while holding
+geometry fixed is a required red team for any allegedly geometry-selected
+code.
+
 ---
 
-## 6. Pendulum reference implementation path
+## 6. Reference implementation paths
+
+### 6.1 Pendulum
 
 The simple pendulum is the first end-to-end reference for this architecture.
 
@@ -541,6 +578,28 @@ dimension and exposes exact structure before global numerical integration.  It
 is not yet a complete production solver: generic-energy rigorous cycles,
 interval-certified periods, global branch-aware reconstruction, and intrinsic
 discovery of the lift/ruler remain open.
+
+### 6.2 Finite local-field projective cylinders
+
+The local-field Sonnet is the first independent discrete reference for the
+history--evaluation--task--decoder path.
+
+| Stage | Decision | Algorithm/evidence |
+| --- | --- | --- |
+| Primitive model | rational A/M/inversion prefixes and projective residue refinement | exact `Fraction` histories and two-chart normal forms |
+| Units/frame | standard lattice \(\mathbb Z_p^2\), normalized \(v_p(p)=1\) | base vertex plus one-edge refinement ruler |
+| Evaluation payload | \(G_n=M(a_0)\cdots M(a_n)\) | exact chronological matrix product |
+| Observer geometry | \([G_n\mathbb Z_p^2]\) | normalized lattice class, parent, LCA, and distance certificates |
+| Task quotient | fixed-depth projective cylinder | exact parent reduction in \(\mathbb P^1(\mathbb Z/p^d\mathbb Z)\) |
+| Continuation residual | next complete quotient for selector reconstruction | exact Möbius round trip; omitted only from the separate cylinder-code task |
+| Discrete shell | \(|B_d|-|B_{d-1}|=|S_d|\) | exact finite enumeration and closed count |
+| Source/coding | declared root-symmetric or adversarial finite law | exact mass pushforward, Huffman lengths, canonical prefix decoder |
+| Cost | digit, tree edge, frontier memory, binary bit, serialization kept separate | exact multi-axis ledgers |
+| Red teams | same contact/different continuation; same geometry/different source | Ruban/Browkin outcome split and changed Huffman tree |
+
+This path is exact and seconds-scale. It does not provide an infinite boundary
+measure, a selector-policy Bellman solver, a preferred \(p\)-adic continued
+fraction, or a reusable projective/coding API.
 
 ---
 
@@ -670,5 +729,9 @@ not an empty framework class.
 - `docs/65-effective-analysis-principle.md`
 - `docs/VIGNETTE_CONTRACT.md`
 - `docs/vignettes/simple-pendulum.md`
+- `sonnet/local-field-projective-process-geometry/README.md`
+- `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
+- `tests/research/test_local_field_projective_lattice_ball.py`
+- `tests/research/test_padic_continued_fraction_selector_comparison.py`
 - `tests/experimental/test_finite_task_quotient.py`

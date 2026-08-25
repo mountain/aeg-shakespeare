@@ -222,12 +222,13 @@ the marked clock is transported by
 \frac{dX}{Z}=\frac{dU}{Y}.
 \]
 
-For an affine A/M chart (h(U)=sU+b), (s\ne0), this is a global invertible
+For an affine A/M chart \(h(U)=sU+b\), \(s\ne0\), this is a global invertible
 re-presentation of the marked cubic.  For the nonlinear A/M expression
-(h(U)=U^3) used in the equal-clock red team, it is only a regular local chart
-on the frozen negative libration interval: (h'(0)=0), and ((U,Y)=(0,0))
-lies on the (E=0) carrier.  Thus local clock/Bellman covariance does not by
-itself prove global birational equivalence of elliptic presentations.
+\(h(U)=U^3\) used in the equal-clock red team, it is only a regular local chart
+on the frozen negative libration interval: \(h'(0)=0\), and
+\((U,Y)=(0,0)\) lies on the \(E=0\) carrier. Thus local clock/Bellman
+covariance does not by itself prove global birational equivalence of elliptic
+presentations.
 
 The full reduced dynamics carry one further obligation.  Since
 
@@ -241,7 +242,7 @@ the transformed acceleration is
 DZ=h''(U)Y^2+h'(U)(3U^2-2EU-1).
 \]
 
-The (h''Y^2) term is generically nonzero for (h(U)=U^3).  P12 therefore
+The \(h''Y^2\) term is generically nonzero for \(h(U)=U^3\). P12 therefore
 separates two facts that earlier notes left adjacent: the first-order marked
 clock already transports exactly, while an intrinsic mechanical A/M lift must
 also reproduce the second prolongation.  This is the concrete certificate a
@@ -255,13 +256,13 @@ dt=\sqrt{\ell/g}\,\omega
 \]
 
 The dimensionless marked carrier describes shape; the physical time unit is a
-scale line transported multiplicatively.  Coordinate distance in either
-(U) or (X) is not the physical ruler.
+scale line transported multiplicatively. Coordinate distance in either
+\(U\) or \(X\) is not the physical ruler.
 
 Finally, `U=q_y` is a selected scalar observable, not an observer-group
-parameter with its own canonical ODE.  A genuine moving observer would require
-a task/state normalization (N(x,g)=0) and an induced equation from
-(DN=0).  No such normalization is discovered for the pendulum here.  The
+parameter with its own canonical ODE. A genuine moving observer would require
+a task/state normalization \(N(x,g)=0\) and an induced equation from
+\(DN=0\). No such normalization is discovered for the pendulum here. The
 older declared A/M metric-horizontal arc remains a separate mechanism probe,
 not the canonical pendulum observer.
 
@@ -282,24 +283,24 @@ Declaring the weighted A/M metric
 Z_m^2=c+U^2.
 \]
 
-The two quadratic extensions form a biquadratic fiber product.  Its third
-quadratic quotient, with (W=Y Z_m), is
+The two quadratic extensions form a biquadratic fiber product. Its third
+quadratic quotient, with \(W=YZ_m\), is
 
 \[
 W^2=2(E-U)(1-U^2)(c+U^2).
 \]
 
-This curve is generically genus two.  At the symmetric point (E=0,c=1), the
-rescaling (w=W/\sqrt{2}) gives
+This curve is generically genus two. At the symmetric point \(E=0,c=1\), the
+rescaling \(w=W/\sqrt{2}\) gives
 
 \[
 w^2=U^5-U,
 \]
 
-the affine Bolza model.  Changing (c) moves the extra branch pair and destroys
+the affine Bolza model. Changing \(c\) moves the extra branch pair and destroys
 the literal Bolza polynomial.  Its entry is therefore explained but
-noncanonical: it is a special quotient of **physical sheet x declared metric
-sheet**, not the pendulum's state space, not an A/M chart (X=h(U)), and not a
+noncanonical: it is a special quotient of **physical sheet** \(\times\) **declared metric
+sheet**, not the pendulum's state space, not an A/M chart \(X=h(U)\), and not a
 mechanically forced completion.  The exact construction and its metric-weight
 red team live in
 `tests/research/test_pendulum_observer_metric_completion.py`; P12 records the
@@ -477,10 +478,10 @@ vertical fibers U=+/-1
 
 ### 5.3 The branch mark is task-relative memory
 
-P11 proves that on the real (E=0) loop one carrier period flips the
+P11 proves that on the real \(E=0\) loop one carrier period flips the
 Cartesian sheet and two periods close the full physical state.  P12 combines
-that cover with continuation equivalence.  If a task observes only the carrier
-((U,Y)), the two sheet histories have one continuation signature and require
+that cover with continuation equivalence. If a task observes only the carrier
+\((U,Y)\), the two sheet histories have one continuation signature and require
 no residual state.  If the task must reconstruct the Cartesian continuation,
 the two signatures remain distinct and any exact state representation needs
 

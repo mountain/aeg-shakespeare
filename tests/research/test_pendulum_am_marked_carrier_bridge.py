@@ -15,7 +15,7 @@ Stable family entry: ``docs/vignettes/simple-pendulum.md``.
 
 Question
 --------
-PRs 80--91 left four statements close enough to be confused but not identical:
+PRs 80--91 left five statements close enough to be confused but not identical:
 
 1. an affine Addition/Multiplication chart can globally re-present the marked
    elliptic carrier;

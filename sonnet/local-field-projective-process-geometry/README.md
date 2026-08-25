@@ -1,9 +1,9 @@
 # Local-field projective process geometry
 
-**Status:** T0 research-local calibration; Phase 2 real
-continued-fraction/Farey-path positive control complete; no infinite
-Bruhat--Tits completion, no preferred \(p\)-adic continued fraction, and no
-Experimental or Public API proposal.
+**Status:** T0 research-local calibration; Phase 5 finite projective-cylinder,
+discrete-shell, and source-coding gate complete; no infinite Bruhat--Tits
+completion, selector-policy Bellman optimum, preferred \(p\)-adic continued
+fraction, entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -40,7 +40,16 @@ Read in order:
 4. [03-phase2-real-continued-fraction-geodesic-control.md](03-phase2-real-continued-fraction-geodesic-control.md)
    compiles ordinary continued-fraction prefixes into exact Farey frames,
    Stern--Brocot paths, and real cylinders, with a continuation red team;
-5. the three linked research tests are seconds-scale executable arguments.
+5. [04-phase3-padic-selector-matched-task.md](04-phase3-padic-selector-matched-task.md)
+   compares Ruban and Browkin I on one exact rational task, including finite
+   projective contacts, prefix lattice classes, outcome semantics, and costs;
+6. [05-phase4-padic-prefix-orbit-path-metric.md](05-phase4-padic-prefix-orbit-path-metric.md)
+   computes common ancestors, tree travel, net displacement, backtracking, and
+   paired-selector ray relations, then audits the Bellman/Huffman boundary;
+7. [06-phase5-projective-cylinders-discrete-coarea-coding.md](06-phase5-projective-cylinders-discrete-coarea-coding.md)
+   freezes a finite cylinder source, proves exact shell/refinement identities,
+   and constructs a separate binary Huffman tree with an explicit decoder;
+8. the four linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -104,19 +113,79 @@ agree, while the lifted matrices and approach-side cylinders differ; appending
 the same digit separates the values again. Endpoint equality is therefore not
 a continuation-stable history quotient for the native prefix-extension task.
 
+Phase 3 runs two classical \(p\)-adic selectors under one frozen contract.
+Ruban uses standard residues and Browkin I balanced residues. For a common
+complete quotient they choose different rational lifts of the same finite
+two-chart projective contact, but reciprocal continuation can separate those
+lifts. Every finite prefix still reconstructs through the same `ProcessWord`
+matrix calculus and lands in the Phase 1 lattice-ball oracle.
+
+The exact witness \(-1\) terminates immediately under Browkin while Ruban
+enters the fixed complete quotient \(-1/p\). Conversely, at \(p=5\), Ruban
+represents \(3\) in one digit while Browkin uses \([-2;1/5]\), with greater
+declared digit, contact-resolution, and serialization costs. Total rational
+termination and local economy therefore do not induce the same selector.
+
+Phase 4 turns those prefix classes into an exact tree-path ledger. Across all
+1,092 finite selector/input/prime audits, every consecutive prefix stays on a
+nondecreasing ray: traveled distance equals net displacement and no edge is
+backtracked. For a fixed audited input, every Ruban prefix is also
+ancestor-comparable with every Browkin prefix. The selectors reach different
+depths along one common finite direction rather than taking different tree
+branches.
+
+This closes the route-geometry question negatively for the bounded corpus.
+Geodesicity to selector-dependent final prefix states supplies no Bellman
+action problem, while the absence of a source distribution and proved
+prefix-decoding contract supplies no Huffman problem. Any optimization phase
+must first freeze those missing task structures.
+
+Phase 5 freezes the smaller source-coding task on the exact frontier
+
+\[
+S_d=\mathbb P^1(\mathbb Z/p^d\mathbb Z),
+\qquad |S_d|=(p+1)p^{d-1}.
+\]
+
+Every positive-depth cylinder has \(p\) children, the root has \(p+1\), and
+the finite ball obeys the discrete shell identity
+
+\[
+|B_d|-|B_{d-1}|=|S_d|.
+\]
+
+The root-symmetric finite source pushes consistently through parent reduction.
+On the same twelve depth-two cylinders at \(p=3\), uniform and skewed source
+laws produce different exact optimal Huffman trees and expected lengths
+\(11/3\) and \(61/22\) bits. Geometry therefore supplies the alphabet and
+refinement, not the coding objective. An explicit canonical prefix table and
+decoder now close the Huffman task; the selector-policy Bellman task remains
+undefined until it receives a common state, terminal precision, actions, and
+failure costs.
+
 ## Claim boundary
 
-Phase 1 now constructs the complete **finite ball around the standard
-vertex**, using normalized representatives of lattice homothety classes. It
-does not construct the infinite tree or its boundary completion. The
-continued-fraction certificate still concerns finite right-reciprocal
-histories; it does not select among competing \(p\)-adic digit algorithms or
-claim their convergence, finiteness, or Lagrange periodicity.
+Phase 1 constructs the complete **finite ball around the standard vertex**,
+using normalized representatives of lattice homothety classes. Phases 3--4
+use that oracle for exact rational selector prefixes and finite path metrics;
+Phase 5 uses it for a separate finite cylinder source and binary decoder. None
+constructs the infinite tree or its boundary completion. Their bounded
+exhaust, common-ray certificate, exact cycle witness, and finite coding result
+do not constitute a new general ray, invariant-measure, entropy-rate,
+finiteness, convergence, or Lagrange-periodicity theorem, and they do not
+select a task-free preferred algorithm.
 
 The real Stern--Brocot/Farey tree and the \(p\)-adic Bruhat--Tits tree are not
 identified. They share a rational projective history carrier but arise from
-different observer distinctions and continuation structures. Phase 2
-**sharpens** H1 through the terminal-split continuation witness and supports
-the place-relative H2 interpretation. It leaves the Theory Map file
-unchanged. The residue-resolution tower remains horizontal observer
-refinement, not a vertical arithmetic process-rank transition.
+different observer distinctions and continuation structures. Phases 2--4
+**sharpen** H1 through real terminal-split, \(p\)-adic section-lift, and
+zero-backtracking/common-ray witnesses, while supporting the place-relative
+H2 interpretation.
+
+Phase 5 independently refines the emerging task-covariant evaluation
+transversal: literal histories, composable matrix payloads, projective lattice
+evaluation, task cylinders, retained continuation residuals, and binary code
+decoders are distinct stages. It gives H2 an exact finite refinement geometry
+and H3 one declared coding shadow without maturity promotion. The
+residue-resolution tower remains horizontal observer refinement, not a
+vertical arithmetic process-rank transition.

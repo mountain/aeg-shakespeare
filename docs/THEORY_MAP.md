@@ -118,8 +118,9 @@ The second arithmetic calibration adds an important caution to the schematic `C_
 
 ### 1.1 Emerging transversal — task-covariant history evaluation
 
-Notes `54–63` and the subsequent pendulum P12/P13 calibrations force a related
-structure that is not naturally another stage of either axis:
+Notes `54–63`, the pendulum P12/P13 calibrations, and the finite local-field
+projective phases force a related structure that is not naturally another
+stage of either axis:
 
 ```text
 lifted history
@@ -130,11 +131,13 @@ lifted history
 ```
 
 Examples of payload include additive clock/action, vector-valued resources,
-deck or connection holonomy, max-like peak memory, and phase.  A task may
-discard the payload, observe only a quotient of it, or turn it into an ordered
-resource for Bellman/Huffman optimization.  Objectification changes the local
-primitive ruler and must charge compilation, dictionary, decoder, and storage
-effects rather than silently declaring a long history to be one free step.
+deck or connection holonomy, max-like peak memory, phase, and composable
+projective matrix evaluation. A task may discard the payload, evaluate it in a
+base frame, observe only a quotient of that evaluation, or turn a declared
+frontier into an ordered resource for Bellman/Huffman optimization.
+Objectification changes the local primitive ruler and must charge compilation,
+dictionary, decoder, and storage effects rather than silently declaring a long
+history to be one free step.
 
 This structure cuts across the current map:
 
@@ -148,14 +151,24 @@ This structure cuts across the current map:
 
 The exact finite Bellman/frontier identity, covariant pendulum family identity,
 task-visible holonomy bound, same-scale mass-pushforward theorem, twisted
-finite-cycle identity, and pendulum lift--unit--domain--quotient--decoder chain
-provide strong pressure.  The pendulum now proves locally that the period
-lattice cuts a task-relative fundamental domain while the unit frame measures
-it; it also separates continuous action coarea from finite deck memory.  The
-candidate generic carrier is still unsettled: resource bundle, groupoid,
-cocycle family, enriched history category, and problem-local alternatives
-remain live.  Consequently this is recorded as an **emerging T0/T1
-transversal**, not a stable Theory Map node and not a generic API proposal.
+finite-cycle identity, pendulum lift--unit--domain--quotient--decoder chain,
+and local-field history--matrix--lattice--cylinder--code separation provide
+strong pressure. The pendulum proves locally that the period lattice cuts a
+task-relative fundamental domain while the unit frame measures it; it also
+separates continuous action coarea from finite deck memory. The projective
+calibration independently separates an observer/evaluation tree from literal
+history and from a probability-dependent coding tree, and adds the exact
+discrete shell identity
+
+\[
+|B_d|-|B_{d-1}|=|S_d|.
+\]
+
+This identity is not identified with physical coarea or entropy. The candidate
+generic carrier is still unsettled: resource bundle, groupoid, cocycle family,
+enriched history category, and problem-local alternatives remain live.
+Consequently this is recorded as an **emerging T0/T1 transversal**, not a
+stable Theory Map node and not a generic API proposal.
 
 ### 1.2 Cross-cutting admissibility — effective analysis
 
@@ -243,6 +256,11 @@ Topology is not assumed for every process. It becomes justified only when observ
 
 The exact finite H1 quotient does not by itself provide locality or topology.
 
+The local-field finite-ball calibration gives one exact H2 model: projective
+cylinders refine by parent reduction in a rooted metric tree. That observer
+geometry is not promoted to the history unfolding or to a generic topology
+object.
+
 **Maturity:** foundational research program; no generic topology API.
 
 ### H3 — Entropy and intrinsic complexity
@@ -252,6 +270,12 @@ The exact finite H1 quotient does not by itself provide locality or topology.
 This layer connects topological/metric entropy, coding, history growth, and the proposed distinction between intrinsic complexity and implementation overhead.
 
 Current `BoundaryProfile`/Huffman machinery provides useful finite growth and coding calibrations, but no generic Process Geometry entropy object or intrinsic-complexity lower-bound contract exists.
+
+The finite projective-cylinder task adds an exact source/coding calibration:
+one fixed geometry supports different optimal Huffman trees when the source law
+changes. Hence refinement growth can supply an alphabet and memory lower bound
+without supplying probabilities, a coding objective, or an entropy-rate
+theorem.
 
 **Maturity:** classical anchors and concrete coding shadows exist; Process Geometry correspondence remains a research question.
 

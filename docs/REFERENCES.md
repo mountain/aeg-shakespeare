@@ -92,6 +92,12 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 ## Local fields, projective dynamics, and continued fractions
 
+**[Huffman-1952]** David A. Huffman, “A Method for the Construction of
+Minimum-Redundancy Codes,” *Proceedings of the I.R.E.* 40(9) (1952),
+1098–1101. DOI: 10.1109/JRPROC.1952.273898. Classical finite-source baseline
+for the exact binary prefix-code construction used in the projective-cylinder
+coding calibration.
+
 **[Series-1985]** Caroline Series, “The modular surface and continued
 fractions,” *Journal of the London Mathematical Society* s2-31(1) (1985),
 69–80. DOI: 10.1112/jlms/s2-31.1.69. Gives the classical symbolic coding
@@ -102,6 +108,23 @@ expansion of real numbers,” *Journal de Théorie des Nombres de Bordeaux*
 31(3) (2019), 697–722. DOI: 10.5802/jtnb.1104. Develops finite and infinite
 left/right paths in the Stern--Brocot tree and their continued-fraction and
 \(SL_2(\mathbb Z)\) interpretations.
+
+**[Ruban-1970]** A. A. Ruban, “Some metric properties of \(p\)-adic
+numbers,” *Siberian Mathematical Journal* 11 (1970), 176–180. DOI:
+10.1007/BF00970247. Introduces the standard-residue \(p\)-adic
+continued-fraction algorithm used in the matched-selector calibration.
+
+**[Browkin-1978]** Jerzy Browkin, “Continued fractions in local fields I,”
+*Demonstratio Mathematica* 11(1) (1978), 67–82. DOI:
+10.1515/dema-1978-0108. Introduces the balanced-residue algorithm and proves
+finite expansion for rational inputs.
+
+**[Capuano-Murru-Terracini-2022]** Laura Capuano, Nadir Murru, and Lea
+Terracini, “On the finiteness of \(\mathfrak P\)-adic continued fractions for
+number fields,” *Bulletin de la Société Mathématique de France* 150(4)
+(2022), 743–772. DOI: 10.24033/bsmf.2860. Treats a \(p\)-adic floor as a
+section/type, includes Ruban and Browkin as special types over \(\mathbb Q\),
+and records their distinct rational finiteness behavior.
 
 **[Bruhat-Tits-1972]** François Bruhat and Jacques Tits, “Groupes réductifs sur
 un corps local,” *Publications Mathématiques de l'IHÉS* 41 (1972), 5–251.

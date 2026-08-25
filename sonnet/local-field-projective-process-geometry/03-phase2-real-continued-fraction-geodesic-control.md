@@ -365,7 +365,9 @@ API maturity level remain unchanged.
 
 ## 11. Next gate
 
-The next step is no longer “implement a \(p\)-adic continued fraction.” It is:
+This gate has now been executed in
+[`04-phase3-padic-selector-matched-task.md`](04-phase3-padic-selector-matched-task.md).
+The frozen comparison was:
 
 1. freeze one matched finite task for reconstruction, continuation, failure,
    and cost;
@@ -376,5 +378,7 @@ The next step is no longer “implement a \(p\)-adic continued fraction.” It i
 5. reject any claim of canonicality that depends only on the algorithm's
    name or historical priority.
 
-Only after that comparison may convergence, periodicity, effective analysis,
-or cross-place synthesis be reopened.
+Ruban and Browkin I now satisfy that exact finite comparison. The next gate is
+the pairwise path geometry of their prefix lattice classes: tree travel,
+common ancestors, backtracking, and net displacement must be measured before
+any geodesic or Bellman/Huffman interpretation is proposed.
