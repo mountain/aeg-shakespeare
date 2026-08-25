@@ -230,6 +230,31 @@ More precisely:
 
 The foundation adds a second discipline: **large theory words are not API rewards**. Names such as `ProcessGeometry`, `Objectification`, `ProcessRank`, `RankLowering`, `ObserverTopology`, and `AnalyticClosure` remain unclaimed until independent executable structures and red teams justify them.
 
+### 6.1 Effective-analysis discipline
+
+An API under `analysis` does not acquire a generic calculus claim merely from
+its namespace.  Each concrete family should document which mode it provides:
+
+```text
+exact-symbolic
+certified-approximate
+numerical
+search-only
+record-only
+```
+
+Where applicable, the durable contract includes the function/observable
+language, process operators, closure or controlled extension, evaluator,
+certificates, numerical domain, units/scale, error and failure semantics,
+baseline, and cost boundary.  Exact, stable, and efficient are separate claims.
+One computer-algebra backend does not define process equality; one numerical
+match does not establish stability; shortened syntax does not establish lower
+cost after compilation, storage, residual, and decoding are charged.
+
+This standard strengthens evidence requirements without promoting a generic
+`Calculus`, `ComputablePresentation`, `CanonicalSolver`, or `AnalyticClosure`
+object.  See `docs/65-effective-analysis-principle.md`.
+
 ## 7. `process_geometry.experimental`
 
 Experimental is not a fifth stable layer in the public pipeline. It is an explicitly unstable incubation namespace governed by `docs/GOVERNANCE.md` and reviewed against `docs/THEORY_MAP.md`.

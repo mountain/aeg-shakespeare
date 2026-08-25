@@ -31,6 +31,9 @@ The Theory Map currently synthesizes the foundation developed in `docs/42–45` 
 - the horizontal distinguishability axis: process/history -> task distinguishability -> exact quotient or locality/topology -> entropy/complexity -> analysis where justified;
 - the vertical ontology-growth axis: free process -> semantic compression -> objectification -> higher-rank free composition -> compositional rank lowering;
 - the proposed semantic/topological/analytic closure questions across ranks;
+- the Effective Analysis Principle: an analysis-bearing presentation must
+  expose a symbolic and/or numerical calculation path, certificates,
+  error/failure semantics, and task-relative cost accounting;
 - the distinction between AEG as a model organism and Arithmetic Geometric Universality as a stronger open conjecture.
 
 **The Theory Map is not a frozen standard.** It is expected to change as experiments and mathematics improve. Its role in engineering is to make API choices legible inside the larger research program and to prevent accidental implementation vocabulary from silently becoming ontology.
@@ -62,8 +65,10 @@ problem
   -> task semantics
   -> hypothesis
   -> candidate presentation / mechanism
+  -> intended calculation + conventional baseline
   -> experiment
   -> certificate or failure
+  -> stability / cost / transport audit where claimed
   -> red team
   -> claim boundary
 ```
@@ -86,6 +91,9 @@ The extraction note may be short, but it should answer:
 6. What important boundary remains unresolved?
 7. Which existing public abstraction, if any, is close enough that extension is preferable to a new concept?
 8. **Where does this structure sit in the current Theory Map, and what part of that interpretation remains hypothetical?**
+9. If it claims analysis or computational advantage, what is the smallest
+   effective-analysis contract: symbolic/numerical mode, closure, evaluator,
+   certificate, units, error/failure semantics, baseline, and cost boundary?
 
 A beautiful abstraction with only a happy-path example is not ready for promotion.
 
@@ -126,6 +134,14 @@ theory_position:
   - <node/edge in docs/THEORY_MAP.md>
 known_boundaries:
   - ...
+effective_analysis:
+  modes: [exact-symbolic | certified-approximate | numerical | search-only | record-only]
+  evidence:
+    - ...
+  failure_semantics:
+    - ...
+  cost_boundary:
+    - ...
 ```
 
 The purpose of Experimental is to preserve freedom to discover the right ontology before compatibility pressure freezes the first plausible design.
@@ -173,6 +189,12 @@ For foundational concepts, the red team should also try to distinguish neighbori
 - a candidate primitive versus genuine objectification;
 - symbol expansion versus compositional rank lowering;
 - a local differential construction versus a general observer connection.
+- an exact symbolic closure versus a one-backend simplification success;
+- numerical agreement at selected samples versus stable evaluation on a
+  declared domain;
+- shortened syntax versus lower total cost after compilation, storage,
+  residual, and lowering are charged;
+- formal cross-rank variation versus certified/effective analytic closure.
 
 ## 6. Public API: a semantic commitment
 
@@ -196,6 +218,12 @@ Before a new generic abstraction enters the public API, the promotion record sho
 8. **Known non-goals are explicit.** A public abstraction should document what it intentionally does not promise.
 9. **Theory position is explicit.** The proposal states which node/arrow of the current Theory Map it implements or tests, and distinguishes that from neighboring stronger interpretations.
 10. **Theory-change risk is acceptable.** The API remains narrower than unsettled theory so that a later revision of the Theory Map does not force the project to preserve a known-wrong ontology indefinitely.
+11. **Its calculation contract is explicit when applicable.** An API that
+    claims analysis, computation, stability, or efficiency states whether it is
+    exact symbolic, certified approximate, numerical, search-only, or
+    record-only; its evaluator, certificates, domain, units, error/failure
+    semantics, baseline, and cost boundary are protected independently of one
+    backend.
 
 Public promotion is deliberately harder than merging useful code.
 
@@ -203,7 +231,7 @@ Public promotion is deliberately harder than merging useful code.
 
 Any change that **adds, renames, generalizes, promotes, or materially changes** an Experimental or Public API must include a short **Theory Impact** section in the PR, AEP, or promotion note.
 
-It must answer the seven questions defined in `THEORY_MAP.md`:
+It must answer the eight questions defined in `THEORY_MAP.md`:
 
 1. **Theory position** — Which node or arrow does this API represent or test?
 2. **Maturity** — What is the maturity of that theory element?
@@ -212,6 +240,9 @@ It must answer the seven questions defined in `THEORY_MAP.md`:
 5. **Evidence** — Which independent domains, certificates, or red teams justify this generality?
 6. **Map effect** — Does the result support, refine, split, contradict, or leave unchanged the current Theory Map?
 7. **Migration risk** — If the theory changes, can the API evolve without preserving a known-wrong ontology?
+8. **Effective-analysis impact** — If the API claims analysis, calculation,
+   stability, or efficiency, what are the symbolic/numerical mode,
+   certificates, error/failure semantics, baseline, units, and cost boundary?
 
 For a purely mechanical or compatibility-preserving change, the Theory Impact may be one sentence:
 
@@ -221,7 +252,7 @@ For a new foundational abstraction, absence of a meaningful Theory Impact statem
 
 ### 6.2 Names are theory claims
 
-For foundational vocabulary, naming is part of the semantic contract. Words such as `ProcessGeometry`, `TaskQuotient`, `Jet`, `Objectification`, `ProcessRank`, `RankLowering`, `ObserverTopology`, or `AnalyticClosure` should not be used for weaker local mechanisms merely because the name is attractive.
+For foundational vocabulary, naming is part of the semantic contract. Words such as `ProcessGeometry`, `TaskQuotient`, `Jet`, `Objectification`, `ProcessRank`, `RankLowering`, `ObserverTopology`, `AnalyticClosure`, `ComputablePresentation`, `CanonicalSolver`, or a generic `Calculus` should not be used for weaker local mechanisms merely because the name is attractive.
 
 `docs/48-foundation-naming-audit.md` records the first vocabulary audit. Future naming changes should be reviewed using the Theory Map rather than by local code aesthetics alone.
 
@@ -265,6 +296,14 @@ Theory Impact
   Evidence
   Map effect: support | refine | split | contradict | unchanged
   Theory-change / migration risk
+
+Effective analysis, if claimed
+  exact-symbolic | certified-approximate | numerical | search-only | record-only
+  closure / controlled extension
+  evaluator / certificate
+  domain / units / error and failure semantics
+  baseline / workload / cost boundary
+  lift / lowering transport
 
 Evidence
   Independent consumers and red teams
@@ -323,11 +362,19 @@ When deciding where new work belongs, use these defaults:
 
 Tests follow the same distinction. Research benchmarks and frontier probes may remain Sonnet-local or manually dispatched; public semantic regressions belong in the ordinary test suite.
 
+For analysis-bearing work, tests must also follow the claim mode. Exact
+symbolic claims use exact relations, residuals, properties, or round trips;
+numerical claims use scale-aware tolerances, convergence/invariant or
+independent-reference evidence, and explicit singular/nonconvergence behavior;
+efficiency claims report workload and baseline and separate discovery or
+compilation cost from repeated evaluation. A field may be marked `not
+applicable`, but an unmeasured field cannot support a positive claim.
+
 For API-changing PRs, review is incomplete until the Theory Impact requirement is satisfied. For research-only work, updating the Theory Map is optional unless the result materially changes the larger picture; in that case the research note should propose the map revision explicitly.
 
-## 12. Six standing rules
+## 12. Seven standing rules
 
-The repository governance can be compressed to six rules:
+The repository governance can be compressed to seven rules:
 
 1. **Sonnets discover; they do not standardize.**
 2. **Reusable structures enter Experimental before the public API.**
@@ -335,5 +382,8 @@ The repository governance can be compressed to six rules:
 4. **Public API is a semantic commitment, not merely a stable implementation.**
 5. **Every material API change states its position and impact in the evolving Theory Map.**
 6. **Promotion, rejection, deprecation, and theory correction leave an auditable rationale.**
+7. **Analysis claims preserve calculability: symbolic/numerical mode,
+   certificates, error/failure semantics, units, baseline, and cost boundaries
+   are part of the contract.**
 
 The purpose of this process is not bureaucracy. It is to protect both sides of Process Geometry: research must remain free enough to discover a better ontology, while the public API must remain small enough that its concepts actually mean something.

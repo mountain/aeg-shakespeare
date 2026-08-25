@@ -7,6 +7,8 @@ Domains: <e.g. classical mechanics; algebraic geometry>
 Classical names / aliases: <terms a reader may search>
 Structural themes: <mathematical structures, not only repository names>
 Process Geometry roles: <quotient / presentation / history / observer / ...>
+Computational modes: <exact-symbolic / certified-approximate / numerical /
+search-only / record-only / not-applicable>
 Prerequisites: <minimum substantial background>
 Related vignettes: <stable paths, if any>
 Theory Map relation: <calibrates/supports/red-teams/... or unchanged>
@@ -46,6 +48,21 @@ interpretations as such rather than attributing them to classical sources.>
 Calibration statement
 ---------------------
 <State precisely what passing this file certifies.>
+
+Effective analysis, if claimed
+------------------------------
+Function / observable language: <...>
+Operators / closure or controlled extension: <...>
+Evaluator and certificates: <...>
+Domain / units / ruler: <...>
+Tolerance / error / branch / singular / nonconvergence semantics: <...>
+Conventional or competing baseline: <...>
+Workload and cost boundary: <include discovery/compilation, storage,
+dictionary, residual, and decoder/lowering costs when relevant>
+Lift / quotient / lowering compatibility: <...>
+
+<Mark fields not applicable when justified. Do not use an unmeasured field to
+support a positive symbolic, numerical, stability, or efficiency claim.>
 
 Proof map
 ---------

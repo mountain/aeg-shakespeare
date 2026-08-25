@@ -37,6 +37,20 @@ Forgets:
 Task semantics, if any:
 Decoder / reconstruction status:
 
+## Effective analysis contract, if claimed
+
+Claim mode: exact-symbolic | certified-approximate | numerical | search-only | record-only | not-applicable
+Function / observable language:
+Operators / process actions:
+Closure / controlled extension:
+Symbolic evaluator / certificates:
+Numerical evaluator:
+Domain / units / ruler:
+Error / tolerance / failure semantics:
+Conventional or competing baseline:
+Workload / cost boundary:
+Lift / quotient / lowering compatibility:
+
 ## Claim classes
 
 Theorems:
@@ -121,6 +135,13 @@ Local or global:
 Globalization obstruction:
 Decoder / reconstruction:
 
+Effective-analysis transport, if claimed:
+Claim mode:
+Symbolic evaluator / certificate:
+Numerical evaluator / error semantics:
+Unit / scale transport:
+Baseline / cost transport:
+
 Positive evidence:
 Negative control:
 Degeneration:
@@ -165,3 +186,9 @@ Before promoting a record, check:
 - [ ] map effect is explicit;
 - [ ] code/API status does not exceed theory evidence;
 - [ ] the new theory compresses or clarifies the map rather than only adding names.
+- [ ] analysis/computation claims state their mode, evaluator, certificates,
+      domain, units, error/failure semantics, baseline, and cost boundary;
+- [ ] symbolic closure, numerical stability, and computational economy are not
+      inferred from one another;
+- [ ] `not applicable` is justified where an Effective Analysis field is
+      intentionally absent.

@@ -36,6 +36,9 @@ The current foundation is developed primarily in:
   T0/T1 refinement and obstruction records;
 - `64-first-principles-and-api-boundary-audit.md` — current synthesis and
   conservative implementation-boundary review.
+- `65-effective-analysis-principle.md` — cross-cutting research and engineering
+  requirement that analysis-bearing presentations remain symbolically and/or
+  numerically effective, certifiable, and cost-auditable.
 
 Those notes contain the argument and structural audits. This file is the compact map used for engineering review.
 
@@ -133,6 +136,43 @@ unsettled: resource bundle, groupoid, cocycle family, enriched history category,
 and problem-local alternatives remain live.  Consequently this is recorded as
 an **emerging T0/T1 transversal**, not a stable Theory Map node and not a generic
 API proposal.
+
+### 1.2 Cross-cutting admissibility — effective analysis
+
+The two axes and the emerging evaluation transversal are governed by an
+additional research constraint:
+
+> When a presentation is claimed to support analysis, the claim must provide
+> an effective symbolic and/or numerical calculation path, explicit
+> certificates, error or failure semantics, and task-relative cost accounting.
+
+This is not a third ontology axis and not a theorem that every process admits a
+calculus-bearing presentation.  A finite task quotient may stop at exact
+transition and observation semantics.  A continuous or higher-rank theory that
+claims analysis, however, must state more than the existence of an abstract
+differential, integral, or comparison object.
+
+The principle constrains the current map in five places:
+
+- **Presentation:** task sufficiency and analytic effectiveness are distinct;
+  adequate presentations may differ in symbolic closure, conditioning, and
+  cost;
+- **canonicalization:** computational advantage supplies a local selection
+  pressure but does not create a global canonical representative;
+- **lift first:** derivatives, adjoints, phase, branch, error, and holonomy
+  payload must not be quotiented away before the task declares them invisible;
+- **objectification:** new primitives must charge compilation, dictionary,
+  storage, residual, and lowering costs rather than treating abbreviation as a
+  free computational gain;
+- **V5:** formal comparison of variation is only the first level; certified and
+  effective analytic closure must also compare evaluators, units, errors, and
+  costs when those are part of the claim.
+
+The operational gates are semantic adequacy, symbolic effectiveness, numerical
+effectiveness, computational economy, and certified transport/closure.  They
+are recorded in `65-effective-analysis-principle.md`.  This is a stable
+research/engineering discipline, while the general existence and cross-rank
+closure claims it motivates remain open.
 
 ---
 
@@ -392,6 +432,17 @@ D_{\mathrm{low}}\circ L
 
 **Maturity:** explicit semantic rank pair plus exact finite/infinitesimal AEG bridge; analytic closure remains a research hypothesis and the next vertical executable target.
 
+Under the Effective Analysis Principle, a formal differential square is
+necessary but not sufficient for the strongest V5 claim.  The research program
+distinguishes:
+
+1. formal closure of variation objects;
+2. certified closure with exact residual or controlled error and a red team;
+3. effective closure in which symbolic/numerical evaluation, units, failure
+   semantics, and accounted cost lower coherently.
+
+No generic V5 result currently reaches the third level.
+
 ---
 
 ## 4. Cross-axis roles of the current software layers
@@ -420,6 +471,12 @@ Searches candidate observables, presentations, languages, quotients, or structur
 
 Provides mathematical languages for variation and global structure supported by successful presentations.
 
+The word `Analysis` carries an operational obligation.  A concrete family
+should state its function/observable language, process operators, closure or
+controlled extension, evaluator, certificates, and numerical domain/error
+semantics when numerical behavior is claimed.  Current A/M, algebraic, and
+Abelian families satisfy different local slices; none is a universal calculus.
+
 ### Experimental
 
 Hosts explicitly unstable theory-to-code probes. Experimental is not a fifth stable ontology layer and is never re-exported from the package root merely because an experiment works.
@@ -443,6 +500,9 @@ First, it is the current **model organism** for Process Geometry:
 - the Addition -> Multiplication calibration makes the second rank transition executable and shows that a higher primitive may objectify an endomorphism/action on lower-rank semantic objects;
 - the second transition forces the mixed semidirect relation `D_k T_a = T_(ka) D_k`, which is the discrete slice of the existing A/M finite relation;
 - A/M and related work display a native language of variation and analysis, so analytic closure can now be asked across an explicit rank boundary;
+- A/M finite relations, action tables, resonant extensions, residuals, and path
+  flow also make it the first model organism for the Effective Analysis
+  Principle;
 - the same lineage therefore pressures both the vertical and horizontal axes.
 
 Second, a stronger conjecture asks whether arithmetic-generated geometries provide universal covers or standard models for a much broader class of process geometries.
@@ -488,6 +548,9 @@ It must answer:
 5. **Evidence** — Which independent domains, certificates, or red teams justify this level of generality?
 6. **Map effect** — Does the result support, refine, split, contradict, or leave unchanged the current Theory Map?
 7. **Migration risk** — If the Theory Map changes later, can this API evolve without forcing the repository to preserve a known-wrong ontology?
+8. **Effective-analysis impact** — If the API claims analysis, calculation, or
+   computational advantage, what are its symbolic/numerical mode, certificates,
+   error/failure semantics, baseline, units, and cost boundary?
 
 For a purely mechanical change, the answer may be one sentence: “No theory position changes; this preserves the existing semantic contract.”
 
@@ -536,6 +599,9 @@ The next high-value questions are therefore:
 8. can the frozen PCR3BP return--partition--holonomy contract make those
    obstruction coordinates presentation-covariant under its two gate systems,
    or does the proposed classification language remain presentation-relative?
+9. across one exact discrete, one independently checkable continuous, and one
+   nonintegrable/singular red-team process, which parts of the Effective
+   Analysis Principle survive without forcing a single universal calculus?
 
 These are research questions, not a backlog of API classes to create.
 
@@ -545,6 +611,6 @@ These are research questions, not a backlog of API classes to create.
 
 The current compact statement is:
 
-> **Process Geometry studies how process histories are generated, distinguished, semantically compressed, presented, and—when justified—objectified into new compositional ranks, together with the topological, complexity, and analytic structures induced within and between those ranks.**
+> **Process Geometry studies how process histories are generated, distinguished, semantically compressed, presented, and—when justified—objectified into new compositional ranks, together with the topological, complexity, and analytic structures induced within and between those ranks; when analysis is claimed, the induced language must remain effectively calculable, certifiable, and cost-auditable.**
 
 This sentence is a working research orientation. Its purpose is to keep engineering choices legible inside the larger mathematical program while leaving the mathematics free to improve.

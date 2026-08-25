@@ -10,7 +10,8 @@ The project does not assume that a process arrives with a preferred coordinate s
 4. how that structure can be materialized as an economical **Presentation**;
 5. what analysis becomes natural once a successful presentation is found.
 
-The current research foundation has two complementary axes:
+The current research foundation has two complementary axes, governed by a
+cross-cutting **Effective Analysis Principle**:
 
 ```text
 horizontal:
@@ -30,6 +31,15 @@ vertical:
 
 The vertical axis is constrained by a strong semantic requirement: every legal higher-rank composition must admit a coherent interpretation back into lower-rank process semantics. Where topology or analysis exists, stronger continuity and analytic-closure questions can be asked across ranks.
 
+The cross-cutting requirement is equally important: when a presentation is
+claimed to support analysis, it must expose an effective symbolic and/or
+numerical calculation path, with certificates, error or failure semantics, and
+task-relative cost accounting.  This is not a claim that every process carries
+a differential calculus.  A finite or purely semantic presentation may stop
+earlier, but an abstract differential or integral object alone does not satisfy
+the project's analysis standard.  See
+[`docs/65-effective-analysis-principle.md`](docs/65-effective-analysis-principle.md).
+
 AEG remains the first major model organism for this program because the arithmetic/hyperoperation tower naturally exhibits objectification and rank raising while also supporting function theory and analysis. The stronger conjecture that arithmetic-generated geometries provide universal or standard models is **not** assumed by the package.
 
 ## Status
@@ -38,7 +48,7 @@ Current release: **`process-geometry==0.0.4`**, a pre-alpha research preview.
 
 Historical releases `0.0.1` and `0.0.2` were published on PyPI under the distribution name **`aeg-shakespeare`**. Starting with `0.0.3`, the distribution identity is **`process-geometry`**. Starting with `0.0.4`, the canonical Python import namespace is **`process_geometry`**.
 
-The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not covered by backward-compatibility guarantees. Exact certificates, explicit failure modes, conceptual layer separation, and research traceability take priority over interface stability during this phase.
+The package is intended to be installable and useful as an experimental mathematical toolkit, but `0.0.x` APIs are not covered by backward-compatibility guarantees. Exact certificates, explicit numerical failure/error semantics where numerical behavior is claimed, conceptual layer separation, task-relative cost accounting, and research traceability take priority over interface stability during this phase.
 
 See [`docs/47-release-0.0.4.md`](docs/47-release-0.0.4.md) for the current release contract, [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) for research-to-API promotion rules, and [`CHANGELOG.md`](CHANGELOG.md) for release summaries.
 
@@ -131,6 +141,12 @@ What analytic or geometric language a successful presentation **supports**.
 - `analysis.algebraic` — algebraic quotient profiles and Weierstrass calibration;
 - `analysis.abelian` — lifted histories, Abelian integrals, cycle systems, periods, and normalized history quotients.
 
+Analysis is an operational claim, not a decorative final layer.  Each concrete
+analysis family should state its function/observable language, operator action,
+closure or controlled-extension rule, evaluator, certificates, and the domain
+of any numerical guarantee.  The current families satisfy different local
+parts of that contract; they do not establish one universal process calculus.
+
 A representative import therefore looks like:
 
 ```python
@@ -175,6 +191,13 @@ Across ranks, semantic compression may objectify a stable lower-rank process int
 
 This gives Process Geometry both a horizontal and a vertical structure: geometry of distinctions within a process level, and geometry of objectification and semantic interpretation across process levels.
 
+Effective analysis is not a third ontology axis.  It is the admissibility
+condition that prevents either axis from winning abstraction at the cost of
+calculation: quotienting must not erase task-visible computational payload, and
+rank raising must not count abbreviation as analytic progress unless the new
+language remains executable, certifiable, and economical after lowering costs
+are charged.
+
 See:
 
 - [`docs/42-process-geometry-from-distinguishability.md`](docs/42-process-geometry-from-distinguishability.md)
@@ -183,6 +206,7 @@ See:
 - [`docs/45-lineage-objectification-and-analytic-closure.md`](docs/45-lineage-objectification-and-analytic-closure.md)
 - [`docs/48-foundation-naming-audit.md`](docs/48-foundation-naming-audit.md)
 - [`docs/64-first-principles-and-api-boundary-audit.md`](docs/64-first-principles-and-api-boundary-audit.md)
+- [`docs/65-effective-analysis-principle.md`](docs/65-effective-analysis-principle.md)
 
 The naming audit is intentionally conservative: it reserves strong theory words such as **task quotient**, **jet**, **objectification**, **process rank**, and **rank lowering** until the corresponding semantics are actually implemented.
 
@@ -235,7 +259,7 @@ process-first reconstruction:
 
 The canonical pendulum calibration therefore begins from constrained position/velocity dynamics rather than from `theta`, `sin(theta)`, or a preselected elliptic function. Likewise, the A/M layer begins from **Addition and Multiplication** and their finite/noncommutative process relations before logarithms or familiar harmonic-analysis names are introduced.
 
-A substantial test in `tests/classical/` or `tests/research/` is expected to be a complete mathematical vignette: question, primitive data, classical lineage, Process Geometry reconstruction, calibration statement, proof map, claim boundary, and bibliographic references.
+A substantial test in `tests/classical/` or `tests/research/` is expected to be a complete mathematical vignette: question, primitive data, classical lineage, Process Geometry reconstruction, calibration statement, proof map, claim boundary, and bibliographic references.  If it claims a new analysis language or computational advantage, it must also state the symbolic/numerical baseline, applicable effective-analysis gates, units and tolerances, failure semantics, and cost boundary.
 
 See:
 

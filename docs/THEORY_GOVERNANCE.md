@@ -27,9 +27,9 @@ A theory may run far ahead of implementation. Implementation, especially Public 
 
 ---
 
-## 1. Six standing principles
+## 1. Seven standing principles
 
-Theory-map review is governed by six rules.
+Theory-map review is governed by seven rules.
 
 ### G1 — Free proposal, conservative promotion
 
@@ -64,6 +64,18 @@ A theory record must state what observation, counterexample, degeneration, or in
 Promotion is justified when a theory removes accidental distinctions, replaces several local explanations by a smaller structural account, or exposes a reusable obstruction/completion principle.
 
 A theory that mainly enlarges the vocabulary is presumed immature.
+
+### G7 — Analysis claims must remain effectively calculable
+
+Process Geometry must not gain generality by abandoning the operational
+strength of calculus.  When a node or edge claims an analysis language, it must
+state how symbolic operations and/or numerical evaluation are actually
+performed, certified, bounded, and costed.
+
+This rule is conditional rather than universal.  A discrete semantic quotient
+may legitimately make no differential claim.  An abstract differential,
+integral, variational, or closure object does not by itself justify the words
+`analysis`, `computable`, `stable`, or `efficient`.
 
 ---
 
@@ -125,6 +137,8 @@ A sketch may become a precise conjecture only when it states:
 5. preserved information or invariants;
 6. forgotten information;
 7. at least one kill condition.
+8. if analysis or computational advantage is claimed, the applicable symbolic,
+   numerical, certification, unit, and cost contract.
 
 ### T1 -> T2: calibration gate
 
@@ -138,6 +152,16 @@ The useful heuristic is:
 > **One example creates a conjecture. Two examples create a pattern. Positive evidence plus a boundary creates structure.**
 
 Several parameter choices inside one solver ontology do not count as independent evidence.
+
+For an effective-analysis claim, the calibration gate is also claim-relative:
+
+- symbolic claims require exact relations, closure/controlled-extension
+  evidence, or independently checkable residuals;
+- numerical claims require a stated domain, scale-aware error or convergence
+  evidence, and a failure case;
+- efficiency claims require a declared workload, baseline, and accounting for
+  discovery/compilation, storage, dictionary, residual, and decoding costs;
+- covariance or rank-closure claims require a transport/round-trip red team.
 
 ### T2 -> T3: abstraction gate
 
@@ -201,6 +225,14 @@ Open obligations:
 Kill conditions:
 Promotion criteria:
 Code/API status:
+
+Effective-analysis contract, if claimed:
+  symbolic mode / closure:
+  numerical mode / error and failure semantics:
+  units / ruler:
+  certificates:
+  baseline / cost boundary:
+  lift / lowering compatibility:
 ```
 
 A node that cannot distinguish theorem, conjecture, and interpretation is not ready for stable-map promotion.
@@ -237,6 +269,12 @@ Obstruction to globalization:
 Evidence:
 Failure cases:
 Kill conditions:
+
+Effective-analysis transport, if claimed:
+Symbolic evaluator / certificate:
+Numerical evaluator / error semantics:
+Unit / scale transport:
+Cost transport:
 ```
 
 In particular, a map arrow must not silently identify the following distinct situations:
@@ -267,6 +305,10 @@ The following words are **controlled vocabulary** in foundational theory and pro
 | `minimal` | minimal under which preorder, cost, dimension, information criterion, or universal property? |
 | `complete` | complete for which task/semantics/category of inputs? |
 | `fundamental` | a role earned by dependencies and compression of the map, not rhetorical importance |
+| `computable` | an algorithm and quantified input domain; distinguish decidable, executable, and tractable |
+| `exact` | the equality/semantics and arithmetic domain in which exactness holds |
+| `stable` | a perturbation/error model, scale, domain, and bound or convergence evidence |
+| `efficient` | a declared baseline, workload, cost model, and asymptotic or measured scope |
 
 Preferred forms include:
 
@@ -363,6 +405,14 @@ Useful kill conditions include:
 - a degeneration fails to land in the proposed boundary theory;
 - an allegedly minimal representation is dominated by a competing adequate representation;
 - a local construction cannot be globalized and the theory has no place to record the obstruction.
+- a claimed symbolic language is not closed and has no controlled-extension
+  rule;
+- a claimed numerical calculus is unstable, branch-ambiguous, or
+  nonreproducible on its declared domain;
+- an alleged computational gain disappears when compilation, storage,
+  dictionary, residual, or lowering costs are charged;
+- quotienting or lowering erases payload required by a declared future
+  calculation.
 
 Red-team work is allowed to strengthen a theory by narrowing it. A failed universal claim may become a valuable local theorem.
 
@@ -379,6 +429,11 @@ Theory and software use asymmetric promotion rules.
 | **T2** | may justify `process_geometry.experimental` if the software contract is independently useful |
 | **T3** | may justify reusable abstractions; Public API still requires the independent gates in `GOVERNANCE.md` |
 | **T4** | may shape package ontology and long-lived vocabulary, subject to ordinary API/release governance |
+
+Effective-analysis evidence does not bypass this table.  A powerful solver in
+one model organism can remain T1/T2 and research-local; conversely, a stable
+record/container API must not inherit calculation claims its implementation
+does not make.
 
 Two prohibitions follow:
 
@@ -430,6 +485,9 @@ A PR that materially changes a T1–T4 theory node or edge should include a **Th
 6. What is the strongest controlled word used, and what justifies it?
 7. What negative control or kill condition protects the claim?
 8. Does this create pressure on Experimental/Public API? If so, why is the software response not stronger than the theory evidence?
+9. If analysis, computation, stability, or efficiency is claimed, which
+   Effective Analysis gates apply and where are the executable evidence,
+   baseline, units, error/failure semantics, and cost boundary recorded?
 
 Purely local research may answer:
 
@@ -477,6 +535,9 @@ Use the following artifacts for theory governance:
 - [`THEORY_MAP.md`](THEORY_MAP.md) — compact current map;
 - this file — promotion and review policy;
 - [`THEORY_RECORD_TEMPLATE.md`](THEORY_RECORD_TEMPLATE.md) — node/edge record template;
+- [`65-effective-analysis-principle.md`](65-effective-analysis-principle.md) —
+  cross-cutting research and engineering contract for symbolic/numerical
+  analysis claims;
 - research notes / Sonnets — unconstrained exploration and detailed evidence;
 - `GOVERNANCE.md` — theory-to-software/API promotion;
 - PR **Theory Map Change** section — auditable map mutations.
@@ -499,4 +560,4 @@ Most ideas should stop before the end of this chain.
 
 If only one paragraph is retained, use this one:
 
-> **Explore freely; promote conservatively. Treat theory as a graph of auditable nodes and edges. Every stable claim states its maturity, scope, equivalence, preserved and forgotten information, and falsification conditions. Strong words create proof obligations. New ontology must be forced by repeated distinctions. Stable theory should compress the map. Software may trail theory, but must not run ahead of it.**
+> **Explore freely; promote conservatively. Treat theory as a graph of auditable nodes and edges. Every stable claim states its maturity, scope, equivalence, preserved and forgotten information, and falsification conditions. Strong words create proof obligations. New ontology must be forced by repeated distinctions. Stable theory should compress the map. Analysis claims must expose effective symbolic/numerical evaluation, certificates, failure semantics, and cost boundaries. Software may trail theory, but must not run ahead of it.**

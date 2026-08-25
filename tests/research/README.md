@@ -15,10 +15,17 @@ Bibliographic information must be sufficient for the classical mathematics and h
 
 A research vignette may be valuable as a red team, degeneration, comparison, or pedagogical anchor even when its Theory Map relation is `unchanged`.
 
+If it claims a new analysis language, numerical method, stability property, or
+computational advantage, it must identify the claim mode and audit symbolic
+closure, numerical domain/error/failure semantics, baseline, units, cost, and
+lift/quotient/lowering compatibility as applicable.  `Not applicable` is
+acceptable when justified; `not measured` does not support a positive claim.
+
 See:
 
 - `docs/VIGNETTES.md` — problem-oriented retrieval index;
 - `docs/VIGNETTE_CONTRACT.md` — standalone, executable, and retrieval completeness;
+- `docs/65-effective-analysis-principle.md` — symbolic/numerical and cost audit for analysis-bearing claims;
 - `docs/09-literate-programming-and-mathematical-lineage.md`;
 - `docs/11-references-and-test-essays.md`;
 - `docs/12-test-essay-template.py.txt`;

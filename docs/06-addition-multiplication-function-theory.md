@@ -253,7 +253,24 @@ The long-term architecture is therefore closer to
 
 with closure, task sufficiency, history geometry, and presentation cost deciding which language is useful for a given process.
 
-## 9. Next tests
+## 9. Effective-analysis ledger
+
+The A/M branch is the first concrete model organism for the repository's
+Effective Analysis Principle, but its evidence is deliberately local.
+
+| Gate | Current evidence | Boundary |
+| --- | --- | --- |
+| Semantic adequacy | literal A/M histories remain separate from their symbolic action | no claim that A/M is task-optimal for an arbitrary process |
+| Symbolic effectiveness | finite relation, commutator, PBW, power-weight action, resonant primitive residuals, finite modules | declared modules are verified; low-cost modules are not yet discovered generically |
+| Numerical effectiveness | explicit ordered path-flow formula is evaluable | no general stability, conditioning, adaptive integration, or error-bound contract |
+| Computational economy | small reusable action tables motivate the language | no cross-domain workload benchmark proving a net advantage after discovery/storage costs |
+| Certified transport/closure | the discrete semidirect law and infinitesimal bracket align | no generic cross-rank analytic-closure comparison or numerical lowering theorem |
+
+Accordingly, the public `analysis.am` namespace makes qualified concrete
+claims.  It is not evidence for a generic process `Calculus`, a universal
+computable presentation, or Arithmetic Geometric Universality.
+
+## 10. Next tests
 
 The next calibration sequence should separate three questions:
 

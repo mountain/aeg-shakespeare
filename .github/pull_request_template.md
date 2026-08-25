@@ -16,7 +16,8 @@
 
 <!--
 Required when this PR materially changes a T1-T4 theory node or edge.
-See docs/THEORY_GOVERNANCE.md and docs/THEORY_RECORD_TEMPLATE.md.
+See docs/THEORY_GOVERNANCE.md, docs/THEORY_RECORD_TEMPLATE.md, and
+docs/65-effective-analysis-principle.md.
 
 For local research that does not modify the stable map, this may be:
 "Theory Map Change: none; this is T0/T1 exploration and does not modify the stable map."
@@ -30,6 +31,7 @@ For a material map change, answer briefly:
 6. Controlled vocabulary — strongest term used (canonical/universal/forced/minimal/...) and its mathematical meaning?
 7. Falsification — negative control, degeneration, adversarial case, or kill condition?
 8. Software pressure — does this justify Experimental/Public API pressure, and why is software not ahead of theory?
+9. Effective analysis — if analysis/computation/stability/efficiency is claimed, which gates apply and where are evaluator, certificates, units, error/failure semantics, baseline, and cost boundary recorded?
 
 Mechanical PRs may write "Theory Map Change: not applicable."
 -->
@@ -53,6 +55,24 @@ For a material API change, answer briefly:
 5. Evidence — independent domains, certificates, red teams?
 6. Map effect — support / refine / split / connect / contradict / merge / deprecate / unchanged?
 7. Migration risk — what if the theory changes later?
+8. Effective-analysis impact — if applicable, what are the symbolic/numerical mode, certificates, error/failure semantics, baseline, units, and cost boundary?
+-->
+
+## Effective Analysis
+
+<!--
+Required when this PR claims a new analysis language, numerical method,
+stability property, or computational advantage.  Otherwise write "not
+applicable".
+
+- Claim mode: exact-symbolic / certified-approximate / numerical / search-only / record-only
+- Function/observable language and operators:
+- Closure or controlled extension:
+- Evaluator and certificates:
+- Domain, units/ruler, tolerance/error, and failure semantics:
+- Conventional or competing baseline:
+- Workload and cost boundary, including compilation/storage/decoder cost:
+- Lift/quotient/lowering compatibility:
 -->
 
 ## Validation
