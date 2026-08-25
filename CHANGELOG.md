@@ -13,8 +13,9 @@
   widening the public API.
 - **Research:** advances moving/stochastic observer covariance, pendulum and
   task-resource calibrations, thermodynamic objectification, PCR3BP, Lonely
-  Runner, and the new (S^6) source-verification Sonnet while retaining each
-  line's explicit claim boundary.
+  Runner, the new \(S^6\) source-verification Sonnet, and an exact local-field
+  projective-process calibration while retaining each line's explicit claim
+  boundary.
 - **Documentation and hygiene:** adds role- and status-based research indexes,
   freezes legacy duplicate chronology prefixes, standardizes Huffman spelling,
   and makes future documentation/Sonnet indexing a CI-checked obligation.
@@ -60,6 +61,15 @@ before the next release snapshot.
   rank-four integral shadow; source reproduction, strict equivariance, oracle
   firewalls, stage gates, and negative-result conditions are frozen before
   implementation, with no Theory Map or API promotion;
+- opens the local-field projective-process Sonnet with seven exact finite
+  certificates: one fixed rational history under Archimedean and \(p\)-adic
+  rulers, nested residue distinguishability, A/M valuation covariance,
+  affine/inversion homogeneous action, right-reciprocal continued-fraction
+  lowering, Möbius denominator transport, and a two-cost digit-section
+  canonicalization defect; explicitly keeps the boundary refinement tree
+  distinct from the full Bruhat--Tits tree, leaves \(p\)-adic
+  continued-fraction algorithms unselected, and proposes no Theory Map or API
+  promotion;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

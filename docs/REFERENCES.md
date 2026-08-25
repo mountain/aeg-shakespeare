@@ -90,6 +90,37 @@ The repository is public-domain software; scholarly attribution remains mandator
 
 **[Gray-2015]** Jeremy Gray, *The Real and the Complex: A History of Analysis in the 19th Century*, Springer, 2015. See the treatment of elliptic functions, Riemann surfaces, and the algebraic/analytic interaction.
 
+## Local fields, projective dynamics, and continued fractions
+
+**[Series-1985]** Caroline Series, “The modular surface and continued
+fractions,” *Journal of the London Mathematical Society* s2-31(1) (1985),
+69–80. DOI: 10.1112/jlms/s2-31.1.69. Gives the classical symbolic coding
+relating regular continued fractions and geodesic flow on the modular surface.
+
+**[Bruhat-Tits-1972]** François Bruhat and Jacques Tits, “Groupes réductifs sur
+un corps local,” *Publications Mathématiques de l'IHÉS* 41 (1972), 5–251.
+DOI: 10.1007/BF02715544. Foundational source for the buildings attached to
+reductive groups over non-Archimedean local fields.
+
+**[Serre-Trees-1980]** Jean-Pierre Serre, *Trees*, translated by John
+Stillwell, Springer, 1980. See Chapter II for groups acting on trees and the
+tree associated with \(PGL_2\) over a discretely valued field.
+
+**[Hirsh-Washington-2011]** Jordan Hirsh and Lawrence C. Washington,
+“\(p\)-adic continued fractions,” *Ramanujan Journal* 25 (2011), 389–403.
+DOI: 10.1007/s11139-010-9266-x. Studies Schneider-type expansions,
+termination behavior, and a \(p\)-adic analogue of Khinchin's theorem.
+
+**[Wang-Deng-2023]** Zhaonan Wang and Yingpu Deng, “Convergence, Finiteness and
+Periodicity of Several New Algorithms of \(p\)-adic Continued Fractions,”
+arXiv:2309.05601. Useful evidence that algorithm choice, termination,
+convergence, and periodicity must remain separate claims.
+
+**[Romeo-2024]** Giuliano Romeo, “Real convergence and periodicity of
+\(p\)-adic continued fractions,” arXiv:2410.09215. Records the continuing
+difficulty of a \(p\)-adic analogue of Lagrange periodicity and analyzes
+Browkin-type expansions.
+
 ## Automatic differentiation and checkpointing
 
 **[Griewank-Walther-2000]** Andreas Griewank and Andrea Walther, “Algorithm 799: Revolve: An Implementation of Checkpointing for the Reverse or Adjoint Mode of Computational Differentiation,” *ACM Transactions on Mathematical Software* 26(1) (2000), 19–45. DOI: `10.1145/347837.347846`. Primary source for the provably optimal serial binomial checkpointing schedule and its runtime controller.\n\n**[Griewank-Walther-2008]** Andreas Griewank and Andrea Walther, *Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation*, 2nd ed., SIAM, 2008. DOI: `10.1137/1.9780898717761`. Classical reference for reverse accumulation, checkpointing, and time-memory recomputation tradeoffs.
