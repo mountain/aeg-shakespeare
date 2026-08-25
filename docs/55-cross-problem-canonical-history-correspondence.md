@@ -1,11 +1,11 @@
-# Canonicalization and Hauffman history geometry across heterogeneous problems
+# Canonicalization and Huffman history geometry across heterogeneous problems
 
 **Status:** T0 cross-problem synthesis backed by exact research-local tests; no
 Theory Map or API promotion.
 
 **Subsequent correction:** `docs/56-am-universal-history-recalibration.md`
 retains the quotient-carrier split below but rejects using that split to
-separate canonicalization from Hauffman/Bellman optimization on a common
+separate canonicalization from Huffman/Bellman optimization on a common
 universal history lift.
 
 ## 1. Question
@@ -34,7 +34,7 @@ Each problem is inspected in the same order:
 4. invisible but potentially compositional history residual (R_T);
 5. additive or declared history cost (c);
 6. stopping/cutset semantics, if the task actually has one;
-7. only then, Hauffman/Bellman optimization.
+7. only then, Huffman/Bellman optimization.
 
 This order implements the established constraint
 
@@ -43,7 +43,7 @@ canonicalization
   -> canonical history/path
   -> ren / res / comp
   -> completion / objectification
-  -> Hauffman planning.
+  -> Huffman planning.
 ```
 
 It expressly forbids beginning with a convenient wall tree or fixed Lie
@@ -111,14 +111,14 @@ for the endpoint modulo periods, they are quotiented; if it asks for winding,
 monodromy, or accumulated action, they must survive.
 
 The natural global carrier is therefore a covering space with a deck group or
-groupoid, not a terminal decision tree.  A Hauffman tree can be introduced only
+groupoid, not a terminal decision tree.  A Huffman tree can be introduced only
 after declaring a finite observation/stopping task on this carrier.  Treating
 the tree as primary would erase precisely the global history that Abelian
 continuation was built to retain.
 
 ## 6. Comparative result
 
-| Problem | Canonical quotient | History carrier | Residual | Cost | Hauffman role |
+| Problem | Canonical quotient | History carrier | Residual | Cost | Huffman role |
 | --- | --- | --- | --- | --- | --- |
 | Pendulum | ((U,Y)) on (C_E) | lifted orbit/period cover | branch and winding | (int dU/Y) | costed stopping after task choice |
 | Hard particles | argmin strata of ((\tau_i)) | first-hit decision tree | tie set | first-hit time/query cost | native |
@@ -126,7 +126,7 @@ continuation was built to retain.
 | Abelian periods | normalized coordinate mod (Lambda) | cover/deck groupoid | ((m,n)\in\mathbb Z^{2g}) | differential integral | task-dependent only |
 
 All four cases support a canonicalization/history correspondence.  They reject
-the stronger claim that the correspondence always produces a Hauffman tree.
+the stronger claim that the correspondence always produces a Huffman tree.
 
 ## 7. The extracted essential structure
 
@@ -154,7 +154,7 @@ This gives the sharper relationship:
 
 \[
 \boxed{
-\text{Hauffman geometry optimizes a stopping section of a canonicalized
+\text{Huffman geometry optimizes a stopping section of a canonicalized
 history unfolding; it is not canonicalization itself.}
 }
 \]

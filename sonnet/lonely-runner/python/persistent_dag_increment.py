@@ -1,7 +1,7 @@
 """Phase 8D: attach objectified completion decoders to the frozen center-2 tree.
 
 The construction is intentionally conservative.  It reuses the exact center-2
-68-label persistent Hauffman tree unchanged, treats the two Phase-8B history
+68-label persistent Huffman tree unchanged, treats the two Phase-8B history
 reindex cases as decoder/provenance updates with zero new wall queries, and
 replaces only the six genuine completion leaves by their Phase-8C.2 local
 adaptive decoders.
@@ -12,7 +12,7 @@ subgraphs is assumed, so the resulting node count is an explicit auditable
 construction rather than an optimistic graph-minimization claim.
 
 Two execution-cost diagnostics are kept deliberately separate.  The historical
-55-input distribution from the center-2 Hauffman calibration happens not to hit
+55-input distribution from the center-2 Huffman calibration happens not to hit
 any refinement-sensitive parent and is therefore retained only as a *blind
 control*.  A second conditional workload measures the exact extra queries across
 all 298 locally reopened center-3 children; it is structural and does not pretend

@@ -207,7 +207,7 @@ This is a much stronger form of compression than a smaller static state count.  
 
 That is very close to the intended Shakespeare/AEG idea of history residual becoming a stable object.
 
-## 7. Consequence for the Hauffman structure: use a persistent DAG
+## 7. Consequence for the Huffman structure: use a persistent DAG
 
 If 841 of 849 old task nodes survive unchanged, rebuilding an entirely new decision tree at center 3 wastes almost all stable history structure.
 
@@ -217,7 +217,7 @@ The natural next representation is therefore a **persistent decision DAG**:
 - only eight old semantic states acquire refinement edges;
 - only the six splitting states branch semantically;
 - two states are retargeted to a new common witness;
-- Hauffman/history cost measures the incremental space/time growth of the shared DAG.
+- Huffman/history cost measures the incremental space/time growth of the shared DAG.
 
 This separates three quantities that a fresh tree conflates:
 
@@ -247,7 +247,7 @@ old task-safe DAG
 
 The full center-3 census remains the frozen oracle/red team, not the algorithm.
 
-If this local update reproduces the same 75 final witness semantics and Hauffman decision behavior without visiting the other 71,943 center-3 full states, then contact-depth refinement has become genuinely incremental.
+If this local update reproduces the same 75 final witness semantics and Huffman decision behavior without visiting the other 71,943 center-3 full states, then contact-depth refinement has become genuinely incremental.
 
 ## Claim boundary
 

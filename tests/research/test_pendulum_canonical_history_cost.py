@@ -4,7 +4,7 @@ This essay is the first narrow bridge between two existing research lines:
 
 * pendulum canonicalization produces the observable carrier
   ``Y**2 = 2*(E-U)*(1-U**2)`` with marked clock form ``omega=dU/Y``;
-* Hauffman history geometry first quotients histories by task semantics and
+* Huffman history geometry first quotients histories by task semantics and
   then optimizes a stopping tree/DAG with declared edge costs.
 
 The bridge tested here is deliberately weaker than an observer/HJB theorem.

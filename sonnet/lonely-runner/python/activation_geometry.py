@@ -3,7 +3,7 @@
 A new wall can always be evaluated from primitive speed ratios, but querying it
 very early may split many old persistent contexts that do not need the
 distinction.  This script measures a stricter notion relative to the frozen
-center-2 persistent Hauffman tree.
+center-2 persistent Huffman tree.
 
 At an old-tree node, a new wall has a *clean activation* when:
 

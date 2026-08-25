@@ -12,7 +12,7 @@ Primitive data
 --------------
 The program receives:
 
-- the frozen center-2 68-label persistent Hauffman tree;
+- the frozen center-2 68-label persistent Huffman tree;
 - the 849 exact center-2 persistent parents and their underlying realizable sign
   systems;
 - the seven new center-3 wall coordinates already frozen by Phase 8C;

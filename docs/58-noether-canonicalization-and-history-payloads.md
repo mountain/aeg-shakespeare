@@ -182,7 +182,7 @@ Noether charges identify symmetry-dual components but are not the cost itself.}
 3. The task map (\Phi_T) and scalarization (\lambda_T) are still supplied.
 4. A covariant dynamic-programming theory over mixed additive, max, group, and
    phase payloads has not been constructed.
-5. No discrete-to-continuous convergence theorem yet connects Hauffman trees,
+5. No discrete-to-continuous convergence theorem yet connects Huffman trees,
    Bellman/Hamilton-Jacobi equations, and stationary-action systems.
 6. The probes are exact calibrations, not a non-toy prediction or complexity
    improvement.

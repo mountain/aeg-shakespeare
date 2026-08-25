@@ -53,7 +53,7 @@ For each current atom:
 3. reject infeasible sign children immediately;
 4. stop when every atom at a node has the same canonical task.
 
-This is a lazy analogue of Hauffman placement: predicates are queried only when they are useful along the current history, and geometric completion is delayed until a query actually requires it.
+This is a lazy analogue of Huffman placement: predicates are queried only when they are useful along the current history, and geometric completion is delayed until a query actually requires it.
 
 ---
 
@@ -236,9 +236,9 @@ This is the runner-dimension analogue of the earlier distinction between canonic
 
 ---
 
-## 9. Relation to Hauffman/history geometry
+## 9. Relation to Huffman/history geometry
 
-The current tree is Hauffman-like in the sense that it allocates task distinctions adaptively along history, but it is **not** the exact lexicographic Hauffman optimum used in the small four-speed carrier.
+The current tree is Huffman-like in the sense that it allocates task distinctions adaptively along history, but it is **not** the exact lexicographic Huffman optimum used in the small four-speed carrier.
 
 That distinction should remain explicit.
 

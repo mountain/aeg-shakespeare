@@ -9,7 +9,7 @@
 Phase 8C.2 leaves six exact local completion decoders attached to six genuinely
 branching center-2 persistent states.  The remaining representation question is
 no longer whether the next layer is computable, but how much **new history and
-object structure** must be allocated if the existing center-2 Hauffman
+object structure** must be allocated if the existing center-2 Huffman
 representation is retained.
 
 The experiment therefore asks:
@@ -30,7 +30,7 @@ where 60 labels encode current first-witness semantics and eight additional
 terminal identities preserve exactly the states that the next contact layer can
 reopen.
 
-Under the frozen 55-integer-quadruple usage weights, its time-first Hauffman tree
+Under the frozen 55-integer-quadruple usage weights, its time-first Huffman tree
 has
 
 ```text
@@ -155,7 +155,7 @@ while
 
 \[
 \boxed{
-\text{global Hauffman reordering determines where that structure sits in history}.
+\text{global Huffman reordering determines where that structure sits in history}.
 }
 \]
 
@@ -165,7 +165,7 @@ node count of a fresh optimum.
 
 ## 6. Red team: the historical usage distribution is blind
 
-The original center-2 Hauffman optimization used 55 integer quadruples.  Replaying
+The original center-2 Huffman optimization used 55 integer quadruples.  Replaying
 those same 55 examples through the updated persistent representation gives
 
 ```text
@@ -233,7 +233,7 @@ The maximum extra completion depth is only
 
 These are conditional structural workloads, not global probabilities.
 
-## 8. Consequence for Hauffman cost
+## 8. Consequence for Huffman cost
 
 Phase 8D shows that at least two distributions must be distinguished:
 
@@ -308,7 +308,7 @@ The first target is to determine whether global reordering can recover the fresh
 center-3 `peak=72`, `worst=10` geometry while preserving the persistent local
 construction and its sparse update semantics.
 
-This is now a Hauffman placement problem, not a completion-discovery problem.
+This is now a Huffman placement problem, not a completion-discovery problem.
 
 ## 11. Claim boundary
 

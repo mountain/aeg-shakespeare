@@ -9,7 +9,7 @@ Fast regression:
 tests/research/test_lonely_runner_four_speed_pair_difference.py
 ```
 
-Full exact census / Hauffman comparison is intentionally opt-in:
+Full exact census / Huffman comparison is intentionally opt-in:
 
 ```text
 .github/workflows/sonnet-lonely-runner-pair-difference-census.yml
@@ -229,7 +229,7 @@ exact task-safe sign geometry                 849
 first-witness semantics                         60
 ```
 
-## 6. Hauffman/history geometry now produces a real Pareto frontier
+## 6. Huffman/history geometry now produces a real Pareto frontier
 
 Use only after freezing the complete center-2 geometry.  The usage distribution is
 
@@ -300,7 +300,7 @@ Its root is the native contact comparison
 
 This time-optimal point has peak frontier `72`, one state above the literal contact peak `71`, so it should **not** be described as simultaneous space/time dominance.
 
-### Balanced Hauffman Pareto point
+### Balanced Huffman Pareto point
 
 Force the first distinction to
 
@@ -382,7 +382,7 @@ contact center 0..m
     -> finite ratio label alphabet C_m
     -> consistent gain/sign graph on runner pairs
     -> task-relevant sign quotient
-    -> Hauffman decision DAG/tree
+    -> Huffman decision DAG/tree
     -> observer asks whether center m+1 refines any current task class
 ```
 
@@ -430,7 +430,7 @@ What Phase 7f establishes at bounded four-speed scale is the structural loop
 \to
 \text{task quotient}
 \to
-\text{space-time Hauffman Pareto frontier}.
+\text{space-time Huffman Pareto frontier}.
 }
 \]
 

@@ -290,7 +290,7 @@ The calibration does not yet establish:
    connection needed for resource transport;
 3. a generic rule for choosing task duals or preserving Pareto structure;
 4. treatment of nontrivial curvature/holonomy in the resource connection;
-5. continuous convergence from finite Hauffman trees to the covariant Bellman
+5. continuous convergence from finite Huffman trees to the covariant Bellman
    equation;
 6. a representation-invariant accounting law for learned/objectified
    primitives across changing workloads.

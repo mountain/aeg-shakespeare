@@ -125,7 +125,7 @@ PCR3BP, however, supplies no native action set and no declared optimization
 task.  What has been established is Bellman **state sufficiency**, not a
 Bellman policy or optimum.
 
-## 5. Huffman / Hauffman audit
+## 5. Huffman / Huffman audit
 
 The lifted histories certainly form a prefix tree, but a prefix tree is not yet
 a Huffman source.  Ordinary Huffman coding would require edge probabilities

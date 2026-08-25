@@ -1,4 +1,4 @@
-# Phase 7i — persistent Hauffman quotient: current-task minimality is not the right objective
+# Phase 7i — persistent Huffman quotient: current-task minimality is not the right objective
 
 **Status:** bounded four-speed representation result derived from the center-2/center-3 local refinement experiment; still Gate A.
 
@@ -50,9 +50,9 @@ instead of either extreme:
 
 The extra eight residual identities are not arbitrary provenance.  Each is exactly a state that the next contact layer can distinguish causally.
 
-## 3. Hauffman search says the future residual is free in this calibration
+## 3. Huffman search says the future residual is free in this calibration
 
-Re-run the exact center-2 Hauffman decision-tree search, but require leaves to be pure for the 68 persistent labels rather than merely the 60 current witness semantics.
+Re-run the exact center-2 Huffman decision-tree search, but require leaves to be pure for the 68 persistent labels rather than merely the 60 current witness semantics.
 
 Under the same 55-input usage distribution, the time-first optimum is unchanged:
 
@@ -109,7 +109,7 @@ Only the terminal object carried by a few leaves becomes slightly richer.
 
 ## 4. Why zero extra tree cost is possible
 
-The Hauffman tree already asks wall questions for other current task distinctions.  Those same paths happen to separate the eight refinement-sensitive parents from the stable states with which they share a current witness label.
+The Huffman tree already asks wall questions for other current task distinctions.  Those same paths happen to separate the eight refinement-sensitive parents from the stable states with which they share a current witness label.
 
 Thus the information required for future refinement is already present in the process history; the static 60-label quotient merely discards it at the leaf.
 
@@ -179,7 +179,7 @@ At center 2 we have a concrete calibration:
 - current-only label count: `60`;
 - persistent label count: `68`;
 - full sign-state count: `849`;
-- extra Hauffman tree cost from `60 -> 68`: **zero**;
+- extra Huffman tree cost from `60 -> 68`: **zero**;
 - next-layer full semantic census: `72,241` refined systems;
 - persistent local update: `298` refined systems.
 
@@ -213,7 +213,7 @@ A later discovery pass can search automatically for the smallest residual suffic
 
 The next useful experiment is no longer a larger static arrangement.
 
-Build the persistent center-2 -> center-3 DAG explicitly and measure **incremental** Hauffman geometry:
+Build the persistent center-2 -> center-3 DAG explicitly and measure **incremental** Huffman geometry:
 
 ```text
 new DAG nodes allocated
@@ -248,4 +248,4 @@ Its significance is methodological:
 \text{the representation that is optimal for a continuing process may deliberately retain a tiny, task-invisible residual.}
 }
 
-In this calibration that residual costs nothing in current Hauffman tree geometry and reduces the next semantic update from a 72,241-state census to a 298-state local refinement.
+In this calibration that residual costs nothing in current Huffman tree geometry and reduces the next semantic update from a 72,241-state census to a 298-state local refinement.

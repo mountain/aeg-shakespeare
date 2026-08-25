@@ -404,7 +404,7 @@ local completion pressure
 -> minimum process-generated completion
 -> task objectification
 -> controlled interleaving/reconvergence
--> Hauffman/history geometry
+-> Huffman/history geometry
 -> finite first-witness closure of the infinite contact tail
 ```
 
@@ -413,15 +413,15 @@ The canonicalization closure changes the order in which Sonnet should now be att
 ```text
 A/M/contact primitive calculus
 -> identify the representation/lift freedom
--> derive a local canonicalization without using the known completion/Hauffman oracle
+-> derive a local canonicalization without using the known completion/Huffman oracle
 -> derive the canonical observer/history evolution
 -> compute F_ren / F_res / F_comp on that canonical path
--> only then reuse completion, objectification, interleaving and Hauffman downstream.
+-> only then reuse completion, objectification, interleaving and Huffman downstream.
 ```
 
 The critical question is:
 
-> Are some of the walls/history distinctions previously managed by completion and Hauffman actually representation freedom that canonicalization should quotient first?
+> Are some of the walls/history distinctions previously managed by completion and Huffman actually representation freedom that canonicalization should quotient first?
 
 Existing Phase 8–10 Sonnet results are to be used as downstream truth data and red teams, not as inputs that define the new canonicalization.
 

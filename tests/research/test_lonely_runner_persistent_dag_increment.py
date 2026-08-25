@@ -1,11 +1,11 @@
-"""Sonnet 001 Phase 8D: increment a persistent Hauffman representation locally.
+"""Sonnet 001 Phase 8D: increment a persistent Huffman representation locally.
 
 Question
 --------
 After Phase 8C.2 has objectified all six completion residuals, how much new
 representation is actually required to absorb the center-3 contact layer?
 
-Can the frozen center-2 persistent Hauffman tree be reused unchanged, with new
+Can the frozen center-2 persistent Huffman tree be reused unchanged, with new
 decoder structure attached only below the six genuine completion leaves, rather
 than rebuilding a center-3 decision tree from the full 72,241-state geometry?
 
@@ -16,7 +16,7 @@ The program receives:
 - the exact center-2 849-state task quotient and its 68-label one-step persistent
   refinement labels;
 - the frozen 55-integer-quadruple usage distribution used by the center-2
-  Hauffman calibration;
+  Huffman calibration;
 - the exact Phase-8A/8B split `843 renormalizable / 0 resonant / 6 completion`;
 - the six Phase-8C.2 objectified local completion decoders.
 
@@ -37,7 +37,7 @@ interpretation**, not a claim made by either classical source.
 
 Shakespeare reconstruction
 ---------------------------
-First reconstruct the exact center-2 68-label persistent Hauffman tree.  Its
+First reconstruct the exact center-2 68-label persistent Huffman tree.  Its
 frozen time-first metrics are
 
     weighted depth = 135 on 55 historical inputs,
@@ -112,7 +112,7 @@ step.  Conversely, the `544/298` conditional workload is not a global expected
 cost; it is explicitly conditioned on the local children that were reopened.
 
 The experiment does not establish center-3 -> center-4 sparsity, a public
-persistent-DAG API, or a general scalar Hauffman action.
+persistent-DAG API, or a general scalar Huffman action.
 
 References
 ----------
@@ -185,7 +185,7 @@ def test_objectified_completion_decoders_give_sparse_persistent_dag_increment():
     assert result.updated_worst_depth == 12
     assert result.updated_widths == (1, 3, 3, 9, 27, 48, 63, 72, 75, 39, 18, 15, 3)
 
-    # The original 55-input Hauffman usage distribution is a blind control for
+    # The original 55-input Huffman usage distribution is a blind control for
     # this refinement step: none of those examples reaches an affected parent.
     assert result.training_completion_inputs == 0
     assert result.training_history_reindex_inputs == 0

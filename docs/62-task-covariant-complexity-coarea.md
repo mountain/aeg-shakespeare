@@ -199,7 +199,7 @@ This locates the two planning languages precisely:
 
 \[
 \boxed{
-\text{Bellman composes longitudinal transported costs; Hauffman arranges the
+\text{Bellman composes longitudinal transported costs; Huffman arranges the
 task-distinguishable stopping frontier.}
 }
 \]
@@ -311,7 +311,7 @@ The results support four conclusions that are stronger than formal elegance:
 1. **Policy correctness.** Values expressed in different local units cannot
    be added before transport; naive Bellman recursion can choose the wrong
    physical policy.
-2. **Exact Bellman/Hauffman bridge.** Expected stopping cost equals weighted
+2. **Exact Bellman/Huffman bridge.** Expected stopping cost equals weighted
    frontier volume on every finite costed task tree.
 3. **Task-relative space lower bounds.** Task-visible holonomy creates a
    provable minimum residual memory even when endpoint and local state agree.
@@ -367,7 +367,7 @@ continuous physical history with all of:
    memory--time volume.
 
 PCR3BP is a candidate carrier, but a controlled action/task must be declared
-before Bellman optimality or a Hauffman tree is meaningful.  The existing
+before Bellman optimality or a Huffman tree is meaningful.  The existing
 uncontrolled flow establishes state sufficiency and the word-only failure, not
 an optimization problem.
 

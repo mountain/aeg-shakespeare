@@ -1,4 +1,4 @@
-# Persistent Hauffman geometry and canonical decomposition — closure plan
+# Persistent Huffman geometry and canonical decomposition — closure plan
 
 **Status:** the four-runner contact-center refinement programme is closed through an exact infinite-tail certificate. Phase 8 closed center 2 -> 3; Phase 9 replayed the rules unchanged at center 3 -> 4; Phase 10 proves that every contact event at every center `n >= 5` is task-irrelevant to the resulting first-witness representation.  
 **Branch:** `research/canonical-observer-api`  

@@ -67,7 +67,7 @@ For the continuous line the native objects are:
 - exact multiplicative difference constraints;
 - a separately declared stopping task.
 
-Pair-ratio walls, decision trees, Hauffman histories, and task DAGs are derived
+Pair-ratio walls, decision trees, Huffman histories, and task DAGs are derived
 presentations.  They are not physical primitives.
 
 ### 2.2 Assumptions and forbidden substitutions
@@ -290,9 +290,9 @@ The second is not an `ObserverConnection`.  Sonnet therefore provides a useful
 negative calibration against the claim that every canonicalization induces a
 nontrivial observer motion.
 
-### 5.2 Hauffman and continuous planning boundaries
+### 5.2 Huffman and continuous planning boundaries
 
-The finite Hauffman objects are exact coding/decision geometries for a declared
+The finite Huffman objects are exact coding/decision geometries for a declared
 task distribution.  DAG reconvergence already shows that a real-tree carrier can
 forget structural sharing.  These results are finite H3 shadows, not entropy.
 
@@ -449,11 +449,13 @@ existing links and review provenance.  Authority is therefore explicit:
 Future notes must use a unique filename and state which prior claim they refine,
 supersede, or merely calibrate.
 
-The repository's local term `Hauffman` is preserved in historical filenames and
-metrics.  It must not silently inherit classical Huffman optimality: every use
-must state its alphabet, weights, allowed query arities, and lexicographic cost
-objective.  A later naming cleanup should either define the distinction formally
-or migrate the local term without rewriting historical evidence.
+The repository now uses the standard spelling `Huffman` throughout filenames,
+metrics, and executable symbols.  The spelling correction does not promote every
+local decision tree to classical Huffman optimality: uses outside the classical
+fixed-alphabet prefix-code setting must state their alphabet, weights, allowed
+query arities, admissible geometry, and optimization objective.  Historical
+numerical evidence is unchanged; only the erroneous spelling and corresponding
+internal identifiers were migrated.
 
 ## 8. Claim ledger
 

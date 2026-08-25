@@ -41,7 +41,7 @@ The compiler receives only:
 - `delta=1/5` and `u4/u1<8`;
 - the first-witness observer.
 
-It receives no `max_center`, no `contact_ratios(m)`, no old 21/26/29-wall target, no `19/11` hint, and no Hauffman tree.
+It receives no `max_center`, no `contact_ratios(m)`, no old 21/26/29-wall target, no `19/11` hint, and no Huffman tree.
 
 For each runner it keeps only the next lifted contact coefficient `alpha_i` as **compiler provenance**.  When two next events can exchange order,
 
@@ -167,7 +167,7 @@ canonical torus process
 
 So the static wall geometry is not a rival ontology to the canonical process.  It is a task-directed compilation generated from that process.
 
-Phase 11B2 then tests whether these 27 discovered coordinates can recover the old Hauffman execution advantage; see `32-canonical-global-compilation-recovers-hauffman-geometry.md`.
+Phase 11B2 then tests whether these 27 discovered coordinates can recover the old Huffman execution advantage; see `32-canonical-global-compilation-recovers-huffman-geometry.md`.
 
 ## Claim boundary
 

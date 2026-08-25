@@ -88,7 +88,7 @@ Boundary
 --------
 This is a bounded task-relative objectification result.  It does not prove that
 the resulting quotient is canonical for another task or a deeper contact layer,
-does not claim the adaptive decoder is a universal Hauffman optimum, and does not
+does not claim the adaptive decoder is a universal Huffman optimum, and does not
 promote a package-level `Completion` or `ResidualQuotient` API.  The decoder
 search optimizes the declared finite local decision grammar only.
 

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- standardizes the repository on the canonical `Huffman` spelling across
+  research notes, filenames, workflows, internal Python identifiers, and
+  opt-in environment variables; numerical results and research claims are
+  unchanged, and a repository-wide hygiene test prevents regression;
 - opens the stochastic feedback-trap first-passage Sonnet with a frozen
   dimension/task/oracle contract; the first executable gate proves exact Ito
   generator covariance for `w=u+u^3`, exposes the nonzero residual left by a
@@ -60,7 +64,7 @@
   conservation, and closes the affine deterministic phase before a separate
   stochastic first-passage continuation;
 - records PR #81's pendulum/cross-problem canonical-history bridge and the
-  separation of task quotienting from costed Hauffman/Bellman optimization;
+  separation of task quotienting from costed Huffman/Bellman optimization;
 - records PR #82's AM universal-history correction, dimensional/covariant
   Bellman and Fermat/Noether calibrations, and magnetic/Berry history payloads;
 - records PR #83's separation of the classical AD control from the exact

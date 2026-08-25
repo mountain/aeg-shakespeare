@@ -27,7 +27,7 @@ ObserverConnection
 CanonicalDecomposition.
 ```
 
-No generic `Completion`, `ResidualQuotient`, `ConstraintCell`, activation/reconvergence, persistent-DAG, or Hauffman-action API has been promoted.
+No generic `Completion`, `ResidualQuotient`, `ConstraintCell`, activation/reconvergence, persistent-DAG, or Huffman-action API has been promoted.
 
 ## 2. `ProcessDirection`
 

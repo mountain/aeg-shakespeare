@@ -39,7 +39,7 @@ minimum-redundancy construction minimizes expected prefix-code length once a
 finite symbol distribution is fixed [Huffman-1952].
 
 Neither source contains the Shakespeare/AEG interpretation tested here.  In
-particular, the relation between persistent Hauffman task states and
+particular, the relation between persistent Huffman task states and
 renormalization/observer transport/completion is explicitly a **Shakespeare
 interpretation** and must survive executable red teams before being promoted.
 

@@ -72,7 +72,7 @@ def test_full_sign_deletion_certificates_replay_through_independent_refiner() ->
 
 @pytest.mark.skipif(
     os.environ.get("AEG_RUN_LR_CANONICAL_GLOBAL_COMPILATION") != "1",
-    reason="opt-in exact 2,211-cell Hauffman dynamic program",
+    reason="opt-in exact 2,211-cell Huffman dynamic program",
 )
 def test_canonical_27_wall_tree_recovers_frozen_phase9d_execution_geometry() -> None:
     compilation = _load()

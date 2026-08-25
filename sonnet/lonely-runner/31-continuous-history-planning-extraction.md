@@ -1,7 +1,7 @@
-# Continuous history planning — extraction candidate from Hauffman geometry
+# Continuous history planning — extraction candidate from Huffman geometry
 
 **Status:** T0 research/extraction candidate; no Theory Map or API promotion.  
-**Origin:** the exact A/M contact/Hauffman line in Sonnet 001.  
+**Origin:** the exact A/M contact/Huffman line in Sonnet 001.
 **Scope:** continuousization of history geometry and planning semantics; not a new Lonely Runner result.
 
 ## 1. Why this note exists

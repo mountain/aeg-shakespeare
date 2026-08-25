@@ -26,7 +26,7 @@ used; only the observer/task changes.
 Partial-region singleton separators are used only to propose a basis.  Every
 minimum-coordinate claim is re-certified in the complete 33-coordinate sign
 grammar by task sufficiency plus one full-sign deletion witness per selected
-coordinate.  The optional Hauffman placement reuses the exact decision-tree
+coordinate.  The optional Huffman placement reuses the exact decision-tree
 objective from Phase 11B2.
 """
 
@@ -53,7 +53,7 @@ class ProjectionSummary:
 
 
 @dataclass(frozen=True)
-class CanonicalTaskHauffman:
+class CanonicalTaskHuffman:
     sign_cells: int
     tasks: int
     weighted_depth: int
@@ -75,7 +75,7 @@ class CanonicalTaskObjectificationResult:
     mode_only: ProjectionSummary
     removed_history_coordinates: tuple[lazy.Coordinate, ...]
     canonical_sign_cells: int
-    canonical_hauffman: CanonicalTaskHauffman | None
+    canonical_huffman: CanonicalTaskHuffman | None
 
 
 def full_certificate(task: lazy.Task) -> ProjectedTask:
@@ -214,10 +214,10 @@ def _canonical_sign_cells(
     return task_by_signature
 
 
-def _hauffman(
+def _huffman(
     coordinates: tuple[lazy.Coordinate, ...],
     task_by_signature,
-) -> CanonicalTaskHauffman:
+) -> CanonicalTaskHuffman:
     signatures = tuple(task_by_signature)
     task_values = sorted(set(task_by_signature.values()), key=repr)
     task_id = {task: index for index, task in enumerate(task_values)}
@@ -235,7 +235,7 @@ def _hauffman(
 
     assert sum(widths) == cost[1]
     assert tree.predicate is not None
-    return CanonicalTaskHauffman(
+    return CanonicalTaskHuffman(
         sign_cells=len(signatures),
         tasks=len(task_values),
         weighted_depth=cost[0],
@@ -251,7 +251,7 @@ def _hauffman(
 
 def analyze_task_objectification(
     *,
-    include_hauffman: bool = False,
+    include_huffman: bool = False,
 ) -> CanonicalTaskObjectificationResult:
     compiler = lazy.analyze_lazy_compiler()
     terminals = globalc._terminal_regions()
@@ -302,8 +302,8 @@ def analyze_task_objectification(
         canonical.minimum_coordinates,
     )
     huffman = (
-        _hauffman(canonical.minimum_coordinates, task_by_signature)
-        if include_hauffman
+        _huffman(canonical.minimum_coordinates, task_by_signature)
+        if include_huffman
         else None
     )
 
@@ -315,12 +315,12 @@ def analyze_task_objectification(
         mode_only=mode,
         removed_history_coordinates=removed,
         canonical_sign_cells=len(task_by_signature),
-        canonical_hauffman=huffman,
+        canonical_huffman=huffman,
     )
 
 
 def main() -> None:
-    result = analyze_task_objectification(include_hauffman=True)
+    result = analyze_task_objectification(include_huffman=True)
     print("Sonnet 001 canonical task objectification")
     print(f"  generated coordinates: {result.generated_coordinates}")
     print(
@@ -347,7 +347,7 @@ def main() -> None:
     for coordinate in result.removed_history_coordinates:
         print("   ", coordinate)
 
-    huffman = result.canonical_hauffman
+    huffman = result.canonical_huffman
     assert huffman is not None
     print(
         "  canonical sign/tasks:  "
