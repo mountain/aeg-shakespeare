@@ -224,6 +224,22 @@ The index is deliberately conservative: an entry records where to start reading;
 
 ---
 
+## Checkpointed adjoints for nonlinear dynamics
+
+**Problem / domains:** reverse/adjoint differentiation of a time-stepped nonlinear ODE under finite checkpoint memory.
+
+**Classical search terms:** adjoint sensitivity, reverse-mode automatic differentiation, checkpointing, recomputation, binomial checkpointing, Revolve, time-space tradeoff.
+
+**Process Geometry themes:** smooth chart covariance, cotangent transport, lifted execution history, task-sufficient checkpoint state, invariant resource cost, Bellman optimization.
+
+**Start here:** `tests/research/test_am_checkpoint_differential_quotient.py` — A/M-first derivation of value, first variation, cotangent pullback, and task-local germs; then a fixed-segmentation pullback-cache Bellman gate with an explicit whole-chain dominance red team.
+
+**Classical baseline:** `tests/research/test_checkpointed_adjoint_canonicalization.py` — smooth-chart covariance and binomial Revolve counts; compatibility evidence only.
+
+**Theory role:** first research-local V5 analytic-closure pressure connecting A/M history variation, differential task germs, objectified pullbacks, and resource-bounded history. The static local Bellman table is not a global Pareto frontier: for the frozen terminal-only task, a two-scalar whole-chain pullback dominates all segmentwise caches. It is not a complete Revolve controller, a Huffman theorem, a generic checkpoint API, or evidence that A/M universality has been established.
+
+---
+
 ## Index maintenance rule
 
 When a substantial new vignette family is added, update this index if a future reader could plausibly search for the problem independently of the repository's current development chronology.
