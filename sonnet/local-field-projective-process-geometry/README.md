@@ -1,9 +1,10 @@
 # Local-field projective process geometry
 
 **Status:** T0 research-local calibration; Phase 5 finite projective-cylinder,
-discrete-shell, and source-coding gate complete; no infinite Bruhat--Tits
-completion, selector-policy Bellman optimum, preferred \(p\)-adic continued
-fraction, entropy-rate theorem, or Experimental/Public API proposal.
+discrete-shell, and source-coding gate complete; Phase 6 selector-policy
+Bellman task contract frozen but research inactive; no infinite Bruhat--Tits
+completion, selector-policy optimum, preferred \(p\)-adic continued fraction,
+entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -49,7 +50,11 @@ Read in order:
 7. [06-phase5-projective-cylinders-discrete-coarea-coding.md](06-phase5-projective-cylinders-discrete-coarea-coding.md)
    freezes a finite cylinder source, proves exact shell/refinement identities,
    and constructs a separate binary Huffman tree with an explicit decoder;
-8. the four linked research tests are seconds-scale executable arguments.
+8. [07-phase6-selector-policy-bellman-task-contract.md](07-phase6-selector-policy-bellman-task-contract.md)
+   freezes the finite source, state, action grammar, terminal decoder, costs,
+   baselines, red teams, and execution gates for a later Bellman phase without
+   running that research;
+9. the four linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -159,9 +164,24 @@ On the same twelve depth-two cylinders at \(p=3\), uniform and skewed source
 laws produce different exact optimal Huffman trees and expected lengths
 \(11/3\) and \(61/22\) bits. Geometry therefore supplies the alphabet and
 refinement, not the coding objective. An explicit canonical prefix table and
-decoder now close the Huffman task; the selector-policy Bellman task remains
-undefined until it receives a common state, terminal precision, actions, and
-failure costs.
+decoder now close the Huffman task.  Through Phase 5, the selector-policy
+Bellman task remained undefined because it lacked a common state, terminal
+precision, actions, and failure costs.
+
+## Frozen next task
+
+Phase 6 now defines, but does not execute, that missing selector-policy task.
+For each \(p\in\{3,5,7\}\), it freezes the existing 182-input rational audit
+as an explicitly uniform finite source, projective precision four, horizon
+sixteen, a finite contact-lift action grammar, a Markov state retaining the
+complete quotient and matrix/lattice residuals, a policy-independent decoder,
+and separate digit, edge, serialization, decoder, and computation ledgers.
+
+Ruban and Browkin enter only as fixed baseline policies.  The future control
+value is Pareto-valued by default, and a corpus-specific policy remains a
+finite task controller rather than a preferred \(p\)-adic continued fraction.
+No action enumeration, Bellman recursion, policy comparison, or new theorem is
+performed by the task-contract phase.
 
 ## Claim boundary
 
@@ -189,3 +209,7 @@ decoders are distinct stages. It gives H2 an exact finite refinement geometry
 and H3 one declared coding shadow without maturity promotion. The
 residue-resolution tower remains horizontal observer refinement, not a
 vertical arithmetic process-rank transition.
+
+The Phase 6 task contract adds no evidence and leaves the Mathematical Core,
+Engineering Architecture, Theory Map, and API maturity unchanged.  It is an
+auditable restart point for later work, not a completed research phase.
