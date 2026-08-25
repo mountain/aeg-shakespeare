@@ -9,6 +9,8 @@ For vignette completeness requirements, see [`VIGNETTE_CONTRACT.md`](VIGNETTE_CO
 For the current all-family audit against `MATHEMATICAL_CORE.md` and
 `ENGINEERING_ARCHITECTURE.md`, see
 [`36-classical-reexpression-audit.md`](36-classical-reexpression-audit.md).
+For the fail-closed per-file Process Geometry construction matrix, see
+[`66-classical-process-language-calibration.md`](66-classical-process-language-calibration.md).
 
 The index is deliberately conservative: an entry records where to start reading; it does not promote the example's interpretation into the Theory Map or Public API.
 
@@ -109,10 +111,16 @@ boundary, canonical differential, period obstruction.
 
 **Classical search terms:** harmonic oscillator, quartic oscillator, sextic oscillator, hyperelliptic curve, genus hierarchy, spectral decomposition.
 
-**Process Geometry themes:** additive process modules, coefficient-language refinement, relation-before-spectrum, genus/function-theory hierarchy, presentation Pareto tradeoffs.
+**Process Geometry themes:** additive process modules, coefficient-language
+refinement, relation-before-spectrum, genus/function-theory hierarchy, real
+history cover, deck quotient, task sufficiency, branch decoder, unit frame,
+action-period law, presentation Pareto tradeoffs.
 
 **Start here:**
 
+- `tests/classical/test_even_power_oscillator_process_calibration.py` —
+  declared real continuation task, harmonic phase cover/decoder/unit round-trip,
+  and exact even-power action-period law;
 - `tests/classical/test_harmonic_oscillator_additive_module.py`
 - `tests/classical/test_even_power_oscillator_genus_hierarchy.py`
 
@@ -125,9 +133,13 @@ boundary, canonical differential, period obstruction.
 - `docs/24-oscillator-refinement-red-team.md`
 
 **Current-core reading:** the harmonic modules and relation factorizations are
-exact in declared coefficient languages. The even-power curves are energy-leaf
-algebraic carriers, not yet continuation-semantic task quotients; genus is not
-a universal complexity scalar. Coefficient refinement is not forced completion.
+exact in declared coefficient languages.  The new real-task spine constructs
+the harmonic phase cover, deck quotient, position/sign decoder, unit frame,
+and action-period law while leaving raw-history unfolding open.  The earlier
+even-power curves remain algebraic carriers until a complex analytic task and
+decoder are supplied.  Their genera `0,1,2` do not measure real orbit-cover
+complexity: all regular connected positive-energy real orbits here are
+circles.  Coefficient refinement is not forced completion.
 
 **Theory role:** calibration and red team for function-theory hierarchy and the distinction between representation refinement and forced completion.
 

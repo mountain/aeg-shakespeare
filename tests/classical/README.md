@@ -12,6 +12,14 @@ baseline, operator/closure contract, evaluator and certificates, units and
 error/failure semantics, and total cost boundary.  Symbolic closure, numerical
 stability, and efficiency are separate claims.
 
+If a calibration claims the Process Geometry chain itself, it must additionally
+state primitive/admissible histories, continuation task, task-sufficient lift,
+transported resource, quotient/information loss, retained decoder, and
+analysis boundary.  Raw-history unfolding, topological cover, and analytic
+developing cover are three separate audit items: each must be evidenced,
+imported, declared, linked, proved unnecessary for the narrow task, or left
+explicitly open.
+
 The named problem is never a package-level solver. A classical example is admitted here to test common Process Geometry abstractions, to provide a red team or degeneration, or because the problem is a useful pedagogical anchor. It does **not** need to promote a new theory node or public abstraction in order to be valuable.
 
 For multi-file mathematical families, prefer one stable family-level guide over forcing every proof step into one oversized test. The first such complete guide is:
@@ -23,6 +31,9 @@ The cross-family Mathematical-Core recalibration ledger is:
 - `docs/36-classical-reexpression-audit.md` — complete coverage of every
   `test_*.py` essay in this directory; exact/numerical/declared-metric evidence,
   task and information-contract boundaries, and the staged recalibration order.
+- `docs/66-classical-process-language-calibration.md` — machine-checked
+  per-file/process-construction matrix, strict separation of the three cover
+  notions, and the oscillator end-to-end vertical slice.
 
 See:
 
