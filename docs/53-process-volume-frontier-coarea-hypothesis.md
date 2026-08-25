@@ -285,3 +285,14 @@ StoppingSurface
 ```
 
 solely because of this record. Concrete research helpers may remain local to the calibrating tests/Sonnets until independent domains force a smaller reusable software contract.
+
+---
+
+## 12. Executable refinement
+
+`62-task-covariant-complexity-coarea.md` strengthens this T1 question without
+promoting it.  It proves an exact finite costed-tree frontier identity, derives
+a scale-covariant pendulum action--period identity, calibrates a finite
+task-visible holonomy memory bound, and supplies a Frobenius nonintegrability
+red team.  The original kill conditions and promotion criteria remain in
+force.
