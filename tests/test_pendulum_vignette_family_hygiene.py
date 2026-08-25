@@ -30,6 +30,11 @@ _PENDULUM_ESSAYS = (
     _ROOT / "classical" / "test_pendulum_period_contour.py",
     _ROOT / "classical" / "test_pendulum_period_matrix.py",
     _ROOT / "classical" / "test_pendulum_cycle_intersection.py",
+    _ROOT / "research" / "test_pendulum_elliptic_group_rank_lowering.py",
+    _ROOT / "research" / "test_pendulum_lifted_clock_global_quotient.py",
+    _ROOT / "research" / "test_pendulum_am_marked_carrier_bridge.py",
+    _ROOT / "research" / "test_pendulum_observer_metric_completion.py",
+    _ROOT / "research" / "test_pendulum_unit_history_fundamental_domain.py",
 )
 
 
@@ -68,7 +73,7 @@ def test_family_guide_names_every_executable_stage_and_evidence_boundary():
     for path in _PENDULUM_ESSAYS:
         assert path.name in guide, f"family guide omits {path.name}"
 
-    for stage in range(10):
+    for stage in range(14):
         assert f"**P{stage}**" in guide, f"family guide omits stage P{stage}"
 
     for required_phrase in (
@@ -77,6 +82,12 @@ def test_family_guide_names_every_executable_stage_and_evidence_boundary():
         "Z2",
         "local branch decoder",
         "reconstruction",
+        "second-jet",
+        "task-relative memory",
+        "Bolza surface",
+        "unit frame",
+        "fundamental domain",
+        "action-period coarea",
         "A/M lift canonicalization",
         "Representation-invariant elliptic object",
         "Canonical completion theory",
@@ -91,3 +102,5 @@ def test_repository_entry_points_route_to_the_family_guide_and_fiber_stage():
     assert "docs/vignettes/simple-pendulum.md" in readme
     assert "docs/vignettes/simple-pendulum.md" in index
     assert "test_pendulum_observable_quotient_fiber.py" in index
+    assert "test_pendulum_am_marked_carrier_bridge.py" in index
+    assert "test_pendulum_unit_history_fundamental_domain.py" in index

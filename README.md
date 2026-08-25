@@ -10,6 +10,14 @@ The project does not assume that a process arrives with a preferred coordinate s
 4. how that structure can be materialized as an economical **Presentation**;
 5. what analysis becomes natural once a successful presentation is found.
 
+The current mathematics is synthesized in
+[`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md). Then read
+[`docs/ENGINEERING_ARCHITECTURE.md`](docs/ENGINEERING_ARCHITECTURE.md), which
+turns declared physical and mathematical tasks into representation, algorithm,
+evaluator, certificate, error/failure, unit, decoder, baseline, budget, and
+cost decisions. The compact [`docs/THEORY_MAP.md`](docs/THEORY_MAP.md) locates
+and grades the resulting claims; it does not replace either core document.
+
 The current research foundation has two complementary axes, governed by a
 cross-cutting **Effective Analysis Principle**:
 
@@ -200,6 +208,8 @@ are charged.
 
 See:
 
+- [`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md)
+- [`docs/ENGINEERING_ARCHITECTURE.md`](docs/ENGINEERING_ARCHITECTURE.md)
 - [`docs/42-process-geometry-from-distinguishability.md`](docs/42-process-geometry-from-distinguishability.md)
 - [`docs/43-myhill-nerode-and-the-topological-threshold.md`](docs/43-myhill-nerode-and-the-topological-threshold.md)
 - [`docs/44-objectification-semantic-compression-and-rank-lowering.md`](docs/44-objectification-semantic-compression-and-rank-lowering.md)

@@ -2,7 +2,21 @@
 
 This file governs research work under `sonnet/` in the Shakespeare problem-driven research program.
 
-The larger Process Geometry theory is intentionally still developing. `docs/THEORY_MAP.md` is the current **living map**, not a frozen specification. Sonnets may support, refine, or contradict that map. API extraction is more constrained: once a Sonnet proposes a reusable Experimental or Public abstraction, the proposal must explain its position and impact in the Theory Map as required by `docs/GOVERNANCE.md`.
+Before beginning substantive work, read `docs/MATHEMATICAL_CORE.md` first,
+then read `docs/ENGINEERING_ARCHITECTURE.md` in full, then
+`docs/THEORY_MAP.md`, and finally the relevant vignette, notes, executable
+essays, and code owners. The Mathematical Core carries the current objects,
+constructions, equations, information loss, and boundaries. The Engineering
+Architecture carries the problem-to-solver decisions needed for feasible
+calculation. The Theory Map is the current **living index and maturity map**,
+not a frozen specification and not a substitute for either document.
+
+The larger Process Geometry theory is intentionally still developing. Sonnets
+may support, refine, or contradict both the Mathematical Core and the Theory
+Map. API extraction is more constrained: once a Sonnet proposes a reusable
+Experimental or Public abstraction, the proposal must explain its Mathematical
+Core relation and its position and impact in the Theory Map as required by
+`docs/GOVERNANCE.md`.
 
 ## Problem-native first
 
@@ -91,6 +105,10 @@ For every substantial Sonnet phase, record:
 - red teams;
 - claim boundary;
 - what the experiment teaches about Process Geometry itself;
+- whether it reuses, refines, contradicts, or leaves unchanged the objects,
+  construction, law, or boundary in `docs/MATHEMATICAL_CORE.md`;
+- the solver plan and whether it supports, refines, replaces, contradicts, or
+  leaves unchanged `docs/ENGINEERING_ARCHITECTURE.md`;
 - when material, whether the result **supports, refines, splits, contradicts, or leaves unchanged** the current `docs/THEORY_MAP.md`.
 
 The final two items matter: a Sonnet is not only a problem-solving attempt; it is also a calibration of both the framework and the evolving theory behind it. Contradicting the Theory Map is allowed and valuable when evidence supports the contradiction.
@@ -104,12 +122,21 @@ When a reusable structure appears:
 1. keep the first implementation research-local while its semantics are still entangled with the problem;
 2. record an extraction candidate describing the minimal semantics, a positive case, a negative/adversarial case, and the unresolved boundary;
 3. locate the candidate in `docs/THEORY_MAP.md`: state which node/arrow it appears to realize and which part of that interpretation remains hypothetical;
-4. move the abstraction into Experimental only after there is evidence that it is useful beyond the originating local design;
-5. require independent cross-problem pressure and red teams before proposing public promotion;
-6. for any Experimental/Public API proposal, include the mandatory **Theory Impact** review required by `docs/GOVERNANCE.md`;
-7. treat public API promotion as a semantic commitment, not as a reward for code stability, repeated local reuse, or an attractive theory-aligned name.
+4. state its `docs/MATHEMATICAL_CORE.md` relation: primitive data, typed
+   construction, law/obstruction, information loss, units/covariance where
+   applicable, and reconstruction boundary;
+5. state its `docs/ENGINEERING_ARCHITECTURE.md` relation: problem contract,
+   algorithm/backend, evaluator, certificate, error/failure semantics, units,
+   decoder, baseline, budget, and cost;
+6. move the abstraction into Experimental only after there is evidence that it is useful beyond the originating local design;
+7. require independent cross-problem pressure and red teams before proposing public promotion;
+8. for any Experimental/Public API proposal, include the mandatory **Theory Impact** review required by `docs/GOVERNANCE.md`;
+9. treat public API promotion as a semantic commitment, not as a reward for code stability, repeated local reuse, or an attractive theory-aligned name.
 
-The authoritative lifecycle and promotion gates are in `docs/GOVERNANCE.md`; the larger evolving research picture is in `docs/THEORY_MAP.md`. The default rule is:
+The authoritative lifecycle and promotion gates are in `docs/GOVERNANCE.md`;
+the mathematical synthesis is in `docs/MATHEMATICAL_CORE.md`; feasible solver
+decisions are in `docs/ENGINEERING_ARCHITECTURE.md`; the larger evolving
+research map is in `docs/THEORY_MAP.md`. The default rule is:
 
 ```text
 Sonnet -> extraction candidate -> Experimental -> maturing -> Public API

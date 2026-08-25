@@ -26,6 +26,42 @@ before the next release snapshot.
 
 ### Detailed ledger
 
+- adds `docs/ENGINEERING_ARCHITECTURE.md` as the second required core entry:
+  turns concrete physical/mathematical tasks into auditable solver plans,
+  maps current software layers and algorithm regimes, fixes technical decisions
+  on exact-first computation, bounded search, Pareto cost, lift/residual,
+  units, decoders, replaceable symbolic backends, research-local numerical
+  adapters, CI tiers, provenance, and promotion, and establishes the pendulum
+  as the first end-to-end reference implementation path; updates agent reading
+  order and all relevant governance, API, vignette, PR, and index contracts;
+- adds `docs/MATHEMATICAL_CORE.md` as the required first mathematical entry:
+  separates mathematical content from the compact Theory Map, reconstructs the
+  lift--unit--stop--quotient--decoder schema, records the pendulum as its first
+  end-to-end exact model, locates elliptic curves/functions and the Bolza
+  boundary, and distinguishes continuous action coarea from finite task
+  memory; updates root/Sonnet agent guidance, theory/software governance,
+  theory records, vignettes, documentation indexes, and the PR template so
+  mathematical objects, constructions, laws, information loss, and failure
+  boundaries must precede map placement and API naming;
+- adds P13's first-principles pendulum unit-history audit: starts from the
+  Cartesian constrained process, treats the certified Abel cover as a
+  downstream lifted-clock model, separates the period lattice that cuts a
+  fundamental domain from the unit frame that measures it, proves exact scale
+  and covariant action-period transport, reads `dOmega=T dH` as a continuous
+  fundamental-domain/coarea calibration, and counts `2/1/0` task-visible bits
+  for two independent square-root sheets; retains the distinction between
+  continuous process volume and finite memory and makes no canonical A/M lift,
+  universal scalar-complexity, entropy, Bolza-completion, or API claim;
+- adds the P12 pendulum A/M marked-carrier bridge: exact affine/global carrier
+  and clock transport, local nonlinear clock covariance with the necessary
+  `h''(U)Y^2` second-jet correction for full dynamics, restoration of the
+  physical `sqrt(ell/g)` time scale, and an exact task-relative sheet-memory
+  result (`1` bit for full Cartesian continuation, `0` for a carrier-only
+  task); explains the Bolza special point as the third quotient after adjoining
+  a separate declared observer-metric sheet, not as an A/M presentation of the
+  pendulum carrier; keeps raw A/M discovery, a canonical pendulum moving
+  observer, intrinsic `AMJet`, generic-energy global analysis, and Theory/API
+  promotion explicitly open;
 - makes `docs/README.md` an exhaustive role-aware map, adds a status/claim/
   next-gate ledger for every Sonnet study, freezes existing duplicate chronology
   prefixes without renaming citation paths, and adds a fail-closed hygiene test

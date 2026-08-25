@@ -10,6 +10,18 @@ The governing principle is:
 
 > **Sonnets discover problems and structures. Experimental incubates candidate abstractions. The public API makes commitments.**
 
+This lifecycle is subordinate to a mathematical-understanding requirement:
+
+> **Mathematics comes before map placement, and map placement comes before API
+> vocabulary.**
+
+Agents and reviewers must read [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md),
+then [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md), before using
+the Theory Map for substantial research, solver design, numerical work, or
+theory-bearing API work. The core records mathematical meaning; the
+architecture records how declared problems become feasible, certified
+calculations; the map records location and maturity.
+
 The default lifecycle is therefore
 
 ```text
@@ -22,9 +34,14 @@ Sonnet
 
 This is a one-way promotion path by default. A Sonnet must not promote a new generic abstraction directly into the public API.
 
-## 0.1 The living Theory Map
+## 0.1 Mathematical Core, Engineering Architecture, and living Theory Map
 
-Engineering governance must be interpreted against the larger and still-evolving theoretical picture in [`THEORY_MAP.md`](THEORY_MAP.md).
+Engineering governance must be interpreted first against the current
+mathematical synthesis in [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md), then
+against the technical decisions in
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md), and only then
+against the larger and still-evolving structural picture in
+[`THEORY_MAP.md`](THEORY_MAP.md).
 
 The Theory Map currently synthesizes the foundation developed in `docs/42–45` and later alignment notes. It records, among other things:
 
@@ -37,6 +54,19 @@ The Theory Map currently synthesizes the foundation developed in `docs/42–45` 
 - the distinction between AEG as a model organism and Arithmetic Geometric Universality as a stronger open conjecture.
 
 **The Theory Map is not a frozen standard.** It is expected to change as experiments and mathematics improve. Its role in engineering is to make API choices legible inside the larger research program and to prevent accidental implementation vocabulary from silently becoming ontology.
+
+**The Theory Map is also not the carrier of the full mathematics.** A list of
+nodes and suggestive arrows is insufficient.  A material theory or API proposal
+must recover the corresponding primitive data, typed construction, law or
+obstruction, information contract, covariance/unit semantics where relevant,
+scope, reconstruction boundary, and evidence from the Mathematical Core or a
+linked theory record.
+
+**The Mathematical Core is not a solver architecture.** A material
+implementation must also state its problem/task contract, presentation and
+algorithm choice, evaluator, certificate, units, decoder, error/failure
+semantics, baseline, budgets, and cost boundary. These decisions are governed
+by `ENGINEERING_ARCHITECTURE.md`.
 
 The required asymmetry is:
 
@@ -63,6 +93,8 @@ A Sonnet API carries **no stability promise** merely because several files use i
 problem
   -> primitive audit
   -> task semantics
+  -> mathematical object / construction / law
+  -> solver plan / algorithm / evaluator
   -> hypothesis
   -> candidate presentation / mechanism
   -> intended calculation + conventional baseline
@@ -76,6 +108,16 @@ problem
 Research-local code should stay research-local until there is evidence that the same semantic role belongs to Process Geometry rather than only to the problem that revealed it.
 
 A substantial Sonnet conclusion should also state whether it supports, refines, contradicts, or leaves unchanged the current Theory Map. A Sonnet is allowed to contradict it; the contradiction is research evidence, not a governance violation.
+
+It should additionally state whether it changes the Mathematical Core.  A
+local result may leave both unchanged.  A proposed core change must supply the
+full mathematical-understanding contract rather than only a new name or map
+position.
+
+It should also state its Engineering Architecture effect. A mathematical
+insight without a feasible calculation path may remain valuable theory; a
+solver result without an auditable problem/task and evidence contract may
+remain a useful prototype. Neither alone satisfies both obligations.
 
 ## 2. Extraction candidates
 
@@ -94,6 +136,12 @@ The extraction note may be short, but it should answer:
 9. If it claims analysis or computational advantage, what is the smallest
    effective-analysis contract: symbolic/numerical mode, closure, evaluator,
    certificate, units, error/failure semantics, baseline, and cost boundary?
+10. **What is its Mathematical Core relation?**  Which objects, construction,
+    law/obstruction, information contract, and boundary does it reuse, refine,
+    contradict, or add?
+11. **What is its Engineering Architecture relation?** Which solver stage,
+    algorithm/backend, evaluator, certificate, unit/error/failure contract,
+    budget, baseline, or dependency does it reuse or change?
 
 A beautiful abstraction with only a happy-path example is not ready for promotion.
 
@@ -132,6 +180,10 @@ consumers:
   - another-independent-calibration
 theory_position:
   - <node/edge in docs/THEORY_MAP.md>
+mathematical_core_relation:
+  - <object/construction/law/boundary in docs/MATHEMATICAL_CORE.md or linked record>
+engineering_architecture_relation:
+  - <solver stage/decision in docs/ENGINEERING_ARCHITECTURE.md>
 known_boundaries:
   - ...
 effective_analysis:
@@ -224,6 +276,14 @@ Before a new generic abstraction enters the public API, the promotion record sho
     record-only; its evaluator, certificates, domain, units, error/failure
     semantics, baseline, and cost boundary are protected independently of one
     backend.
+12. **Its mathematical content is recoverable.**  The proposed concept can be
+    expanded from its map position into explicit objects, construction, law or
+    obstruction, information loss, reconstruction status, and failure
+    boundary; it is not only a convenient label shared by implementations.
+13. **Its computation contract is feasible.** When the abstraction claims to
+    solve, evaluate, search, certify, stabilize, or accelerate a problem, its
+    algorithm, backend, termination/budget, error/failure semantics, units,
+    decoder, baseline, and total cost are explicit.
 
 Public promotion is deliberately harder than merging useful code.
 
@@ -231,7 +291,8 @@ Public promotion is deliberately harder than merging useful code.
 
 Any change that **adds, renames, generalizes, promotes, or materially changes** an Experimental or Public API must include a short **Theory Impact** section in the PR, AEP, or promotion note.
 
-It must answer the eight questions defined in `THEORY_MAP.md`:
+It must answer the questions defined in `THEORY_MAP.md` and the Mathematical
+Core relation:
 
 1. **Theory position** — Which node or arrow does this API represent or test?
 2. **Maturity** — What is the maturity of that theory element?
@@ -243,6 +304,9 @@ It must answer the eight questions defined in `THEORY_MAP.md`:
 8. **Effective-analysis impact** — If the API claims analysis, calculation,
    stability, or efficiency, what are the symbolic/numerical mode,
    certificates, error/failure semantics, baseline, units, and cost boundary?
+9. **Mathematical Core effect** — Which primitive data, typed construction,
+   law/obstruction, information contract, or boundary is implemented, refined,
+   contradicted, or left unchanged?
 
 For a purely mechanical or compatibility-preserving change, the Theory Impact may be one sentence:
 
@@ -286,6 +350,14 @@ Problem
 Theory position
   Which node/arrow in docs/THEORY_MAP.md is represented or tested?
   What is its current maturity?
+
+Mathematical Core relation
+  Which objects, construction, law/obstruction, information contract, and
+  boundary in docs/MATHEMATICAL_CORE.md does this depend on or change?
+
+Engineering Architecture relation
+  Which problem-to-solver stage, technical decision, evaluator, certificate,
+  failure contract, dependency, or cost model does this depend on or change?
 
 Minimal semantics
   The smallest proposed contract
@@ -370,19 +442,26 @@ efficiency claims report workload and baseline and separate discovery or
 compilation cost from repeated evaluation. A field may be marked `not
 applicable`, but an unmeasured field cannot support a positive claim.
 
-For API-changing PRs, review is incomplete until the Theory Impact requirement is satisfied. For research-only work, updating the Theory Map is optional unless the result materially changes the larger picture; in that case the research note should propose the map revision explicitly.
+For API-changing PRs, review is incomplete until the Theory Impact,
+Mathematical Core relation, and Engineering Architecture relation requirements
+are satisfied. For research-only work, updating the two core documents or
+Theory Map is optional unless the result materially changes the larger
+mathematical or computational picture; in that case the research note should
+propose the revisions explicitly.
 
-## 12. Seven standing rules
+## 12. Nine standing rules
 
-The repository governance can be compressed to seven rules:
+The repository governance can be compressed to nine rules:
 
-1. **Sonnets discover; they do not standardize.**
-2. **Reusable structures enter Experimental before the public API.**
-3. **Experimental abstractions must survive independent problems and red-team cases.**
-4. **Public API is a semantic commitment, not merely a stable implementation.**
-5. **Every material API change states its position and impact in the evolving Theory Map.**
-6. **Promotion, rejection, deprecation, and theory correction leave an auditable rationale.**
-7. **Analysis claims preserve calculability: symbolic/numerical mode,
+1. **Read and reconstruct the mathematics before placing or naming it.**
+2. **Turn computational claims into explicit solver plans before implementing them.**
+3. **Sonnets discover; they do not standardize.**
+4. **Reusable structures enter Experimental before the public API.**
+5. **Experimental abstractions must survive independent problems and red-team cases.**
+6. **Public API is a semantic commitment, not merely a stable implementation.**
+7. **Every material API change states its Mathematical Core, Engineering Architecture, and Theory Map impact.**
+8. **Promotion, rejection, deprecation, and theory correction leave an auditable rationale.**
+9. **Analysis claims preserve calculability: symbolic/numerical mode,
    certificates, error/failure semantics, units, baseline, and cost boundaries
    are part of the contract.**
 
