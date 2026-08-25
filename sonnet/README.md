@@ -75,7 +75,7 @@ deferred until its next oracle/evidence gate is affordable.
 
 | Study | Current state | Highest responsible claim | Authoritative entry / next gate |
 | --- | --- | --- | --- |
-| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 2 real continued-fraction/Farey-path positive control | level-1 cross-place re-expression with exact path, cylinder, continuation, and cost red teams; the real and \(p\)-adic trees are not identified and no \(p\)-adic selector is preferred | [real positive-control ledger](local-field-projective-process-geometry/03-phase2-real-continued-fraction-geodesic-control.md); next freeze one matched finite task for two genuinely different \(p\)-adic selectors |
+| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 3 matched Ruban/Browkin rational comparison | level-1 cross-place re-expression with exact projective contact, matrix/lattice-prefix, outcome, continuation, and cost red teams; no task-free \(p\)-adic selector is preferred | [matched-selector ledger](local-field-projective-process-geometry/04-phase3-padic-selector-matched-task.md); next audit pairwise tree travel, backtracking, and net displacement |
 | [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
 | [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
 | [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
@@ -166,3 +166,13 @@ cost. It does not identify the ordered Farey/Stern--Brocot tree with the
 residue-branching Bruhat--Tits tree. The infinite \(p\)-adic boundary and a
 comparison of competing \(p\)-adic continued-fraction algorithms remain
 unselected, and no API extraction is proposed.
+
+Phase 3 performs that comparison without pretending that the algorithm name
+defines the task. Ruban's standard section and Browkin I's balanced section
+choose different rational lifts of the same finite projective contact. Exact
+reciprocal continuation then separates them: \(-1\) terminates under Browkin
+but enters a Ruban fixed complete quotient, whereas at \(p=5\) the positive
+integer \(3\) has a shorter and cheaper Ruban history. Both lower through the
+same projective matrices, and every tested prefix is certified in the finite
+lattice-ball oracle. The result rejects a task-free selector while leaving
+general convergence, periodicity, and infinite completion open.

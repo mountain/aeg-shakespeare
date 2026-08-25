@@ -84,6 +84,13 @@ before the next release snapshot.
   continuation state and digit count from materialized-turn cost, without
   identifying the real and Bruhat--Tits trees or selecting a \(p\)-adic
   algorithm;
+- advances the local-field Sonnet to a matched Ruban/Browkin I comparison:
+  both floor sections select rational lifts of the same exact two-chart
+  projective contact and reconstruct through the same `ProcessWord` matrices,
+  while reciprocal continuation separates them; bounded rational exhaustion,
+  prefix lattice-class certificates, the \(-1\) terminal/cycle witness, and a
+  competing local-cost witness reject a task-free preferred selector without
+  claiming new general finiteness, convergence, or periodicity;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

@@ -1,9 +1,9 @@
 # Local-field projective process geometry
 
-**Status:** T0 research-local calibration; Phase 2 real
-continued-fraction/Farey-path positive control complete; no infinite
-Bruhat--Tits completion, no preferred \(p\)-adic continued fraction, and no
-Experimental or Public API proposal.
+**Status:** T0 research-local calibration; Phase 3 matched Ruban/Browkin
+finite rational comparison complete; no infinite Bruhat--Tits completion, no
+preferred \(p\)-adic continued fraction, and no Experimental or Public API
+proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -40,7 +40,10 @@ Read in order:
 4. [03-phase2-real-continued-fraction-geodesic-control.md](03-phase2-real-continued-fraction-geodesic-control.md)
    compiles ordinary continued-fraction prefixes into exact Farey frames,
    Stern--Brocot paths, and real cylinders, with a continuation red team;
-5. the three linked research tests are seconds-scale executable arguments.
+5. [04-phase3-padic-selector-matched-task.md](04-phase3-padic-selector-matched-task.md)
+   compares Ruban and Browkin I on one exact rational task, including finite
+   projective contacts, prefix lattice classes, outcome semantics, and costs;
+6. the four linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -104,19 +107,33 @@ agree, while the lifted matrices and approach-side cylinders differ; appending
 the same digit separates the values again. Endpoint equality is therefore not
 a continuation-stable history quotient for the native prefix-extension task.
 
+Phase 3 runs two classical \(p\)-adic selectors under one frozen contract.
+Ruban uses standard residues and Browkin I balanced residues. For a common
+complete quotient they choose different rational lifts of the same finite
+two-chart projective contact, but reciprocal continuation can separate those
+lifts. Every finite prefix still reconstructs through the same `ProcessWord`
+matrix calculus and lands in the Phase 1 lattice-ball oracle.
+
+The exact witness \(-1\) terminates immediately under Browkin while Ruban
+enters the fixed complete quotient \(-1/p\). Conversely, at \(p=5\), Ruban
+represents \(3\) in one digit while Browkin uses \([-2;1/5]\), with greater
+declared digit, contact-resolution, and serialization costs. Total rational
+termination and local economy therefore do not induce the same selector.
+
 ## Claim boundary
 
-Phase 1 now constructs the complete **finite ball around the standard
-vertex**, using normalized representatives of lattice homothety classes. It
-does not construct the infinite tree or its boundary completion. The
-continued-fraction certificate still concerns finite right-reciprocal
-histories; it does not select among competing \(p\)-adic digit algorithms or
-claim their convergence, finiteness, or Lagrange periodicity.
+Phase 1 constructs the complete **finite ball around the standard vertex**,
+using normalized representatives of lattice homothety classes. Phase 3 uses
+that oracle for exact rational selector prefixes, but does not construct the
+infinite tree or its boundary completion. Its bounded exhaust and exact cycle
+witness do not constitute a new general finiteness, convergence, or Lagrange
+periodicity theorem, and they do not select a task-free preferred algorithm.
 
 The real Stern--Brocot/Farey tree and the \(p\)-adic Bruhat--Tits tree are not
 identified. They share a rational projective history carrier but arise from
-different observer distinctions and continuation structures. Phase 2
-**sharpens** H1 through the terminal-split continuation witness and supports
-the place-relative H2 interpretation. It leaves the Theory Map file
-unchanged. The residue-resolution tower remains horizontal observer
-refinement, not a vertical arithmetic process-rank transition.
+different observer distinctions and continuation structures. Phases 2 and 3
+**sharpen** H1 through real terminal-split and \(p\)-adic section-lift
+continuation witnesses, while supporting the place-relative H2
+interpretation. They leave the Theory Map file unchanged. The
+residue-resolution tower remains horizontal observer refinement, not a
+vertical arithmetic process-rank transition.
