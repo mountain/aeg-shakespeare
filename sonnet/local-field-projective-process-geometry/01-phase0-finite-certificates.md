@@ -204,6 +204,9 @@ exact boundary/refinement certificates
     -> only then an effective-analysis or cross-place synthesis claim.
 ```
 
-The next implementation should freeze a finite lattice/coset oracle and prove
-that its boundary truncations recover the residue observations used here.  It
-must not begin by extending the framework API.
+The finite lattice/coset gate is now executed in
+[02-phase1-finite-lattice-ball.md](02-phase1-finite-lattice-ball.md). It proves
+that these residue observations are precisely the affine contact chart of the
+complete standard-root ball and records the missing-chart inversion red team.
+The next implementation is the real continued-fraction/geodesic positive
+control; it must still remain research-local.

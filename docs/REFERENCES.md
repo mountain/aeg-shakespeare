@@ -106,6 +106,12 @@ reductive groups over non-Archimedean local fields.
 Stillwell, Springer, 1980. See Chapter II for groups acting on trees and the
 tree associated with \(PGL_2\) over a discretely valued field.
 
+**[Ludwig-Merten-2026]** Judith Ludwig and Christian Merten, “Formalising the
+Bruhat--Tits Tree,” arXiv:2505.12933, revised 2026. Gives a modern,
+machine-checked construction from homothety classes of lattices, proves the
+tree and regularity properties, and records the projective-line description
+of the neighbours of a lattice.
+
 **[Hirsh-Washington-2011]** Jordan Hirsh and Lawrence C. Washington,
 “\(p\)-adic continued fractions,” *Ramanujan Journal* 25 (2011), 389–403.
 DOI: 10.1007/s11139-010-9266-x. Studies Schneider-type expansions,
