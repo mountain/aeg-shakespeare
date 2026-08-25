@@ -1,9 +1,8 @@
 # Local-field projective process geometry
 
-**Status:** T0 research-local calibration; Phase 3 matched Ruban/Browkin
-finite rational comparison complete; no infinite Bruhat--Tits completion, no
-preferred \(p\)-adic continued fraction, and no Experimental or Public API
-proposal.
+**Status:** T0 research-local calibration; Phase 4 finite prefix-orbit path
+metric complete; no infinite Bruhat--Tits completion, Bellman/Huffman optimum,
+preferred \(p\)-adic continued fraction, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -43,7 +42,10 @@ Read in order:
 5. [04-phase3-padic-selector-matched-task.md](04-phase3-padic-selector-matched-task.md)
    compares Ruban and Browkin I on one exact rational task, including finite
    projective contacts, prefix lattice classes, outcome semantics, and costs;
-6. the four linked research tests are seconds-scale executable arguments.
+6. [05-phase4-padic-prefix-orbit-path-metric.md](05-phase4-padic-prefix-orbit-path-metric.md)
+   computes common ancestors, tree travel, net displacement, backtracking, and
+   paired-selector ray relations, then audits the Bellman/Huffman boundary;
+7. the four linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -120,20 +122,35 @@ represents \(3\) in one digit while Browkin uses \([-2;1/5]\), with greater
 declared digit, contact-resolution, and serialization costs. Total rational
 termination and local economy therefore do not induce the same selector.
 
+Phase 4 turns those prefix classes into an exact tree-path ledger. Across all
+1,092 finite selector/input/prime audits, every consecutive prefix stays on a
+nondecreasing ray: traveled distance equals net displacement and no edge is
+backtracked. For a fixed audited input, every Ruban prefix is also
+ancestor-comparable with every Browkin prefix. The selectors reach different
+depths along one common finite direction rather than taking different tree
+branches.
+
+This closes the route-geometry question negatively for the bounded corpus.
+Geodesicity to selector-dependent final prefix states supplies no Bellman
+action problem, while the absence of a source distribution and proved
+prefix-decoding contract supplies no Huffman problem. Any optimization phase
+must first freeze those missing task structures.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
-using normalized representatives of lattice homothety classes. Phase 3 uses
-that oracle for exact rational selector prefixes, but does not construct the
-infinite tree or its boundary completion. Its bounded exhaust and exact cycle
-witness do not constitute a new general finiteness, convergence, or Lagrange
-periodicity theorem, and they do not select a task-free preferred algorithm.
+using normalized representatives of lattice homothety classes. Phases 3--4
+use that oracle for exact rational selector prefixes and finite path metrics,
+but do not construct the infinite tree or its boundary completion. Their
+bounded exhaust, common-ray certificate, and exact cycle witness do not
+constitute a new general ray, finiteness, convergence, or Lagrange-periodicity
+theorem, and they do not select a task-free preferred algorithm.
 
 The real Stern--Brocot/Farey tree and the \(p\)-adic Bruhat--Tits tree are not
 identified. They share a rational projective history carrier but arise from
-different observer distinctions and continuation structures. Phases 2 and 3
-**sharpen** H1 through real terminal-split and \(p\)-adic section-lift
-continuation witnesses, while supporting the place-relative H2
-interpretation. They leave the Theory Map file unchanged. The
+different observer distinctions and continuation structures. Phases 2--4
+**sharpen** H1 through real terminal-split, \(p\)-adic section-lift, and
+zero-backtracking/common-ray witnesses, while supporting the place-relative
+H2 interpretation. They leave the Theory Map file unchanged. The
 residue-resolution tower remains horizontal observer refinement, not a
 vertical arithmetic process-rank transition.

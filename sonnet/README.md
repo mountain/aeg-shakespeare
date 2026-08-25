@@ -75,7 +75,7 @@ deferred until its next oracle/evidence gate is affordable.
 
 | Study | Current state | Highest responsible claim | Authoritative entry / next gate |
 | --- | --- | --- | --- |
-| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 3 matched Ruban/Browkin rational comparison | level-1 cross-place re-expression with exact projective contact, matrix/lattice-prefix, outcome, continuation, and cost red teams; no task-free \(p\)-adic selector is preferred | [matched-selector ledger](local-field-projective-process-geometry/04-phase3-padic-selector-matched-task.md); next audit pairwise tree travel, backtracking, and net displacement |
+| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 4 finite prefix-orbit geometry closed | level-1 cross-place re-expression with exact contact, matrix/lattice-prefix, outcome, cost, zero-backtracking, and common-ray certificates; no task-free selector or Bellman/Huffman optimum is justified | [path-metric ledger](local-field-projective-process-geometry/05-phase4-padic-prefix-orbit-path-metric.md); reopen optimization only with a frozen source, policy actions, common terminal contract, and decoding semantics |
 | [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
 | [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
 | [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
@@ -176,3 +176,12 @@ integer \(3\) has a shorter and cheaper Ruban history. Both lower through the
 same projective matrices, and every tested prefix is certified in the finite
 lattice-ball oracle. The result rejects a task-free selector while leaving
 general convergence, periodicity, and infinite completion open.
+
+Phase 4 computes the missing prefix-orbit geometry. All 1,092 bounded exact
+histories have traveled distance equal to net displacement and zero
+backtracked edges. For a fixed input and prime, every Ruban prefix is also
+ancestor-comparable with every Browkin prefix: the algorithms materialize
+different depths along one finite direction rather than competing tree
+routes. This closes the finite rational geometry gate while rejecting a
+premature Bellman/Huffman interpretation; no shared control task, source law,
+or prefix-decoding contract has yet been supplied.

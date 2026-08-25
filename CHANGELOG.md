@@ -91,6 +91,13 @@ before the next release snapshot.
   prefix lattice-class certificates, the \(-1\) terminal/cycle witness, and a
   competing local-cost witness reject a task-free preferred selector without
   claiming new general finiteness, convergence, or periodicity;
+- closes that Sonnet's finite prefix-orbit geometry gate: exact lowest-common-
+  ancestor and tree-distance ledgers show zero backtracking in all 1,092
+  bounded selector/input/prime histories, while paired Ruban/Browkin prefixes
+  remain ancestor-comparable on one finite input direction; this separates
+  depth/compression/outcome differences from route choice and rejects a
+  Bellman/Huffman claim until a source law, policy action set, shared terminal
+  task, and decoding contract are frozen;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

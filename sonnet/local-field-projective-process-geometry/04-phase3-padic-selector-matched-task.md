@@ -369,11 +369,11 @@ H3 a concrete multi-ruler selector comparison, but no entropy or global
 optimality claim.  The Theory Map and all API maturity levels remain
 unchanged.
 
-## 13. Next gate
+## 13. Gate handoff
 
-The next responsible question is no longer whether \(p\)-adic continued
-fractions can enter; they have entered at exact finite level.  The next gate
-is to freeze a **prefix-orbit geometry** task:
+The next responsible question was no longer whether \(p\)-adic continued
+fractions could enter; they had entered at exact finite level.  Phase 3 handed
+off a **prefix-orbit geometry** task:
 
 1. turn the already materialized consecutive
    \(PGL_2(\mathbb Q_p)\) prefix-lattice vertices into a path-metric ledger;
@@ -384,3 +384,10 @@ is to freeze a **prefix-orbit geometry** task:
    interpretation is justified;
 5. postpone quadratic irrationals, finite-precision input, convergence rates,
    and periodicity classification until that finite geometry is stable.
+
+That gate is now complete in
+[Phase 4](05-phase4-padic-prefix-orbit-path-metric.md).  The bounded histories
+have zero backtracking and paired selectors remain on one common finite ray,
+so no route-level Bellman or Huffman claim survives.  Further optimization
+requires a new frozen source distribution, action set, common terminal
+contract, and decoding semantics.

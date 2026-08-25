@@ -16,6 +16,12 @@ The finite oracle records termination, an exact repeated rational state, or
 horizon exhaustion as three different outcomes; it never turns a finite
 horizon into a nontermination theorem.
 
+Phase 4 adds the exact finite-tree ledger around the standard lattice root:
+lowest common ancestors, pairwise distance, traveled versus net displacement,
+and cancelled backtracking.  It also compares every Ruban prefix with every
+Browkin prefix for the same bounded input.  Zero observed backtracking is kept
+separate from any Bellman, Huffman, or infinite-boundary claim.
+
 Mathematical lineage: [Ruban-1970], [Browkin-1978], and
 [Capuano-Murru-Terracini-2022] in docs/REFERENCES.md.
 """
@@ -420,6 +426,104 @@ def _resource_cost(expansion: _Expansion) -> _ResourceCost:
     )
 
 
+def _lowest_common_ancestor(
+    left: _LatticeVertex,
+    right: _LatticeVertex,
+) -> _LatticeVertex:
+    """Return the exact common ancestor nearest two finite-ball vertices."""
+
+    if left.prime != right.prime:
+        raise ValueError("tree vertices must use the same prime")
+
+    left_cursor = left
+    right_cursor = right
+    while left_cursor.depth > right_cursor.depth:
+        left_cursor = left_cursor.parent
+    while right_cursor.depth > left_cursor.depth:
+        right_cursor = right_cursor.parent
+    while left_cursor != right_cursor:
+        left_cursor = left_cursor.parent
+        right_cursor = right_cursor.parent
+    return left_cursor
+
+
+def _tree_distance(left: _LatticeVertex, right: _LatticeVertex) -> int:
+    ancestor = _lowest_common_ancestor(left, right)
+    return left.depth + right.depth - 2 * ancestor.depth
+
+
+@dataclass(frozen=True)
+class _PrefixPathMetric:
+    """Finite tree ledger for one materialized continued-fraction history.
+
+    ``excess_travel`` charges both directions of every cancelled excursion.
+    ``backtracked_edges`` counts one direction from every cancelled edge pair;
+    for a rooted prefix path these are precisely the moves back toward root.
+    """
+
+    vertices: tuple[_LatticeVertex, ...]
+    common_ancestors: tuple[_LatticeVertex, ...]
+    step_distances: tuple[int, ...]
+    traveled_distance: int
+    net_displacement: int
+    excess_travel: int
+    backtracked_edges: int
+
+    @property
+    def is_nondecreasing_ray(self) -> bool:
+        return all(
+            earlier.is_ancestor_of(later)
+            for earlier, later in zip(self.vertices, self.vertices[1:])
+        )
+
+
+def _tree_path_metric(
+    vertices: tuple[_LatticeVertex, ...],
+) -> _PrefixPathMetric:
+    """Audit a nonempty sequence of vertices in one finite tree oracle."""
+
+    if not vertices:
+        raise ValueError("a tree path needs at least one vertex")
+    common_ancestors = tuple(
+        _lowest_common_ancestor(left, right)
+        for left, right in zip(vertices, vertices[1:])
+    )
+    step_distances = tuple(
+        _tree_distance(left, right)
+        for left, right in zip(vertices, vertices[1:])
+    )
+    traveled_distance = sum(step_distances)
+    net_displacement = _tree_distance(vertices[0], vertices[-1])
+    excess_travel = traveled_distance - net_displacement
+    if excess_travel < 0 or excess_travel % 2:
+        raise AssertionError("a tree walk must have even nonnegative excess")
+
+    return _PrefixPathMetric(
+        vertices,
+        common_ancestors,
+        step_distances,
+        traveled_distance,
+        net_displacement,
+        excess_travel,
+        excess_travel // 2,
+    )
+
+
+def _prefix_path_metric(
+    digits: tuple[Fraction, ...],
+    prime: int,
+) -> _PrefixPathMetric:
+    """Materialize root and prefix lattices, then audit their exact tree path."""
+
+    _validate_prime(prime)
+    matrix = _IDENTITY
+    vertices = [_matrix_lattice_vertex(matrix, prime)]
+    for digit in digits:
+        matrix = _matmul(matrix, _digit_matrix(digit))
+        vertices.append(_matrix_lattice_vertex(matrix, prime))
+    return _tree_path_metric(tuple(vertices))
+
+
 def test_floor_sections_are_exact_locally_constant_projective_contacts():
     samples = (
         Fraction(-7, 5),
@@ -552,12 +656,10 @@ def test_ruban_negative_one_cycle_exposes_a_growing_lattice_ray_prefix():
     for prime in (3, 5, 7):
         periodic_digit = Fraction(prime**2 - 1, prime)
         digits = (Fraction(prime - 1),) + (periodic_digit,) * 5
-        vertices = tuple(
-            _matrix_lattice_vertex(_history_matrix(digits[:length]), prime)
-            for length in range(1, len(digits) + 1)
-        )
+        metric = _prefix_path_metric(digits, prime)
 
-        assert tuple(vertex.depth for vertex in vertices) == (
+        assert tuple(vertex.depth for vertex in metric.vertices) == (
+            0,
             0,
             2,
             4,
@@ -567,12 +669,12 @@ def test_ruban_negative_one_cycle_exposes_a_growing_lattice_ray_prefix():
         )
         assert all(
             vertex.chart == "affine" and vertex.coordinate == 1
-            for vertex in vertices[1:]
+            for vertex in metric.vertices[2:]
         )
-        assert all(
-            earlier.is_ancestor_of(later)
-            for earlier, later in zip(vertices, vertices[1:])
-        )
+        assert metric.step_distances == (0, 2, 2, 2, 2, 2)
+        assert metric.is_nondecreasing_ray
+        assert metric.traveled_distance == metric.net_displacement == 10
+        assert metric.excess_travel == metric.backtracked_edges == 0
 
 
 def test_bounded_rational_oracle_separates_browkin_finiteness_from_ruban_cycles():
@@ -665,6 +767,163 @@ def test_no_task_free_selector_survives_totality_and_cost_red_teams():
     browkin_terminal = _expand(totality_input, prime, "browkin", max_steps=8)
     assert ruban_cycle.status == "cycle"
     assert browkin_terminal.status == "terminated"
+
+
+def test_tree_metric_uses_common_ancestors_and_detects_cancelled_travel():
+    root = _LatticeVertex(3, 0, "root", 0)
+    common = _LatticeVertex(3, 1, "affine", 1)
+    left = _LatticeVertex(3, 2, "affine", 1)
+    right = _LatticeVertex(3, 2, "affine", 4)
+    other_chart = _LatticeVertex(3, 1, "infinity", 0)
+
+    assert _lowest_common_ancestor(left, right) == common
+    assert _tree_distance(left, right) == 2
+    assert _lowest_common_ancestor(left, other_chart) == root
+    assert _tree_distance(left, other_chart) == 3
+
+    sibling_turn = _tree_path_metric((root, left, right))
+    assert sibling_turn.common_ancestors == (root, common)
+    assert sibling_turn.step_distances == (2, 2)
+    assert sibling_turn.traveled_distance == 4
+    assert sibling_turn.net_displacement == 2
+    assert sibling_turn.excess_travel == 2
+    assert sibling_turn.backtracked_edges == 1
+    assert not sibling_turn.is_nondecreasing_ray
+
+    with pytest.raises(ValueError, match="same prime"):
+        _tree_distance(left, _LatticeVertex(5, 0, "root", 0))
+    with pytest.raises(ValueError, match="at least one"):
+        _tree_path_metric(())
+
+
+def test_bounded_selector_prefixes_are_exact_nondecreasing_tree_rays():
+    values = sorted(
+        {
+            Fraction(numerator, denominator)
+            for denominator in range(1, 13)
+            for numerator in range(-12, 13)
+            if numerator != 0 and gcd(abs(numerator), denominator) == 1
+        }
+    )
+    expected_aggregates = {
+        (3, "ruban"): (996, 12, 180),
+        (3, "browkin"): (716, 6, 180),
+        (5, "ruban"): (912, 10, 178),
+        (5, "browkin"): (532, 6, 178),
+        (7, "ruban"): (892, 10, 176),
+        (7, "browkin"): (496, 6, 176),
+    }
+
+    for prime in (3, 5, 7):
+        for selector in ("ruban", "browkin"):
+            metrics = []
+            for value in values:
+                expansion = _expand(value, prime, selector, max_steps=16)
+                metric = _prefix_path_metric(expansion.digits, prime)
+                expected_steps = tuple(
+                    0
+                    if digit == 0
+                    else max(0, -2 * _valuation(digit, prime))
+                    for digit in expansion.digits
+                )
+
+                assert metric.step_distances == expected_steps
+                assert metric.common_ancestors == metric.vertices[:-1]
+                assert metric.is_nondecreasing_ray
+                assert metric.traveled_distance == metric.net_displacement
+                assert metric.net_displacement == metric.vertices[-1].depth
+                assert metric.excess_travel == metric.backtracked_edges == 0
+                metrics.append(metric)
+
+            aggregate = (
+                sum(metric.traveled_distance for metric in metrics),
+                max(metric.net_displacement for metric in metrics),
+                sum(metric.net_displacement > 0 for metric in metrics),
+            )
+            assert aggregate == expected_aggregates[(prime, selector)]
+
+
+def test_bounded_selector_pairs_stay_on_one_input_ray_at_different_depths():
+    values = sorted(
+        {
+            Fraction(numerator, denominator)
+            for denominator in range(1, 13)
+            for numerator in range(-12, 13)
+            if numerator != 0 and gcd(abs(numerator), denominator) == 1
+        }
+    )
+    expected_relations = {
+        3: {"equal": 55, "ruban_shallower": 14, "browkin_shallower": 113},
+        5: {"equal": 40, "ruban_shallower": 5, "browkin_shallower": 137},
+        7: {"equal": 44, "ruban_shallower": 5, "browkin_shallower": 133},
+    }
+    expected_distance_counts = {
+        3: {0: 55, 2: 90, 4: 32, 6: 4, 8: 1},
+        5: {0: 40, 2: 100, 4: 28, 6: 12, 8: 2},
+        7: {0: 44, 2: 86, 4: 37, 6: 12, 8: 3},
+    }
+
+    for prime in (3, 5, 7):
+        relations = {"equal": 0, "ruban_shallower": 0, "browkin_shallower": 0}
+        distance_counts: dict[int, int] = {}
+        for value in values:
+            ruban = _expand(value, prime, "ruban", max_steps=16)
+            browkin = _expand(value, prime, "browkin", max_steps=16)
+            ruban_path = _prefix_path_metric(ruban.digits, prime)
+            browkin_path = _prefix_path_metric(browkin.digits, prime)
+            ruban_final = ruban_path.vertices[-1]
+            browkin_final = browkin_path.vertices[-1]
+
+            assert all(
+                ruban_vertex.is_ancestor_of(browkin_vertex)
+                or browkin_vertex.is_ancestor_of(ruban_vertex)
+                for ruban_vertex in ruban_path.vertices
+                for browkin_vertex in browkin_path.vertices
+            )
+            distance = _tree_distance(ruban_final, browkin_final)
+            assert distance == abs(ruban_final.depth - browkin_final.depth)
+            distance_counts[distance] = distance_counts.get(distance, 0) + 1
+
+            if ruban_final == browkin_final:
+                relations["equal"] += 1
+            elif ruban_final.is_ancestor_of(browkin_final):
+                relations["ruban_shallower"] += 1
+            else:
+                assert browkin_final.is_ancestor_of(ruban_final)
+                relations["browkin_shallower"] += 1
+
+        assert relations == expected_relations[prime]
+        assert distance_counts == expected_distance_counts[prime]
+
+
+def test_path_geometry_does_not_collapse_outcome_or_local_cost_red_teams():
+    prime = 5
+
+    ruban_short = _expand(Fraction(3), prime, "ruban", max_steps=8)
+    browkin_long = _expand(Fraction(3), prime, "browkin", max_steps=8)
+    ruban_short_path = _prefix_path_metric(ruban_short.digits, prime)
+    browkin_long_path = _prefix_path_metric(browkin_long.digits, prime)
+    assert tuple(vertex.depth for vertex in ruban_short_path.vertices) == (0, 0)
+    assert tuple(vertex.depth for vertex in browkin_long_path.vertices) == (
+        0,
+        0,
+        2,
+    )
+    assert ruban_short_path.traveled_distance == 0
+    assert browkin_long_path.traveled_distance == 2
+    assert ruban_short_path.is_nondecreasing_ray
+    assert browkin_long_path.is_nondecreasing_ray
+
+    ruban_cycle = _expand(Fraction(-1), prime, "ruban", max_steps=8)
+    browkin_terminal = _expand(Fraction(-1), prime, "browkin", max_steps=8)
+    ruban_cycle_path = _prefix_path_metric(ruban_cycle.digits, prime)
+    browkin_terminal_path = _prefix_path_metric(browkin_terminal.digits, prime)
+    assert ruban_cycle.status == "cycle"
+    assert browkin_terminal.status == "terminated"
+    assert ruban_cycle_path.is_nondecreasing_ray
+    assert browkin_terminal_path.is_nondecreasing_ray
+    assert ruban_cycle_path.traveled_distance == 2
+    assert browkin_terminal_path.traveled_distance == 0
 
 
 def test_selector_oracle_rejects_undefined_inputs_and_preserves_horizon():
