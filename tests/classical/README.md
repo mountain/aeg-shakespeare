@@ -16,7 +16,7 @@ The named problem is never a package-level solver. A classical example is admitt
 
 For multi-file mathematical families, prefer one stable family-level guide over forcing every proof step into one oversized test. The first such complete guide is:
 
-- `docs/vignettes/simple-pendulum.md` — physical problem, nondimensional bridge, P0–P9 executable dependency map, quotient-fiber/reconstruction boundary, evidence levels, and open obligations.
+- `docs/vignettes/simple-pendulum.md` — physical problem, nondimensional bridge, P0–P13 executable dependency map, quotient-fiber/reconstruction boundary, evidence levels, and open obligations.
 
 See:
 
