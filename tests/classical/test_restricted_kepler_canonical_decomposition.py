@@ -121,6 +121,14 @@ canonicalization API, or a universal module-completion search.  The
 ``varpi_dot`` statement is conditional on the explicit first-order moving-shape
 ansatz stated in this essay and checked algebraically here.
 
+For the process-language ledger, the declared task is the finite exact
+decomposition and reconstruction of one supplied first-order forcing in the
+bounded ``R``-module.  A trajectory history, raw-history unfolding,
+topological cover, analytic developing cover, and continuation-semantic task
+quotient are not required for that task.  The zero decomposition residual is
+the exact reconstruction certificate.  These axes are therefore explicitly
+``not applicable``, not unexamined.
+
 References
 ----------
 [Goldstein-Poole-Safko-2002] Herbert Goldstein, Charles P. Poole Jr., John L.

@@ -17,6 +17,8 @@ _AUDIT = _ROOT / "docs" / "36-classical-reexpression-audit.md"
 _MATRIX = _ROOT / "docs" / "66-classical-process-language-calibration.md"
 _BEGIN = "<!-- CLASSICAL_CALIBRATION_MATRIX:BEGIN -->"
 _END = "<!-- CLASSICAL_CALIBRATION_MATRIX:END -->"
+_NA_BEGIN = "<!-- CLASSICAL_NA_LEDGER:BEGIN -->"
+_NA_END = "<!-- CLASSICAL_NA_LEDGER:END -->"
 _EVIDENCE_STATES = {"E", "N", "D", "F", "I", "NA", "OPEN"}
 
 
@@ -103,20 +105,65 @@ def test_process_language_matrix_uses_only_governed_evidence_states():
         assert row["Next gate"]
 
 
+def test_completed_process_language_matrix_has_no_open_cell():
+    evidence_columns = (
+        "P",
+        "H",
+        "T",
+        "L",
+        "Hinf",
+        "Ctop",
+        "Can",
+        "R",
+        "Q",
+        "Dec",
+        "A",
+        "B",
+    )
+    unresolved = [
+        (row["File"], column)
+        for row in _calibration_matrix()
+        for column in evidence_columns
+        if row[column] == "OPEN"
+    ]
+    assert not unresolved, f"completed classical matrix has OPEN cells: {unresolved}"
+
+
+def test_every_not_applicable_cell_has_a_task_relative_resolution():
+    calibration = _MATRIX.read_text(encoding="utf-8")
+    assert calibration.count(_NA_BEGIN) == 1 and calibration.count(_NA_END) == 1
+    ledger = calibration.split(_NA_BEGIN, 1)[1].split(_NA_END, 1)[0]
+    names_requiring_resolution = {
+        row["File"].strip("`")
+        for row in _calibration_matrix()
+        if "NA" in row.values()
+    }
+    missing = [
+        name
+        for name in sorted(names_requiring_resolution)
+        if f"`{name}`" not in ledger
+    ]
+    assert not missing, "NA resolution ledger is missing: " + ", ".join(missing)
+    assert "Reopen" in ledger
+
+
 def test_history_topological_and_analytic_covers_remain_separate_axes():
     matrix = {row["File"].strip("`"): row for row in _calibration_matrix()}
     oscillator = matrix["test_even_power_oscillator_process_calibration.py"]
 
-    assert oscillator["Hinf"] == "OPEN"
+    assert oscillator["Hinf"] == "E"
     assert oscillator["Ctop"] == "E"
     assert oscillator["Can"] == "E"
 
     calibration = _MATRIX.read_text(encoding="utf-8")
     required_separations = (
-        "Raw-history unfolding is an open transversal",
+        "Literal histories are now executable where the task needs them",
+        "not identify those word unfoldings with topological or analytic covers",
         "complex energy carriers",
         "real history-cover",
-        "Generic raw-history unfolding",
+        "Intrinsic continuous-history discovery",
+        "Family evidence owners for `F`",
+        "`NA` is always task-relative",
     )
     missing = [term for term in required_separations if term not in calibration]
     assert not missing, "cover-separation record is missing: " + ", ".join(missing)

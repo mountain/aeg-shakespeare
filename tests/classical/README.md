@@ -33,7 +33,8 @@ The cross-family Mathematical-Core recalibration ledger is:
   task and information-contract boundaries, and the staged recalibration order.
 - `docs/66-classical-process-language-calibration.md` — machine-checked
   per-file/process-construction matrix, strict separation of the three cover
-  notions, and the oscillator end-to-end vertical slice.
+  notions, zero unclassified cells, and A/M, oscillator, and central-payload
+  family spines.
 
 See:
 

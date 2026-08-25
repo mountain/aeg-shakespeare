@@ -120,7 +120,8 @@ calculation, certificates, units, errors, costs, and cross-rank transport.
 62. `66-classical-process-language-calibration.md` — per-file evidence matrix
 for every classical executable essay, with raw-history unfolding, topological
 cover, and analytic developing cover audited independently and the harmonic
-oscillator as the second end-to-end real-task spine.
+oscillator as the second end-to-end real-task spine; the completed matrix has
+no unclassified `OPEN` cell.
 
 Required unnumbered synthesis:
 

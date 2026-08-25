@@ -26,14 +26,19 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Start here:**
 
+- `tests/classical/test_am_process_language_calibration.py` — literal A/M
+  words, affine sufficient presentation, continuation quotient, decoder,
+  units, and boundary;
 - `tests/classical/test_am_process_direction.py`
 - `docs/06-addition-multiplication-function-theory.md`
 
 **Related:** `tests/classical/test_am_character_transport.py`, `tests/classical/test_dilation_characters.py`.
 
 **Current-core reading:** exact finite character laws and one exact local A/M
-calculus slice. `ProcessDirection` is not observer transport, and no task
-quotient, universal integrability, or universal function theory follows.
+calculus slice.  The family spine now supplies a narrow endpoint-prediction
+task quotient without erasing literal word histories. `ProcessDirection` is
+not observer transport, and no canonical word section, universal
+integrability, or universal function theory follows.
 
 **Theory role:** concrete model organism and calibration; not a claim that A/M is the universal function theory.
 
@@ -135,7 +140,8 @@ action-period law, presentation Pareto tradeoffs.
 **Current-core reading:** the harmonic modules and relation factorizations are
 exact in declared coefficient languages.  The new real-task spine constructs
 the harmonic phase cover, deck quotient, position/sign decoder, unit frame,
-and action-period law while leaving raw-history unfolding open.  The earlier
+action-period law, and a literal quarter-period word unfolding.  It does not
+claim an intrinsic unfolding of every continuous command history.  The earlier
 even-power curves remain algebraic carriers until a complex analytic task and
 decoder are supplied.  Their genera `0,1,2` do not measure real orbit-cover
 complexity: all regular connected positive-energy real orbits here are
@@ -211,6 +217,11 @@ dynamics, a Ruelle zeta function, or arithmetic universality.
 **Process Geometry themes:** finite process families, character obstruction, process cocycle, central history residual, visible motion versus lifted history.
 
 **Start here:** `tests/classical/test_galilean_central_residual.py`.
+
+**Process-language spine:**
+`tests/classical/test_central_payload_process_calibration.py` — literal words,
+visible/lifted continuation tasks, central residual memory, exact lowering,
+coboundary covariance, and units.
 
 **Related:**
 

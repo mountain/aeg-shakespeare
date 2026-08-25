@@ -58,6 +58,10 @@ particular no wavelet, Hilbert-space representation, or spectrum API is added.
 Boundary
 --------
 This is an obstruction/calibration result, not noncommutative harmonic analysis.
+The declared task is to certify transport and non-invariance of one supplied
+response.  Covers and history reconstruction are not required for this local
+obstruction task.  The literal A/M history, endpoint-task quotient, and decoder
+are supplied by ``test_am_process_language_calibration.py``.
 """
 
 import sympy as sp

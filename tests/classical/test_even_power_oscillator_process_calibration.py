@@ -55,7 +55,15 @@ The full-state task forgets only integer winding: ``tau`` and
 with deck kernel ``2*pi*Z``.  The same ``tau`` is also an analytic clock for
 this genus-zero carrier.  This equality is local to the declared harmonic
 task; it is not an identification of either cover with the raw full history
-unfolding, which this vignette does not construct.
+unfolding of the continuous command space, which this vignette does not
+construct.
+
+For a finite exact history certificate, the harmonic flow is also sampled by
+the declared quarter-period alphabet ``{R,L}``.  ``ProcessWord`` preserves the
+literal words before interpretation, while the full-state continuation task
+quotients their net quarter-turn modulo four.  This executes a raw history
+unfolding for the declared discrete subtask; it does not claim that the entire
+continuous command/path space has been intrinsically unfolded.
 
 The position-only observable ``U=X`` is not continuation sufficient: phases
 ``tau`` and ``-tau`` have the same position and opposite velocity.  Away from
@@ -98,16 +106,20 @@ certifies dynamics, energy, and the inverse physical unit map.
 ``test_harmonic_real_history_cover_*`` certifies the deck generator and the
 full-state continuation equivalence.  ``test_position_only_*`` certifies
 information loss, the branch decoder, and its turning-point boundary.
+``test_quarter_period_words_*`` certifies the finite literal-history unfolding
+and its exact continuation quotient.
 ``test_zero_energy_*`` certifies the declared singular stratum.
 
 Boundary
 --------
 The topology ``regular compact connected one-manifold = S^1`` and the beta
 integral are classical prerequisites, not discoveries of the test runner.
-No raw-history unfolding, automatic task discovery, complex genus-one or
-genus-two uniformization, global position-only decoder, certified numerical
-quadrature, or efficiency advantage is claimed.  In particular, the complex
-genus ladder and the real orbit cover measure different structures.
+No intrinsic unfolding of the full continuous history space, automatic task
+discovery, complex genus-one or genus-two uniformization, global position-only
+decoder, certified numerical quadrature, or efficiency advantage is claimed.
+The raw-history certificate is restricted to the declared quarter-period
+alphabet.  In particular, the complex genus ladder and the real orbit cover
+measure different structures.
 
 References
 ----------
@@ -124,6 +136,9 @@ DOI: 10.1007/978-1-4612-5961-9.
 from __future__ import annotations
 
 import sympy as sp
+
+from process_geometry.experimental import minimize_finite_task_process
+from process_geometry.process.history import ProcessWord, interpret_history
 
 
 def _beta_exact(left: sp.Rational, right: sp.Rational) -> sp.Expr:
@@ -220,6 +235,43 @@ def test_harmonic_real_history_cover_has_deck_kernel_and_task_quotient():
     assert sp.trigsimp(carrier.dot(carrier) - 1) == 0
     assert sp.trigsimp(sp.diff(carrier[0], phase) - carrier[1]) == 0
     assert sp.trigsimp(sp.diff(carrier[1], phase) + carrier[0]) == 0
+
+
+def test_quarter_period_words_unfold_history_before_the_exact_phase_quotient():
+    def transition(phase: int, step: int) -> int:
+        return (phase + step) % 4
+
+    direct = ProcessWord((1,))
+    detour = ProcessWord((1, 1, -1))
+
+    assert direct != detour
+    assert direct.depth == 1
+    assert detour.depth == 3
+    assert interpret_history(direct, 0, transition) == interpret_history(
+        detour, 0, transition
+    )
+
+    for continuation in (
+        ProcessWord(()),
+        ProcessWord((1,)),
+        ProcessWord((-1, -1)),
+        ProcessWord((1, 1, 1)),
+    ):
+        assert interpret_history(
+            direct.compose(continuation), 0, transition
+        ) == interpret_history(detour.compose(continuation), 0, transition)
+
+    carrier_states = ((1, 0), (0, -1), (-1, 0), (0, 1))
+    quotient = minimize_finite_task_process(
+        states=range(4),
+        steps=(-1, 1),
+        transition=transition,
+        observe=lambda phase: carrier_states[phase],
+    )
+    assert quotient.class_count == 4
+    assert quotient.class_of(interpret_history(direct, 0, transition)) == (
+        quotient.class_of(interpret_history(detour, 0, transition))
+    )
 
 
 def test_position_only_observable_loses_velocity_and_has_a_branched_decoder():

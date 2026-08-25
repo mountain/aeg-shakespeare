@@ -43,6 +43,10 @@ measure remain outside the current API.
 Boundary
 --------
 This is a multiplicative character calibration, not a Mellin transform engine.
+Its declared task is exact response-law verification.  Topological/analytic
+cover construction and literal-word reconstruction are not required for that
+task; the A/M family history, quotient, decoder, unit, and failure contract is
+owned by ``test_am_process_language_calibration.py``.
 """
 
 import sympy as sp
