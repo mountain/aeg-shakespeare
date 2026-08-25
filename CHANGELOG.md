@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- audits the first-principles picture after notes 42--63: the horizontal
+  distinguishability and vertical objectification axes form a clear theory
+  spine, while transported history payloads, task resources, holonomy,
+  Bellman/coarea, and partition semantics remain an emerging T0/T1 transversal
+  rather than a new Core node;
+- moves `ConstraintCanonicalization`, `ObserverConnection`, and
+  `CanonicalDecomposition` to canonical ownership under
+  `process_geometry.experimental`, removes their modules from the declared
+  Presentation/Analysis namespace surfaces, and retains the historical paths
+  as identity-preserving 0.0.x compatibility shims;
+- makes the exact finite task-quotient certificate read-only and adds direct
+  quotient execution/observation helpers without broadening its finite,
+  deterministic theory contract;
+- updates package license metadata to the SPDX `Unlicense` expression while
+  retaining `LICENSE` in distributions, removing the setuptools metadata
+  deprecation found during the audit build;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea

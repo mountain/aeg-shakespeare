@@ -31,6 +31,11 @@ The current foundation is developed primarily in:
 - `49-theory-implementation-structural-alignment.md`
 - `50-aeg-translation-objectification-rank-lowering.md`
 - `51-aeg-addition-multiplication-rank-transition.md`
+- `52-canonical-completion-hypothesis.md` through
+  `63-thermodynamic-objectification-and-partition-towers.md` — subsequent
+  T0/T1 refinement and obstruction records;
+- `64-first-principles-and-api-boundary-audit.md` — current synthesis and
+  conservative implementation-boundary review.
 
 Those notes contain the argument and structural audits. This file is the compact map used for engineering review.
 
@@ -91,6 +96,43 @@ presentation                       +--> metric/uniform structure when justified
 The map is deliberately not a single mandatory pipeline. A finite discrete process may stop at an exact quotient. A symbolic dynamical system may naturally reach entropy. A continuous process may support differential structure. A higher-rank language is not legitimate merely because a new symbol was introduced: its legal compositions must remain grounded by rank-lowering semantics.
 
 The second arithmetic calibration adds an important caution to the schematic `C_r -> objectification` arrow: the thing objectified at the next rank may be a stable **process/action on lower-rank semantic objects**, not only one point or equivalence class of `C_r`. That refinement is currently evidence from AEG, not yet a generic replacement for the mother picture.
+
+### 1.1 Emerging transversal — task-covariant history evaluation
+
+Notes `54–63` force a related structure that is not naturally another stage of
+either axis:
+
+```text
+lifted history
+    -> composable transported payload / residual
+    -> task evaluation into an ordered resource or observable
+    -> stopping, coding, partition, or variational objective
+```
+
+Examples of payload include additive clock/action, vector-valued resources,
+deck or connection holonomy, max-like peak memory, and phase.  A task may
+discard the payload, observe only a quotient of it, or turn it into an ordered
+resource for Bellman/Huffman optimization.  Objectification changes the local
+primitive ruler and must charge compilation, dictionary, decoder, and storage
+effects rather than silently declaring a long history to be one free step.
+
+This structure cuts across the current map:
+
+- at H1 it decides whether equal visible endpoints remain continuation
+  distinguishable;
+- at H3 it supplies frontier weights, coding measures, and memory lower bounds;
+- at H4 it supplies clock forms, connections, and variational payloads;
+- at V2/V3 it records the measure and residual data retained by an objectified
+  assembly;
+- at V5 it becomes part of the comparison data that lowering must transport.
+
+The exact finite Bellman/frontier identity, covariant pendulum family identity,
+task-visible holonomy bound, same-scale mass-pushforward theorem, and twisted
+finite-cycle identity provide strong pressure.  The candidate carrier is still
+unsettled: resource bundle, groupoid, cocycle family, enriched history category,
+and problem-local alternatives remain live.  Consequently this is recorded as
+an **emerging T0/T1 transversal**, not a stable Theory Map node and not a generic
+API proposal.
 
 ---
 
@@ -159,7 +201,10 @@ Current `BoundaryProfile`/Huffman machinery provides useful finite growth and co
 
 AEG is the first major model organism because its arithmetic process structure naturally developed into function theory and analysis rather than remaining a discrete hierarchy.
 
-Current `analysis.*` modules implement important concrete languages; `ObserverConnection` and canonicalization work are experimental slices, not a universal theory.
+Current `analysis.*` modules implement important concrete languages.  The
+`ConstraintCanonicalization`, `ObserverConnection`, and
+`CanonicalDecomposition` records now live under `process_geometry.experimental`;
+they are local executable slices, not a universal theory.
 
 **Maturity:** strong domain-specific implementation plus developing general theory.
 
@@ -381,6 +426,11 @@ Hosts explicitly unstable theory-to-code probes. Experimental is not a fifth sta
 
 The exact finite task quotient is the first Experimental probe added specifically to close a Theory Map implementation gap rather than to support one named classical problem. Both current AEG V2–V4 rank-transition calibrations remain research-local rather than entering Experimental before independent domains establish the right abstraction.
 
+The local canonical-observer records are also owned by Experimental.  Their
+historical `presentation.canonicalization`, `analysis.connection`, and
+`analysis.decomposition` paths are 0.0.x compatibility shims and are not part of
+the declared namespace surfaces.
+
 ---
 
 ## 5. AEG and Arithmetic Universality
@@ -421,7 +471,7 @@ Every substantial proposed abstraction should be located using one of these stat
 | **research hypothesis** | plausible theoretical structure not yet earned by implementation/evidence |
 | **open conjecture** | stronger claim whose truth is not assumed by the framework |
 
-A code symbol and a theory node need not have the same maturity. For example, a concrete `ObserverConnection` class can exist while the general observer-connection theory remains experimental. Likewise `FiniteTaskQuotient` can be exact in its finite deterministic class while the general theory of task quotients remains broader and unsettled. The two current AEG V2–V4 examples can form a consecutive arithmetic rank calibration while `Objectification`, `ProcessRank`, and `RankLowering` remain intentionally absent as package abstractions.
+A code symbol and a theory node need not have the same maturity. For example, a concrete Experimental `ObserverConnection` record can exist while the general observer-connection theory remains unsettled. Likewise `FiniteTaskQuotient` can be exact in its finite deterministic class while the general theory of task quotients remains broader and unsettled. The two current AEG V2–V4 examples can form a consecutive arithmetic rank calibration while `Objectification`, `ProcessRank`, and `RankLowering` remain intentionally absent as package abstractions.
 
 ---
 

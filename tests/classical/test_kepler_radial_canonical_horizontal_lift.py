@@ -161,7 +161,7 @@ from __future__ import annotations
 
 import sympy as sp
 
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import ConstraintCanonicalization
 
 
 def rotated_state(x, y, vx, vy, theta):

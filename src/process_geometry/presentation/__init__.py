@@ -1,7 +1,10 @@
-"""Finite process presentations: history quotients, grammars, relations, and search."""
+"""Finite process presentations: histories, grammars, relations, and search.
+
+Exact task quotients and local canonical-observer slices remain under
+``process_geometry.experimental`` until their broader semantics mature.
+"""
 
 from . import (
-    canonicalization,
     constraints,
     construction,
     grammar,
@@ -15,7 +18,6 @@ __all__ = [
     "history",
     "construction",
     "constraints",
-    "canonicalization",
     "grammar",
     "relations",
     "search",

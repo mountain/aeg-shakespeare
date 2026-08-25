@@ -62,6 +62,34 @@ def test_representative_namespaced_entry_points_are_importable():
     assert hasattr(pg.analysis.abelian, "normalized_abelian_torus")
 
 
+def test_unsettled_canonical_observer_slice_does_not_occupy_public_namespaces():
+    assert "canonicalization" not in pg.presentation.__all__
+    assert "connection" not in pg.analysis.__all__
+    assert "decomposition" not in pg.analysis.__all__
+
+
+def test_experimental_is_the_canonical_owner_of_unsettled_slices():
+    import process_geometry.experimental as experimental
+    from process_geometry.analysis.connection import ObserverConnection
+    from process_geometry.analysis.decomposition import CanonicalDecomposition
+    from process_geometry.presentation.canonicalization import (
+        ConstraintCanonicalization,
+    )
+
+    assert experimental.ConstraintCanonicalization is ConstraintCanonicalization
+    assert experimental.ObserverConnection is ObserverConnection
+    assert experimental.CanonicalDecomposition is CanonicalDecomposition
+    assert ConstraintCanonicalization.__module__ == (
+        "process_geometry.experimental.canonical_observer"
+    )
+    assert ObserverConnection.__module__ == (
+        "process_geometry.experimental.canonical_observer"
+    )
+    assert CanonicalDecomposition.__module__ == (
+        "process_geometry.experimental.canonical_observer"
+    )
+
+
 def test_foundation_aligned_names_preserve_historical_backend_identity():
     assert (
         pg.presentation.history.TaskContinuationSignature

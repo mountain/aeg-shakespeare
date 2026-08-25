@@ -138,7 +138,7 @@ multiple-angle identities, https://dlmf.nist.gov/4.21 .
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
+from process_geometry.experimental import CanonicalDecomposition
 from aeg_shakespeare.analysis.module import ProcessFunctionModule
 from aeg_shakespeare.process.local import ProcessFrame
 

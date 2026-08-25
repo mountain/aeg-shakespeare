@@ -142,7 +142,7 @@ from __future__ import annotations
 
 import sympy as sp
 
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import ConstraintCanonicalization
 
 
 def affine_observed_coefficients(a, b, c, q, s, q_dot, s_dot):

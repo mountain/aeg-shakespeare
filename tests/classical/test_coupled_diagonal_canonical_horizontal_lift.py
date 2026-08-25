@@ -153,7 +153,7 @@ from __future__ import annotations
 
 import sympy as sp
 
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import ConstraintCanonicalization
 
 
 def diagonal_lift_coefficients(b12, b21, p, q, p_dot, q_dot):
