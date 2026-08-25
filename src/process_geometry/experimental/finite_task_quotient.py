@@ -25,6 +25,7 @@ from __future__ import annotations
 
 from collections import deque
 from dataclasses import dataclass
+from types import MappingProxyType
 from typing import Callable, Generic, Hashable, Mapping, Sequence, TypeVar
 
 StateT = TypeVar("StateT", bound=Hashable)
@@ -62,6 +63,14 @@ class FiniteTaskQuotient(Generic[StateT, StepT, ObservationT]):
     refinement_rounds: int
     distinguishing_witnesses: tuple[DistinguishingContinuation[StepT], ...]
 
+    def __post_init__(self) -> None:
+        # A frozen certificate must not retain a caller-mutable dictionary.
+        object.__setattr__(
+            self,
+            "state_to_class",
+            MappingProxyType(dict(self.state_to_class)),
+        )
+
     @property
     def class_count(self) -> int:
         return len(self.classes)
@@ -72,6 +81,13 @@ class FiniteTaskQuotient(Generic[StateT, StepT, ObservationT]):
         except KeyError as exc:
             raise KeyError(f"state is outside the quotient carrier: {state!r}") from exc
 
+    def observation_of_class(self, class_index: int) -> ObservationT:
+        """Return the task observation attached to one quotient class."""
+
+        if class_index < 0 or class_index >= self.class_count:
+            raise IndexError("quotient class index out of range")
+        return self.class_observations[class_index]
+
     def transition_class(self, class_index: int, step: StepT) -> int:
         if class_index < 0 or class_index >= self.class_count:
             raise IndexError("quotient class index out of range")
@@ -80,6 +96,31 @@ class FiniteTaskQuotient(Generic[StateT, StepT, ObservationT]):
         except ValueError as exc:
             raise KeyError(f"unknown process step: {step!r}") from exc
         return self.class_transitions[class_index][step_index]
+
+    def run_class(
+        self,
+        class_index: int,
+        continuation: Sequence[StepT],
+    ) -> int:
+        """Run a finite continuation on the induced quotient process."""
+
+        current = class_index
+        # Validate even when ``continuation`` is empty.
+        self.observation_of_class(current)
+        for step in continuation:
+            current = self.transition_class(current, step)
+        return current
+
+    def observe_after(
+        self,
+        class_index: int,
+        continuation: Sequence[StepT],
+    ) -> ObservationT:
+        """Observe the quotient task after a finite continuation."""
+
+        return self.observation_of_class(
+            self.run_class(class_index, continuation)
+        )
 
     def witness_between(
         self,

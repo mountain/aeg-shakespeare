@@ -10,9 +10,17 @@ from .finite_task_quotient import (
     FiniteTaskQuotient,
     minimize_finite_task_process,
 )
+from .canonical_observer import (
+    CanonicalDecomposition,
+    ConstraintCanonicalization,
+    ObserverConnection,
+)
 
 __all__ = [
     "DistinguishingContinuation",
     "FiniteTaskQuotient",
     "minimize_finite_task_process",
+    "ConstraintCanonicalization",
+    "ObserverConnection",
+    "CanonicalDecomposition",
 ]

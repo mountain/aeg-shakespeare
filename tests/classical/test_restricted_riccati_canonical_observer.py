@@ -124,8 +124,10 @@ Elementary Introduction*, 2nd ed., Graduate Texts in Mathematics 222, Springer,
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import (
+    CanonicalDecomposition,
+    ConstraintCanonicalization,
+)
 from aeg_shakespeare.process.local import ProcessDirection, ProcessFrame
 
 

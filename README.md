@@ -153,6 +153,14 @@ pg.discovery
 pg.analysis
 ```
 
+Unsettled theory-to-code probes live outside that contract under
+`process_geometry.experimental`.  This currently includes the exact finite
+deterministic `FiniteTaskQuotient` and the local canonical-observer evidence
+records `ConstraintCanonicalization`, `ObserverConnection`, and
+`CanonicalDecomposition`.  The latter previously appeared under Presentation
+and Analysis module paths; those paths are now 0.0.x compatibility shims rather
+than declared namespace members.
+
 Legacy root-level symbol imports from the early `0.0.x` research-preview surface remain available lazily and emit `DeprecationWarning`; they are no longer part of the declared public root surface. The separate `aeg_shakespeare` namespace is also deprecated and exists only as a migration alias. See [`docs/API.md`](docs/API.md) for the detailed map and migration notes.
 
 ## Why “Process Geometry”
@@ -174,6 +182,7 @@ See:
 - [`docs/44-objectification-semantic-compression-and-rank-lowering.md`](docs/44-objectification-semantic-compression-and-rank-lowering.md)
 - [`docs/45-lineage-objectification-and-analytic-closure.md`](docs/45-lineage-objectification-and-analytic-closure.md)
 - [`docs/48-foundation-naming-audit.md`](docs/48-foundation-naming-audit.md)
+- [`docs/64-first-principles-and-api-boundary-audit.md`](docs/64-first-principles-and-api-boundary-audit.md)
 
 The naming audit is intentionally conservative: it reserves strong theory words such as **task quotient**, **jet**, **objectification**, **process rank**, and **rank lowering** until the corresponding semantics are actually implemented.
 

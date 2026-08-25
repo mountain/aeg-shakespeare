@@ -170,11 +170,10 @@ Analysis contains mathematical languages supported by successful process present
 - `AbelianCycleSystem`, `AbelianPeriodMatrix`, `compute_period_matrix`;
 - Abel-Jacobi history increments and `NormalizedAbelianTorus`.
 
-### Experimental local analysis
-
-`analysis.connection.ObserverConnection` and `presentation.canonicalization.ConstraintCanonicalization` are qualified experimental structures motivated by the Canonical Observer line. Their names do not assert that a universal observer connection/canonicalization theory has already been promoted.
-
-These objects are intentionally not re-exported from the package root.
+Local canonical-observer records are not part of the declared Analysis or
+Presentation surfaces.  Their canonical ownership is Experimental; see
+section 7.  Historical `analysis.connection`, `analysis.decomposition`, and
+`presentation.canonicalization` module paths remain 0.0.x compatibility shims.
 
 ## 5. Root contract
 
@@ -257,5 +256,35 @@ quotient = minimize_finite_task_process(
     observe,
 )
 ```
+
+The exact finite quotient certificate is executable: `run_class` applies a
+continuation on the induced quotient process, `observe_after` evaluates the task
+after it, and `witness_between` returns a continuation separating any two
+distinct quotient classes.  `state_to_class` is read-only.  Numeric class
+indices are presentation artifacts determined by caller state order; the
+minimal quotient is canonical only up to isomorphism.
+
+The second Experimental family contains local canonical-observer evidence
+records:
+
+- `ConstraintCanonicalization`;
+- `ObserverConnection`;
+- `CanonicalDecomposition`.
+
+Use:
+
+```python
+from process_geometry.experimental import (
+    CanonicalDecomposition,
+    ConstraintCanonicalization,
+    ObserverConnection,
+)
+```
+
+These records implement a qualified local equation/transport/decomposition
+slice.  They do **not** assert a generic observer topology, global canonical
+lift, unique task ruler, universal connection, or canonical decomposition
+theorem.  Their former module paths preserve object identity temporarily but
+are excluded from `presentation.__all__` and `analysis.__all__`.
 
 Experimental symbols are not re-exported from `process_geometry` root and carry no compatibility promise. Their purpose is to test whether a Theory Map node has acquired enough executable semantics to survive broader calibrations.

@@ -36,10 +36,7 @@ def observe(state: str) -> bool:
 
 
 def run_class(quotient, class_index: int, continuation: tuple[str, ...]) -> int:
-    current = class_index
-    for step in continuation:
-        current = quotient.transition_class(current, step)
-    return current
+    return quotient.run_class(class_index, continuation)
 
 
 def test_bounded_signature_can_miss_a_distinction_that_exact_quotient_finds():
@@ -87,9 +84,18 @@ def test_every_distinct_quotient_pair_has_a_sound_future_witness():
         left_end = run_class(quotient, witness.left_class, witness.continuation)
         right_end = run_class(quotient, witness.right_class, witness.continuation)
         assert (
-            quotient.class_observations[left_end]
-            != quotient.class_observations[right_end]
+            quotient.observation_of_class(left_end)
+            != quotient.observation_of_class(right_end)
         )
+
+
+def test_exact_quotient_certificate_is_read_only_and_executable():
+    quotient = minimize_finite_task_process(STATES, STEPS, transition, observe)
+
+    x_class = quotient.class_of("x")
+    assert quotient.observe_after(x_class, ("tick", "tick")) is True
+    with pytest.raises(TypeError):
+        quotient.state_to_class["x"] = quotient.class_of("accept")
 
 
 def test_induced_transition_is_well_defined_on_merged_class():

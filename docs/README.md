@@ -91,6 +91,9 @@ calibrations. These are indexed without renumbering that stable list:
 - `63-thermodynamic-objectification-and-partition-towers.md` — finite
   thermodynamic pushforward and its same-scale flattening theorem, unit-cell
   carry law, plethystic assembly boundary, and twisted finite-cycle red team.
+- `64-first-principles-and-api-boundary-audit.md` — synthesis of the two-axis
+  foundation, the emerging task-covariant evaluation transversal, current
+  theory gaps, and the conservative Experimental ownership refactor.
 
 Open Sonnet research is indexed by its own README and phase notes under
 `sonnet/`.

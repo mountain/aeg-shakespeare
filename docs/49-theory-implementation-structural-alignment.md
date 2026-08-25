@@ -18,18 +18,23 @@ The status vocabulary is:
 - **absent** — no current code object has the required semantics;
 - **deferred by design** — intentionally absent pending more cross-domain evidence.
 
-The central result is that the current code is already strong on the two ends of the Theory Map—literal process generation and domain-specific analysis—but comparatively weak in the middle and on the vertical bridge:
+The original audit found strong literal process generation and domain-specific
+analysis, with a gap in the middle and on the vertical bridge.  The first narrow
+part of that gap has since closed: exact finite deterministic task quotienting
+now exists under Experimental.  Topology, generic objectification, and
+rank-lowering remain absent:
 
 ```text
-strong                                         strong
-Process/history  ->  quotient/topology/...  -> Analysis
-      |                    ^                     |
-      |                    |                     |
-      +---- current gap ---+                     |
+strong            exact finite slice        strong
+Process/history -> task quotient -> H2/... -> Analysis
+                         Experimental   ^
+                                        |
+                                  current gap
 
 Vertical:
 free generation -> semantic compression -> objectification -> higher rank -> lowering
-      strong             partial              absent           absent        absent
+      strong        exact finite slice          absent           absent        absent
+                         + partial shadows
 ```
 
 This shape explains why recent Sonnets repeatedly discover good local representations but still need problem-specific glue to turn those discoveries into a general ontology-growth mechanism.
@@ -41,13 +46,13 @@ This shape explains why recent Sonnets repeatedly discover good local representa
 | Theory node | Current implementation | Status | Missing defining semantics |
 | --- | --- | --- | --- |
 | **H0 Process/history** | `ProcessWord`, `interpret_history`, `ProcessFamily`, `ProcessSystem`, `ProcessFrame` | **implemented concrete** | no universal Process protocol, intentionally |
-| **H1 exact task/future distinguishability** | `TaskContinuationSignature`, `histories_task_equivalent` | **partial** | finite depth only; no fixed-point exact quotient/minimization |
-| **H1 task/process quotient** | problem-local quotients, bounded signatures | **absent generically** | actual quotient carrier, induced process action, minimality/canonicality certificate |
+| **H1 exact task/future distinguishability** | bounded `TaskContinuationSignature`; exact finite `FiniteTaskQuotient` | **implemented concrete in the finite deterministic class** | no exact framework for infinite, nondeterministic, probabilistic, continuous, approximate, or resource-bounded processes |
+| **H1 task/process quotient** | `process_geometry.experimental.FiniteTaskQuotient` | **exact narrow Experimental slice; absent generically** | broader process classes, topology, and a cross-class quotient protocol remain open |
 | **H2 topology/locality** | none in generic package | **absent** | observer neighborhoods, refinement law, process continuity |
 | **H3 entropy/intrinsic complexity** | `BoundaryProfile`, `PrefixCodeMetrics`, Huffman code | **calibrated shadow** | no dynamical open-cover/separated-set entropy; no intrinsic lower-bound object tied to task quotient |
-| **H4 analysis of variation** | `ProcessSystem`, `ProcessFrame`, A/M calculus, Abelian history/period layers, `ConstraintCanonicalization`, `ObserverConnection` | **strong domain-specific / partial general** | no generic locality/tangent/jet foundation; no observer-induced differential structure |
+| **H4 analysis of variation** | `ProcessSystem`, `ProcessFrame`, A/M calculus, Abelian history/period layers; Experimental canonical-observer records | **strong domain-specific / partial general** | no generic locality/tangent/jet foundation; no observer-induced differential structure |
 | **V0 free generation** | `ProcessWord`, continuation enumeration, `PrimitiveConstruction`, generated grammar search | **implemented concrete in several forms** | no single generic free-construction abstraction, intentionally |
-| **V1 semantic compression** | rewrite relations, bounded task signatures, presentation certificates, problem-local quotients | **partial** | generic semantics object and coarsest stable semantic quotient absent |
+| **V1 semantic compression** | exact finite task quotient plus rewrite relations, bounded signatures, and problem-local quotients | **implemented concrete in one narrow class; partial otherwise** | no generic semantics object or quotient across process classes |
 | **V2 objectification** | `PrimitiveProposal`, relation decomposition primitives | **calibrated shadows only** | no objectification gate, no new process rank, no proof of semantic stability + reuse |
 | **V3 higher-rank free composition** | symbolic construction trees compose caller operations | **shadow, not rank semantics** | no explicit rank boundary or grammar whose generators are objectified lower-rank semantics |
 | **V4 compositional rank lowering** | `PairingSpec.lower` and backend decoders are local lowering-like mechanisms | **absent at theory level** | interpretation defined on every legal higher-rank composite and relation-soundness certificate |
@@ -77,7 +82,7 @@ These are not one universal `Process` object, and that absence is currently heal
 
 ---
 
-## 3. H1 — bounded distinguishability is real, exact quotienting is not
+## 3. H1 — bounded and exact-finite distinguishability are now separated
 
 `TaskContinuationSignature` computes
 
@@ -95,17 +100,24 @@ h_1\sim_Q h_2
 \forall w\in\Sigma^*,\;Q(h_1w)=Q(h_2w).
 \]
 
-The current code has no generic object that:
+The Experimental `FiniteTaskQuotient` now closes the finite deterministic
+version of the earlier gap.  Stable partition refinement:
 
-1. computes the coarsest continuation-stable equivalence on a finite process;
+1. computes the coarsest continuation-stable equivalence;
 2. constructs the quotient state/process space;
-3. proves the induced transition is well-defined;
-4. proves distinct quotient classes remain future-distinguishable;
-5. certifies minimality in the Myhill–Nerode/Moore-machine sense.
+3. records the induced task observation and deterministic transition;
+4. returns a future continuation distinguishing every distinct class pair;
+5. thereby certifies minimality in the Myhill–Nerode/Moore-machine sense.
 
-This is the sharpest current mismatch between a theory node with an exact classical anchor and its software realization.
+The certificate is immutable at its public boundary, executable on arbitrary
+finite continuations, and canonical only up to quotient isomorphism; numeric
+class indices remain caller-order presentation artifacts.
 
-**Priority:** highest. A narrow finite deterministic exact quotient is justified before any generic topology or objectification API.
+The strong word `TaskQuotient` remains confined to this quantified class.  No
+claim is made about topology or a universal quotient protocol.
+
+**Alignment judgment:** the narrow H1 implementation gap is closed correctly
+under Experimental; broader H1 and all of H2 remain open.
 
 ---
 
@@ -223,7 +235,7 @@ There is no need to force these into one generic `FreeProcess` API yet. Their di
 
 ---
 
-## 8. V1 — compression mechanisms exist, but semantic compression has no owner
+## 8. V1 — exact finite semantic compression has an owner
 
 The repository contains many ways to reduce a representation:
 
@@ -239,13 +251,20 @@ Only some are semantic compression in the theory sense.
 
 A rewrite rule may be caller-declared without being task-derived. Algebraic elimination may preserve selected observables without establishing future task equivalence. Huffman coding may compress already-distinguished symbols but does not decide which histories may be merged.
 
-Therefore there is currently no generic executable owner for
+Therefore most reduction mechanisms still must not be called semantic
+compression.  The one exact generic owner in a declared class is
+`FiniteTaskQuotient`, which realizes
 
 \[
-\mathcal H_r\to\mathcal H_r/{\sim_Q}.
+X\to X/{\sim_Q}
 \]
 
-The exact finite H1 quotient proposed below will be the first clean implementation of V1 semantic compression in a deliberately narrow class.
+for finite deterministic state carriers.  It does not absorb rewrite,
+observable-elimination, approximate, continuous, or probabilistic compression
+into one interface.
+
+**Alignment judgment:** V1 is implemented concretely in one narrow class and
+remains partial as a general theory.
 
 ---
 
@@ -344,7 +363,7 @@ A future inter-rank calibration should test whether rank lowering is best modele
 
 The audit changes the implementation priority.
 
-### Priority 1 — exact finite task quotient
+### Completed foundation target — exact finite task quotient
 
 Why first:
 
@@ -354,9 +373,9 @@ Why first:
 - produces a true minimal presentation in a finite class;
 - supplies a baseline against which bounded `TaskContinuationSignature` can be measured.
 
-Target home: `process_geometry.experimental`.
+Canonical home: `process_geometry.experimental`.
 
-### Priority 2 — objectification + rank-lowering calibration in one concrete domain
+### Priority 1 — objectification + rank-lowering calibration in an independent domain
 
 Do **not** first design a generic objectification API. Choose one domain in which:
 
@@ -365,15 +384,26 @@ Do **not** first design a generic objectification API. Choose one domain in whic
 3. every composite lowers compositionally;
 4. relations lower soundly.
 
-AEG arithmetic is the natural first model organism, but the experiment should be small enough that the entire lowering law can be exhaustively checked.
+AEG arithmetic has now supplied two consecutive model-organism calibrations.
+The next promotion pressure must come from an independent domain and remain
+small enough that the entire lowering law can be checked.
 
-### Priority 3 — topological threshold calibration
+### Priority 2 — topological threshold calibration
 
 Choose a process/observer pair with a natural directed resource parameter and build the smallest neighborhood-basis experiment. The goal is not a generic `Topology` class; it is to verify the extra conditions that distinguish a topology from arbitrary tolerance relations.
 
-### Priority 4 — intrinsic complexity versus realization overhead
+### Priority 3 — intrinsic complexity versus realization overhead
 
-Only after an exact task quotient exists should `BoundaryProfile`/Huffman/Pareto cost be connected to a true intrinsic state/distinction lower bound.
+Now that the exact finite task quotient exists, connect
+`BoundaryProfile`/Huffman/Pareto cost to a true intrinsic state/distinction
+lower bound in that same declared class before generalizing.
+
+### Priority 4 — task-covariant evaluation carrier
+
+Recent clock/resource/holonomy/coarea/partition work suggests a transversal
+history-evaluation layer.  Determine the smallest carrier and information
+contract through PCR3BP and an independent red team before any Experimental
+API.
 
 ### Priority 5 — analytic closure
 
@@ -381,9 +411,9 @@ After a genuine rank-lowering example exists, test whether variation is compatib
 
 ---
 
-## 15. First executable alignment target
+## 15. First executable alignment target — completed
 
-This phase therefore proposes one narrow experimental implementation:
+The first alignment phase delivered one narrow experimental implementation:
 
 > **Exact finite deterministic task quotient.**
 
@@ -402,7 +432,7 @@ Q(\delta(x,w))=Q(\delta(y,w))
 \quad\forall w\in\Sigma^*.
 \]
 
-The implementation must return:
+The implementation returns:
 
 - the equivalence classes;
 - the induced quotient transition;
@@ -410,9 +440,14 @@ The implementation must return:
 - an exact continuation witness distinguishing every pair of distinct classes;
 - a refinement/fixed-point certificate sufficient to justify minimality in the finite deterministic setting.
 
-This is the first case in which the package should intentionally use the strong term **TaskQuotient**, because the executable object will satisfy the Theory Map definition in its declared finite class.
+This is the first case in which the package intentionally uses the strong term
+**TaskQuotient**, because the executable object satisfies the Theory Map
+definition in its declared finite class.
 
-It remains Experimental because one exact finite class does not establish the generic Process Geometry quotient abstraction.
+It remains Experimental because one exact finite class does not establish the
+generic Process Geometry quotient abstraction.  The next conservative software
+change is not another theory noun: it is keeping unsettled local
+canonical-observer records under Experimental ownership.
 
 ---
 
@@ -428,6 +463,6 @@ It remains Experimental because one exact finite class does not establish the ge
 
 **Evidence:** Myhill–Nerode/Moore minimization provides the exact external anchor; current `TaskContinuationSignature` supplies the bounded comparison case.
 
-**Map effect:** refine H1 from “bounded implementation only” to “bounded public machinery plus an exact finite Experimental slice” if the executable calibration passes.
+**Map effect:** H1 is refined from “bounded implementation only” to “bounded public machinery plus an exact finite Experimental slice.”
 
 **Migration risk:** low because the implementation is explicitly finite/deterministic and lives under Experimental rather than occupying a universal root concept.

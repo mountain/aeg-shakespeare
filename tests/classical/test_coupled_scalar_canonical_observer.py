@@ -122,8 +122,10 @@ DOI 10.1007/978-1-4757-2063-1.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import (
+    CanonicalDecomposition,
+    ConstraintCanonicalization,
+)
 from aeg_shakespeare.process.local import ProcessDirection, ProcessFrame
 
 

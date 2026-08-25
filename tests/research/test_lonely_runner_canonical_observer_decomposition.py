@@ -151,7 +151,7 @@ import sys
 
 import pytest
 
-from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
+from process_geometry.experimental import CanonicalDecomposition
 
 
 RUN_FULL = os.environ.get("AEG_RUN_LR_CANONICAL_DECOMPOSITION") == "1"

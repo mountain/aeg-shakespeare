@@ -161,8 +161,10 @@ from __future__ import annotations
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.decomposition import CanonicalDecomposition
-from aeg_shakespeare.presentation.canonicalization import ConstraintCanonicalization
+from process_geometry.experimental import (
+    CanonicalDecomposition,
+    ConstraintCanonicalization,
+)
 
 
 def eccentricity_vector(x, y, vx, vy, mu):
