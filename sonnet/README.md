@@ -67,9 +67,24 @@ A `sonnet` should distinguish four levels of result:
 
 These levels should not be conflated. In particular, reproducing a classical solution in process language is calibration, not evidence that Shakespeare has solved the underlying representation problem.
 
+## Study ledger
+
+The ledger records repository state, not mathematical prestige. A line may be
+closed after a useful negative result, active without any theorem claim, or
+deferred until its next oracle/evidence gate is affordable.
+
+| Study | Current state | Highest responsible claim | Authoritative entry / next gate |
+| --- | --- | --- | --- |
+| [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
+| [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
+| [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
+| [`stochastic-feedback-trap-first-passage/`](stochastic-feedback-trap-first-passage/) | current calibration closed | exact Itô task quotient plus independent first-passage and reset-Bellman covariance across 242 monotone charts | [Phase-4 results](stochastic-feedback-trap-first-passage/09-phase4-reset-bellman-results.md); further work requires a new Sonnet or governed extraction proposal |
+| [`pcr3bp-history-cost/`](pcr3bp-history-cost/) | Phases 0–1 complete; Phase 2 frozen | lifted topology and scale-jet reconstruction separate word, clock, deck, and hyperbolic costs; no Bellman/Huffman source is yet justified | [Phase-2 contract](pcr3bp-history-cost/02-return-partition-holonomy-contract.md); next run the frozen two-gate covariance and convergence gates |
+| [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) | T0 initialization | auditable two-question research contract only; neither the manuscript nor an arithmetic interface is verified | [problem frontier](s6-complex-arithmetic-tower/00-problem-frontier.md); next archive/checksum the source and reproduce its matrix/topology certificate |
+
 ## Sonnet 001 — Lonely Runner
 
-The first active study is [`lonely-runner/`](lonely-runner/), targeting the next open fixed-dimensional case `LRC(13)` (14 total runners).
+The founding numbered study is [`lonely-runner/`](lonely-runner/), targeting the next open fixed-dimensional case `LRC(13)` (14 total runners).
 
 The literature audit sharpens the reason for choosing it. The 2026 computer-assisted proof through `LRC(12)` explicitly identifies the primary obstacle to `k=13` as efficient computation of the initial improper set `I(k,p,1)`, with stronger pruning of no-witness residue tuples as the needed direction.
 
