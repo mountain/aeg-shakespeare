@@ -134,10 +134,13 @@ dimensionless physical clock, word cost versus deck-translation cost,
 Bellman/Huffman claim boundary.
 
 **Start here:**
-`sonnet/pcr3bp-history-cost/00-phase0-history-cost.md`.
+`sonnet/pcr3bp-history-cost/README.md`, then
+`sonnet/pcr3bp-history-cost/00-phase0-history-cost.md` and
+`sonnet/pcr3bp-history-cost/01-scale-jet-topology-and-coding-audit.md`.
 
 **Executable calibration:**
-`tests/research/test_pcr3bp_history_cost_phase0.py`.
+`tests/research/test_pcr3bp_history_cost_phase0.py` and
+`tests/research/test_pcr3bp_scale_jet_phase1.py`.
 
 **Theory role:** phase-0 numerical red team for identifying word length,
 hyperbolic length, and physical time.  It refines the separation of H0, H2, and
