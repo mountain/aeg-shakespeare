@@ -75,6 +75,7 @@ deferred until its next oracle/evidence gate is affordable.
 
 | Study | Current state | Highest responsible claim | Authoritative entry / next gate |
 | --- | --- | --- | --- |
+| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 0 exact finite certificates | level-1 local-field re-expression plus an exact task-relative digit-canonicalization defect; no Bruhat--Tits reconstruction or preferred \(p\)-adic continued fraction | [finite certificate ledger](local-field-projective-process-geometry/01-phase0-finite-certificates.md); next construct the finite lattice-class oracle and compare its boundary truncations |
 | [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
 | [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
 | [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
@@ -133,3 +134,22 @@ new author-hosted construction of a compact complex threefold diffeomorphic to
 The study begins at source-verification and research-contract level.  It does
 not treat the manuscript as independently verified, does not claim an
 arithmetic origin for \(S^6\), and proposes no API extraction.
+
+## Research-local calibration — local-field projective process geometry
+
+[`local-field-projective-process-geometry/`](local-field-projective-process-geometry/)
+starts from the bilateral AEG history language rather than importing a local-
+field solver ontology. Its Phase 0 executable certificates show that one
+rational Multiplication history has opposite Archimedean and \(p\)-adic scale
+behavior; residue observations form nested exact quotients; Addition,
+Multiplication, and Möbius histories transport the valuation ruler by explicit
+laws; and finite right-reciprocal histories lower to continued-fraction matrix
+products.
+
+The first red team compares standard and balanced digit sections. Both
+reconstruct the same finite residue, while different declared cost rulers
+prefer different histories. The result supports task-relative
+canonicalization but rejects an observer-free preferred digit system. The
+study explicitly distinguishes its boundary refinement tree from the full
+Bruhat--Tits tree, leaves competing \(p\)-adic continued-fraction algorithms
+unselected, and proposes no API extraction.
