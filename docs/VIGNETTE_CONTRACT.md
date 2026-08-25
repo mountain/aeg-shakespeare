@@ -22,7 +22,11 @@ unmeasured property into a positive claim.
 
 > **A vignette should be independently readable, executably auditable, and retrievably identifiable.**
 
-This policy complements `09-literate-programming-and-mathematical-lineage.md`, `11-references-and-test-essays.md`, `THEORY_GOVERNANCE.md`, and `GOVERNANCE.md`.
+This policy complements `MATHEMATICAL_CORE.md`,
+`ENGINEERING_ARCHITECTURE.md`,
+`09-literate-programming-and-mathematical-lineage.md`,
+`11-references-and-test-essays.md`, `THEORY_GOVERNANCE.md`, and
+`GOVERNANCE.md`.
 
 ---
 
@@ -111,6 +115,8 @@ Process Geometry roles:
 Computational modes:
 Prerequisites:
 Related vignettes:
+Mathematical Core relation:
+Engineering Architecture relation:
 Theory Map relation:
 ```
 
@@ -157,6 +163,8 @@ A vignette should be reviewed separately for:
 | Executability | Do assertions/certificates audit the derivation? |
 | References | Can imported facts and lineage be checked? |
 | Retrieval | Can the vignette be found under external and internal vocabularies? |
+| Mathematical Core relation | Are its objects, construction, law, and boundary connected to or distinguished from the current synthesis? |
+| Engineering Architecture relation | Are representation, algorithm, evaluator, evidence, failures, units, decoder, baseline, budget, and cost explicit? |
 | Theory relation | Is its Theory Map role stated without over-promotion? |
 | Reconstruction | If information is lost, is the decoder/information-loss boundary explicit? |
 | Symbolic effectiveness | If claimed, are operator action, closure/extension, and certificates explicit? |
@@ -167,7 +175,19 @@ Strength on one axis does not repair failure on another. A perfect regression te
 
 ---
 
-## 6. Relation to the Theory Map
+## 6. Relation to the Mathematical Core and Theory Map
+
+Every substantial vignette should first state whether it reuses, refines,
+contradicts, or leaves unchanged the Mathematical Core. A core-changing claim
+must identify the affected primitive data, construction, law/obstruction,
+information contract, units/covariance where relevant, and boundary. Merely
+sharing a noun with the core is not a mathematical relation.
+
+If the vignette performs calculation, it should also state whether it supports,
+refines, splits, replaces, contradicts, or leaves unchanged the Engineering
+Architecture. Its solver plan must expose the algorithm, evaluator,
+certificate, failure/error semantics, units, decoder/residual, independent
+baseline, search/runtime budget, and cost boundary appropriate to its claim.
 
 Every substantial vignette should state its Theory Map relation, but `unchanged` is a first-class result.
 
@@ -270,6 +290,8 @@ Before calling a substantial vignette complete, check:
 
 ### Governance
 
+- [ ] Mathematical Core relation is stated, including `unchanged` when appropriate.
+- [ ] Engineering Architecture relation and solver plan are stated when computational.
 - [ ] Theory Map relation is stated, including `unchanged` when appropriate.
 - [ ] The vignette does not silently promote theory or software.
 

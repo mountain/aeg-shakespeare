@@ -4,6 +4,13 @@ Use this template when a research result proposes, materially changes, or promot
 
 A theory record is not required for every local result. It is appropriate when the result is intended to change the stable map, create a reusable theoretical dependency, or justify stronger terminology.
 
+Before completing this template, read
+[`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md), then
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md). A record must
+locate or amend the actual mathematics, not only assign a Theory Map name and
+maturity label; a computational claim must also locate its feasible solver
+contract.
+
 ---
 
 ## Node record
@@ -19,6 +26,25 @@ Epistemic maturity: T0 | T1 | T2 | T3 | T4
 Role: local | reusable | foundational
 Evidence provenance:
 Code/API status:
+
+## Mathematical Core relation
+
+Existing objects/laws reused:
+Proposed core change:
+Primitive data:
+Typed construction(s):
+Equation / invariant / universal property / obstruction:
+Dependency diagram:
+
+## Engineering Architecture relation, if computational
+
+Problem/task contract:
+Algorithm/backend:
+Evaluator/certificate:
+Error/failure semantics:
+Units/decoder/residual:
+Baseline/budget/cost:
+Architecture effect:
 
 ## Claim
 
@@ -117,6 +143,10 @@ Source:
 Target:
 Operation / construction:
 
+Mathematical Core relation:
+Equation / invariant / obstruction:
+Engineering Architecture relation, if computational:
+
 Epistemic maturity: T0 | T1 | T2 | T3 | T4
 Role: local | reusable | foundational
 
@@ -177,6 +207,11 @@ The second statement is still a conjecture, but its scope, missing uniqueness th
 Before promoting a record, check:
 
 - [ ] theorem, conjecture, and interpretation are separated;
+- [ ] the Mathematical Core relation is explicit;
+- [ ] primitive data, typed construction, and at least one law or obstruction
+      are recoverable from this record or a precise reference;
+- [ ] every computational claim identifies its Engineering Architecture
+      relation, algorithm, evidence, failure semantics, and resource boundary;
 - [ ] inputs and required extra structure are explicit;
 - [ ] equivalence notion is explicit;
 - [ ] preserved and forgotten information are explicit;

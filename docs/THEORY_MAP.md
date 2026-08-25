@@ -2,6 +2,13 @@
 
 **Status:** evolving research map. This document is a navigation and review aid, **not** a frozen mathematical specification and **not** a public API contract.
 
+**Required prior reading:** [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md), then
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md). The first carries
+the current objects, constructions, equations, information contracts, and
+failure boundaries; the second carries the technical decisions that make
+declared problems feasibly computable. This file locates and grades that work;
+it must not be read as a substitute for either.
+
 ## 0. Why this document exists
 
 Process Geometry is developing through mathematics, executable calibrations, Sonnets, and software at the same time. That creates a specific engineering risk: a useful local implementation can acquire a generic name and API shape before the underlying theory has settled, and compatibility pressure can then freeze an accidental ontology.
@@ -13,7 +20,9 @@ It records the **current larger theoretical picture** against which implementati
 The governing distinction is:
 
 ```text
-Theory Map        evolving account of what the framework may mean
+Mathematical Core objects, constructions, laws, and boundaries
+Engineering Arch. representations, algorithms, evidence, errors, and cost
+Theory Map        compact dependency and maturity map
 Public API        durable semantic commitments already earned
 Experimental      executable candidates testing parts of the map
 Sonnets           problem-driven sources of pressure and counterexamples
@@ -23,6 +32,10 @@ An API should be reviewed **against** the Theory Map, but the API must never be 
 
 The current foundation is developed primarily in:
 
+- `MATHEMATICAL_CORE.md` — current mathematical synthesis and the required
+  object/construction/law/boundary reading of this map;
+- `ENGINEERING_ARCHITECTURE.md` — problem-to-solver architecture and current
+  technical decisions for feasible computation;
 - `42-process-geometry-from-distinguishability.md`
 - `43-myhill-nerode-and-the-topological-threshold.md`
 - `44-objectification-semantic-compression-and-rank-lowering.md`
@@ -40,7 +53,10 @@ The current foundation is developed primarily in:
   requirement that analysis-bearing presentations remain symbolically and/or
   numerically effective, certifiable, and cost-auditable.
 
-Those notes contain the argument and structural audits. This file is the compact map used for engineering review.
+Those notes contain the argument and structural audits. This file is the
+compact map used for theory location and engineering review.  A map change that
+cannot be expanded into the Mathematical Core contract is vocabulary, not yet
+mathematical understanding.
 
 ---
 
@@ -102,14 +118,15 @@ The second arithmetic calibration adds an important caution to the schematic `C_
 
 ### 1.1 Emerging transversal — task-covariant history evaluation
 
-Notes `54–63` force a related structure that is not naturally another stage of
-either axis:
+Notes `54–63` and the subsequent pendulum P12/P13 calibrations force a related
+structure that is not naturally another stage of either axis:
 
 ```text
 lifted history
-    -> composable transported payload / residual
-    -> task evaluation into an ordered resource or observable
-    -> stopping, coding, partition, or variational objective
+    -> composable transported payload / residual in a unit frame
+    -> stopping section or task evaluation
+    -> task quotient / fundamental domain / retained decoder data
+    -> coding, variational, or analytic structure when justified
 ```
 
 Examples of payload include additive clock/action, vector-valued resources,
@@ -130,12 +147,15 @@ This structure cuts across the current map:
 - at V5 it becomes part of the comparison data that lowering must transport.
 
 The exact finite Bellman/frontier identity, covariant pendulum family identity,
-task-visible holonomy bound, same-scale mass-pushforward theorem, and twisted
-finite-cycle identity provide strong pressure.  The candidate carrier is still
-unsettled: resource bundle, groupoid, cocycle family, enriched history category,
-and problem-local alternatives remain live.  Consequently this is recorded as
-an **emerging T0/T1 transversal**, not a stable Theory Map node and not a generic
-API proposal.
+task-visible holonomy bound, same-scale mass-pushforward theorem, twisted
+finite-cycle identity, and pendulum lift--unit--domain--quotient--decoder chain
+provide strong pressure.  The pendulum now proves locally that the period
+lattice cuts a task-relative fundamental domain while the unit frame measures
+it; it also separates continuous action coarea from finite deck memory.  The
+candidate generic carrier is still unsettled: resource bundle, groupoid,
+cocycle family, enriched history category, and problem-local alternatives
+remain live.  Consequently this is recorded as an **emerging T0/T1
+transversal**, not a stable Theory Map node and not a generic API proposal.
 
 ### 1.2 Cross-cutting admissibility — effective analysis
 
@@ -551,6 +571,14 @@ It must answer:
 8. **Effective-analysis impact** — If the API claims analysis, calculation, or
    computational advantage, what are its symbolic/numerical mode, certificates,
    error/failure semantics, baseline, units, and cost boundary?
+9. **Mathematical Core effect** — Which primitive data, construction,
+   law/obstruction, information contract, covariance/unit rule, or boundary in
+   `MATHEMATICAL_CORE.md` does the result implement, refine, contradict, or
+   leave unchanged?
+10. **Engineering Architecture effect** — If calculation, search, stability,
+    or efficiency is claimed, which algorithm, evaluator, certificate,
+    error/failure semantics, units, decoder, baseline, dependency, budget, or
+    cost decision in `ENGINEERING_ARCHITECTURE.md` changes?
 
 For a purely mechanical change, the answer may be one sentence: “No theory position changes; this preserves the existing semantic contract.”
 
@@ -602,6 +630,15 @@ The next high-value questions are therefore:
 9. across one exact discrete, one independently checkable continuous, and one
    nonintegrable/singular red-team process, which parts of the Effective
    Analysis Principle survive without forcing a single universal calculus?
+10. what is the smallest task-sufficient lift between full history unfolding
+    and visible state, and when—if ever—is it forced to agree with a
+    topological or analytic universal cover?
+11. can unit frames, stopping sections, task kernels, and fundamental domains
+    be related functorially without making a unit choose a quotient or a
+    lattice choose a scalar cost?
+12. is there a typed theorem connecting continuous coarea volume and finite
+    task-visible residual memory, or do red teams force them to remain
+    separate resource components?
 
 These are research questions, not a backlog of API classes to create.
 

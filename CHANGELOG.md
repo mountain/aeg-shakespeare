@@ -26,6 +26,23 @@ before the next release snapshot.
 
 ### Detailed ledger
 
+- adds `docs/ENGINEERING_ARCHITECTURE.md` as the second required core entry:
+  turns concrete physical/mathematical tasks into auditable solver plans,
+  maps current software layers and algorithm regimes, fixes technical decisions
+  on exact-first computation, bounded search, Pareto cost, lift/residual,
+  units, decoders, replaceable symbolic backends, research-local numerical
+  adapters, CI tiers, provenance, and promotion, and establishes the pendulum
+  as the first end-to-end reference implementation path; updates agent reading
+  order and all relevant governance, API, vignette, PR, and index contracts;
+- adds `docs/MATHEMATICAL_CORE.md` as the required first mathematical entry:
+  separates mathematical content from the compact Theory Map, reconstructs the
+  lift--unit--stop--quotient--decoder schema, records the pendulum as its first
+  end-to-end exact model, locates elliptic curves/functions and the Bolza
+  boundary, and distinguishes continuous action coarea from finite task
+  memory; updates root/Sonnet agent guidance, theory/software governance,
+  theory records, vignettes, documentation indexes, and the PR template so
+  mathematical objects, constructions, laws, information loss, and failure
+  boundaries must precede map placement and API naming;
 - adds P13's first-principles pendulum unit-history audit: starts from the
   Cartesian constrained process, treats the certified Abel cover as a
   downstream lifted-clock model, separates the period lattice that cuts a

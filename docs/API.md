@@ -1,5 +1,11 @@
 # Public API map
 
+**Required context:** read `MATHEMATICAL_CORE.md` and then
+`ENGINEERING_ARCHITECTURE.md` before treating this namespace map as a solver or
+theory design. The first fixes current mathematical meaning; the second fixes
+current problem-to-solver and technical decisions. This file only records
+exposed software contracts.
+
 Process Geometry exposes a semantic API hierarchy rather than a flat symbol catalog.
 The four public namespaces are:
 
@@ -257,7 +263,10 @@ object.  See `docs/65-effective-analysis-principle.md`.
 
 ## 7. `process_geometry.experimental`
 
-Experimental is not a fifth stable layer in the public pipeline. It is an explicitly unstable incubation namespace governed by `docs/GOVERNANCE.md` and reviewed against `docs/THEORY_MAP.md`.
+Experimental is not a fifth stable layer in the public pipeline. It is an
+explicitly unstable incubation namespace governed by `docs/GOVERNANCE.md` and
+reviewed against `docs/MATHEMATICAL_CORE.md`,
+`docs/ENGINEERING_ARCHITECTURE.md`, and `docs/THEORY_MAP.md`.
 
 The first theory-to-code alignment probe is:
 

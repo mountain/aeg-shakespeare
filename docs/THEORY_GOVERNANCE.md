@@ -2,6 +2,12 @@
 
 **Status:** repository policy for developing and promoting mathematical theory.
 
+**Required prior reading:** [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md), then
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md). The Mathematical
+Core carries the present objects, constructions, laws, and boundaries; the
+Engineering Architecture carries the problem-to-solver technical decisions;
+the Theory Map and this policy locate, grade, and govern the theory.
+
 Process Geometry needs two different kinds of freedom at the same time:
 
 - research must be free to propose beautiful, incompatible, and even wrong theories;
@@ -17,6 +23,7 @@ Or, more operationally:
 
 ```text
 free exploration
+    -> mathematical reconstruction
     -> precise claim
     -> cross-problem calibration
     -> structural law
@@ -27,15 +34,31 @@ A theory may run far ahead of implementation. Implementation, especially Public 
 
 ---
 
-## 1. Seven standing principles
+## 1. Eight standing principles
 
-Theory-map review is governed by seven rules.
+Theory-map review is governed by eight rules.
 
-### G1 — Free proposal, conservative promotion
+### G1 — Mathematical content before map placement
+
+The Theory Map is an index, not the carrier of the full mathematics. Before a
+substantial node or arrow is proposed, its primitive data, construction,
+law/obstruction, information contract, covariance and unit semantics where
+relevant, scope, reconstruction boundary, and evidence must be recoverable in
+the Mathematical Core or a linked theory record.
+
+A new noun or an untyped arrow is not yet a mathematical contribution to the
+stable map.
+
+When the claim is computational, its algorithm, evaluator, certificate,
+error/failure semantics, units, decoder, baseline, and budget must also be
+recoverable under the Engineering Architecture. An abstract existence claim
+and a feasible solver claim are different maturities.
+
+### G2 — Free proposal, conservative promotion
 
 Research notes and Sonnets may contain speculative, competing, or mutually incompatible explanations. Entry into the stable theory map is a separate act requiring explicit evidence and scope.
 
-### G2 — Nodes may be suggestive; edges must be audited
+### G3 — Nodes may be suggestive; edges must be audited
 
 A map of attractive nouns is not a theory. The principal unit of review is an arrow
 
@@ -45,27 +68,27 @@ A \longrightarrow B,
 
 because the arrow carries assumptions, information loss, invariants, reconstruction obligations, and the sense in which a construction is claimed to be canonical.
 
-### G3 — Strong words create proof obligations
+### G4 — Strong words create proof obligations
 
 Words such as **canonical**, **universal**, **intrinsic**, **natural**, **forced**, **minimal**, **complete**, and **fundamental** must be qualified by a mathematical meaning. A strong name is not a substitute for a uniqueness theorem, universal property, invariance statement, or stated optimization criterion.
 
-### G4 — New primitives require a forced distinction
+### G5 — New primitives require a forced distinction
 
 A new foundational object is justified only when existing theory cannot express a distinction that is repeatedly forced by mathematics or independent calibrations.
 
 Beautiful abstraction is not sufficient pressure.
 
-### G5 — Every substantial claim has a falsification interface
+### G6 — Every substantial claim has a falsification interface
 
 A theory record must state what observation, counterexample, degeneration, or incompatibility would kill or materially weaken the claim.
 
-### G6 — Mature theory should compress the map
+### G7 — Mature theory should compress the map
 
 Promotion is justified when a theory removes accidental distinctions, replaces several local explanations by a smaller structural account, or exposes a reusable obstruction/completion principle.
 
 A theory that mainly enlarges the vocabulary is presumed immature.
 
-### G7 — Analysis claims must remain effectively calculable
+### G8 — Analysis claims must remain effectively calculable
 
 Process Geometry must not gain generality by abandoning the operational
 strength of calculus.  When a node or edge claims an analysis language, it must
@@ -139,6 +162,11 @@ A sketch may become a precise conjecture only when it states:
 7. at least one kill condition.
 8. if analysis or computational advantage is claimed, the applicable symbolic,
    numerical, certification, unit, and cost contract.
+9. its relation to the Mathematical Core: reused or changed objects,
+   construction, law/obstruction, information contract, and boundary.
+10. if the claim is computational, its Engineering Architecture relation:
+    algorithm, evaluator, certificate, failure/error semantics, units,
+    decoder, baseline, budget, dependency, and cost.
 
 ### T1 -> T2: calibration gate
 
@@ -201,6 +229,12 @@ Every material node added to the stable theory map should answer the following f
 Name:
 Epistemic maturity: T0 | T1 | T2 | T3 | T4
 Role: local | reusable | foundational
+
+Mathematical Core relation:
+Primitive data:
+Construction(s):
+Law / obstruction:
+Engineering Architecture relation, if computational:
 
 Definition / claim:
 Dependencies:
@@ -488,6 +522,11 @@ A PR that materially changes a T1–T4 theory node or edge should include a **Th
 9. If analysis, computation, stability, or efficiency is claimed, which
    Effective Analysis gates apply and where are the executable evidence,
    baseline, units, error/failure semantics, and cost boundary recorded?
+10. What changes in the Mathematical Core: objects, construction,
+    law/obstruction, information contract, covariance/units, or boundary?
+11. What changes in the Engineering Architecture: solver stage, algorithm,
+    backend/dependency, evaluator, certificate, error/failure contract,
+    decoder, budget, baseline, or cost?
 
 Purely local research may answer:
 
@@ -532,6 +571,12 @@ This classification is intentionally conservative: a promising foundational idea
 
 Use the following artifacts for theory governance:
 
+- [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md) — required mathematical
+  synthesis: objects, constructions, laws, information contracts, and current
+  boundaries;
+- [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md) — required
+  problem-to-solver architecture, technical decisions, evidence, errors,
+  dependencies, and cost boundaries;
 - [`THEORY_MAP.md`](THEORY_MAP.md) — compact current map;
 - this file — promotion and review policy;
 - [`THEORY_RECORD_TEMPLATE.md`](THEORY_RECORD_TEMPLATE.md) — node/edge record template;
@@ -546,6 +591,8 @@ The intended information flow is:
 
 ```text
 research note / Sonnet
+    -> Mathematical Core relation or proposed correction
+    -> Engineering Architecture relation when computational
     -> theory record
     -> Theory Map promotion
     -> optional Experimental software
@@ -561,3 +608,7 @@ Most ideas should stop before the end of this chain.
 If only one paragraph is retained, use this one:
 
 > **Explore freely; promote conservatively. Treat theory as a graph of auditable nodes and edges. Every stable claim states its maturity, scope, equivalence, preserved and forgotten information, and falsification conditions. Strong words create proof obligations. New ontology must be forced by repeated distinctions. Stable theory should compress the map. Analysis claims must expose effective symbolic/numerical evaluation, certificates, failure semantics, and cost boundaries. Software may trail theory, but must not run ahead of it.**
+
+In even shorter form: **read and reconstruct the Mathematical Core before
+placing a claim in the Theory Map, and read the Engineering Architecture before
+claiming that it is feasibly computable or naming it in software.**

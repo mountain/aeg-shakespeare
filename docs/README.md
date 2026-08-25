@@ -2,11 +2,37 @@
 
 The documentation is organized as a mathematical/programming narrative rather than as a flat API reference.
 
-**Theory:** `THEORY_MAP.md` is the living map of the larger Process Geometry research picture. It synthesizes the current foundation, marks theory/code maturity, and is explicitly expected to evolve as Sonnets and calibrations sharpen or contradict it.
+**Mathematical core:** `MATHEMATICAL_CORE.md` is the required first entry for
+substantial research and theory work. It records the current objects,
+constructions, equations, information contracts, red-team separations, and
+open boundaries, with the simple pendulum as the first end-to-end model.
 
-**Theory governance:** `THEORY_GOVERNANCE.md` governs how mathematical claims enter and move inside the Theory Map. It separates epistemic maturity (`T0`–`T4`) from structural role (`local` / `reusable` / `foundational`), treats theory-map arrows as auditable information contracts, controls strong vocabulary such as `canonical` and `universal`, requires kill conditions for substantial claims, and makes conservative extension the default. `THEORY_RECORD_TEMPLATE.md` provides the standard node/edge record format.
+**Engineering architecture:** `ENGINEERING_ARCHITECTURE.md` is the required
+second entry. It turns concrete physical and mathematical problems into
+auditable solver plans: problem/task contracts, presentations, algorithm and
+backend choices, evaluators, certificates, error/failure semantics, units,
+decoders, budgets, dependencies, baselines, and total cost. It also records the
+current repository-wide technical decisions and their limits.
 
-**Software governance:** `GOVERNANCE.md` defines the research-to-API lifecycle: Sonnet -> extraction candidate -> Experimental -> maturing -> Public API. Material Experimental/Public API changes must include a **Theory Impact** review locating the change in `THEORY_MAP.md`; theory-map promotion and API promotion remain separate gates.
+**Theory:** `THEORY_MAP.md` is the living index and maturity map of the larger
+Process Geometry research picture. It is explicitly not a substitute for the
+mathematical content in `MATHEMATICAL_CORE.md` and the detailed proof records.
+
+**Theory governance:** `THEORY_GOVERNANCE.md` governs how mathematical claims
+enter the Mathematical Core and move inside the Theory Map. It separates
+epistemic maturity (`T0`–`T4`) from structural role (`local` / `reusable` /
+`foundational`), requires mathematical content before map placement, treats
+theory-map arrows as auditable information contracts, controls strong
+vocabulary such as `canonical` and `universal`, requires kill conditions for
+substantial claims, and makes conservative extension the default.
+`THEORY_RECORD_TEMPLATE.md` provides the standard node/edge record format.
+
+**Software governance:** `GOVERNANCE.md` defines the research-to-API lifecycle:
+Sonnet -> extraction candidate -> Experimental -> maturing -> Public API.
+Material work states its Mathematical Core and Engineering Architecture
+relation; Experimental/Public API changes additionally include a **Theory
+Impact** review locating the change in `THEORY_MAP.md`. Mathematical,
+architecture, theory-map, and API promotion remain separate gates.
 
 **Effective analysis:** `65-effective-analysis-principle.md` makes symbolic and
 numerical calculability a cross-cutting success condition for analysis-bearing
@@ -90,6 +116,15 @@ additional prefix collisions.
 61. `65-effective-analysis-principle.md` — governing Effective Analysis
 Principle and claim-relative engineering gates for symbolic/numerical
 calculation, certificates, units, errors, costs, and cross-rank transport.
+
+Required unnumbered synthesis:
+
+- `MATHEMATICAL_CORE.md` — mathematical objects, typed constructions, exact
+  laws, information-loss boundaries, red teams, and the pendulum
+  lift--unit--domain--quotient--decoder model.
+- `ENGINEERING_ARCHITECTURE.md` — problem-to-solver pipeline, algorithm
+  selection matrix, current software-layer responsibilities, technical
+  decisions, solver-plan contract, and architecture governance.
 
 ## Additional decision, calibration, and knowledge records
 
