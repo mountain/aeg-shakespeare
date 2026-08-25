@@ -11,7 +11,7 @@ import sys
 import pytest
 
 
-RUN_HAUFFMAN = os.environ.get("AEG_RUN_LR_CANONICAL_TASK_HUFFMAN") == "1"
+RUN_HUFFMAN = os.environ.get("AEG_RUN_LR_CANONICAL_TASK_HUFFMAN") == "1"
 
 
 def _load():
@@ -35,7 +35,7 @@ def _load():
 
 def test_canonical_task_projection_removes_history_only_wall_pressure():
     module = _load()
-    result = module.analyze_task_objectification(include_hauffman=False)
+    result = module.analyze_task_objectification(include_huffman=False)
 
     assert result.generated_coordinates == 33
     assert result.full_certificate.task_count == 81
@@ -88,13 +88,13 @@ def test_canonical_task_projection_removes_history_only_wall_pressure():
 
 
 @pytest.mark.skipif(
-    not RUN_HAUFFMAN,
-    reason="opt-in Sonnet 001 canonical-task Hauffman calibration",
+    not RUN_HUFFMAN,
+    reason="opt-in Sonnet 001 canonical-task Huffman calibration",
 )
-def test_canonical_witness_hauffman_geometry_is_strictly_smaller():
+def test_canonical_witness_huffman_geometry_is_strictly_smaller():
     module = _load()
-    result = module.analyze_task_objectification(include_hauffman=True)
-    huffman = result.canonical_hauffman
+    result = module.analyze_task_objectification(include_huffman=True)
+    huffman = result.canonical_huffman
     assert huffman is not None
 
     assert huffman.sign_cells == 1_431

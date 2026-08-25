@@ -165,7 +165,7 @@ same abstraction.
 
 The next implementation should therefore search over **consistent labeled
 pair-difference sign systems** rather than enumerate an ambient Cartesian grid.
-Hauffman/history geometry can then optimize the resulting task-safe decision DAG
+Huffman/history geometry can then optimize the resulting task-safe decision DAG
 or tree.
 
 ## 7. Research criterion going forward

@@ -16,7 +16,7 @@ A/M contact calculus
 -> local completion pressure
 -> minimum generated walls
 -> task objectification
--> controlled interleaving / persistent Hauffman DAG
+-> controlled interleaving / persistent Huffman DAG
 -> finite closure of the infinite contact tail.
 ```
 
@@ -253,16 +253,16 @@ This suggests a second reconstruction step: derive wall comparisons from a canon
 
 ---
 
-## 7. What happens to Hauffman geometry
+## 7. What happens to Huffman geometry
 
-Hauffman is not discarded.  Its position changes.
+Huffman is not discarded.  Its position changes.
 
 The old order effectively became
 
 ```text
 choose finite wall language
 -> complete wall language as contact depth grows
--> optimize history placement / Hauffman DAG.
+-> optimize history placement / Huffman DAG.
 ```
 
 The new order should be
@@ -272,7 +272,7 @@ canonical torus process state
 -> exact center-free event evolution
 -> task-relative quotient / objectification
 -> choose what part of the canonical dynamics should be compiled
--> Hauffman / persistent DAG placement downstream.
+-> Huffman / persistent DAG placement downstream.
 ```
 
 This makes the existing 29-wall center-4 representation easier to interpret: it is a successful **compiled finite sufficient statistic** for the declared four-runner first-witness task, not necessarily the ontology from which the process should be derived.
@@ -303,7 +303,7 @@ We must compare at least
 }
 \]
 
-This is precisely where the previous Hauffman space-time viewpoint remains essential.  Canonicalization removes representation freedom first; Hauffman then decides how aggressively to materialize / compile the resulting process.
+This is precisely where the previous Huffman space-time viewpoint remains essential.  Canonicalization removes representation freedom first; Huffman then decides how aggressively to materialize / compile the resulting process.
 
 ---
 
@@ -394,7 +394,7 @@ Phase 11A gives a concrete positive answer for the contact-center coordinate: th
 If the later cost red team also succeeds, the old hierarchy
 
 \[
-\text{center depth}\to\text{new walls}\to\text{completion}\to\text{Hauffman}
+\text{center depth}\to\text{new walls}\to\text{completion}\to\text{Huffman}
 \]
 
 should be replaced by
@@ -407,7 +407,7 @@ should be replaced by
 \to
 \text{selective compilation}
 \to
-\text{Hauffman history geometry}.
+\text{Huffman history geometry}.
 }
 \]
 

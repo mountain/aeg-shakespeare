@@ -1,7 +1,7 @@
 """Cross-problem audit: canonical quotients versus history carriers.
 
 The pendulum suggested that canonicalization can supply a task quotient and an
-invariant edge measure before Hauffman/Bellman stopping optimization.  This
+invariant edge measure before Huffman/Bellman stopping optimization.  This
 essay red-teams that picture on three deliberately heterogeneous exact models:
 
 * hard-particle first contact -- continuous first-hit / decision tree;

@@ -133,7 +133,7 @@ In particular:
 
 The important number is not the compression ratio by itself; it is the **growth law under refinement**.
 
-## 5. Hauffman/history geometry after refinement
+## 5. Huffman/history geometry after refinement
 
 Use all integer quadruples through speed `10` with `u4/u1<8` only as a usage measure after the center-3 geometry and task map are frozen.  There are
 
@@ -223,7 +223,7 @@ E[d]:&\quad5.336\to3.459.
 }
 \]
 
-Again, the Hauffman object is doing what we wanted: it exposes a genuine space-time Pareto frontier rather than hiding the trade-off in one scalar score.
+Again, the Huffman object is doing what we wanted: it exposes a genuine space-time Pareto frontier rather than hiding the trade-off in one scalar score.
 
 ## 6. Frozen transfer improves substantially with calculus depth
 
@@ -284,7 +284,7 @@ Instead the meaningful hierarchy is
 \to
 \text{task-safe quotient}
 \to
-\text{Hauffman decision geometry}.
+\text{Huffman decision geometry}.
 }
 \]
 
@@ -297,7 +297,7 @@ The next experiment should not immediately move to five runners or center `4` by
 Two structural questions now deserve priority:
 
 1. **incremental task refinement:** can we identify exactly which of the existing 1,953 task-safe classes are split by the eight newly added center-3 ratios, without enumerating all 72,241 refined realizable systems?
-2. **decision DAG objectification:** many optimized tree subproblems represent the same residual sign/task state.  Can those repeated subtrees be merged into a DAG and evaluated with the same Hauffman space-time geometry?
+2. **decision DAG objectification:** many optimized tree subproblems represent the same residual sign/task state.  Can those repeated subtrees be merged into a DAG and evaluated with the same Huffman space-time geometry?
 
 If both work, then adding contact depth may become closer to local refinement of an existing presentation than reconstruction of a new search space.
 
@@ -314,4 +314,4 @@ What is established at four-speed bounded scale is a new scaling statement about
 \text{contact-alphabet refinement grows far faster in raw syntax than in exact task semantics.}
 }
 
-The pair-difference/cycle quotient plus Hauffman history geometry captures that contraction explicitly and transferably.
+The pair-difference/cycle quotient plus Huffman history geometry captures that contraction explicitly and transferably.

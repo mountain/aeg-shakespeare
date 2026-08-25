@@ -198,7 +198,7 @@ That property is stronger than pairwise task separability and weaker than global
 
 ---
 
-## 7. Relation to Hauffman and decision diagrams
+## 7. Relation to Huffman and decision diagrams
 
 The clean-separator tree can be viewed as a decision structure on **partial sign information**.
 
@@ -220,7 +220,7 @@ The structural pipeline is now
 }
 \]
 
-This provides a more precise formulation of the earlier persistent-Hauffman intuition.
+This provides a more precise formulation of the earlier persistent-Huffman intuition.
 
 ---
 

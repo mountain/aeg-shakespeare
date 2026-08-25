@@ -11,7 +11,7 @@ on:
       - "sonnet/lonely-runner/python/canonical_global_compilation.py"
       - "sonnet/lonely-runner/python/canonical_task_objectification.py"
       - "sonnet/lonely-runner/31-canonical-lazy-compiler-rediscovers-wall-geometry.md"
-      - "sonnet/lonely-runner/32-canonical-global-compilation-recovers-hauffman-geometry.md"
+      - "sonnet/lonely-runner/32-canonical-global-compilation-recovers-huffman-geometry.md"
       - "sonnet/lonely-runner/33-canonical-task-objectification.md"
       - "tests/research/test_lonely_runner_canonical_lazy_contact_compiler.py"
       - "tests/research/test_lonely_runner_canonical_global_compilation.py"

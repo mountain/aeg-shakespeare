@@ -230,9 +230,9 @@ Trying to repeat the four-speed `all minimum walls -> all complete sign cells ->
 
 ---
 
-## 7. Reinterpretation of Hauffman placement under dimension growth
+## 7. Reinterpretation of Huffman placement under dimension growth
 
-At four speeds the globally compiled 19-wall canonical task was small enough that full sign-cell materialization was useful and an exact Hauffman tree could be optimized over all 1,431 cells.
+At four speeds the globally compiled 19-wall canonical task was small enough that full sign-cell materialization was useful and an exact Huffman tree could be optimized over all 1,431 cells.
 
 At five speeds, doing the same would first manufacture 69,683 cells although the process itself reaches only 1,117 terminal regions and only 33 canonical tasks.
 
@@ -256,7 +256,7 @@ rather than
 -> optimize afterward.
 ```
 
-In other words, **Hauffman placement must itself become lazy/persistent under runner-dimension growth**.
+In other words, **Huffman placement must itself become lazy/persistent under runner-dimension growth**.
 
 ---
 

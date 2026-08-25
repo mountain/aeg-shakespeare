@@ -157,7 +157,7 @@ of evidence.
 ## 7. Bridge to Phase 8D
 
 The six local decoder structures can now be attached to the already frozen
-center-2 persistent Hauffman tree rather than rebuilding a center-3 tree from
+center-2 persistent Huffman tree rather than rebuilding a center-3 tree from
 scratch.
 
 Phase 8D should measure:
@@ -182,7 +182,7 @@ bounded first-witness task and the center-2 -> center-3 refinement considered
 here.  No future-depth equivalence is claimed.
 
 The adaptive decoder is a finite local execution strategy, not a package-level
-normal form and not a claim that its objective is the universal Hauffman cost.
+normal form and not a claim that its objective is the universal Huffman cost.
 
 ## 9. References
 

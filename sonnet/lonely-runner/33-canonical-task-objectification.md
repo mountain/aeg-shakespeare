@@ -10,7 +10,7 @@
 **Status:** exact bounded task-projection calibration implemented.  
 **Implementation:** `sonnet/lonely-runner/python/canonical_task_objectification.py`.  
 **Fast executable check:** `tests/research/test_lonely_runner_canonical_task_objectification.py`.  
-**Opt-in Hauffman check:** set `AEG_RUN_LR_CANONICAL_TASK_HUFFMAN=1`.  
+**Opt-in Huffman check:** set `AEG_RUN_LR_CANONICAL_TASK_HUFFMAN=1`.
 **Scope:** ordered four-speed domain, `delta=1/5`, `u4/u1<8`; `K=13` remains frozen.
 
 ## 1. Why Phase 11B was still deliberately over-complete
@@ -21,7 +21,7 @@ Phase 11B reconstructed the old first-witness task exactly as
 (\text{event rank},\ \text{lifted contact boundary with center},\ \text{mode}).
 \]
 
-That was the right comparison task because it let the canonical-first route reproduce the old Phase 8--10 semantics exactly: 81 task classes, the global 27-wall basis, and the frozen Hauffman geometry.
+That was the right comparison task because it let the canonical-first route reproduce the old Phase 8--10 semantics exactly: 81 task classes, the global 27-wall basis, and the frozen Huffman geometry.
 
 But the reconstruction itself had already established that two coordinates in this task record are not obviously part of the canonical witness ontology:
 
@@ -198,7 +198,7 @@ The reduction is therefore not merely fewer output labels.  It changes the globa
 
 ---
 
-## 6. Hauffman/history geometry improves sharply
+## 6. Huffman/history geometry improves sharply
 
 On the same frozen 55-input usage world
 
@@ -259,7 +259,7 @@ canonical process state
     -> quotient task provenance
     -> derive task-required predicates
     -> materialize exact sign carrier
-    -> optimize Hauffman/history placement.
+    -> optimize Huffman/history placement.
 ```
 
 So there are at least three distinct notions of completion/representation pressure:
@@ -320,7 +320,7 @@ The four-speed line has established an end-to-end stack:
 \to
 \text{global minimum predicates}
 \to
-\text{Hauffman placement}.
+\text{Huffman placement}.
 }
 \]
 
@@ -331,10 +331,10 @@ The next bounded experiment should lift this exact mechanism to five relative sp
 - task-minimum coordinate growth;
 - task projection sensitivity;
 - sign-cell growth;
-- Hauffman geometry where computationally feasible.
+- Huffman geometry where computationally feasible.
 
 No `K=13` data should be touched during that dimension-transfer experiment.
 
 ## Claim boundary
 
-No new Lonely Runner theorem is proved.  All `81/27 -> 36/19 -> 25/19 -> 2/12`, `1,431`, and Hauffman `113/94/7/31/24/56` values are exact for the declared bounded ordered four-speed domain and its specified task projections.  The result does not assert that the 19-wall canonical-witness basis generalizes unchanged to other runner counts.
+No new Lonely Runner theorem is proved.  All `81/27 -> 36/19 -> 25/19 -> 2/12`, `1,431`, and Huffman `113/94/7/31/24/56` values are exact for the declared bounded ordered four-speed domain and its specified task projections.  The result does not assert that the 19-wall canonical-witness basis generalizes unchanged to other runner counts.

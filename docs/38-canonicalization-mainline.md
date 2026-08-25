@@ -3,7 +3,7 @@
 **Status:** C1–C4 executable calibrations passed; this mechanism-exploration line is closed.  
 **Validated baseline before C4:** `6ce0bb41467880b4b3bb9153c44c44ccaf0bd52b`.  
 **C4 validation:** routine Python 3.10–3.14 CI run `32618121736` passed tests, quickstarts, build, metadata checks, and external wheel installation.  
-**Next programme step:** return to Sonnet 001 and apply canonicalization *before* completion/Hauffman analysis.
+**Next programme step:** return to Sonnet 001 and apply canonicalization *before* completion/Huffman analysis.
 
 ## 1. Frozen mechanism
 
@@ -18,7 +18,7 @@ primitive process calculus
 -> evolution in the canonical representation
 -> CanonicalDecomposition
 -> representation completion only when genuinely necessary
--> history/interleaving/Hauffman organization
+-> history/interleaving/Huffman organization
 -> repeat until task closure.
 ```
 
@@ -312,7 +312,7 @@ The crucial conceptual order is now:
 }
 \]
 
-This changes how Sonnet 001 should be revisited. Its existing completion walls, task objectification, controlled interleaving, and Hauffman geometry are downstream evidence. They must not be used to define the canonicalization retroactively.
+This changes how Sonnet 001 should be revisited. Its existing completion walls, task objectification, controlled interleaving, and Huffman geometry are downstream evidence. They must not be used to define the canonicalization retroactively.
 
 ---
 
@@ -367,7 +367,7 @@ A/M/contact primitive calculus
 -> derive the corresponding observer evolution / canonical history path
 -> only then compute F_ren / F_res / F_comp
 -> objectify genuine completion residuals
--> reuse controlled interleaving and Hauffman/history geometry downstream.
+-> reuse controlled interleaving and Huffman/history geometry downstream.
 ```
 
 The key question is whether the existing Sonnet wall/history system contains representation freedom that should be quotiented by canonicalization *before* completion search.

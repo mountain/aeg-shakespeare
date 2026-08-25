@@ -273,7 +273,7 @@ def analyze_refinement_aware_placement() -> PlacementProbe:
 
 def main() -> None:
     result = analyze_refinement_aware_placement()
-    print("Phase 8D.2 refinement-aware Hauffman placement probe")
+    print("Phase 8D.2 refinement-aware Huffman placement probe")
     for candidate in result.candidates:
         print(
             "  lambda={:<5} root={} current={}/55={:.4f} "

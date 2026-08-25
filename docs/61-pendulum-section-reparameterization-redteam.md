@@ -11,7 +11,7 @@ Notes 54 and 56 propose
 \text{lifted history}
 \to\text{task stopping section}
 \to\text{canonical clock cost}
-\to\text{Bellman/Hauffman optimization}.
+\to\text{Bellman/Huffman optimization}.
 \]
 
 The prediction was frozen before execution: equal-clock first-hit sections on

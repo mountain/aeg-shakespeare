@@ -1,4 +1,4 @@
-"""Sonnet 001: canonical torus contact state before completion/Hauffman analysis.
+"""Sonnet 001: canonical torus contact state before completion/Huffman analysis.
 
 This research calibration revisits the lifted A/M contact process after the
 canonicalization C1--C4 closure.  The lifted coordinates

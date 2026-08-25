@@ -1,4 +1,4 @@
-"""AM recalibration of canonicalization and Hauffman/Bellman history cost.
+"""AM recalibration of canonicalization and Huffman/Bellman history cost.
 
 This essay revisits a previous cross-problem conclusion.  A quotient carrier
 need not itself be a tree, but that does not prevent its free/lifted histories

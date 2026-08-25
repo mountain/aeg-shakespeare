@@ -20,7 +20,7 @@ research benchmark, not a routine five-version CI gate.  Set
 
     AEG_RUN_LR_PAIR_DIFF_CENSUS=1
 
-to run the complete bounded census and Hauffman/history-geometry comparison.
+to run the complete bounded census and Huffman/history-geometry comparison.
 """
 
 from __future__ import annotations
@@ -389,7 +389,7 @@ def build_optimal_tree(
     *,
     forced_root: int | None = None,
 ) -> tuple[DecisionTree, tuple[int, int, int, int]]:
-    """Exact Hauffman-style tree search on task-safe sign strata.
+    """Exact Huffman-style tree search on task-safe sign strata.
 
     The lexicographic objective is
 
@@ -631,7 +631,7 @@ def test_multiplicative_cycle_consistency_is_exact_and_fast() -> None:
     not RUN_FULL_CENSUS,
     reason="full four-speed pair-difference census is a manual research benchmark",
 )
-def test_full_pair_difference_census_and_hauffman_frontier() -> None:
+def test_full_pair_difference_census_and_huffman_frontier() -> None:
     thresholds, strata, systems = enumerate_consistent_systems(max_center=2)
     assert thresholds == (
         Fraction(11, 9),
@@ -774,7 +774,7 @@ def test_full_pair_difference_census_and_hauffman_frontier() -> None:
     assert time_depth == 135
     assert balanced_depth == 174
 
-    # The balanced Pareto point improves every recorded Hauffman/history axis.
+    # The balanced Pareto point improves every recorded Huffman/history axis.
     assert max(balanced_widths) < max(contact_widths)
     assert sum(balanced_widths) < sum(contact_widths)
     assert len(balanced_widths) - 1 < len(contact_widths) - 1

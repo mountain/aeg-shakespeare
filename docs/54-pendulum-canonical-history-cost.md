@@ -1,10 +1,10 @@
-# Pendulum canonicalization meets Hauffman history geometry
+# Pendulum canonicalization meets Huffman history geometry
 
 **Status:** T0 research note; first executable bridge; no Theory Map or API promotion.
 
 ## 1. The interface
 
-The pendulum and Hauffman lines now meet through a narrower object than either
+The pendulum and Huffman lines now meet through a narrower object than either
 an elliptic curve or a decision tree:
 
 \[
@@ -19,11 +19,11 @@ process + task
     -> lifted histories modulo task equivalence
     -> canonical clock measure on history segments
     -> admissible stopping tree/DAG
-    -> costed Bellman/Hauffman optimization
+    -> costed Bellman/Huffman optimization
 ```
 
 Canonicalization determines the state distinctions and the cost geometry on
-which planning is allowed to operate.  Hauffman optimization determines how
+which planning is allowed to operate.  Huffman optimization determines how
 those distinctions should be scheduled, shared, and stopped.  Neither layer
 subsumes the other.
 
@@ -71,7 +71,7 @@ The reduced state ((U,Y)) forgets the simultaneous Cartesian reflection
 
 That bit is irrelevant to a task stated entirely on (C_E), but necessary for
 local reconstruction of the Cartesian state.  Consequently there is no single
-task-independent Hauffman tree for the pendulum.  The correct order is
+task-independent Huffman tree for the pendulum.  The correct order is
 
 \[
 \text{lifted histories}\longrightarrow
@@ -82,7 +82,7 @@ task-independent Hauffman tree for the pendulum.  The correct order is
 Coding first would spend depth distinguishing histories the task may identify;
 quotienting too aggressively would destroy reconstructability.
 
-## 4. Hauffman as the unit-cost special case
+## 4. Huffman as the unit-cost special case
 
 For a finite task state (S), an admissible observation (a) with outcome
 states (S_j), probabilities (p_j), and canonical first-hit cost
@@ -111,7 +111,7 @@ but
 
 ```text
 canonicalization supplies invariant states and edge costs;
-Hauffman/Bellman planning optimizes a task-stopping presentation over them.
+Huffman/Bellman planning optimizes a task-stopping presentation over them.
 ```
 
 ## 5. What this resolves
@@ -121,7 +121,7 @@ This bridge explains four earlier observations at once:
 1. the elliptic carrier alone is not complete canonicalization, because global
    history and task-dependent decoder data remain;
 2. the observer ODE is local kinematics rather than a future-aware optimizer;
-3. the Hauffman tree is not intrinsic until its task quotient and edge costs
+3. the Huffman tree is not intrinsic until its task quotient and edge costs
    have been canonicalized;
 4. process time and representation depth coincide only in the unit-cost
    calibration, not by definition.
@@ -160,4 +160,4 @@ Experimental/Public API pressure: none
 ```
 
 The implementation remains in `tests/research/`.  No generic history-cost,
-stopping-surface, or continuous-Hauffman noun is added to the package.
+stopping-surface, or continuous-Huffman noun is added to the package.

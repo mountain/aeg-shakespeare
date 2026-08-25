@@ -515,7 +515,7 @@ tests/research/test_lonely_runner_center4_minimal_completion.py
     Phase 9C one-wall minimum support + independent full-stratum oracle
 
 tests/research/test_lonely_runner_center4_persistent_update.py
-    Phase 9D 29-predicate persistent update and Hauffman geometry
+    Phase 9D 29-predicate persistent update and Huffman geometry
 
 tests/research/test_lonely_runner_infinite_contact_tail_closure.py
     Phase 10A/B/C zero pressure, direct no-op, and infinite-tail closure.

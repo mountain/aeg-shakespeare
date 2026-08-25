@@ -155,7 +155,7 @@ task-relevant AM arrangement          181 strata
 first-witness semantics                 44 classes
 ```
 
-## 5. Hauffman/history geometry chooses the executable tree
+## 5. Huffman/history geometry chooses the executable tree
 
 Geometry discovery is kept separate from usage weighting.
 
@@ -206,7 +206,7 @@ Thus the training-distribution expected decision depth is
 
 ## 6. The key result is two-axis dominance
 
-This is where the user's Hauffman history geometry becomes essential.  We do not
+This is where the user's Huffman history geometry becomes essential.  We do not
 judge the representation by class count alone.
 
 ### Literal event-by-event contact stopping tree
@@ -272,7 +272,7 @@ axis relative to literal contact evolution:
 \]
 
 This is stronger than a time/space trade-off.  On this calibration the
-calculus-generated/Hauffman-selected tree **dominates** the literal contact tree
+calculus-generated/Huffman-selected tree **dominates** the literal contact tree
 on both space-like and time-like complexity.
 
 ## 7. Holdout
@@ -326,7 +326,7 @@ A/M differential contact law
     -> low-width, low-depth executable decision tree
 ```
 
-In particular, the Hauffman structure is no longer merely an after-the-fact code
+In particular, the Huffman structure is no longer merely an after-the-fact code
 for known outcomes.  It is functioning as the variational principle that chooses
 which calculus-generated distinctions should be asked, and in what order.
 
@@ -364,7 +364,7 @@ What is established is the first nontrivial-dimensional closed loop
 \to
 \text{exact task quotient}
 \to
-\text{Hauffman/history optimization}
+\text{Huffman/history optimization}
 \to
 \text{simultaneous space/time compression}.
 }

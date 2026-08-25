@@ -1,4 +1,4 @@
-# Phase 8D.2 — refinement-aware Hauffman placement exposes a space-time Pareto frontier
+# Phase 8D.2 — refinement-aware Huffman placement exposes a space-time Pareto frontier
 
 **Status:** exact bounded seven-mixture placement calibration passed.  
 **Scope:** reorder only the old 21 center-2 task-relevant walls; keep all Phase-8C.2 completion decoders frozen below their six completion terminals.  
@@ -21,7 +21,7 @@ fresh center-3:   peak/worst = 72/10.
 ```
 
 The first placement experiment asks whether this gap is merely a consequence of
-using the old current-task Hauffman weights.
+using the old current-task Huffman weights.
 
 > If the old 21-wall prefix is reoptimized with explicit refinement weights,
 > while the six new completion decoders remain frozen at terminal leaves, can
@@ -30,7 +30,7 @@ using the old current-task Hauffman weights.
 ## 2. Two distributions are kept explicit
 
 The current-task distribution is the same 55 integer quadruples used in the
-center-2 Hauffman calibration.
+center-2 Huffman calibration.
 
 The continuation distribution is supported on the six genuine completion
 parents and weights each parent by its number of locally realizable center-3
@@ -117,7 +117,7 @@ But peak frontier simultaneously jumps
 Thus a refinement-aware expected-depth scalar can buy large time improvement at
 almost no current-time cost while making the history-space geometry much worse.
 
-This is direct executable evidence that refinement-aware Hauffman placement is a
+This is direct executable evidence that refinement-aware Huffman placement is a
 multi-axis problem.
 
 ## 5. The fresh `72/10` target is not reached in this restricted architecture

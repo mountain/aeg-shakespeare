@@ -212,7 +212,7 @@ h(S)=
 
 where `A(S)` is the set of clean coordinates.
 
-Likewise one can minimize tree nodes, weighted decision depth, or a Hauffman-style space-time tuple while **forbidding completion**.
+Likewise one can minimize tree nodes, weighted decision depth, or a Huffman-style space-time tuple while **forbidding completion**.
 
 If no clean tree exists, these quantities become infinite and the obstruction certificate identifies where a completion-aware optimizer must take over.
 

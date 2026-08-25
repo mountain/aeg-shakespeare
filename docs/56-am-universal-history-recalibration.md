@@ -7,7 +7,7 @@ no Theory Map or API promotion.
 
 The previous cross-problem audit correctly observed that canonical quotients may
 be trees, DAGs, Cayley graphs, covers, or groupoids.  It then came too close to
-using this variation to separate canonicalization from Hauffman/Bellman
+using this variation to separate canonicalization from Huffman/Bellman
 geometry.
 
 That inference is not valid.  A quotient carrier need not be a tree even when
@@ -153,7 +153,7 @@ primitive A/M process
     -> canonical observer transport / developing lift
     -> universal history unfolding with cost cocycle
     -> task stopping section
-    -> Hauffman/Bellman optimization
+    -> Huffman/Bellman optimization
     -> quotient/objectification/residual shadow.
 ```
 
@@ -161,7 +161,7 @@ This yields the corrected statement:
 
 \[
 \boxed{
-\text{Hauffman/Bellman optimization acts on a canonically measured universal
+\text{Huffman/Bellman optimization acts on a canonically measured universal
 history lift; the visible carrier is generally its quotient shadow.}
 }
 \]
@@ -227,7 +227,7 @@ This note **refines and partially corrects**
 - retained: quotient carriers genuinely split into tree, graph/DAG, and
   cover/groupoid forms;
 - corrected: this split does not separate canonicalization from
-  Hauffman/Bellman at the universal-history level;
+  Huffman/Bellman at the universal-history level;
 - new obstruction: universality does not itself choose a scalar cost;
 - surviving claim: stopping optimization is task-relative and downstream of
   canonical lift and ruler construction.

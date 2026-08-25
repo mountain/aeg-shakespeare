@@ -1,4 +1,4 @@
-# Phase 11B2 — canonical global compilation recovers the frozen Hauffman geometry
+# Phase 11B2 — canonical global compilation recovers the frozen Huffman geometry
 
 **Status:** exact bounded global-compilation calibration passed.  
 **Implementation:** `sonnet/lonely-runner/python/canonical_global_compilation.py`.  
@@ -23,7 +23,7 @@ But Phase 11B0 had already shown that direct canonical event evolution is slower
 
 Therefore one final question remained before the canonical-first reconstruction could be considered mechanically equivalent to the successful old route:
 
-> If we materialize only the 27 coordinates discovered by the canonical compiler, can Hauffman/decision-tree optimization recover the old execution geometry without importing its tree or predicate order?
+> If we materialize only the 27 coordinates discovered by the canonical compiler, can Huffman/decision-tree optimization recover the old execution geometry without importing its tree or predicate order?
 
 The answer is yes, exactly.
 
@@ -60,7 +60,7 @@ These are different representation objectives, not contradictory counts.
 
 ## 3. Re-run the exact time-first tree optimization from scratch
 
-Use the same 55-input usage world as the previous four-speed Hauffman calibrations:
+Use the same 55-input usage world as the previous four-speed Huffman calibrations:
 
 ```text
 1 <= u1 < u2 < u3 < u4 <= 8,
@@ -137,7 +137,7 @@ For this bounded four-speed first-witness problem we can now run the entire repr
 &\to 33\text{ unresolved candidate walls}\\
 &\to 27\text{ exact globally minimum task walls}\\
 &\to 2,211\text{ exact global sign cells}\\
-&\to \text{Hauffman / decision-tree placement}\\
+&\to \text{Huffman / decision-tree placement}\\
 &\to 135/391/10/130\text{ optimum execution geometry}.
 \end{aligned}
 }
@@ -151,7 +151,7 @@ The old results remain essential as independent red teams:
 - emergent closure at center 4;
 - globally relevant `21+5+1` wall set;
 - the `19/11` center-4 distinction;
-- final Hauffman placement metrics.
+- final Huffman placement metrics.
 
 All are recovered by the canonical-first route.
 
@@ -183,7 +183,7 @@ should be replaced by
 canonical dynamics already complete
 -> symbolic task compiler discovers useful derived predicates
 -> materialize a globally or incrementally chosen subset
--> Hauffman places them.
+-> Huffman places them.
 ```
 
 This does not imply that `F_comp` is universally zero in Sonnet 001.  A future task quotient may discard information from the canonical state and thereby create genuine representation-relative completion pressure again.  But contact-center sheet depth by itself is no longer evidence for such pressure.
@@ -220,7 +220,7 @@ Optimizes final task sufficiency:
 
 Its strength is irredundant static content.
 
-Both compile to the same best current-use Hauffman geometry.
+Both compile to the same best current-use Huffman geometry.
 
 This makes `persistent refinement cost` and `final global representation size` genuinely separate Pareto axes, rather than two imperfect measurements of the same object.
 
@@ -249,7 +249,7 @@ Before either, we should freeze Phase 11A–B2 as the new Sonnet-001 four-speed 
 
 The Sonnet 001 reconstruction now supports a much stronger statement than the initial Phase-11 hypothesis:
 
-> The static wall/Hauffman representation is not a rival ontology to the canonical torus process.  It is an exact task-directed compilation of that process.  On the complete bounded four-speed calibration, a horizon-free symbolic compiler independently discovers the globally minimum 27 predicate contents and, after exact Hauffman placement, reproduces the full frozen Phase-9D execution geometry.
+> The static wall/Huffman representation is not a rival ontology to the canonical torus process.  It is an exact task-directed compilation of that process.  On the complete bounded four-speed calibration, a horizon-free symbolic compiler independently discovers the globally minimum 27 predicate contents and, after exact Huffman placement, reproduces the full frozen Phase-9D execution geometry.
 
 This gives a concrete mechanism for the docs-38/39 order
 
@@ -271,4 +271,4 @@ The canonicalization restart is therefore no longer only interpretive.  It repro
 
 ## Claim boundary
 
-No new Lonely Runner theorem is proved.  The 27-coordinate minimum, 2,211-cell carrier, and recovered Hauffman metrics are exact results for the declared ordered four-speed domain `u4/u1 < 8` at `delta=1/5`.  The heavy decision-tree DP is kept opt-in so routine multi-version CI is not burdened by a research calibration.
+No new Lonely Runner theorem is proved.  The 27-coordinate minimum, 2,211-cell carrier, and recovered Huffman metrics are exact results for the declared ordered four-speed domain `u4/u1 < 8` at `delta=1/5`.  The heavy decision-tree DP is kept opt-in so routine multi-version CI is not burdened by a research calibration.

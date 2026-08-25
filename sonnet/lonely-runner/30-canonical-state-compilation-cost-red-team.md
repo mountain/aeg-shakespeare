@@ -18,7 +18,7 @@ using one center-free event rule.
 
 That is a statement about **state ontology and representation growth**.  It is not yet a statement about the cheapest way to answer the first-witness query.
 
-The existing pair-difference/Hauffman work has already compiled many future contact comparisons into a shallow static decision program.  A fair red team therefore asks whether direct canonical evolution is actually cheaper on the same usage world.
+The existing pair-difference/Huffman work has already compiled many future contact comparisons into a shallow static decision program.  A fair red team therefore asks whether direct canonical evolution is actually cheaper on the same usage world.
 
 ---
 
@@ -81,12 +81,12 @@ So the first cost red team is deliberately negative:
 
 ## 3. This strengthens rather than weakens the reconstruction
 
-The result clarifies the role of the old wall/Hauffman machinery.
+The result clarifies the role of the old wall/Huffman machinery.
 
 The wrong dichotomy would be
 
 ```text
-canonical torus process  versus  wall/Hauffman process.
+canonical torus process  versus  wall/Huffman process.
 ```
 
 The more accurate architecture is

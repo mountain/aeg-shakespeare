@@ -4,7 +4,7 @@ This script starts from the horizon-free lazy compiler of Phase 11B1.  It uses
 its exact 27-coordinate global minimum, refines the canonical terminal regions
 only enough to assign complete ternary sign records, and then optimizes a static
 decision tree with the same lexicographic space-time objective used by the older
-pair-difference/Hauffman experiments.
+pair-difference/Huffman experiments.
 
 The expensive dynamic-programming tree optimization is research-local and should
 not be placed in routine multi-version CI.

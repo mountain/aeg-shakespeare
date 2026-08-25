@@ -212,7 +212,7 @@ on at least:
 - extra decision depth;
 - future refinement cost.
 
-Only after this residual objectification should the persistent Hauffman DAG be regarded as the Phase-8D representation candidate.
+Only after this residual objectification should the persistent Huffman DAG be regarded as the Phase-8D representation candidate.
 
 ## 11. Claim boundary
 

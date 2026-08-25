@@ -16,7 +16,7 @@ required by the next query.  In the exact Phase-12A domain this pressure remains
 zero at every selected node: the complete task classifier can be built entirely
 from signs already forced by the 1,117 terminal regions.
 
-The result is not claimed to be a globally optimal Hauffman tree.  It is a
+The result is not claimed to be a globally optimal Huffman tree.  It is a
 constructive red team against full static sign-cell materialization.
 """
 

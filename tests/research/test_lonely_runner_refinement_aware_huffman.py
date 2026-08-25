@@ -1,4 +1,4 @@
-"""Sonnet 001 Phase 8D.2: refinement-aware Hauffman placement is genuinely multi-axis.
+"""Sonnet 001 Phase 8D.2: refinement-aware Huffman placement is genuinely multi-axis.
 
 Question
 --------
@@ -8,7 +8,7 @@ nodes, `125` internals), but place it differently in history: the graft has
 `peak/worst = 75/12`, while the fresh tree has `72/10`.
 
 Can this placement gap be repaired merely by changing the **old center-2 wall
-ordering**, if the old Hauffman objective is augmented with an explicit
+ordering**, if the old Huffman objective is augmented with an explicit
 continuation/refinement distribution while all six local completion decoders are
 kept frozen?
 
