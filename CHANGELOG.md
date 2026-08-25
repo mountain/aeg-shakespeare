@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- opens the \(S^6\) complex-structure Sonnet as a two-axis research contract:
+  first use the proposed torus-fibred threefold as a lossless external
+  calibration of lifted history, task-visible holonomy, non-normal
+  canonicalization, and singular completion; independently test whether the
+  complex Addition/Multiplication/Power closure admits a task-sufficient
+  rank-four integral shadow; source reproduction, strict equivariance, oracle
+  firewalls, stage gates, and negative-result conditions are frozen before
+  implementation, with no Theory Map or API promotion;
 - adds a research-local thermodynamic-objectification record and two exact
   finite executable essays: same-scale weighted pushforward/flattening,
   different-scale power sums, unit-cell carry arithmetic, the partition/coarea
