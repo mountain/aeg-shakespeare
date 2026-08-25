@@ -101,3 +101,20 @@ The authoritative current audit is
 Sonnet 001 has reached level 3 **structural discovery** in several exact bounded
 settings, but not level 4: `LRC(13)` remains open and no public API promotion is
 proposed.
+
+## Research-local calibration — the \(S^6\) complex structure claim
+
+[`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) studies a
+new author-hosted construction of a compact complex threefold diffeomorphic to
+\(S^6\) under two independent questions:
+
+1. whether the construction provides a lossless external calibration of
+   history lift, task-visible holonomy, canonicalization, and singular
+   completion in Process Geometry;
+2. whether the complex Addition/Multiplication/Power closure has a
+   task-sufficient finite integral shadow strictly comparable with the
+   construction's rank-four monodromy representation.
+
+The study begins at source-verification and research-contract level.  It does
+not treat the manuscript as independently verified, does not claim an
+arithmetic origin for \(S^6\), and proposes no API extraction.
