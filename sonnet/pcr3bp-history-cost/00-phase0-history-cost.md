@@ -36,7 +36,7 @@ This phase does **not** claim a complete symbolic dynamics, a Markov partition,
 or that every reduced word is dynamically realizable.  It does not use Huffman
 coding yet.  Huffman becomes legitimate only after a task quotient supplies a
 prefix source with stable conditional probabilities; the current lifted tree
-retains history-dependent transition costs and is therefore a Bellman object.
+is only a candidate Bellman carrier.  Phase 1 tests its state sufficiency.
 
 ## 2. Primitive physical process and oracle
 
@@ -180,12 +180,11 @@ research-local calibration and proposes no framework extraction.
 
 ## 6. What would count as the next phase
 
-Phase 1 must sample a declared Poincare return section over a grid of initial
-conditions at several Jacobi levels on both sides of `C1`.  It must estimate
-conditional transition probabilities on reduced-word prefixes, retain escape
-and collision as explicit outcomes, and test whether a finite task quotient
-makes those probabilities approximately continuation-stable.  Only after that
-test is it meaningful to compare a Bellman code with a Huffman shortcut.
+Phase 1 is recorded in `01-scale-jet-topology-and-coding-audit.md`.  A later
+probabilistic/control phase must sample a declared Poincare return section over
+several Jacobi levels on both sides of `C1`, retain escape and collision as
+explicit outcomes, and test whether a finite task quotient makes conditional
+transitions approximately continuation-stable.
 
 ## References
 
