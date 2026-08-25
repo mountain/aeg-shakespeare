@@ -85,7 +85,9 @@ calibrations. These are indexed without renumbering that stable list:
 - `59-noether-blind-discovery-prototype.md` — classical AD control baseline;
 - `60-optical-am-process-symmetry-audit.md` — exact supported A/M symmetry slice;
 - `61-pendulum-section-reparameterization-redteam.md` — equal-clock stopping experiment.
+- `62-task-covariant-complexity-coarea.md` — moving-unit action--period identity,
+  exact Bellman/frontier volume, task-visible holonomy memory, and a global
+  integrability obstruction.
 
 Open Sonnet research is indexed by its own README and phase notes under
 `sonnet/`.
-
