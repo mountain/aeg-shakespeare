@@ -75,7 +75,7 @@ deferred until its next oracle/evidence gate is affordable.
 
 | Study | Current state | Highest responsible claim | Authoritative entry / next gate |
 | --- | --- | --- | --- |
-| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 1 finite standard-root lattice ball | level-1 local-field re-expression with exact lattice/kernel and digit-canonicalization red teams; no infinite completion or preferred \(p\)-adic continued fraction | [finite lattice-ball ledger](local-field-projective-process-geometry/02-phase1-finite-lattice-ball.md); next compile the real continued-fraction/geodesic positive control |
+| [`local-field-projective-process-geometry/`](local-field-projective-process-geometry/) | Phase 2 real continued-fraction/Farey-path positive control | level-1 cross-place re-expression with exact path, cylinder, continuation, and cost red teams; the real and \(p\)-adic trees are not identified and no \(p\)-adic selector is preferred | [real positive-control ledger](local-field-projective-process-geometry/03-phase2-real-continued-fraction-geodesic-control.md); next freeze one matched finite task for two genuinely different \(p\)-adic selectors |
 | [`lonely-runner/`](lonely-runner/) | active pivot after Phase 15A | level-3 structural discovery in exact bounded K4/K5 settings; `LRC(13)` remains open | [global closure audit](lonely-runner/40-global-closure-contract-and-theory-audit.md); next develop lift-aware initial search on solved cases, then freeze before K13 |
 | [`hidden-am-noether/`](hidden-am-noether/) | static branch closed negatively | a frozen observer in the same product-affine group cannot reveal a missing stabilizer dimension | [static-observer no-go](hidden-am-noether/03-static-observer-no-go-and-schedule-split.md); continuation moved to `moving-am-observer/` |
 | [`moving-am-observer/`](moving-am-observer/) | affine deterministic phase closed | bounded blind observer discovery, task-equivalent minimum slice, and dimensionful Bellman covariance on the declared family | [study ledger](moving-am-observer/README.md); stochastic continuation moved to its own Sonnet |
@@ -153,6 +153,16 @@ canonicalization but rejects an observer-free preferred digit system.
 Phase 1 then constructs the complete finite standard-root Bruhat--Tits ball
 from normalized lattice kernels. It proves that the earlier residue tower is
 exactly the affine contact chart, not the whole sphere, and that right
-inversion forces the missing infinity chart. The study still leaves the
-infinite boundary and competing \(p\)-adic continued-fraction algorithms
-unselected, and proposes no API extraction.
+inversion forces the missing infinity chart.
+
+Phase 2 supplies the deliberately separate real positive control. Canonical
+regular continued fractions compile exactly into convergent matrices,
+Stern--Brocot left/right runs, Farey frames, and ordered real cylinders. The
+terminal split \([1;2]=[1;1,1]\) reaches the same rational endpoint and the
+same canonical tree path but retains different previous convergents,
+one-sided cylinders, and future continuation under an appended suffix. This
+rejects endpoint-only state and separates digit cost from materialized-turn
+cost. It does not identify the ordered Farey/Stern--Brocot tree with the
+residue-branching Bruhat--Tits tree. The infinite \(p\)-adic boundary and a
+comparison of competing \(p\)-adic continued-fraction algorithms remain
+unselected, and no API extraction is proposed.
