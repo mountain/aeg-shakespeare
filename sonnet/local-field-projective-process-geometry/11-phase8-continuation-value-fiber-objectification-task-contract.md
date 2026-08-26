@@ -1,7 +1,9 @@
 # Phase 8 task contract — continuation-value fibres and the objectification threshold
 
-**Status:** frozen before Phase 8 execution.  This file is the pre-result audit
-contract and must not be rewritten to fit the observed quotient.
+**Status:** frozen before Phase 8 execution and discharged without amendment by
+`12-phase8-continuation-value-fiber-objectification-results.md`.  This file is
+the pre-result audit contract and must not be rewritten to fit the observed
+quotient.
 
 **Executable owner:**
 `tests/research/test_padic_continuation_value_fiber.py`.

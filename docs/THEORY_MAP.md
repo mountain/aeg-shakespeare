@@ -183,9 +183,14 @@ proposal.
 
 The disjoint policy collisions also expose a nontrivial task-relative
 continuation-value fibre over the local evaluated signature.  Its finite
-residual-bit lower bound is real, but its vertical interpretation is open: no
-stable transported composition or cross-task lowering theorem yet turns that
-fibre into an objectified dimension or a new process rank.
+residual-bit lower bound is real.  Phase 8 now computes the coarsest stable
+finite extension over that signature: 6,044 S2 classes refine to 8,126 scalar
+policy/value classes or 8,128 full-decoder classes, with irregular fibres of
+size one through seventy.  Lift-bit transport descends but is partial,
+terminal, and many-to-one.  This closes one horizontal finite task-state
+question while answering the vertical interpretation negatively for this
+calibration: stable transport alone does not supply a uniform objectified
+dimension or a new process rank.
 
 ### 1.2 Cross-cutting admissibility — effective analysis
 
@@ -263,6 +268,16 @@ For a finite deterministic state carrier with a finite step alphabet and a total
 
 This exact finite slice does **not** establish a generic quotient/minimization framework for infinite, nondeterministic, probabilistic, continuous, approximate, or resource-bounded processes.
 
+The local-field Phase 8 calibration adds an exact base-preserving variant.
+Starting from a declared local interface and task output, finite refinement
+computes the coarsest extension stable under the binary lift actions and emits
+distinguishing suffixes.  If one interface refines another, its stable quotient
+also refines the former quotient, so total stable class count and the
+\(\lceil\log_2N\rceil\) lower bound are monotone.  Conditional fibre size over
+one base point is a separate quantity.  This implementation remains
+research-local because policy-only, value, and full decoder semantics are
+problem-specific and do not define a new generic API contract.
+
 **Maturity:** theorem-level classical anchor; bounded public witness; exact finite Experimental implementation.
 
 ### H2 — Topological threshold
@@ -308,6 +323,14 @@ relations do not descend through contact, evaluated geometry, or locally
 visible costs.  Exact disjoint collisions persist under greater depth, new
 primes, and held-out inputs.  Thus alphabet growth can be compressed without
 compressing future distinguishability or Bellman value.
+
+Phase 8 computes the missing finite residual rather than adding more local
+features.  Above S2, the coarsest transported scalar relation retains 8,126 of
+8,336 possible tagged-state classes and has a maximum seventy-class fibre.
+Forgetting S2 yields only 435 digit-policy or 395 decoder-policy behaviour
+types, but those compact automata are task/ruler dependent and omit full
+decoder semantics.  Hence local geometry, task-minimal policy state, and full
+reconstruction state carry different H1/H3 complexity ledgers.
 
 **Maturity:** classical anchors plus concrete finite coding and control shadows
 exist; the general Process Geometry correspondence remains a research
@@ -388,9 +411,17 @@ coarse-graining alone is not evidence for a new process rank.  The measure,
 cost scale, and any retained holonomy are explicit objectification payloads,
 not intrinsic properties silently created by the quotient.
 
-**Maturity:** two concrete AEG rank-objectification calibrations plus one exact
-finite thermodynamic boundary/red team; generic V2 theory remains a research
-program and has no Experimental/Public abstraction.
+The p-adic continuation-fibre audit supplies a second V2 boundary.  Its finite
+stable quotient has exact composition under already admitted bit words, but
+the fibres are nonuniform, transport is partial and many-to-one, and no new
+free grammar or lowering theorem exists.  A transported residual may therefore
+complete horizontal task state without becoming a vertical primitive.  This
+also rules out treating every nonzero residual bit as one new process
+dimension.
+
+**Maturity:** two concrete AEG rank-objectification calibrations plus exact
+finite thermodynamic and continuation-fibre boundaries/red teams; generic V2
+theory remains a research program and has no Experimental/Public abstraction.
 
 ### V3 — Higher-rank free composition
 
@@ -697,6 +728,10 @@ The next high-value questions are therefore:
 12. is there a typed theorem connecting continuous coarea volume and finite
     task-visible residual memory, or do red teams force them to remain
     separate resource components?
+13. across the p-adic irregular continuation fibre, the pendulum's finite
+    sheet transport, and a nonintegrable return-map residual, which additional
+    laws distinguish horizontal task-state completion from genuine vertical
+    objectification with free composition and lowering?
 
 These are research questions, not a backlog of API classes to create.
 
