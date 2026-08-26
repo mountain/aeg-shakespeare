@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phase 1A executed and passed on the frozen finite model. Phases 1B–5 remain unexecuted and governed by the contracts below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C executed locally as the chart-first mother route, with repository CI pending. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -11,8 +11,9 @@ The study contains three tracks that must not be merged by rhetoric.
 | A. Kinetic H theorem | Why is a functional monotone for a declared collision semigroup? | exact finite identity, then calibrated continuum statement |
 | B. Micro-to-kinetic passage | Why does reversible many-body dynamics admit that reduced semigroup? | theorem-scoped limiting and closure statement |
 | C. Higher-rank observation | What can be observed after processes themselves become composable objects? | typed lowering plus a witnessed intrinsic observer |
+| D. Layer adaptation | Which observations and continuations survive a passage between semantic layers? | frozen adapter, task-relative defect, and residual witness |
 
-Tracks A and B are logically independent: a proof of the H theorem for the Boltzmann equation is not a derivation of that equation from mechanics. Track C begins only after a rank semantics has been earned.
+Tracks A and B are logically independent: a proof of the H theorem for the Boltzmann equation is not a derivation of that equation from mechanics. Track D is logically prior to reopening Track A because the target kinetic dynamics and its closure must first be earned. Track C begins only after a rank semantics has been earned.
 
 The classical formula may be supplied to the baseline track. It must be hidden from the discovery track until evaluation.
 
@@ -20,7 +21,7 @@ The classical formula may be supplied to the baseline track. It must be hidden f
 
 ### Problem
 
-Locate the operation that turns reversible collision histories into a reduced semigroup carrying a monotone state functional, and identify the residual that records why the reduction is not reversibly decodable.
+Construct task-relative semantic adapters from reversible collision histories through the correlation hierarchy to an A/M process layer; state which observations and continuations they preserve, locate their residual and closure seam, and only then ask whether the induced reduced semigroup carries a monotone state functional.
 
 ### Primitive domain
 
@@ -44,6 +45,44 @@ Begin with a finite reversible binary-collision network. Hard-sphere dynamics is
 ### Required deliverables per phase
 
 Each phase record must state assumptions, forbidden structures, task, candidate grammar, certificates, cost, red teams, claim boundary, and effects on the Mathematical Core, Engineering Architecture, and Theory Map.
+
+## 1A. Logical mother gate — Phase 1C chart-first layer adaptation
+
+The file ordinal records repository chronology, not logical dependence. Phase
+1C now precedes Phases 1A and 1B in the argument.
+
+A semantic layer is typed by its state/history carrier, continuation
+interface, evolution, observer family, and task. An inter-layer adapter
+
+\[
+\mathfrak A_{\ell\to m}
+=
+(a,\kappa,\rho,\mathcal Q,T,\varepsilon)
+\]
+
+is judged by its declared observations and continuations. It is not required
+to be invertible or to conjugate the full dynamics.
+
+The first finite adapter comparison uses
+
+\[
+P^{(2)}\xrightarrow{L}f^{(1)}
+\]
+
+and
+
+\[
+P^{(2)}
+\xrightarrow{J_\chi}
+(f^{(1)},A^{(1)},M^{(1)}).
+\]
+
+The state-only marginal adapter must be tested separately for the present
+marginal and next-derivative tasks. The A/M first-jet adapter may repair the
+second task without claiming full-future reconstruction.
+
+The supplied-H and hidden-character phases are retained as controls to be
+consulted only after a closed target dynamics has been justified.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -411,8 +450,8 @@ Every attempted claim receives one label:
 |---|---|---|---|
 | T0 | unchanged | unchanged | calibration pressure only |
 | 1A | finite H identity record | research-local fixtures | calibrates H3 |
-| 1B | possible A/M covector evidence | discovery harness only | may pressure A/M chart edge |
-| 1C | entropy/partition-function separation | finite normalization controls | calibrates same-scale flattening |
+| 1B | finite character-class evidence and held-out selector failure | discovery harness only | post-hoc A/M control |
+| 1C | task-relative layer-adapter and A/M first-jet evidence | exact finite adapter fixtures | pressures history/observer/residual semantics |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
