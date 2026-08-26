@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: T0 initialization. This study has not yet produced a new H theorem, a microscopic-to-kinetic derivation, or a generic API.
+Status: Phase 1A exact finite calibration passed. The study has not yet discovered H, derived kinetic dynamics from microscopic mechanics, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -228,9 +228,11 @@ No promoted edge at T0. The Sonnet calibrates the existing H1/H3/H4 history-loss
 ## 10. Artifact map and next action
 
 - [01-phase-plan.md](./01-phase-plan.md) freezes the staged search, baselines, red teams, cost limits, and promotion gates.
-- Later phase records will be added only after their contracts are frozen and executed.
+- [02-phase1a-finite-collision-contract.md](./02-phase1a-finite-collision-contract.md) freezes the six-velocity detailed-balance model before evaluation.
+- [03-phase1a-results.md](./03-phase1a-results.md) records the exact H identity, ten certificates, five red teams, and claim boundary.
+- [test_discrete_velocity_h_theorem.py](../../tests/research/test_discrete_velocity_h_theorem.py) is the executable research record.
 
-The next action is to freeze Phase 1A on a finite reversible detailed-balance collision network. No hard-sphere theorem will be claimed until that exact baseline and the hidden-oracle discovery track have both been audited.
+The next action is to freeze Phase 1B: training and held-out collision graphs, the A/M-native covector grammar, the oracle firewall, ranking metrics, and conserved-affine gauge quotient. Phase 2 and the hard-sphere seam remain downstream.
 
 ## References for calibration
 
