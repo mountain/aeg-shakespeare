@@ -236,6 +236,34 @@ status-ledger row
 Do not infer maturity from a file count, commit count, phase number, imported
 class name, or the presence of a test alone.
 
+### Project-wide assessment sampling gate
+
+A project-wide assessment must not stop at the Core, maps, indexes, directory
+names, or test counts.  In this repository, substantial files under
+`tests/classical/` and `tests/research/` are executable mathematical essays
+and first-class research deliverables, not only software regressions.
+
+Before rating the mathematical depth or the documentation/code balance, read at
+least one complete essay from each of these four evidence modes:
+
+1. **exact algebraic/global reconstruction:** 
+   [`test_pendulum_elliptic_group_rank_lowering.py`](../tests/research/test_pendulum_elliptic_group_rank_lowering.py);
+2. **units, fundamental domains, residuals, and symbolic analysis:**
+   [`test_pendulum_unit_history_fundamental_domain.py`](../tests/research/test_pendulum_unit_history_fundamental_domain.py);
+3. **exact finite control with failure and decoder semantics:**
+   [`test_padic_selector_policy_bellman.py`](../tests/research/test_padic_selector_policy_bellman.py);
+4. **abstract interface pressure and adversarial controls:**
+   [`test_objectification_fibred_change_calculus.py`](../tests/research/test_objectification_fibred_change_calculus.py).
+
+Then follow at least one result outside that sample through its phase note,
+executable owner, and explicit nonclaim.  The sample is a minimum reading gate,
+not a claim that these four files are the only or permanently best results.
+
+Consequently, raw `docs/` versus `src/` line counts are not a meaningful
+research-output ratio unless executable essays are classified separately.
+Likewise, a large `tests/` tree is not evidence of mathematical depth until
+its claims and certificates have actually been read.
+
 ### Start implementation work
 
 After the orientation route, read [`API.md`](API.md), the code owner, the
