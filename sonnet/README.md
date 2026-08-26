@@ -82,7 +82,7 @@ deferred until its next oracle/evidence gate is affordable.
 | [`stochastic-feedback-trap-first-passage/`](stochastic-feedback-trap-first-passage/) | current calibration closed | exact Itô task quotient plus independent first-passage and reset-Bellman covariance across 242 monotone charts | [Phase-4 results](stochastic-feedback-trap-first-passage/09-phase4-reset-bellman-results.md); further work requires a new Sonnet or governed extraction proposal |
 | [`pcr3bp-history-cost/`](pcr3bp-history-cost/) | Phases 0–1 complete; Phase 2 frozen | lifted topology and scale-jet reconstruction separate word, clock, deck, and hyperbolic costs; no Bellman/Huffman source is yet justified | [Phase-2 contract](pcr3bp-history-cost/02-return-partition-holonomy-contract.md); next run the frozen two-gate covariance and convergence gates |
 | [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) | T0 initialization | auditable two-question research contract only; neither the manuscript nor an arithmetic interface is verified | [problem frontier](s6-complex-arithmetic-tower/00-problem-frontier.md); next archive/checksum the source and reproduce its matrix/topology certificate |
-| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1A exact finite calibration passed | level-1 H-theorem reexpression with exact conservation, detailed-balance, dissipation, equality, boundary, and red-team certificates; no discovery or microscopic derivation | [Phase 1A results](boltzmann-bbgky-h-theorem/03-phase1a-results.md); next freeze the Phase 1B hidden-oracle A/M grammar |
+| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1C chart-first finite adaptation passed locally; CI pending | exact finite rejection of state-only next-derivative adequacy and A/M first-jet repair for that task; Phase 1A/1B are post-hoc controls; no continuum derivation or entropy discovery | [Phase 1C results](boltzmann-bbgky-h-theorem/07-phase1c-chart-first-adaptation-results.md); next freeze the continuum collision-boundary adapter |
 
 ## Sonnet 001 — Lonely Runner
 
@@ -125,7 +125,19 @@ proposed.
 
 The study uses two independent coordinates. The arithmetic or process rank \(r\) records objectification and free composition; the observer or correlation order \(s\) records how much joint structure is inspected. Every earned higher rank has lowering-induced observers obtained by contravariant pullback, while candidate intrinsic observers may inspect assembly, interaction, scale, reference measure, holonomy, or continuation residual. BBGKY order is therefore not renamed arithmetic rank.
 
-Phase 1A now supplies an exact six-velocity detailed-balance calibration: the relative H derivative is a sum of nonpositive flux–log-affinity pairings, while a two-way-rate red team shows that reversibility without reference-measure symmetrizability is insufficient. This remains a level-1 reexpression with no API proposal. The next gate is the hidden-oracle A/M discovery track; the microscopic continuation residual remains downstream.
+Phases 1A and 1B are now post-hoc controls: the first supplies the exact
+six-velocity detailed-balance H identity, while the second recovers a finite
+multiplicative-character class but shows that a frozen finite selector fails
+held-out order and sign tests.
+
+The chart-first Phase 1C is the logical mother route. It replaces global
+semantic equivalence by task-relative layer adaptation. In an exact finite
+two-body collision model, the state-only marginal is adequate for the present
+one-body law but fails the next-derivative task, even for strictly positive
+laws. The augmented A/M first jet \((f,A,M)\) restores exact adequacy for that
+one task without reconstructing the full source future. The next gate is a
+continuum collision-boundary adapter calibrated against the
+Deng--Hani--Ma history/cumulant construction. No API proposal follows.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 
