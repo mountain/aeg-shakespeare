@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C executed locally as the chart-first mother route, with repository CI pending. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -83,6 +83,31 @@ second task without claiming full-future reconstruction.
 
 The supplied-H and hidden-character phases are retained as controls to be
 consulted only after a closed target dynamics has been justified.
+
+## 1B. Structural synthesis gate — Phase 1D measured fibres
+
+Phase 1D distinguishes exact task-quotient fibres, cross-layer adapter fibres,
+and conditional-probability fibres.  A probabilistic macro presentation keeps
+
+\[
+J:\Gamma\to B,
+\qquad
+\mathbb P(A)=\int_B\nu_b(A)\,\rho(db)
+\]
+
+together with its reference measure, conditional laws, and transverse
+ensemble law.  Microcanonical selection, canonical reweighting, and
+grand-canonical enlargement are separately typed.  None supplies a dynamic
+closure by itself.
+
+The phase also records filtered asymptotic quotient towers as one candidate
+way for a higher fibre to contain lower-order adaptation.  Jet depth,
+correlation order, and arithmetic rank remain independent.  A measured or
+filtered fibre reaches V2 only after continuation-stable interaction/response
+semantics, new free composition, and all-composite lowering are proved.
+
+This is a synthesis gate, not an executable certificate.  Its result owner is
+`08-phase1d-measured-fibration-objectification-synthesis.md`.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 

@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, proved equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -245,15 +245,28 @@ This Sonnet must be revised or stopped if it:
 
 ### Mathematical core
 
-No change at T0. The study reuses history/task/lift/quotient/decoder/residual/objectification and the state-versus-observer variance rule.
+Refined at T0/T1. Exact continuation equivalence remains the anchor, while
+cross-layer comparison is now typed by task, translated continuation, horizon,
+topology/error, residual, and reconstruction boundary. When probability is
+primitive, a measured task fibre keeps the base macrostate, conditional fibre
+law, transverse ensemble law, and reference measure distinct. Such a fibre is
+not objectified without stable interaction/response semantics, new free
+composition, and compositional lowering.
 
 ### Engineering architecture
 
-No generic interface at T0. Exact finite models, symbolic identities, and red-team counterexamples remain research-local until transfer and necessity are demonstrated.
+The problem-to-solver contract is refined with a research-local adapter and
+ensemble checklist. No generic interface follows; exact finite models,
+symbolic identities, and red-team counterexamples remain research-local until
+transfer and necessity are demonstrated.
 
 ### Theory map
 
-No promoted edge at T0. The Sonnet calibrates the existing H1/H3/H4 history-loss story and adds pressure for a two-axis account of rank and observer order. Any new dependency must survive the phase gates.
+No promoted edge or new axis. The Sonnet calibrates the existing H1/H3/H4
+history-loss story, adds semantic adaptation and measured fibres to the
+emerging transversal, and sharpens the V2 objectification boundary. Arithmetic
+Geometric Universality remains an open conjecture with anti-encoding and
+effective-calculus obligations.
 
 ## 10. Artifact map and next action
 
@@ -262,6 +275,7 @@ No promoted edge at T0. The Sonnet calibrates the existing H1/H3/H4 history-loss
 - [04-phase1b-hidden-character-contract.md](./04-phase1b-hidden-character-contract.md) and [05-phase1b-results.md](./05-phase1b-results.md) are the hidden-character post-hoc control.
 - [06-phase1c-chart-first-lift-contract.md](./06-phase1c-chart-first-lift-contract.md) replaces global decoding by layer-relative semantic adaptation.
 - [07-phase1c-chart-first-adaptation-results.md](./07-phase1c-chart-first-adaptation-results.md) records the finite BBGKY seam and A/M first-jet repair.
+- [08-phase1d-measured-fibration-objectification-synthesis.md](./08-phase1d-measured-fibration-objectification-synthesis.md) organizes semantic adaptation, measured fibres, ensembles, filtered asymptotics, and the objectification/universality boundaries.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 
 The next action is to freeze a continuum \(s+1\to s\) adapter contract: write the hard-sphere collision-boundary operator, its incoming/outgoing A/M process jet, the target observables and generator defect, and the topology/error budget used by the Deng--Hani--Ma kinetic comparison. Entropy search remains downstream of that adapter and its closure section.

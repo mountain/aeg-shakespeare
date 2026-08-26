@@ -82,7 +82,7 @@ deferred until its next oracle/evidence gate is affordable.
 | [`stochastic-feedback-trap-first-passage/`](stochastic-feedback-trap-first-passage/) | current calibration closed | exact Itô task quotient plus independent first-passage and reset-Bellman covariance across 242 monotone charts | [Phase-4 results](stochastic-feedback-trap-first-passage/09-phase4-reset-bellman-results.md); further work requires a new Sonnet or governed extraction proposal |
 | [`pcr3bp-history-cost/`](pcr3bp-history-cost/) | Phases 0–1 complete; Phase 2 frozen | lifted topology and scale-jet reconstruction separate word, clock, deck, and hyperbolic costs; no Bellman/Huffman source is yet justified | [Phase-2 contract](pcr3bp-history-cost/02-return-partition-holonomy-contract.md); next run the frozen two-gate covariance and convergence gates |
 | [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) | T0 initialization | auditable two-question research contract only; neither the manuscript nor an arithmetic interface is verified | [problem frontier](s6-complex-arithmetic-tower/00-problem-frontier.md); next archive/checksum the source and reproduce its matrix/topology certificate |
-| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1C chart-first finite adaptation passed full CI | exact finite rejection of state-only next-derivative adequacy and A/M first-jet repair for that task; Phase 1A/1B are post-hoc controls; no continuum derivation or entropy discovery | [Phase 1C results](boltzmann-bbgky-h-theorem/07-phase1c-chart-first-adaptation-results.md); next freeze the continuum collision-boundary adapter |
+| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1D measured-fibration synthesis recorded after Phase 1C passed full CI | exact finite rejection of state-only next-derivative adequacy and A/M first-jet repair for that task; measured fibres/ensembles/objectification remain T0/T1 synthesis; no continuum derivation, ensemble-equivalence theorem, or entropy discovery | [Phase 1D synthesis](boltzmann-bbgky-h-theorem/08-phase1d-measured-fibration-objectification-synthesis.md); next freeze the continuum collision-boundary adapter |
 
 ## Sonnet 001 — Lonely Runner
 
@@ -137,7 +137,17 @@ one-body law but fails the next-derivative task, even for strictly positive
 laws. The augmented A/M first jet \((f,A,M)\) restores exact adequacy for that
 one task without reconstructing the full source future. The next gate is a
 continuum collision-boundary adapter calibrated against the
-Deng--Hani--Ma history/cumulant construction. No API proposal follows.
+Deng--Hani--Ma history/cumulant construction.
+
+Phase 1D organizes the resulting structural pressure. It distinguishes exact
+quotient fibres, cross-layer adapter fibres, and probability-disintegration
+fibres; types microcanonical selection, canonical reweighting, and
+grand-canonical enlargement separately; and allows an objectified primitive
+to retain a stable fibre interface rather than pretending to be a bare point.
+Measured or asymptotic fibres do not raise arithmetic rank without new free
+composition and compositional lowering. Arithmetic-tower universality remains
+an open conjecture subject to anti-encoding and effective-calculus tests. No
+API proposal follows.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 
