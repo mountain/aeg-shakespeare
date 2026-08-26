@@ -1,12 +1,15 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--10 complete for their
+**Status:** research-local calibration; Phases 0--11 complete for their
 declared finite tasks.  Phase 9 constructs a finite task-independent marked
 rational projective history carrier with compatible real and p-adic place
 shadows.  Phase 10 proves exact rank-one projective incidence duality and
 ordered-frame reconstruction, while showing that bare local points and
 projective self-duality do not supply a reversible solver carrier or a new
-dimension.  No infinite Bruhat--Tits completion, adelic theorem, task-free
+dimension.  Phase 11 places Archimedean cofinality in ordered observer
+semantics and opens an exact finite state--predicate duality, while keeping
+logical variance, projective incidence, and change of place distinct.  No
+infinite Stone/cofree-observer theorem, Bruhat--Tits completion, adelic theorem, task-free
 selector optimum, preferred \(p\)-adic continued fraction, entropy-rate
 theorem, or Experimental/Public API proposal.
 
@@ -93,7 +96,15 @@ Read in order:
     proves exact rank-one incidence duality and ordered-frame reconstruction,
     quantifies the real and p-adic quotient fibres, and limits round-trip
     lowering to certified rational frame semantics;
-18. the nine completed-phase research modules are seconds-scale executable
+18. [17-phase11-archimedean-state-observer-duality-task-contract.md](17-phase11-archimedean-state-observer-duality-task-contract.md)
+    freezes the Archimedean-layer, finite Stone, state--predicate transport,
+    quotient/residual, place-observer, product-formula, and dual-objectification
+    gates before observing their results;
+19. [18-phase11-archimedean-state-observer-duality-results.md](18-phase11-archimedean-state-observer-duality-results.md)
+    proves the finite logical duality and quotient/predicate correspondence,
+    executes the real/p-adic observer and product-formula controls, and keeps
+    bounded behavior below a cofree or vertical-objectification theorem;
+20. the ten completed-phase research modules are seconds-scale executable
     arguments; the longer Phase 8 stable-quotient census remains a bounded
     research regression.
 
@@ -365,6 +376,39 @@ certify that its result lies in the common rational frame image before exact
 Borel/Weyl lowering is permitted.  This refines the horizontal carrier and
 decoder contract without earning vertical objectification.
 
+## Phase 11 Archimedean placement and state--observer result
+
+Phase 11 locates the ordered-field Archimedean axiom at the observer layer,
+not in the primitive rational A/M grammar.  It separates integer cofinality
+from order completeness and connectedness: \(\mathbb Q\) is the exact red team
+because it is Archimedean but incomplete and disconnected.  The p-adic strong
+triangle inequality is a different valued-field law, not the logical negation
+of Archimedean cofinality.
+
+The positive logical dual is finite state--predicate duality.  A state map
+\(f:X\to Y\) induces the Boolean inverse-image homomorphism
+
+\[
+f^*:\mathcal P(Y)\to\mathcal P(X),
+\qquad
+(g\circ f)^*=f^*\circ g^*.
+\]
+
+On a three-state exhaust, only three of the 256 arbitrary Boolean-valued maps
+on \(\mathcal P(X)\) preserve Boolean structure, and they are exactly point
+evaluations.  Across \(\mathbb P^1(\mathbb F_p)\), \(p=3,5,7\), all 99,840
+frozen A/M history--state--predicate memberships commute under forward state
+motion and reverse predicate transport.
+
+A finite task quotient dualizes to the subalgebra of predicates constant on
+its fibres.  A residual that distinguishes two points in one fibre is
+therefore first a missing discriminator, not a new process dimension.  Real
+order cuts and p-adic clopen cylinders remain different predicate bases; the
+normalized rational product formula gives a separate global compatibility
+law.  Bounded response languages separate the frozen states, but no infinite
+cofree observer, coherent global bidual, adelic carrier, or new vertical rank
+is obtained.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -436,3 +480,13 @@ forgets literal chronology.  Any later place-indexed solver must preserve a
 rational-frame certificate or expose an outside-image failure.  Restoring
 these quotient fibres introduces no new primitive, free grammar, or
 all-composite lowering law.
+
+Phase 11 **opens and bounds** the logical observer direction.  Finite Stone
+duality makes forward A/M action and backward predicate transport exact, and
+a task quotient becomes precisely the fibre-constant predicate subalgebra.
+This positively identifies residuals as missing discriminators on the dual
+side.  The Archimedean, completion, projective-incidence, p-adic, and global
+product-formula layers remain separately typed.  Since only bounded behavior
+and finite Boolean biduality are proved, no cofree universal object, global
+bidual return, new cogenerator, vertical objectification, or API promotion
+follows.
