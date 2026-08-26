@@ -275,9 +275,8 @@ It has not earned:
 
 ## 9. Next gate
 
-The target-semigroup prerequisite is now met only in the finite renewed
-process.  The next safe gate is a **hidden-candidate Lyapunov diagnostic** on
-$B_\delta$:
+This gate has now been executed by Phase 1H on the finite renewed process.  Its
+frozen target was a **hidden-candidate Lyapunov diagnostic** on $B_\delta$:
 
 1. freeze an observer/covector grammar without Shannon entropy, logarithms, or
    the answer visible to the discovery path;
@@ -288,10 +287,13 @@ $B_\delta$:
 4. keep the microscopic orbit and connected residual as red teams;
 5. consult the supplied entropy identity only after candidate selection.
 
-Passing that finite diagnostic would address Track A for this renewed target.
-It would still not settle Track B, the micro-to-kinetic passage, and would not
-justify transferring the candidate to hard spheres without the continuum
-adapter theorem.
+The exact result is recorded in
+`15-phase1h-hidden-lyapunov-mode-contract.md` and
+`16-phase1h-hidden-lyapunov-mode-results.md`.  Quadratic contrast is the
+minimum candidate, but an exact positive modal cone rejects uniqueness.  The
+classical binary relative H is a post-selection positive analytic resummation.
+This addresses Track A only for the renewed target; Track B and transfer to
+hard spheres remain open.
 
 ## 10. Repository effect
 

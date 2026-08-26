@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G passes six exact finite selective-continuation and time-reversal certificates, earning an autonomous renewed target process but not a microscopic quotient or continuum closure. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -215,6 +215,45 @@ to BBGKY or hard spheres without a separate theorem.
 The result owners are
 `13-phase1g-selective-continuation-time-reversal-contract.md` and
 `14-phase1g-selective-continuation-time-reversal-results.md`.
+
+## 1F. Hidden Lyapunov gate — Phase 1H target modes before entropy
+
+Phase 1H removes all entropy and logarithmic inputs from discovery.  Exact
+enumeration of target observables finds the stationary reference, conserved
+mass, and the centered contrast mode
+
+\[
+z(p)=p_0-p_1,
+\qquad z(B_\delta p)=(1-2\delta)z(p).
+\]
+
+Exchange symmetry and nonnegativity admit the even mode grammar
+
+\[
+z^2,z^4,z^6,z^8.
+\]
+
+The frozen minimum-degree selector chooses $z^2$, but all positive
+combinations have an exact simplex-wide decrement.  Thus monotonicity earns a
+target Lyapunov cone and rejects uniqueness.  The A/M first jet also fails to
+equal the finite-step decrement without its second-jet remainder.
+
+After selection, the classical binary relative H is opened and identified as
+
+\[
+H_u(z)=\sum_{m\ge1}\frac{z^{2m}}{(2m)(2m-1)},
+\]
+
+a positive analytic resummation of the discovered modes.  Its coefficients
+are not fixed by target contraction alone.  The selected $z^2$ also fails
+both microscopic lifting and independent-product additivity.
+
+The result owners are
+`15-phase1h-hidden-lyapunov-mode-contract.md` and
+`16-phase1h-hidden-lyapunov-mode-results.md`.  The next gate intersects the
+target Lyapunov cone with the Phase 1B collision-product character law and a
+separately declared composition/chain rule.  It must test analytic completion
+rather than merely enumerate more polynomial modes.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -587,6 +626,7 @@ Every attempted claim receives one label:
 | 1E | bulk/trace/history task split and trace obstruction | exact rational boundary shadow | sharpens adaptation failure semantics |
 | 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
 | 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
+| 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
