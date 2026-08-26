@@ -1,23 +1,23 @@
 import sympy as sp
 
-from aeg_shakespeare.discovery import (
+from process_geometry.experimental import (
     PairableAtom,
     euclidean_pairing,
-    generate_pairing_observers,
-    nonstationary_observer_proposals,
+    generate_pairing_observables,
+    nonstationary_observable_proposals,
 )
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.process.local import ProcessSystem
 
 
-def test_pairing_observers_preserve_structured_recipes_before_lowering():
+def test_pairing_observables_preserve_structured_recipes_before_lowering():
     qx, qy, vx, vy = sp.symbols("qx qy vx vy")
     atoms = (
         PairableAtom("q", (qx, qy), sort="plane"),
         PairableAtom("v", (vx, vy), sort="plane"),
         PairableAtom("e", (0, 1), sort="plane"),
     )
-    result = generate_pairing_observers(
+    result = generate_pairing_observables(
         atoms,
         euclidean_pairing(sort="plane"),
     )
@@ -43,7 +43,7 @@ def test_pairing_observers_preserve_structured_recipes_before_lowering():
 
 def test_pairing_does_not_assume_cross_sort_compatibility():
     x = sp.symbols("x")
-    result = generate_pairing_observers(
+    result = generate_pairing_observables(
         (
             PairableAtom("left", (x,), sort="left"),
             PairableAtom("right", (x,), sort="right"),
@@ -79,7 +79,7 @@ def test_nonstationary_filter_is_task_specific_not_a_construction_quotient():
             vx**2 + vy**2 + 2 * qy - K,
         ),
     )
-    proposals = generate_pairing_observers(
+    proposals = generate_pairing_observables(
         (
             PairableAtom("q", (qx, qy), sort="plane"),
             PairableAtom("v", (vx, vy), sort="plane"),
@@ -88,7 +88,7 @@ def test_nonstationary_filter_is_task_specific_not_a_construction_quotient():
         euclidean_pairing(sort="plane"),
     ).proposals
 
-    dynamic = nonstationary_observer_proposals(
+    dynamic = nonstationary_observable_proposals(
         system,
         proposals,
         constraints=leaf,

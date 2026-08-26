@@ -43,7 +43,8 @@ universal calculus.
 
 **Knowledge artifacts:** `VIGNETTES.md` indexes standalone mathematical
 vignettes, while `VIGNETTE_CONTRACT.md` defines their statement, evidence,
-retrieval, and governance obligations.
+retrieval, and governance obligations.  The fail-closed classical
+process-language inventory is `66-classical-process-language-calibration.md`.
 
 ## Architecture and implementation narrative
 
@@ -116,6 +117,11 @@ additional prefix collisions.
 61. `65-effective-analysis-principle.md` — governing Effective Analysis
 Principle and claim-relative engineering gates for symbolic/numerical
 calculation, certificates, units, errors, costs, and cross-rank transport.
+62. `66-classical-process-language-calibration.md` — per-file evidence matrix
+for every classical executable essay, with raw-history unfolding, topological
+cover, and analytic developing cover audited independently and the harmonic
+oscillator as the second end-to-end real-task spine; the completed matrix has
+no unclassified `OPEN` cell.
 
 Required unnumbered synthesis:
 
@@ -137,8 +143,13 @@ steps in the architecture narrative above:
   unresolved central-residual boundary;
 - `35-canonical-observer-vertical-slice.md` — local executable
   canonicalization/connection/decomposition evidence;
-- `36-classical-reexpression-audit.md` — audit separating classical
-  re-expression from problem-native structural discovery;
+- `36-classical-reexpression-audit.md` — complete second-pass audit of all
+  `tests/classical` essays against the Mathematical Core, Engineering
+  Architecture, and end-to-end pendulum calibration, with evidence classes,
+  information boundaries, and staged recalibration order;
+- `66-classical-process-language-calibration.md` — fail-closed, per-file and
+  per-construction matrix, strict cover separation, oscillator vertical slice,
+  theory gaps, and conservative API allocation;
 - `37-canonical-observer-claim-ledger.md` — claim-by-claim evidence and
   non-claim ledger for the canonical-observer programme;
 - `38-canonicalization-mainline.md` — qualified local canonicalization
@@ -182,6 +193,8 @@ calibrations. These are indexed without renumbering that stable list:
 - `65-effective-analysis-principle.md` — refinement of the mother picture to
   two axes governed by a cross-cutting effective-analysis constraint, together
   with research, vignette, promotion, and release standards.
+- `66-classical-process-language-calibration.md` — strict classical
+  process-language matrix and the executable harmonic phase-cover task.
 
 Open Sonnet research is indexed by its own README and phase notes under
 `sonnet/`.

@@ -62,7 +62,8 @@ Reserve these names for an actual quotient of process states/histories by a decl
 \mathcal H(P)/{\sim_Q}.
 \]
 
-An algebraic elimination image of selected observables is a different object and should be qualified as an **observable algebraic quotient** or presentation.
+An algebraic elimination image of selected observables is a different object
+and should be named an **observable algebraic image** or presentation.
 
 ### Presentation
 
@@ -103,12 +104,12 @@ Variation on induced process structures: local directions, flows, derivatives, o
 | `ProcessJetSignature` | **misaligned**: bounded future continuation table, not a differential jet | canonical name becomes `TaskContinuationSignature`; retain old alias in 0.0.x |
 | `process_jet_signature` | same issue | canonical `task_continuation_signature`; retain alias |
 | `history_process_jet_signature` | same issue | canonical `history_task_continuation_signature`; retain alias |
-| `ObservableQuotient` | too broad relative to the foundation's task quotient | public canonical alias `ObservableAlgebraicQuotient`; historical backend name retained |
-| `discover_first_order_process_quotient` | misleading: constructs an algebraic quotient of `(F,DF)`, not a quotient of process histories by task equivalence | public canonical alias `discover_first_order_observable_quotient` |
-| `search_first_order_process_quotients` | misleading: searches observer presentations | public canonical alias `search_first_order_observer_presentations` |
-| `structural_first_order_quotient_cost` | underqualified | public canonical alias `structural_first_order_observer_presentation_cost` |
-| `PolynomialObserverBasis` | acceptable: it is a proposal grammar used to construct observers | keep |
-| `StructuredObserverProposal` | aligned | keep |
+| `ObservableQuotient` | too broad relative to the foundation's task quotient | public canonical alias `ObservableAlgebraicImage`; historical backend name retained |
+| `discover_first_order_process_quotient` | misleading: constructs an algebraic quotient of `(F,DF)`, not a quotient of process histories by task equivalence | public canonical alias `discover_first_order_observable_image` |
+| `search_first_order_process_quotients` | misleading: searches observer presentations | public canonical alias `search_first_order_observable_presentations` |
+| `structural_first_order_quotient_cost` | underqualified | public canonical alias `structural_first_order_observable_presentation_cost` |
+| `PolynomialObserverBasis` | misleading: the bounded monomials are candidate observables, not a task observer | canonical `PolynomialObservableBasis`; retain alias |
+| `StructuredObserverProposal` | overstates pendulum-local evidence and conflates observable with observer | canonical `StructuredObservableProposal` under Experimental; Discovery path becomes compatibility shim |
 | `PrimitiveProposal` | acceptable only as a **candidate primitive**; it has not passed objectification/rank-lowering gates | keep, clarify documentation |
 | `GeneratedGrammar` / `GeneratedPresentation` | aligned concrete presentation machinery | keep |
 | `history_geometry` | acceptable only as a qualified discrete combinatorial geometry (depth/boundary/prefix structure), not as the definition of Process Geometry | keep |
@@ -147,9 +148,11 @@ The word **jet** is thereby freed for a future structure that actually captures 
 
 ---
 
-## 4. Why algebraic observable quotients need qualification
+## 4. Why observable elimination results are algebraic images
 
-`discovery.polynomial` uses Groebner elimination to remove source variables and expose relations among chosen observables. This produces a useful algebraic presentation of an observer image.
+`discovery.polynomial` uses Groebner elimination to remove source variables and
+expose relations among chosen observables. This produces a useful algebraic
+presentation of the observable-map image.
 
 It is not, by itself, the semantic quotient
 
@@ -164,10 +167,10 @@ Conflating these two notions would become dangerous as soon as the library imple
 The public discovery surface therefore prefers:
 
 ```python
-ObservableAlgebraicQuotient
-discover_first_order_observable_quotient
-search_first_order_observer_presentations
-structural_first_order_observer_presentation_cost
+ObservableAlgebraicImage
+discover_first_order_observable_image
+search_first_order_observable_presentations
+structural_first_order_observable_presentation_cost
 ```
 
 while retaining historical backend names as compatibility aliases.

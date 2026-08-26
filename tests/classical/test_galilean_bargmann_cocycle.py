@@ -51,6 +51,9 @@ Boundary
 This does not construct the full Bargmann group API, quotient cocycles by
 coboundaries, or introduce projective/unitary representations.  The finite
 cocycle is one calibrated realization over the already-frozen ``ProcessFamily``.
+The family-level visible/lifted tasks, literal word unfolding, information-loss
+decoder, coboundary covariance, units, and explicit non-applicability of cover
+construction are certified in ``test_central_payload_process_calibration.py``.
 
 References
 ----------
@@ -60,7 +63,7 @@ Groups", *Annals of Mathematics* 59 (1954), 1-46.
 
 import sympy as sp
 
-from aeg_shakespeare.process.finite import (
+from process_geometry.process.finite import (
     ProcessCocycle,
     ProcessFamily,
     central_commutator_residual,

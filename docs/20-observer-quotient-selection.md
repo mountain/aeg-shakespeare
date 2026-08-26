@@ -1,6 +1,7 @@
-# Observer quotient selection: from candidate family to Pareto presentation
+# Observable algebraic-image selection: candidate family to Pareto presentation
 
-**Status:** second discovery-front-end step; bounded candidate family, exact quotient certificates, reusable multi-axis cost.
+**Status:** second discovery-front-end step; bounded candidate family, exact
+algebraic-image certificates, reusable multi-axis cost.
 
 ## 1. The remaining manual choice after invariant discovery
 
@@ -14,16 +15,18 @@ to
 
 ```text
 constrained process -> discovered invariant
--> invariant leaf -> selected observer -> discovered cubic.
+-> invariant leaf -> selected observable -> discovered cubic.
 ```
 
-One conspicuous prior choice remained: the caller still selected the vertical coordinate `q_y` before quotient elimination.
+One conspicuous prior choice remained: the caller still selected the vertical
+coordinate `q_y` before algebraic elimination.
 
 This note removes that choice inside a declared candidate family.
 
 ## 2. Fixed task: first-order algebraic closure
 
-For every observer candidate `F`, Shakespeare constructs the first process jet
+For every observable candidate `F`, Process Geometry constructs the first
+process pair
 
 \[
 (U,Y)=(F,DF)
@@ -33,7 +36,7 @@ and asks whether source assignments can be eliminated to leave a certified algeb
 
 The fixed task in this search is therefore narrow and explicit:
 
-> find a compact first-order algebraic quotient presentation.
+> find a compact first-order observable algebraic-image presentation.
 
 A candidate is structurally admissible only when at least one exact relation is returned and every pullback certificate vanishes in the source constraint quotient.
 
@@ -41,13 +44,15 @@ This is not yet a claim of sufficiency for every physical or computational task.
 
 ## 3. Reusing `PresentationCost`
 
-`search_first_order_process_quotients` does not introduce a separate optimization ontology. Each evaluated observer is wrapped in the existing generic `PresentationCandidate` and compared through `PresentationCost`.
+`search_first_order_observable_presentations` does not introduce a separate
+optimization ontology. Each evaluated observable is wrapped in the existing
+generic `PresentationCandidate` and compared through `PresentationCost`.
 
 The default baseline uses:
 
 - `grammar`: structural expression cost of `F` and `DF`;
 - `relations`: for each eliminated polynomial, total degree plus monomial support;
-- `history`: `1`, because the presentation uses the first process jet;
+- `history`: `1`, because the presentation uses the first-order pair `(F,DF)`;
 - `decoder`: `0` at this stage;
 - `task_error`: `0` for certified algebraic closure and infinity otherwise.
 
@@ -65,7 +70,8 @@ q_xv_x+q_yv_y=0,
 v_x^2+v_y^2+2q_y=K.
 \]
 
-Do not tell Shakespeare which position component is preferred. Supply only the candidate family
+Do not declare which position component is preferred. Supply only the candidate
+family
 
 \[
 \{q_x,q_y\}.
@@ -87,7 +93,10 @@ elimination gives the cubic
 \boxed{Y^2=(K-2U)(1-U^2).}
 \]
 
-For the horizontal observer `q_x`, the corresponding eliminated relation contains degree-six terms. The two observers have the same baseline grammar and history cost, but the vertical observer has strictly lower relation cost. It therefore Pareto-dominates the horizontal observer.
+For the horizontal observable `q_x`, the corresponding eliminated relation
+contains degree-six terms. The two observables have the same baseline grammar
+and history cost, but the vertical observable has strictly lower relation cost.
+It therefore Pareto-dominates the horizontal observable.
 
 The important change in explanatory order is:
 
@@ -95,15 +104,16 @@ The important change in explanatory order is:
 classical:
     gravity suggests vertical coordinate -> derive simple quadrature
 
-Shakespeare:
-    position-observer family -> derive every quotient
+Process Geometry:
+    position-observable family -> derive every algebraic image
     -> compare certified presentation costs
     -> gravity-aligned coordinate emerges as cheaper.
 ```
 
-No special rule says that gravity coordinates are good. The asymmetry appears in the process and is measured after quotient construction.
+No special rule says that gravity coordinates are good. The asymmetry appears
+in the process and is measured after algebraic-image construction.
 
-## 5. What has and has not been objectified
+## 5. What has and has not been automated
 
 The choice
 
@@ -121,7 +131,10 @@ why are qx and qy the candidate family?
 
 is still supplied by the caller. Bare `ProcessSystem.assignments` do not yet record that `qx,qy` are components of one position object while `vx,vy` are components of velocity.
 
-This exposes the next architectural requirement: **structured observer proposal grammars**. A later layer should accept primitive geometric data such as vector blocks, pairings, distinguished directions, and allowed constructions, then generate observer families while preserving their construction histories.
+This exposed the next research experiment: a **structured observable proposal
+grammar** accepting primitive geometric data such as vector blocks, pairings,
+distinguished directions, and allowed constructions. It remains Experimental
+until independent examples justify a stable grammar.
 
 For the pendulum, such a layer should be able to propose
 
@@ -139,18 +152,24 @@ For the pendulum, such a layer should be able to propose
 
 without those scalar observables being hand-written.
 
-That is the natural bridge from the current polynomial search backend to Shakespeare's existing construction-history/objectification machinery.
+That is a narrow bridge from the current polynomial search backend to
+construction-preserving proposal generation. It does not, by itself, satisfy
+the Mathematical Core's stronger objectification criteria.
 
 ## 6. Next threshold
 
-The immediate next target is therefore not a larger special-function library. It is a typed construction layer for observer proposals:
+The immediate next target was therefore not a larger special-function library.
+It was a bounded structured-construction experiment for observable proposals:
 
 ```text
 primitive geometric objects + allowed operations
-    -> construction-preserving observer proposals
-    -> invariant / quotient discovery
+    -> construction-preserving observable proposals
+    -> invariant / algebraic-image discovery
     -> presentation cost
-    -> objectification / Pareto selection.
+    -> task filtering / Pareto selection.
 ```
 
-Once this exists, the pendulum can test whether `U=<e,q>` emerges from the primitive vector process rather than from assignment names. The same machinery can then be carried to Euler top, Kepler, and other constrained systems.
+The pendulum experiment now tests whether `U=<e,q>` emerges from primitive
+vector data rather than assignment names. The grammar remains Experimental
+until Euler top, Kepler, or another independent family forces compatible
+semantics.

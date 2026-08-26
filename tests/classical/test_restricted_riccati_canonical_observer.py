@@ -128,7 +128,7 @@ from process_geometry.experimental import (
     CanonicalDecomposition,
     ConstraintCanonicalization,
 )
-from aeg_shakespeare.process.local import ProcessDirection, ProcessFrame
+from process_geometry.process.local import ProcessDirection, ProcessFrame
 
 
 def riccati_frame(x):

@@ -50,12 +50,16 @@ measure/completeness needed for Fourier synthesis.
 
 Boundary
 --------
-This is character verification, not Fourier analysis.
+This is character verification, not Fourier analysis.  Its declared task is
+only to verify the finite family and response laws.  A cover and a word-history
+decoder are therefore not applicable to this local task; literal histories,
+continuation quotienting, and scalar lowering are supplied by
+``test_am_process_language_calibration.py``.
 """
 
 import sympy as sp
 
-from aeg_shakespeare.process.finite import (
+from process_geometry.process.finite import (
     ProcessCharacter,
     ProcessFamily,
     verify_process_character,

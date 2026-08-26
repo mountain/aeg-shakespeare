@@ -164,11 +164,17 @@ discrete shell identity
 |B_d|-|B_{d-1}|=|S_d|.
 \]
 
-This identity is not identified with physical coarea or entropy. The candidate
-generic carrier is still unsettled: resource bundle, groupoid, cocycle family,
-enriched history category, and problem-local alternatives remain live.
-Consequently this is recorded as an **emerging T0/T1 transversal**, not a
-stable Theory Map node and not a generic API proposal.
+The same projective line now continues through one exact finite selector-policy
+control task: a contact-lift grammar, matrix/lattice payload, complete-quotient
+and visited-state residuals, depth-four stopping cylinder, shared decoder, and
+Pareto Bellman witnesses.  Changed sources and scalar rulers select different
+economies, so the geometry does not select an intrinsic controller.  The shell
+identity is not identified with physical coarea or entropy, and the Bellman
+result is not a preferred \(p\)-adic section. The candidate generic carrier is
+still unsettled: resource bundle, groupoid, cocycle family, enriched history
+category, and problem-local alternatives remain live. Consequently this is
+recorded as an **emerging T0/T1 transversal**, not a stable Theory Map node and
+not a generic API proposal.
 
 ### 1.2 Cross-cutting admissibility — effective analysis
 
@@ -277,7 +283,17 @@ changes. Hence refinement growth can supply an alphabet and memory lower bound
 without supplying probabilities, a coding objective, or an entropy-rate
 theorem.
 
-**Maturity:** classical anchors and concrete coding shadows exist; Process Geometry correspondence remains a research question.
+Its subsequent finite selector-policy task supplies a distinct control
+calibration.  Exact reachable-graph exhaustion and Pareto Bellman recursion
+produce replayable task-local controllers, while changing the source reverses
+a conditional baseline cost ranking and changing the scalar ruler changes
+twelve \(p=3\) controllers.  This supports finite H3 optimization only after
+state, actions, stopping, decoder, source, and costs are declared; it does not
+make the observer tree itself a policy or an intrinsic objective.
+
+**Maturity:** classical anchors plus concrete finite coding and control shadows
+exist; the general Process Geometry correspondence remains a research
+question.
 
 ### H4 — Analysis of variation
 

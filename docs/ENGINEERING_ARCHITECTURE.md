@@ -361,6 +361,14 @@ coding tree                prefix decisions for a declared source and decoder
 A map between two such trees is a construction requiring its own adequacy and
 cost certificate. Shared branching terminology or geodesicity is not that map.
 
+The finite local-field Phase 6 calibration now supplies one complete Bellman
+instance of this rule.  It freezes a one/two-action contact-lift grammar,
+depth-four success section, exact residual-bearing state, shared decoders, and
+four Pareto cost axes before exhausting the graph.  Source and scalar changes
+select different economies, while matrix and visited-state red teams protect
+decoder cost and cycle semantics.  This is problem-local evidence for the
+architecture, not a generic control API.
+
 ### 4.3 Constrained polynomial and local differential systems
 
 For polynomial/rational local models:
@@ -594,12 +602,17 @@ history--evaluation--task--decoder path.
 | Continuation residual | next complete quotient for selector reconstruction | exact Möbius round trip; omitted only from the separate cylinder-code task |
 | Discrete shell | \(|B_d|-|B_{d-1}|=|S_d|\) | exact finite enumeration and closed count |
 | Source/coding | declared root-symmetric or adversarial finite law | exact mass pushforward, Huffman lengths, canonical prefix decoder |
+| Selector control | finite contact-lift grammar with complete quotient, matrix/lattice payload, and visited witness | exact one/two-action enumeration and state validation |
+| Stopping/decoder | exact termination or depth-four cylinder under one precedence | first-column or matrix/residual round trips; cycle and horizon remain distinct |
+| Optimization | four-axis Pareto value, no default scalarization | complete reachable-graph census, backward set-valued Bellman recursion, replayable witnesses |
+| Baselines/storage | Ruban and Browkin rules plus corpus controller tables | shared evaluator; source/scalar red teams; separate compilation, table, online, and decoder ledgers |
 | Cost | digit, tree edge, frontier memory, binary bit, serialization kept separate | exact multi-axis ledgers |
-| Red teams | same contact/different continuation; same geometry/different source | Ruban/Browkin outcome split and changed Huffman tree |
+| Red teams | same contact/different continuation; same geometry/different source or scalar; dropped payload/residual | Ruban/Browkin outcome split, changed Huffman/controller choice, decoder-cost and cycle failures |
 
-This path is exact and seconds-scale. It does not provide an infinite boundary
-measure, a selector-policy Bellman solver, a preferred \(p\)-adic continued
-fraction, or a reusable projective/coding API.
+This path is exact and seconds-scale. It now provides one finite task-local
+selector-policy Bellman solver, but no infinite boundary measure, general
+selector-control framework, preferred \(p\)-adic continued fraction, or
+reusable projective/coding API.
 
 ---
 
@@ -731,7 +744,9 @@ not an empty framework class.
 - `docs/vignettes/simple-pendulum.md`
 - `sonnet/local-field-projective-process-geometry/README.md`
 - `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
+- `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
+- `tests/research/test_padic_selector_policy_bellman.py`
 - `tests/experimental/test_finite_task_quotient.py`

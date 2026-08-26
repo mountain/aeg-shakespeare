@@ -13,7 +13,10 @@ The four public namespaces are:
 Process  ->  Presentation  ->  Discovery  ->  Analysis
 ```
 
-The arrows describe the intended conceptual dependency: a process exists before one chooses a finite presentation; discovery searches alternative presentations and observer constructions; analysis consumes successful presentations to build adequate function/geometric languages.
+The arrows describe the intended conceptual dependency: a process exists before
+one chooses a finite presentation; discovery searches alternative presentations
+and observable constructions; analysis consumes successful presentations to
+build adequate function/geometric languages.
 
 The canonical Python package is `process_geometry`. The historical `aeg_shakespeare` package is a deprecated compatibility alias only; it is not a second implementation owner.
 
@@ -47,6 +50,7 @@ Local/infinitesimal realizations:
 
 - `ProcessSystem`
 - `ProcessFrame`
+- `ProcessDirection`
 
 A finite process family and a local generator may be related in a mathematical vignette, but Process Geometry does not yet impose a universal finite-to-infinitesimal bridge.
 
@@ -98,6 +102,12 @@ Candidate primitive construction with preserved provenance:
 - `discover_relation_kernel`, `discover_relation_decomposition`
 - exact coordinate/decomposition utilities used by finite presentations
 
+`ProcessPolynomialRelation` is a different use of the same algebraic word: it
+is the finite formal operator polynomial
+\(\sum_{i=0}^{n}c_iD^i\) encoded by a finite coefficient tuple.  It does not
+classify the expression acted upon as a polynomial function and does not denote
+an A/M-generated function family.
+
 ### `presentation.morphism`
 
 - `PresentationMorphism`
@@ -118,25 +128,39 @@ Formal API text uses **presentation cost** rather than `representation cost`: re
 
 ## 3. `process_geometry.discovery`
 
-Discovery contains bounded algorithms for proposing or selecting alternative presentations, observers, observables, and quotient candidates. It is not process ontology.
+Discovery contains bounded algorithms for proposing or selecting alternative
+presentations, observables, and algebraic images. It is not process ontology.
 
 Current implementation families include:
 
 - polynomial observable bases and invariant discovery;
-- structured pairing observer proposals;
 - algebraic elimination of source variables into observable relations;
-- first-order observer-presentation selection;
+- first-order observable-presentation selection;
 - explicit coefficient-language extension experiments.
 
 The theory-aligned public names for the first-order polynomial path are:
 
-- `ObservableAlgebraicQuotient`
-- `discover_first_order_observable_quotient`
+- `PolynomialObservableBasis`
+- `generate_polynomial_observable_basis`
+- `ObservableAlgebraicImage`
+- `discover_first_order_observable_image`
 - `FirstOrderObservablePresentation`
-- `search_first_order_observer_presentations`
-- `structural_first_order_observer_presentation_cost`
+- `search_first_order_observable_presentations`
+- `structural_first_order_observable_presentation_cost`
 
-These names are deliberately qualified. The polynomial backend constructs an algebraic presentation of selected observables; it does **not** construct the history/task quotient
+Here `polynomial` is literal and finite: finite monomial support with
+non-negative integer exponents in the recorded ordered indeterminates.
+`PolynomialObservableBasis.variables` makes those indeterminates explicit;
+direct construction is validated and normalized just like factory output.
+Non-polynomial expressions in a declared indeterminate—including exponential,
+trigonometric, negative-power, rational, and infinite-series expressions—are
+rejected.  A coefficient may depend on symbols not declared as indeterminates;
+that treats them only as scalars and makes no polynomial-family claim about
+their dependence.
+
+These names are deliberately qualified. The polynomial backend constructs the
+algebraic image of a declared observable map; it does **not** construct the
+history/task quotient
 
 \[
 \mathcal H(P)/{\sim_Q}
@@ -144,7 +168,13 @@ These names are deliberately qualified. The polynomial backend constructs an alg
 
 from `docs/42–43`.
 
-Historical backend names `ObservableQuotient`, `discover_first_order_process_quotient`, `search_first_order_process_quotients`, and `structural_first_order_quotient_cost` remain aliases during the 0.0.x transition.
+Historical names `PolynomialObserverBasis`, `ObservableAlgebraicQuotient`,
+`ObservableQuotient`, `discover_first_order_observable_quotient`,
+`discover_first_order_process_quotient`,
+`search_first_order_observer_presentations`,
+`search_first_order_process_quotients`, and
+`structural_first_order_quotient_cost` remain aliases during the 0.0.x
+transition. They are excluded from the canonical Discovery `__all__` surface.
 
 `Observable` and `Observer` are also not interchangeable: an observable is a quantity read from a process; an observer may be a broader protocol or structured mechanism that determines distinguishability.
 
@@ -156,6 +186,11 @@ Analysis contains mathematical languages supported by successful process present
 
 - `ProcessFunctionModule`
 - `polynomial_am_module`
+
+`polynomial_am_module(a, n)` is specifically the finite module
+`span(1,a,...,a**n)`.  It is not the A/M power-weight family, a power-series or
+analytic closure, or the class of all functions obtainable from A/M process
+operations.
 
 ### `analysis.am`
 
@@ -320,5 +355,19 @@ slice.  They do **not** assert a generic observer topology, global canonical
 lift, unique task ruler, universal connection, or canonical decomposition
 theorem.  Their former module paths preserve object identity temporarily but
 are excluded from `presentation.__all__` and `analysis.__all__`.
+
+The third Experimental family contains the pendulum-calibrated structured
+observable proposal grammar:
+
+- `PairableAtom`, `PairingSpec`, and `PairingConstruction`;
+- `StructuredObservableProposal`;
+- `generate_pairing_observables`;
+- `nonstationary_observable_proposals`.
+
+It preserves a depth-one pairing recipe separately from its scalar backend
+lowering. The atoms, sorts, pairing, and task filter remain caller-declared,
+and only the pendulum currently calibrates the complete chain. The historical
+`process_geometry.discovery.structured` path is a 0.0.x compatibility shim;
+these objects are not part of `process_geometry.discovery.__all__`.
 
 Experimental symbols are not re-exported from `process_geometry` root and carry no compatibility promise. Their purpose is to test whether a Theory Map node has acquired enough executable semantics to survive broader calibrations.

@@ -1,10 +1,13 @@
 # Phase 6 task contract — finite selector-policy Bellman comparison
 
-**Status:** frozen task statement only; research inactive; no evaluator,
-dynamic program, certificate, optimum, or preferred selector is claimed.
+**Status:** frozen pre-execution task statement; research subsequently
+reactivated and Gates 6A--6F completed without changing this contract.  See
+[the executable Phase 6 record](08-phase6-executable-selector-policy-bellman.md).
+This file itself remains the record-only specification and claims no preferred
+selector.
 
-**Specification owner:** this note.  A future executable owner must be created
-only when the phase is explicitly reactivated.
+**Specification owner:** this note.  The separately created executable owner is
+`tests/research/test_padic_selector_policy_bellman.py`.
 
 ## 1. Purpose of this record
 
@@ -31,6 +34,8 @@ This note freezes that question without answering it.  It deliberately adds
 no experimental evidence and changes no current mathematical claim.
 
 ## 2. Task identity and maturity
+
+At freeze time the task identity was:
 
 ```text
 Name: finite p-adic selector-policy Bellman comparison
@@ -526,8 +531,9 @@ Phase 6 is complete only when a later PR supplies:
   interpretation, and open question;
 - an explicit postmortem even if the optimization hypothesis fails.
 
-Until then, this file is a restart point, not evidence that the research has
-advanced.
+These criteria are now discharged by the separate executable Phase 6 record.
+This file remains the frozen restart contract so that the executed semantics
+can be audited against the statement that preceded the data.
 
 ## 16. Present claim boundary
 

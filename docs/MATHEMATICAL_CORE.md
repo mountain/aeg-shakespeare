@@ -541,6 +541,26 @@ input-directed ray on its bounded rational corpus. That is a finite evaluation
 certificate, not a general ray theorem or Bellman optimum: the two selectors
 still have different stopping depths and outcome semantics.
 
+A subsequent finite control task now adds the structures that the route audit
+lacked.  For each \(p\in\{3,5,7\}\), it declares the 182-input rational source,
+depth-four stopping cylinder, horizon, a finite grammar of contact lifts, the
+state \((n,\alpha,G,V,R)\), policy-independent exact/precision decoders, and
+separate digit, tree-edge, digit-serialization, and decoder-payload rulers.
+The grammar has at most two distinct rational actions per state.  Exact graph
+exhaustion and set-valued Bellman recursion return replayable Pareto witnesses
+for every frozen input.
+
+This closes the previously open **task-local finite** selector-policy contract,
+not the general selector problem.  Changed source weights reverse a conditional
+expected-cost ranking, and digit-minimal versus decoder-minimal scalarizations
+select different controllers on twelve \(p=3\) inputs.  Thus projective
+geometry supplies the evaluation, stopping frontier, and edge ruler; it does
+not choose the source or a scalar policy objective.  The matrix payload remains
+necessary for decoder cost and the visited-set residual for cycle semantics.
+Within one exact episode, the lattice value is derivable from \(G\) and the
+current complete quotient is recoverable from \((G,\alpha_0)\); these are
+problem-local redundancy certificates, not a general minimal-state theorem.
+
 ---
 
 ## 4. Translation table
@@ -591,7 +611,10 @@ Addition/Multiplication presentation is required or canonical.
 - exact rational Ruban/Browkin section-lift, reconstruction, cycle/termination,
   and bounded path certificates;
 - exact finite root-symmetric cylinder mass transport and binary prefix-code
-  decoding under the declared source task.
+  decoding under the declared source task;
+- exact finite selector-lift graph exhaustion, policy-independent terminal
+  decoding, Pareto Bellman witnesses, and fixed-baseline comparison under the
+  declared rational source, depth, horizon, and cost rulers.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -620,8 +643,9 @@ Addition/Multiplication presentation is required or canonical.
   growth, task memory, and continuous coarea;
 - an infinite projective-boundary measure or entropy theorem forced by the
   finite root-symmetric source;
-- a common selector-policy state, action grammar, terminal decoder, and cost
-  contract supporting Bellman comparison of \(p\)-adic sections;
+- a general or task-independent selector-policy state, action grammar,
+  terminal decoder, and cost theorem beyond the executed finite rational
+  corpus and depth-four stopping contract;
 - generic-energy global pendulum reconstruction through all branch and
   degeneration boundaries;
 - any theorem making the Bolza construction canonical or universal;
@@ -720,10 +744,13 @@ The pendulum supplies the first end-to-end continuous calibration of this
 order. The local-field projective line supplies an independent finite discrete
 calibration in which composable matrices, lattice evaluation, cylinder
 quotients, continuation residuals, shell growth, and a downstream code tree
-can be separated exactly. Together they refine the emerging transversal
-without selecting its generic carrier or unifying continuous and discrete
-shadows. `THEORY_MAP.md` should record that position and maturity; it should
-not replace the equations and boundaries recorded here.
+can be separated exactly.  Its finite Phase 6 task additionally carries that
+chain through exact local lift actions, a shared decoder, and Pareto Bellman
+selection, while source and scalar red teams block an intrinsic selector.
+Together the calibrations refine the emerging transversal without selecting
+its generic carrier or unifying continuous and discrete shadows.
+`THEORY_MAP.md` should record that position and maturity; it should not replace
+the equations and boundaries recorded here.
 
 ## References and executable evidence
 
@@ -740,7 +767,9 @@ not replace the equations and boundaries recorded here.
 - `docs/vignettes/simple-pendulum.md`
 - `sonnet/local-field-projective-process-geometry/README.md`
 - `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
+- `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
+- `tests/research/test_padic_selector_policy_bellman.py`

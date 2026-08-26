@@ -6,6 +6,12 @@ This index is the human/model entry layer for substantial mathematical examples 
 
 For vignette completeness requirements, see [`VIGNETTE_CONTRACT.md`](VIGNETTE_CONTRACT.md).
 
+For the current all-family audit against `MATHEMATICAL_CORE.md` and
+`ENGINEERING_ARCHITECTURE.md`, see
+[`36-classical-reexpression-audit.md`](36-classical-reexpression-audit.md).
+For the fail-closed per-file Process Geometry construction matrix, see
+[`66-classical-process-language-calibration.md`](66-classical-process-language-calibration.md).
+
 The index is deliberately conservative: an entry records where to start reading; it does not promote the example's interpretation into the Theory Map or Public API.
 
 ---
@@ -20,10 +26,19 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Start here:**
 
+- `tests/classical/test_am_process_language_calibration.py` — literal A/M
+  words, affine sufficient presentation, continuation quotient, decoder,
+  units, and boundary;
 - `tests/classical/test_am_process_direction.py`
 - `docs/06-addition-multiplication-function-theory.md`
 
 **Related:** `tests/classical/test_am_character_transport.py`, `tests/classical/test_dilation_characters.py`.
+
+**Current-core reading:** exact finite character laws and one exact local A/M
+calculus slice.  The family spine now supplies a narrow endpoint-prediction
+task quotient without erasing literal word histories. `ProcessDirection` is
+not observer transport, and no canonical word section, universal
+integrability, or universal function theory follows.
 
 **Theory role:** concrete model organism and calibration; not a claim that A/M is the universal function theory.
 
@@ -35,7 +50,12 @@ The index is deliberately conservative: an entry records where to start reading;
 
 **Classical search terms:** simple pendulum, nonlinear pendulum, energy integral, elliptic curve, elliptic integral, genus one, Abelian differential, period lattice, Weierstrass form, reflection symmetry.
 
-**Process Geometry themes:** constraint prolongation, polynomial invariant discovery, observable algebraic quotient, observer selection, A/M presentation transport, unit-framed universal history, dimensional resource lines, fundamental domains, action-period coarea, quotient fiber, task-relative continuation memory, reconstruction boundary, canonical differential, period obstruction.
+**Process Geometry themes:** constraint prolongation, polynomial invariant
+discovery, observable algebraic image, observable selection, Experimental
+structured proposals, A/M presentation transport, unit-framed universal
+history, dimensional resource lines, fundamental domains, action-period
+coarea, quotient fiber, task-relative continuation memory, reconstruction
+boundary, canonical differential, period obstruction.
 
 **Start here:** `docs/vignettes/simple-pendulum.md` — independent physical problem statement, nondimensional bridge, P0–P13 family dependency map, exact-vs-sampled evidence levels, reconstruction boundary, and open obligations.
 
@@ -132,10 +152,16 @@ preferred-algorithm, or API promotion claim.
 
 **Classical search terms:** harmonic oscillator, quartic oscillator, sextic oscillator, hyperelliptic curve, genus hierarchy, spectral decomposition.
 
-**Process Geometry themes:** additive process modules, coefficient-language refinement, relation-before-spectrum, genus/function-theory hierarchy, presentation Pareto tradeoffs.
+**Process Geometry themes:** additive process modules, coefficient-language
+refinement, relation-before-spectrum, genus/function-theory hierarchy, real
+history cover, deck quotient, task sufficiency, branch decoder, unit frame,
+action-period law, presentation Pareto tradeoffs.
 
 **Start here:**
 
+- `tests/classical/test_even_power_oscillator_process_calibration.py` —
+  declared real continuation task, harmonic phase cover/decoder/unit round-trip,
+  and exact even-power action-period law;
 - `tests/classical/test_harmonic_oscillator_additive_module.py`
 - `tests/classical/test_even_power_oscillator_genus_hierarchy.py`
 
@@ -146,6 +172,16 @@ preferred-algorithm, or API promotion claim.
 - `docs/22-oscillator-additive-process-module.md`
 - `docs/23-oscillator-coefficient-extension.md`
 - `docs/24-oscillator-refinement-red-team.md`
+
+**Current-core reading:** the harmonic modules and relation factorizations are
+exact in declared coefficient languages.  The new real-task spine constructs
+the harmonic phase cover, deck quotient, position/sign decoder, unit frame,
+action-period law, and a literal quarter-period word unfolding.  It does not
+claim an intrinsic unfolding of every continuous command history.  The earlier
+even-power curves remain algebraic carriers until a complex analytic task and
+decoder are supplied.  Their genera `0,1,2` do not measure real orbit-cover
+complexity: all regular connected positive-energy real orbits here are
+circles.  Coefficient refinement is not forced completion.
 
 **Theory role:** calibration and red team for function-theory hierarchy and the distinction between representation refinement and forced completion.
 
@@ -166,6 +202,11 @@ preferred-algorithm, or API promotion claim.
 - `tests/classical/test_restricted_kepler_canonical_decomposition.py`
 
 **Related:** `docs/35-canonical-observer-vertical-slice.md`, `docs/36-classical-reexpression-audit.md`, `docs/37-canonical-observer-claim-ledger.md`.
+
+**Current-core reading:** `observer` here means a local moving
+representation/frame chosen by a displayed normalization. It is distinct from
+an H1 task observer or task-sufficient history quotient; `canonical` remains
+relative to the declared grammar, branch, gauge, and local regular stratum.
 
 **Theory role:** principal calibration family for the current canonical-observer program. The pendulum scalar observable is deliberately retained as a negative control for dynamic observer language.
 
@@ -213,6 +254,11 @@ dynamics, a Ruelle zeta function, or arithmetic universality.
 
 **Start here:** `tests/classical/test_galilean_central_residual.py`.
 
+**Process-language spine:**
+`tests/classical/test_central_payload_process_calibration.py` — literal words,
+visible/lifted continuation tasks, central residual memory, exact lowering,
+coboundary covariance, and units.
+
 **Related:**
 
 - `tests/classical/test_galilean_bargmann_cocycle.py`
@@ -221,6 +267,11 @@ dynamics, a Ruelle zeta function, or arithmetic universality.
 - `docs/27-galilean-central-residual.md`
 - `docs/28-magnetic-translation-central-residual.md`
 - `docs/29-process-cocycle-api.md`
+
+**Current-core reading:** the finite cocycles exactly compose a declared
+central payload forgotten by visible motion. Cocycle representative, gauge,
+units, lifted task, and decoder remain problem-local; this is not yet a generic
+history-payload, holonomy, or connection theory.
 
 **Theory role:** independent pressure for retained central/history data and the public cocycle layer; not yet a generic holonomy/connection theory.
 

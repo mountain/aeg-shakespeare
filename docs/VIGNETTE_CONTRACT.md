@@ -173,6 +173,33 @@ A vignette should be reviewed separately for:
 
 Strength on one axis does not repair failure on another. A perfect regression test can still be a poor vignette; a beautiful essay can still lack an executable certificate.
 
+### Process-language calibration matrix
+
+When a vignette claims to calibrate the Process Geometry chain itself, its
+entry point or family record must classify each of the following independently:
+
+| Construction | Required question |
+| --- | --- |
+| Primitive process and admissible histories | What can compose or evolve, and which histories are admitted? |
+| Continuation task | Which future queries define equivalence? |
+| Task-sufficient lift / moving frame | What additional coordinate or payload closes the task, and relative to which declaration? |
+| Raw-history unfolding | Is the literal full-history space actually constructed? |
+| Topological cover | What is the covering map, deck action, and branch/singular locus? |
+| Analytic developing cover | What clock/differential develops the process, and what is its period kernel? |
+| Transported resource | Which clock, unit, residual, phase, or conserved payload is retained and how does it transform? |
+| Quotient and information loss | What is identified, and why can the task no longer distinguish it? |
+| Decoder / reconstruction | What retained data reconstructs the requested output, and where does it fail? |
+| Effective analysis | What exact or numerical evaluator, certificate, baseline, and cost statement is supplied? |
+
+Raw-history unfolding, topological cover, and analytic developing cover are
+three separate rows.  A vignette may mark one `not applicable` for a narrow
+local or finite task, or `open` when it has not been built.  It may not use one
+unqualified `cover` check to stand for all three.  A coincidence in one model
+must state the task and the theorem or executable evidence establishing it.
+
+For the repository-wide classical inventory and its evidence states, see
+`66-classical-process-language-calibration.md`.
+
 ---
 
 ## 6. Relation to the Mathematical Core and Theory Map
@@ -259,9 +286,13 @@ Before calling a substantial vignette complete, check:
 ### Mathematical audit
 
 - [ ] Primitive inputs are distinguished from discovered/classical outputs.
+- [ ] A claimed process-language calibration states its continuation task.
+- [ ] Raw-history unfolding, topological cover, and analytic cover are audited
+      separately as executable, imported, declared, linked, not applicable, or open.
 - [ ] Executable claim is precise.
 - [ ] Proof map corresponds to actual assertions/certificates.
 - [ ] Claim boundary and information loss are explicit where relevant.
+- [ ] Task quotient and decoder obligations are paired; lost information is named.
 - [ ] References are authoritative and correctly attributed.
 
 ### Effective analysis, when claimed
