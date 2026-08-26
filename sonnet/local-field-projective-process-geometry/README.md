@@ -1,9 +1,10 @@
 # Local-field projective process geometry
 
-**Status:** T0 research-local calibration; Phase 5 finite projective-cylinder,
-discrete-shell, and source-coding gate complete; no infinite Bruhat--Tits
-completion, selector-policy Bellman optimum, preferred \(p\)-adic continued
-fraction, entropy-rate theorem, or Experimental/Public API proposal.
+**Status:** research-local calibration; Phases 0--6 complete for their declared
+finite tasks, including an exact finite selector-policy Pareto Bellman result;
+no infinite Bruhat--Tits completion, task-free selector optimum, preferred
+\(p\)-adic continued fraction, entropy-rate theorem, or Experimental/Public
+API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -49,7 +50,14 @@ Read in order:
 7. [06-phase5-projective-cylinders-discrete-coarea-coding.md](06-phase5-projective-cylinders-discrete-coarea-coding.md)
    freezes a finite cylinder source, proves exact shell/refinement identities,
    and constructs a separate binary Huffman tree with an explicit decoder;
-8. the four linked research tests are seconds-scale executable arguments.
+8. [07-phase6-selector-policy-bellman-task-contract.md](07-phase6-selector-policy-bellman-task-contract.md)
+   freezes the finite source, state, action grammar, terminal decoder, costs,
+   baselines, red teams, and execution gates before seeing the Bellman result;
+9. [08-phase6-executable-selector-policy-bellman.md](08-phase6-executable-selector-policy-bellman.md)
+   executes Gates 6A--6F, exhausts the finite graphs, computes and replays
+   Pareto witnesses, compares both baselines, and closes the source, scalar,
+   residual, decoder, and storage red teams;
+10. the five linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -159,9 +167,33 @@ On the same twelve depth-two cylinders at \(p=3\), uniform and skewed source
 laws produce different exact optimal Huffman trees and expected lengths
 \(11/3\) and \(61/22\) bits. Geometry therefore supplies the alphabet and
 refinement, not the coding objective. An explicit canonical prefix table and
-decoder now close the Huffman task; the selector-policy Bellman task remains
-undefined until it receives a common state, terminal precision, actions, and
-failure costs.
+decoder now close the Huffman task.  Through Phase 5, the selector-policy
+Bellman task remained undefined because it lacked a common state, terminal
+precision, actions, and failure costs.
+
+## Phase 6 finite control result
+
+Phase 6 executes the previously frozen selector-policy task for every
+\(p\in\{3,5,7\}\) and all 182 rational inputs at projective precision four.
+The coefficient grammar has at most two distinct semantic actions per state,
+yet it is not merely the union of two named rules: 317, 404, and 429 reachable
+states respectively admit an action selected by neither whole baseline.
+
+All exact graphs are exhausted.  Across the three primes they contain 2,400
+live states and 4,700 enumerated action edges; no input has more than seven
+live states or fourteen action edges, and no live state survives beyond step
+two.  Exact Pareto Bellman recursion returns a replayable successful value for
+every input.  The \(p=5,7\) frontiers are unique and exactly terminal; at
+\(p=3\), sixteen precision-success records survive and four inputs have
+three-point frontiers.
+
+Browkin succeeds on every frozen input but is Pareto-dominated on 56, 38, and
+38 inputs. Ruban retains 4, 6, and 8 cycle outcomes and is dominated on most
+remaining inputs, while matching the frontier on its cheap exact cases. A
+changed source reverses conditional digit/edge rankings at \(p=5\), and digit-
+versus decoder-minimizing scalar policies differ on twelve \(p=3\) inputs.
+Hence the result is a task-local adaptive controller, not a preferred
+continued-fraction section.
 
 ## Claim boundary
 
@@ -189,3 +221,11 @@ decoders are distinct stages. It gives H2 an exact finite refinement geometry
 and H3 one declared coding shadow without maturity promotion. The
 residue-resolution tower remains horizontal observer refinement, not a
 vertical arithmetic process-rank transition.
+
+The Phase 6 execution **refines** the Mathematical Core and Engineering
+Architecture by realizing one complete finite
+history--payload--evaluation--task-cylinder--residual--decoder--Bellman chain.
+It refines H3 and the emerging task-covariant evaluation transversal without
+promoting either: source and scalar red teams block an intrinsic selector
+interpretation, the implementation remains Sonnet-local, and every API
+maturity level remains unchanged.
