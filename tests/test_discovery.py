@@ -1,12 +1,12 @@
 import sympy as sp
 
-from aeg_shakespeare.discovery import (
-    discover_first_order_process_quotient,
+from process_geometry.discovery import (
+    discover_first_order_observable_image,
     discover_polynomial_invariants,
-    generate_polynomial_observer_basis,
+    generate_polynomial_observable_basis,
 )
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.process.local import ProcessSystem
 
 
 def _same_relation_up_to_scalar(left, right):
@@ -14,11 +14,11 @@ def _same_relation_up_to_scalar(left, right):
     return ratio != 0 and not ratio.free_symbols
 
 
-def test_polynomial_observer_basis_removes_constraint_redundancy():
+def test_polynomial_observable_basis_removes_constraint_redundancy():
     x, y = sp.symbols("x y")
     circle = AlgebraicConstraintSet((x, y), (x**2 + y**2 - 1,))
 
-    basis = generate_polynomial_observer_basis(
+    basis = generate_polynomial_observable_basis(
         (x, y),
         max_degree=2,
         constraints=circle,
@@ -36,18 +36,19 @@ def test_polynomial_invariant_discovery_recovers_oscillator_energy_without_templ
 
     result = discover_polynomial_invariants(oscillator, max_degree=2)
 
+    assert result.observable_basis is result.observer_basis
     assert len(result.invariants) == 1
     invariant = result.invariants[0]
     assert invariant.certified
     assert sp.expand(invariant.expression - (x**2 + p**2)) == 0
 
 
-def test_first_order_process_quotient_eliminates_source_assignments_exactly():
+def test_first_order_observable_image_eliminates_source_assignments_exactly():
     x, y, R, U, Y = sp.symbols("x y R U Y")
     rotation = ProcessSystem((x, y), {x: y, y: -x})
     leaf = AlgebraicConstraintSet((x, y, R), (x**2 + y**2 - R,))
 
-    quotient = discover_first_order_process_quotient(
+    image = discover_first_order_observable_image(
         rotation,
         x,
         observable_symbol=U,
@@ -56,9 +57,9 @@ def test_first_order_process_quotient_eliminates_source_assignments_exactly():
         parameters=(R,),
     )
 
-    assert quotient.complete_certificates
-    assert len(quotient.relations) == 1
+    assert image.complete_certificates
+    assert len(image.relations) == 1
     assert _same_relation_up_to_scalar(
-        quotient.relations[0].relation,
+        image.relations[0].relation,
         U**2 + Y**2 - R,
     )

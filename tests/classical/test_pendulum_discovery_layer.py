@@ -1,8 +1,8 @@
-"""Pendulum discovery I: process -> invariant -> algebraic quotient.
+"""Pendulum discovery I: process -> invariant -> observable algebraic image.
 
 Question
 --------
-Can Shakespeare remove two pieces of classical prior knowledge from its
+Can Process Geometry remove two pieces of classical prior knowledge from its
 pendulum reconstruction: the supplied energy formula and the supplied reduced
 cubic relation?
 
@@ -16,7 +16,7 @@ radial multiplier ``lambda``. The process is
     D v = -e_y + lambda q.
 
 No angle, trigonometric function, Hamiltonian, energy formula, elliptic
-integral, or algebraic quotient equation is supplied.
+integral, or algebraic-image equation is supplied.
 
 Classical lineage
 -----------------
@@ -28,13 +28,13 @@ elimination use the classical Groebner-basis machinery of
 to the standard algebraic-curve/Riemann-surface correspondence; see
 [Forster-1981].
 
-Shakespeare reconstruction
+Process Geometry reconstruction
 ---------------------------
 The order is deliberately reversed.
 
 First, preserving the rod constraint determines the unresolved radial force.
-After that local constrained process is closed, Shakespeare generates the
-bounded polynomial observer grammar through degree two and asks for null
+After that local constrained process is closed, Process Geometry generates the
+bounded polynomial observable grammar through degree two and asks for null
 directions of the process action modulo the geometric constraint ideal. No
 invariant template is supplied. The unique nontrivial direction is
 
@@ -43,7 +43,7 @@ invariant template is supplied. The unique nontrivial direction is
 which is twice the usual dimensionless mechanical energy.
 
 Only then do we introduce a symbol ``K`` for the discovered invariant value and
-adjoin the leaf ``I=K``. For the still caller-selected observer ``U=qy`` and its
+adjoin the leaf ``I=K``. For the still caller-selected observable ``U=qy`` and its
 process derivative ``Y=D(U)=vy``, exact elimination of the original Cartesian
 assignments discovers
 
@@ -54,28 +54,28 @@ shadows added only after the relation has been discovered.
 
 Calibration statement
 ---------------------
-Passing this file certifies that, within a degree-two polynomial observer
+Passing this file certifies that, within a degree-two polynomial observable
 budget and the declared algebraic constraints:
 
 1. constraint preservation uniquely closes the radial multiplier;
 2. bounded invariant discovery returns the nontrivial first integral
    ``vx^2+vy^2+2*qy`` without an energy template;
 3. the derivative certificate vanishes exactly modulo the rod+tangency ideal;
-4. the discovered invariant leaf plus ``U=qy`` produces the cubic quotient by
+4. the discovered invariant leaf plus ``U=qy`` produces the cubic image by
    exact elimination rather than by inserting the known pendulum formula;
 5. the resulting generic hyperelliptic profile has genus one.
 
 Proof map
 ---------
 ``closed_pendulum_process`` performs constraint closure.
-``test_pendulum_discovers_energy_before_the_cubic_quotient`` checks steps 2-5.
+``test_pendulum_discovers_energy_before_the_cubic_image`` checks steps 2-5.
 The unit tests in ``tests/test_discovery.py`` separately check the generic
-observer-basis, invariant-nullspace, and observable-elimination machinery.
+observable-basis, invariant-nullspace, and observable-elimination machinery.
 
 Boundary
 --------
 This test does **not** yet discover that ``qy`` is the optimal observable. It is
-selected from the available assignment-level observer candidates by the caller.
+selected from the available assignment-level observable candidates by the caller.
 Nor does the test automatically choose the genus-one/Abelian function language
 or compare it against competing presentations. Those are the next discovery
 layers. The claim is narrower: the energy and reduced cubic are no longer
@@ -94,13 +94,13 @@ Algorithms*, 4th ed., Springer, 2015.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.algebraic import hyperelliptic_profile
-from aeg_shakespeare.discovery import (
-    discover_first_order_process_quotient,
+from process_geometry.analysis.algebraic import hyperelliptic_profile
+from process_geometry.discovery import (
+    discover_first_order_observable_image,
     discover_polynomial_invariants,
 )
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.process.local import ProcessSystem
 
 
 def closed_pendulum_process():
@@ -145,7 +145,7 @@ def closed_pendulum_process():
     return qx, qy, vx, vy, closed, geometry
 
 
-def test_pendulum_discovers_energy_before_the_cubic_quotient():
+def test_pendulum_discovers_energy_before_the_cubic_image():
     qx, qy, vx, vy, system, geometry = closed_pendulum_process()
 
     discovery = discover_polynomial_invariants(
@@ -165,7 +165,7 @@ def test_pendulum_discovers_energy_before_the_cubic_quotient():
         (qx, qy, vx, vy, K),
         geometry.relations + (invariant.expression - K,),
     )
-    quotient = discover_first_order_process_quotient(
+    image = discover_first_order_observable_image(
         system,
         qy,
         observable_symbol=U,
@@ -174,9 +174,9 @@ def test_pendulum_discovers_energy_before_the_cubic_quotient():
         parameters=(K,),
     )
 
-    assert quotient.complete_certificates
-    assert len(quotient.relations) == 1
-    discovered_relation = quotient.relations[0].relation
+    assert image.complete_certificates
+    assert len(image.relations) == 1
+    discovered_relation = image.relations[0].relation
     expected_relation = sp.expand(
         Y**2 - (K - 2 * U) * (1 - U**2)
     )

@@ -127,8 +127,8 @@ Springer, 1992. DOI: 10.1007/978-1-4612-2034-3.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.abelian import abelian_integral_profile
-from aeg_shakespeare.analysis.algebraic import (
+from process_geometry.analysis.abelian import abelian_integral_profile
+from process_geometry.analysis.algebraic import (
     hyperelliptic_profile,
     weierstrass_cubic_profile,
 )

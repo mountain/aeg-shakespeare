@@ -90,8 +90,18 @@ def polynomial_am_module(
     a: sp.Symbol,
     degree: int,
 ) -> ProcessFunctionModule:
-    """Return the finite polynomial A/M module ``span(1,a,...,a**degree)``."""
+    """Return the literal finite-polynomial module ``span(1,a,...,a**degree)``.
 
+    ``polynomial`` here has its ordinary finite algebraic meaning. It does not
+    denote the larger A/M power-weight family, resonant logarithmic extensions,
+    a power-series closure, or all functions reachable by A/M processes.
+    """
+
+    if not isinstance(a, sp.Symbol):
+        raise TypeError("polynomial A/M indeterminate must be a SymPy symbol")
+    if isinstance(degree, bool) or not isinstance(degree, (int, sp.Integer)):
+        raise TypeError("degree must be an integer")
+    degree = int(degree)
     if degree < 0:
         raise ValueError("degree must be non-negative")
     basis = tuple(a**k for k in range(degree + 1))

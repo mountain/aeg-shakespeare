@@ -91,6 +91,13 @@ interpretation of the history-weighted integral as an AEG process integral is a
 project-specific reading of the implemented formula, not a claim made by the
 classical references.
 
+For the process-language ledger, the declared continuation task is exact
+scalar-state prediction under future positive affine steps.  The linked family
+spine ``test_am_process_language_calibration.py`` supplies the literal word
+unfolding, affine sufficient presentation, continuation quotient, decoder,
+unit covariance, and zero-scale outcome.  Topological and analytic covers are
+not required for this endpoint task.
+
 References
 ----------
 [Hall-2015] Brian C. Hall, *Lie Groups, Lie Algebras, and Representations: An
@@ -105,8 +112,8 @@ ISBN 978-0-07-099256-6.
 
 import sympy as sp
 
-from aeg_shakespeare.analysis.am import AMFunctionTheory
-from aeg_shakespeare.process.local import ProcessDirection
+from process_geometry.analysis.am import AMFunctionTheory
+from process_geometry.process.local import ProcessDirection
 
 
 def test_am_process_direction_has_the_expected_assignment_shadow():

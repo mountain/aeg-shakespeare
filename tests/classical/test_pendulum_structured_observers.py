@@ -1,9 +1,10 @@
-"""Pendulum discovery III: the primitive geometry proposes its scalar observers.
+"""Pendulum discovery III: primitive geometry proposes scalar observables.
 
 Question
 --------
-Can Shakespeare stop being handed the coordinate family ``(qx,qy)`` and instead
-construct candidate scalar observers from a smaller piece of primitive geometry?
+Can Process Geometry stop being handed the coordinate family ``(qx,qy)`` and
+instead construct candidate scalar observables from a smaller piece of primitive
+geometry?
 
 Primitive data
 --------------
@@ -12,7 +13,7 @@ receives the already-certified Cartesian process and invariant leaf
 
     vx^2 + vy^2 + 2 qy = K.
 
-But it no longer receives ``qx`` and ``qy`` as the observer family.  Instead it
+But it no longer receives ``qx`` and ``qy`` as the observable family. Instead it
 receives three named pairable atoms
 
     q = (qx,qy),   v = (vx,vy),   e = (0,1)
@@ -33,7 +34,7 @@ products provide coordinate-free observables such as height, speed squared,
 and tangency.  See [Arnold-1989].  Exact elimination below uses the algebraic
 machinery represented by [Cox-Little-OShea-2015].
 
-Shakespeare reconstruction
+Process Geometry reconstruction
 ---------------------------
 The point of the vignette is deliberately smaller than a theory of vector
 spaces.  The structured layer knows only that ``q``, ``v``, and ``e`` may be
@@ -46,11 +47,11 @@ depth-one scalar constructions
 Their scalar backend shadows are generated only afterwards.  On the declared
 leaf, the constructions ``pair(q,q)``, ``pair(q,v)``, and ``pair(e,e)`` are
 stationary and are therefore insufficient for the narrow task of finding an
-evolving one-dimensional observer; they remain valid constructions and are not
+evolving one-dimensional observable; they remain valid constructions and are not
 erased from the proposal set.
 
 The surviving proposals are sent unchanged into the existing first-order
-quotient/Pareto search.  The construction ``pair(q,e)`` lowers to ``qy`` and
+algebraic-image/Pareto search. The construction ``pair(q,e)`` lowers to ``qy`` and
 produces
 
     Y^2 = (K - 2 U) (1 - U^2).
@@ -68,24 +69,24 @@ Passing this file certifies that:
    construction-history-preserving scalar proposals;
 2. task filtering removes only stationary candidates from *this search task*,
    not from construction identity;
-3. the three surviving observers are all evaluated by exact quotient search;
+3. the three surviving observables are all evaluated by exact algebraic-image search;
 4. ``pair(q,e)`` is the unique default Pareto candidate;
-5. its lowering is ``qy`` and its quotient relation is the previously discovered
+5. its lowering is ``qy`` and its image relation is the previously discovered
    genus-one cubic, up to a nonzero scalar multiple.
 
 Proof map
 ---------
-``test_structured_pairing_proposals_select_gravity_observer`` executes the full
-structured atom -> pairing construction -> task filter -> quotient -> cost ->
+``test_structured_pairing_proposals_select_gravity_observable`` executes the full
+structured atom -> pairing construction -> task filter -> algebraic image -> cost ->
 Pareto chain.  Generic pairing behavior is tested separately in
 ``tests/test_structured_observers.py``.
 
 New reusable abstraction
 -------------------------
-The only new reusable structure introduced by this vignette is a depth-one
-pairing proposal with an explicit construction recipe and a separate scalar
-backend lowering.  It is intentionally *not* generalized into a vector-space or
-mathematical-theory protocol.
+The only new reusable structure introduced by this vignette is an Experimental
+depth-one pairing proposal with an explicit construction recipe and a separate
+scalar backend lowering. It is intentionally *not* generalized into a
+vector-space or mathematical-theory protocol.
 
 Unresolved manual choice
 ------------------------
@@ -112,15 +113,15 @@ Algorithms*, 4th ed., Springer, 2015.
 
 import sympy as sp
 
-from aeg_shakespeare.discovery import (
+from process_geometry.discovery import search_first_order_observable_presentations
+from process_geometry.experimental import (
     PairableAtom,
     euclidean_pairing,
-    generate_pairing_observers,
-    nonstationary_observer_proposals,
-    search_first_order_process_quotients,
+    generate_pairing_observables,
+    nonstationary_observable_proposals,
 )
-from aeg_shakespeare.presentation.constraints import AlgebraicConstraintSet
-from aeg_shakespeare.process.local import ProcessSystem
+from process_geometry.presentation.constraints import AlgebraicConstraintSet
+from process_geometry.process.local import ProcessSystem
 
 
 def _same_relation_up_to_scalar(left, right):
@@ -128,7 +129,7 @@ def _same_relation_up_to_scalar(left, right):
     return ratio != 0 and not ratio.free_symbols
 
 
-def test_structured_pairing_proposals_select_gravity_observer():
+def test_structured_pairing_proposals_select_gravity_observable():
     qx, qy, vx, vy, K = sp.symbols("qx qy vx vy K")
     multiplier = qy - vx**2 - vy**2
     system = ProcessSystem(
@@ -150,7 +151,7 @@ def test_structured_pairing_proposals_select_gravity_observer():
         ),
     )
 
-    proposals = generate_pairing_observers(
+    proposals = generate_pairing_observables(
         (
             PairableAtom("q", (qx, qy), sort="plane"),
             PairableAtom("v", (vx, vy), sort="plane"),
@@ -167,7 +168,7 @@ def test_structured_pairing_proposals_select_gravity_observer():
         "pair(e,e)",
     ]
 
-    dynamic = nonstationary_observer_proposals(
+    dynamic = nonstationary_observable_proposals(
         system,
         proposals.proposals,
         constraints=leaf,
@@ -178,7 +179,7 @@ def test_structured_pairing_proposals_select_gravity_observer():
         "pair(v,e)",
     ]
 
-    search = search_first_order_process_quotients(
+    search = search_first_order_observable_presentations(
         system,
         tuple(item.expression for item in dynamic),
         constraints=leaf,
@@ -197,7 +198,7 @@ def test_structured_pairing_proposals_select_gravity_observer():
     )
     assert structured_winner.construction.recipe() == "pair(q,e)"
 
-    relation = winner.payload.quotient.relations[0].relation
-    U, Y = winner.payload.quotient.symbols
+    relation = winner.payload.image.relations[0].relation
+    U, Y = winner.payload.image.symbols
     expected = sp.expand(Y**2 - (K - 2 * U) * (1 - U**2))
     assert _same_relation_up_to_scalar(relation, expected)

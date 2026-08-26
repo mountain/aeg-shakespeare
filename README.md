@@ -136,9 +136,18 @@ The first `PresentationMorphism` API is intentionally minimal: it records source
 
 How alternative presentations, observers, and observable structures are **searched**.
 
-The current discovery package contains bounded polynomial invariant discovery, structured observer proposals, algebraic observable-quotient construction, first-order observer-presentation selection, and explicit coefficient-language extension experiments. These are search procedures, not process ontology.
+The current public discovery package contains bounded polynomial invariant
+discovery, algebraic observable-image construction, first-order observable
+presentation selection, and explicit coefficient-language extension
+experiments. These are search procedures, not process ontology. The
+pendulum-calibrated structured-pairing proposal grammar remains under
+`process_geometry.experimental`.
 
-The canonical names distinguish algebraic observable quotients from task/process quotients: `ObservableAlgebraicQuotient`, `discover_first_order_observable_quotient`, and `search_first_order_observer_presentations`. Historical backend names remain aliases during the `0.0.x` transition.
+The canonical names distinguish algebraic observable images from task/process
+quotients: `ObservableAlgebraicImage`,
+`discover_first_order_observable_image`, and
+`search_first_order_observable_presentations`. Historical backend names remain
+aliases during the `0.0.x` transition.
 
 ### `process_geometry.analysis`
 
@@ -162,7 +171,7 @@ from process_geometry.process.history import ProcessWord
 from process_geometry.presentation.history import TaskContinuationSignature
 from process_geometry.presentation.grammar import discover_generated_presentation
 from process_geometry.presentation.morphism import PresentationMorphism
-from process_geometry.discovery import search_first_order_observer_presentations
+from process_geometry.discovery import search_first_order_observable_presentations
 from process_geometry.analysis.am import AMFunctionTheory
 ```
 

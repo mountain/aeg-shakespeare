@@ -1,4 +1,4 @@
-"""Bounded polynomial discovery for process observables, invariants, and algebraic quotients.
+"""Bounded polynomial discovery for process observables, invariants, and algebraic images.
 
 Mathematical pressure
 ---------------------
@@ -9,15 +9,15 @@ hands the solver a good observable or first integral before the real calculation
 begins.
 
 This module provides a deliberately small exact backend for removing part of
-that prior choice. It searches a bounded polynomial observer grammar, discovers
+that prior choice. It searches a bounded polynomial observable grammar, discovers
 first integrals as null directions of the represented process modulo declared
 constraints, and eliminates source assignments to expose exact relations among
 chosen process observables.
 
-The elimination result is called an ``ObservableAlgebraicQuotient`` to keep it
+The elimination result is called an ``ObservableAlgebraicImage`` to keep it
 distinct from the history/task quotient H(P)/~_Q in the Process Geometry
 foundation. The polynomial grammar is a search proposal language, not a claim
-that every useful observer is polynomial. Likewise Groebner elimination and
+that every useful observable is polynomial. Likewise Groebner elimination and
 exact linear algebra are discovery/certificate backends rather than process
 ontology.
 """
@@ -29,6 +29,11 @@ from typing import Sequence
 
 import sympy as sp
 
+from .._polynomial import (
+    finite_polynomial_normal_form,
+    inferred_polynomial_indeterminates,
+    polynomial_indeterminates,
+)
 from ..core import homogeneous_monomials
 from ..presentation.constraints import AlgebraicConstraintSet
 from ..process.local import ProcessSystem
@@ -38,16 +43,15 @@ def _polynomial_dict(
     expr: sp.Expr,
     variables: Sequence[sp.Symbol],
 ) -> dict[tuple[int, ...], sp.Expr]:
-    try:
-        return sp.Poly(
-            sp.expand(sp.sympify(expr)),
-            *variables,
-            domain="EX",
-        ).as_dict()
-    except sp.PolynomialError as exc:
-        raise ValueError(
-            "discovery expressions must be polynomial in the declared variables"
-        ) from exc
+    variables = polynomial_indeterminates(variables)
+    expression = finite_polynomial_normal_form(
+        expr,
+        variables,
+        label="discovery expression",
+    )
+    if not variables:
+        return {} if expression == 0 else {(): expression}
+    return sp.Poly(expression, *variables, domain="EX").as_dict()
 
 
 def _coefficient_matrix(
@@ -88,28 +92,53 @@ def _independent_polynomials(
 
 
 @dataclass(frozen=True)
-class PolynomialObserverBasis:
+class PolynomialObservableBasis:
+    """Finite polynomial observables in explicitly recorded indeterminates.
+
+    ``variables=None`` infers all free symbols for compatibility with direct
+    0.0.x construction. Discovery factories always record their declared
+    coordinate indeterminates explicitly.
+    """
+
     expressions: tuple[sp.Expr, ...]
     max_degree: int
     raw_candidate_count: int
     quotient_reduced: bool
+    variables: tuple[sp.Symbol, ...] | None = None
 
     def __post_init__(self) -> None:
         if self.max_degree < 0:
             raise ValueError("max_degree must be non-negative")
-        if self.raw_candidate_count < len(self.expressions):
+        expressions = tuple(sp.sympify(expression) for expression in self.expressions)
+        variables = (
+            inferred_polynomial_indeterminates(expressions)
+            if self.variables is None
+            else polynomial_indeterminates(self.variables)
+        )
+        expressions = tuple(
+            finite_polynomial_normal_form(
+                expression,
+                variables,
+                label="observable basis expression",
+            )
+            for expression in expressions
+        )
+        object.__setattr__(self, "expressions", expressions)
+        object.__setattr__(self, "variables", variables)
+
+        if self.raw_candidate_count < len(expressions):
             raise ValueError(
                 "raw_candidate_count cannot be smaller than the retained basis"
             )
 
 
-def generate_polynomial_observer_basis(
+def generate_polynomial_observable_basis(
     assignments: Sequence[sp.Symbol],
     *,
     max_degree: int,
     constraints: AlgebraicConstraintSet | None = None,
     include_constant: bool = False,
-) -> PolynomialObserverBasis:
+) -> PolynomialObservableBasis:
     if max_degree < 0:
         raise ValueError("max_degree must be non-negative")
     assignments = tuple(assignments)
@@ -139,19 +168,52 @@ def generate_polynomial_observer_basis(
         for expression in raw
     ]
     independent = _independent_polynomials(reduced, coordinate_variables)
-    return PolynomialObserverBasis(
+    return PolynomialObservableBasis(
         expressions=independent,
         max_degree=max_degree,
         raw_candidate_count=len(raw),
         quotient_reduced=constraints is not None,
+        variables=coordinate_variables,
     )
 
 
 @dataclass(frozen=True)
 class PolynomialInvariant:
+    """One exact finite-polynomial invariant and its derivative certificate."""
+
     expression: sp.Expr
     coordinates: tuple[sp.Expr, ...]
     derivative_remainder: sp.Expr
+    variables: tuple[sp.Symbol, ...] | None = None
+
+    def __post_init__(self) -> None:
+        expression = sp.sympify(self.expression)
+        derivative_remainder = sp.sympify(self.derivative_remainder)
+        variables = (
+            inferred_polynomial_indeterminates((expression, derivative_remainder))
+            if self.variables is None
+            else polynomial_indeterminates(self.variables)
+        )
+        object.__setattr__(
+            self,
+            "expression",
+            finite_polynomial_normal_form(
+                expression,
+                variables,
+                label="invariant expression",
+            ),
+        )
+        object.__setattr__(self, "coordinates", tuple(map(sp.sympify, self.coordinates)))
+        object.__setattr__(
+            self,
+            "derivative_remainder",
+            finite_polynomial_normal_form(
+                derivative_remainder,
+                variables,
+                label="invariant derivative remainder",
+            ),
+        )
+        object.__setattr__(self, "variables", variables)
 
     @property
     def certified(self) -> bool:
@@ -160,13 +222,19 @@ class PolynomialInvariant:
 
 @dataclass(frozen=True)
 class PolynomialInvariantDiscovery:
-    observer_basis: PolynomialObserverBasis
+    observable_basis: PolynomialObservableBasis
     invariants: tuple[PolynomialInvariant, ...]
     derivative_rank: int
 
     @property
     def nullity(self) -> int:
-        return len(self.observer_basis.expressions) - self.derivative_rank
+        return len(self.observable_basis.expressions) - self.derivative_rank
+
+    @property
+    def observer_basis(self) -> PolynomialObservableBasis:
+        """Historical 0.0.x spelling retained for executable provenance."""
+
+        return self.observable_basis
 
 
 def discover_polynomial_invariants(
@@ -176,7 +244,7 @@ def discover_polynomial_invariants(
     max_degree: int,
     include_constant: bool = True,
 ) -> PolynomialInvariantDiscovery:
-    basis = generate_polynomial_observer_basis(
+    basis = generate_polynomial_observable_basis(
         system.assignments,
         max_degree=max_degree,
         constraints=constraints,
@@ -215,11 +283,12 @@ def discover_polynomial_invariants(
                 expression=sp.factor(reduced_expression),
                 coordinates=coordinates,
                 derivative_remainder=sp.factor(derivative_remainder),
+                variables=coordinate_variables,
             )
         )
 
     return PolynomialInvariantDiscovery(
-        observer_basis=basis,
+        observable_basis=basis,
         invariants=tuple(invariants),
         derivative_rank=int(derivative_matrix.rank()),
     )
@@ -236,11 +305,12 @@ class ObservableRelation:
 
 
 @dataclass(frozen=True)
-class ObservableAlgebraicQuotient:
-    """Algebraic presentation obtained by eliminating source variables.
+class ObservableAlgebraicImage:
+    """Algebraic image presentation obtained by eliminating source variables.
 
-    This is a quotient/image in the algebraic-presentation sense. It is not the
-    continuation-stable task quotient of process histories from ``docs/42--43``.
+    This is the algebraic image of a declared observable map. It is not the
+    continuation-stable task quotient of process histories from ``docs/42--43``
+    and does not by itself certify task adequacy.
     """
 
     symbols: tuple[sp.Symbol, ...]
@@ -261,7 +331,7 @@ def discover_observable_relations(
     constraints: AlgebraicConstraintSet,
     source_variables: Sequence[sp.Symbol],
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableAlgebraicQuotient:
+) -> ObservableAlgebraicImage:
     observables = tuple(sp.expand(sp.sympify(item)) for item in observables)
     symbols = tuple(symbols)
     source_variables = tuple(source_variables)
@@ -324,7 +394,7 @@ def discover_observable_relations(
             )
         )
 
-    return ObservableAlgebraicQuotient(
+    return ObservableAlgebraicImage(
         symbols=symbols,
         observables=observables,
         parameters=parameters,
@@ -333,7 +403,7 @@ def discover_observable_relations(
     )
 
 
-def discover_first_order_observable_quotient(
+def discover_first_order_observable_image(
     system: ProcessSystem,
     observable: sp.Expr,
     *,
@@ -341,7 +411,7 @@ def discover_first_order_observable_quotient(
     derivative_symbol: sp.Symbol,
     constraints: AlgebraicConstraintSet,
     parameters: Sequence[sp.Symbol] = (),
-) -> ObservableAlgebraicQuotient:
+) -> ObservableAlgebraicImage:
     """Eliminate source variables from the first-order observable pair ``(F, DF)``."""
 
     return discover_observable_relations(
@@ -353,7 +423,11 @@ def discover_first_order_observable_quotient(
     )
 
 
-# Historical 0.0.x backend names. They remain aliases so prior experiments keep
+# Historical 0.0.x names. They remain aliases so prior experiments keep
 # executable provenance while the canonical vocabulary stays unambiguous.
-ObservableQuotient = ObservableAlgebraicQuotient
-discover_first_order_process_quotient = discover_first_order_observable_quotient
+PolynomialObserverBasis = PolynomialObservableBasis
+generate_polynomial_observer_basis = generate_polynomial_observable_basis
+ObservableAlgebraicQuotient = ObservableAlgebraicImage
+ObservableQuotient = ObservableAlgebraicImage
+discover_first_order_observable_quotient = discover_first_order_observable_image
+discover_first_order_process_quotient = discover_first_order_observable_image

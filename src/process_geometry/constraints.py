@@ -38,6 +38,8 @@ from typing import Sequence
 
 import sympy as sp
 
+from ._polynomial import finite_polynomial_normal_form, polynomial_indeterminates
+
 
 @dataclass(frozen=True)
 class AlgebraicConstraintSet:
@@ -50,10 +52,15 @@ class AlgebraicConstraintSet:
     def __post_init__(self) -> None:
         if not self.variables:
             raise ValueError("constraint set requires at least one variable")
-        variables = tuple(self.variables)
-        if len(set(variables)) != len(variables):
-            raise ValueError("constraint variables must be distinct")
-        relations = tuple(sp.expand(sp.sympify(relation)) for relation in self.relations)
+        variables = polynomial_indeterminates(self.variables)
+        relations = tuple(
+            finite_polynomial_normal_form(
+                relation,
+                variables,
+                label="constraint relation",
+            )
+            for relation in self.relations
+        )
         if any(relation == 0 for relation in relations):
             relations = tuple(relation for relation in relations if relation != 0)
         object.__setattr__(self, "variables", variables)
@@ -71,7 +78,11 @@ class AlgebraicConstraintSet:
     def reduce(self, expr: sp.Expr) -> sp.Expr:
         """Return the exact normal remainder modulo the constraint ideal."""
 
-        expr = sp.expand(sp.sympify(expr))
+        expr = finite_polynomial_normal_form(
+            expr,
+            self.variables,
+            label="expression",
+        )
         if self.groebner_basis is None:
             return expr
         try:
