@@ -1,7 +1,9 @@
 # Phase 1I contract — charted finite differences and fibre response
 
 **Status:** frozen research-local contract.  This phase revises the former
-Phase 1H next gate before attempting collision-covector selection.
+Phase 1H next gate by inserting a charted finite-response ledger before
+attempting collision-covector selection.  The historical filename retains
+`calculus`; the later Phase 12C maturity audit narrows the earned term below.
 
 **Executable owner:**
 [`test_charted_fibre_lyapunov_calculus.py`](../../tests/research/test_charted_fibre_lyapunov_calculus.py).
@@ -43,6 +45,14 @@ Two adjacent research lines are comparison controls, not dependencies.
   an internal comparison control, not evidence that a correlation fibre has
   the required composition.
 
+The later
+[Phase 12C fibred change-calculus result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+is a post-execution classification control, not an input to this frozen
+contract.  It separates a compositional action skeleton, response existence,
+regular cocycle reconstruction, future task adequacy, and effective
+compression.  Phase 1I may be graded against those levels after execution,
+but may not borrow them.
+
 These references are typed deliberately.  A result in one line may alter the
 question asked here without becoming evidence for a Boltzmann theorem.
 
@@ -69,7 +79,7 @@ lowering.
 Phase 1I therefore asks a prior question:
 
 > Can the finite renewed target and its continued correlation fibre support
-> an exact process-level finite-difference calculus, and which parts of the
+> an exact process-level finite-response ledger, and which parts of the
 > Phase 1H selector survive a change from the dynamical contrast chart to the
 > collision-compositional odds chart?
 
@@ -353,8 +363,8 @@ Phase 1I must be narrowed or rejected if:
 ### Mathematical Core
 
 Unchanged.  This phase supplies a problem-local exact response identity and
-chart-relative red team.  It does not yet justify a generic adapted calculus
-or a new Core law.
+chart-relative red team.  It does not yet justify a regular response cocycle,
+generic adapted calculus, or new Core law.
 
 ### Engineering Architecture
 

@@ -155,7 +155,7 @@ target Lyapunov modes, so target monotonicity does not uniquely select the
 classical H functional.
 
 [Phase 1I](boltzmann-bbgky-h-theorem/18-phase1i-charted-fibre-calculus-results.md)
-adds the missing process-level calculus.  Every observable change splits
+adds the missing process-level response ledger.  Every observable change splits
 exactly into a stopped target difference and a continued fibre response; an
 exact witness shows the response reversing quadratic target dissipation.
 Contrast linearizes target dynamics, while odds simplify the declared
@@ -169,8 +169,12 @@ positive
 [Phase 12B partition-fibre result](local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
 where native free composition and all-composite lowering earn fibred task-exact
 objectification.  That result does not transfer objectification to collision
-correlations.  The next work separates a finite collision-covector gate from a
-continuum Deng-calibrated fibre-response gate; neither has yet passed.
+correlations.  The later
+[Phase 12C change-calculus result](local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+further classifies Phase 1I as exact one-step response reconstruction, without
+a correlation-fibre action, regular cocycle, future adequacy, or effective
+compression theorem.  The next work separates a finite collision-covector gate
+from a continuum Deng-calibrated fibre-response gate; neither has yet passed.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 

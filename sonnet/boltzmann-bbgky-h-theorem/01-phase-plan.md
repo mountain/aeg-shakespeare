@@ -257,7 +257,7 @@ requires an exact fibre-response ledger and a chart audit.  The collision-
 product selector remains open, but may be applied only after those data have
 been retained.
 
-## 1G. Charted fibre-calculus gate — Phase 1I
+## 1G. Charted fibre-response gate — Phase 1I
 
 Phase 1I takes the Phase 1G section and residual as primitive data.  For
 
@@ -302,6 +302,10 @@ result owners are
 [`17-phase1i-charted-fibre-calculus-contract.md`](./17-phase1i-charted-fibre-calculus-contract.md)
 and
 [`18-phase1i-charted-fibre-calculus-results.md`](./18-phase1i-charted-fibre-calculus-results.md).
+The later
+[Phase 12C result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+classifies this phase as an exact one-step response decomposition, not a
+regular-cocycle or C0--C4 correlation-fibre calculus.
 The next work is split into two ordered but independent gates: Phase 1J-A
 must build a genuinely collision-derived, order-sensitive finite covector
 fixture; Phase 1J-B must formulate a continuum fibre-response estimate in
@@ -679,7 +683,7 @@ Every attempted claim receives one label:
 | 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
 | 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
 | 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
-| 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite process calculus and chart retention before covector selection |
+| 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite response reconstruction and chart retention before covector selection |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

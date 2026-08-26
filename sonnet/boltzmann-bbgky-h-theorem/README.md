@@ -254,7 +254,7 @@ only afterward as a positive infinite resummation of these modes.  Thus target
 monotonicity determines a Lyapunov family; collision composition and covector
 locality are still needed to explain the logarithmic member.
 
-Phase 1I inserts the missing finite calculus before that selection step.  An
+Phase 1I inserts the missing finite response ledger before that selection step.  An
 observable change along the microscopic continuation splits exactly into a
 stopped target difference and a continued fibre response.  On the frozen
 witness, the target decrement of quadratic contrast is \(-735/16384\), while
@@ -276,6 +276,15 @@ all-composite lowering.  The open
 [AM normal-form study](https://github.com/mountain/process-geometry/pull/119)
 remains an adjacent control, not a dependency.  Neither local-field result is
 evidence that a Boltzmann correlation fibre has passed its own gate.
+
+The subsequently merged
+[Phase 12C change-calculus result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+now classifies Phase 1I more precisely.  The renewed target supplies an action
+skeleton, and retaining \(F\) gives exact one-step response reconstruction.
+No native correlation-fibre composition, codomain response monoid, regular
+cocycle, future adequacy, or effective compression has been proved.  Phase 1I
+is therefore an exact response decomposition, not a completed C0--C4
+collision-fibre calculus.
 
 ## 7. Core research questions
 
@@ -357,9 +366,11 @@ effective-calculus obligations.
 - [test_charted_fibre_lyapunov_calculus.py](../../tests/research/test_charted_fibre_lyapunov_calculus.py) contains the 9 exact Phase 1I certificates and 70 enumerated observable ledgers.
 
 The next action is split.  Phase 1J-A must build a genuinely collision-derived,
-order-sensitive finite fixture, compare a frozen chart atlas across dynamics,
-composition, covector, decoder, and residual costs, and ask whether the
-collision-product character selects a closed one-form before integrating it.
+order-sensitive finite fixture, declare its process and response actions, and
+test response fibres, reconstruction, and the regular cocycle.  Only then may
+it compare a frozen chart atlas across dynamics, composition, covector,
+decoder, and residual costs and ask whether the collision-product character
+selects a closed one-form before integration.
 Phase 1J-B must identify a Deng molecule/cumulant composition and cutting map,
 then state an H-response estimate in the weak collision-flux topology of
 Phases 1E/1F.  A bulk estimate that does not control the logarithmic covector

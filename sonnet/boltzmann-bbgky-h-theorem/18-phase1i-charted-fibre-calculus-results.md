@@ -1,7 +1,7 @@
 # Phase 1I results — charted finite differences and fibre response
 
 **Status:** nine exact research-local certificates passed.  The phase replaces
-the direct entropy-selector gate by a prior charted fibre-response calculus.
+the direct entropy-selector gate by a prior charted fibre-response ledger.
 
 **Contract:**
 [`17-phase1i-charted-fibre-calculus-contract.md`](./17-phase1i-charted-fibre-calculus-contract.md).
@@ -370,6 +370,26 @@ It has not earned:
   theorem;
 - a new arithmetic rank or API.
 
+### Post-execution classification under Phase 12C
+
+The later
+[Phase 12C fibred change-calculus result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+does not invalidate the ledger above.  It supplies a sharper maturity scale.
+
+- The renewed target semigroup already gives a target-local action skeleton.
+- For each retained microscopic law \(F\), the horizontal/vertical identity
+  reconstructs the declared one-step observable change exactly.
+- Phase 1I does not give the correlation fibre a native compositional action,
+  choose a codomain response monoid, or prove a regular response cocycle.
+- After \(F\) is forgotten, possible vertical responses over one target state
+  may form a response fibre rather than a unique scalar difference.
+- Future-task adequacy and effective compression of that response remain
+  unproved, as does every continuum transfer.
+
+Thus Phase 1I is an exact problem-local response decomposition, not a C0--C4
+collision-fibre calculus in the terminology now fixed by Phase 12C.  The
+historical filenames are retained to preserve cross-references.
+
 ## 11. Revised next gate
 
 The direct Phase 1H intersection gate is replaced by two ordered subgates.
@@ -378,10 +398,12 @@ The direct Phase 1H intersection gate is replaced by two ordered subgates.
 
 Construct a state-dependent or sequential finite collision fixture in which
 the order of Addition- and Multiplication-type target processes is observable.
-Freeze a small chart atlas, compare joint costs for dynamics, covector,
-composition, decoder, and residual, and ask whether the collision-product
-character selects a closed one-form.  Only then integrate it to a candidate
-potential.
+Freeze the process action and codomain response action, expose their response
+fibres, and test reconstruction plus the regular cocycle before calling the
+result a calculus.  Then compare a small chart atlas across dynamics,
+covector, composition, decoder, and residual costs, and ask whether the
+collision-product character selects a closed one-form.  Only then integrate
+it to a candidate potential.
 
 ### 1J-B — continuum fibre-response gate
 
@@ -396,8 +418,8 @@ The subgates are related but neither may borrow the other's conclusion.
 
 ### Mathematical Core
 
-Unchanged.  The result is a local exact law and a candidate pattern, not a
-generic adapted-calculus theorem.
+Unchanged.  The result is a local exact response law and candidate pattern,
+not a regular-cocycle or generic adapted-calculus theorem.
 
 ### Engineering Architecture
 
