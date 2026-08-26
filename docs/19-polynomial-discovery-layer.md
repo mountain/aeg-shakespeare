@@ -42,6 +42,39 @@ circle relation before process discovery begins.
 
 The result records both the raw proposal count and the retained independent expressions. The ordering is a bounded search convention, not a canonical coordinate system.
 
+### 2.1 Finite-polynomial contract
+
+In this layer a polynomial in declared indeterminates
+\((x_1,\ldots,x_r)\) is literally a finite sum
+
+\[
+\sum_{\alpha\in F}c_\alpha x_1^{\alpha_1}\cdots x_r^{\alpha_r},
+\qquad
+F\subset\mathbb N^r\ \text{finite}.
+\]
+
+The executable normal form is the expanded finite-support SymPy polynomial in
+the recorded ordered tuple of indeterminates.  Expressions independent of
+those indeterminates belong to the coefficient domain.  Thus a symbolic
+parameter may be a coefficient; if polynomial dependence on that parameter is
+part of the claim, it must also be declared as an indeterminate.
+
+Public polynomial records validate this contract when constructed.  In a
+declared indeterminate `x`, expressions such as `exp(x)`, `sin(x)`, `x**-1`,
+`1/(1-x)`, and an unevaluated infinite sum are rejected.  Algebraic constraint
+generators are checked eagerly rather than only when the Gröbner backend is
+first invoked; quotient reduction enforces the same boundary even when the
+constraint ideal has no generators.
+
+`max_degree` remains the input proposal budget.  Quotient reduction may change
+the displayed degree of a retained representative, so it is not silently
+reinterpreted as a universal degree bound on every downstream normal form.
+
+This contract does not identify the polynomial grammar with a power series,
+an analytic closure, the full A/M-generated function family, literal process
+history, or a continuation-stable task quotient.  Those are separate objects
+and require separate constructions and evidence.
+
 ## 3. First-integral discovery
 
 For a constraint-reduced basis

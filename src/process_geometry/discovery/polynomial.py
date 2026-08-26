@@ -29,6 +29,11 @@ from typing import Sequence
 
 import sympy as sp
 
+from .._polynomial import (
+    finite_polynomial_normal_form,
+    inferred_polynomial_indeterminates,
+    polynomial_indeterminates,
+)
 from ..core import homogeneous_monomials
 from ..presentation.constraints import AlgebraicConstraintSet
 from ..process.local import ProcessSystem
@@ -38,16 +43,15 @@ def _polynomial_dict(
     expr: sp.Expr,
     variables: Sequence[sp.Symbol],
 ) -> dict[tuple[int, ...], sp.Expr]:
-    try:
-        return sp.Poly(
-            sp.expand(sp.sympify(expr)),
-            *variables,
-            domain="EX",
-        ).as_dict()
-    except sp.PolynomialError as exc:
-        raise ValueError(
-            "discovery expressions must be polynomial in the declared variables"
-        ) from exc
+    variables = polynomial_indeterminates(variables)
+    expression = finite_polynomial_normal_form(
+        expr,
+        variables,
+        label="discovery expression",
+    )
+    if not variables:
+        return {} if expression == 0 else {(): expression}
+    return sp.Poly(expression, *variables, domain="EX").as_dict()
 
 
 def _coefficient_matrix(
@@ -89,15 +93,40 @@ def _independent_polynomials(
 
 @dataclass(frozen=True)
 class PolynomialObservableBasis:
+    """Finite polynomial observables in explicitly recorded indeterminates.
+
+    ``variables=None`` infers all free symbols for compatibility with direct
+    0.0.x construction. Discovery factories always record their declared
+    coordinate indeterminates explicitly.
+    """
+
     expressions: tuple[sp.Expr, ...]
     max_degree: int
     raw_candidate_count: int
     quotient_reduced: bool
+    variables: tuple[sp.Symbol, ...] | None = None
 
     def __post_init__(self) -> None:
         if self.max_degree < 0:
             raise ValueError("max_degree must be non-negative")
-        if self.raw_candidate_count < len(self.expressions):
+        expressions = tuple(sp.sympify(expression) for expression in self.expressions)
+        variables = (
+            inferred_polynomial_indeterminates(expressions)
+            if self.variables is None
+            else polynomial_indeterminates(self.variables)
+        )
+        expressions = tuple(
+            finite_polynomial_normal_form(
+                expression,
+                variables,
+                label="observable basis expression",
+            )
+            for expression in expressions
+        )
+        object.__setattr__(self, "expressions", expressions)
+        object.__setattr__(self, "variables", variables)
+
+        if self.raw_candidate_count < len(expressions):
             raise ValueError(
                 "raw_candidate_count cannot be smaller than the retained basis"
             )
@@ -144,14 +173,47 @@ def generate_polynomial_observable_basis(
         max_degree=max_degree,
         raw_candidate_count=len(raw),
         quotient_reduced=constraints is not None,
+        variables=coordinate_variables,
     )
 
 
 @dataclass(frozen=True)
 class PolynomialInvariant:
+    """One exact finite-polynomial invariant and its derivative certificate."""
+
     expression: sp.Expr
     coordinates: tuple[sp.Expr, ...]
     derivative_remainder: sp.Expr
+    variables: tuple[sp.Symbol, ...] | None = None
+
+    def __post_init__(self) -> None:
+        expression = sp.sympify(self.expression)
+        derivative_remainder = sp.sympify(self.derivative_remainder)
+        variables = (
+            inferred_polynomial_indeterminates((expression, derivative_remainder))
+            if self.variables is None
+            else polynomial_indeterminates(self.variables)
+        )
+        object.__setattr__(
+            self,
+            "expression",
+            finite_polynomial_normal_form(
+                expression,
+                variables,
+                label="invariant expression",
+            ),
+        )
+        object.__setattr__(self, "coordinates", tuple(map(sp.sympify, self.coordinates)))
+        object.__setattr__(
+            self,
+            "derivative_remainder",
+            finite_polynomial_normal_form(
+                derivative_remainder,
+                variables,
+                label="invariant derivative remainder",
+            ),
+        )
+        object.__setattr__(self, "variables", variables)
 
     @property
     def certified(self) -> bool:
@@ -221,6 +283,7 @@ def discover_polynomial_invariants(
                 expression=sp.factor(reduced_expression),
                 coordinates=coordinates,
                 derivative_remainder=sp.factor(derivative_remainder),
+                variables=coordinate_variables,
             )
         )
 

@@ -102,6 +102,12 @@ Candidate primitive construction with preserved provenance:
 - `discover_relation_kernel`, `discover_relation_decomposition`
 - exact coordinate/decomposition utilities used by finite presentations
 
+`ProcessPolynomialRelation` is a different use of the same algebraic word: it
+is the finite formal operator polynomial
+\(\sum_{i=0}^{n}c_iD^i\) encoded by a finite coefficient tuple.  It does not
+classify the expression acted upon as a polynomial function and does not denote
+an A/M-generated function family.
+
 ### `presentation.morphism`
 
 - `PresentationMorphism`
@@ -142,6 +148,16 @@ The theory-aligned public names for the first-order polynomial path are:
 - `search_first_order_observable_presentations`
 - `structural_first_order_observable_presentation_cost`
 
+Here `polynomial` is literal and finite: finite monomial support with
+non-negative integer exponents in the recorded ordered indeterminates.
+`PolynomialObservableBasis.variables` makes those indeterminates explicit;
+direct construction is validated and normalized just like factory output.
+Non-polynomial expressions in a declared indeterminate—including exponential,
+trigonometric, negative-power, rational, and infinite-series expressions—are
+rejected.  A coefficient may depend on symbols not declared as indeterminates;
+that treats them only as scalars and makes no polynomial-family claim about
+their dependence.
+
 These names are deliberately qualified. The polynomial backend constructs the
 algebraic image of a declared observable map; it does **not** construct the
 history/task quotient
@@ -170,6 +186,11 @@ Analysis contains mathematical languages supported by successful process present
 
 - `ProcessFunctionModule`
 - `polynomial_am_module`
+
+`polynomial_am_module(a, n)` is specifically the finite module
+`span(1,a,...,a**n)`.  It is not the A/M power-weight family, a power-series or
+analytic closure, or the class of all functions obtainable from A/M process
+operations.
 
 ### `analysis.am`
 
