@@ -1,406 +1,489 @@
-# Phase 1C contract — chart-first dual-process lift
+# Phase 1C contract — chart-first layer adaptation
 
-**Status:** frozen before Phase 1C execution.
+**Status:** refrozen before Phase 1C execution after the strict-decoder red team.
 
 **Logical status:** this file is later in repository chronology but earlier in
-the research dependency graph than Phases 1A and 1B.  Those phases are retained
-as post-hoc kinetic controls.  They no longer define the mother route.
+the research dependency graph than Phases 1A and 1B. Those phases are retained
+as post-hoc kinetic controls. They no longer define the mother route.
 
 **Planned executable owner:**
-`tests/research/test_chart_first_collision_lift.py`.
+\`tests/research/test_chart_first_collision_adapters.py\`.
 
 **Planned result owner:**
-`07-phase1c-chart-first-lift-results.md`.
+\`07-phase1c-chart-first-adaptation-results.md\`.
 
-## 1. Correction and purpose
+## 1. Two corrections
 
-The previous route began with the known H theorem and then asked whether its
-logarithmic flux--affinity structure matched Addition and Multiplication.
-That is a useful calibration, but it does not answer the first-principles
-question.
+The first correction is to begin with the physical evolution law, not with the
+known H theorem, and only later ask whether a monotone functional emerges.
 
-Phase 1C begins instead with a physical evolution law and lifts every scalar
-quantity into one declared chart carrying two process components.  Only after
-the lifted dynamics, its gauge freedom, its observer lowering, and its
-continuation residual have been determined may a monotone functional be
-searched for.
+The second correction was forced by an immediate red team against the first
+version of this contract. Requiring a charted dynamics to decode globally and
+strictly to the original dynamics conflates two different constructions:
 
-The dependency order is therefore
+1. a coordinate chart inside one semantic layer;
+2. an adapter between layers that legitimately forget different distinctions.
 
-[
-	ext{physical dynamics}
-longrightarrow
-	ext{lossless chart lift}
-longrightarrow
-	ext{dual-process dynamics}
-longrightarrow
-	ext{observer/task lowering}
-longrightarrow
-	ext{Lyapunov search}.
-]
+A same-layer chart may be locally lossless. A micro-to-correlation,
+correlation-to-kinetic, or physical-to-process passage need not be invertible
+and need not conjugate the complete dynamics. It must instead be adequate for
+declared observations and continuations, with its defect and forgotten
+information recorded.
+
+The revised dependency order is
+
+\[
+\text{layered physical dynamics}
+\longrightarrow
+\text{process chart inside each layer}
+\longrightarrow
+\text{task-relative layer adapters}
+\longrightarrow
+\text{adaptation defect and residual}
+\longrightarrow
+\text{Lyapunov search}.
+\]
 
 No entropy, logarithmic covector, Maxwellian, partition function, or
 molecular-chaos closure is permitted in the Phase 1C solver.
 
-## 2. Three distinct objects
+## 2. A semantic layer
 
-For every scalar physical quantity (u), distinguish:
+A semantic layer is typed by
 
-1. the physical value (u);
-2. a homogeneous chart representative ((x_u,y_u)), with (y_u>0);
-3. the two process velocities ((A_u,M_u)) along a lifted history.
+\[
+\mathcal L
+=
+(X,\mathcal H,\mathcal C,\Phi,\mathrm{Obs},Q),
+\]
 
-The decoder is
+where:
 
-[
-pi_chi(x_u,y_u)=-rac{x_u}{y_u}=u.
-]
+- \(X\) is the layer's state carrier;
+- \(\mathcal H\) is its admitted history or germ carrier;
+- \(\mathcal C\) is its continuation interface;
+- \(\Phi\) is its evolution law;
+- \(\mathrm{Obs}\) is its observer family;
+- \(Q\) is the declared task family.
 
-The process velocities are
+The microscopic law, an \(s\)-body marginal hierarchy, a one-body kinetic
+law, and an A/M process presentation are therefore not presumed to have the
+same states, continuations, or equality relation.
 
-[
-A_u=-rac{dot x_u}{y_u},
-qquad
-M_u=-rac{dot y_u}{y_u}.
-]
+A coordinate chart \(\chi:U\leftrightarrow V\) internal to one layer may be
+required to preserve that layer's dynamics on its domain. That requirement is
+not exported to an inter-layer map.
 
-Direct differentiation gives the exact tangent decoder
+## 3. A layer adapter
 
-[
-oxed{dot u=A_u+uM_u.}
-]
+An adapter from source layer \(\mathcal L_\ell\) to target layer
+\(\mathcal L_m\) contains at least
 
-Thus (A_u) is the additive process component and (M_u) is the
-multiplicative rate component in this chart.  They are process quantities,
-not two independent physical observables and not yet a quotient.
+\[
+\mathfrak A_{\ell\to m}
+=
+(a,\kappa,\rho,\mathcal Q,T,\varepsilon):
+\mathcal L_\ell\rightsquigarrow\mathcal L_m.
+\]
 
-This is the homogeneous form of the affine A/M process coframe.  If a fibre
-coordinate (v) is introduced only for comparison, then
-(	heta_A=du-u,dv), (	heta_M=dv), and
-(du=	heta_A+u	heta_M).  Phase 1C performs no logarithmic coordinate
-construction and does not use (v) computationally.
+Its data are:
 
-## 3. Fibre gauge and connection
+- a state, history-germ, or jet map \(a\);
+- a continuation translator \(\kappa_x\) sending each declared target
+  continuation to an admissible source continuation;
+- a result translator \(\rho_q\);
+- a declared target task family \(\mathcal Q\);
+- a continuation horizon \(T\);
+- an exact or approximate error budget \(\varepsilon_q\).
 
-The homogeneous representative has the time-dependent gauge freedom
+For \(x\in X_\ell\), a target continuation \(k\), and \(q\in\mathcal Q\), the
+adapter is adequate when
 
-[
-(x_u,y_u)longmapsto(ho x_u,ho y_u),
-qquad ho>0.
-]
+\[
+d_q\!\left(
+ q_m(a(x)\cdot k),
+ \rho_q\!\left(q_\ell(x\cdot\kappa_x(k))\right)
+\right)
+\le \varepsilon_q.
+\]
 
-Writing (kappa=dotho/ho), its process velocities transform as
+This condition does not require \(a\) to be injective, surjective, invertible,
+or a global semiconjugacy. It states only which target continuations and
+observations the source-to-target representation preserves.
 
-[
-A_ulongmapsto A_u+ukappa,
-qquad
-M_ulongmapsto M_u-kappa.
-]
+Forgotten distinctions are not automatically errors. They become a
+continuation residual precisely when two source histories identified by the
+adapter are separated by a declared source continuation or by a stronger
+target task.
 
-The decoded tangent is invariant:
+## 4. Infinitesimal adequacy
 
-[
-(A_u+ukappa)+u(M_u-kappa)=A_u+uM_u.
-]
+For smooth layers with vector fields \(F_\ell,F_m\), define the generator
+defect seen by a target observable \(q\) as
 
-A physical ODE
+\[
+\Delta_q^{\ell\to m}(x)
+=
+D(q\circ a)_xF_\ell(x)
+-
+Dq_{a(x)}F_m(a(x)).
+\]
 
-[
-dot u=F(u)
-]
+The phase distinguishes four grades.
 
-therefore lifts first to the affine constraint
+| grade | requirement | responsible language |
+| --- | --- | --- |
+| coordinate exact | full vector-field equality in one chart domain | same-layer change of coordinates |
+| task-exact | \(\Delta_q=0\) for every declared \(q\in\mathcal Q\) | exact adapter for \(\mathcal Q\) |
+| task-approximate | \(\|\Delta_q\|\le\varepsilon_q\) on the frozen domain | certified approximation |
+| interpretive only | no frozen task/defect certificate | analogy, not a result |
 
-[
-A_u+uM_u=F(u).
-]
+Full equality
 
-A **connection** or chart policy chooses one point of this affine fibre.  It is
-additional structure and must not be confused with the decoder.  Phase 1C
-compares three frozen policies:
+\[
+Da\,F_\ell=F_m\circ a
+\]
 
-| policy | (A_u) | (M_u) | domain |
-| --- | ---: | ---: | --- |
-| additive | (F) | (0) | all decoded scalars |
-| multiplicative | (0) | (F/u) | (u
-e0) |
-| gain--loss | (G) | (-
-u) | (F=G-
-u u) |
+is a special case. It is not the Phase 1C mother requirement.
 
-All three must decode to the same base tangent on their common domain.  No
-policy is called canonical merely because it is convenient.
+## 5. The A/M chart is a process-jet chart
 
-## 4. First-principles collision lift
+A scalar value alone does not determine two process components. For a scalar
+observable \(u\) on a declared dynamic layer, the A/M chart acts on its
+first history germ:
 
-For a positive kinetic density, write the collision law in its primitive
-gain--loss form
+\[
+j^1u
+\longmapsto
+(u;A_u,M_u),
+\qquad
+\mathcal L_Fu=A_u+uM_u.
+\]
 
-[
-D_tf=Q^+(f,f)-
-u[f],f,
-qquad
-D_t=partial_t+vcdot
-abla_x.
-]
+The pair \((A_u,M_u)\) describes the additive supply and multiplicative rate
+seen in that chart. It need not reconstruct the complete source state or its
+future.
 
-The chart-first collision connection is
+There is a useful same-layer homogeneous realization,
 
-[
-oxed{A_f=Q^+(f,f),qquad M_f=-
-u[f].}
-]
+\[
+u=-\frac{x_u}{y_u},
+\qquad
+A_u=-\frac{\dot x_u}{y_u},
+\qquad
+M_u=-\frac{\dot y_u}{y_u},
+\]
 
-This choice is admissible without mentioning entropy:
+for which
 
-- (A_fge0) is incoming additive supply;
-- (M_fle0) is the multiplicative survival/hazard rate;
-- (A_f+fM_f) is exactly the original collision operator;
-- the two components retain the gain/loss orientation erased by their sum.
+\[
+\dot u=A_u+uM_u.
+\]
 
-For one frozen reversible channel
+Under \((x_u,y_u)\mapsto(\rho x_u,\rho y_u)\), with
+\(\kappa=\dot\rho/\rho\),
 
-[
-(0,1)longleftrightarrow(2,3),
-qquad
-X=f_0f_1,quad Y=f_2f_3,
-]
+\[
+(A_u,M_u)\mapsto(A_u+u\kappa,M_u-\kappa),
+\]
 
-with rate (c>0), set
+and the visible first derivative is unchanged. This projective model is a
+lossless same-layer control and a gauge audit. It is not the definition of
+cross-layer adequacy and is not required to decode microscopic dynamics.
 
-[
-F=c(-X+Y,-X+Y,X-Y,X-Y).
-]
+## 6. First-principles kinetic chart
 
-The gain--loss process components are frozen as
+For a positive kinetic density, write the collision law in gain--loss form
 
-[
-egin{array}{c|cc}
-i&A_i&M_i\ hline
-0&cY&-cf_1\
-1&cY&-cf_0\
-2&cX&-cf_3\
+\[
+D_tf=Q^+(f,f)-\nu[f]\,f.
+\]
+
+The frozen A/M process chart is
+
+\[
+A_f=Q^+(f,f),
+\qquad
+M_f=-\nu[f].
+\]
+
+This choice is made before any entropy question:
+
+- \(A_f\ge0\) is additive incoming supply;
+- \(M_f\le0\) is the multiplicative survival or hazard rate;
+- the target-layer first-derivative task reads \(D_tf=A_f+fM_f\);
+- gain/loss orientation is retained even when their sum is small or zero.
+
+For one reversible channel
+
+\[
+(0,1)\longleftrightarrow(2,3),
+\qquad
+X=f_0f_1,\quad Y=f_2f_3,
+\]
+
+with rate \(c>0\), freeze
+
+\[
+F=c(-X+Y,-X+Y,X-Y,X-Y)
+\]
+
+and
+
+\[
+\begin{array}{c|cc}
+i&A_i&M_i\\ \hline
+0&cY&-cf_1\\
+1&cY&-cf_0\\
+2&cX&-cf_3\\
 3&cX&-cf_2.
-end{array}
-]
+\end{array}
+\]
 
-The executable must reconstruct (F_i=A_i+f_iM_i) exactly and must integrate
-the homogeneous chart equations
+The identity \(F_i=A_i+f_iM_i\) is a same-layer task-exact certificate for the
+next-derivative observer. It is not a claim that the A/M pair is semantically
+equivalent to the complete collision history.
 
-[
-dot x_i=-y_iA_i,
-qquad
-dot y_i=-y_iM_i
-]
+## 7. Process composition inside the chart
 
-back to the same base tangent.
+The product task has the exact A/M rule
 
-## 5. Compositional laws to test
-
-The lift must respect the product operation without choosing an entropy
-coordinate.  If (w=uv), then
-
-[
+\[
+w=uv,
+\qquad
 A_w=vA_u+uA_v,
-qquad
+\qquad
 M_w=M_u+M_v,
-]
+\]
 
-and hence
+so that
 
-[
-dot w=A_w+wM_w.
-]
+\[
+\mathcal L_Fw=A_w+wM_w.
+\]
 
-For a positive weighted lowering
+For a positive weighted observation
 
-[
-q=sum_alpha w_alpha u_alpha,
-qquad w_alphage0,
-]
+\[
+q=\sum_\alpha w_\alpha u_\alpha,
+\qquad w_\alpha\ge0,
+\]
 
-freeze
+freeze the lowering rule
 
-[
-A_q=sum_alpha w_alpha A_alpha,
-qquad
+\[
+A_q=\sum_\alpha w_\alpha A_\alpha,
+\qquad
 M_q=
-rac{sum_alpha w_alpha u_alpha M_alpha}
-     {sum_alpha w_alpha u_alpha}
-]
+\frac{\sum_\alpha w_\alpha u_\alpha M_\alpha}
+     {\sum_\alpha w_\alpha u_\alpha}
+\]
 
-when (q>0).  This gives
+when \(q>0\). It certifies the declared derivative observation,
 
-[
-dot q=A_q+qM_q
-      =sum_alpha w_alphadot u_alpha.
-]
+\[
+\mathcal L_Fq=A_q+qM_q,
+\]
 
-The formula is a chart-compatible lowering law.  It does not claim that
-Addition and Multiplication alone determine a unique connection for arbitrary
-signed cancellation.
+but does not imply that every continuation available before lowering exists
+after lowering.
 
-## 6. Minimal BBGKY seam
+## 8. The finite BBGKY seam as an adapter comparison
 
-Use a finite exact two-particle Markov collision process on ordered pair states
-((i,j)in{0,1,2}^2).  The only active transitions are
+Use a finite exact two-particle Markov collision layer on ordered pair states
 
-[
-(0,0)ightleftarrows(1,2),
-qquad
-(0,0)ightleftarrows(2,1),
-]
+\[
+(i,j)\in\{0,1,2\}^2.
+\]
 
-all with the same positive rate (c).  Let (P_{ij}) be the exact two-body
-law and define the exchange-averaged one-body marginal
+The only active transitions are
 
-[
-f_i=rac12left(sum_jP_{ij}+sum_jP_{ji}ight).
-]
+\[
+(0,0)\rightleftarrows(1,2),
+\qquad
+(0,0)\rightleftarrows(2,1),
+\]
 
-At pair level, the Markov generator has the exact gain--loss lift
+all with rate \(c>0\). Let \(P_{ij}\) be the two-body law and define the
+exchange-averaged one-body marginal
 
-[
+\[
+f_i=\frac12\left(\sum_jP_{ij}+\sum_jP_{ji}\right).
+\]
+
+Compare two adapters.
+
+### 8.1 State-only adapter
+
+\[
+L:P\longmapsto f.
+\]
+
+It is exact for the present one-body marginal task. Phase 1C must red-team its
+adequacy for the next-derivative task.
+
+### 8.2 A/M first-jet adapter
+
+At pair level, the Markov generator has gain and loss-rate fields
+
+\[
 A^{(2)}_{ij}
- =sum_{kell	o ij}c_{kell,ij}P_{kell},
-qquad
+=\sum_{k\ell\to ij}c_{k\ell,ij}P_{k\ell},
+\qquad
 M^{(2)}_{ij}
- =-sum_{ij	o kell}c_{ij,kell}.
-]
+=-\sum_{ij\to k\ell}c_{ij,k\ell}.
+\]
 
-Lower it using the rule of Section 5 to obtain
-((A^{(1)}_i,M^{(1)}_i)).  The executable must verify
+Lower them by Section 7 to obtain
 
-[
-dot f_i=A^{(1)}_i+f_iM^{(1)}_i
-        =L_idot P.
-]
+\[
+J_\chi:P\longmapsto
+\left(f;A^{(1)},M^{(1)}\right).
+\]
 
-It must then exhibit two exchange-symmetric positive two-body laws with the
-same one-body marginal but different one-body process pairs and different
-next derivatives.  This is an exact continuation-residual witness:
+The declared target task reads
 
-[
-P
-ewidetilde P,quad LP=Lwidetilde P,
-quad
-Lmathcal GP
-e Lmathcal Gwidetilde P.
-]
+\[
+\dot f_i=A^{(1)}_i+f_iM^{(1)}_i.
+\]
 
-The witness proves only that the one-body marginal is not sufficient for the
-next-derivative task.  It does not prove a Boltzmann--Grad limit, propagation
-of chaos, or a universal entropy law.
+Phase 1C must test whether \(J_\chi\) is task-exact for this one-step
+derivative task. It must not infer adequacy for the second derivative, an
+arbitrary continuation, or the full future.
 
-## 7. Frozen witnesses
+This makes the research question precise:
 
-Use the following two exchange-symmetric probability laws.
+> Does the A/M first-jet chart repair the exact task failure of the state-only
+> marginal adapter, and exactly which stronger continuations still require a
+> residual?
+
+## 9. Frozen witnesses
+
+Use two exchange-symmetric laws.
 
 **Diagonal law**
 
-[
-P_{00}=P_{11}=P_{22}=rac13,
-]
+\[
+P_{00}=P_{11}=P_{22}=\frac13,
+\]
 
 with all other entries zero.
 
 **Off-diagonal law**
 
-[
-P_{ij}=rac16quad(i
-e j),
-]
+\[
+P_{ij}=\frac16\quad(i\ne j),
+\]
 
 with all diagonal entries zero.
 
-Both have the uniform one-body marginal.  Their derivatives under the frozen
-generator must differ exactly.  Zeros are intentional boundary data; a
-separate strictly positive perturbation sharing the same marginal must also be
-tested so that the residual is not attributed only to the boundary.
+Both have uniform one-body marginal. Their marginal derivatives under the
+frozen generator must differ.
 
-## 8. Oracle firewall
+To rule out a boundary-only explanation, also use
+
+\[
+P_\epsilon^{\mathrm{diag}}
+=(1-\epsilon)P^{\mathrm{diag}}+\epsilon U,
+\qquad
+P_\epsilon^{\mathrm{off}}
+=(1-\epsilon)P^{\mathrm{off}}+\epsilon U,
+\]
+
+where \(U_{ij}=1/9\) and \(\epsilon=1/4\). Both laws are strictly positive,
+retain the same uniform marginal, and must still have different derivatives.
+
+## 10. Frozen tasks and adaptation matrix
+
+| source → target | task | expected grade |
+| --- | --- | --- |
+| homogeneous A/M → scalar | same-layer value and first derivative | coordinate exact |
+| collision gain/loss → kinetic derivative | next derivative | task-exact |
+| two-body law \(P\) → marginal \(f\) | present marginal | task-exact |
+| two-body law \(P\) → marginal \(f\) | next derivative | rejected by witness |
+| two-body law \(P\) → \((f,A^{(1)},M^{(1)})\) | next derivative | task-exact |
+| \((f,A^{(1)},M^{(1)})\) → complete two-body future | unrestricted continuation | unclaimed |
+
+The executable may certify or reject only these frozen cells.
+
+## 11. Oracle firewall
 
 The implementation may use:
 
-- rational arithmetic;
+- exact rational arithmetic;
 - homogeneous ratios;
 - finite products and sums;
-- exact differentiation identities;
-- nonnegative Markov or collision rates;
-- marginalization.
+- finite Markov gain/loss generators;
+- marginalization;
+- task signatures and generator defects.
 
 It may not import or evaluate:
 
-- (H[f]), (flog f), Shannon entropy, or relative entropy;
-- a logarithm or exponential;
-- a Maxwellian or Gibbs law;
+- \(H[f]\), \(f\log f\), Shannon entropy, or relative entropy;
+- logarithm or exponential;
+- Maxwellian or Gibbs laws;
 - the classical entropy-production factorization;
 - Phase 1B's learned character.
 
-The words above may appear in this contract and in firewall assertions, but
-the executable discovery path must contain no logarithmic numerical oracle.
+## 12. Certificates
 
-## 9. Certificates
+1. same-layer homogeneous chart certificate;
+2. gauge covariance of the visible first derivative;
+3. exact one-channel gain/loss task adapter;
+4. nonnegative-gain/nonpositive-rate cone;
+5. collision-involution covariance;
+6. product-process composition;
+7. exact pair-generator gain/loss split;
+8. exact present-marginal adapter;
+9. rejection of state-only next-derivative adequacy;
+10. strict-positive residual witness;
+11. exact A/M first-jet next-derivative adapter;
+12. mass conservation before and after lowering;
+13. explicit adaptation-grade ledger.
 
-1. projective decoder certificate;
-2. exact tangent-decoder certificate;
-3. time-dependent gauge covariance;
-4. equality of additive, multiplicative, and gain--loss base tangents;
-5. nonnegative-gain/nonpositive-rate cone for positive collision states;
-6. exact one-channel collision reconstruction;
-7. exact product-process composition;
-8. exact marginal-lowering square;
-9. equal-marginal/different-derivative BBGKY witness;
-10. strictly positive version of the residual witness;
-11. collision-involution covariance;
-12. mass conservation before and after lowering.
-
-## 10. Red teams and kill conditions
+## 13. Kill conditions
 
 The phase fails or must be weakened if:
 
-- the homogeneous chart changes the decoded physical ODE;
-- a gauge-dependent split is reported as a physical observable without a
-  declared connection;
-- the gain--loss split is called unique without frozen locality/cone axioms;
-- marginal lowering fails to commute with the generator;
-- the residual witness changes the declared one-body marginal;
-- the only residual witness relies on zero probabilities;
-- an entropy or logarithmic oracle enters candidate selection;
-- BBGKY observer order (s) is renamed arithmetic rank (r);
-- a one-step derivative certificate is called full future reconstruction.
+- global semantic equivalence is inferred from a task-exact square;
+- a cross-layer adapter is required to possess an inverse without task need;
+- forgotten distinctions are called errors without a separating continuation;
+- a gauge-dependent A/M split is reported without a chart policy;
+- the residual witness changes the declared present marginal;
+- the only residual witness uses boundary probabilities;
+- the A/M first-jet adapter fails the declared derivative task;
+- one-step adequacy is called full-future reconstruction;
+- an entropy or logarithmic oracle enters the solver;
+- BBGKY observer order \(s\) is renamed arithmetic rank \(r\).
 
-## 11. Rank and observer ledger
+## 14. Rank, observer, and chart ledger
 
-Phase 1C occupies one arithmetic rank and two observer orders.  A useful
-notation is
+Use
 
-[
-X_{r,s}^{(chi)},
-]
+\[
+X_{r,s}^{(\chi)},
+\]
 
-where (r) is arithmetic/process rank, (s) is correlation/observer order,
-and (chi) is the chart/connection choice.  None of these indices determines
-the others.
+where \(r\) is arithmetic/process rank, \(s\) is correlation/observer order,
+and \(\chi\) is the chart or adapter policy. None determines the others.
 
-The Phase 1C pair-level to marginal-level map moves from (s=2) to (s=1)
-at fixed (r).  It is not rank raising.  Higher-rank observations remain a
-separate vertical program requiring objectification, new free composition,
-and a lowering law on every legal composite.
+Phase 1C moves between \(s=2\) and \(s=1\) at fixed \(r\). It is not rank
+raising. Higher-rank observations remain a separate vertical program requiring
+objectification, new free composition, and a lowering interpretation on every
+legal composite.
 
-## 12. Budget and claim boundary
+## 15. Budget and claim boundary
 
-The executable must use exact `Fraction` arithmetic, remain below one second
+The executable must use exact \`Fraction\` arithmetic, remain below one second
 on the routine fixture, introduce no dependency, and remain research-local.
 
-Passing Phase 1C would establish an exact chart-first reexpression of a finite
-collision law and an exact finite continuation-residual witness.  It would
-not establish:
+Passing Phase 1C would establish a finite hierarchy of semantic adapters:
 
-- a new H theorem;
-- discovery of entropy;
-- uniqueness or canonicity of the gain--loss connection;
-- a continuum Boltzmann or BBGKY theorem;
-- a microscopic derivation of molecular chaos;
-- a new arithmetic rank;
-- a generic package API.
+- a strict same-layer coordinate control;
+- a task-exact but forgetful present-marginal adapter;
+- an exact failure of that adapter for the next derivative;
+- an A/M first-jet adapter adequate for that stronger task.
+
+It would not establish a new H theorem, entropy discovery, global semantic
+equivalence, a continuum Boltzmann or BBGKY theorem, molecular chaos,
+a new arithmetic rank, or a generic package API.
