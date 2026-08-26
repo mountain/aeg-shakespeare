@@ -1,12 +1,14 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--9 complete for their declared
-finite tasks.  Phase 9 constructs a finite task-independent marked rational
-projective history carrier with compatible real and p-adic place shadows,
-while rejecting a bare shared metric space or vertical-objectification claim.
-No infinite Bruhat--Tits completion, adelic theorem, task-free selector
-optimum, preferred \(p\)-adic continued fraction, entropy-rate theorem, or
-Experimental/Public API proposal.
+**Status:** research-local calibration; Phases 0--10 complete for their
+declared finite tasks.  Phase 9 constructs a finite task-independent marked
+rational projective history carrier with compatible real and p-adic place
+shadows.  Phase 10 proves exact rank-one projective incidence duality and
+ordered-frame reconstruction, while showing that bare local points and
+projective self-duality do not supply a reversible solver carrier or a new
+dimension.  No infinite Bruhat--Tits completion, adelic theorem, task-free
+selector optimum, preferred \(p\)-adic continued fraction, entropy-rate
+theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -83,7 +85,15 @@ Read in order:
     proves the finite marked rational carrier and its place/task comparison
     squares, classifies the Phase 7/8 witnesses upstairs, and preserves the
     horizontal-versus-vertical claim boundary;
-16. the eight completed-phase research modules are seconds-scale executable
+16. [15-phase10-projective-duality-unit-roundtrip-task-contract.md](15-phase10-projective-duality-unit-roundtrip-task-contract.md)
+    freezes the categorical-variance, projective-contragredient, unit-frame,
+    stabilizer-fibre, rational-image, decoder, and objectification gates before
+    observing their results;
+17. [16-phase10-projective-duality-unit-roundtrip-results.md](16-phase10-projective-duality-unit-roundtrip-results.md)
+    proves exact rank-one incidence duality and ordered-frame reconstruction,
+    quantifies the real and p-adic quotient fibres, and limits round-trip
+    lowering to certified rational frame semantics;
+18. the nine completed-phase research modules are seconds-scale executable
     arguments; the longer Phase 8 stable-quotient census remains a bounded
     research regression.
 
@@ -309,6 +319,52 @@ local shadows.  It does not identify the hyperbolic plane with a Bruhat--Tits
 tree, prove an adelic completion, or add a vertical dimension: no new free
 primitive or compositional lowering law is introduced.
 
+## Phase 10 duality, unit, and round-trip result
+
+Phase 10 separates categorical duality, A/M group inversion, Weyl/reciprocal
+action, and the projective contragredient.  With
+
+\[
+J=W=\begin{pmatrix}0&-1\\1&0\end{pmatrix},
+\]
+
+the exact incidence identity
+
+\[
+Jg=(\det g)g^{-T}J
+\]
+
+holds on the frozen rational exhaust.  Thus \(\mathbb P^1\) is self-dual after
+an explicit point--covector identification, but the dual action is merely
+projectively conjugate to the original action; it does not create a second
+geometric rank.
+
+The ordered frame \((0,1,\infty)\) gives the projective meaning of unit one.
+The first and third marks choose an affine chart, while the middle mark fixes
+its remaining scale.  Across 4,681 bounded words, 1,585 distinct projective
+matrices correspond to exactly 1,585 ordered frames.  The same matrices
+collapse to 1,291 real base-point shadows and only 284 combined vertex triples
+at \(p=3,5,7\), proving that bare local points retain large stabilizer fibres.
+
+The smallest real and p-adic red teams are
+
+\[
+I(i)=W(i)=i
+\]
+
+and
+
+\[
+[T_1\mathbb Z_p^2]=[\mathbb Z_p^2],
+\qquad T_1(0)=1.
+\]
+
+An ordered rational frame therefore decodes projective matrix semantics, but
+not the original literal word.  A local geometric solver must additionally
+certify that its result lies in the common rational frame image before exact
+Borel/Weyl lowering is permitted.  This refines the horizontal carrier and
+decoder contract without earning vertical objectification.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -370,3 +426,13 @@ twisting, while same-task future policy still needs rational continuation
 state.  The result remains horizontal: new free composition and coherent
 lowering are still absent, so no vertical-objectification or API promotion
 follows.
+
+Phase 10 **refines and red-teams** the reverse direction.  Rank-one
+projective duality preserves exact incidence after the declared annihilator
+identification, and the ordered unit frame reconstructs rational projective
+matrix semantics.  Bare hyperbolic points and p-adic vertices fail the same
+round trip through explicit stabilizer collisions, while matrix equality still
+forgets literal chronology.  Any later place-indexed solver must preserve a
+rational-frame certificate or expose an outside-image failure.  Restoring
+these quotient fibres introduces no new primitive, free grammar, or
+all-composite lowering law.

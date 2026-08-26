@@ -204,6 +204,24 @@ mother-carrier evidence only: the real and p-adic shadows are not identified,
 the generic cross-domain carrier remains unsettled, and no new free primitive
 or lowering law is introduced.
 
+Phase 10 audits the missing reverse arrows.  A genuine contravariant duality
+preserves universal properties only after reversing their variance; the
+current history, place, stopping, and decoder maps have not been shown to form
+such an equivalence.  On the exact rank-one projective layer,
+
+\[
+Jg=(\det g)g^{-T}J
+\]
+
+identifies the contragredient action with a conjugate action after a declared
+point--covector frame.  The ordered unit frame
+\((g(0),g(1),g(\infty))\) reconstructs rational projective matrix semantics on the
+frozen image, while bare real points and p-adic vertices retain nontrivial
+stabilizer fibres.  A local solver therefore needs a rational-image and
+decoder certificate before exact lowering.  This refines the emerging
+transversal and its reconstruction boundary; projective self-duality and
+restored quotient fibres still create no new free primitive or process rank.
+
 ### 1.2 Cross-cutting admissibility — effective analysis
 
 The two axes and the emerging evaluation transversal are governed by an
@@ -432,6 +450,11 @@ also rules out treating every nonzero residual bit as one new process
 dimension. Phase 9 strengthens that boundary: even when the finite task
 quotients descend from one marked rational carrier with compatible place
 shadows, source universality remains orthogonal to new-object generation.
+Phase 10 adds the reverse red team: rank-one dualization is projectively
+conjugate to the existing action, and an ordered frame restores matrix data
+lost by local quotients.  Neither a dual presentation nor restoration of a
+stabilizer fibre is new free generation.  New compositional syntax and
+all-composite lowering remain separate obligations.
 
 **Maturity:** two concrete AEG rank-objectification calibrations plus exact
 finite thermodynamic and continuation-fibre boundaries/red teams; generic V2
@@ -713,7 +736,16 @@ The following narrow implementation questions have now been answered:
 2. a complete V1 -> V4 cycle can be realized concretely for signed unit histories objectified as Addition/translation primitives, including continuation congruence, new free composition, compositional lowering, relation soundness, and a negative control;
 3. the next Multiplication object should not objectify one fixed repeated sum but the uniform repeated-Addition endomorphism `R_k(T_a) = T_(ka)`;
 4. pure multiplicative free composition lowers naturally to endomorphisms of the Translation process, while mixed Addition/Multiplication composition requires the richer affine semantic completion `Z ⋊ N_{>0}`;
-5. the noncommutative AEG cross relation `D_k T_a = T_(ka) D_k` lowers soundly for arbitrary generated mixed histories, and the same finite law already underlies the existing A/M calculus.
+5. the noncommutative AEG cross relation `D_k T_a = T_(ka) D_k` lowers soundly for arbitrary generated mixed histories, and the same finite law already underlies the existing A/M calculus;
+6. a finite marked rational projective-history carrier can precede compatible
+   real and p-adic place evaluations and multiple stopping/decoder quotients;
+7. in the finite rank-one calibration, the ordered frame
+   `(g(0), g(1), g(infinity))` reconstructs rational projective matrix
+   semantics, while bare hyperbolic points and p-adic lattice vertices do not;
+8. projective contragredience preserves exact incidence after an explicit
+   point--covector identification, but a genuine categorical duality would
+   reverse universal-property variance and has not been established for the
+   full history/task/decoder chain.
 
 The next high-value questions are therefore:
 
@@ -736,9 +768,9 @@ The next high-value questions are therefore:
 10. what is the smallest task-sufficient lift between full history unfolding
     and visible state, and when—if ever—is it forced to agree with a
     topological or analytic universal cover?
-11. can unit frames, stopping sections, task kernels, and fundamental domains
-    be related functorially without making a unit choose a quotient or a
-    lattice choose a scalar cost?
+11. beyond the finite projective frame calibration, can unit frames, stopping
+    sections, task kernels, and fundamental domains be related functorially
+    without making a unit choose a quotient or a lattice choose a scalar cost?
 12. is there a typed theorem connecting continuous coarea volume and finite
     task-visible residual memory, or do red teams force them to remain
     separate resource components?
@@ -746,6 +778,15 @@ The next high-value questions are therefore:
     sheet transport, and a nonintegrable return-map residual, which additional
     laws distinguish horizontal task-state completion from genuine vertical
     objectification with free composition and lowering?
+14. do real and p-adic continued-fraction sections transform covariantly when
+    their ordered frame, cusp, unit, residue section, and stopping data are
+    transported together?
+15. can a local geometric solver preserve or certify return to the common
+    rational frame image, with explicit outside-image and approximation
+    semantics when it cannot?
+16. does the contragredient observer have a precise cofree/decoder universal
+    property dual to a free marked-history carrier, or do the information-
+    losing place and stopping maps obstruct such an adjunction?
 
 These are research questions, not a backlog of API classes to create.
 
