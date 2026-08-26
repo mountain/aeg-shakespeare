@@ -5,13 +5,21 @@ full and in order:
 
 1. `docs/MATHEMATICAL_CORE.md` — objects, constructions, laws, information
    loss, and present mathematical boundaries;
-2. `docs/ENGINEERING_ARCHITECTURE.md` — problem contracts, presentation and
+2. `docs/RESEARCH_STATUS.md` — dated mainline evidence ledger: exact results,
+   active research boundaries, downstream computation, and unearned claims;
+3. `docs/ENGINEERING_ARCHITECTURE.md` — problem contracts, presentation and
    algorithm choice, evaluators, certificates, errors, costs, and technical
    decisions for feasible computation;
-3. `docs/THEORY_MAP.md` — location, dependency, and maturity of those claims;
-4. `docs/THEORY_GOVERNANCE.md` and `docs/GOVERNANCE.md` — theory and software
+4. `docs/THEORY_MAP.md` — location, dependency, and maturity of those claims;
+5. `docs/THEORY_GOVERNANCE.md` and `docs/GOVERNANCE.md` — theory and software
    promotion rules;
-5. the relevant vignette, research note, executable proof essay, and code owner.
+6. the relevant vignette, research note, executable proof essay, and code owner.
+
+`RESEARCH_STATUS.md` is a navigation layer, not mathematical authority.  Use
+it to locate the current evidence owner and explicit nonclaim, then verify the
+detailed theorem, phase result, or executable certificate.  Do not confuse
+absence of framework-wide theory promotion with absence of theorem-level local
+results.
 
 Do not begin from the Theory Map alone. It is a compact index and governance
 aid, not the carrier of the full mathematics or an executable architecture. A
