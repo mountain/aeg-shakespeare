@@ -143,6 +143,34 @@ shows that the logarithm is the entropy covector, not merely a cosmetic coordina
 
 Phase 1 will treat this identity as a supplied baseline. A separate hidden-oracle track must test whether an A/M-native search can rediscover the same covector and functional without being handed \(H\), \(\log\), or the Maxwellian answer. Power has not been earned merely because the exponential appears.
 
+### 5.1 Shannon entropy and the partition-function control
+
+For a normalized finite law \(p\), Shannon entropy is
+
+\[
+\mathsf S_{\mathrm{Sh}}(p)=-\sum_i p_i\log p_i.
+\]
+
+For an unnormalized density, a continuous density, or a hard-core gas, the measure and normalization are part of the object. The safer comparison is relative entropy with respect to a declared reference law or measure. The study will therefore not identify every residual count or observer multiplicity with Shannon entropy.
+
+The equilibrium partition function
+
+\[
+Z(\beta)=\int e^{-\beta E(x)}\,d\mu(x)
+\]
+
+has a different role: it normalizes an exponential family, while \(\log Z\) is its additive chart and cumulant generator. The Gibbs variational principle links \(\log Z\), expected energy, and relative entropy, but this equilibrium variational identity is not the kinetic H theorem.
+
+Partition functions nevertheless provide a sharp rank test. For independent assemblies with coherent measures,
+
+\[
+Z_{A\times B}=Z_AZ_B,
+\qquad
+\log Z_{A\times B}=\log Z_A+\log Z_B.
+\]
+
+That is same-scale multiplicative composition followed by an additive chart; it may flatten rather than raise arithmetic rank. A genuinely higher-rank partition object must therefore exhibit additional typed structure such as interaction, assembly brackets, a new reference measure, holonomy, or a nonflattening continuation residual.
+
 ## 6. Modern collision-history calibration
 
 The long-time Boltzmann–Grad derivation of Deng, Hani, and Ma is an external calibration target, not an achieved equivalence. Its full collision histories, cumulant ansatz, molecules, cutting arguments, and norm estimates pressure-test the repository’s history, residual, quotient, and certificate vocabulary.
