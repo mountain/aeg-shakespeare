@@ -157,7 +157,62 @@ Power operations beyond what the grammar already supports are not admitted merel
 
 The logarithmic covector is called rediscovered only if it is selected without oracle leakage, transfers to held-out networks, and survives gauge reduction. Coverage and uniqueness must be reported separately.
 
-## 4. Phase 2 — observer insufficiency and the BBGKY seam
+## 4. Phase 1C — Shannon and partition-function controls
+
+This control prevents three nearby logarithmic constructions from being collapsed: kinetic \(H\), Shannon or relative entropy of a declared law, and the equilibrium partition normalizer.
+
+### Finite exact controls
+
+For a normalized law \(p\), verify the sign relation between
+
+\[
+\sum_i p_i\log p_i
+\quad\text{and}\quad
+\mathsf S_{\mathrm{Sh}}(p).
+\]
+
+For a positive reference law \(m\), compute
+
+\[
+D(p\Vert m)=\sum_i p_i\log\frac{p_i}{m_i}
+\]
+
+and record how it changes under normalization, state refinement, and a change of reference measure.
+
+For a finite energy system, enumerate exactly
+
+\[
+Z(\beta)=\sum_x m_xe^{-\beta E_x},
+\]
+
+then certify the Gibbs variational identity, the energy derivative of \(\log Z\), and the cumulants obtained from higher derivatives where defined.
+
+### A/M/P typing test
+
+Any A/M/P rewrite must declare what Power means. Repeated Multiplication, real exponentiation, complex powering, and the exponential coordinate are not interchangeable operations.
+
+Test:
+
+- independent assembly, where \(Z_{A\times B}=Z_AZ_B\);
+- the additive chart, where \(\log Z\) turns that product into a sum;
+- interacting assembly, where the factorization fails and the interaction residual is explicit;
+- nested same-scale partition sums, which may flatten by coherent measure transport;
+- a candidate higher-rank partition object with brackets, interaction, or a new reference measure.
+
+### Red teams
+
+- use a dimensionful density inside a logarithm;
+- change the base measure while treating entropy as unchanged;
+- infer kinetic monotonicity from the equilibrium Gibbs variational principle;
+- call \(\log Z\) higher-rank merely because it contains an exponential;
+- use Shannon entropy for an unnormalized or continuous density without declaring the reference;
+- treat a cumulant-generating derivative as a BBGKY correlation without a map between the sample spaces.
+
+### Gate
+
+The phase may certify exact identities and a typed A/M/P presentation. It may not identify partition functions with kinetic H, nor promote a higher arithmetic rank, unless a nonflattening process object and lowering law are witnessed.
+
+## 5. Phase 2 — observer insufficiency and the BBGKY seam
 
 ### Construction
 
@@ -207,7 +262,7 @@ Compare, without identifying them prematurely:
 
 The phase may claim a task-relative residual. It may not call that residual a new arithmetic rank or Shannon information without further structure.
 
-## 5. Phase 3 — hard-sphere and long-time calibration
+## 6. Phase 3 — hard-sphere and long-time calibration
 
 This phase is record-only unless proofs are independently reproduced.
 
@@ -243,7 +298,7 @@ For the Deng–Hani–Ma long-time result, record:
 
 Every conclusion receives one of three labels: external theorem, reproduced result, or process-geometry interpretation. No label may be silently upgraded.
 
-## 6. Phase 4 — observers on a higher arithmetic tower
+## 7. Phase 4 — observers on a higher arithmetic tower
 
 This phase starts only when a candidate higher rank has grounded semantics, free composition, and compositional lowering.
 
@@ -292,7 +347,7 @@ If not, record the witnessed pair that lowering identifies while \(P\) separates
 
 A higher-rank observer is not evidence for a higher-rank entropy until a semigroup, reference structure, and monotonicity certificate have been supplied at that rank.
 
-## 7. Phase 5 — cross-rank H diagnostics
+## 8. Phase 5 — cross-rank H diagnostics
 
 ### Candidate relations
 
@@ -328,7 +383,7 @@ Given legitimate \(H_r\) and \(H_{r+1}\), test rather than assume:
 
 No generic entropy, rank, or observer API is proposed unless at least two non-isomorphic domains require the same minimal structure and the cross-rank law survives the red teams.
 
-## 8. Cost and CI budget
+## 9. Cost and CI budget
 
 - Phase 1 exact enumeration: target at most \(10^4\) channels per fixture.
 - Symbolic checks: target under 10 seconds per fixture.
@@ -339,7 +394,7 @@ No generic entropy, rank, or observer API is proposed unless at least two non-is
 
 If a budget is exceeded, shrink the fixture or record a bounded exploratory result; do not weaken the certificate silently.
 
-## 9. Failure semantics
+## 10. Failure semantics
 
 Every attempted claim receives one label:
 
@@ -350,13 +405,14 @@ Every attempted claim receives one label:
 - domain-mismatch — the candidate is not typed for the declared process;
 - rank-not-earned — observation exists, but objectification/free composition/lowering is missing.
 
-## 10. Phase effect ledger
+## 11. Phase effect ledger
 
 | Phase | Mathematical Core | Engineering Architecture | Theory Map |
 |---|---|---|---|
 | T0 | unchanged | unchanged | calibration pressure only |
 | 1A | finite H identity record | research-local fixtures | calibrates H3 |
 | 1B | possible A/M covector evidence | discovery harness only | may pressure A/M chart edge |
+| 1C | entropy/partition-function separation | finite normalization controls | calibrates same-scale flattening |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
