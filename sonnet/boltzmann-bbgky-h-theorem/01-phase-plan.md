@@ -293,7 +293,12 @@ the log-odds covector; this does not make it dynamically unique.
 
 Naive vector addition of correlation residuals also fails closure on the
 probability fibre.  Phase 1I therefore does not objectify the fibre or raise
-arithmetic rank.  Its contract and result owners are
+arithmetic rank.  This is the negative counterpart to the independently
+earned
+[Phase 12B partition objectification](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
+whose native multiset union is closed and lowers every composite exactly; that
+positive result does not transfer to correlations.  Phase 1I's contract and
+result owners are
 [`17-phase1i-charted-fibre-calculus-contract.md`](./17-phase1i-charted-fibre-calculus-contract.md)
 and
 [`18-phase1i-charted-fibre-calculus-results.md`](./18-phase1i-charted-fibre-calculus-results.md).

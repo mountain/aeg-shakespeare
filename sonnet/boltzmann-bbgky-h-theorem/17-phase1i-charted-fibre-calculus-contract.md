@@ -37,11 +37,11 @@ Two adjacent research lines are comparison controls, not dependencies.
   quotient.
 - The open [AM conformal chart normal-form study](https://github.com/mountain/process-geometry/pull/119)
   supplies a T0 joint-chart/Pareto contract.  It has not yet produced a chart
-  theorem.  The open
-  [partition-fibre Phase 12B calibration](https://github.com/mountain/process-geometry/pull/122)
-  supplies a positive local model of fibred task-exact objectification.  Its
-  result is used only as an external red-team pattern until it enters the
-  common base.
+  theorem.  The now-merged
+  [partition-fibre Phase 12B result](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md)
+  supplies a positive local model of fibred task-exact objectification.  It is
+  an internal comparison control, not evidence that a correlation fibre has
+  the required composition.
 
 These references are typed deliberately.  A result in one line may alter the
 question asked here without becoming evidence for a Boltzmann theorem.
@@ -58,10 +58,13 @@ The previous next gate proposed the direct intersection
 \text{composition/chain rule}.
 \]
 
-Phase 12A shows that this order is unsafe: a scalar extraction or derivative
-may fail to descend after chart or fibre data are forgotten.  Phase 12B shows
-the complementary possibility: a forgetful fibre can become a new object only
-after it gains a native composition and exact all-composite lowering.
+[Phase 12A](../local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md)
+shows that this order is unsafe: a scalar extraction or derivative may fail to
+descend after chart or fibre data are forgotten.
+[Phase 12B](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md)
+shows the complementary possibility: a forgetful fibre can become a new
+object only after it gains a native composition and exact all-composite
+lowering.
 
 Phase 1I therefore asks a prior question:
 
@@ -278,7 +281,9 @@ entry.
 
 This is only a no-go for naive addition.  It does not rule out a different
 partial, graph, operadic, measured, or history-indexed composition.  Following
-the Phase 12B comparison, a Deng molecule/cumulant object would still need:
+the
+[Phase 12B comparison](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
+a Deng molecule/cumulant object would still need:
 
 1. a stable interaction/response interface;
 2. a native composition closed on every legal composite;

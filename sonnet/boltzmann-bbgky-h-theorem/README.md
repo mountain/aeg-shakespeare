@@ -269,11 +269,13 @@ covector, so H may be read as a potential connecting two task-adapted charts,
 not as a conclusion forced by either chart alone.  This reading is cross-
 checked against the independently merged
 [Phase 12A fibred finite-part result](../local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md):
-forgetting chart or fibre data can obstruct descent.  The open
+forgetting chart or fibre data can obstruct descent.  The complementary
+[Phase 12B partition-fibre result](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md)
+shows what the positive gate requires: native free composition and exact
+all-composite lowering.  The open
 [AM normal-form study](https://github.com/mountain/process-geometry/pull/119)
-and
-[partition-fibre calibration](https://github.com/mountain/process-geometry/pull/122)
-remain adjacent controls, not dependencies.
+remains an adjacent control, not a dependency.  Neither local-field result is
+evidence that a Boltzmann correlation fibre has passed its own gate.
 
 ## 7. Core research questions
 

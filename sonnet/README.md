@@ -164,9 +164,13 @@ held-out classical H is then read as a potential whose differential is the
 log-odds covector.  The result is cross-checked against the independently
 merged
 [local-field Phase 12A result](local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md),
-where forgetting chart data likewise obstructs exact descent.  The next work
-separates a finite collision-covector gate from a continuum Deng-calibrated
-fibre-response gate; neither has yet passed.
+where forgetting chart data likewise obstructs exact descent, and against the
+positive
+[Phase 12B partition-fibre result](local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
+where native free composition and all-composite lowering earn fibred task-exact
+objectification.  That result does not transfer objectification to collision
+correlations.  The next work separates a finite collision-covector gate from a
+continuum Deng-calibrated fibre-response gate; neither has yet passed.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 

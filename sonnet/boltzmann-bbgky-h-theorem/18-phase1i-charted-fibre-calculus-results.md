@@ -298,8 +298,8 @@ ordinary vector addition is not a closed composition on the probability fibre.
 This is the statistical-mechanics counterpart of the structural caution in
 [Phase 12A](../local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md):
 a linear operation in one ambient presentation need not descend to the desired
-task object.  It is also a negative counterpart to the open
-[partition-fibre Phase 12B result](https://github.com/mountain/process-geometry/pull/122),
+task object.  It is also a negative counterpart to the now-merged
+[partition-fibre Phase 12B result](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
 where multiset union is closed and weight lowers exactly for every composite.
 
 The result rejects only naive additive objectification.  Collision molecules
