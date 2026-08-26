@@ -1,7 +1,7 @@
 # Phase 1C results — layer adaptation before entropy
 
-**Status:** exact finite Phase 1C calibration passed locally. Repository CI run
-1703 was in progress when this record was first written.
+**Status:** exact finite Phase 1C calibration passed. Full repository CI run
+1703 succeeded on Python 3.10 through 3.14 at the executable commit.
 
 **Executable owner:**
 \`tests/research/test_chart_first_collision_adapters.py\`.
@@ -350,8 +350,10 @@ The research module contains 11 exact tests:
 
 Direct exact invocation passes all 11 certificates in approximately 0.04
 seconds on the local runtime. The local runtime did not include pytest, so the
-same functions were invoked directly; repository CI remains the authoritative
-pytest and matrix check.
+same functions were invoked directly. Full repository CI run 1703 then passed
+on Python 3.10, 3.11, 3.12, 3.13, and 3.14; the Python 3.14 job reported 620
+passed and 25 skipped, and the public quickstarts, package build, metadata
+check, and external wheel verification also passed.
 
 ## 10. Claim boundary
 
