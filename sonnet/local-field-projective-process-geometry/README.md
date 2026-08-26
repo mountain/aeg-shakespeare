@@ -2,8 +2,9 @@
 
 **Status:** research-local calibration; Phases 0--7 complete for their declared
 finite tasks, including an exact selector-policy Pareto Bellman result, binary
-action normal form, and harder transfer audit; no infinite Bruhat--Tits
-completion, task-free selector optimum, preferred \(p\)-adic continued
+action normal form, and harder transfer audit.  The Phase 8 continuation-value
+fibre and objectification-threshold task is frozen but not yet executed; no
+infinite Bruhat--Tits completion, task-free selector optimum, preferred \(p\)-adic continued
 fraction, entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
@@ -65,7 +66,12 @@ Read in order:
     proves the binary grammar theorem, reproduces Phase 6 through the closed
     evaluator, executes every transfer workload, and records exact local-policy
     signature obstructions and storage ledgers;
-12. the six linked research tests are seconds-scale executable arguments.
+12. [11-phase8-continuation-value-fiber-objectification-task-contract.md](11-phase8-continuation-value-fiber-objectification-task-contract.md)
+    freezes the finite future-equivalence, stable-fibre, residual-bit,
+    transport, invertibility, task-stability, cost, and objectification red
+    teams before observing their results;
+13. the six completed-phase research tests are seconds-scale executable
+    arguments; the Phase 8 executable is still pending.
 
 ## Current result
 
