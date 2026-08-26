@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1A exact finite calibration passed. The study has not yet discovered H, derived kinetic dynamics from microscopic mechanics, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed locally; repository CI is pending. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -28,7 +28,7 @@ The Liouville dynamics preserves fine-grained Gibbs entropy. The one-particle \(
 
 ## 2. Responsible target
 
-The weak target is a faithful A/M-native reexpression of the classical proof. The stronger discovery target is to decide whether the process structure itself selects the logarithmic covector and relative-entropy functional, rather than merely accepting them as supplied notation.
+The mother target is now to construct task-relative semantic adapters between microscopic, correlation, kinetic, and A/M process layers. A same-layer chart may be lossless, but an inter-layer adapter need preserve only declared observations and continuations, with its defect and residual explicit. Only after an autonomous kinetic layer has been earned may the study ask whether its process structure selects a monotone functional. Faithful reexpression of the classical proof and hidden-character search remain post-hoc controls.
 
 A successful account must identify:
 
@@ -41,6 +41,32 @@ A successful account must identify:
 - the residual that detects missing reverse information.
 
 Merely renaming \(f\log f\), the collision operator, or molecular chaos does not pass.
+
+### 2.1 Chart versus layer adapter
+
+A coordinate chart inside one semantic layer may require strict local
+compatibility with that layer's vector field. A passage between layers is
+instead recorded as
+
+\[
+\mathfrak A_{\ell\to m}
+=
+(a,\kappa,\rho,\mathcal Q,T,\varepsilon),
+\]
+
+with a state or jet map, continuation translator, result translator, declared
+task family, horizon, and error budget. It need not be invertible or preserve
+the full dynamics. Forgotten distinctions count as continuation residual only
+when a declared stronger task separates them.
+
+For a scalar process germ, the A/M chart has
+
+\[
+\mathcal L_Fu=A_u+uM_u.
+\]
+
+The pair \((A_u,M_u)\) is therefore a first-jet semantic object, not
+automatically a second copy of the complete physical state.
 
 ## 3. Process-geometry translation contract
 
@@ -141,7 +167,11 @@ Likewise,
 
 shows that the logarithm is the entropy covector, not merely a cosmetic coordinate change.
 
-Phase 1 will treat this identity as a supplied baseline. A separate hidden-oracle track must test whether an A/M-native search can rediscover the same covector and functional without being handed \(H\), \(\log\), or the Maxwellian answer. Power has not been earned merely because the exponential appears.
+Phases 1A and 1B treat this identity and its hidden-character reconstruction
+as post-hoc controls. They do not define the first-principles dependency order.
+The chart-first route first derives a layer adapter and closure seam without
+\(H\), \(\log\), or a Maxwellian; only then may the monotone-functional search
+reopen.
 
 ### 5.1 Shannon entropy and the partition-function control
 
@@ -175,14 +205,14 @@ That is same-scale multiplicative composition followed by an additive chart; it 
 
 The long-time Boltzmann–Grad derivation of Deng, Hani, and Ma is an external calibration target, not an achieved equivalence. Its full collision histories, cumulant ansatz, molecules, cutting arguments, and norm estimates pressure-test the repository’s history, residual, quotient, and certificate vocabulary.
 
-| Modern proof object | Candidate repository reading | What must still be proved |
+| Modern proof object | Candidate adapter reading | What must still be proved |
 |---|---|---|
-| full collision history | task lift | compositional equivalence |
-| cumulant | continuation residual | exact observer and reference measure |
-| molecule | history equivalence class | stability under composition |
-| cutting algorithm | quotient plus error certificate | task-native universality |
-| \(L^1\) smallness estimate | topology and certificate | compatibility with proposed state metric |
-| kinetic limit | decoder after singular reduction | explicit description of lost reverse data |
+| full collision history | continuation-translator payload | exact continuation interface and time ordering |
+| cumulant | retained source distinction / adaptation residual | target task, reference measure, and topology |
+| molecule | history-evaluation carrier | relation between graph weights and process composition |
+| cutting algorithm | adaptation-defect and cost certificate | compatibility with the declared target observations |
+| \(L^1\) smallness estimate | approximate-adequacy budget | exact source/target norm comparison |
+| kinetic limit | singular semantic adapter | validity interval, topology, and forgotten reverse data |
 
 No row asserts an identification in advance.
 
@@ -227,12 +257,14 @@ No promoted edge at T0. The Sonnet calibrates the existing H1/H3/H4 history-loss
 
 ## 10. Artifact map and next action
 
-- [01-phase-plan.md](./01-phase-plan.md) freezes the staged search, baselines, red teams, cost limits, and promotion gates.
-- [02-phase1a-finite-collision-contract.md](./02-phase1a-finite-collision-contract.md) freezes the six-velocity detailed-balance model before evaluation.
-- [03-phase1a-results.md](./03-phase1a-results.md) records the exact H identity, ten certificates, five red teams, and claim boundary.
-- [test_discrete_velocity_h_theorem.py](../../tests/research/test_discrete_velocity_h_theorem.py) is the executable research record.
+- [01-phase-plan.md](./01-phase-plan.md) records the staged gates and the chart-first correction.
+- [02-phase1a-finite-collision-contract.md](./02-phase1a-finite-collision-contract.md) and [03-phase1a-results.md](./03-phase1a-results.md) are the supplied-H finite control.
+- [04-phase1b-hidden-character-contract.md](./04-phase1b-hidden-character-contract.md) and [05-phase1b-results.md](./05-phase1b-results.md) are the hidden-character post-hoc control.
+- [06-phase1c-chart-first-lift-contract.md](./06-phase1c-chart-first-lift-contract.md) replaces global decoding by layer-relative semantic adaptation.
+- [07-phase1c-chart-first-adaptation-results.md](./07-phase1c-chart-first-adaptation-results.md) records the finite BBGKY seam and A/M first-jet repair.
+- [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 
-The next action is to freeze Phase 1B: training and held-out collision graphs, the A/M-native covector grammar, the oracle firewall, ranking metrics, and conserved-affine gauge quotient. Phase 2 and the hard-sphere seam remain downstream.
+The next action is to freeze a continuum \(s+1\to s\) adapter contract: write the hard-sphere collision-boundary operator, its incoming/outgoing A/M process jet, the target observables and generator defect, and the topology/error budget used by the Deng--Hani--Ma kinetic comparison. Entropy search remains downstream of that adapter and its closure section.
 
 ## References for calibration
 
