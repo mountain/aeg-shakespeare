@@ -3,13 +3,16 @@
 This file governs research work under `sonnet/` in the Shakespeare problem-driven research program.
 
 Before beginning substantive work, read `docs/MATHEMATICAL_CORE.md` first,
-then read `docs/ENGINEERING_ARCHITECTURE.md` in full, then
-`docs/THEORY_MAP.md`, and finally the relevant vignette, notes, executable
-essays, and code owners. The Mathematical Core carries the current objects,
-constructions, equations, information loss, and boundaries. The Engineering
-Architecture carries the problem-to-solver decisions needed for feasible
-calculation. The Theory Map is the current **living index and maturity map**,
-not a frozen specification and not a substitute for either document.
+then the dated `docs/RESEARCH_STATUS.md`, then read
+`docs/ENGINEERING_ARCHITECTURE.md` in full, then `docs/THEORY_MAP.md`, and
+finally the relevant vignette, notes, executable essays, and code owners. The
+Mathematical Core carries the current objects, constructions, equations,
+information loss, and boundaries. The status ledger locates current evidence,
+active boundaries, downstream results, and explicit nonclaims; it is not a
+substitute for the detailed artifact. The Engineering Architecture carries the
+problem-to-solver decisions needed for feasible calculation. The Theory Map is
+the current **living index and maturity map**, not a frozen specification and
+not a substitute for either core document.
 
 The larger Process Geometry theory is intentionally still developing. Sonnets
 may support, refine, or contradict both the Mathematical Core and the Theory
