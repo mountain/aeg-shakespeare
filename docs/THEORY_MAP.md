@@ -192,6 +192,18 @@ question while answering the vertical interpretation negatively for this
 calibration: stable transport alone does not supply a uniform objectified
 dimension or a new process rank.
 
+Phase 9 supplies a problem-local candidate for the previously unsettled source
+side of this transversal. A finite marked rational A/M-plus-Weyl history
+carrier maps compatibly to real hyperbolic/Farey and p-adic lattice-tree
+shadows, while depth-six/depth-eight stopping and scalar/full decoding form
+commuting task-refinement triangles. Precision terminals, cross-place invalid
+actions, and local many-to-one arrows can therefore be diagnosed as downstream
+projections. The same-task policy residual remains because the local observer
+forgets rational continuation/frame data. This is positive horizontal
+mother-carrier evidence only: the real and p-adic shadows are not identified,
+the generic cross-domain carrier remains unsettled, and no new free primitive
+or lowering law is introduced.
+
 ### 1.2 Cross-cutting admissibility — effective analysis
 
 The two axes and the emerging evaluation transversal are governed by an
@@ -417,7 +429,9 @@ the fibres are nonuniform, transport is partial and many-to-one, and no new
 free grammar or lowering theorem exists.  A transported residual may therefore
 complete horizontal task state without becoming a vertical primitive.  This
 also rules out treating every nonzero residual bit as one new process
-dimension.
+dimension. Phase 9 strengthens that boundary: even when the finite task
+quotients descend from one marked rational carrier with compatible place
+shadows, source universality remains orthogonal to new-object generation.
 
 **Maturity:** two concrete AEG rank-objectification calibrations plus exact
 finite thermodynamic and continuation-fibre boundaries/red teams; generic V2

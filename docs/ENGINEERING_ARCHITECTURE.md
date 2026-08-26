@@ -773,10 +773,12 @@ not an empty framework class.
 - `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
 - `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
+- `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
 - `tests/research/test_padic_selector_policy_bellman.py`
 - `tests/research/test_padic_selector_structural_law.py`
 - `tests/research/test_padic_continuation_value_fiber.py`
+- `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
 - `tests/experimental/test_finite_task_quotient.py`

@@ -1,13 +1,12 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--8 complete for their declared
-finite tasks, including an exact selector-policy Pareto Bellman result, binary
-action normal form, harder transfer audit, and a coarsest stable
-continuation-fibre construction with an objectification obstruction.  The
-Phase 9 A/M--Bruhat place-carrier contract is frozen but not yet executed.  No
-infinite Bruhat--Tits completion, task-free selector optimum, preferred
-\(p\)-adic continued fraction, entropy-rate theorem, or Experimental/Public
-API proposal.
+**Status:** research-local calibration; Phases 0--9 complete for their declared
+finite tasks.  Phase 9 constructs a finite task-independent marked rational
+projective history carrier with compatible real and p-adic place shadows,
+while rejecting a bare shared metric space or vertical-objectification claim.
+No infinite Bruhat--Tits completion, adelic theorem, task-free selector
+optimum, preferred \(p\)-adic continued fraction, entropy-rate theorem, or
+Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -80,8 +79,13 @@ Read in order:
     freezes the A/M hyperbolic left/right duality, Borel/Weyl completion,
     reciprocal-sign, real/p-adic place evaluation, common continuation-carrier,
     and task-projection red teams before observing their results;
-15. the seven completed-phase research tests are seconds-scale executable
-    arguments; the Phase 9 executable is still pending.
+15. [14-phase9-am-bruhat-place-continuation-carrier-results.md](14-phase9-am-bruhat-place-continuation-carrier-results.md)
+    proves the finite marked rational carrier and its place/task comparison
+    squares, classifies the Phase 7/8 witnesses upstairs, and preserves the
+    horizontal-versus-vertical claim boundary;
+16. the eight completed-phase research modules are seconds-scale executable
+    arguments; the longer Phase 8 stable-quotient census remains a bounded
+    research regression.
 
 ## Current result
 
@@ -266,6 +270,45 @@ finite task-state extension positively while blocking the stronger claim that
 the residual is one new geometric dimension, a covering/groupoid fibre, or a
 vertical process-rank object.
 
+## Phase 9 marked place-carrier result
+
+Phase 9 proves the exact A/M chart comparison
+
+\[
+\Phi_R=\Phi_L\circ\iota,
+\qquad
+g_R=\iota^*g_L,
+\]
+
+and computes \(K(g_c)=-1/c\).  Thus the process-frame and affine-action
+metrics are group-inversion-dual hyperbolic realizations, while the declared
+weight remains a noncanonical ruler.
+
+The Borel grammar plus \(W:z\mapsto-1/z\) constructively completes the frozen
+rational projective frames.  The ordinary reciprocal is
+
+\[
+R=D_{-1}W,
+\]
+
+and its real orientation difference remains visible.  All 511 Phase 2
+Stern--Brocot controls replay through \(T_aR=T_aD_{-1}W\), while 4,681 bounded
+rational words have commuting real and p-adic place-evaluation squares.
+
+For the continuation audit, 438 marked rational histories through horizon
+four form one finite source without precision, horizon, ruler, decoder, or
+task-family tags.  Depth-eight responses map exactly to depth-six responses,
+and full decoder responses map to scalar responses.  The changed-stopping
+witness becomes an ordinary precision projection; place-invalid histories and
+local many-to-one arrows are likewise localized downstream.  The same-task
+policy residual remains real because the local observer forgot rational
+complete-quotient/frame history.
+
+Phase 9 therefore supports a finite horizontal mother carrier with compatible
+local shadows.  It does not identify the hyperbolic plane with a Bruhat--Tits
+tree, prove an adelic completion, or add a vertical dimension: no new free
+primitive or compositional lowering law is introduced.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -317,11 +360,13 @@ and near absence of state compression block a fixed-dimensional or vertical
 objectification interpretation.  The construction remains Sonnet-local and
 creates no Experimental/Public API pressure.
 
-Phase 9 freezes the next mother-carrier audit without assuming its conclusion.
-It asks whether the rational A/M Borel grammar plus a Weyl reciprocal supplies
-one projective history/frame carrier whose real hyperbolic/Farey and finite
-p-adic lattice-tree readings are compatible place shadows.  Group inversion
-inside A/M, projective inversion, and the ordinary continued-fraction
-reciprocal are kept distinct.  Even a positive comparison would establish only
-a task-independent source with local projections; new free composition and
-coherent lowering remain separate requirements for vertical objectification.
+Phase 9 **supports and bounds** the proposed mother carrier.  Rational A/M
+Borel histories plus a Weyl reciprocal form a task-independent marked source
+whose real hyperbolic/Farey and finite p-adic lattice-tree readings are
+compatible place shadows.  Group inversion inside A/M, projective Weyl
+inversion, and the ordinary continued-fraction reciprocal remain distinct.
+Precision, place grammar, and decoder projections explain part of the Phase 8
+twisting, while same-task future policy still needs rational continuation
+state.  The result remains horizontal: new free composition and coherent
+lowering are still absent, so no vertical-objectification or API promotion
+follows.

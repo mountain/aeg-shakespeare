@@ -826,10 +826,15 @@ Phase 7 then quotients the action syntax exactly to a reference representative
 plus lift bit while local-signature collisions keep policy value in the
 history-bearing continuation state. Phase 8 constructs the corresponding
 coarsest stable finite extensions and shows that their fibres are nonuniform,
-task-relative, partial, and nearly as fine as the full state carrier. Together
-the calibrations refine the emerging transversal and add an objectification
-obstruction without selecting its generic carrier or unifying continuous and
-discrete shadows.
+task-relative, partial, and nearly as fine as the full state carrier. Phase 9
+moves upstream to a finite marked rational projective-history carrier. Its
+real hyperbolic/Farey and p-adic lattice-tree evaluations commute with rational
+matrix lowering, and depth/decoder tasks descend by explicit comparison maps.
+This explains part of the earlier terminal, invalid, and many-to-one behavior
+as place/stopping projection while preserving the same-task continuation
+residual. Together the calibrations refine the emerging transversal and add an
+objectification obstruction without selecting a generic cross-domain carrier,
+identifying the local shadows, or producing a new process rank.
 `THEORY_MAP.md` should record that position and maturity; it should not replace
 the equations and boundaries recorded here.
 
@@ -851,6 +856,7 @@ the equations and boundaries recorded here.
 - `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
 - `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
+- `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
@@ -858,3 +864,4 @@ the equations and boundaries recorded here.
 - `tests/research/test_padic_selector_policy_bellman.py`
 - `tests/research/test_padic_selector_structural_law.py`
 - `tests/research/test_padic_continuation_value_fiber.py`
+- `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
