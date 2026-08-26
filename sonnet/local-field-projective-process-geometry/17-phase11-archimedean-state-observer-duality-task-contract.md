@@ -429,4 +429,3 @@ If the gates pass, the result must update:
 No package API is allowed unless the finite audit independently reveals a
 repeated, problem-independent implementation need.  Research-local helpers
 remain in `tests/research/`.
-

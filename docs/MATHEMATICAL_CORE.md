@@ -680,9 +680,12 @@ lowering.  It does not recover the original literal word, and an arbitrary
 local geometric result requires a rational-image or approximation certificate
 before lowering.
 
-This separation is topological as well as metric.  The real place carries an
-Archimedean connected topology, while the p-adic ultrametric has clopen balls
-that are pairwise disjoint or nested and is totally disconnected.  The finite
+This separation is topological as well as metric.  The usual absolute value
+on \(\mathbb Q\) is Archimedean, but Archimedean cofinality alone supplies
+neither completeness nor connectedness: \(\mathbb Q\) is the immediate
+counterexample.  Its ordered completion \(\mathbb R\) is connected by order
+completeness.  At a p-adic place, the ultrametric instead has clopen balls that
+are pairwise disjoint or nested and is totally disconnected.  The finite
 projective cylinders and lattice-tree paths execute bounded shadows of that
 nested topology.  The shared rational carrier precedes either completion; it
 does not identify their local topologies.  No current result constructs the
@@ -703,6 +706,34 @@ so the dual action is projectively conjugate to the original action after a
 declared point--covector identification.  This exact self-duality is a
 presentation comparison, not a new process dimension or a proof that the
 history/place/task chain is one dual equivalence.
+
+Phase 11 supplies a separately typed finite logical dual.  For a finite state
+set \(X\), let \(\operatorname{Pred}(X)=\mathcal P(X)\).  Every state map
+\(f:X\to Y\) induces the Boolean inverse-image homomorphism
+
+\[
+f^*:\mathcal P(Y)\to\mathcal P(X),
+\qquad
+(g\circ f)^*=f^*\circ g^*.
+\]
+
+On finite sets, the Boolean homomorphisms
+\(\mathcal P(X)\to\{0,1\}\) are exactly the point evaluations.  This is a
+structure-preserving state--predicate biduality; arbitrary Boolean-valued
+functions are not states.  For a surjective task quotient
+\(q:X\twoheadrightarrow Y\), the image of \(q^*\) is exactly the Boolean
+subalgebra of predicates constant on every quotient fibre.  A predicate that
+distinguishes two points in one fibre is consequently a nonfactoring residual
+or missing discriminator, not automatically a new process coordinate.
+
+The logical duality, projective incidence action, and place evaluation remain
+different arrows.  Pulling a covector predicate backward uses \(g^T\), while
+forwarding its hyperplane uses \(g^{-T}\).  Real order cuts and p-adic clopen
+cylinders are different predicate bases on different completions.  Their
+normalized rational product formula is a global cross-place compatibility,
+not a logical duality.  Finite Stone recovery and bounded response languages
+do not yet prove a free/cofree history--observer equivalence or a new process
+rank.
 
 ---
 
@@ -726,6 +757,10 @@ history/place/task chain is one dual equivalence.
 | \([G_n\mathbb Z_p^2]\) | payload evaluated at the standard local-field lattice frame |
 | \((g(0),g(1),g(\infty))\) | ordered unit frame; exact decoder of rational projective matrix semantics |
 | \(g\mapsto g^{-T}\) | contragredient action on the dual projective line, not the Weyl element alone |
+| \(\operatorname{Pred}(X)=\mathcal P(X)\) | finite logical observer algebra for a declared state carrier |
+| \(f^*(P)=f^{-1}(P)\) | backward predicate transport dual to forward state motion |
+| \(q^*\mathcal P(Y)\subseteq\mathcal P(X)\) | fibre-constant predicates retained by a task quotient |
+| \(|x|_\infty\prod_p|x|_p=1\) | global rational place compatibility, not logical duality |
 | \(\alpha_{n+1}\) | continuation residual in the exact projective decoder |
 | \(\mathbb P^1(\mathbb Z/p^d\mathbb Z)\) | fixed-resolution projective-cylinder task frontier |
 | \(|B_d|-|B_{d-1}|=|S_d|\) | exact discrete shell-increment calibration |
@@ -770,7 +805,11 @@ Addition/Multiplication presentation is required or canonical.
   refinement triangles for the Phase 9 workload;
 - exact rank-one projective incidence duality, ordered rational-frame
   reconstruction, real/p-adic stabilizer counterexamples, and constructive
-  semantic lowering on the declared Phase 10 rational image.
+  semantic lowering on the declared Phase 10 rational image;
+- exact finite state--predicate contravariance, structure-preserving point
+  recovery, task-quotient/fibre-constant-predicate correspondence, bounded A/M
+  behavior tables, finite real/p-adic observer separation, and rational
+  product-formula certificates on the declared Phase 11 domains.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -805,6 +844,10 @@ Addition/Multiplication presentation is required or canonical.
   residual beyond the executed finite p-adic stable quotients;
 - a category and genuine dual equivalence, if any, relating free marked
   histories to cofree observers or decoders;
+- an infinite Stone/coalgebra theorem identifying the appropriate real or
+  p-adic observer boundary and its topology;
+- a restricted-product or adelic carrier with certified rational-frame image,
+  topology, solver closure, and lowering;
 - a theorem guaranteeing that real or p-adic geometric solver outputs remain
   in, or return with controlled error to, one common rational lowering image;
 - a theorem deciding when a nontrivial continuation-value fibre is only a
@@ -852,6 +895,14 @@ unless it proves a replacement theorem.
 15. A projective matrix or canonical Borel/Weyl lowering does not reconstruct
     the literal history, and a local solver output cannot be lowered exactly
     without a rational-image certificate.
+16. Archimedean integer cofinality does not imply completeness or
+    connectedness; \(\mathbb Q\) is the mandatory red team.
+17. The p-adic strong triangle inequality is not the logical negation of the
+    ordered-field Archimedean sentence.
+18. A task quotient is dual to its fibre-constant predicate subalgebra; a
+    missing discriminator may repair observer loss without objectifying.
+19. Finite Stone recovery or a bounded response language is not an infinite
+    cofree observer, global biduality, or new process rank.
 
 ---
 
@@ -937,6 +988,13 @@ p-adic vertices retain stabilizer fibres and arbitrary local results need a
 rational-image certificate before lowering. Its exact contragredient identity
 also shows that rank-one projective self-duality is a marked presentation
 comparison, not a categorical duality of the full chain or a new dimension.
+Phase 11 then opens the logical observer direction: finite states correspond
+to structure-preserving Boolean evaluations, forward A/M maps pull predicates
+backward, and task quotients correspond exactly to fibre-constant predicate
+subalgebras.  It separates Archimedean cofinality from real completeness,
+keeps p-adic cylinders on a distinct place axis, and types the rational
+product formula as global compatibility rather than logical duality.  The
+bounded behavior tables do not establish a cofree observer or global bidual.
 Together the calibrations refine the emerging transversal and add an
 objectification obstruction without selecting a generic cross-domain carrier,
 identifying the local shadows, or producing a new process rank.
@@ -963,6 +1021,7 @@ the equations and boundaries recorded here.
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
 - `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
 - `sonnet/local-field-projective-process-geometry/16-phase10-projective-duality-unit-roundtrip-results.md`
+- `sonnet/local-field-projective-process-geometry/18-phase11-archimedean-state-observer-duality-results.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
@@ -972,3 +1031,4 @@ the equations and boundaries recorded here.
 - `tests/research/test_padic_continuation_value_fiber.py`
 - `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
 - `tests/research/test_projective_duality_unit_roundtrip.py`
+- `tests/research/test_archimedean_state_observer_duality.py`

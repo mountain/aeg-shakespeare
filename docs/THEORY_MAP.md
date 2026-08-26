@@ -222,6 +222,18 @@ decoder certificate before exact lowering.  This refines the emerging
 transversal and its reconstruction boundary; projective self-duality and
 restored quotient fibres still create no new free primitive or process rank.
 
+Phase 11 opens a different reverse arrow: finite state--predicate duality.
+For finite \(X\), state maps act covariantly while inverse-image Boolean
+homomorphisms act contravariantly on \(\mathcal P(X)\); structure-preserving
+Boolean evaluations recover exactly the points.  A surjective task quotient
+dually embeds the fibre-constant predicate algebra, so a residual may first be
+a missing discriminator rather than a new coordinate.  The calibration also
+separates Archimedean integer cofinality from real completeness and
+connectedness, p-adic ultrametric predicates, and the global rational product
+formula.  This adds one exact horizontal logical-observer edge, but bounded
+behaviors do not establish a cofree history observer, global bidual return, or
+new rank.
+
 ### 1.2 Cross-cutting admissibility — effective analysis
 
 The two axes and the emerging evaluation transversal are governed by an
@@ -454,7 +466,11 @@ Phase 10 adds the reverse red team: rank-one dualization is projectively
 conjugate to the existing action, and an ordered frame restores matrix data
 lost by local quotients.  Neither a dual presentation nor restoration of a
 stabilizer fibre is new free generation.  New compositional syntax and
-all-composite lowering remain separate obligations.
+all-composite lowering remain separate obligations.  Phase 11 adds the logical
+red team: a quotient embeds only its fibre-constant predicate algebra, and a
+new predicate may merely restore a discriminator.  Finite Boolean biduality
+and bounded response languages do not supply a task-independent cogenerator,
+cofree universal property, or global biduality.
 
 **Maturity:** two concrete AEG rank-objectification calibrations plus exact
 finite thermodynamic and continuation-fibre boundaries/red teams; generic V2
@@ -745,7 +761,11 @@ The following narrow implementation questions have now been answered:
 8. projective contragredience preserves exact incidence after an explicit
    point--covector identification, but a genuine categorical duality would
    reverse universal-property variance and has not been established for the
-   full history/task/decoder chain.
+   full history/task/decoder chain;
+9. finite state maps dualize exactly to inverse-image Boolean homomorphisms,
+   finite points are recovered by structure-preserving truth evaluations, and
+   task quotients dualize to fibre-constant predicate subalgebras, without
+   producing an infinite cofree observer or new process rank.
 
 The next high-value questions are therefore:
 
@@ -784,9 +804,14 @@ The next high-value questions are therefore:
 15. can a local geometric solver preserve or certify return to the common
     rational frame image, with explicit outside-image and approximation
     semantics when it cannot?
-16. does the contragredient observer have a precise cofree/decoder universal
-    property dual to a free marked-history carrier, or do the information-
-    losing place and stopping maps obstruct such an adjunction?
+16. beyond the finite Stone and bounded-behavior calibration, does a free
+    marked-history carrier have a precise dual cofree/decoder universal
+    property, or do the information-losing place and stopping maps obstruct
+    such an adjunction?
+17. can finitely supported real/p-adic place data satisfying the rational
+    product formula form a certified restricted-product carrier with explicit
+    frame-image, topology, solver-closure, and lowering semantics before an
+    adelic abstraction is proposed?
 
 These are research questions, not a backlog of API classes to create.
 

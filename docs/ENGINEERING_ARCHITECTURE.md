@@ -599,6 +599,26 @@ collisions such as \(I(i)=W(i)\) and
 \([T_1\mathbb Z_p^2]=[\mathbb Z_p^2]\) are mandatory red teams for any
 bare-point decoder.
 
+### D17 — Type forward state maps and backward observer maps separately
+
+For a declared state map \(f:X\to Y\), an observer predicate moves by inverse
+image
+
+\[
+f^*:\operatorname{Pred}(Y)\to\operatorname{Pred}(X).
+\]
+
+Implementations must distinguish this backward predicate transport from
+forward state evaluation, forward hyperplane transport by \(g^{-T}\), Boolean
+complement, group inversion, and changing a real observer to a p-adic one.
+For a task quotient \(q:X\twoheadrightarrow Y\), record whether a required
+predicate factors through \(q\); nonfactoring predicates are explicit
+residual/discriminator certificates and must not be silently dropped.
+
+Finite behavior tables may certify a bounded workload, but an implementation
+must not expose them as a `CofreeObserver`, infinite language boundary, or
+biduality API without the corresponding universal property and topology.
+
 ---
 
 ## 6. Reference implementation paths
@@ -652,6 +672,7 @@ history--evaluation--task--decoder path.
 | Cost | digit, tree edge, frontier memory, binary bit, serialization kept separate | exact multi-axis ledgers |
 | Red teams | same contact/different continuation; same geometry/different source, scalar, future value, stopping surface, or decoder; dropped payload/residual | Ruban/Browkin outcome split, changed Huffman/controller choice, S0--S2 policy collisions, nonuniform fibres, many-to-one bit transport, decoder-cost and cycle failures |
 | Reverse lowering | local point versus ordered frame versus literal history | real/p-adic stabilizer collisions, frame decoder, rational-image test, constructive Borel/Weyl semantic lowering |
+| Observer dual | forward finite state maps versus backward predicates | exact inverse-image Boolean homomorphisms, fibre-factorization tests, bounded behavior tables |
 
 This path is exact and seconds-scale. It now provides one finite task-local
 selector-policy Bellman solver and a closed action evaluator with finite
@@ -670,6 +691,14 @@ semantic word, not the original chronological word.  Future local solvers must
 therefore preserve a rational-frame certificate or return an explicit
 outside-image/approximation status before lowering.
 
+Phase 11 adds the observer-direction contract.  On the finite projective
+calibration, forward A/M state action commutes exactly with reverse predicate
+transport.  A task quotient retains precisely the predicates that are constant
+on its fibres; a nonfactoring predicate is returned as a discriminator
+residual.  Real order cuts, p-adic cylinders, and product-formula checks are
+separate observer/place stages.  The implementation remains a research-local
+finite powerset exhaust and creates no generic logic, coalgebra, or adelic API.
+
 ---
 
 ## 7. Solver-plan record for substantial problems
@@ -685,6 +714,8 @@ Mathematical Core relation:
 
 Required lift and residuals:
 Candidate presentations:
+Forward state map / backward observer map:
+Quotient-factorization certificate:
 Adequacy certificates:
 Selection cost / Pareto axes:
 
@@ -784,10 +815,13 @@ The following needs are real but do not yet justify generic APIs:
    storage, residual, and decoder costs;
 8. certified effective analytic closure across rank lowering;
 9. a principled bridge between continuous process volume and finite task
-   memory, if one exists.
+   memory, if one exists;
 10. a local-solver closure and reconstruction protocol that distinguishes
     rational/symbolic frame membership, canonical semantic lowering,
-    approximate return, and unreconstructible local output.
+    approximate return, and unreconstructible local output;
+11. a free-history/cofree-observer protocol with typed predicate transport,
+    quotient factorization, bidual return, and infinite-boundary failure
+    semantics, if such a protocol exists.
 
 The correct next step for each gap is a problem-local solver plan and red team,
 not an empty framework class.
@@ -808,6 +842,7 @@ not an empty framework class.
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
 - `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
 - `sonnet/local-field-projective-process-geometry/16-phase10-projective-duality-unit-roundtrip-results.md`
+- `sonnet/local-field-projective-process-geometry/18-phase11-archimedean-state-observer-duality-results.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
@@ -816,4 +851,5 @@ not an empty framework class.
 - `tests/research/test_padic_continuation_value_fiber.py`
 - `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
 - `tests/research/test_projective_duality_unit_roundtrip.py`
+- `tests/research/test_archimedean_state_observer_duality.py`
 - `tests/experimental/test_finite_task_quotient.py`
