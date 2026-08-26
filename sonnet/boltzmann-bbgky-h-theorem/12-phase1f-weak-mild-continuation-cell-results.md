@@ -253,8 +253,8 @@ It has not earned:
 
 ## 8. Next gate
 
-The next gate is no longer to add another isolated collision identity.  It is
-to freeze a **two-cell selective continuation comparison**:
+This gate has now been executed by Phase 1G's finite reversible calibration.
+Its frozen target was a **two-branch selective continuation comparison**:
 
 1. one leading branch that stops at \(f_A\);
 2. one connected branch that continues through an earlier cumulant;
@@ -263,9 +263,12 @@ to freeze a **two-cell selective continuation comparison**:
    used symmetrically in both directions;
 5. only then, a target-semigroup/H question on the stopped kinetic branch.
 
-That comparison will decide whether layer-wise semantic adaptation is merely
-descriptive vocabulary or a calculable rule for choosing which histories to
-continue and which to stop.
+The exact result is recorded in
+`13-phase1g-selective-continuation-time-reversal-contract.md` and
+`14-phase1g-selective-continuation-time-reversal-results.md`.  It turns the
+stop/continue split into a calculable one-cut identity and locates the reverse
+failure in the continued connected residual.  Transfer to continuum collision
+histories remains open.
 
 ## 9. Repository effect
 

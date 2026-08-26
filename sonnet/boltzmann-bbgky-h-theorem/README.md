@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F now adds a weak collision-flux task, an exact one-collision Duhamel history cell, a Fubini cut certificate, and an observer-weighted A/M averaging obstruction. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace estimate or H theorem, proved equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G now proves in a finite reversible model that a stopped target A/M branch plus a continued connected residual reconstructs the next observation, while re-factorization fails exact time reversal. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace estimate or H theorem, proved equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -236,6 +236,15 @@ collision insertion, and target flow.  Pointwise A/M lowers to an effective
 horizon rate only after the observer-weighted occupation measure is declared;
 an unweighted time average is not generally compatible with the weak task.
 
+Phase 1G tests the selective-continuation logic in an exact finite reversible
+model.  A declared factorized section splits a microscopic law into a stopped
+target branch and a connected residual.  The residual has zero present
+marginal but changes the next marginal after continuation.  Re-factorizing at
+the cut therefore destroys the exact reversed return path.  Repeated target
+evolution is autonomous only as a renewed-section process, not as the quotient
+of one closed microscopic orbit.  This earns a calculable layer-adaptation
+defect without requiring a complete decoder or importing entropy.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -300,11 +309,14 @@ effective-calculus obligations.
 - [10-phase1e-continuum-collision-adapter-seam-results.md](./10-phase1e-continuum-collision-adapter-seam-results.md) records the exact rational shadow, trace obstruction, and theorem-scoped Deng--Hani--Ma interpretation.
 - [11-phase1f-weak-mild-continuation-cell-contract.md](./11-phase1f-weak-mild-continuation-cell-contract.md) freezes the weak flux measure, one-collision Duhamel cell, selective expansion, and weighted A/M contract.
 - [12-phase1f-weak-mild-continuation-cell-results.md](./12-phase1f-weak-mild-continuation-cell-results.md) records six exact continuation, cut, and observer-weighting certificates.
+- [13-phase1g-selective-continuation-time-reversal-contract.md](./13-phase1g-selective-continuation-time-reversal-contract.md) freezes the two-branch cut, closure section, continued residual, and reversal red team.
+- [14-phase1g-selective-continuation-time-reversal-results.md](./14-phase1g-selective-continuation-time-reversal-results.md) records six exact selective-continuation, noncommutation, and horizon-amplification certificates.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
+- [test_selective_continuation_time_reversal.py](../../tests/research/test_selective_continuation_time_reversal.py) contains the 6 exact Phase 1G certificates.
 
-The next action is to compare two selectively continued branches: one leading branch stopped at \(f_A\), and one connected branch recursively continued through an earlier cumulant. The comparison must expose the cut interface, truncation residual, and a time-reversal red team before any target-semigroup or H search is reopened.
+The next action is a hidden-candidate Lyapunov diagnostic on the finite renewed target semigroup.  Its discovery grammar must not contain Shannon entropy, logarithms, or the supplied answer.  Exact simplex-wide monotonicity, equality cases, dependence on the invariant reference law, and the pairing with the derived A/M jet must be certified before consulting the classical entropy control.  The reversible microscopic orbit and connected residual remain explicit red teams; no finite result is transferred to hard spheres without a separate continuum theorem.
 
 ## References for calibration
 

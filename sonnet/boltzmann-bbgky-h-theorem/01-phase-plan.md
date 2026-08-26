@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell and passes six additional exact research-local certificates; the continuum kinetic statements remain external theorem records. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G passes six exact finite selective-continuation and time-reversal certificates, earning an autonomous renewed target process but not a microscopic quotient or continuum closure. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -176,6 +176,45 @@ The result owners are
 leading branch stopped at \(f_A\) with a connected cumulant branch continued
 through an earlier layer, including its cut, tail residual, and time-reversal
 red team.
+
+## 1E. Selective-continuation gate — Phase 1G reversible red team
+
+Phase 1G freezes a finite reversible carrier
+
+\[
+\Gamma=\{0,1\}_x\times\{0,1\}_h,
+\qquad U(x,h)=(x\mathbin{\mathtt{xor}}h,h),
+\]
+
+a target marginal \(\pi\), and a factorized section
+\(\sigma_\delta(p)=p\otimes q_\delta\).  The cut
+
+\[
+F=\sigma_\delta(\pi F)+E_\delta(F)
+\]
+
+induces the exact two-branch identity
+
+\[
+\pi UF
+=B_\delta(\pi F)+\pi UE_\delta(F),
+\qquad B_\delta=\pi U\sigma_\delta.
+\]
+
+The leading branch stops at the target channel and has a derived one-step A/M
+chart.  The zero-marginal connected branch must continue through \(U\) to
+recover the exact next observation.  Re-factorizing at the cut loses the
+microscopic return path by exactly \(\pi UE_\delta(F)\).
+
+Repeated \(B_\delta\) is an autonomous renewed-section process, not the
+quotient of repeated \(U\) on one closed microscopic state.  Its contraction
+therefore reopens only the finite post-closure Lyapunov diagnostic.  No H
+candidate may be imported into the discovery grammar, and no result transfers
+to BBGKY or hard spheres without a separate theorem.
+
+The result owners are
+`13-phase1g-selective-continuation-time-reversal-contract.md` and
+`14-phase1g-selective-continuation-time-reversal-results.md`.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -547,6 +586,7 @@ Every attempted claim receives one label:
 | 1C | task-relative layer-adapter and A/M first-jet evidence | exact finite adapter fixtures | pressures history/observer/residual semantics |
 | 1E | bulk/trace/history task split and trace obstruction | exact rational boundary shadow | sharpens adaptation failure semantics |
 | 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
+| 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
