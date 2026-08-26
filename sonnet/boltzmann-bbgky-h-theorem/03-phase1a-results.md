@@ -2,6 +2,12 @@
 
 Status: Phase 1A passed on the frozen model. This is a level-1 reexpression result, not structural discovery.
 
+**Route correction after Phase 1C:** this result is retained as a post-hoc
+kinetic control. It supplies the classical monotonicity answer and tests the
+finite collision algebra, but it is not an input to the chart-first derivation.
+The mother route now constructs layer-relative semantic adapters and an
+autonomous target dynamics before reopening any H search.
+
 ## 1. Executed artifact
 
 The executable record is tests/research/test_discrete_velocity_h_theorem.py.
