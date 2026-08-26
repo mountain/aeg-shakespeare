@@ -4,6 +4,12 @@ Status: character-class discovery passed; logarithmic-scale discovery failed und
 
 This is a bounded structural-discovery result plus a negative uniqueness result. It is not a new theorem about the Boltzmann equation and does not derive kinetic dynamics from microscopic mechanics.
 
+**Route correction after Phase 1C:** this result is retained as a post-hoc
+character control. It asks what collision-product algebra can recover after a
+kinetic target has already been supplied. It does not choose the process chart,
+construct the micro-to-kinetic adapter, or justify closure. Those questions now
+precede this experiment logically.
+
 ## 1. Firewall outcome
 
 The discovery implementation received:
