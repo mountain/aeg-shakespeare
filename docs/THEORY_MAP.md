@@ -20,7 +20,9 @@ It records the **current larger theoretical picture** against which implementati
 The governing distinction is:
 
 ```text
+Research Program  conjectural Arithmetic Generativity synthesis and kill conditions
 Mathematical Core objects, constructions, laws, and boundaries
+Research Status   dated evidence owners, results, and explicit nonclaims
 Engineering Arch. representations, algorithms, evidence, errors, and cost
 Theory Map        compact dependency and maturity map
 Public API        durable semantic commitments already earned
@@ -30,8 +32,12 @@ Sonnets           problem-driven sources of pressure and counterexamples
 
 An API should be reviewed **against** the Theory Map, but the API must never be treated as evidence that an unsettled part of the Theory Map has thereby become true.
 
-The current foundation is developed primarily in:
+The current foundation and its conjectural research direction are developed
+primarily in:
 
+- `RESEARCH_PROGRAM.md` — Arithmetic Generativity and Universality as a
+  conjectural synthesis, decomposed into U1--U5 and cross-cutting E obligations;
+  it is not a stable Theory Map node or promotion record;
 - `MATHEMATICAL_CORE.md` — current mathematical synthesis and the required
   object/construction/law/boundary reading of this map;
 - `ENGINEERING_ARCHITECTURE.md` — problem-to-solver architecture and current
@@ -279,6 +285,36 @@ effectiveness, computational economy, and certified transport/closure.  They
 are recorded in `65-effective-analysis-principle.md`.  This is a stable
 research/engineering discipline, while the general existence and cross-rank
 closure claims it motivates remain open.
+
+### 1.3 Conjectural overlay — Arithmetic Generativity
+
+The stable axes and transversal above do not assume that arithmetic-generated
+presentations are universal.  The separately governed
+[`RESEARCH_PROGRAM.md`](RESEARCH_PROGRAM.md) records the stronger possibility
+that arithmetic primitives, their free process compositions, and their
+objectified higher-rank operations generate a compatible executable system:
+
+```text
+arithmetic process grammar
+    -> task-sufficient presentation                         U1
+    -> effective native analysis                            U2
+    -> costed and measured task fibres                      U3
+    -> statistical adaptation and macroscopic response     U4
+    -> objectification and higher-rank lowering             U5
+    -> chart covariance and total computational economy     E.
+```
+
+This overlay explains why AEG, AM chart search, canonical history cost,
+entropy, partition structure, and Boltzmann--BBGKY pressure appear in one
+research programme.  It conjectures a common generative source rather than an
+equality of complexity, entropy, action volume, probability, or thermodynamic
+state count.
+
+The overlay has no independent maturity grade.  Evidence must still land on a
+typed Core construction, law, obstruction, adapter, or explicit boundary, and
+the dated result must be recorded in `RESEARCH_STATUS.md`.  A generic Process
+Geometry result may leave every arithmetic-specific universality obligation
+open.
 
 ---
 

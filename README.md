@@ -10,8 +10,33 @@ The project does not assume that a process arrives with a preferred coordinate s
 4. how that structure can be materialized as an economical **Presentation**;
 5. what analysis becomes natural once a successful presentation is found.
 
+## Central research programme
+
+The project's strongest research wager is **Arithmetic Generativity**:
+arithmetic primitives, their free process compositions, and their objectified
+higher-rank operations may generate not only presentation geometries, but also
+effective calculi, task-relative information structures, complexity measures,
+statistical constructions, and new compositional ranks.  Addition and
+Multiplication are the first substantial and computable model of this
+mechanism, not an assumed final ontology.
+
+Complexity, entropy, and statistical mechanics are therefore not collected as
+neighboring applications.  They test whether history optimization, measured
+forgetting, ensemble formation, and macroscopic response can arise compatibly
+inside one executable process language.  The programme conjectures a common
+generative origin; it does not identify these quantities without typed bridge
+laws.
+
+[`docs/RESEARCH_PROGRAM.md`](docs/RESEARCH_PROGRAM.md) decomposes this
+Arithmetic Universality programme into falsifiable semantic, analytic,
+information-complexity, statistical, objectification, covariance, and economy
+obligations.  The programme is an active research direction, not a theorem or
+package assumption.
+
 The current mathematics is synthesized in
-[`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md). Next read the dated
+[`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md). Next read
+[`docs/RESEARCH_PROGRAM.md`](docs/RESEARCH_PROGRAM.md) for the unifying
+conjectural programme, then the dated
 [`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md), which distinguishes
 exact results, active research boundaries, downstream computation, and claims
 the project has not earned. Then read
@@ -52,7 +77,10 @@ earlier, but an abstract differential or integral object alone does not satisfy
 the project's analysis standard.  See
 [`docs/65-effective-analysis-principle.md`](docs/65-effective-analysis-principle.md).
 
-AEG remains the first major model organism for this program because the arithmetic/hyperoperation tower naturally exhibits objectification and rank raising while also supporting function theory and analysis. The stronger conjecture that arithmetic-generated geometries provide universal or standard models is **not** assumed by the package.
+Within this programme, A/M geometry is the first effective continuous analysis
+family and AEG is the first major model organism for objectification and rank
+raising.  Arithmetic Universality remains a deliberately tested conjecture,
+not a premise of the Mathematical Core or package.
 
 ## What current mainline has earned
 

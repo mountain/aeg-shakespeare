@@ -91,15 +91,25 @@ def test_every_sonnet_study_is_named_by_the_study_ledger():
     )
 
 
-def test_agent_guidance_reads_core_architecture_before_theory_map():
+def test_agent_guidance_reads_required_orientation_in_order():
     for path in (_ROOT_AGENT_GUIDANCE, _SONNET_AGENT_GUIDANCE):
         guidance = path.read_text(encoding="utf-8")
         core_position = guidance.find("docs/MATHEMATICAL_CORE.md")
+        program_position = guidance.find("docs/RESEARCH_PROGRAM.md")
+        status_position = guidance.find("docs/RESEARCH_STATUS.md")
         architecture_position = guidance.find("docs/ENGINEERING_ARCHITECTURE.md")
         map_position = guidance.find("docs/THEORY_MAP.md")
-        assert 0 <= core_position < architecture_position < map_position, (
+        assert (
+            0
+            <= core_position
+            < program_position
+            < status_position
+            < architecture_position
+            < map_position
+        ), (
             f"{path.relative_to(_REPO)} must require agents to read "
-            "docs/MATHEMATICAL_CORE.md, then "
+            "docs/MATHEMATICAL_CORE.md, docs/RESEARCH_PROGRAM.md, "
+            "docs/RESEARCH_STATUS.md, then "
             "docs/ENGINEERING_ARCHITECTURE.md, before docs/THEORY_MAP.md"
         )
 

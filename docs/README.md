@@ -7,6 +7,13 @@ substantial research and theory work. It records the current objects,
 constructions, equations, information contracts, red-team separations, and
 open boundaries, with the simple pendulum as the first end-to-end model.
 
+**Research programme:** `RESEARCH_PROGRAM.md` states the conjectural
+Arithmetic Generativity and Universality programme: why A/M is the first hard
+model rather than an assumed final ontology, why complexity, entropy, and
+statistical mechanics form one stress programme, and which U1--U5 plus E
+obligations and kill conditions make the conjecture falsifiable.  It does not
+promote a mathematical claim.
+
 **Current research status:** `RESEARCH_STATUS.md` is the required dated
 evidence ledger after the Mathematical Core.  It records what current mainline
 has actually earned, theorem-shaped local and abstract results, active Sonnet
@@ -14,8 +21,9 @@ boundaries, downstream computation, software value, and claims not yet earned.
 It is a navigation aid: detailed theorem and certificate artifacts remain
 authoritative.
 
-**Engineering architecture:** `ENGINEERING_ARCHITECTURE.md` follows the Core
-and status ledger. It turns concrete physical and mathematical problems into
+**Engineering architecture:** `ENGINEERING_ARCHITECTURE.md` follows the Core,
+Research Programme, and status ledger. It turns concrete physical and
+mathematical problems into
 auditable solver plans: problem/task contracts, presentations, algorithm and
 backend choices, evaluators, certificates, error/failure semantics, units,
 decoders, budgets, dependencies, baselines, and total cost. It also records the

@@ -5,17 +5,23 @@ full and in order:
 
 1. `docs/MATHEMATICAL_CORE.md` — objects, constructions, laws, information
    loss, and present mathematical boundaries;
-2. `docs/RESEARCH_STATUS.md` — dated mainline evidence ledger: exact results,
+2. `docs/RESEARCH_PROGRAM.md` — the conjectural Arithmetic Generativity and
+   Universality programme, its decomposed obligations, and kill conditions;
+3. `docs/RESEARCH_STATUS.md` — dated mainline evidence ledger: exact results,
    active research boundaries, downstream computation, and unearned claims;
-3. `docs/ENGINEERING_ARCHITECTURE.md` — problem contracts, presentation and
+4. `docs/ENGINEERING_ARCHITECTURE.md` — problem contracts, presentation and
    algorithm choice, evaluators, certificates, errors, costs, and technical
    decisions for feasible computation;
-4. `docs/THEORY_MAP.md` — location, dependency, and maturity of those claims;
-5. `docs/THEORY_GOVERNANCE.md` and `docs/GOVERNANCE.md` — theory and software
+5. `docs/THEORY_MAP.md` — location, dependency, and maturity of those claims;
+6. `docs/THEORY_GOVERNANCE.md` and `docs/GOVERNANCE.md` — theory and software
    promotion rules;
-6. the relevant vignette, research note, executable proof essay, and code owner.
+7. the relevant vignette, research note, executable proof essay, and code owner.
 
-`RESEARCH_STATUS.md` is a navigation layer, not mathematical authority.  Use
+`RESEARCH_PROGRAM.md` records what unifying possibility the project is testing;
+it is not mathematical authority and does not promote Arithmetic Universality.
+Its bold conjectural synthesis and the Core's conservative claim boundaries are
+complementary, not competing accounts.  `RESEARCH_STATUS.md` is a navigation
+layer, not mathematical authority.  Use
 it to locate the current evidence owner and explicit nonclaim, then verify the
 detailed theorem, phase result, or executable certificate.  Do not confuse
 absence of framework-wide theory promotion with absence of theorem-level local

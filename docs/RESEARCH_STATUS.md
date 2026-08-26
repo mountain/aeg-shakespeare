@@ -7,10 +7,13 @@ mathematical specification, theory-promotion record, or Public API contract.
 document when a result materially changes the repository-wide picture, not for
 every local phase note.
 
-**Required prior reading:** [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md).
-This document answers a different question: **what has the current mainline
-actually earned, where is the evidence, and what has it not earned?**  Continue
-with [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md) for feasible
+**Required prior reading:** [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md),
+then [`RESEARCH_PROGRAM.md`](RESEARCH_PROGRAM.md).  The Core records the
+present mathematical synthesis; the Programme states the conjectural
+Arithmetic Generativity direction.  This document answers a different
+question: **what has the current mainline actually earned, where is the
+evidence, and what has it not earned?**  Continue with
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md) for feasible
 solver decisions and [`THEORY_MAP.md`](THEORY_MAP.md) for theory position and
 maturity.
 
@@ -24,9 +27,10 @@ the detailed artifact wins and this ledger must be corrected.
 Process Geometry is not only a Python package and not only a sequence of
 research notes.  The current repository has three coupled outputs:
 
-1. **a mathematical research program** about histories, task-relative
+1. **a mathematical research programme** about histories, task-relative
    distinguishability, semantic compression, fibres, objectification, and
-   process-supported analysis;
+   process-supported analysis, guided by the conjectural Arithmetic
+   Generativity obligations in [`RESEARCH_PROGRAM.md`](RESEARCH_PROGRAM.md);
 2. **a research software toolkit** implementing deliberately narrow process,
    presentation, discovery, and analysis contracts;
 3. **an executable knowledge base** in which classical calibrations, exact
@@ -35,7 +39,10 @@ research notes.  The current repository has three coupled outputs:
 
 The package still has no universal `solve()` interface and no theorem that all
 processes admit one preferred arithmetic presentation.  That absence is a
-present research boundary, not a summary of everything already achieved.
+present research boundary, not a summary of everything already achieved or an
+abandonment of the unifying conjecture.  Programme obligations U1--U5 and E
+identify which semantic, analytic, information-complexity, statistical,
+objectification, covariance, and economy bridges each evidence chain pressures.
 
 ---
 
@@ -43,7 +50,7 @@ present research boundary, not a summary of everything already achieved.
 
 | Layer | Earned on current mainline | Not yet earned |
 | --- | --- | --- |
-| Mother picture | two-axis foundation (horizontal distinguishability; vertical ontology growth), an emerging task-covariant history-evaluation transversal, and the Effective Analysis constraint | one proved universal carrier, one universal calculus, or Arithmetic Geometric Universality |
+| Mother picture | two-axis foundation (horizontal distinguishability; vertical ontology growth), an emerging task-covariant history-evaluation transversal, the Effective Analysis constraint, and a separately labelled Arithmetic Generativity research programme | one proved universal carrier, one universal calculus, or Arithmetic Universality theorem |
 | Exact semantics | finite continuation-stable minimization with distinguishing suffixes; task-relative adapters; explicit residual and decoder ledgers | a generic quotient/adapter category covering infinite, stochastic, continuous, and approximate processes |
 | Structural mathematics | exact local and abstract laws, no-go theorems, and finite classifications listed in §3 | a newly promoted framework-wide T3/T4 foundation theorem |
 | Analysis | concrete A/M, algebraic, Abelian, moving-frame, stochastic first-passage, and finite nonadditive response calculi | generic smooth V5 analytic closure or one canonical cross-rank derivative |
@@ -217,11 +224,13 @@ downstream-use pressure.
 
 1. [`MATHEMATICAL_CORE.md`](MATHEMATICAL_CORE.md) — definitions, equations,
    information loss, and boundaries;
-2. this status ledger — achieved results, evidence owners, and active gaps;
-3. [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md) — solver and
+2. [`RESEARCH_PROGRAM.md`](RESEARCH_PROGRAM.md) — the unifying conjecture,
+   decomposed obligations, and kill conditions;
+3. this status ledger — achieved results, evidence owners, and active gaps;
+4. [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md) — solver and
    certificate decisions;
-4. [`THEORY_MAP.md`](THEORY_MAP.md) — dependency and maturity placement;
-5. governance and the relevant detailed artifact.
+5. [`THEORY_MAP.md`](THEORY_MAP.md) — dependency and maturity placement;
+6. governance and the relevant detailed artifact.
 
 ### Audit one mathematical claim
 

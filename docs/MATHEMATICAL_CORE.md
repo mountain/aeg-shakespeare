@@ -4,8 +4,10 @@
 substantial research, theory, and theory-bearing API work.  This document is
 not a frozen specification and not a Public API contract.
 
-**Required next reading:** [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md), the
-dated evidence ledger for what current mainline has and has not earned, then
+**Required next reading:** [`RESEARCH_PROGRAM.md`](RESEARCH_PROGRAM.md), which
+states the conjectural Arithmetic Generativity and Universality programme
+without promoting it, then [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md), the
+dated evidence ledger for what current mainline has and has not earned, and
 [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md), which turns the
 mathematics into problem, representation, algorithm, certificate,
 error/failure, and cost decisions for feasible computation.
@@ -17,9 +19,10 @@ understanding must state the objects, constructions, laws, information loss,
 reconstruction obligations, and failure boundaries that make one concept lead
 to another.
 
-The repository therefore separates four duties:
+The repository therefore separates these duties:
 
 ```text
+RESEARCH_PROGRAM.md    conjectural synthesis, obligations, and kill conditions
 MATHEMATICAL_CORE.md   objects, constructions, equations, and boundaries
 RESEARCH_STATUS.md     dated achieved-result and evidence-owner ledger
 ENGINEERING_ARCHITECTURE.md representations, algorithms, evidence, errors, cost
@@ -27,6 +30,14 @@ THEORY_MAP.md          compact location, dependency, and maturity map
 THEORY_GOVERNANCE.md   promotion, falsification, and revision rules
 GOVERNANCE.md          theory-to-software and API discipline
 ```
+
+The Research Program and this Core use different registers.  The former states
+the bold unifying possibility being tested; this file records only the
+mathematical synthesis presently responsible enough to organize research.
+Conservative nonidentifications here make future bridge theorems well typed;
+they do not imply that the project lacks a unifying conjecture.  Conversely,
+the programme's Arithmetic Universality language does not supply evidence for
+a Core claim.
 
 The Theory Map is an index of mathematical understanding; it is not a
 substitute for that understanding.  A proposed node or arrow is not ready for

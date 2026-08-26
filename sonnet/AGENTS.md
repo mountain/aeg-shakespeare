@@ -3,13 +3,16 @@
 This file governs research work under `sonnet/` in the Shakespeare problem-driven research program.
 
 Before beginning substantive work, read `docs/MATHEMATICAL_CORE.md` first,
-then the dated `docs/RESEARCH_STATUS.md`, then read
-`docs/ENGINEERING_ARCHITECTURE.md` in full, then `docs/THEORY_MAP.md`, and
-finally the relevant vignette, notes, executable essays, and code owners. The
-Mathematical Core carries the current objects, constructions, equations,
-information loss, and boundaries. The status ledger locates current evidence,
-active boundaries, downstream results, and explicit nonclaims; it is not a
-substitute for the detailed artifact. The Engineering Architecture carries the
+then the conjectural `docs/RESEARCH_PROGRAM.md`, then the dated
+`docs/RESEARCH_STATUS.md`, then read `docs/ENGINEERING_ARCHITECTURE.md` in
+full, then `docs/THEORY_MAP.md`, and finally the relevant vignette, notes,
+executable essays, and code owners. The Mathematical Core carries the current
+objects, constructions, equations, information loss, and boundaries. The
+Research Programme records the bold Arithmetic Generativity synthesis,
+decomposed universality obligations, and kill conditions without promoting
+them. The status ledger locates current evidence, active boundaries, downstream
+results, and explicit nonclaims; it is not a substitute for the detailed
+artifact. The Engineering Architecture carries the
 problem-to-solver decisions needed for feasible calculation. The Theory Map is
 the current **living index and maturity map**, not a frozen specification and
 not a substitute for either core document.
@@ -112,9 +115,17 @@ For every substantial Sonnet phase, record:
   construction, law, or boundary in `docs/MATHEMATICAL_CORE.md`;
 - the solver plan and whether it supports, refines, replaces, contradicts, or
   leaves unchanged `docs/ENGINEERING_ARCHITECTURE.md`;
-- when material, whether the result **supports, refines, splits, contradicts, or leaves unchanged** the current `docs/THEORY_MAP.md`.
+- when material, whether the result **supports, refines, splits, contradicts, or leaves unchanged** the current `docs/THEORY_MAP.md`;
+- when the work bears on Arithmetic Generativity, its
+  `docs/RESEARCH_PROGRAM.md` relation: U1/U2/U3/U4/U5/E pressure, the
+  arithmetic-specific mechanism, the generic Process Geometry result, evidence
+  gained, the universality claim not earned, and the frozen kill condition.
 
-The final two items matter: a Sonnet is not only a problem-solving attempt; it is also a calibration of both the framework and the evolving theory behind it. Contradicting the Theory Map is allowed and valuable when evidence supports the contradiction.
+The final items matter: a Sonnet is not only a problem-solving attempt; it is
+also a calibration of the framework, the conjectural research programme, and
+the evolving theory behind it. Contradicting the Programme or Theory Map is
+allowed and valuable when evidence supports the contradiction.  Not every
+Sonnet must bear on Arithmetic Universality.
 
 ## Framework extraction discipline
 
