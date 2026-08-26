@@ -2,9 +2,29 @@
 
 ## 当前状态
 
-- **成熟度：** T0 初始化；问题契约与校准路线，尚无新定理。
+- **成熟度：** T0/T1；Phase 1 精确机制校准完成，经济性与发现主张仍未建立。
 - **作用域：** `sonnet/` 研究局部；不改变 Mathematical Core、Theory Map 或公共 API。
-- **最高可负责主张：** 我们已经把“在固定共形类中选择低成本 chart”与“polynomial-like / matrix-like 联合标准型”写成可证伪的研究问题；尚未证明存在普遍最优 chart，也未证明单摆或 PCR3BP 的净计算成本一定下降。
+- **最高可负责主张：** Riccati 标量场、二维射影提升、Möbius chart
+  与矩阵共轭、scalar gauge 已在有理数上得到精确闭合；常系数二维
+  线性系统的射影化至多产生二次标量场，因此一般非零三次项是邻近
+  no-go。尚未证明 AM grammar 能发现优于经典基线的 chart，也未证明
+  单摆或 PCR3BP 的净计算成本下降。
+
+## 0. 继承证据与剩余义务
+
+本研究初始化之后，其他线路已经完成若干前置工作。它们是可复用的
+边界和校准，不等于本 Sonnet 的联合标准型结果。
+
+| 来源 | 可继承结果 | 本 Sonnet 仍须证明 |
+| --- | --- | --- |
+| pendulum marked-carrier / Mathematical Core | Cartesian 第一性入口；unit、clock、cover、decoder 分账 | chart/module 联合搜索及净成本 |
+| Boltzmann--BBGKY chart-first adapter | 同层可逆 chart 与跨层 task adapter 必须分开 | 固定共形 atlas 内的 exact chart covariance |
+| Boltzmann--BBGKY contrast/odds audit | 一个 chart 可简化动力学，另一个可简化组合律 | polynomial-like / matrix-like 联合 Pareto 前沿 |
+| Phase 12C fibred change calculus | chart 后的 observer response 仍有独立存在性与 coherence 义务 | chart 选择如何改变 response/evaluator 成本 |
+| PCR3BP history-cost | word、clock、deck、hyperbolic cost 已分账 | 局部 atlas 与变分/monodromy 的联合成本 |
+
+因此，#119 的主体问题没有被替代。Phase 1 只校准机制；Phase 2/3 不得
+重复证明上述基础，也不得把它们当成 economy theorem。
 
 ## 1. 问题原生陈述
 
@@ -46,6 +66,12 @@ $$
 $$
 
 时，才是任务等价候选。离散过程则使用相应的交换图或逐步读出等式。chart 往返、读出、单位、时钟与分支选择都必须进入证书。
+
+这里的精确往返只适用于同一语义层中的可逆 chart。若源、目标状态或
+continuation interface 不同，则必须使用 Mathematical Core 中的
+task-relative semantic adapter，声明任务、horizon、拓扑、误差预算、
+residual 与 closure；跨层遗忘不得伪装成 chart。task quotient 又是第三种
+操作，须独立证明 continuation adequacy。
 
 ## 3. 必须分开的五类变换
 
