@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed locally; repository CI is pending. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
