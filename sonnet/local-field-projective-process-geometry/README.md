@@ -1,17 +1,17 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--11 complete for their
-declared finite tasks.  Phase 12 is initialized by a revised locale-observer
-and fibred history--behaviour contract but has not started.  Phase 9 constructs
-a finite task-independent marked rational projective history carrier with
-compatible real and p-adic place shadows.  Phase 10 proves exact rank-one
-projective incidence duality and ordered-frame reconstruction, while showing
-that bare local points and projective self-duality do not supply a reversible
-solver carrier or a new dimension.  Phase 11 places Archimedean cofinality in
-ordered observer semantics and opens an exact finite state--predicate duality.
-The Phase 12 contract keeps logical variance, semantic adaptation, projective
-incidence, and change of place distinct.  No infinite locale/cofree-observer
-theorem, semantic-fibration theorem, Bruhat--Tits completion, adelic theorem,
+**Status:** research-local calibration; Phases 0--11 are complete for their
+declared finite tasks, and Phase 12 has begun with one bounded Phase 12A
+strict-descent and finite-part slice.  Phase 10 proves exact rank-one projective
+incidence duality and ordered-frame reconstruction.  Phase 11 places
+Archimedean cofinality in ordered observer semantics and opens exact finite
+state--predicate duality.  Phase 12A now proves that ordinary addition does not
+descend through projective-frame forgetting and that a finite part does not
+descend through singular-chart forgetting.  Frame-indexed addition and
+bounded-pole finite-jet transport are exact positive controls.  The remaining
+locale, sobriety, basis, cofree-behaviour, coupled observer, and place-indexed
+workloads are unexecuted.  No generic semantic-fibration or AM regularization
+theorem, vertical objectification, Bruhat--Tits completion, adelic theorem,
 task-free selector optimum, preferred \(p\)-adic continued fraction,
 entropy-rate theorem, or Experimental/Public API proposal.
 
@@ -109,8 +109,12 @@ Read in order:
 20. [19-phase12-locale-observer-history-behavior-task-contract.md](19-phase12-locale-observer-history-behavior-task-contract.md)
     freezes a variance- and semantic-fibration-first audit of locale observers,
     full and adapted behaviours, fibre transports, closure, place-indexed
-    realizations, and graded objectification.  Phase 12 has not been executed;
-21. the ten completed-phase research modules are seconds-scale executable
+    realizations, and graded objectification;
+21. [20-phase12-locale-observer-history-behavior-results.md](20-phase12-locale-observer-history-behavior-results.md)
+    executes the bounded Phase 12A chart-forgetting calibration, proves two
+    strict-descent obstructions, derives finite-jet transport and the Bernoulli
+    exponential-chart family, and records composition failures;
+22. the completed-phase research modules are seconds-scale executable
     arguments; the longer Phase 8 stable-quotient census remains a bounded
     research regression.
 
@@ -415,6 +419,45 @@ law.  Bounded response languages separate the frozen states, but no infinite
 cofree observer, coherent global bidual, adelic carrier, or new vertical rank
 is obtained.
 
+## Phase 12A strict-descent and finite-part result
+
+Phase 12A supplies the first bounded execution of the frozen Phase 12 contract.
+Ordinary addition cannot be both an extension of affine addition and a strictly
+\(PGL_2\)-equivariant operation after the projective frame is forgotten.  The
+two exact lifts
+
+\[
+0+1=1,\quad g_0(z)=1/z,
+\qquad
+1+2=3,\quad g_1(z)=1/(z-1)
+\]
+
+would assign the same unmarked input \((\infty,1)\) the incompatible outputs
+\(1\) and \(1/2\).  The correctly typed operation is instead frame-indexed
+and satisfies
+
+\[
+g(x\boxplus_F y)=gx\boxplus_{gF}gy.
+\]
+
+The regularization control has the same strict-descent shape.  For
+\(G(q)=q/(1-q)^2\), the chart \(u=1-q\) gives finite part \(0\), while
+\(q=e^{-t}\) gives finite part \(-1/12\).  A pole of order \(r\) needs only
+its principal coefficients and the \((r+1)\)-jet of the chart transition to
+transport the finite part exactly.  The exponential chart family yields
+
+\[
+\operatorname{FP}_{t}\sum_{n\geq1}n^m e^{-nt}
+=(-1)^m\frac{B_{m+1}}{m+1}.
+\]
+
+This is a charted finite-part statement, not ordinary summation equality or a
+new proof of zeta continuation.  Fixed-contract finite parts are linear, but
+multiplication, differentiation, nonlinear chart forgetting, and
+filter/grouping interchange fail.  The slice therefore supports a filtered
+semantic fibration as an exact finite model while leaving vertical
+objectification and every full Phase 12 gate open.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -496,3 +539,12 @@ product-formula layers remain separately typed.  Since only bounded behavior
 and finite Boolean biduality are proved, no cofree universal object, global
 bidual return, new cogenerator, vertical objectification, or API promotion
 follows.
+
+Phase 12A **refines and red-teams** strict rank lowering.  Projective-frame and
+singular-chart forgetting each identify lifts on which the requested task has
+different exact outputs, so neither task factors through the unmarked base.
+Retaining a frame or a bounded principal jet repairs transport, while the
+multiplication, differentiation, and grouping failures block a global
+arithmetic interpretation.  This supports only a research-local filtered
+semantic-fibration model; it proves no generic fibration theorem, new free
+composition, all-composite lowering, vertical rank, or API promotion.
