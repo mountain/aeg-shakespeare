@@ -1,17 +1,19 @@
 # Local-field projective process geometry
 
 **Status:** research-local calibration; Phases 0--11 complete for their
-declared finite tasks.  Phase 9 constructs a finite task-independent marked
-rational projective history carrier with compatible real and p-adic place
-shadows.  Phase 10 proves exact rank-one projective incidence duality and
-ordered-frame reconstruction, while showing that bare local points and
-projective self-duality do not supply a reversible solver carrier or a new
-dimension.  Phase 11 places Archimedean cofinality in ordered observer
-semantics and opens an exact finite state--predicate duality, while keeping
-logical variance, projective incidence, and change of place distinct.  No
-infinite Stone/cofree-observer theorem, Bruhat--Tits completion, adelic theorem, task-free
-selector optimum, preferred \(p\)-adic continued fraction, entropy-rate
-theorem, or Experimental/Public API proposal.
+declared finite tasks.  Phase 12 is initialized by a revised locale-observer
+and fibred history--behaviour contract but has not started.  Phase 9 constructs
+a finite task-independent marked rational projective history carrier with
+compatible real and p-adic place shadows.  Phase 10 proves exact rank-one
+projective incidence duality and ordered-frame reconstruction, while showing
+that bare local points and projective self-duality do not supply a reversible
+solver carrier or a new dimension.  Phase 11 places Archimedean cofinality in
+ordered observer semantics and opens an exact finite state--predicate duality.
+The Phase 12 contract keeps logical variance, semantic adaptation, projective
+incidence, and change of place distinct.  No infinite locale/cofree-observer
+theorem, semantic-fibration theorem, Bruhat--Tits completion, adelic theorem,
+task-free selector optimum, preferred \(p\)-adic continued fraction,
+entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -104,7 +106,11 @@ Read in order:
     proves the finite logical duality and quotient/predicate correspondence,
     executes the real/p-adic observer and product-formula controls, and keeps
     bounded behavior below a cofree or vertical-objectification theorem;
-20. the ten completed-phase research modules are seconds-scale executable
+20. [19-phase12-locale-observer-history-behavior-task-contract.md](19-phase12-locale-observer-history-behavior-task-contract.md)
+    freezes a variance- and semantic-fibration-first audit of locale observers,
+    full and adapted behaviours, fibre transports, closure, place-indexed
+    realizations, and graded objectification.  Phase 12 has not been executed;
+21. the ten completed-phase research modules are seconds-scale executable
     arguments; the longer Phase 8 stable-quotient census remains a bounded
     research regression.
 
