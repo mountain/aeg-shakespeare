@@ -320,8 +320,15 @@ It has not earned:
 
 ## 10. Next gate
 
-The next gate should not enumerate more polynomial modes.  It should test an
-**intersection of selection laws**:
+This section records the gate proposed at the close of Phase 1H.  It has now
+been refined by the
+[Phase 1I contract](./17-phase1i-charted-fibre-calculus-contract.md) and
+[result](./18-phase1i-charted-fibre-calculus-results.md), which show that an
+exact fibre-response ledger and a chart audit must precede the direct
+selection-law intersection.
+
+The Phase 1H proposal was not to enumerate more polynomial modes, but to test
+an **intersection of selection laws**:
 
 \[
 \text{target Lyapunov cone}
@@ -342,6 +349,11 @@ Independent-product additivity must be included as a red team rather than
 treated as sufficient: quadratic distance composes multiplicatively after a
 shift, so a logarithmic chart can make another additive quantity.  The
 collision-local chain rule is the sharper selector.
+
+Phase 1I preserves that selector as the later Phase 1J-A problem and adds the
+independent Phase 1J-B continuum response problem.  In particular, a
+collision-covector law cannot by itself transfer target monotonicity through a
+correlation fibre whose continued response has not been bounded.
 
 ## 11. Repository effect
 

@@ -284,6 +284,13 @@ collision-product character constraint already isolated by Phase 1B and
 independent-product/chain rules.  These must be compared rather than assumed
 equivalent.
 
+This was the frozen prospective gate at the start of Phase 1H.  The later
+[Phase 1I contract](./17-phase1i-charted-fibre-calculus-contract.md) retains
+the selection question but inserts two prior obligations: the observable
+change must first be split into exact target and fibre responses, and the
+candidate cost must be audited across the dynamical contrast chart and the
+compositional odds chart.
+
 ## 11. Cost and repository effect
 
 - exact standard-library rational arithmetic only;

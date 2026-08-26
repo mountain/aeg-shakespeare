@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H now discovers target Lyapunov modes without an entropy oracle: quadratic contrast is the minimum candidate, but an exact positive modal cone rejects uniqueness; classical binary relative H appears only post-selection as a positive analytic resummation. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace estimate or hard-sphere H theorem, proved equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I now places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection: contrast simplifies target dynamics, odds simplify the declared composition, and classical binary H is a post-selection potential between them. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace or fibre-response estimate, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -254,6 +254,27 @@ only afterward as a positive infinite resummation of these modes.  Thus target
 monotonicity determines a Lyapunov family; collision composition and covector
 locality are still needed to explain the logarithmic member.
 
+Phase 1I inserts the missing finite calculus before that selection step.  An
+observable change along the microscopic continuation splits exactly into a
+stopped target difference and a continued fibre response.  On the frozen
+witness, the target decrement of quadratic contrast is \(-735/16384\), while
+the fibre response is \(1695/16384\), so the full observed change is
+\(15/256>0\).  Target monotonicity therefore crosses the adapter only under a
+separate response budget; global decoding is neither assumed nor required.
+
+The same phase makes selection explicitly chart-relative.  Contrast gives a
+linear target law, whereas odds give multiplicative product-corner
+composition.  The differential of the held-out classical H is the log-odds
+covector, so H may be read as a potential connecting two task-adapted charts,
+not as a conclusion forced by either chart alone.  This reading is cross-
+checked against the independently merged
+[Phase 12A fibred finite-part result](../local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md):
+forgetting chart or fibre data can obstruct descent.  The open
+[AM normal-form study](https://github.com/mountain/process-geometry/pull/119)
+and
+[partition-fibre calibration](https://github.com/mountain/process-geometry/pull/122)
+remain adjacent controls, not dependencies.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -264,6 +285,8 @@ locality are still needed to explain the logarithmic member.
 6. Can time reversal be used to construct an explicit missing decoder?
 7. At each arithmetic rank, which observers are lowering-induced and which are intrinsic?
 8. Does a useful H-like Lyapunov functional exist on more than one rank, and if so how does it transform across the \((r,s)\) grid?
+9. Which target/correlation fibre-response bound is sufficient to transport a Lyapunov law between layers?
+10. Can one collision-derived chart atlas make dynamics, composition, and covector integration jointly simple, or is their incompatibility an invariant cost?
 
 ## 8. Claim boundaries and kill conditions
 
@@ -322,13 +345,23 @@ effective-calculus obligations.
 - [14-phase1g-selective-continuation-time-reversal-results.md](./14-phase1g-selective-continuation-time-reversal-results.md) records six exact selective-continuation, noncommutation, and horizon-amplification certificates.
 - [15-phase1h-hidden-lyapunov-mode-contract.md](./15-phase1h-hidden-lyapunov-mode-contract.md) freezes the entropy-free target-mode grammar, selector, jet-depth test, and oracle firewall.
 - [16-phase1h-hidden-lyapunov-mode-results.md](./16-phase1h-hidden-lyapunov-mode-results.md) records nine exact mode-discovery, nonuniqueness, A/M/jet, lifting, and post-selection certificates.
+- [17-phase1i-charted-fibre-calculus-contract.md](./17-phase1i-charted-fibre-calculus-contract.md) freezes the finite target/fibre response ledger, two-chart audit, objectification red team, and continuum transfer obligation.
+- [18-phase1i-charted-fibre-calculus-results.md](./18-phase1i-charted-fibre-calculus-results.md) records nine exact response, chart, potential, order, and closure certificates and the revised Phase 1J gates.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
 - [test_selective_continuation_time_reversal.py](../../tests/research/test_selective_continuation_time_reversal.py) contains the 6 exact Phase 1G certificates.
 - [test_hidden_lyapunov_mode_discovery.py](../../tests/research/test_hidden_lyapunov_mode_discovery.py) contains the 9 exact Phase 1H certificates.
+- [test_charted_fibre_lyapunov_calculus.py](../../tests/research/test_charted_fibre_lyapunov_calculus.py) contains the 9 exact Phase 1I certificates and 70 enumerated observable ledgers.
 
-The next action is to intersect three independently earned constraints: the target Lyapunov cone, the Phase 1B collision-product character law, and a declared composition/chain rule.  The test should determine whether every finite polynomial mode fails the collision-local covector law while an analytic completion selects the logarithmic covector and relative H.  Independent-product additivity remains a red team rather than a sufficient selector.  No result transfers to hard spheres without a separate continuum adapter theorem.
+The next action is split.  Phase 1J-A must build a genuinely collision-derived,
+order-sensitive finite fixture, compare a frozen chart atlas across dynamics,
+composition, covector, decoder, and residual costs, and ask whether the
+collision-product character selects a closed one-form before integrating it.
+Phase 1J-B must identify a Deng molecule/cumulant composition and cutting map,
+then state an H-response estimate in the weak collision-flux topology of
+Phases 1E/1F.  A bulk estimate that does not control the logarithmic covector
+does not pass.  Neither subgate may borrow the other's conclusion.
 
 ## References for calibration
 

@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -249,11 +249,58 @@ are not fixed by target contraction alone.  The selected $z^2$ also fails
 both microscopic lifting and independent-product additivity.
 
 The result owners are
-`15-phase1h-hidden-lyapunov-mode-contract.md` and
-`16-phase1h-hidden-lyapunov-mode-results.md`.  The next gate intersects the
-target Lyapunov cone with the Phase 1B collision-product character law and a
-separately declared composition/chain rule.  It must test analytic completion
-rather than merely enumerate more polynomial modes.
+[`15-phase1h-hidden-lyapunov-mode-contract.md`](./15-phase1h-hidden-lyapunov-mode-contract.md)
+and
+[`16-phase1h-hidden-lyapunov-mode-results.md`](./16-phase1h-hidden-lyapunov-mode-results.md).
+Phase 1I has now revised the proposed direct intersection gate: it first
+requires an exact fibre-response ledger and a chart audit.  The collision-
+product selector remains open, but may be applied only after those data have
+been retained.
+
+## 1G. Charted fibre-calculus gate — Phase 1I
+
+Phase 1I takes the Phase 1G section and residual as primitive data.  For
+
+\[
+p=\pi F,
+\qquad
+R_\sigma(F)=\pi U\bigl(F-\sigma_\delta(p)\bigr),
+\]
+
+it evaluates any declared target observable \(\Phi\) by the exact finite
+ledger
+
+\[
+\Phi(\pi UF)-\Phi(p)
+=
+\underbrace{\Phi(B_\delta p)-\Phi(p)}_{\text{target difference}}
++
+\underbrace{\Phi(B_\delta p+R_\sigma(F))-\Phi(B_\delta p)}_{\text{fibre response}}.
+\]
+
+This identity precedes Taylor expansion, A/M jet notation, and any demand for
+a global decoder.  On the frozen reversible witness, quadratic contrast has
+target increment \(-735/16384\), fibre response \(1695/16384\), and exact
+microscopic observed increment \(15/256>0\).  Target monotonicity therefore
+transfers across the adapter only under a separate response budget.
+
+The phase then audits two charts.  Contrast \(z\) diagonalizes the renewed
+target law, while odds \(r=(1+z)/(1-z)\) make the declared product-corner
+composition multiplicative.  Hence the Phase 1H minimum *polynomial* mode is
+minimal only relative to the contrast chart and its grammar.  The classical
+binary H control is reopened afterward as a potential whose differential is
+the log-odds covector; this does not make it dynamically unique.
+
+Naive vector addition of correlation residuals also fails closure on the
+probability fibre.  Phase 1I therefore does not objectify the fibre or raise
+arithmetic rank.  Its contract and result owners are
+[`17-phase1i-charted-fibre-calculus-contract.md`](./17-phase1i-charted-fibre-calculus-contract.md)
+and
+[`18-phase1i-charted-fibre-calculus-results.md`](./18-phase1i-charted-fibre-calculus-results.md).
+The next work is split into two ordered but independent gates: Phase 1J-A
+must build a genuinely collision-derived, order-sensitive finite covector
+fixture; Phase 1J-B must formulate a continuum fibre-response estimate in
+the weak collision-flux topology of Phases 1E/1F.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -627,6 +674,7 @@ Every attempted claim receives one label:
 | 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
 | 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
 | 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
+| 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite process calculus and chart retention before covector selection |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

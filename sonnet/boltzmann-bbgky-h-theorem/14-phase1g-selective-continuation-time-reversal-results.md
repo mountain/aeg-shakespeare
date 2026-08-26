@@ -295,6 +295,13 @@ classical binary relative H is a post-selection positive analytic resummation.
 This addresses Track A only for the renewed target; Track B and transfer to
 hard spheres remain open.
 
+The subsequent
+[Phase 1I charted-fibre result](./18-phase1i-charted-fibre-calculus-results.md)
+returns to this same cut and evaluates its effect on target observables.  It
+shows exactly how the continued residual can outweigh target Lyapunov
+dissipation, so the Phase 1G adaptation defect and the Phase 1H target theorem
+are joined by a finite response ledger rather than by a global decoder.
+
 ## 10. Repository effect
 
 ### Mathematical Core
