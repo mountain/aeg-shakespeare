@@ -305,6 +305,33 @@ objectification and lowering are defined:
 
 Phase 1C provides no rank-raising witness by itself.
 
+### 8.1 A candidate continuation-depth index
+
+The finite result also pressures a third, non-ontological index \(k\):
+continuation or jet depth. At fixed arithmetic rank \(r\) and observer order
+\(s\), the candidate comparison is
+
+\[
+J_{r,s}^{(k,\chi)}:
+X_{r,s+k}
+\rightsquigarrow
+J_\chi^k(X_{r,s}).
+\]
+
+Phase 1C executes only:
+
+- \(k=0\): present one-body marginal;
+- \(k=1\): the A/M first jet determining one next derivative.
+
+No \(k\ge2\) statement is certified. In the continuum hierarchy, applying a
+generator can expose collision-boundary traces rather than a plain marginal,
+so even the displayed \(s+k\) source is only a hypothesis to test.
+
+The full-history cumulant construction in Deng--Hani--Ma is a strong negative
+control against assuming that one fixed finite jet is uniformly adequate for
+long-time comparison. Continuation depth \(k\), observer order \(s\), and
+arithmetic rank \(r\) must therefore remain distinct.
+
 ## 9. Executable certificates
 
 The research module contains 11 exact tests:
