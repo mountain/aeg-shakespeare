@@ -128,7 +128,7 @@ Include the empty object and write
 \[
 \operatorname{Comp}_0=\mathbb N_{>0}^{*},
 \qquad
-\operatorname{Par}=\mathbb N_{>0}^{(\mathbb N_{>0})}.
+\operatorname{Par}=\mathbb N^{(\mathbb N_{>0})}.
 \]
 
 The first is the free noncommutative monoid under concatenation.  The second

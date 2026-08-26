@@ -223,7 +223,7 @@ Include the empty object and define
 \[
 \operatorname{Comp}_0=\mathbb N_{>0}^*,
 \qquad
-\operatorname{Par}=\mathbb N_{>0}^{(\mathbb N_{>0})}.
+\operatorname{Par}=\mathbb N^{(\mathbb N_{>0})}.
 \]
 
 Concatenation makes \(\operatorname{Comp}_0\) free noncommutative; multiset
