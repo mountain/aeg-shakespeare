@@ -149,6 +149,15 @@ This structure cuts across the current map:
   assembly;
 - at V5 it becomes part of the comparison data that lowering must transport.
 
+The Boltzmann--BBGKY finite calibration adds a typed cross-layer refinement.
+Exact continuation equivalence remains the H1 anchor, but different semantic
+layers may instead be connected by a task-relative adapter carrying a state or
+jet map, continuation and result translators, task family, horizon, topology,
+and error budget.  When probability is primitive, its target may be a measured
+task fibration: the macro base, conditional laws within fibres, transverse
+ensemble law, and retained residual are separate data.  This is T0/T1 pressure
+on the transversal, not a third stable axis and not a generic adapter API.
+
 The exact finite Bellman/frontier identity, covariant pendulum family identity,
 task-visible holonomy bound, same-scale mass-pushforward theorem, twisted
 finite-cycle identity, pendulum lift--unit--domain--quotient--decoder chain,
@@ -310,6 +319,13 @@ For a finite deterministic state carrier with a finite step alphabet and a total
 
 This exact finite slice does **not** establish a generic quotient/minimization framework for infinite, nondeterministic, probabilistic, continuous, approximate, or resource-bounded processes.
 
+The Boltzmann--BBGKY Phase 1C result marks the boundary of this node.  A
+one-body marginal is exact for a present-state task but fails a
+next-derivative task; an A/M first jet repairs that one stronger task.  The
+appropriate generalization is therefore a task/horizon/topology/error-relative
+adapter, not a weakening of exact equivalence into an untyped approximate
+relation.  No generic adapter category or probabilistic quotient is promoted.
+
 The local-field Phase 8 calibration adds an exact base-preserving variant.
 Starting from a declared local interface and task output, finite refinement
 computes the coarsest extension stable under the binary lift actions and emits
@@ -453,6 +469,23 @@ coarse-graining alone is not evidence for a new process rank.  The measure,
 cost scale, and any retained holonomy are explicit objectification payloads,
 not intrinsic properties silently created by the quotient.
 
+The measured-fibration synthesis sharpens the same boundary.  A thermodynamic
+macro-object may need to retain an interface
+
+\[
+(b,F_b,\nu_b,\text{couplings},\text{response},\text{residual})
+\]
+
+rather than only one base point \(b\).  Microcanonical, canonical, and
+grand-canonical descriptions can correspond respectively to selecting a
+fibre, reweighting fibres, or enlarging the total space.  None is a dynamic
+closure, and equivalence of ensembles is only task- and limit-relative under
+declared concentration/convexity hypotheses.  Such a measured interface is
+still not objectified until its interaction/response semantics are
+continuation-stable and it gains new free composition plus all-composite
+lowering.  Likewise, an exact tower of asymptotic quotients may retain higher
+order residuals without raising arithmetic rank.
+
 The p-adic continuation-fibre audit supplies a second V2 boundary.  Its finite
 stable quotient has exact composition under already admitted bit words, but
 the fibres are nonuniform, transport is partial and many-to-one, and no new
@@ -473,7 +506,8 @@ and bounded response languages do not supply a task-independent cogenerator,
 cofree universal property, or global biduality.
 
 **Maturity:** two concrete AEG rank-objectification calibrations plus exact
-finite thermodynamic and continuation-fibre boundaries/red teams; generic V2
+finite thermodynamic, continuation-fibre, and semantic-adapter boundaries;
+measured and filtered fibre interfaces remain T0/T1 synthesis.  Generic V2
 theory remains a research program and has no Experimental/Public abstraction.
 
 ### V3 — Higher-rank free composition
@@ -669,6 +703,17 @@ First, it is the current **model organism** for Process Geometry:
 
 Second, a stronger conjecture asks whether arithmetic-generated geometries provide universal covers or standard models for a much broader class of process geometries.
 
+A nontrivial working formulation would require more than encoding arbitrary
+data into integers.  For an independently specified class of process
+geometries, the arithmetic tower would have to provide a free or otherwise
+universal presentation language from which the target structures arise by
+typed subobjects, quotients, fibrations, completions, or gluing, while
+preserving declared continuation, measure, residual, and lowering semantics.
+It would also need an effective calculus: compilation and decoding algorithms,
+certificates, failure modes, and complexity bounds.  A construction that hides
+the original structure wholesale in relations, residuals, or a decoder is a
+Gödel-style encoding control, not evidence for the conjecture.
+
 That second claim is **not** part of the definition of Process Geometry and is not assumed by the software.
 
 ```text
@@ -812,6 +857,17 @@ The next high-value questions are therefore:
     product formula form a certified restricted-product carrier with explicit
     frame-image, topology, solver-closure, and lowering semantics before an
     adelic abstraction is proposed?
+18. which task-relative semantic adapters compose, and how do their horizons,
+    topologies, error budgets, residuals, and closure sections transform?
+19. when does a macro-observable admit a useful measured task fibration whose
+    conditional fibre laws and transverse ensemble law are computationally
+    accessible rather than merely existential?
+20. can a filtered tower of continuation-stable asymptotic quotients capture
+    correlations or closure defects without confusing jet depth, observer
+    order, and arithmetic rank?
+21. is there a nontrivial universality theorem for an effectively calculable
+    arithmetic presentation class that survives the relation/residual/decoder
+    encoding red team?
 
 These are research questions, not a backlog of API classes to create.
 
