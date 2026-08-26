@@ -1,13 +1,15 @@
 # Phase 7 task contract — binary action normal form and transfer audit
 
-**Status:** frozen before Phase 7 execution; research active; no structural
-selector law, compressed controller, transfer result, or API claim is made by
-this contract.
+**Status:** frozen before Phase 7 execution and now discharged without
+amendment by
+[the Phase 7 result](10-phase7-binary-action-normal-form-transfer-results.md).
+This file remains the pre-result audit contract rather than being rewritten as
+evidence.
 
-**Executable owner to be created:**
+**Executable owner:**
 `tests/research/test_padic_selector_structural_law.py`.
 
-**Result owner to be created after execution:**
+**Result owner:**
 `10-phase7-binary-action-normal-form-transfer-results.md`.
 
 ## 1. Purpose
