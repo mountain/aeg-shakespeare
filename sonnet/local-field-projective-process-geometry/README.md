@@ -1,17 +1,27 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--11 complete for their
-declared finite tasks.  Phase 9 constructs a finite task-independent marked
-rational projective history carrier with compatible real and p-adic place
-shadows.  Phase 10 proves exact rank-one projective incidence duality and
-ordered-frame reconstruction, while showing that bare local points and
-projective self-duality do not supply a reversible solver carrier or a new
-dimension.  Phase 11 places Archimedean cofinality in ordered observer
-semantics and opens an exact finite state--predicate duality, while keeping
-logical variance, projective incidence, and change of place distinct.  No
-infinite Stone/cofree-observer theorem, Bruhat--Tits completion, adelic theorem, task-free
-selector optimum, preferred \(p\)-adic continued fraction, entropy-rate
-theorem, or Experimental/Public API proposal.
+**Status:** research-local calibration; Phases 0--11 are complete for their
+declared finite tasks, and the bounded Phase 12A--12C slices are now complete.
+Phase 10 proves exact rank-one projective incidence duality and
+ordered-frame reconstruction.  Phase 11 places Archimedean cofinality in
+ordered observer semantics and opens exact finite state--predicate duality.
+Phase 12A proves that ordinary addition and finite-part extraction do not
+strictly descend after their frame or chart is forgotten; retaining typed
+fibres and bounded jets repairs their declared transport.  Phase 12B supplies
+the positive complement: composition abelianizes to the free commutative
+partition monoid, whose nontrivial weight fibres compose and lower exactly.
+The Rogers--Ramanujan continued fraction is a depth-dependent projective bridge
+back through two-component series, residue products, and restricted fibre
+counts.  Phase 12C proves that strong compositional objectification gives a
+finite change-action skeleton, while response existence, regular cocycle,
+task adequacy, fibred residual, and effective compression remain separate
+obligations.  The remaining locale, sobriety, basis, cofree-behaviour, coupled
+observer, and place-indexed workloads are unexecuted.  No generic
+semantic-fibration, fibred-objectification, AM regularization, modular
+transport, partition-correspondence, or fibred-calculus theorem, vertical
+process rank, Bruhat--Tits completion, adelic theorem, task-free selector
+optimum, preferred \(p\)-adic continued fraction, entropy-rate theorem, or
+Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -104,7 +114,30 @@ Read in order:
     proves the finite logical duality and quotient/predicate correspondence,
     executes the real/p-adic observer and product-formula controls, and keeps
     bounded behavior below a cofree or vertical-objectification theorem;
-20. the ten completed-phase research modules are seconds-scale executable
+20. [19-phase12-locale-observer-history-behavior-task-contract.md](19-phase12-locale-observer-history-behavior-task-contract.md)
+    freezes a variance- and semantic-fibration-first audit of locale observers,
+    full and adapted behaviours, fibre transports, closure, place-indexed
+    realizations, and graded objectification;
+21. [20-phase12-locale-observer-history-behavior-results.md](20-phase12-locale-observer-history-behavior-results.md)
+    executes the bounded Phase 12A chart-forgetting calibration, proves two
+    strict-descent obstructions, derives finite-jet transport and the Bernoulli
+    exponential-chart family, and records composition failures;
+22. [21-phase12b-partition-fibres-rogers-ramanujan-task-contract.md](21-phase12b-partition-fibres-rogers-ramanujan-task-contract.md)
+    freezes the nonhomogeneous projective recursion, partition quotient,
+    free-commutative composition, observer, restricted-fibre, and
+    presentation-strength gates before execution;
+23. [22-phase12b-partition-fibres-rogers-ramanujan-results.md](22-phase12b-partition-fibres-rogers-ramanujan-results.md)
+    proves exact abelianization and weight lowering, earns the qualified
+    fibred task-exact objectification grade, and bounds the
+    Rogers--Ramanujan bridge below structured correspondence;
+24. [23-phase12c-objectification-fibred-change-calculus-task-contract.md](23-phase12c-objectification-fibred-change-calculus-task-contract.md)
+    freezes the action-skeleton, response-fibre, regularity, descent,
+    compression, A/M, partition, and nonautomaticity gates before execution;
+25. [24-phase12c-objectification-fibred-change-calculus-results.md](24-phase12c-objectification-fibred-change-calculus-results.md)
+    proves the automatic objectification-to-action implication, executes
+    additive/max/union response controls, and separates response existence,
+    regularity, adequacy, and effectivity;
+26. the completed-phase research modules are seconds-scale executable
     arguments; the longer Phase 8 stable-quotient census remains a bounded
     research regression.
 
@@ -409,6 +442,85 @@ law.  Bounded response languages separate the frozen states, but no infinite
 cofree observer, coherent global bidual, adelic carrier, or new vertical rank
 is obtained.
 
+## Phase 12A strict-descent and finite-part result
+
+Phase 12A supplies the first bounded execution of the frozen Phase 12 contract.
+Ordinary addition cannot be both an extension of affine addition and a strictly
+\(PGL_2\)-equivariant operation after the projective frame is forgotten.  The
+two exact lifts
+
+\[
+0+1=1,\quad g_0(z)=1/z,
+\qquad
+1+2=3,\quad g_1(z)=1/(z-1)
+\]
+
+would assign the same unmarked input \((\infty,1)\) the incompatible outputs
+\(1\) and \(1/2\).  The correctly typed operation is instead frame-indexed
+and satisfies
+
+\[
+g(x\boxplus_F y)=gx\boxplus_{gF}gy.
+\]
+
+The regularization control has the same strict-descent shape.  For
+\(G(q)=q/(1-q)^2\), the chart \(u=1-q\) gives finite part \(0\), while
+\(q=e^{-t}\) gives finite part \(-1/12\).  A pole of order \(r\) needs only
+its principal coefficients and the \((r+1)\)-jet of the chart transition to
+transport the finite part exactly.  The exponential chart family yields
+
+\[
+\operatorname{FP}_{t}\sum_{n\geq1}n^m e^{-nt}
+=(-1)^m\frac{B_{m+1}}{m+1}.
+\]
+
+This is a charted finite-part statement, not ordinary summation equality or a
+new proof of zeta continuation.  Fixed-contract finite parts are linear, but
+multiplication, differentiation, nonlinear chart forgetting, and
+filter/grouping interchange fail.  The slice therefore supports a filtered
+semantic fibration as an exact finite model while leaving vertical
+objectification and every full Phase 12 gate open.
+
+## Phase 12B partition-fibre and projective-shadow result
+
+Phase 12B supplies the compositional positive control missing from Phase 12A.
+Ordered compositions abelianize to partitions, and total weight lowers every
+multiset-union composite exactly.  The nontrivial fibre
+\(\operatorname{Par}(n)\) retains shape, while \(p(n)\) records only fibre
+cardinality.  This earns fibred task-exact objectification for the declared
+weight/union task without recovering order or creating a new process rank.
+
+The Rogers--Ramanujan bridge returns from a depth-dependent projective
+recursion through two-component series, residue products, and restricted
+partition counts.  Coefficient equality does not transport native
+composition: the residue-side families are submonoids, while the
+difference-at-least-two families are not closed under multiset union.
+
+## Phase 12C objectification and fibred-change result
+
+Phase 12C begins with monoid actions rather than additive tangent data.  If an
+objectified higher semantic monoid lowers compositionally to endomorphisms of
+a lower carrier, that carrier automatically acquires a change action.  For an
+observer \(f:X\to Y\), however, the response fibre
+
+\[
+\mathcal D_f(x,p)
+=\{r:f(x\triangleleft p)=f(x)\blacktriangleleft r\}
+\]
+
+may be empty, nonunique, or admit endpoint-reconstructing sections that fail
+the cocycle law.  Response existence, regularity, future adequacy, and
+effective compression are therefore not automatic consequences of
+objectification.
+
+The exact controls use multiplicative A/M scale response and partition
+weight, length, maximum, support, and Boolean observers.  Max and union show
+that the native response law need not be additive; their nonfree actions make
+the derivative a genuine fibre at stationary endpoints.  Trivial response
+language, full endomorphism response, projective-frame forgetting,
+Rogers--Ramanujan closure failure, and nonassociative exponentiation bound the
+claim.  No smooth V5 closure or generic calculus is obtained.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -490,3 +602,33 @@ product-formula layers remain separately typed.  Since only bounded behavior
 and finite Boolean biduality are proved, no cofree universal object, global
 bidual return, new cogenerator, vertical objectification, or API promotion
 follows.
+
+Phase 12A **refines and red-teams** strict rank lowering.  Projective-frame and
+singular-chart forgetting each identify lifts on which the requested task has
+different exact outputs, so neither task factors through the unmarked base.
+Retaining a frame or a bounded principal jet repairs transport, while the
+multiplication, differentiation, and grouping failures block a global
+arithmetic interpretation.  This supports only a research-local filtered
+semantic-fibration model; it proves no generic fibration theorem, new free
+composition, all-composite lowering, vertical rank, or API promotion.
+
+Phase 12B **supplies the compositional positive control**.  Ordered
+compositions abelianize exactly to partitions, and total weight lowers the free
+commutative multiset union on every composite.  The residual fibre
+\(\operatorname{Par}(n)\) retains shape while \(p(n)\) records only its
+cardinality.  This earns fibred task-exact objectification for the declared
+weight/union task, but not source reconstruction or a new vertical rank.  The
+Rogers--Ramanujan return then separates scalar and coefficient equality from a
+uniform partition bijection or structured transport: the residue families are
+native submonoids, whereas the difference-at-least-two families are not closed
+under multiset union.  The Mathematical Core, Engineering Architecture,
+Theory Map maturity, and API remain unchanged.
+
+Phase 12C **refines the V4/V5 boundary**.  All-composite lowering gives a
+change-action skeleton exactly, but an observer calculus additionally needs a
+declared codomain action, nonempty response fibres, a regular section or
+set-valued residual, future adequacy, and an effective evaluator/cost
+contract.  A/M scale and partition responses provide bounded positive
+controls; empty fibres, nonfree stabilizers, tautological endomorphisms,
+missing native closure, and nonassociativity prevent automatic promotion to a
+smooth, effective, generic, or Public calculus.

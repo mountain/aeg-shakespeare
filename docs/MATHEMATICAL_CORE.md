@@ -54,8 +54,8 @@ primitive process and literal histories
     -> declared continuation task
     -> history unfolding / task-sufficient lift
     -> transported clock, resource, unit, or residual
-    -> stopping section or task quotient
-    -> quotient carrier and retained decoder data
+    -> stopping section, exact quotient, or task-relative adapter
+    -> task carrier, fibre data, retained residual, and decoder
     -> topology / complexity / analysis when justified
     -> possible objectification and higher-rank composition
 ```
@@ -94,6 +94,49 @@ preserves: every declared future observation
 forgets: distinctions no declared continuation can expose
 decoder: exists only for information deliberately retained outside the quotient
 ```
+
+#### 1.1.1 Exact equivalence and semantic adaptation
+
+Exact future equivalence is the strongest present anchor, not the only legal
+comparison between semantic layers.  When source and target have different
+states or continuation interfaces, record a task-relative adapter rather than
+calling the layers equivalent.  A problem-local adapter has the shape
+
+\[
+\mathfrak A_{\ell\to m}
+=
+(a,\kappa,\eta,\mathcal Q,T,\varepsilon),
+\]
+
+where \(a\) maps source states, germs, or jets to a target presentation,
+\(\kappa_x\) translates declared target continuations back to admissible source
+continuations, \(\eta_q\) translates results, \(\mathcal Q\) is the task
+family, \(T\) is the continuation horizon, and \(\varepsilon_q\) is an error
+budget in a declared topology or divergence.  Its adequacy condition is
+schematically
+
+\[
+d_q\!\left(
+q_m(a(x)\cdot k),
+\eta_q\bigl(q_\ell(x\cdot\kappa_x(k))\bigr)
+\right)
+\leq \varepsilon_q
+\]
+
+for the declared \(x,k,q\).  This does not require \(a\) to be invertible or a
+global semiconjugacy.  The exact task quotient above is a special exact mode:
+all declared continuations are tested, the budget is zero, and the quotient
+fibres are precisely the continuation-equivalence classes.  A task-exact but
+forgetful adapter is still not semantic equivalence, and an approximate
+adapter need not induce an equivalence relation at all.
+
+The finite Boltzmann--BBGKY calibration supplies the first explicit red team.
+Two strictly positive two-body laws have the same one-body marginal but
+different next derivatives.  Marginalization is therefore exact for the
+present-state task and inadequate for the next-derivative task; adjoining the
+A/M first jet repairs exactly that stronger task without reconstructing the
+source future.  Thus adequacy must always name the task, horizon, topology,
+error mode, and reconstruction boundary.
 
 ### 1.2 Three different lifts
 
@@ -154,6 +197,63 @@ where \(\tau_h\) transports the second contribution into the frame reached by
 \(h\).  Ordinary additive cost has \(\odot=+\) and trivial transport; holonomy,
 moving units, peak cost, and phase require different laws.  This equation is a
 common shape, not yet a single promoted mother object.
+
+#### 1.3.1 Measured task fibres and ensembles
+
+When the primitive state already carries probability, a task presentation is
+not adequately described by its base points alone.  In a finite setting, or a
+standard Borel setting with a declared disintegration, write
+
+\[
+J:\Gamma\longrightarrow B,
+\qquad
+F_b=J^{-1}(b),
+\]
+
+and distinguish four pieces of measure data:
+
+- a reference measure \(\lambda\) on \(\Gamma\);
+- a normalized or unnormalized weight relative to \(\lambda\);
+- a transverse law \(\rho=J_*\mathbb P\) on the task base \(B\);
+- conditional laws \(\nu_b\), supported on \(F_b\), such that
+
+\[
+\mathbb P(A)=\int_B \nu_b(A)\,\rho(db).
+\]
+
+The phrase *measured task fibration* is provisional language for this map plus
+its conditional and transverse laws; it does not assert a Hurewicz or Serre
+fibration.  Outside finite or suitable measurable spaces, existence and
+uniqueness of a disintegration are additional hypotheses.  Changing
+\(\lambda\), a density, \(\rho\), or \(\nu_b\) are different operations, and a
+logarithm may be taken only of a dimensionless ratio such as a
+Radon--Nikodym derivative relative to a declared reference.
+
+Classical ensembles fit this ledger.  For an energy observable
+\(E:\Gamma\to\mathbb R\), a microcanonical law selects one energy fibre (or a
+declared thin shell).  A canonical law keeps the same energy map but mixes its
+fibres with
+
+\[
+\rho_\beta(dE)
+=
+Z_\beta^{-1}e^{-\beta E}\,\Omega(dE),
+\qquad
+\Omega=E_*\lambda,
+\]
+
+along with the conditional law on each fibre.  A grand-canonical model may
+instead enlarge the total space to \(\bigsqcup_N\Gamma_N\) and weight the base
+\((N,E)\) by \(e^{-\beta(E-\mu_{\mathrm{chem}}N)}\) relative to its declared
+reference measure.  Some ensemble changes therefore alter only transverse
+weights; others alter the total space, base, or fibre map.
+
+An ensemble is not automatically a dynamic closure.  A section or conditional
+kernel choosing source information over each macrostate is a separate datum,
+as are concentration, large-deviation, or thermodynamic-limit claims.
+Equivalence of ensembles can only be asserted relative to a task and limiting
+regime with its hypotheses; phase coexistence, nonconcavity, long-range
+interaction, and lack of concentration are mandatory red teams.
 
 ### 1.4 Unit one as a local frame
 
@@ -253,6 +353,65 @@ does not imply that the hidden fibre over each base point grows: a refined
 interface may move information from the conditional residual into the base.
 Total task-state information and base-relative residual information are
 different ledgers.
+
+#### 1.5.1 Filtered fibres and asymptotic adequacy
+
+An approximation may become an exact point only after its order has been made
+part of the carrier.  For scale-indexed source families \(x_\epsilon\) and a
+declared task metric, one possible filtration is
+
+\[
+x_\epsilon\sim_k y_\epsilon
+\quad\Longleftrightarrow\quad
+d_q\bigl(q(x_\epsilon c),q(y_\epsilon c)\bigr)
+=o(\epsilon^k)
+\]
+
+for every declared task \(q\) and continuation \(c\) in the frozen horizon.
+When these relations are well defined and continuation-stable, they give exact
+quotient maps
+
+\[
+\cdots\longrightarrow
+X/{\sim_{k+1}}
+\longrightarrow
+X/{\sim_k}.
+\]
+
+The lower-resolution object is then an exact projection of a richer fibre
+tower; coefficients, cumulants, correlations, recollision data, or other
+defects may live in the successive fibres.  This is a way to *represent*
+asymptotic adaptation exactly, not a theorem that every approximation has a
+canonical jet tower.  Ordinary power jets miss nonperturbative scales such as
+\(e^{-1/\epsilon}\); singular limits may require a different asymptotic scale,
+large-deviation rate, stratification, or boundary layer.
+
+Neither a measured fibre nor a filtered residual is automatically a new
+arithmetic rank.  The objectification gate remains:
+
+```text
+task-relative fibre / adapter
+    -> continuation-stable interaction and response interface
+    -> reusable primitive
+    -> genuinely new free composition
+    -> compositional lowering with residuals
+```
+
+The reusable primitive need not be a bare point.  A candidate may carry a
+typed interface such as
+
+\[
+\mathcal O_b
+=
+(b,F_b,\nu_b,\text{admissible couplings},
+  \text{response},\text{residual}),
+\]
+
+provided each field has operational semantics.  Objectification freezes the
+lower object’s stable interaction/response interface; it does not assert that
+all microscopic content has disappeared.  Without new composition and
+all-composite lowering, this remains horizontal semantic completion rather
+than vertical rank raising.
 
 ### 1.6 Continuous volume, discrete shells, and finite memory are different laws
 
@@ -809,7 +968,9 @@ Addition/Multiplication presentation is required or canonical.
 - exact finite state--predicate contravariance, structure-preserving point
   recovery, task-quotient/fibre-constant-predicate correspondence, bounded A/M
   behavior tables, finite real/p-adic observer separation, and rational
-  product-formula certificates on the declared Phase 11 domains.
+  product-formula certificates on the declared Phase 11 domains;
+- the exact finite Boltzmann--BBGKY adapter ladder: present-marginal adequacy,
+  next-derivative failure, and A/M first-jet repair for that declared task.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -823,7 +984,11 @@ Addition/Multiplication presentation is required or canonical.
 - projective matrix evaluation and lattice orbits as a second problem-local
   model of payload between literal history and task quotient;
 - the finite Bruhat--Tits ball as observer geometry rather than a generic
-  history, cover, or coding object.
+  history, cover, or coding object;
+- measured task fibrations as a candidate ledger joining macro-observation,
+  conditional fibre laws, transverse ensemble laws, and retained residuals;
+- filtered fibre towers as a candidate exact carrier for task-relative
+  asymptotic adaptation.
 
 ### 5.3 Open
 
@@ -853,6 +1018,15 @@ Addition/Multiplication presentation is required or canonical.
 - a theorem deciding when a nontrivial continuation-value fibre is only a
   horizontal task-state lift and when it objectifies into a higher-rank
   compositional process;
+- a general semantic-adapter category with compositional task, horizon,
+  topology, error, and reconstruction laws;
+- a general existence, uniqueness, and covariance theorem for measured task
+  disintegrations beyond the finite/standard-Borel hypotheses declared above;
+- a task-relative theorem of ensemble equivalence, including concentration,
+  phase-transition, nonconcavity, and long-range red teams;
+- a theorem deciding when a measured or filtered fibre interface becomes a
+  reusable object with genuinely new free composition and all-composite
+  lowering;
 - generic-energy global pendulum reconstruction through all branch and
   degeneration boundaries;
 - any theorem making the Bolza construction canonical or universal;
@@ -903,6 +1077,17 @@ unless it proves a replacement theorem.
     missing discriminator may repair observer loss without objectifying.
 19. Finite Stone recovery or a bounded response language is not an infinite
     cofree observer, global biduality, or new process rank.
+20. A task-exact adapter is not automatically an invertible semantic
+    equivalence, and an approximate adapter need not define equivalence
+    classes.
+21. A probability law, its density relative to a reference measure, its base
+    pushforward, and its conditional fibre laws are different data.
+22. A microcanonical fibre, canonical mixture, and grand-canonical enlargement
+    are not one ensemble under a silent change of notation.
+23. Ensemble equivalence is not an exact identity without a declared task,
+    limiting regime, and concentration or convexity hypotheses.
+24. A higher-order asymptotic fibre is not a higher arithmetic rank without a
+    new composition law and compositional lowering.
 
 ---
 
@@ -964,6 +1149,16 @@ lift
   -> task-visible carrier
   -> analytic or complexity structure when justified
 ```
+
+The Boltzmann--BBGKY calibration adds an adjacent adaptation layer to this
+chain.  Exact continuation equivalence remains the H1 anchor, while a
+cross-layer adapter declares only the tasks, translated continuations,
+horizon, topology, and error it preserves.  When probability is primitive,
+the carrier may be a measured task fibration whose base, conditional fibre
+laws, transverse ensemble law, and residual remain separately typed.  These
+structures refine the route toward V2 but do not themselves objectify: stable
+interaction/response semantics, new free composition, and compositional
+lowering are still required.
 
 The pendulum supplies the first end-to-end continuous calibration of this
 order. The local-field projective line supplies an independent finite discrete

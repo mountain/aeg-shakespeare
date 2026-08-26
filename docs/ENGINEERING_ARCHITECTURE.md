@@ -131,6 +131,46 @@ bounded continuation signatures, exact finite task quotients, and numerical
 agreement provide different strengths of evidence and must not share one
 unqualified “equivalent” flag.
 
+#### 2.2.1 Cross-layer semantic adapters
+
+When source and target have different states or continuation interfaces, use a
+problem-local adapter contract instead of an unqualified equivalence claim.
+Record at least:
+
+| field | required decision |
+| --- | --- |
+| source and target layers | state/history carrier, evolution law, observer family |
+| state/germ/jet map | what representation is actually transported |
+| continuation translator | which target continuations have source realizations |
+| result translator | how source and target observations are compared |
+| task family and horizon | which questions and how much future are covered |
+| topology/divergence and budget | exact equality, norm bound, weak comparison, probability bound, or other declared mode |
+| residual and decoder | which stronger task separates forgotten source data and whether it can be reconstructed |
+| closure/section | any additional choice that makes the target dynamics autonomous |
+
+Report adequacy by grade—same-layer coordinate exact, task exact, task
+approximate, or interpretive only.  Passing one grade for one task does not
+promote the adapter to full-future equivalence.  In particular, observation,
+jet augmentation, a closure section, and a limiting theorem are separate
+arrows and need separate certificates.
+
+If probability or a thermodynamic ensemble participates, add a measure
+contract:
+
+```text
+reference measure and units
+    -> normalized/unnormalized source law
+    -> task/base pushforward
+    -> conditional laws on task fibres
+    -> ensemble parameter and transverse weights
+    -> sampling/integration algorithm and certificate
+```
+
+Do not store all of these under one `measure` or `probability` field.  A change
+of ensemble may change only transverse weights, or it may change the total
+space and fibre map.  A closure kernel is not implied by either case.  This is
+an engineering checklist for research-local adapters, not a new generic API.
+
 ### 2.3 Units and nondimensionalization
 
 Normalize early enough that search, tolerance, and cost are meaningful, while
@@ -468,6 +508,22 @@ estimates, stopping rules, and independent limiting or conservation checks.
 
 A visible transition graph does not make a process Markovian.  Retain enough
 history or a certified sufficient statistic before applying Markov algorithms.
+
+For fibre-conditioned or ensemble calculations, also record:
+
+- the measurable carrier and reference measure;
+- normalization and dimensionless density conventions;
+- the macro/task map and base pushforward law;
+- whether conditional fibre laws are exact, analytically disintegrated,
+  sampled, or approximated;
+- ensemble parameters, support changes, and singular regimes;
+- effective sample size, conditioning error, rare-event coverage, and any
+  large-deviation or concentration certificate;
+- the observable/task topology in which two ensembles or layers are compared.
+
+Never infer ensemble equivalence from matching means or a visually concentrated
+histogram.  Phase coexistence, multimodality, long-range dependence, support
+mismatch, and noncommuting limits are required failure cases when applicable.
 
 ### 4.9 Preferred hybrid pattern for physical problems
 
