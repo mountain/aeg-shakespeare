@@ -31,7 +31,7 @@ solved and reconstructed.
 
 Phase 10 therefore asks:
 
-> Which precise duality is present, what does the marked unit (1) become at
+> Which precise duality is present, what does the marked unit \(1\) become at
 > the real and p-adic places, and at which information level does the
 > arithmetic--geometry--arithmetic round trip actually close?
 

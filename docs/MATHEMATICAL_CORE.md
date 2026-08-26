@@ -190,6 +190,34 @@ cost functional            orders or compares them for a declared task
 Consequently a period lattice does not choose a scalar history cost, and a
 unit choice does not create a fundamental domain.
 
+#### 1.4.1 Projective unit frame
+
+The local-field calibration gives a distinct but compatible meaning of unit
+one.  The projective line has no distinguished numeral \(1\).  Marking
+\(0\) and \(\infty\) chooses an affine chart but leaves the dilation freedom
+\(z\mapsto kz\); the third mark \(1\) fixes that scale.  Thus
+
+\[
+(0,1,\infty)
+\]
+
+is an ordered projective frame.  Under \(g\in PGL_2\), the marked unit is
+transported to \(g(1)\).  Resetting it to the coordinate \(1\) is an additional
+frame normalization, not an invariant action of projective geometry.
+
+This projective unit mark, the process operation \(T_1:z\mapsto z+1\), and a
+metric or cost unit are different data.  For example,
+
+\[
+d_{\mathbb H}(iy,1+iy)=2\operatorname{arsinh}\frac1{2y},
+\]
+
+so the affine difference \(1\) does not select a hyperbolic length without a
+base horocycle and curvature ruler.  At every odd p-adic place,
+\(T_1\in PGL_2(\mathbb Z_p)\) fixes the standard lattice root while moving
+boundary contact \(0\) to \(1\).  A bare local point therefore cannot decode
+the unit process; the marked boundary/frame data may remain necessary.
+
 ### 1.5 Stopping sections, fundamental domains, and task residuals
 
 A stopping rule selects a frontier or section \(\Sigma_Q\) in lifted history.
@@ -623,6 +651,59 @@ objectification.  Stable transport is necessary for objectification but is not
 sufficient without task-independent semantics, new free composition, and
 compositional lowering.
 
+The Phase 9/10 reconstruction audit moves one layer upstream.  A marked
+rational projective history lowers to a rational matrix and the ordered frame
+
+\[
+(g(0),g(1),g(\infty)).
+\]
+
+The frame determines \([g]\in PGL_2(\mathbb Q)\) exactly, while the real
+base-point shadow and p-adic lattice-vertex shadows have nontrivial stabilizer
+fibres.  The minimal exact red teams are
+
+\[
+I(i)=W(i)=i,
+\]
+
+and
+
+\[
+[T_1\mathbb Z_p^2]=[\mathbb Z_p^2],
+\qquad T_1(0)=1.
+\]
+
+Thus a local geometric point is an evaluation quotient, not a projective or
+literal-history decoder.  On the rational frame image, ordered-frame decoding
+followed by constructive Borel/Weyl factorization gives a canonical semantic
+lowering.  It does not recover the original literal word, and an arbitrary
+local geometric result requires a rational-image or approximation certificate
+before lowering.
+
+This separation is topological as well as metric.  The real place carries an
+Archimedean connected topology, while the p-adic ultrametric has clopen balls
+that are pairwise disjoint or nested and is totally disconnected.  The finite
+projective cylinders and lattice-tree paths execute bounded shadows of that
+nested topology.  The shared rational carrier precedes either completion; it
+does not identify their local topologies.  No current result constructs the
+full infinite Bruhat--Tits boundary or an adelic product topology.
+
+The same audit separates categorical duality from the projective
+contragredient.  A genuine contravariant equivalence sends an initial object
+to a terminal object and products to coproducts; it preserves a universal
+property only in dual form.  Rank-one projective incidence obeys
+
+\[
+Jg=(\det g)g^{-T}J,
+\qquad
+J=\begin{pmatrix}0&-1\\1&0\end{pmatrix},
+\]
+
+so the dual action is projectively conjugate to the original action after a
+declared point--covector identification.  This exact self-duality is a
+presentation comparison, not a new process dimension or a proof that the
+history/place/task chain is one dual equivalence.
+
 ---
 
 ## 4. Translation table
@@ -643,6 +724,8 @@ compositional lowering.
 | Bolza quotient | product-sign quotient after an additional metric sheet |
 | \(G_n=M(a_0)\cdots M(a_n)\) | composable projective evaluation payload of a literal digit prefix |
 | \([G_n\mathbb Z_p^2]\) | payload evaluated at the standard local-field lattice frame |
+| \((g(0),g(1),g(\infty))\) | ordered unit frame; exact decoder of rational projective matrix semantics |
+| \(g\mapsto g^{-T}\) | contragredient action on the dual projective line, not the Weyl element alone |
 | \(\alpha_{n+1}\) | continuation residual in the exact projective decoder |
 | \(\mathbb P^1(\mathbb Z/p^d\mathbb Z)\) | fixed-resolution projective-cylinder task frontier |
 | \(|B_d|-|B_{d-1}|=|S_d|\) | exact discrete shell-increment calibration |
@@ -683,6 +766,11 @@ Addition/Multiplication presentation is required or canonical.
 - the exact coarsest stable finite continuation extensions, distinguishing
   suffixes, interface-refinement monotonicity, fibre bounds, and
   noninvertible-transport census for the declared p-adic workloads.
+- exact finite marked rational history-to-place comparison squares and task
+  refinement triangles for the Phase 9 workload;
+- exact rank-one projective incidence duality, ordered rational-frame
+  reconstruction, real/p-adic stabilizer counterexamples, and constructive
+  semantic lowering on the declared Phase 10 rational image.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -715,6 +803,10 @@ Addition/Multiplication presentation is required or canonical.
   or policy-compression theorem beyond the executed finite rational workloads;
 - a general or task-independent characterization of the minimal continuation
   residual beyond the executed finite p-adic stable quotients;
+- a category and genuine dual equivalence, if any, relating free marked
+  histories to cofree observers or decoders;
+- a theorem guaranteeing that real or p-adic geometric solver outputs remain
+  in, or return with controlled error to, one common rational lowering image;
 - a theorem deciding when a nontrivial continuation-value fibre is only a
   horizontal task-state lift and when it objectifies into a higher-rank
   compositional process;
@@ -753,6 +845,13 @@ unless it proves a replacement theorem.
 12. A nonzero finite residual and well-defined partial action transport do not
     by themselves supply a uniform geometric dimension, covering, groupoid, or
     vertical process-rank objectification.
+13. A universal property transported by a contravariant duality changes
+    variance: initial/free and terminal/cofree roles must not be identified.
+14. A bare hyperbolic point or p-adic lattice vertex is not a decoder for its
+    stabilizer fibre; ordered-frame reconstruction is a separate construction.
+15. A projective matrix or canonical Borel/Weyl lowering does not reconstruct
+    the literal history, and a local solver output cannot be lowered exactly
+    without a rational-image certificate.
 
 ---
 
@@ -832,7 +931,13 @@ real hyperbolic/Farey and p-adic lattice-tree evaluations commute with rational
 matrix lowering, and depth/decoder tasks descend by explicit comparison maps.
 This explains part of the earlier terminal, invalid, and many-to-one behavior
 as place/stopping projection while preserving the same-task continuation
-residual. Together the calibrations refine the emerging transversal and add an
+residual. Phase 10 audits the reverse direction: the ordered projective unit
+frame reconstructs rational matrix semantics exactly, whereas real points and
+p-adic vertices retain stabilizer fibres and arbitrary local results need a
+rational-image certificate before lowering. Its exact contragredient identity
+also shows that rank-one projective self-duality is a marked presentation
+comparison, not a categorical duality of the full chain or a new dimension.
+Together the calibrations refine the emerging transversal and add an
 objectification obstruction without selecting a generic cross-domain carrier,
 identifying the local shadows, or producing a new process rank.
 `THEORY_MAP.md` should record that position and maturity; it should not replace
@@ -857,6 +962,7 @@ the equations and boundaries recorded here.
 - `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
 - `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
+- `sonnet/local-field-projective-process-geometry/16-phase10-projective-duality-unit-roundtrip-results.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
@@ -865,3 +971,4 @@ the equations and boundaries recorded here.
 - `tests/research/test_padic_selector_structural_law.py`
 - `tests/research/test_padic_continuation_value_fiber.py`
 - `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
+- `tests/research/test_projective_duality_unit_roundtrip.py`

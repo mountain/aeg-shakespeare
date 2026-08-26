@@ -579,6 +579,26 @@ unit, terminal semantics, and decoder. Changing probabilities while holding
 geometry fixed is a required red team for any allegedly geometry-selected
 code.
 
+### D16 — Local geometric results need a lowering-image certificate
+
+Do not treat a result in a hyperbolic space, lattice tree, boundary, or other
+local geometry as automatically reconstructible in the upstream arithmetic
+presentation.  State the reconstruction target separately:
+
+```text
+local point / coset representative
+ordered frame / group semantics
+canonical semantic lowering
+literal history and cost
+```
+
+Exact lowering requires membership in the declared rational or symbolic image
+and a decoder for that level.  A result outside the image must return an
+explicit outside-domain or certified-approximation outcome.  Stabilizer-fibre
+collisions such as \(I(i)=W(i)\) and
+\([T_1\mathbb Z_p^2]=[\mathbb Z_p^2]\) are mandatory red teams for any
+bare-point decoder.
+
 ---
 
 ## 6. Reference implementation paths
@@ -618,6 +638,7 @@ history--evaluation--task--decoder path.
 | Primitive model | rational A/M/inversion prefixes and projective residue refinement | exact `Fraction` histories and two-chart normal forms |
 | Units/frame | standard lattice \(\mathbb Z_p^2\), normalized \(v_p(p)=1\) | base vertex plus one-edge refinement ruler |
 | Evaluation payload | \(G_n=M(a_0)\cdots M(a_n)\) | exact chronological matrix product |
+| Marked global frame | \((G_n(0),G_n(1),G_n(\infty))\) | exact rational projective-matrix round trip on the declared image |
 | Observer geometry | \([G_n\mathbb Z_p^2]\) | normalized lattice class, parent, LCA, and distance certificates |
 | Task quotient | fixed-depth projective cylinder | exact parent reduction in \(\mathbb P^1(\mathbb Z/p^d\mathbb Z)\) |
 | Continuation residual | next complete quotient for selector reconstruction | exact Möbius round trip; omitted only from the separate cylinder-code task |
@@ -630,6 +651,7 @@ history--evaluation--task--decoder path.
 | Baselines/storage | Ruban and Browkin rules plus corpus controller tables | shared evaluator; source/scalar and local-signature red teams; rational-action versus lift-bit tables with state cost retained |
 | Cost | digit, tree edge, frontier memory, binary bit, serialization kept separate | exact multi-axis ledgers |
 | Red teams | same contact/different continuation; same geometry/different source, scalar, future value, stopping surface, or decoder; dropped payload/residual | Ruban/Browkin outcome split, changed Huffman/controller choice, S0--S2 policy collisions, nonuniform fibres, many-to-one bit transport, decoder-cost and cycle failures |
+| Reverse lowering | local point versus ordered frame versus literal history | real/p-adic stabilizer collisions, frame decoder, rational-image test, constructive Borel/Weyl semantic lowering |
 
 This path is exact and seconds-scale. It now provides one finite task-local
 selector-policy Bellman solver and a closed action evaluator with finite
@@ -639,6 +661,14 @@ nonuniform and nearly as fine as the full tagged carrier.  It supplies no
 infinite boundary measure, general selector-control framework, preferred
 \(p\)-adic continued fraction, task-independent minimal policy state,
 objectification API, or reusable projective/coding API.
+
+Phase 10 sharpens the decoder boundary for this path.  The ordered frame
+\((g(0),g(1),g(\infty))\) reconstructs \([g]\) on the finite rational image, but the
+real base-point and p-adic lattice-vertex projections have nontrivial compact
+stabilizer fibres.  A constructive Borel/Weyl factorization returns one
+semantic word, not the original chronological word.  Future local solvers must
+therefore preserve a rational-frame certificate or return an explicit
+outside-image/approximation status before lowering.
 
 ---
 
@@ -755,6 +785,9 @@ The following needs are real but do not yet justify generic APIs:
 8. certified effective analytic closure across rank lowering;
 9. a principled bridge between continuous process volume and finite task
    memory, if one exists.
+10. a local-solver closure and reconstruction protocol that distinguishes
+    rational/symbolic frame membership, canonical semantic lowering,
+    approximate return, and unreconstructible local output.
 
 The correct next step for each gap is a problem-local solver plan and red team,
 not an empty framework class.
@@ -774,6 +807,7 @@ not an empty framework class.
 - `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
 - `sonnet/local-field-projective-process-geometry/14-phase9-am-bruhat-place-continuation-carrier-results.md`
+- `sonnet/local-field-projective-process-geometry/16-phase10-projective-duality-unit-roundtrip-results.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
@@ -781,4 +815,5 @@ not an empty framework class.
 - `tests/research/test_padic_selector_structural_law.py`
 - `tests/research/test_padic_continuation_value_fiber.py`
 - `tests/research/test_am_bruhat_place_continued_fraction_carrier.py`
+- `tests/research/test_projective_duality_unit_roundtrip.py`
 - `tests/experimental/test_finite_task_quotient.py`
