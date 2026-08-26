@@ -3,9 +3,11 @@
 **Status:** research-local calibration; Phases 0--8 complete for their declared
 finite tasks, including an exact selector-policy Pareto Bellman result, binary
 action normal form, harder transfer audit, and a coarsest stable
-continuation-fibre construction with an objectification obstruction; no
-infinite Bruhat--Tits completion, task-free selector optimum, preferred \(p\)-adic continued
-fraction, entropy-rate theorem, or Experimental/Public API proposal.
+continuation-fibre construction with an objectification obstruction.  The
+Phase 9 A/M--Bruhat place-carrier contract is frozen but not yet executed.  No
+infinite Bruhat--Tits completion, task-free selector optimum, preferred
+\(p\)-adic continued fraction, entropy-rate theorem, or Experimental/Public
+API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -74,7 +76,12 @@ Read in order:
     computes the coarsest stable extensions, proves interface-refinement
     monotonicity, extracts distinguishing suffixes, and records the exact
     nonuniformity and noninvertibility obstruction;
-14. the seven linked research tests are seconds-scale executable arguments.
+14. [13-phase9-am-bruhat-place-carrier-task-contract.md](13-phase9-am-bruhat-place-carrier-task-contract.md)
+    freezes the A/M hyperbolic left/right duality, Borel/Weyl completion,
+    reciprocal-sign, real/p-adic place evaluation, common continuation-carrier,
+    and task-projection red teams before observing their results;
+15. the seven completed-phase research tests are seconds-scale executable
+    arguments; the Phase 9 executable is still pending.
 
 ## Current result
 
@@ -309,3 +316,12 @@ nonuniform fibres, task-dependent decoder types, partial/many-to-one transport,
 and near absence of state compression block a fixed-dimensional or vertical
 objectification interpretation.  The construction remains Sonnet-local and
 creates no Experimental/Public API pressure.
+
+Phase 9 freezes the next mother-carrier audit without assuming its conclusion.
+It asks whether the rational A/M Borel grammar plus a Weyl reciprocal supplies
+one projective history/frame carrier whose real hyperbolic/Farey and finite
+p-adic lattice-tree readings are compatible place shadows.  Group inversion
+inside A/M, projective inversion, and the ordinary continued-fraction
+reciprocal are kept distinct.  Even a positive comparison would establish only
+a task-independent source with local projections; new free composition and
+coherent lowering remain separate requirements for vertical objectification.
