@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not discovered H, derived continuum kinetic dynamics from microscopic mechanics, proved equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E now freezes the hard-sphere collision-boundary adapter, an exact gain/loss-to-A/M shadow, a three-term generator-defect ledger, and a bulk-\(L^1\)/boundary-trace obstruction. Phases 1A and 1B are retained as post-hoc kinetic controls, not as the first-principles mother route. The study has not derived continuum kinetic dynamics from microscopic mechanics, proved a trace estimate or H theorem, proved equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -216,6 +216,18 @@ The long-time Boltzmann–Grad derivation of Deng, Hani, and Ma is an external c
 
 No row asserts an identification in advance.
 
+Phase 1E sharpens the table by separating three tasks that cannot be merged:
+
+- bulk correlation comparison;
+- oriented collision-boundary flux and its gain/loss process jet;
+- mild continuation through collision histories.
+
+The first task may be controlled in bulk \(L^1\) while the second still lacks a
+trace estimate.  Indeed, a boundary layer can have vanishing \(L^1\) mass and
+fixed contact trace.  The A/M chart is therefore introduced only after the
+physical boundary flux supplies a positive gain/loss cone, and division by
+the target state is restricted to its positive domain.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -276,9 +288,12 @@ effective-calculus obligations.
 - [06-phase1c-chart-first-lift-contract.md](./06-phase1c-chart-first-lift-contract.md) replaces global decoding by layer-relative semantic adaptation.
 - [07-phase1c-chart-first-adaptation-results.md](./07-phase1c-chart-first-adaptation-results.md) records the finite BBGKY seam and A/M first-jet repair.
 - [08-phase1d-measured-fibration-objectification-synthesis.md](./08-phase1d-measured-fibration-objectification-synthesis.md) organizes semantic adaptation, measured fibres, ensembles, filtered asymptotics, and the objectification/universality boundaries.
+- [09-phase1e-continuum-collision-adapter-contract.md](./09-phase1e-continuum-collision-adapter-contract.md) freezes the hard-sphere source carrier, oriented boundary operator, gain/loss cone, conditional A/M chart, and defect ledger.
+- [10-phase1e-continuum-collision-adapter-seam-results.md](./10-phase1e-continuum-collision-adapter-seam-results.md) records the exact rational shadow, trace obstruction, and theorem-scoped Deng--Hani--Ma interpretation.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
+- [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 
-The next action is to freeze a continuum \(s+1\to s\) adapter contract: write the hard-sphere collision-boundary operator, its incoming/outgoing A/M process jet, the target observables and generator defect, and the topology/error budget used by the Deng--Hani--Ma kinetic comparison. Entropy search remains downstream of that adapter and its closure section.
+The next action is to replace the unsafe pointwise-generator target by a weak observable or mild time-integrated flux target, then freeze one collision-history continuation cell from the Deng--Hani--Ma expansion with an explicit source payload, cut/composition law, target observable, error budget, and forgotten-data ledger. Entropy search remains downstream of the autonomous target dynamics and its declared validity horizon.
 
 ## References for calibration
 
