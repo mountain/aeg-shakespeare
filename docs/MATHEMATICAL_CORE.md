@@ -561,6 +561,38 @@ Within one exact episode, the lattice value is derivable from \(G\) and the
 current complete quotient is recoverable from \((G,\alpha_0)\); these are
 problem-local redundancy certificates, not a general minimal-state theorem.
 
+The same action grammar now has an exact closed normal form.  Put
+\(k=\min(v_p(\alpha),0)\) and let \(r\) be the Ruban contact representative.
+The raw coefficient box fills the complete grid
+
+\[
+p^k\mathbb Z\cap[-(p-p^k),p-p^k],
+\]
+
+and the admissible fibre is exactly
+
+\[
+A_p(\alpha)=\{r\}\cup
+\bigl(\{r-p\}\text{ when }r\ge p^k\bigr).
+\]
+
+Thus raw action syntax loses no semantics when replaced by a reference
+representative and one optional lift bit.  That quotient does **not** descend
+the Bellman controller to local geometry: equal contact, current/next lattice,
+edge, immediate outcome, and local-cost signatures can require disjoint
+digit- or decoder-optimal first bits.  The obstruction persists at greater
+precision, new primes, and held-out rational inputs.  Action-alphabet
+canonicalization, task-state minimization, and policy compression are therefore
+distinct constructions.
+
+For the finite task, the full residual-bearing state may consequently be read
+as a nontrivial continuation-value fibre over the local evaluated signature.
+A disjoint optimal-bit collision proves at least two future-value classes, and
+therefore at least one necessary residual bit, in one such fibre.  This is not
+yet a new geometric dimension or vertical objectification: those stronger
+claims require a stable transported composition law on the fibre classes and
+task-independent lowering evidence.
+
 ---
 
 ## 4. Translation table
@@ -614,7 +646,10 @@ Addition/Multiplication presentation is required or canonical.
   decoding under the declared source task;
 - exact finite selector-lift graph exhaustion, policy-independent terminal
   decoding, Pareto Bellman witnesses, and fixed-baseline comparison under the
-  declared rational source, depth, horizon, and cost rulers.
+  declared rational source, depth, horizon, and cost rulers;
+- the exact binary normal form for the declared selector-lift grammar, closed
+  evaluator equivalence, harder finite transfer censuses, and local-signature
+  policy obstructions.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -643,9 +678,13 @@ Addition/Multiplication presentation is required or canonical.
   growth, task memory, and continuous coarea;
 - an infinite projective-boundary measure or entropy theorem forced by the
   finite root-symmetric source;
-- a general or task-independent selector-policy state, action grammar,
-  terminal decoder, and cost theorem beyond the executed finite rational
-  corpus and depth-four stopping contract;
+- a general or task-independent selector-policy state, terminal decoder, cost,
+  or policy-compression theorem beyond the executed finite rational workloads;
+- a characterization of the minimal continuation residual through which the
+  binary selector-policy value descends;
+- a theorem deciding when a nontrivial continuation-value fibre is only a
+  horizontal task-state lift and when it objectifies into a higher-rank
+  compositional process;
 - generic-energy global pendulum reconstruction through all branch and
   degeneration boundaries;
 - any theorem making the Bolza construction canonical or universal;
@@ -747,8 +786,11 @@ quotients, continuation residuals, shell growth, and a downstream code tree
 can be separated exactly.  Its finite Phase 6 task additionally carries that
 chain through exact local lift actions, a shared decoder, and Pareto Bellman
 selection, while source and scalar red teams block an intrinsic selector.
-Together the calibrations refine the emerging transversal without selecting
-its generic carrier or unifying continuous and discrete shadows.
+Phase 7 then quotients the action syntax exactly to a reference representative
+plus lift bit while local-signature collisions keep policy value in the
+history-bearing continuation state. Together the calibrations refine the
+emerging transversal without selecting its generic carrier or unifying
+continuous and discrete shadows.
 `THEORY_MAP.md` should record that position and maturity; it should not replace
 the equations and boundaries recorded here.
 
@@ -768,8 +810,10 @@ the equations and boundaries recorded here.
 - `sonnet/local-field-projective-process-geometry/README.md`
 - `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
 - `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
+- `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
 - `tests/research/test_padic_selector_policy_bellman.py`
+- `tests/research/test_padic_selector_structural_law.py`

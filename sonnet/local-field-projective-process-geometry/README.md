@@ -1,10 +1,10 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--6 complete for their declared
-finite tasks, including an exact finite selector-policy Pareto Bellman result;
-no infinite Bruhat--Tits completion, task-free selector optimum, preferred
-\(p\)-adic continued fraction, entropy-rate theorem, or Experimental/Public
-API proposal.
+**Status:** research-local calibration; Phases 0--7 complete for their declared
+finite tasks, including an exact selector-policy Pareto Bellman result, binary
+action normal form, and harder transfer audit; no infinite Bruhat--Tits
+completion, task-free selector optimum, preferred \(p\)-adic continued
+fraction, entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
 genuinely different but strictly comparable geometries when the observer
@@ -57,7 +57,15 @@ Read in order:
    executes Gates 6A--6F, exhausts the finite graphs, computes and replays
    Pareto witnesses, compares both baselines, and closes the source, scalar,
    residual, decoder, and storage red teams;
-10. the five linked research tests are seconds-scale executable arguments.
+10. [09-phase7-binary-action-normal-form-transfer-task-contract.md](09-phase7-binary-action-normal-form-transfer-task-contract.md)
+    freezes the exact candidate action normal form, policy-signature audit,
+    harder precision/new-prime/held-out-input workloads, costs, kill conditions,
+    and execution gates before observing their results;
+11. [10-phase7-binary-action-normal-form-transfer-results.md](10-phase7-binary-action-normal-form-transfer-results.md)
+    proves the binary grammar theorem, reproduces Phase 6 through the closed
+    evaluator, executes every transfer workload, and records exact local-policy
+    signature obstructions and storage ledgers;
+12. the six linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -195,6 +203,35 @@ versus decoder-minimizing scalar policies differ on twelve \(p=3\) inputs.
 Hence the result is a task-local adaptive controller, not a preferred
 continued-fraction section.
 
+## Phase 7 structural and transfer result
+
+Phase 7 proves that the Phase 6 coefficient grammar has an exact closed normal
+form.  For \(k=\min(v_p(\alpha),0)\) and Ruban contact representative \(r\),
+
+\[
+A_p(\alpha)=\{r\}\cup
+\bigl(\{r-p\}\text{ exactly when }r\ge p^k\bigr).
+\]
+
+Thus the raw Laurent coefficient syntax quotients losslessly to a reference
+rational plus at most one lift-choice bit.  The closed evaluator reproduces
+every Phase 6 graph, witness, outcome, and cost, while eliminating exponential
+raw tuple enumeration.
+
+The stronger policy-compression hypothesis fails.  Contact signature S0,
+evaluated geometry signature S1, and local cost/decoder signature S2 all admit
+exact states with incompatible scalar-optimal first bits.  On the Phase 6
+workload S2 has 86 collision classes, 66 of them disjoint.  The obstruction
+persists at depths six/eight, primes eleven/thirteen, and the 224 held-out
+inputs \(X_{18}\setminus X_{12}\).
+
+The harder graphs remain finite and small but refute the Phase 6 shallow-depth
+accident: maximum live step grows from two to four and the largest per-input
+graph from seven to twenty-three states.  Binary action encoding reduces the
+declared complete controller-table size by roughly 8.4--9.5 percent; retained
+state keys still dominate.  The action alphabet is structurally simple, while
+Bellman value still depends on continuation-bearing history.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -229,3 +266,10 @@ It refines H3 and the emerging task-covariant evaluation transversal without
 promoting either: source and scalar red teams block an intrinsic selector
 interpretation, the implementation remains Sonnet-local, and every API
 maturity level remains unchanged.
+
+Phase 7 further **refines** that boundary.  It proves a lossless arithmetic
+quotient from raw action syntax to a binary semantic alphabet, while exact S2
+collisions block any inference that current local geometry and cost determine
+the optimal controller.  It supports a closed problem-local evaluator and
+storage codec, not a selector-control API, minimal-state theorem, or maturity
+promotion.

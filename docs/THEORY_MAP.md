@@ -168,13 +168,24 @@ The same projective line now continues through one exact finite selector-policy
 control task: a contact-lift grammar, matrix/lattice payload, complete-quotient
 and visited-state residuals, depth-four stopping cylinder, shared decoder, and
 Pareto Bellman witnesses.  Changed sources and scalar rulers select different
-economies, so the geometry does not select an intrinsic controller.  The shell
-identity is not identified with physical coarea or entropy, and the Bellman
-result is not a preferred \(p\)-adic section. The candidate generic carrier is
-still unsettled: resource bundle, groupoid, cocycle family, enriched history
-category, and problem-local alternatives remain live. Consequently this is
-recorded as an **emerging T0/T1 transversal**, not a stable Theory Map node and
-not a generic API proposal.
+economies, so the geometry does not select an intrinsic controller.  Its
+action syntax subsequently quotients exactly to a Ruban-reference bit, but
+equal contact, evaluated next geometry, and local-cost signatures still admit
+disjoint optimal-bit sets.  This obstruction transfers to deeper stopping
+surfaces, new primes, and held-out inputs: a lossless action alphabet is not a
+lossless policy-state quotient.  The shell identity is not identified with
+physical coarea or entropy, and neither Bellman result is a preferred
+\(p\)-adic section. The candidate generic carrier is still unsettled: resource
+bundle, groupoid, cocycle family, enriched history category, and problem-local
+alternatives remain live. Consequently this is recorded as an **emerging
+T0/T1 transversal**, not a stable Theory Map node and not a generic API
+proposal.
+
+The disjoint policy collisions also expose a nontrivial task-relative
+continuation-value fibre over the local evaluated signature.  Its finite
+residual-bit lower bound is real, but its vertical interpretation is open: no
+stable transported composition or cross-task lowering theorem yet turns that
+fibre into an objectified dimension or a new process rank.
 
 ### 1.2 Cross-cutting admissibility — effective analysis
 
@@ -290,6 +301,13 @@ a conditional baseline cost ranking and changing the scalar ruler changes
 twelve \(p=3\) controllers.  This supports finite H3 optimization only after
 state, actions, stopping, decoder, source, and costs are declared; it does not
 make the observer tree itself a policy or an intrinsic objective.
+
+The Phase 7 transfer audit sharpens the negative boundary.  The action grammar
+has an exact binary normal form, but the digit- and decoder-optimal first-bit
+relations do not descend through contact, evaluated geometry, or locally
+visible costs.  Exact disjoint collisions persist under greater depth, new
+primes, and held-out inputs.  Thus alphabet growth can be compressed without
+compressing future distinguishability or Bellman value.
 
 **Maturity:** classical anchors plus concrete finite coding and control shadows
 exist; the general Process Geometry correspondence remains a research

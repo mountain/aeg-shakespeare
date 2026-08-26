@@ -369,6 +369,15 @@ select different economies, while matrix and visited-state red teams protect
 decoder cost and cycle semantics.  This is problem-local evidence for the
 architecture, not a generic control API.
 
+Phase 7 refines the evaluator choice for that grammar.  Exhaustive coefficient
+tuples may be replaced exactly by a Ruban-reference normal form with one
+optional lift bit; the complete Phase 6 graph and value records are unchanged,
+and deeper/new-prime/held-out workloads remain exhaustible.  The bit codec
+reduces action payload and compilation search, but exact collisions show that
+contact, evaluated next geometry, and local costs do not suffice to compile a
+controller.  Keep the residual-bearing Bellman state: a small action alphabet
+is not a state-minimization certificate.
+
 ### 4.3 Constrained polynomial and local differential systems
 
 For polynomial/rational local models:
@@ -602,16 +611,17 @@ history--evaluation--task--decoder path.
 | Continuation residual | next complete quotient for selector reconstruction | exact Möbius round trip; omitted only from the separate cylinder-code task |
 | Discrete shell | \(|B_d|-|B_{d-1}|=|S_d|\) | exact finite enumeration and closed count |
 | Source/coding | declared root-symmetric or adversarial finite law | exact mass pushforward, Huffman lengths, canonical prefix decoder |
-| Selector control | finite contact-lift grammar with complete quotient, matrix/lattice payload, and visited witness | exact one/two-action enumeration and state validation |
+| Selector control | finite contact-lift grammar with complete quotient, matrix/lattice payload, and visited witness | exact Ruban-reference binary normal form, closed evaluation, and state validation |
 | Stopping/decoder | exact termination or depth-four cylinder under one precedence | first-column or matrix/residual round trips; cycle and horizon remain distinct |
 | Optimization | four-axis Pareto value, no default scalarization | complete reachable-graph census, backward set-valued Bellman recursion, replayable witnesses |
-| Baselines/storage | Ruban and Browkin rules plus corpus controller tables | shared evaluator; source/scalar red teams; separate compilation, table, online, and decoder ledgers |
+| Baselines/storage | Ruban and Browkin rules plus corpus controller tables | shared evaluator; source/scalar and local-signature red teams; rational-action versus lift-bit tables with state cost retained |
 | Cost | digit, tree edge, frontier memory, binary bit, serialization kept separate | exact multi-axis ledgers |
-| Red teams | same contact/different continuation; same geometry/different source or scalar; dropped payload/residual | Ruban/Browkin outcome split, changed Huffman/controller choice, decoder-cost and cycle failures |
+| Red teams | same contact/different continuation; same geometry/different source, scalar, or future value; dropped payload/residual | Ruban/Browkin outcome split, changed Huffman/controller choice, S0--S2 policy collisions, decoder-cost and cycle failures |
 
 This path is exact and seconds-scale. It now provides one finite task-local
-selector-policy Bellman solver, but no infinite boundary measure, general
-selector-control framework, preferred \(p\)-adic continued fraction, or
+selector-policy Bellman solver and a closed action evaluator with finite
+transfer evidence, but no infinite boundary measure, general selector-control
+framework, preferred \(p\)-adic continued fraction, minimal policy state, or
 reusable projective/coding API.
 
 ---
@@ -745,8 +755,10 @@ not an empty framework class.
 - `sonnet/local-field-projective-process-geometry/README.md`
 - `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
 - `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
+- `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
 - `tests/research/test_padic_selector_policy_bellman.py`
+- `tests/research/test_padic_selector_structural_law.py`
 - `tests/experimental/test_finite_task_quotient.py`
