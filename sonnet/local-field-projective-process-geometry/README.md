@@ -2,6 +2,7 @@
 
 **Status:** research-local calibration; Phases 0--6 complete for their declared
 finite tasks, including an exact finite selector-policy Pareto Bellman result;
+Phase 7 binary-action-normal-form and transfer task frozen before execution;
 no infinite Bruhat--Tits completion, task-free selector optimum, preferred
 \(p\)-adic continued fraction, entropy-rate theorem, or Experimental/Public
 API proposal.
@@ -57,7 +58,11 @@ Read in order:
    executes Gates 6A--6F, exhausts the finite graphs, computes and replays
    Pareto witnesses, compares both baselines, and closes the source, scalar,
    residual, decoder, and storage red teams;
-10. the five linked research tests are seconds-scale executable arguments.
+10. [09-phase7-binary-action-normal-form-transfer-task-contract.md](09-phase7-binary-action-normal-form-transfer-task-contract.md)
+    freezes the exact candidate action normal form, policy-signature audit,
+    harder precision/new-prime/held-out-input workloads, costs, kill conditions,
+    and execution gates before observing their results;
+11. the five linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
