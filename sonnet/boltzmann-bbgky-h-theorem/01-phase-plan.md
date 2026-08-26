@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam and passes six exact research-local certificates; the continuum kinetic statements remain external theorem records. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -108,6 +108,37 @@ semantics, new free composition, and all-composite lowering are proved.
 
 This is a synthesis gate, not an executable certificate.  Its result owner is
 `08-phase1d-measured-fibration-objectification-synthesis.md`.
+
+## 1C. Continuum calibration gate — Phase 1E collision-boundary adaptation
+
+The first hard-sphere calibration separates three semantic tasks:
+
+\[
+\text{bulk correlation state},\qquad
+\text{oriented collision-boundary flux},\qquad
+\text{mild collision-history continuation}.
+\]
+
+The exact \(s+1\to s\) BBGKY observation reads a contact-boundary trace.  Its
+primitive process object is the positive gain/loss cone \((A,L)\).  The A/M
+coordinate \(M=-L/F_s\) is admitted only on \(F_s>0\), so the chart boundary
+does not erase an otherwise meaningful flux.
+
+The finite-to-limit generator defect is frozen as the exact sum of scaling,
+contact-geometry, and correlation-trace residuals.  Long-horizon comparison
+adds recollision/truncation/history structure after a mild representation is
+chosen.  A triangular boundary-layer family supplies an exact red team:
+bulk \(L^1\) smallness alone does not control the collision trace.
+
+The Deng--Hani--Ma bulk correlation estimate is recorded as an external
+state-adapter theorem under its own horizon and topology.  It is not silently
+upgraded to a generator estimate.  The contract and result owners are
+`09-phase1e-continuum-collision-adapter-contract.md` and
+`10-phase1e-continuum-collision-adapter-seam-results.md`.
+
+The next gate must select a weak or mild flux target and type one concrete
+collision-history continuation cell.  No entropy search or arithmetic-rank
+promotion precedes that gate.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -477,6 +508,7 @@ Every attempted claim receives one label:
 | 1A | finite H identity record | research-local fixtures | calibrates H3 |
 | 1B | finite character-class evidence and held-out selector failure | discovery harness only | post-hoc A/M control |
 | 1C | task-relative layer-adapter and A/M first-jet evidence | exact finite adapter fixtures | pressures history/observer/residual semantics |
+| 1E | bulk/trace/history task split and trace obstruction | exact rational boundary shadow | sharpens adaptation failure semantics |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
