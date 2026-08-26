@@ -4,9 +4,11 @@
 substantial research, theory, and theory-bearing API work.  This document is
 not a frozen specification and not a Public API contract.
 
-**Required next reading:** [`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md),
-which turns the mathematics into problem, representation, algorithm,
-certificate, error/failure, and cost decisions for feasible computation.
+**Required next reading:** [`RESEARCH_STATUS.md`](RESEARCH_STATUS.md), the
+dated evidence ledger for what current mainline has and has not earned, then
+[`ENGINEERING_ARCHITECTURE.md`](ENGINEERING_ARCHITECTURE.md), which turns the
+mathematics into problem, representation, algorithm, certificate,
+error/failure, and cost decisions for feasible computation.
 
 ## 0. Purpose and authority
 
@@ -19,6 +21,7 @@ The repository therefore separates four duties:
 
 ```text
 MATHEMATICAL_CORE.md   objects, constructions, equations, and boundaries
+RESEARCH_STATUS.md     dated achieved-result and evidence-owner ledger
 ENGINEERING_ARCHITECTURE.md representations, algorithms, evidence, errors, cost
 THEORY_MAP.md          compact location, dependency, and maturity map
 THEORY_GOVERNANCE.md   promotion, falsification, and revision rules
