@@ -11,12 +11,16 @@ The project does not assume that a process arrives with a preferred coordinate s
 5. what analysis becomes natural once a successful presentation is found.
 
 The current mathematics is synthesized in
-[`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md). Then read
+[`docs/MATHEMATICAL_CORE.md`](docs/MATHEMATICAL_CORE.md). Next read the dated
+[`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md), which distinguishes
+exact results, active research boundaries, downstream computation, and claims
+the project has not earned. Then read
 [`docs/ENGINEERING_ARCHITECTURE.md`](docs/ENGINEERING_ARCHITECTURE.md), which
 turns declared physical and mathematical tasks into representation, algorithm,
 evaluator, certificate, error/failure, unit, decoder, baseline, budget, and
 cost decisions. The compact [`docs/THEORY_MAP.md`](docs/THEORY_MAP.md) locates
-and grades the resulting claims; it does not replace either core document.
+and grades the resulting claims; it does not replace the Core, evidence ledger,
+or detailed proof artifacts.
 
 The current research foundation has two complementary axes, governed by a
 cross-cutting **Effective Analysis Principle**:
@@ -49,6 +53,24 @@ the project's analysis standard.  See
 [`docs/65-effective-analysis-principle.md`](docs/65-effective-analysis-principle.md).
 
 AEG remains the first major model organism for this program because the arithmetic/hyperoperation tower naturally exhibits objectification and rank raising while also supporting function theory and analysis. The stronger conjecture that arithmetic-generated geometries provide universal or standard models is **not** assumed by the package.
+
+## What current mainline has earned
+
+The repository is further along than its deliberately narrow package surface
+suggests, but less mature than its strongest research questions.
+
+| Evidence layer | Current result | Boundary |
+| --- | --- | --- |
+| exact semantics | finite continuation-stable task minimization, distinguishing continuations, residual bounds, and interface-refinement monotonicity | no generic infinite/stochastic/continuous quotient theory |
+| structural mathematics | exact local and abstract laws and obstructions for projective descent, finite-part jet transport, partition fibres, and change actions | no newly promoted framework-wide T3/T4 foundation theorem |
+| end-to-end calibration | pendulum and real harmonic-oscillator task spines, plus a fail-closed classical evidence matrix | not every global branch or numerical claim is rigorously certified |
+| downstream computation | task-semantic pruning patched into pinned Lonely Runner upstream code with byte-identical outputs and measured speedups across solved cases and three open-frontier workers | `LRC(13)` remains open and independent external adoption is still absent |
+
+See [`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md) for the theorem and
+obstruction ledger, active Sonnet table, evidence owners, and negative-outcome
+route.  In particular, “no framework-wide T3 promotion yet” must not be read as
+“no theorem-level results,” and a completed bounded theorem must not be promoted
+silently into the mother picture.
 
 ## Status
 
