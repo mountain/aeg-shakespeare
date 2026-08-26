@@ -82,6 +82,7 @@ deferred until its next oracle/evidence gate is affordable.
 | [`stochastic-feedback-trap-first-passage/`](stochastic-feedback-trap-first-passage/) | current calibration closed | exact Itô task quotient plus independent first-passage and reset-Bellman covariance across 242 monotone charts | [Phase-4 results](stochastic-feedback-trap-first-passage/09-phase4-reset-bellman-results.md); further work requires a new Sonnet or governed extraction proposal |
 | [`pcr3bp-history-cost/`](pcr3bp-history-cost/) | Phases 0–1 complete; Phase 2 frozen | lifted topology and scale-jet reconstruction separate word, clock, deck, and hyperbolic costs; no Bellman/Huffman source is yet justified | [Phase-2 contract](pcr3bp-history-cost/02-return-partition-holonomy-contract.md); next run the frozen two-gate covariance and convergence gates |
 | [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) | T0 initialization | auditable two-question research contract only; neither the manuscript nor an arithmetic interface is verified | [problem frontier](s6-complex-arithmetic-tower/00-problem-frontier.md); next archive/checksum the source and reproduce its matrix/topology certificate |
+| [boltzmann-bbgky-h-theorem/](boltzmann-bbgky-h-theorem/) | T0 initialization | two-axis \((r,s)\) research contract only; no new H theorem or microscopic-to-kinetic derivation | [research contract](boltzmann-bbgky-h-theorem/README.md); next freeze the Phase 1A finite reversible collision-network contract |
 
 ## Sonnet 001 — Lonely Runner
 
@@ -117,6 +118,14 @@ The authoritative current audit is
 Sonnet 001 has reached level 3 **structural discovery** in several exact bounded
 settings, but not level 4: `LRC(13)` remains open and no public API promotion is
 proposed.
+
+## Research-local calibration — Boltzmann H theorem and rank-relative observers
+
+[boltzmann-bbgky-h-theorem/](boltzmann-bbgky-h-theorem/) studies the seam between reversible microscopic collision histories, the exact but unclosed BBGKY marginal hierarchy, an oriented kinetic closure, and the monotone Boltzmann H functional on the resulting reduced semigroup. It keeps the Liouville group, marginal tower, molecular-chaos or limiting claim, Boltzmann equation, and entropy-production certificate as separately typed objects.
+
+The study uses two independent coordinates. The arithmetic or process rank \(r\) records objectification and free composition; the observer or correlation order \(s\) records how much joint structure is inspected. Every earned higher rank has lowering-induced observers obtained by contravariant pullback, while candidate intrinsic observers may inspect assembly, interaction, scale, reference measure, holonomy, or continuation residual. BBGKY order is therefore not renamed arithmetic rank.
+
+The Sonnet begins at T0 with no proof claim and no API proposal. Its next gate is an exact finite detailed-balance collision network, followed by a hidden-oracle A/M/P discovery track and an explicit test of the continuation information missing from the one-particle state.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 
