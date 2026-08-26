@@ -209,6 +209,23 @@ bits of residual state.  This is an exact distinguishability bound.  It is not
 by itself Shannon entropy, runtime, physical phase volume, or machine memory
 usage for a particular implementation.
 
+There is a finite monotonicity law connecting this bound to interface
+refinement.  For a finite labelled transition system, let
+\(\Pi_\infty(I,O)\) be the coarsest transition-stable refinement of the kernel
+of declared interface \(I\) and task output \(O\).  If \(J\) refines \(I\),
+then
+
+\[
+\Pi_\infty(J,O)\preceq\Pi_\infty(I,O),
+\]
+
+so the total stable class count and its \(\lceil\log_2N\rceil\) lower bound
+cannot decrease.  The proof is finite partition-refinement induction.  This
+does not imply that the hidden fibre over each base point grows: a refined
+interface may move information from the conditional residual into the base.
+Total task-state information and base-relative residual information are
+different ledgers.
+
 ### 1.6 Continuous volume, discrete shells, and finite memory are different laws
 
 For a one-degree-of-freedom Hamiltonian family, classical action--period
@@ -593,6 +610,19 @@ yet a new geometric dimension or vertical objectification: those stronger
 claims require a stable transported composition law on the fibre classes and
 task-independent lowering evidence.
 
+The next finite audit computes that stable extension rather than guessing an
+extra coordinate.  On 8,336 tagged live states, S2 has 6,044 base classes.  The
+coarsest S2-preserving transported relation has 8,126 classes for all four
+digit/decoder policy and scalar-value modes, and 8,128 classes when the full
+terminal decoder response must be preserved.  The largest fibre contains 70
+classes, while most fibres are singleton.  The induced lift-bit transitions
+are well defined but partial, terminal, and many-to-one.  Thus this calibration
+has an exact finite **horizontal task-state extension**, not a constant-rank
+fibre, covering action, groupoid, new manifold dimension, or vertical
+objectification.  Stable transport is necessary for objectification but is not
+sufficient without task-independent semantics, new free composition, and
+compositional lowering.
+
 ---
 
 ## 4. Translation table
@@ -649,7 +679,10 @@ Addition/Multiplication presentation is required or canonical.
   declared rational source, depth, horizon, and cost rulers;
 - the exact binary normal form for the declared selector-lift grammar, closed
   evaluator equivalence, harder finite transfer censuses, and local-signature
-  policy obstructions.
+  policy obstructions;
+- the exact coarsest stable finite continuation extensions, distinguishing
+  suffixes, interface-refinement monotonicity, fibre bounds, and
+  noninvertible-transport census for the declared p-adic workloads.
 
 ### 5.2 Calibrated interpretations, not mother-object theorems
 
@@ -680,8 +713,8 @@ Addition/Multiplication presentation is required or canonical.
   finite root-symmetric source;
 - a general or task-independent selector-policy state, terminal decoder, cost,
   or policy-compression theorem beyond the executed finite rational workloads;
-- a characterization of the minimal continuation residual through which the
-  binary selector-policy value descends;
+- a general or task-independent characterization of the minimal continuation
+  residual beyond the executed finite p-adic stable quotients;
 - a theorem deciding when a nontrivial continuation-value fibre is only a
   horizontal task-state lift and when it objectifies into a higher-rank
   compositional process;
@@ -717,6 +750,9 @@ unless it proves a replacement theorem.
 10. The Bolza product quotient is not the pendulum carrier.
 11. An executable analytic or coding presentation does not by itself prove
     canonicality or universality.
+12. A nonzero finite residual and well-defined partial action transport do not
+    by themselves supply a uniform geometric dimension, covering, groupoid, or
+    vertical process-rank objectification.
 
 ---
 
@@ -788,9 +824,12 @@ chain through exact local lift actions, a shared decoder, and Pareto Bellman
 selection, while source and scalar red teams block an intrinsic selector.
 Phase 7 then quotients the action syntax exactly to a reference representative
 plus lift bit while local-signature collisions keep policy value in the
-history-bearing continuation state. Together the calibrations refine the
-emerging transversal without selecting its generic carrier or unifying
-continuous and discrete shadows.
+history-bearing continuation state. Phase 8 constructs the corresponding
+coarsest stable finite extensions and shows that their fibres are nonuniform,
+task-relative, partial, and nearly as fine as the full state carrier. Together
+the calibrations refine the emerging transversal and add an objectification
+obstruction without selecting its generic carrier or unifying continuous and
+discrete shadows.
 `THEORY_MAP.md` should record that position and maturity; it should not replace
 the equations and boundaries recorded here.
 
@@ -811,9 +850,11 @@ the equations and boundaries recorded here.
 - `sonnet/local-field-projective-process-geometry/06-phase5-projective-cylinders-discrete-coarea-coding.md`
 - `sonnet/local-field-projective-process-geometry/08-phase6-executable-selector-policy-bellman.md`
 - `sonnet/local-field-projective-process-geometry/10-phase7-binary-action-normal-form-transfer-results.md`
+- `sonnet/local-field-projective-process-geometry/12-phase8-continuation-value-fiber-objectification-results.md`
 - `tests/research/test_pendulum_am_marked_carrier_bridge.py`
 - `tests/research/test_pendulum_unit_history_fundamental_domain.py`
 - `tests/research/test_local_field_projective_lattice_ball.py`
 - `tests/research/test_padic_continued_fraction_selector_comparison.py`
 - `tests/research/test_padic_selector_policy_bellman.py`
 - `tests/research/test_padic_selector_structural_law.py`
+- `tests/research/test_padic_continuation_value_fiber.py`

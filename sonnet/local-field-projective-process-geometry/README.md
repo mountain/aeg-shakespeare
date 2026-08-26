@@ -1,9 +1,10 @@
 # Local-field projective process geometry
 
-**Status:** research-local calibration; Phases 0--7 complete for their declared
+**Status:** research-local calibration; Phases 0--8 complete for their declared
 finite tasks, including an exact selector-policy Pareto Bellman result, binary
-action normal form, and harder transfer audit; no infinite Bruhat--Tits
-completion, task-free selector optimum, preferred \(p\)-adic continued
+action normal form, harder transfer audit, and a coarsest stable
+continuation-fibre construction with an objectification obstruction; no
+infinite Bruhat--Tits completion, task-free selector optimum, preferred \(p\)-adic continued
 fraction, entropy-rate theorem, or Experimental/Public API proposal.
 
 This Sonnet asks whether one rational arithmetic history can acquire two
@@ -65,7 +66,15 @@ Read in order:
     proves the binary grammar theorem, reproduces Phase 6 through the closed
     evaluator, executes every transfer workload, and records exact local-policy
     signature obstructions and storage ledgers;
-12. the six linked research tests are seconds-scale executable arguments.
+12. [11-phase8-continuation-value-fiber-objectification-task-contract.md](11-phase8-continuation-value-fiber-objectification-task-contract.md)
+    freezes the finite future-equivalence, stable-fibre, residual-bit,
+    transport, invertibility, task-stability, cost, and objectification red
+    teams before observing their results;
+13. [12-phase8-continuation-value-fiber-objectification-results.md](12-phase8-continuation-value-fiber-objectification-results.md)
+    computes the coarsest stable extensions, proves interface-refinement
+    monotonicity, extracts distinguishing suffixes, and records the exact
+    nonuniformity and noninvertibility obstruction;
+14. the seven linked research tests are seconds-scale executable arguments.
 
 ## Current result
 
@@ -232,6 +241,24 @@ declared complete controller-table size by roughly 8.4--9.5 percent; retained
 state keys still dominate.  The action alphabet is structurally simple, while
 Bellman value still depends on continuation-bearing history.
 
+## Phase 8 continuation-fibre result
+
+Phase 8 reconstructs 8,336 tagged live states from selected regression,
+depth, new-prime, and held-out tasks, then computes the coarsest stable
+extensions of S0--S2 for digit/decoder policy, scalar value, and full
+continuation semantics.  Above the 6,044 S2 base classes, all four scalar modes
+produce the same 8,126-class transported relation; full decoder-preserving
+semantics has 8,128 classes.  The largest fibre contains 70 classes, so its
+fixed-width exact residual needs at least seven bits.
+
+The fibres are strongly nonuniform: 5,318 scalar fibres are singleton, while
+exceptional sizes range irregularly to 70.  Stable lift-bit transport is exact
+but partial and noninvertible, with thousands of terminal edges, 282 invalid
+bit edges, and 56 many-to-one live targets.  The result therefore closes the
+finite task-state extension positively while blocking the stronger claim that
+the residual is one new geometric dimension, a covering/groupoid fibre, or a
+vertical process-rank object.
+
 ## Claim boundary
 
 Phase 1 constructs the complete **finite ball around the standard vertex**,
@@ -273,3 +300,12 @@ collisions block any inference that current local geometry and cost determine
 the optimal controller.  It supports a closed problem-local evaluator and
 storage codec, not a selector-control API, minimal-state theorem, or maturity
 promotion.
+
+Phase 8 **refines** the finite task-state and objectification boundary.  Exact
+partition refinement turns the residual into the coarsest stable transported
+extension relative to a declared interface and proves that interface
+refinement cannot reduce total stable distinguishability.  The observed
+nonuniform fibres, task-dependent decoder types, partial/many-to-one transport,
+and near absence of state compression block a fixed-dimensional or vertical
+objectification interpretation.  The construction remains Sonnet-local and
+creates no Experimental/Public API pressure.
