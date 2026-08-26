@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -108,6 +108,208 @@ semantics, new free composition, and all-composite lowering are proved.
 
 This is a synthesis gate, not an executable certificate.  Its result owner is
 `08-phase1d-measured-fibration-objectification-synthesis.md`.
+
+## 1C. Continuum calibration gate — Phase 1E collision-boundary adaptation
+
+The first hard-sphere calibration separates three semantic tasks:
+
+\[
+\text{bulk correlation state},\qquad
+\text{oriented collision-boundary flux},\qquad
+\text{mild collision-history continuation}.
+\]
+
+The exact \(s+1\to s\) BBGKY observation reads a contact-boundary trace.  Its
+primitive process object is the positive gain/loss cone \((A,L)\).  The A/M
+coordinate \(M=-L/F_s\) is admitted only on \(F_s>0\), so the chart boundary
+does not erase an otherwise meaningful flux.
+
+The finite-to-limit generator defect is frozen as the exact sum of scaling,
+contact-geometry, and correlation-trace residuals.  Long-horizon comparison
+adds recollision/truncation/history structure after a mild representation is
+chosen.  A triangular boundary-layer family supplies an exact red team:
+bulk \(L^1\) smallness alone does not control the collision trace.
+
+The Deng--Hani--Ma bulk correlation estimate is recorded as an external
+state-adapter theorem under its own horizon and topology.  It is not silently
+upgraded to a generator estimate.  The contract and result owners are
+`09-phase1e-continuum-collision-adapter-contract.md` and
+`10-phase1e-continuum-collision-adapter-seam-results.md`.
+
+The next gate must select a weak or mild flux target and type one concrete
+collision-history continuation cell.  No entropy search or arithmetic-rank
+promotion precedes that gate.
+
+## 1D. Weak continuation gate — Phase 1F one-collision cell
+
+Phase 1F replaces the pointwise collision-generator target by an oriented
+time-integrated flux measure paired with a declared weak observable.  This
+does not infer a trace from bulk \(L^1\); the flux measure is extra source data
+supplied by a trace theorem or microscopic collision histories.
+
+The first mild cell is
+
+\[
+T_s(T-\tau)\circ C_{s,s+1}^{\epsilon,N}\circ T_{s+1}(\tau),
+\]
+
+with collision time, label, orientation, normal, partner state, contact
+displacement, and free segments retained.  Its exact rational shadow verifies
+history reconstruction, positive integrated gain/loss, time-cut additivity,
+and Fubini composition.  Histories outside the selected cell remain an
+explicit truncation residual.
+
+The phase also rejects observer-free averaging of pointwise A/M.  A weak
+effective multiplicative rate is exact only relative to the declared
+observer-weighted occupation measure,
+
+\[
+M_{\phi,T}^{\mathrm{eff}}
+=\frac{\int\phi F M}{\int\phi F},
+\]
+
+and is not a continuation-complete state coordinate.
+
+The result owners are
+`11-phase1f-weak-mild-continuation-cell-contract.md` and
+`12-phase1f-weak-mild-continuation-cell-results.md`.  The next gate compares a
+leading branch stopped at \(f_A\) with a connected cumulant branch continued
+through an earlier layer, including its cut, tail residual, and time-reversal
+red team.
+
+## 1E. Selective-continuation gate — Phase 1G reversible red team
+
+Phase 1G freezes a finite reversible carrier
+
+\[
+\Gamma=\{0,1\}_x\times\{0,1\}_h,
+\qquad U(x,h)=(x\mathbin{\mathtt{xor}}h,h),
+\]
+
+a target marginal \(\pi\), and a factorized section
+\(\sigma_\delta(p)=p\otimes q_\delta\).  The cut
+
+\[
+F=\sigma_\delta(\pi F)+E_\delta(F)
+\]
+
+induces the exact two-branch identity
+
+\[
+\pi UF
+=B_\delta(\pi F)+\pi UE_\delta(F),
+\qquad B_\delta=\pi U\sigma_\delta.
+\]
+
+The leading branch stops at the target channel and has a derived one-step A/M
+chart.  The zero-marginal connected branch must continue through \(U\) to
+recover the exact next observation.  Re-factorizing at the cut loses the
+microscopic return path by exactly \(\pi UE_\delta(F)\).
+
+Repeated \(B_\delta\) is an autonomous renewed-section process, not the
+quotient of repeated \(U\) on one closed microscopic state.  Its contraction
+therefore reopens only the finite post-closure Lyapunov diagnostic.  No H
+candidate may be imported into the discovery grammar, and no result transfers
+to BBGKY or hard spheres without a separate theorem.
+
+The result owners are
+`13-phase1g-selective-continuation-time-reversal-contract.md` and
+`14-phase1g-selective-continuation-time-reversal-results.md`.
+
+## 1F. Hidden Lyapunov gate — Phase 1H target modes before entropy
+
+Phase 1H removes all entropy and logarithmic inputs from discovery.  Exact
+enumeration of target observables finds the stationary reference, conserved
+mass, and the centered contrast mode
+
+\[
+z(p)=p_0-p_1,
+\qquad z(B_\delta p)=(1-2\delta)z(p).
+\]
+
+Exchange symmetry and nonnegativity admit the even mode grammar
+
+\[
+z^2,z^4,z^6,z^8.
+\]
+
+The frozen minimum-degree selector chooses $z^2$, but all positive
+combinations have an exact simplex-wide decrement.  Thus monotonicity earns a
+target Lyapunov cone and rejects uniqueness.  The A/M first jet also fails to
+equal the finite-step decrement without its second-jet remainder.
+
+After selection, the classical binary relative H is opened and identified as
+
+\[
+H_u(z)=\sum_{m\ge1}\frac{z^{2m}}{(2m)(2m-1)},
+\]
+
+a positive analytic resummation of the discovered modes.  Its coefficients
+are not fixed by target contraction alone.  The selected $z^2$ also fails
+both microscopic lifting and independent-product additivity.
+
+The result owners are
+[`15-phase1h-hidden-lyapunov-mode-contract.md`](./15-phase1h-hidden-lyapunov-mode-contract.md)
+and
+[`16-phase1h-hidden-lyapunov-mode-results.md`](./16-phase1h-hidden-lyapunov-mode-results.md).
+Phase 1I has now revised the proposed direct intersection gate: it first
+requires an exact fibre-response ledger and a chart audit.  The collision-
+product selector remains open, but may be applied only after those data have
+been retained.
+
+## 1G. Charted fibre-response gate — Phase 1I
+
+Phase 1I takes the Phase 1G section and residual as primitive data.  For
+
+\[
+p=\pi F,
+\qquad
+R_\sigma(F)=\pi U\bigl(F-\sigma_\delta(p)\bigr),
+\]
+
+it evaluates any declared target observable \(\Phi\) by the exact finite
+ledger
+
+\[
+\Phi(\pi UF)-\Phi(p)
+=
+\underbrace{\Phi(B_\delta p)-\Phi(p)}_{\text{target difference}}
++
+\underbrace{\Phi(B_\delta p+R_\sigma(F))-\Phi(B_\delta p)}_{\text{fibre response}}.
+\]
+
+This identity precedes Taylor expansion, A/M jet notation, and any demand for
+a global decoder.  On the frozen reversible witness, quadratic contrast has
+target increment \(-735/16384\), fibre response \(1695/16384\), and exact
+microscopic observed increment \(15/256>0\).  Target monotonicity therefore
+transfers across the adapter only under a separate response budget.
+
+The phase then audits two charts.  Contrast \(z\) diagonalizes the renewed
+target law, while odds \(r=(1+z)/(1-z)\) make the declared product-corner
+composition multiplicative.  Hence the Phase 1H minimum *polynomial* mode is
+minimal only relative to the contrast chart and its grammar.  The classical
+binary H control is reopened afterward as a potential whose differential is
+the log-odds covector; this does not make it dynamically unique.
+
+Naive vector addition of correlation residuals also fails closure on the
+probability fibre.  Phase 1I therefore does not objectify the fibre or raise
+arithmetic rank.  This is the negative counterpart to the independently
+earned
+[Phase 12B partition objectification](../local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
+whose native multiset union is closed and lowers every composite exactly; that
+positive result does not transfer to correlations.  Phase 1I's contract and
+result owners are
+[`17-phase1i-charted-fibre-calculus-contract.md`](./17-phase1i-charted-fibre-calculus-contract.md)
+and
+[`18-phase1i-charted-fibre-calculus-results.md`](./18-phase1i-charted-fibre-calculus-results.md).
+The later
+[Phase 12C result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+classifies this phase as an exact one-step response decomposition, not a
+regular-cocycle or C0--C4 correlation-fibre calculus.
+The next work is split into two ordered but independent gates: Phase 1J-A
+must build a genuinely collision-derived, order-sensitive finite covector
+fixture; Phase 1J-B must formulate a continuum fibre-response estimate in
+the weak collision-flux topology of Phases 1E/1F.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -477,6 +679,11 @@ Every attempted claim receives one label:
 | 1A | finite H identity record | research-local fixtures | calibrates H3 |
 | 1B | finite character-class evidence and held-out selector failure | discovery harness only | post-hoc A/M control |
 | 1C | task-relative layer-adapter and A/M first-jet evidence | exact finite adapter fixtures | pressures history/observer/residual semantics |
+| 1E | bulk/trace/history task split and trace obstruction | exact rational boundary shadow | sharpens adaptation failure semantics |
+| 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
+| 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
+| 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
+| 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite response reconstruction and chart retention before covector selection |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

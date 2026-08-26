@@ -82,7 +82,7 @@ deferred until its next oracle/evidence gate is affordable.
 | [`stochastic-feedback-trap-first-passage/`](stochastic-feedback-trap-first-passage/) | current calibration closed | exact Itô task quotient plus independent first-passage and reset-Bellman covariance across 242 monotone charts | [Phase-4 results](stochastic-feedback-trap-first-passage/09-phase4-reset-bellman-results.md); further work requires a new Sonnet or governed extraction proposal |
 | [`pcr3bp-history-cost/`](pcr3bp-history-cost/) | Phases 0–1 complete; Phase 2 frozen | lifted topology and scale-jet reconstruction separate word, clock, deck, and hyperbolic costs; no Bellman/Huffman source is yet justified | [Phase-2 contract](pcr3bp-history-cost/02-return-partition-holonomy-contract.md); next run the frozen two-gate covariance and convergence gates |
 | [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) | T0 initialization | auditable two-question research contract only; neither the manuscript nor an arithmetic interface is verified | [problem frontier](s6-complex-arithmetic-tower/00-problem-frontier.md); next archive/checksum the source and reproduce its matrix/topology certificate |
-| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1D measured-fibration synthesis recorded after Phase 1C passed full CI | exact finite rejection of state-only next-derivative adequacy and A/M first-jet repair for that task; measured fibres/ensembles/objectification remain T0/T1 synthesis; no continuum derivation, ensemble-equivalence theorem, or entropy discovery | [Phase 1D synthesis](boltzmann-bbgky-h-theorem/08-phase1d-measured-fibration-objectification-synthesis.md); next freeze the continuum collision-boundary adapter |
+| [`boltzmann-bbgky-h-theorem/`](boltzmann-bbgky-h-theorem/) | Phase 1I charted fibre-response calibration passed | 47 exact certificates through Phases 1C and 1E–1I; target Lyapunov decrease need not survive continued fibre response; contrast/odds expose a chart-relative dynamics/composition tradeoff; no continuum response theorem, fibre objectification, or generic entropy claim | [Phase 1I result](boltzmann-bbgky-h-theorem/18-phase1i-charted-fibre-calculus-results.md); next run the separate finite collision-covector and continuum fibre-response gates |
 
 ## Sonnet 001 — Lonely Runner
 
@@ -135,9 +135,7 @@ semantic equivalence by task-relative layer adaptation. In an exact finite
 two-body collision model, the state-only marginal is adequate for the present
 one-body law but fails the next-derivative task, even for strictly positive
 laws. The augmented A/M first jet \((f,A,M)\) restores exact adequacy for that
-one task without reconstructing the full source future. The next gate is a
-continuum collision-boundary adapter calibrated against the
-Deng--Hani--Ma history/cumulant construction.
+one task without reconstructing the full source future.
 
 Phase 1D organizes the resulting structural pressure. It distinguishes exact
 quotient fibres, cross-layer adapter fibres, and probability-disintegration
@@ -148,6 +146,35 @@ Measured or asymptotic fibres do not raise arithmetic rank without new free
 composition and compositional lowering. Arithmetic-tower universality remains
 an open conjecture subject to anti-encoding and effective-calculus tests. No
 API proposal follows.
+
+Phases 1E–1G then separate bulk state, collision-boundary flux, and mild
+history continuation; construct an exact stopped/continued cut; and prove
+that the renewed target is autonomous without being a quotient of one closed
+reversible microscopic orbit.  Phase 1H hides entropy and discovers a cone of
+target Lyapunov modes, so target monotonicity does not uniquely select the
+classical H functional.
+
+[Phase 1I](boltzmann-bbgky-h-theorem/18-phase1i-charted-fibre-calculus-results.md)
+adds the missing process-level response ledger.  Every observable change splits
+exactly into a stopped target difference and a continued fibre response; an
+exact witness shows the response reversing quadratic target dissipation.
+Contrast linearizes target dynamics, while odds simplify the declared
+multiplicative composition, making polynomial minimality chart-relative.  The
+held-out classical H is then read as a potential whose differential is the
+log-odds covector.  The result is cross-checked against the independently
+merged
+[local-field Phase 12A result](local-field-projective-process-geometry/20-phase12-locale-observer-history-behavior-results.md),
+where forgetting chart data likewise obstructs exact descent, and against the
+positive
+[Phase 12B partition-fibre result](local-field-projective-process-geometry/22-phase12b-partition-fibres-rogers-ramanujan-results.md),
+where native free composition and all-composite lowering earn fibred task-exact
+objectification.  That result does not transfer objectification to collision
+correlations.  The later
+[Phase 12C change-calculus result](local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
+further classifies Phase 1I as exact one-step response reconstruction, without
+a correlation-fibre action, regular cocycle, future adequacy, or effective
+compression theorem.  The next work separates a finite collision-covector gate
+from a continuum Deng-calibrated fibre-response gate; neither has yet passed.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 
