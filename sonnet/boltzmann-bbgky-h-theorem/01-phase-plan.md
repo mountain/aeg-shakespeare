@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam and passes six exact research-local certificates; the continuum kinetic statements remain external theorem records. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell and passes six additional exact research-local certificates; the continuum kinetic statements remain external theorem records. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -139,6 +139,43 @@ upgraded to a generator estimate.  The contract and result owners are
 The next gate must select a weak or mild flux target and type one concrete
 collision-history continuation cell.  No entropy search or arithmetic-rank
 promotion precedes that gate.
+
+## 1D. Weak continuation gate — Phase 1F one-collision cell
+
+Phase 1F replaces the pointwise collision-generator target by an oriented
+time-integrated flux measure paired with a declared weak observable.  This
+does not infer a trace from bulk \(L^1\); the flux measure is extra source data
+supplied by a trace theorem or microscopic collision histories.
+
+The first mild cell is
+
+\[
+T_s(T-\tau)\circ C_{s,s+1}^{\epsilon,N}\circ T_{s+1}(\tau),
+\]
+
+with collision time, label, orientation, normal, partner state, contact
+displacement, and free segments retained.  Its exact rational shadow verifies
+history reconstruction, positive integrated gain/loss, time-cut additivity,
+and Fubini composition.  Histories outside the selected cell remain an
+explicit truncation residual.
+
+The phase also rejects observer-free averaging of pointwise A/M.  A weak
+effective multiplicative rate is exact only relative to the declared
+observer-weighted occupation measure,
+
+\[
+M_{\phi,T}^{\mathrm{eff}}
+=\frac{\int\phi F M}{\int\phi F},
+\]
+
+and is not a continuation-complete state coordinate.
+
+The result owners are
+`11-phase1f-weak-mild-continuation-cell-contract.md` and
+`12-phase1f-weak-mild-continuation-cell-results.md`.  The next gate compares a
+leading branch stopped at \(f_A\) with a connected cumulant branch continued
+through an earlier layer, including its cut, tail residual, and time-reversal
+red team.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -509,6 +546,7 @@ Every attempted claim receives one label:
 | 1B | finite character-class evidence and held-out selector failure | discovery harness only | post-hoc A/M control |
 | 1C | task-relative layer-adapter and A/M first-jet evidence | exact finite adapter fixtures | pressures history/observer/residual semantics |
 | 1E | bulk/trace/history task split and trace obstruction | exact rational boundary shadow | sharpens adaptation failure semantics |
+| 1F | weak flux and selective continuation cell | exact rational history/cut shadow | sharpens observer-weighted lowering and composition boundary |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

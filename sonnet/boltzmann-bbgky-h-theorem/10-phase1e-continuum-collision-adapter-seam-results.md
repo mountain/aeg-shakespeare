@@ -11,6 +11,10 @@ chaos, or an H theorem.
 **Executable:**
 `tests/research/test_hard_sphere_continuum_adapter_seam.py`.
 
+**Follow-up:** the weak/mild gate in Section 7 is executed by
+`11-phase1f-weak-mild-continuation-cell-contract.md` and
+`12-phase1f-weak-mild-continuation-cell-results.md`.
+
 ## 1. Outcome
 
 Phase 1E resolves the first continuum typing question in four parts.
