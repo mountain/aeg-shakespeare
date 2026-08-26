@@ -19,7 +19,12 @@ full and in order:
 it to locate the current evidence owner and explicit nonclaim, then verify the
 detailed theorem, phase result, or executable certificate.  Do not confuse
 absence of framework-wide theory promotion with absence of theorem-level local
-results.
+results.  Before making a repository-wide judgment about mathematical depth,
+research output, or documentation/code balance, complete the representative
+executable-essay sampling gate in `docs/RESEARCH_STATUS.md`.  Substantial
+files under `tests/classical/` and `tests/research/` are executable
+mathematical essays and must not be classified as ordinary regression code
+without reading their claims and certificates.
 
 Do not begin from the Theory Map alone. It is a compact index and governance
 aid, not the carrier of the full mathematics or an executable architecture. A
