@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: frozen T0 plan. No phase below has been executed.
+Status: Phase 1A executed and passed on the frozen finite model. Phases 1B–5 remain unexecuted and governed by the contracts below.
 
 ## 0. Firewall between three claims
 
