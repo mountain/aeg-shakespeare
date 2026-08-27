@@ -1,0 +1,56 @@
+{
+  "certificate_version": "bessel-transition-local-v1",
+  "claim_mode": "exact local analytic-germ chart certificate",
+  "claim_boundary": "does not certify contour localization or a uniform Bessel evaluator",
+  "large_parameter": "nu",
+  "limit": "nu -> +infinity",
+  "base_point": {
+    "theta": "0",
+    "delta": "0",
+    "relation": "z = 1 + delta"
+  },
+  "raw_phase": "(1 + delta) * sin(theta) - theta",
+  "critical_jet": {
+    "d_theta": "0",
+    "d_theta_2": "0",
+    "d_theta_3": "-1",
+    "d_theta_d_delta": "1"
+  },
+  "collected_support_prefix": [
+    {"theta_degree": 1, "delta_degree": 1, "coefficient": "1"},
+    {"theta_degree": 3, "delta_degree": 0, "coefficient": "-1/6"},
+    {"theta_degree": 3, "delta_degree": 1, "coefficient": "-1/6"},
+    {"theta_degree": 5, "delta_degree": 0, "coefficient": "1/120"},
+    {"theta_degree": 5, "delta_degree": 1, "coefficient": "1/120"}
+  ],
+  "active_face": [[3, 0], [1, 1]],
+  "balance_equations": ["3*a = 1", "a + b = 1"],
+  "scale_weights": {"theta": "1/3", "delta": "2/3"},
+  "rank": 2,
+  "determinant": 3,
+  "off_face_checks": [
+    {"support": [3, 1], "weighted_degree": "5/3", "gap": "2/3"},
+    {"support": [5, 0], "weighted_degree": "5/3", "gap": "2/3"}
+  ],
+  "normalized_leading_phase": "xi*u - u**3/6",
+  "first_residual_order": "nu**(-2/3)",
+  "first_residual_coefficient": "u**5/120 - xi*u**3/6",
+  "next_residual_order": "nu**(-4/3)",
+  "next_residual_prefix": "-u**7/5040 + xi*u**5/120",
+  "airy_change": {
+    "u": "2**(1/3) * t",
+    "parameter": "-2**(1/3) * xi",
+    "expected_leading_prefactor": "2**(1/3) * nu**(-1/3)"
+  },
+  "noninteger_order_residual_bound": "1 / (pi * nu * (z + 1))",
+  "required_unproved_global_obligations": [
+    "amplitude and Jacobian transport",
+    "saddle and endpoint inventory",
+    "contour localization or real-tail cancellation",
+    "uniform parameter-window error",
+    "complex-sector and branch semantics",
+    "numerical stability and total economy"
+  ],
+  "surreal_runtime": "unnecessary"
+}
+

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "parent_gate_commit": "db9898888402d7be8bbd7458c7e6b7d86d011497",
+  "role": "evaluator-only exact controls for the already-frozen S2 gate",
+  "credit_rule": "Only the raw special-function row can support raw discovery. Representation-supplied and chart-supplied rows are verification baselines.",
+  "sympy_raw_input": {
+    "expression": "besselj(N, N*z)",
+    "assumptions": {
+      "N": "positive integer tending to +infinity",
+      "z": "real, local to 1"
+    },
+    "queries": [
+      "series(expression, N, oo, 2)",
+      "limit(expression, N, oo)",
+      "expression.aseries(N, n=2)",
+      "expression.rewrite(Integral)",
+      "series(expression, z, 1, 3)"
+    ],
+    "success_for_baseline": "record whether any raw query returns an N-coupled z-local chart and a remainder/domain statement",
+    "forbidden_credit": "a fixed-z limit, local z Taylor series, unchanged rewrite, or result after supplied scales"
+  },
+  "generic_path_controls": [
+    {
+      "id": "non-bessel-cubic-germ",
+      "input": "N*(2*s**3 + 5*delta*s + 7*s**4)",
+      "neighborhood": "s=0, delta=0",
+      "hidden_evaluator_scales": {
+        "s": "-1/3",
+        "delta": "-2/3"
+      },
+      "required": [
+        "leading face contains 2*s**3 and 5*delta*s",
+        "7*s**4 is retained as a lower-order residual",
+        "all certificate checks replay independently"
+      ]
+    },
+    {
+      "id": "quartic-cusp-two-parameter",
+      "input": "N*(t**4/4 + p*t**2/2 - q*t)",
+      "neighborhood": "t=0, p=0, q=0",
+      "hidden_evaluator_scales": {
+        "t": "-1/4",
+        "p": "-1/2",
+        "q": "-3/4"
+      },
+      "required": [
+        "all three leading monomials occupy order zero",
+        "rank-three exact rational solve",
+        "all certificate checks replay independently"
+      ]
+    }
+  ],
+  "typed_failure_controls": [
+    {
+      "id": "unsupported-special-function",
+      "input": "bessely(N, N*z)",
+      "required_error": "unsupported-representation",
+      "forbidden": "silently reuse the BesselJ representation"
+    },
+    {
+      "id": "integer-domain-violation",
+      "input": "besselj(nu, nu*z)",
+      "assumptions": {
+        "nu": "positive real tending to +infinity; integrality not declared"
+      },
+      "required_error": "representation-domain-unproved",
+      "forbidden": "use the integer-order oscillatory representation without its missing noninteger correction"
+    }
+  ],
+  "disposition_rule": {
+    "NARROW": "recommended even after an S2 pass when the compiler depends on the versioned representation registry or Wolfram remains unexecuted",
+    "STOP": "required if any expected scale enters discovery, a typed failure is silently forced, or independent replay fails",
+    "EXPAND": "not available from this baseline run while the Wolfram same-information comparison is unexecuted"
+  }
+}

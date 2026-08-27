@@ -1,0 +1,26 @@
+{
+  "commitment": "475733c57a34b3cfe2990445f38965e1d277329b7b38795ae0f85cd289f32a89",
+  "reveal_verified": true,
+  "compiler_freeze_composite_sha256": "377972b2f674a06ffb66a9e99a7ac992744d214f520cacff9ac61f1a14253680",
+  "compiler_manifest_files_all_unchanged_at_run": true,
+  "discoverer_input_contained_expected_answer": false,
+  "status": "pass",
+  "certified": true,
+  "discovered_scale_convention": "Scale(x)=N^p",
+  "discovered_scales": {
+    "t": "-1/4",
+    "p": "-1/2",
+    "q": "-3/4"
+  },
+  "equivalent_chart_exponents": {
+    "t=N^(-a)u": "a=1/4",
+    "p=N^(-b)xi": "b=1/2",
+    "q=N^(-c)eta": "c=3/4"
+  },
+  "term_orders": ["0", "0", "0"],
+  "solve_rank": 3,
+  "input_term_count": 3,
+  "normalized_phase": "t_hat**4/4 + p_hat*t_hat**2/2 - q_hat*t_hat",
+  "certificate_checks": [true, true, true, true, true, true],
+  "claim_boundary": "This is a genuine frozen held-out pass inside the same exact polynomial-monomial balance mechanism. It is not an independent-domain result and does not establish trigonometric/Bessel, WKB, boundary-layer, contour, or general chart discovery."
+}

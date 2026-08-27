@@ -1,0 +1,38 @@
+{
+  "bridge": {
+    "applicability": "J_N(N*z), N positive integer, z real in a declared neighborhood of 1",
+    "contains_normal_form_hint": false,
+    "contains_scale_hint": false,
+    "obligations": [
+      {
+        "discharged": true,
+        "name": "registry-shape",
+        "required_for": "local-chart",
+        "statement": "source is exactly J_N(N z), with N positive integer and z real"
+      },
+      {
+        "discharged": false,
+        "name": "full-reconstruction",
+        "required_for": "uniform-integral",
+        "statement": "full function evaluation still requires the cosine integral, prefactor, and integration interval"
+      },
+      {
+        "discharged": false,
+        "name": "uniform-error",
+        "required_for": "uniform-integral",
+        "statement": "the local phase germ does not prove a uniform asymptotic error bound"
+      }
+    ],
+    "provenance": "NIST DLMF 10.9.2, integer-order Bessel cosine integral",
+    "registry_id": "dlmf-10.9.2-integer-bessel-cosine-phase",
+    "registry_version": 1,
+    "source_digest": "4cf6d1175f0c6977af225a523d407e27f3e62381d905751054980855eb5c0fce"
+  },
+  "bridge_failures": [],
+  "germ_failures": [],
+  "local_chart_certified": true,
+  "scales": {"delta": "N^-2/3", "theta": "N^-1/3"},
+  "status": "local-chart-ok",
+  "uniform_integral_certified": false
+}
+

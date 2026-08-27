@@ -1,0 +1,82 @@
+{
+  "run_date": "2026-08-27",
+  "environment": {
+    "python": "3.12.13",
+    "sympy": "1.14.0",
+    "scipy": "1.17.0",
+    "numpy": "2.3.5",
+    "sage_available": false,
+    "wolframscript_available": false,
+    "mathemagix_available": false
+  },
+  "sympy": {
+    "exp_amplification": {"status": "pass", "result": "exp(a)", "seconds": 0.007},
+    "deep_exp_log_visibility": {"status": "pass", "result": "E", "seconds": 0.088},
+    "cancellation_second_order": {"status": "pass", "result": "-1/2", "seconds": 0.027},
+    "cancellation_third_order": {"status": "pass", "result": "1/3", "seconds": 0.048},
+    "nonuniform_fixed_parameter": {
+      "status": "fixed_parameter_only",
+      "result": "1/z",
+      "transition_chart_reported": false,
+      "seconds": 0.014
+    },
+    "bessel_phase_unhinted": {
+      "status": "local_taylor_only",
+      "result": "theta*(N*z-N)-N*theta**3*z/6+N*theta**5*z/120+O(theta**7)",
+      "transition_chart_reported": false,
+      "seconds": 0.021
+    },
+    "bessel_large_order_direct": {
+      "status": "error:NotImplementedError",
+      "message": "MRV set computation for functions in several variables not implemented.",
+      "seconds": 0.003
+    },
+    "bessel_phase_hinted": {
+      "status": "pass_after_two_chart_hints",
+      "result": "u*xi-u**3/6+eps**2*(u**5/120-u**3*xi/6)+O(eps**4)",
+      "seconds": 0.067
+    },
+    "wkb_turning_point_exact": {
+      "status": "strong_baseline_pass",
+      "result": "C1*airyai(x/eps**(2/3))+C2*airybi(x/eps**(2/3))",
+      "seconds": 0.039
+    },
+    "singular_perturbation_exact": {
+      "status": "strong_baseline_pass",
+      "result": "x-eps+eps*exp(-x/eps)",
+      "seconds": 0.047
+    },
+    "singular_perturbation_outer_series": {
+      "status": "pointwise_only",
+      "result": "x-eps+O(eps**3)",
+      "uniform_boundary_residual_retained": false,
+      "seconds": 0.002
+    },
+    "partition_fixed_phase": {
+      "status": "fixed_parameter_only",
+      "result": "0",
+      "crossover_chart_reported": false,
+      "seconds": 0.019
+    },
+    "airy_oscillatory_integral": {
+      "status": "unevaluated",
+      "seconds": 0.263
+    }
+  },
+  "bessel_transition_payoff_after_chart_is_supplied": {
+    "nu": 10000,
+    "a_interval": [-2, 2],
+    "points": 200000,
+    "scipy_jv_seconds_median": 0.236,
+    "leading_airy_seconds_median": 0.0235,
+    "leading_measured_speedup": 10.05,
+    "leading_max_abs_error": 0.0001342,
+    "leading_normalized_max_error": 0.00428,
+    "first_corrected_airy_seconds_median": 0.0284,
+    "first_corrected_measured_speedup": 8.31,
+    "first_corrected_max_abs_error": 3.74e-7,
+    "first_corrected_normalized_max_error": 1.19e-5,
+    "discovery_credit": false,
+    "warning": "Machine-local timing. The formula and transition chart are evaluator oracles in this run."
+  }
+}

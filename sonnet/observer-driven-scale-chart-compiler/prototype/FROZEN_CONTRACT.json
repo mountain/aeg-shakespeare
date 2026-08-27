@@ -1,0 +1,89 @@
+{
+  "contract_version": "s0-2026-08-27",
+  "status": "freeze-ready; manifest assigned externally before held-out reveal",
+  "claim_mode": "exact symbolic plus finite bounded search",
+  "claim_ceiling": "research-local scale retention and monomial chart discovery only",
+  "parameter_regime": {
+    "scale_generator": "N",
+    "limit": "N -> +infinity",
+    "units": "dimensionless inputs only"
+  },
+  "expression_grammar": [
+    "exact rational constants",
+    "declared variables",
+    "addition",
+    "multiplication",
+    "reciprocal and integer powers in polynomial phases",
+    "rational/general power lowering in the bounded near-unit series germ",
+    "exp and log with typed local domains"
+  ],
+  "runtime_carrier": "finite exact rational-power series with SymPy coefficients and explicit big-O provenance",
+  "observer_contract": {
+    "tasks": ["visible asymptotic band", "required remainder order"],
+    "default_visible_order": "N^0",
+    "default_required_remainder_below": "N^-2",
+    "default_max_input_nodes": 256,
+    "default_max_live_terms": 4096,
+    "default_initial_taylor_order": 2,
+    "default_max_taylor_order": 32
+  },
+  "chart_grammar": {
+    "form": "x_i = N^(s_i) * x_i_hat",
+    "unknown_weights": "exact rationals",
+    "phase_fragment": "finite polynomial after exact distribution",
+    "task": "all nonzero extracted phase monomials occupy the declared target order",
+    "default_target_order": "N^0",
+    "default_max_expanded_terms": 256,
+    "default_max_unknown_scales": 8,
+    "candidate_subset_search": false,
+    "chart_ranking": false
+  },
+  "allowed_outputs": [
+    "certified finite series with residual ledger",
+    "certified unique monomial chart and normalized phase",
+    "unsafe within Taylor budget",
+    "outside implemented scale/domain grammar",
+    "underdetermined or inconsistent balance",
+    "resource budget exceeded"
+  ],
+  "hidden_answer_firewall": {
+    "forbidden_inputs": [
+      "expected scaling exponents",
+      "named normal form",
+      "target asymptotic answer",
+      "case-specific solver rule"
+    ],
+    "solver_inputs": [
+      "raw expression",
+      "unknown variable names",
+      "fixed scale bindings",
+      "target order",
+      "resource budget"
+    ],
+    "held_out_rule": "after the external SHA-256 manifest is recorded, grammar, scoring, and implementation remain unchanged during held-out execution"
+  },
+  "frozen_negative_cases": [
+    "underdetermined monomial balance",
+    "positive-order exponential outside evaluator backend",
+    "insufficient Taylor budget",
+    "resource budget exhaustion"
+  ],
+  "cost_ledger": [
+    "input DAG nodes",
+    "backward obligations",
+    "coefficient additions",
+    "term-pair multiplications",
+    "Taylor terms and retries",
+    "peak and retained terms",
+    "residual records",
+    "branch cases",
+    "decoder operations"
+  ],
+  "non_goals": [
+    "general asymptotic or transseries compiler",
+    "surreal runtime",
+    "automatic contour or integral evaluation",
+    "generic Process Geometry API",
+    "complexity advantage claim"
+  ]
+}
