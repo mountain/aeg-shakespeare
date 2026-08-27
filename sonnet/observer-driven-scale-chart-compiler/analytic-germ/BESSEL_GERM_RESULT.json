@@ -1,0 +1,28 @@
+{
+  "certificate": {
+    "checks": [
+      {"name": "balance-replay", "passed": true},
+      {"name": "minimal-rank-prefix", "passed": true},
+      {"name": "known-residual-below-target", "passed": true},
+      {"name": "formal-tail-below-target", "passed": true},
+      {"name": "polynomial-reconstruction", "passed": true}
+    ],
+    "classification": "degenerate-order-3",
+    "formal_tail_order_bound": "N^-1",
+    "formal_tail_total_degree": 6,
+    "known_residual_orders": ["N^-2/3", "N^-2/3"],
+    "known_residual_phase": "-N*delta*theta**3/6 + N*theta**5/120",
+    "normalized_phase": "theta_hat*(delta_hat - theta_hat**2/6)",
+    "scales": {"delta": "N^-2/3", "theta": "N^-1/3"},
+    "selected_degree": 3,
+    "selected_phase": "N*delta*theta - N*theta**3/6",
+    "shifted_phase": "N*delta*sin(theta) - N*theta + N*sin(theta)",
+    "source_digest": "e5f43311e1fc580c962702cba57bf210a8ebf6a65e57375d8271ea3f1bf5bdcb",
+    "truncated_phase": "-N*delta*theta**3/6 + N*delta*theta + N*theta**5/120 - N*theta**3/6"
+  },
+  "certified": true,
+  "cost": {"expanded_terms": 4, "input_ops": 4, "subset_candidates": 0},
+  "failures": [],
+  "status": "ok"
+}
+
