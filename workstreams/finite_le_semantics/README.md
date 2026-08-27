@@ -26,12 +26,24 @@ Run:
 ```bash
 python -m pytest -q
 python run_corpus.py PUBLIC_CORPUS.json
+python run_corpus.py HELD_OUT_CORPUS.json
 python run_baselines.py
 python verify_manifest.py
 ```
 
-The held-out payload remains unrevealed until this evaluator source and
-manifest are publicly committed.
+The evaluator source was remotely frozen before reveal. The committed held-out
+then passed without grammar or scoring changes: it derived `q=3`, returned
+exact `1/5`, retained `1/5 - t/6 + O(t**2)`, recorded cancellation jump 4, and
+replayed successfully. `HELD_OUT_RESULT.json` records the compact result. This
+is self-commit evidence, not independent-agent evidence.
+
+`SOURCE_FREEZE_MANIFEST.sha256` preserves the pre-reveal manifest;
+`MANIFEST.sha256` covers the post-reveal evidence bundle.
+
+The workstream disposition is **EXPAND within the frozen finite LE task
+family**. SymPy's same-information generic limit baseline also obtains all
+values, so the gain is explicit chart/domain/residual semantics and replayable
+C2 discharge, not raw computability or speed.
 
 No general transseries, hyperseries, surreal, hyperiteration, or public solver
 API is authorized.
