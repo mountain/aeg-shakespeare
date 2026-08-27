@@ -1,0 +1,22 @@
+{
+  "schema": "process-geometry/carrier-corpus/v0",
+  "budget": {"max_nodes": 128, "max_finite_height": 8, "max_certificate_bytes": 32768},
+  "cases": [
+    {
+      "id": "public-sanity-mixed-finite-height",
+      "expression": {
+        "op": "log",
+        "argument": {
+          "op": "exp",
+          "argument": {
+            "op": "add",
+            "terms": [
+              {"op": "exp", "argument": {"op": "log", "argument": {"op": "symbol", "name": "x"}}},
+              {"op": "pow", "base": {"op": "symbol", "name": "N"}, "exponent": "-1/3"}
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

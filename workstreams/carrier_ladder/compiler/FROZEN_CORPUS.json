@@ -1,0 +1,33 @@
+{
+  "schema": "process-geometry/carrier-corpus/v0",
+  "budget": {"max_nodes": 512, "max_finite_height": 32, "max_certificate_bytes": 65536},
+  "cases": [
+    {
+      "id": "l0-bessel-local-germ",
+      "expression": {
+        "op": "add",
+        "terms": [
+          {"op": "mul", "factors": [{"op": "symbol", "name": "delta"}, {"op": "symbol", "name": "theta"}]},
+          {"op": "mul", "factors": [{"op": "const", "value": "-1/6"}, {"op": "pow", "base": {"op": "symbol", "name": "theta"}, "exponent": "3"}]},
+          {"op": "mul", "factors": [{"op": "const", "value": "1/120"}, {"op": "pow", "base": {"op": "symbol", "name": "theta"}, "exponent": "5"}]}
+        ]
+      }
+    },
+    {
+      "id": "l1-finite-generalized-polynomial",
+      "expression": {"op": "generalized-polynomial", "scale_symbol": "N", "terms": [["-3/2", "2"], ["1/3", "5"]]}
+    },
+    {
+      "id": "l1-finite-nested-exp-log",
+      "expression": {"op": "exp", "argument": {"op": "log", "argument": {"op": "exp", "argument": {"op": "add", "terms": [{"op": "symbol", "name": "x"}, {"op": "const", "value": "1"}]}}}}
+    },
+    {
+      "id": "l2-symbolic-exp-height",
+      "expression": {"op": "symbolic-iterate", "function": "exp", "seed": {"op": "symbol", "name": "x"}, "height_symbol": "h"}
+    },
+    {
+      "id": "l2-abel-without-normalization",
+      "expression": {"op": "abel-task", "variable": "x", "normalization": null}
+    }
+  ]
+}
