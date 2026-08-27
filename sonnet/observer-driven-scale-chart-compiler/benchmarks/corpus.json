@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "purpose": "Development and held-out corpus for task-driven scale/chart discovery.",
+  "credit_rule": "A case earns discovery credit only from raw_expr, task, regime, and allowed_grammar. expected_chart and expected_normal_form belong to the evaluator and are hidden from the discoverer.",
+  "tiers": [
+    {
+      "tier": "T0",
+      "name": "one-parameter visibility",
+      "cases": [
+        {
+          "id": "exp-amplification",
+          "raw_expr": "(1 + a/N)**N",
+          "task": "finite nonzero N->infinity readout",
+          "expected": "exp(a)",
+          "role": "positive control; stock CAS should pass"
+        },
+        {
+          "id": "deep-exp-log",
+          "raw_expr": "exp(exp(N + exp(-N)) - exp(N))",
+          "task": "finite N->infinity readout",
+          "expected": "E",
+          "role": "positive control; not a novelty case"
+        },
+        {
+          "id": "cancel-third",
+          "raw_expr": "exp(3*N)*(log(1+exp(-N))-exp(-N)+exp(-2*N)/2)",
+          "task": "finite N->infinity readout",
+          "expected": "1/3",
+          "role": "cancellation control; stock CAS should pass"
+        }
+      ]
+    },
+    {
+      "tier": "T1",
+      "name": "coupled parameter visibility",
+      "cases": [
+        {
+          "id": "nonuniform-exponential-integral",
+          "raw_expr": "(1-exp(-N*z))/z",
+          "task": "uniform leading representation for z near 0",
+          "expected_chart": "z=xi/N",
+          "expected_normal_form": "N*(1-exp(-xi))/xi",
+          "role": "distinguished-limit discovery"
+        },
+        {
+          "id": "two-phase-partition",
+          "raw_expr": "-(1/N)*log(exp(-N*f1(beta))+exp(-N*f2(beta)))",
+          "task": "uniform free energy near a simple crossing beta_c",
+          "expected_chart": "beta-beta_c=xi/N when (f1-f2)'(beta_c)!=0",
+          "role": "ensemble/competition scale"
+        },
+        {
+          "id": "tangent-phase-partition",
+          "raw_expr": "-(1/N)*log(exp(-N*f1(beta))+exp(-N*f2(beta)))",
+          "task": "uniform free energy near a crossing of first unequal order k",
+          "expected_chart": "beta-beta_c=xi*N**(-1/k)",
+          "role": "held-out order-generalization family"
+        }
+      ]
+    },
+    {
+      "tier": "T2",
+      "name": "turning points and singular perturbations",
+      "cases": [
+        {
+          "id": "wkb-simple-turning-point",
+          "raw_expr": "eps**2*y''(x)=q(x)*y(x), q(x0)=0, q'(x0)!=0",
+          "task": "uniform local representation near x0",
+          "expected_chart": "x-x0=eps**(2/3)*X",
+          "role": "generic WKB scale inference; exact q=x is only a baseline"
+        },
+        {
+          "id": "first-order-boundary-layer",
+          "raw_expr": "eps*y'(x)+y(x)=x, y(0)=0",
+          "task": "uniform absolute error o(eps) on [0,1]",
+          "expected_chart": "x=eps*X",
+          "expected_residual": "eps*exp(-x/eps)",
+          "role": "task must prevent pointwise series from erasing the boundary fibre"
+        }
+      ]
+    },
+    {
+      "tier": "T3",
+      "name": "coalescing saddle",
+      "cases": [
+        {
+          "id": "canonical-airy-phase",
+          "raw_expr": "N*(t**3/3-z*t)",
+          "task": "uniform O(1) phase near the double saddle",
+          "expected_chart": "t=N**(-1/3)*u, z=N**(-2/3)*xi",
+          "role": "development case; do not use as sole evidence"
+        },
+        {
+          "id": "bessel-transition",
+          "raw_expr": "N*(z*sin(theta)-theta)",
+          "task": "uniform oscillatory representation near theta=0,z=1",
+          "expected_chart": "theta=N**(-1/3)*u, z=1+N**(-2/3)*xi",
+          "expected_normal_form": "xi*u-u**3/6 + N**(-2/3)*(u**5/120-xi*u**3/6)+...",
+          "role": "non-toy killer; expected chart is evaluator-only"
+        }
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "id": "regular-saddle",
+      "raw_expr": "N*(t**2/2+z*t)",
+      "task": "fixed-z leading saddle approximation",
+      "expected_behavior": "use ordinary Gaussian scaling; do not manufacture an Airy chart"
+    },
+    {
+      "id": "separated-two-phase",
+      "raw_expr": "exp(-N*f1)+exp(-N*f2), abs(f1-f2)>=c>0",
+      "task": "fixed compact parameter domain",
+      "expected_behavior": "select the dominant phase; do not retain a crossover fibre"
+    },
+    {
+      "id": "task-does-not-see-boundary",
+      "raw_expr": "eps*y'(x)+y(x)=x, y(0)=0",
+      "task": "pointwise value at x=1",
+      "expected_behavior": "the exp(-1/eps) term may be forgotten at a declared algebraic accuracy"
+    }
+  ]
+}

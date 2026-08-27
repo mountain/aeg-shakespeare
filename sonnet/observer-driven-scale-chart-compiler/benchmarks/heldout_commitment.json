@@ -1,0 +1,9 @@
+{
+  "scheme": "sha256(canonical_json_utf8)",
+  "canonicalization": "json.dumps(spec, sort_keys=True, separators=(',', ':'))",
+  "commitment": "475733c57a34b3cfe2990445f38965e1d277329b7b38795ae0f85cd289f32a89",
+  "selected_before_compiler_tuning": true,
+  "reveal_rule": "Reveal the canonical JSON only after the compiler grammar, scoring rule, failure states, and first implementation are frozen. No grammar edit is permitted after reveal; otherwise report held-out failure.",
+  "custodian": "workstream C",
+  "note": "The Bessel transition benchmark is an independent killer pressure case, not the strict held-out, because its evaluator oracle is present in the shared worktree."
+}

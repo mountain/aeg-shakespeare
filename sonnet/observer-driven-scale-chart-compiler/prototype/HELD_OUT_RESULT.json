@@ -1,0 +1,62 @@
+{
+  "case_id": "sealed-higher-degeneracy-01",
+  "discoverer_input": {
+    "raw_expr": "N*(t**4/4 + p*t**2/2 - q*t)",
+    "regime": "N->infinity; neighborhood t=0,p=0,q=0",
+    "task": "find monomial chart keeping every nonzero phase monomial O(1), all scale exponents positive; return all Pareto-minimal exact charts",
+    "allowed_grammar": "t=N**(-a)u,p=N**(-b)xi,q=N**(-c)eta;a,b,c in QQ>=0"
+  },
+  "freeze": {
+    "composite_sha256": "377972b2f674a06ffb66a9e99a7ac992744d214f520cacff9ac61f1a14253680",
+    "manifest_verified_before_run": true,
+    "implementation_changed_after_reveal": false
+  },
+  "result": {
+    "status": "ok",
+    "certified": true,
+    "scales": {
+      "t": "N^-1/4",
+      "p": "N^-1/2",
+      "q": "N^-3/4"
+    },
+    "chart_exponents": {
+      "a": "1/4",
+      "b": "1/2",
+      "c": "3/4"
+    },
+    "normalized_phase": "t_hat*(2*p_hat*t_hat - 4*q_hat + t_hat**3)/4",
+    "term_orders": ["N^0", "N^0", "N^0"],
+    "all_chart_exponents_positive": true,
+    "all_chart_exponents_rational": true,
+    "unique_solution_is_pareto_minimal": true
+  },
+  "certificate": {
+    "equations": [
+      {
+        "term": "N*t^4/4",
+        "unknown_coefficients": ["4", "0", "0"],
+        "right_hand_side": "-1"
+      },
+      {
+        "term": "N*p*t^2/2",
+        "unknown_coefficients": ["2", "1", "0"],
+        "right_hand_side": "-1"
+      },
+      {
+        "term": "-N*q*t",
+        "unknown_coefficients": ["1", "0", "1"],
+        "right_hand_side": "-1"
+      }
+    ],
+    "checks": [true, true, true, true, true, true],
+    "solve_rank": 3,
+    "expanded_terms": 3,
+    "scope": "all nonzero polynomial phase monomials are required to occupy the declared target order"
+  },
+  "transcript_notes": [
+    "The first sha256sum invocation used the workstream directory even though manifest paths were workspace-relative; it failed before Python ran.",
+    "The command was rerun from the workspace root. Every frozen file verified OK before the held-out expression was constructed.",
+    "Only the pre-freeze public infer_distinguished_scaling and balance_summary functions were used.",
+    "No grammar, scoring, solver, test, README, or frozen contract file was changed after reveal."
+  ]
+}
