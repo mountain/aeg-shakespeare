@@ -16,20 +16,34 @@ Read in order:
    calculations;
 4. [`test_brownian_scale_fibre_phase0.py`](../../tests/research/test_brownian_scale_fibre_phase0.py)
    — independent certificates and source firewall.
+5. [`02-compact-space-redteam.md`](02-compact-space-redteam.md) — exact cycle
+   quotient, circle cover semantics, period-two obstruction, and the frozen
+   sphere gate;
+6. [`phase_compact_contract.py`](phase_compact_contract.py) and
+   [`compact_space_redteam.py`](compact_space_redteam.py) — machine-auditable
+   compact-space red team.
 
-Current S0/S1 result:
+Current finite results:
 
 ```text
 raw centered finite law -> active response order 2 -> scale balance a=1/2
 finite histories -> endpoint fibres -> exact concatenation pushforward
 biased law -> typed centering-required refusal
 continuum / heat-kernel lowering -> not yet authorized
+integer lattice -> exact deck-fibre pushforward to finite cycles
+even non-lazy cycle -> typed period-two obstruction
+lazy compact law -> exact uniform stationary fixed point
+circle/sphere -> time-stationary, not line scale-stable
 ```
 
 The scale result is narrower than a central-limit theorem.  The endpoint result
-is narrower than path equivalence.  S2 must next separate lattice point return,
-continuum neighbourhood recurrence, and singleton hitting before S3 authorizes
-a Brownian/heat-kernel lowering.
+is narrower than path equivalence.  Recurrence and heat-kernel continuation
+remain unauthorized while the compact sphere action/stabilizer gate is open.
+
+The compact-space red team in #162 now blocks a second conflation.  A line
+Gaussian is scale-renormalized; a compact cycle/circle law can instead be
+time-stationary.  The finite cycle result is exact, while the continuum circle
+and sphere remain semantic gates rather than heat-kernel claims.
 
 This task is the second independent representation family requested in
 [#140](https://github.com/mountain/process-geometry/issues/140).  Draft
