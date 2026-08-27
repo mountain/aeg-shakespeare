@@ -1,7 +1,8 @@
 # AMP polynomial/matrix compiler
 
-This research-local Sonnet answers issue
-[#152](https://github.com/mountain/process-geometry/issues/152).
+This research-local Sonnet answers issues
+[#152](https://github.com/mountain/process-geometry/issues/152) and
+[#154](https://github.com/mountain/process-geometry/issues/154).
 
 Read in order:
 
@@ -13,6 +14,8 @@ Read in order:
    sparse cost, numerical error, and the strong-baseline red team.
 4. [`03-disposition.md`](03-disposition.md) states where algorithmic
    simplification was and was not earned.
+5. [`04-native-process-evaluator.md`](04-native-process-evaluator.md) separates
+   direct AMP process evaluation from coefficient and matrix compilation.
 
 The executable certificate is
 [`amp_escape_compiler.py`](amp_escape_compiler.py); its independent tests are
@@ -21,9 +24,10 @@ The executable certificate is
 Current result:
 
 ```text
-polynomial-like basis: EXPAND for symbolic support and observer coordinates
-matrix-like transport: EXPAND for exact sparse compilation and replay
-generic numerical acceleration: NARROW / task and tolerance dependent
+native inverse-state process: EXPAND as the default scalar numerical path
+polynomial-like basis: EXPAND for fixed-chart coefficient/readout compilation
+matrix-like transport: EXPAND for offline exact compilation and replay
+compiled numerical acceleration: NARROW / task, tolerance, and reuse dependent
 overall issue disposition: EXPAND-NARROW
 ```
 

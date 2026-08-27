@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 import importlib.util
+from math import exp
 from pathlib import Path
 import sys
 
@@ -119,6 +120,122 @@ def test_compiled_coordinate_converges_to_the_strong_log_recurrence_baseline():
     assert errors == sorted(errors, reverse=True)
 
 
+def test_native_process_evaluator_matches_the_strong_recurrence_with_a_tail_bound():
+    expected_levels = {0.0: 6, 0.5: 5, 1.0: 4, 1.5: 4, 2.0: 4}
+
+    for initial_log_state, levels in expected_levels.items():
+        native = module.evaluate_escape_process(
+            2,
+            1,
+            initial_log_state,
+            tolerance=1e-15,
+        )
+        direct = module.direct_normalized_log_iteration(
+            2,
+            1,
+            initial_log_state,
+            200,
+        )
+
+        assert abs(native.value - direct) < 2e-15
+        assert native.certifies_tail_tolerance
+        assert native.tail_bound <= 1e-15
+        assert native.cost.process_levels == levels
+        assert native.cost.log1p_evaluations == levels
+        assert native.cost.degree_power_evaluations == levels + 1
+        assert native.cost.initial_exponential_evaluations == 1
+        assert native.cost.state_scalars == 4
+
+
+def test_native_process_evaluator_does_not_compile_a_series_or_matrix():
+    forbidden_names = (
+        "interaction_log_coefficients",
+        "build_substitution_matrix",
+        "substitution_coefficient",
+    )
+    saved = {name: getattr(module, name) for name in forbidden_names}
+
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("the native evaluator called the coefficient compiler")
+
+    try:
+        for name in forbidden_names:
+            setattr(module, name, forbidden)
+        result = module.evaluate_escape_process(2, 1, 1.5, tolerance=1e-15)
+    finally:
+        for name, value in saved.items():
+            setattr(module, name, value)
+
+    assert result.certifies_tail_tolerance
+    assert result.cost.process_levels == 4
+
+
+def test_native_process_evaluator_fails_closed_on_domain_and_budget():
+    invalid_tasks = (
+        (1, 1, 1.0, 1e-15, 64),
+        (2, 0, 1.0, 1e-15, 64),
+        (2, 1, -0.1, 1e-15, 64),
+        (2, 1, 1.0, 0.0, 64),
+        (2, 1, 1.0, 1e-15, 0),
+        (2, 1, 1_000.0, 1e-15, 64),
+    )
+    for degree, interaction, state, tolerance, budget in invalid_tasks:
+        try:
+            module.evaluate_escape_process(
+                degree,
+                interaction,
+                state,
+                tolerance=tolerance,
+                max_levels=budget,
+            )
+        except module.NativeProcessDomainError:
+            pass
+        else:  # pragma: no cover
+            raise AssertionError("an invalid native process task was accepted")
+
+    try:
+        module.evaluate_escape_process(
+            2,
+            1,
+            0.0,
+            tolerance=1e-100,
+            max_levels=1,
+        )
+    except module.NativeProcessBudgetError as error:
+        assert error.max_levels == 1
+        assert error.tail_bound > 1e-100
+    else:  # pragma: no cover
+        raise AssertionError("an exhausted native process budget was hidden")
+
+
+def test_compiled_evaluation_uses_the_amp_degree_ray_horner_structure():
+    coordinate = module.compile_escape_coordinate(2, 1, 20).coordinate
+    initial_log_state = 1.5
+    q = exp(-initial_log_state)
+    direct_series = initial_log_state + sum(
+        float(coefficient) * q**degree
+        for degree, coefficient in enumerate(coordinate.coefficients, start=1)
+    )
+
+    assert coordinate.uses_degree_ray_horner
+    assert coordinate.horner_step_count == 10
+    assert abs(coordinate.evaluate(initial_log_state) - direct_series) < 3e-16
+
+    generic = module.EscapeCoordinate(
+        degree=2,
+        interaction=Fraction(1),
+        order=3,
+        coefficients=(Fraction(1, 3), Fraction(1, 2), Fraction(-2, 5)),
+    )
+    generic_direct = initial_log_state + sum(
+        float(coefficient) * q**degree
+        for degree, coefficient in enumerate(generic.coefficients, start=1)
+    )
+    assert not generic.uses_degree_ray_horner
+    assert generic.horner_step_count == 3
+    assert abs(generic.evaluate(initial_log_state) - generic_direct) < 3e-16
+
+
 def test_sparse_cost_is_reported_without_hiding_the_strong_baseline():
     report = module.benchmark_report(
         degree=2,
@@ -138,6 +255,11 @@ def test_sparse_cost_is_reported_without_hiding_the_strong_baseline():
     }
     assert report.expanded_symbolic_terms == 2**99 + 1
     assert report.compiled_online_series_terms == 900
+    assert report.compiled_horner_steps == 1_000
+    assert report.native_process_levels == 400
+    assert report.native_process_log1p_evaluations == 400
+    assert report.native_process_tail_bound <= 1e-15
+    assert abs(report.native_process_value - report.direct_normalized_value) < 2e-15
     # The strong numerical baseline detects underflow of the correction and
     # stops early; the compiler therefore does not receive a false O(100)
     # per-query advantage on this floating-point task.
