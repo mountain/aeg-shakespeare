@@ -187,7 +187,8 @@ P_A(X^pY^q)
 =\frac1{p+1}X^{p+1}Y^q
 \]
 
-maps `K[[C cap G]]` into the translated chamber `X K[[X,Y]]` and satisfies
+maps \(K[[C\cap G]]\) into the translated chamber \(XK[[X,Y]]\) and
+satisfies
 
 \[
 A P_A F=F.

@@ -11,7 +11,8 @@ G=\mathbb Z\oplus\Lambda
 \]
 
 be a rank-two lattice after clearing the denominator of the rational
-rank-one character lattice `Lambda`.  Let
+rank-one character lattice `Lambda`.  Let `K` be a commutative `Q`-algebra
+and let
 
 \[
 X^g=X_{\nu,\kappa}=a^\nu e^{\kappa v},
@@ -25,7 +26,7 @@ Fix a finitely generated rational cone
 C=\mathbb R_{\ge0}s_1+\cdots+\mathbb R_{\ge0}s_r
 \]
 
-and its affine monoid `S=C cap G`.  A height `h` is admissible when
+and its affine monoid \(S=C\cap G\).  A height `h` is admissible when
 
 \[
 h(s_i)>0
@@ -147,6 +148,33 @@ continuous ratio `h_2/h_1` has a positive minimum and a finite maximum.
 **Corollary 4.2.**  The two heights define the same completed algebra and the
 same convergent formal objects, but generally assign different finite
 observer horizons and different dependency costs.
+
+For an admissible height, define the observer ideal
+
+\[
+F_h^{>N}
+=\left\{
+f\in K[[S]]:[X^g]f=0\text{ whenever }h(g)\le N
+\right\}.
+\]
+
+It is an ideal because every degree in `S` has nonnegative height.
+
+**Theorem 4.3.**  The completed cone algebra is the inverse limit of its
+finite observer quotients:
+
+\[
+K[[S]]
+\cong
+\varprojlim_N K[[S]]/F_h^{>N}.
+\]
+
+**Proof.**  Each quotient retains only the finite set
+`S^h_{le N}` from Theorem 2.1.  A formal series determines a compatible
+family of these finite restrictions.  Conversely, compatibility assigns one
+coefficient to every degree of `S`, and hence determines a unique formal
+series.  The two constructions are inverse algebra homomorphisms.
+\(\square\)
 
 This is the precise form of a useful geometric principle:
 

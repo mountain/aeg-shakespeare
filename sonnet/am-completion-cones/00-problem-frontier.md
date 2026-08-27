@@ -55,7 +55,7 @@ This distinction is mathematical, not an implementation detail.
 
 ## 2. The completion problem
 
-Let `K` be the exact coefficient algebra and let
+Let `K` be a commutative exact `Q`-algebra and let
 
 \[
 C\subset G_{\mathbb R}

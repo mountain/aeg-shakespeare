@@ -13,7 +13,8 @@ The initial rational-polyhedral AM completion problem receives the disposition
 The correct bounded object is not one pointed cone invariant under all power
 translations.  It is a chambered system of cone-bounded completions.
 
-For a pointed rational cone `C` and affine monoid `S=C cap G`, define sectors
+For a pointed rational cone `C` and affine monoid \(S=C\cap G\), define
+sectors
 
 \[
 \mathcal H_{g_0,C}=K[[g_0+S]].
