@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A passes ten exact ordered-collision certificates through C2, including a set-valued forgotten response and state-dependent response cocycle. Independently, Phase 1J-B passes nine exact collision-measure budget certificates and isolates the marked-molecule flux lift plus logarithmic tail as the missing continuum theorem. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A passes ten exact ordered-collision certificates through C2, including a set-valued forgotten response and state-dependent response cocycle. Independently, Phase 1J-B passes nine exact collision-measure budget certificates, and Phase 1J-B2 passes ten exact fixed-molecule mark certificates: one-mark total variation contracts, the mark commutes with a Fubini cut, and the unresolved theorem is global marked operation-sequence summation plus flux identification. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -309,9 +309,10 @@ regular-cocycle or C0--C4 correlation-fibre calculus.
 Phase 1J-A has now discharged the finite gate through C2 on a genuinely
 collision-derived, order-sensitive fixture.  Independently, Phase 1J-B has
 frozen the continuum response ledger in the weak collision-flux topology of
-Phases 1E/1F and identified the bounded marked-molecule flux lift as the
-missing theorem.  The finite product character supplies neither that estimate
-nor a closed covector.
+Phases 1E/1F.  Phase 1J-B2 has discharged the fixed-molecule marked operator
+gate and identified global marked operation-sequence summation plus flux
+identification as the missing theorem.  The finite product character supplies
+neither that estimate nor a closed covector.
 
 ## 1H. Ordered collision-response gate — Phase 1J-A
 
@@ -408,17 +409,60 @@ identity, while the paper explicitly ends the physical-history
 correspondence after cutting.  It supplies neither a boundary-flux lift nor a
 logarithmic response estimate.
 
-The next continuum gate is therefore bounded and marked.  Mark a root-visible
-collision atom before cutting, push its prescribed-dynamics integral to the
-weak event space, and estimate the marked sum against
-\(\|\psi\|_\infty\le K\), with marking, molecule, recollision, truncation,
-geometry, and kinetic-comparison costs explicit.  Only after that theorem
-passes may the logarithmic tail be removed or retained as a renormalized task.
+This phase therefore hands a bounded marked-molecule target to B2: mark a
+root-visible collision atom before cutting, push its prescribed-dynamics
+integral to the event space, and expose marking, molecule, recollision,
+truncation, geometry, and kinetic-comparison costs.  B2 below executes the
+fixed-molecule part and corrects the topology: the full bounded test ball is a
+total-variation target, while an H-adapted or weak-flux class may be smaller.
 
 The contract and result owners are
 [`21-phase1j-b-continuum-h-response-contract.md`](./21-phase1j-b-continuum-h-response-contract.md)
 and
 [`22-phase1j-b-continuum-h-response-results.md`](./22-phase1j-b-continuum-h-response-results.md).
+
+## 1J. Fixed-molecule marked operator gate — Phase 1J-B2
+
+Phase 1J-B2 executes only the local operation that Phase 1J-B left open.  For
+one pre-cut molecule \(M\), a root-visible C-atom \(n\) defines an event map
+\(e_n\) and signed pushforward
+
+\[
+\kappa_{M,n}=(e_n)_\#\lambda_M^Q.
+\]
+
+Signed-measure contraction gives
+
+\[
+\|\kappa_{M,n}\|_{\rm TV}\le I_M(|Q|),
+\qquad
+\left\|\sum_n\kappa_{M,n}\right\|_{\rm TV}
+\le |\mathcal C_{\rm root}(M)|I_M(|Q|).
+\]
+
+The already marked amplitude \(Q\psi\circ e_n\) also obeys the exact Fubini
+cut identity.  This is covariance of an integration observable, not physical
+composition of cut histories.  Ten rational certificates check eligibility,
+pushforward pairing, total-variation contraction, both cut components, linear
+mark cost, post-cut information loss, test-class separation and two mark-cost
+red teams.
+
+The topology ladder is now explicit.  The full bounded \(L^\infty\) ball is
+the dual of total variation; an H-adapted clipped family or Phase 1F's
+smooth/cylinder weak tests may demand less.  B3 must declare which class it
+controls rather than silently replacing weak flux convergence by total
+variation.
+
+The next gate is **marked operation-sequence summation**.  It must retain a
+positive gain after the eligible-atom factor in every molecule, cut, deletion,
+split and error category, then sum the marked expansion.  Physical flux
+identification, the logarithmic tail, entropy chain rule, H theorem, C3/C4,
+rank and API claims remain open.
+
+The contract and result owners are
+[`23-phase1j-b2-marked-molecule-flux-lift-contract.md`](./23-phase1j-b2-marked-molecule-flux-lift-contract.md)
+and
+[`24-phase1j-b2-marked-molecule-flux-lift-results.md`](./24-phase1j-b2-marked-molecule-flux-lift-results.md).
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -795,6 +839,7 @@ Every attempted claim receives one label:
 | 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite response reconstruction and chart retention before covector selection |
 | 1J-A | ordered collision target action, set-valued forgotten response, and exact C2 transport cocycle | 10 exact tests, 57-law response fibre, and 900 cocycle identities | supplies a bounded positive C0--C2 response witness while holding out covector, continuum, and rank claims |
 | 1J-B | whole-event flux response and clipped/tail H budget | 9 exact rational measure and transfer certificates | isolates the marked-molecule flux lift without promoting cutting to physical composition |
+| 1J-B2 | fixed-molecule root-visible mark and test-class ladder | 10 exact pushforward, Fubini, topology, and mark-cost certificates | proves local mark stability and isolates global marked operation-sequence summation |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
