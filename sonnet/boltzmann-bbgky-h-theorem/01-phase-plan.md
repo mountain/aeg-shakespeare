@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A now passes ten exact ordered-collision certificates: the renewed target reaches C0, retained-law response reconstruction reaches C1, state-dependent response transport reaches C2, and microscopic forgetting leaves an exact set-valued response relation. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -306,10 +306,72 @@ The later
 [Phase 12C result](../local-field-projective-process-geometry/24-phase12c-objectification-fibred-change-calculus-results.md)
 classifies this phase as an exact one-step response decomposition, not a
 regular-cocycle or C0--C4 correlation-fibre calculus.
-The next work is split into two ordered but independent gates: Phase 1J-A
-must build a genuinely collision-derived, order-sensitive finite covector
-fixture; Phase 1J-B must formulate a continuum fibre-response estimate in
-the weak collision-flux topology of Phases 1E/1F.
+Phase 1J-A has now discharged the finite gate through C2 on a genuinely
+collision-derived, order-sensitive fixture.  Phase 1J-B remains independent:
+it must formulate a continuum fibre-response estimate in the weak collision-
+flux topology of Phases 1E/1F.  The finite product character does not supply
+that estimate or a closed covector.
+
+## 1H. Ordered collision-response gate — Phase 1J-A
+
+Phase 1J-A replaces Phase 1I's adjacent affine order control by two
+overlapping reversible XOR collision gates on three sites.  The local gates
+are involutions, but their shared middle site makes both microscopic and
+renewed target collision words noncommutative.  The independent section
+induces the exact target law
+
+\[
+p_j\longmapsto p_i+p_j-2p_ip_j
+\]
+
+for a gate (i\to j), and chronological collision words give a C0 action of
+the free monoid on the target cube.
+
+For a retained microscopic law (F), the response
+
+\[
+r_g(F)=\pi U_gF-B_g(\pi F)
+\]
+
+reconstructs the exact next observation, passing C1.  After forgetting (F),
+the response is not a function of the one-site marginals: over the frozen
+half-occupancy fibre, 57 denominator-eight laws produce the exact five-valued
+relation
+
+\[
+\left\{
+\left(0,-\frac12,0\right),
+\left(0,-\frac14,0\right),
+(0,0,0),
+\left(0,\frac14,0\right),
+\left(0,\frac12,0\right)
+\right\}.
+\]
+
+Composition requires the state-dependent transport
+
+\[
+T_v(y,r)=B_v(y+r)-B_v(y).
+\]
+
+The retained-law response obeys the exact C2 cocycle
+
+\[
+r_{u\mathbin{\|}v}(F)
+=T_v\bigl(B_u(\pi F),r_u(F)\bigr)+r_v(U_uF),
+\]
+
+while naive vector addition fails on a positive rational witness.  The parity
+character (z=1-2p) turns the independent XOR update into multiplication,
+(z_j'=z_i z_j), but includes zero and sign changes.  Therefore no logarithmic
+covector, closed one-form, H potential, continuum transfer, effective
+compression, generic calculus, or arithmetic-rank promotion is earned.
+
+The contract and result owners are
+[`19-phase1j-a-collision-response-cocycle-contract.md`](./19-phase1j-a-collision-response-cocycle-contract.md)
+and
+[`20-phase1j-a-collision-response-cocycle-results.md`](./20-phase1j-a-collision-response-cocycle-results.md).
+The next honest gate is Phase 1J-B's weak collision-flux response estimate.
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -684,6 +746,7 @@ Every attempted claim receives one label:
 | 1G | stopped/continued split and oriented closure defect | exact reversible cut/reversal shadow | sharpens target-semigroup versus microscopic-quotient boundary |
 | 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
 | 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite response reconstruction and chart retention before covector selection |
+| 1J-A | ordered collision target action, set-valued forgotten response, and exact C2 transport cocycle | 10 exact tests, 57-law response fibre, and 900 cocycle identities | supplies a bounded positive C0--C2 response witness while holding out covector, continuum, and rank claims |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

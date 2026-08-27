@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I now places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection: contrast simplifies target dynamics, odds simplify the declared composition, and classical binary H is a post-selection potential between them. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace or fibre-response estimate, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A now replaces the adjacent A/M order control by two overlapping reversible collisions and passes the finite C0--C2 gates: ordered target action, retained-law response reconstruction, exact set-valued response after forgetting, and a state-dependent response cocycle. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace or continuum fibre-response estimate, objectified correlation fibres, selected a closed collision covector, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -286,6 +286,28 @@ cocycle, future adequacy, or effective compression has been proved.  Phase 1I
 is therefore an exact response decomposition, not a completed C0--C4
 collision-fibre calculus.
 
+Phase 1J-A supplies the next positive finite step.  Two overlapping reversible
+XOR collision gates share a middle site and therefore do not commute.  Their
+independent-section lowering gives an ordered renewed target action (C0).
+Retaining the microscopic law reconstructs every next observation (C1), while
+forgetting it leaves an exact five-valued response relation over the frozen
+half-occupancy fibre.  Consecutive responses compose by the state-dependent
+transport
+
+\[
+T_v(y,r)=B_v(y+r)-B_v(y),
+\]
+
+and 900 frozen prefix/suffix cases satisfy the exact response cocycle (C2).
+Naive vector addition fails by an explicit rational cross term.
+
+The parity character (z=1-2p) turns the collision probability update into
+the product law (z_j'=z_i z_j).  This is collision-derived, but it does not
+finish covector selection: the chart contains zero and negative values, so a
+real logarithmic covector would be partial and would add structure outside the
+frozen grammar.  C3, continuum response control, C4 compression, H, generic
+calculus, and rank claims remain open.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -358,23 +380,24 @@ effective-calculus obligations.
 - [16-phase1h-hidden-lyapunov-mode-results.md](./16-phase1h-hidden-lyapunov-mode-results.md) records nine exact mode-discovery, nonuniqueness, A/M/jet, lifting, and post-selection certificates.
 - [17-phase1i-charted-fibre-calculus-contract.md](./17-phase1i-charted-fibre-calculus-contract.md) freezes the finite target/fibre response ledger, two-chart audit, objectification red team, and continuum transfer obligation.
 - [18-phase1i-charted-fibre-calculus-results.md](./18-phase1i-charted-fibre-calculus-results.md) records nine exact response, chart, potential, order, and closure certificates and the revised Phase 1J gates.
+- [19-phase1j-a-collision-response-cocycle-contract.md](./19-phase1j-a-collision-response-cocycle-contract.md) freezes the overlapping reversible collision carrier, typed target/response actions, C0--C2 gates, chart atlas, and oracle firewall.
+- [20-phase1j-a-collision-response-cocycle-results.md](./20-phase1j-a-collision-response-cocycle-results.md) records the ordered target action, exact five-valued response relation, nonlinear transport cocycle, product character, and claim boundary.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
 - [test_selective_continuation_time_reversal.py](../../tests/research/test_selective_continuation_time_reversal.py) contains the 6 exact Phase 1G certificates.
 - [test_hidden_lyapunov_mode_discovery.py](../../tests/research/test_hidden_lyapunov_mode_discovery.py) contains the 9 exact Phase 1H certificates.
 - [test_charted_fibre_lyapunov_calculus.py](../../tests/research/test_charted_fibre_lyapunov_calculus.py) contains the 9 exact Phase 1I certificates and 70 enumerated observable ledgers.
+- [test_collision_response_cocycle.py](../../tests/research/test_collision_response_cocycle.py) contains the 10 exact Phase 1J-A certificates, including 72 reconstructions and 900 response-cocycle identities.
 
-The next action is split.  Phase 1J-A must build a genuinely collision-derived,
-order-sensitive finite fixture, declare its process and response actions, and
-test response fibres, reconstruction, and the regular cocycle.  Only then may
-it compare a frozen chart atlas across dynamics, composition, covector,
-decoder, and residual costs and ask whether the collision-product character
-selects a closed one-form before integration.
-Phase 1J-B must identify a Deng molecule/cumulant composition and cutting map,
+Phase 1J-A is complete through C2.  The next action is Phase 1J-B: identify a
+Deng molecule/cumulant composition and cutting map,
 then state an H-response estimate in the weak collision-flux topology of
 Phases 1E/1F.  A bulk estimate that does not control the logarithmic covector
-does not pass.  Neither subgate may borrow the other's conclusion.
+does not pass.  The finite product character and cocycle may guide the typing,
+but they do not supply the continuum estimate.  A later C3 covector search
+must remain separate unless the continuum gate itself provides the missing
+domain and integrability hypotheses.
 
 ## References for calibration
 
