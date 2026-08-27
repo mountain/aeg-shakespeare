@@ -1,0 +1,12 @@
+{
+  "schema": "process-geometry/finite-le-public-result/v0",
+  "cases": [
+    {"id": "p1-mixed-exp-nesting", "status": "evaluated", "q": 1, "limit": "exp(2)", "cancellation_jump": 1, "residual": "O(t**2)", "certificate_digest": "5d0952f1d087dd01a58ac7ac535ddb26702a21013cd247a4b4613bff8c219daa", "certificate_bytes": 1083, "replay_valid": true, "failure": null},
+    {"id": "p2-third-order-log-cancellation", "status": "evaluated", "q": 1, "limit": "1/3", "cancellation_jump": 2, "residual": "O(t**2)", "certificate_digest": "43624997810bf0fd5d011720200d3f8d7557a823173cdc01d18b8cdc9bb78be7", "certificate_bytes": 1162, "replay_valid": true, "failure": null},
+    {"id": "p3-rational-rate-q6", "status": "evaluated", "q": 6, "limit": "1", "cancellation_jump": 2, "residual": "O(t**2)", "certificate_digest": "2f9af9fcaa0d4f98218c02e3962a35c817d7e89a005c23b5dec31426b7f5507f", "certificate_bytes": 1071, "replay_valid": true, "failure": null},
+    {"id": "n1-log-domain-missing", "status": "unsupported", "q": null, "limit": null, "cancellation_jump": null, "residual": null, "certificate_digest": "d60a580a065ba4ce4712d00a0f7e368430a29290e0944d1b64fce0902ed63d50", "certificate_bytes": 1093, "replay_valid": true, "failure": "log-domain-not-certified-positive"},
+    {"id": "n2-irrational-rate", "status": "unsupported", "q": null, "limit": null, "cancellation_jump": null, "residual": null, "certificate_digest": "14ce9b9410b756309b839b9f8595533d86ffb0cdde4a7ad4a5e52e3b77507069", "certificate_bytes": 1083, "replay_valid": true, "failure": "invalid-rational-constant"},
+    {"id": "n3-nested-unbounded-scale", "status": "unsupported", "q": null, "limit": null, "cancellation_jump": null, "residual": null, "certificate_digest": "29a07e9ea07ac7e2cb1b19276109825edaae5ee8ad38bc0bbbb79032568d2e1a", "certificate_bytes": 1104, "replay_valid": true, "failure": "nested-unbounded-exponential-scale"},
+    {"id": "n4-symbolic-height", "status": "unsupported", "q": null, "limit": null, "cancellation_jump": null, "residual": null, "certificate_digest": "c38e51c6c396d4469e013157cd5904c4a595b87dd992b08d871dbdf9d696eb06", "certificate_bytes": 1110, "replay_valid": true, "failure": "symbolic-height-outside-finite-le-fragment"}
+  ]
+}
