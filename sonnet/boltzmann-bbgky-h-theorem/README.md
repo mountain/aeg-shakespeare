@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A replaces the adjacent A/M order control by two overlapping reversible collisions and passes C0--C2: ordered target action, retained-law reconstruction, set-valued response after forgetting, and a state-dependent response cocycle. Independently, Phase 1J-B freezes the continuum response as one signed measure on the full collision-event space and proves an exact clipped/tail H-budget shadow. Phase 1J-B2 proves the fixed-molecule one-mark pushforward/TV lemma. Phase 1J-B3 now proves that the bounded formal marked molecule family is absolutely summable in total variation: early bounded-test erasure leaves only a linear molecule-size factor, which is absorbed by the source proof's geometric size sum. The remaining continuum theorem is physical signed-current identification. Phases 1A and 1B remain post-hoc kinetic controls. The study has not identified the formal marked family with the hard-sphere collision response, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A passes C0--C2 for two overlapping reversible collisions. Independently, Phases 1J-B through B3 freeze a whole-event response, a fixed-molecule mark, and an absolutely summable bounded formal marked family. Phase 1J-B4 now completes a twelve-certificate signed-current audit: the source has an exact signed endpoint formula (5.63) and a local collision evaluation identity (7.15), but lacks the path-resolved marked Penrose identity and current-valued residual estimates needed for physical identification. Phases 1A and 1B remain post-hoc kinetic controls. The study has not identified the formal marked family with the hard-sphere collision response, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -362,6 +362,24 @@ positive-power form.  Proposition 3.25 supplies domination, however, not an
 identity between this family and a physical collision current.  The next
 analytic target is that signed-current identification.
 
+Phase 1J-B4 audits that identification against the proof, not only the
+statement, of the source theorem.  The audit finds an exact signed endpoint
+formula for \(E_{H_\ell}\) in equations (5.62)--(5.63) and a local C-atom
+collision evaluation identity in equations (7.13)--(7.15).  These are the two
+necessary ingredients, but the paper does not prove that inserting a
+root-visible collision mark commutes with the Penrose expansion of truncated
+transport.  Endpoint equality cannot supply that conclusion: exact fixtures
+exhibit equal endpoints with different currents, equal positive majorants
+with different signed currents, and equal total mass/variation with different
+bounded weak pairings.
+
+The remaining target is now the narrower **one-layer marked Penrose insertion
+identity**.  It should deform Proposition 5.10 by a collision generating mark
+before any absolute value, retain gain/loss orientation independently of
+\((-1)^{|M|_O}\), and differentiate at the neutral mark.  State \(L^1\)
+estimates for \(\mathrm{Err}_2\) and the terminal error must not be renamed as
+current estimates.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -372,7 +390,7 @@ analytic target is that signed-current identification.
 6. Can time reversal be used to construct an explicit missing decoder?
 7. At each arithmetic rank, which observers are lowering-induced and which are intrinsic?
 8. Does a useful H-like Lyapunov functional exist on more than one rank, and if so how does it transform across the \((r,s)\) grid?
-9. Can the absolutely summable formal marked family be identified, with signs and residuals intact, as the physical collision-current response?
+9. Does a one-layer collision generating deformation of the Penrose expansion prove the marked path/current identity while retaining both sign axes?
 10. Can marked molecule estimates supply the clipped collision-flux and logarithmic-tail bounds now known to be sufficient for Lyapunov transfer?
 11. Can one collision-derived chart atlas make dynamics, composition, and covector integration jointly simple, or is their incompatibility an invariant cost?
 
@@ -445,6 +463,8 @@ effective-calculus obligations.
 - [24-phase1j-b2-marked-molecule-flux-lift-results.md](./24-phase1j-b2-marked-molecule-flux-lift-results.md) records the local one-mark lemma, ten exact certificates, red teams, and the marked global-summation boundary.
 - [25-phase1j-b3-marked-operation-sequence-contract.md](./25-phase1j-b3-marked-operation-sequence-contract.md) freezes early bounded-test erasure, operation routing, the linear mark-cost absorption, and formal-current claim ceiling.
 - [26-phase1j-b3-marked-operation-sequence-results.md](./26-phase1j-b3-marked-operation-sequence-results.md) records the bounded formal marked-family theorem, thirteen exact certificates, red teams, and the physical-current identification boundary.
+- [27-phase1j-b4-signed-current-identification-contract.md](./27-phase1j-b4-signed-current-identification-contract.md) freezes the endpoint/path/current separation, marked Penrose theorem, oriented event space, and typed residual ledger.
+- [28-phase1j-b4-signed-current-identification-results.md](./28-phase1j-b4-signed-current-identification-results.md) records the corrected source audit, twelve exact path/current and no-go certificates, and the missing insertion identity.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
@@ -455,20 +475,21 @@ effective-calculus obligations.
 - [test_continuum_collision_flux_response_budget.py](../../tests/research/test_continuum_collision_flux_response_budget.py) contains the 9 exact Phase 1J-B measure, clipping, tail, dissipation, and claim-boundary certificates.
 - [test_marked_molecule_flux_lift.py](../../tests/research/test_marked_molecule_flux_lift.py) contains the 10 exact Phase 1J-B2 eligibility, pushforward, cut, topology, mark-cost, and claim-boundary certificates.
 - [test_marked_operation_sequence_summation.py](../../tests/research/test_marked_operation_sequence_summation.py) contains the 13 exact Phase 1J-B3 operation-routing, geometric-summation, tail, error, red-team, and claim-boundary certificates.
+- [test_signed_collision_current_identification.py](../../tests/research/test_signed_collision_current_identification.py) contains the 12 exact Phase 1J-B4 path/current linearity, orientation, residual, information-loss, and source-gate certificates.
 
-Phase 1J-A is complete through C2.  Independently, Phase 1J-B3 has completed
-the bounded formal marked-family sum without borrowing that finite conclusion.
+Phase 1J-A is complete through C2.  Independently, Phase 1J-B4 has completed
+the signed-current identification audit without borrowing that finite
+conclusion.  The physical identity itself remains missing.
 A later C3 covector search remains separate unless its domain and
 integrability hypotheses are independently earned.
 
-The next continuum action is Phase 1J-B4, physical signed-current
-identification.  It must return to the pre-absolute-value expansion and show
-that the formal marked terms reconstruct one declared microscopic collision
-current with orientation, gain/loss signs, truncation and terminal-error
-currents intact.  Proposition 3.25's positive domination is not such an
-identity.  Equality must hold on the Phase 1F weak event space for bounded
-tests before any comparison with target Boltzmann flux.  The logarithmic tail
-and entropy chain rule remain later gates.
+The next continuum action is the one-layer marked Penrose insertion theorem.
+It must prove a collision-generating deformation of Proposition 5.10 before
+absolute values, or exhibit the exact inclusion--exclusion step that prevents
+it.  Only after this path-resolved equality passes should truncation,
+geometry, \(\mathrm{Err}_2\), and terminal errors be lifted to separately
+typed currents.  The logarithmic tail and entropy chain rule remain later
+gates.
 
 ## References for calibration
 
