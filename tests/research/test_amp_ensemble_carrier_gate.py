@@ -86,6 +86,23 @@ def test_full_amp_lie_closure_contains_an_infinite_independent_family():
     assert len({power for _, power in witnesses}) == len(witnesses)
 
 
+def test_three_process_labels_per_variable_form_an_anchored_redundant_frame():
+    x1, x2 = sp.symbols("x1 x2", positive=True)
+
+    # Columns are A_1, M_1, P_1, A_2, M_2, P_2 in the physical tangent basis.
+    anchor = sp.Matrix(
+        [
+            [1, x1, x1 * sp.log(x1), 0, 0, 0],
+            [0, 0, 0, 1, x2, x2 * sp.log(x2)],
+        ]
+    )
+
+    assert anchor.rank() == 2
+    assert len(anchor.nullspace()) == 4
+    assert anchor * sp.Matrix([-x1, 1, 0, 0, 0, 0]) == sp.zeros(2, 1)
+    assert anchor * sp.Matrix([0, -sp.log(x1), 1, 0, 0, 0]) == sp.zeros(2, 1)
+
+
 def test_mp_words_compile_to_two_field_affine_normal_forms():
     history = (
         module.multiplication(Fraction(2, 3)),

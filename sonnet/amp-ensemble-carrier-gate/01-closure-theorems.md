@@ -151,7 +151,68 @@ many declared positive exponents still admit a pointed, locally finite
 support cone.  Arbitrary branches, infinite scale accumulation, or unbounded
 iteration require a separate carrier gate.
 
-## 4. Structural interpretation
+## 4. The `3n` process frame is anchored, not a `3n`-manifold
+
+For physical coordinates `x_1,...,x_n`, introduce formal local generator
+labels
+
+\[
+e_{A_i},\qquad e_{M_i},\qquad e_{P_i}.
+\]
+
+They define a rank-`3n` generating bundle with anchor
+
+\[
+\rho(e_{A_i})=\partial_{x_i},
+\qquad
+\rho(e_{M_i})=x_i\partial_{x_i},
+\qquad
+\rho(e_{P_i})=x_i\log(x_i)\partial_{x_i}.
+\]
+
+**Proposition 4.1.**  At every point of the positive chart, the anchor has
+rank `n`, not `3n`.
+
+**Proof.**  Its image contains every `partial_(x_i)` through `e_(A_i)`, so the
+rank is at least `n`.  All three generators for index `i` are scalar multiples
+of the same tangent vector, with exact kernel relations
+
+\[
+\rho(e_{M_i}-x_i e_{A_i})=0,
+\qquad
+\rho(e_{P_i}-\log(x_i)e_{M_i})=0.
+\]
+
+Thus the image has rank at most `n` and the local kernel has dimension `2n`.
+QED.
+
+The `3n` description is nevertheless useful if it retains the generator
+grade, legal compositions, and history.  For an observable `f`, the process
+signature
+
+\[
+\bigl(A_i f,M_i f,P_i f\bigr)_{i=1}^n
+\]
+
+is a structured family of probes, not `3n` independent tangent coordinates.
+In `y_i=log x_i`, for example,
+
+\[
+A_i=e^{-y_i}\partial_{y_i},
+\qquad
+M_i=\partial_{y_i},
+\qquad
+P_i=y_i\partial_{y_i}.
+\]
+
+A good chart can therefore expose drift, scale response, and scale-of-scale
+response directly.  The new information comes from their transformation and
+composition laws, not from pretending that the anchored values are
+independent.  Because the brackets also escape the finite `3n` span, this
+finite generating bundle is not yet a closed Lie algebroid; its closure needs
+the completed, filtered fibre described above.
+
+## 5. Structural interpretation
 
 The first AMP picture is not a bigger matrix algebra:
 
