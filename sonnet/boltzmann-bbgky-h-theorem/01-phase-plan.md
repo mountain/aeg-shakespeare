@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A passes ten exact ordered-collision certificates through C2, including a set-valued forgotten response and state-dependent response cocycle. Independently, Phase 1J-B passes nine exact collision-measure budget certificates, Phase 1J-B2 passes ten fixed-molecule mark certificates, and Phase 1J-B3 passes thirteen exact global formal-summation certificates: early bounded-test erasure leaves a linear mark factor that the existing geometric molecule-size sum absorbs. Physical signed-current identification remains open. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A passes ten exact ordered-collision certificates through C2. Independently, Phases 1J-B through B3 pass the whole-event budget, fixed-molecule mark, and bounded formal-summation gates. Phase 1J-B4 now passes twelve exact audit certificates but rejects physical identification from the current inputs: equations (5.63) and (7.15) provide exact endpoint and local-atom ingredients, while the path-resolved marked Penrose identity and current-valued residual estimates remain missing. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -310,9 +310,10 @@ Phase 1J-A has now discharged the finite gate through C2 on a genuinely
 collision-derived, order-sensitive fixture.  Independently, Phase 1J-B has
 frozen the continuum response ledger in the weak collision-flux topology of
 Phases 1E/1F.  Phase 1J-B2 has discharged the fixed-molecule marked operator
-gate, and Phase 1J-B3 has discharged the bounded global formal sum.  Physical
-signed-current identification is now the missing theorem.  The finite product
-character supplies neither that identification nor a closed covector.
+gate, Phase 1J-B3 has discharged the bounded global formal sum, and Phase
+1J-B4 has reduced physical identification to a missing path-resolved marked
+Penrose theorem.  The finite product character supplies neither that
+identification nor a closed covector.
 
 ## 1H. Ordered collision-response gate — Phase 1J-A
 
@@ -503,6 +504,40 @@ The contract and result owners are
 [`25-phase1j-b3-marked-operation-sequence-contract.md`](./25-phase1j-b3-marked-operation-sequence-contract.md)
 and
 [`26-phase1j-b3-marked-operation-sequence-results.md`](./26-phase1j-b3-marked-operation-sequence-results.md).
+
+## 1L. Signed-current identification audit — Phase 1J-B4
+
+Phase 1J-B4 returns to the source proof before absolute values. It finds two
+exact ingredients that narrow the gap:
+
+- equations (5.62)--(5.63) give a signed Penrose formula for
+  \(E_{H_\ell}\), although the proposition statement later records only its
+  positive domination; and
+- equations (7.13)--(7.15) evaluate one prescribed C-atom as an actual
+  collision with its time, outgoing state and pre-collisional kernel
+  orientation.
+
+Neither statement proves that marking root-visible collisions commutes with
+the Penrose expansion of the truncated endpoint transport. A current must be
+extracted from a path-resolved lift, because endpoint equality alone loses
+collision multiplicity, channel and orientation.
+
+The exact executable schema proves that a signed path identity pushes
+linearly to every bounded weak current pairing. It also rejects four weaker
+routes: endpoint equality, positive-majorant equality, total mass/variation
+equality, and event-forgetting cuts. Penrose remainder, truncation, geometry,
+\(\mathrm{Err}_2\), and terminal errors remain separately typed.
+
+Physical identification therefore receives the grade **missing theorem**, not
+pass. The next gate is the one-layer marked Penrose insertion identity:
+deform Proposition 5.10 by collision generating marks before any absolute
+value and differentiate at the neutral mark. Only after this succeeds should
+state-error estimates be lifted to current-error estimates.
+
+The contract and result owners are
+[27-phase1j-b4-signed-current-identification-contract.md](./27-phase1j-b4-signed-current-identification-contract.md)
+and
+[28-phase1j-b4-signed-current-identification-results.md](./28-phase1j-b4-signed-current-identification-results.md).
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -881,6 +916,7 @@ Every attempted claim receives one label:
 | 1J-B | whole-event flux response and clipped/tail H budget | 9 exact rational measure and transfer certificates | isolates the marked-molecule flux lift without promoting cutting to physical composition |
 | 1J-B2 | fixed-molecule root-visible mark and test-class ladder | 10 exact pushforward, Fubini, topology, and mark-cost certificates | proves local mark stability and isolates global marked operation-sequence summation |
 | 1J-B3 | bounded formal marked-family summation | 13 exact operation-routing, geometric-series, tail, error, and red-team certificates | absorbs the linear mark count and isolates physical signed-current identification |
+| 1J-B4 | signed-current identification audit | 12 exact path/current, orientation, residual, information-loss, and source-gate certificates | finds exact endpoint/local-atom ingredients but isolates the missing marked Penrose insertion theorem |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |
