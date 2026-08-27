@@ -1,4 +1,4 @@
-"""S0/S1 Brownian scale and endpoint-fibre certificates for issue #158."""
+"""PRE-AMP discrete Brownian controls for issue #158 and correction #160."""
 
 from __future__ import annotations
 
@@ -23,9 +23,12 @@ native = module.native
 firewall = module.firewall
 
 
-def test_method_contract_has_no_s0_s1_lowering_escape_hatch() -> None:
-    contract = module.METHOD_CONTRACT
-    assert contract.contract_id == "brownian-scale-fibre-s0-s1"
+def test_discrete_control_is_explicitly_not_an_amp_contract() -> None:
+    contract = module.DISCRETE_CONTROL_CONTRACT
+    assert contract.contract_id == "brownian-pre-amp-discrete-control-s0-s1"
+    assert contract.native_grammar.family is firewall.NativeGrammarFamily.DECLARED
+    assert contract.native_grammar.generator_ids == {"A-step"}
+    assert "PRE-AMP" in contract.native_grammar.claim_boundary
     assert contract.allowed_lowerings == ()
     assert {task.task_id for task in contract.tasks} == {
         "blind-scale",
@@ -169,7 +172,7 @@ def test_phase0_trace_is_machine_readable_and_lane_separated() -> None:
 
 
 def test_phase0_firewall_rejects_a_classical_discovery_oracle() -> None:
-    trace = firewall.MethodTrace(module.METHOD_CONTRACT)
+    trace = firewall.MethodTrace(module.DISCRETE_CONTROL_CONTRACT)
     with pytest.raises(firewall.PrematureLoweringError):
         trace.record(
             task_id="blind-scale",
@@ -178,4 +181,5 @@ def test_phase0_firewall_rejects_a_classical_discovery_oracle() -> None:
             action="supply a target scale from a classical transform",
             input_semantics="raw increment law",
             output_semantics="answer-shaped exponent",
+            generator_ids=("A-step",),
         )

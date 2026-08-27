@@ -74,6 +74,23 @@ class ClaimMode(str, Enum):
     SEARCH_ONLY = "search-only"
 
 
+class NativeGrammarFamily(str, Enum):
+    """The process grammar whose generators make a result native."""
+
+    DECLARED = "declared"
+    AMP = "amp"
+
+
+class ClosureStatus(str, Enum):
+    CLOSES_DECLARED_SPAN = "closes-declared-span"
+    ESCAPES_DECLARED_SPAN = "escapes-declared-span"
+    TASK_SCOPED = "task-scoped"
+
+
+AMP_GENERATOR_IDS = frozenset({"A", "M", "P"})
+AMP_RELATION_IDS = frozenset({"A-M", "M-P", "A-P"})
+
+
 def _require_text(value: str, field_name: str) -> None:
     if not isinstance(value, str) or not value.strip():
         raise MethodContractError(f"{field_name} must be non-empty text")
@@ -103,12 +120,17 @@ class TaskContract:
     accuracy: str
     claim_mode: ClaimMode
     failure_semantics: tuple[str, ...]
+    required_generators: tuple[str, ...] = ()
 
     def validate(self) -> None:
         for name in ("task_id", "observer", "deliverable", "regime", "accuracy"):
             _require_text(getattr(self, name), f"task.{name}")
         _enum_value(self.claim_mode, ClaimMode, "claim mode")
         _require_texts(self.failure_semantics, "task.failure_semantics")
+        if self.required_generators:
+            _require_texts(self.required_generators, "task.required_generators")
+            if len(set(self.required_generators)) != len(self.required_generators):
+                raise MethodContractError("task required generator ids must be unique")
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -119,6 +141,137 @@ class TaskContract:
             "accuracy": self.accuracy,
             "claim_mode": ClaimMode(self.claim_mode).value,
             "failure_semantics": list(self.failure_semantics),
+            "required_generators": list(self.required_generators),
+        }
+
+
+@dataclass(frozen=True)
+class GeneratorWitness:
+    generator_id: str
+    finite_action: str
+    infinitesimal_action: str
+    carrier: str
+    domain: str
+    task_role: str
+    residual: str
+    certificate: str
+
+    def validate(self) -> None:
+        for name in self.__dataclass_fields__:
+            _require_text(getattr(self, name), f"generator.{name}")
+
+    def as_dict(self) -> dict[str, str]:
+        return {name: getattr(self, name) for name in self.__dataclass_fields__}
+
+
+@dataclass(frozen=True)
+class GeneratorRelationWitness:
+    relation_id: str
+    expression: str
+    closure_status: ClosureStatus
+    residual: str
+    certificate: str
+
+    def validate(self) -> None:
+        for name in ("relation_id", "expression", "residual", "certificate"):
+            _require_text(getattr(self, name), f"relation.{name}")
+        _enum_value(self.closure_status, ClosureStatus, "closure status")
+
+    def as_dict(self) -> dict[str, str]:
+        return {
+            "relation_id": self.relation_id,
+            "expression": self.expression,
+            "closure_status": ClosureStatus(self.closure_status).value,
+            "residual": self.residual,
+            "certificate": self.certificate,
+        }
+
+
+@dataclass(frozen=True)
+class NativeGrammarProfile:
+    profile_id: str
+    family: NativeGrammarFamily
+    required_generators: tuple[str, ...]
+    generators: tuple[GeneratorWitness, ...]
+    legal_compositions: tuple[str, ...]
+    relations: tuple[GeneratorRelationWitness, ...]
+    closure_obligations: tuple[str, ...]
+    domain_and_branches: tuple[str, ...]
+    claim_boundary: str
+
+    def validate(self) -> None:
+        _require_text(self.profile_id, "grammar.profile_id")
+        family = _enum_value(self.family, NativeGrammarFamily, "grammar family")
+        _require_texts(self.required_generators, "grammar.required_generators")
+        _require_texts(self.legal_compositions, "grammar.legal_compositions")
+        _require_texts(self.closure_obligations, "grammar.closure_obligations")
+        _require_texts(self.domain_and_branches, "grammar.domain_and_branches")
+        _require_text(self.claim_boundary, "grammar.claim_boundary")
+
+        if len(set(self.required_generators)) != len(self.required_generators):
+            raise MethodContractError("grammar required generator ids must be unique")
+        if not self.generators:
+            raise MethodContractError("grammar.generators must not be empty")
+        for generator in self.generators:
+            generator.validate()
+        generator_ids = tuple(item.generator_id for item in self.generators)
+        if len(set(generator_ids)) != len(generator_ids):
+            raise MethodContractError("generator witness ids must be unique")
+        if set(generator_ids) != set(self.required_generators):
+            raise MethodContractError(
+                "generator witnesses must exactly cover required_generators"
+            )
+
+        if not self.relations:
+            raise MethodContractError("grammar.relations must not be empty")
+        for relation in self.relations:
+            relation.validate()
+        relation_ids = tuple(item.relation_id for item in self.relations)
+        if len(set(relation_ids)) != len(relation_ids):
+            raise MethodContractError("generator relation ids must be unique")
+
+        if family is NativeGrammarFamily.AMP:
+            if set(self.required_generators) != AMP_GENERATOR_IDS:
+                raise MethodContractError(
+                    "AMP grammar requires exactly the A, M, and P generators"
+                )
+            if set(relation_ids) != AMP_RELATION_IDS:
+                raise MethodContractError(
+                    "AMP grammar requires exactly A-M, M-P, and A-P relations"
+                )
+            relation_map = {item.relation_id: item for item in self.relations}
+            for relation_id in ("A-M", "M-P"):
+                if (
+                    ClosureStatus(relation_map[relation_id].closure_status)
+                    is not ClosureStatus.CLOSES_DECLARED_SPAN
+                ):
+                    raise MethodContractError(
+                        f"AMP {relation_id} relation must close the declared span"
+                    )
+            if (
+                ClosureStatus(relation_map["A-P"].closure_status)
+                is not ClosureStatus.ESCAPES_DECLARED_SPAN
+            ):
+                raise MethodContractError(
+                    "AMP A-P relation must expose escape from the three-generator span"
+                )
+
+    @property
+    def generator_ids(self) -> frozenset[str]:
+        return frozenset(self.required_generators)
+
+    def as_dict(self) -> dict[str, object]:
+        self.validate()
+        return {
+            "profile_id": self.profile_id,
+            "family": NativeGrammarFamily(self.family).value,
+            "required_generators": list(self.required_generators),
+            "generators": [item.as_dict() for item in self.generators],
+            "legal_compositions": list(self.legal_compositions),
+            "relations": [item.as_dict() for item in self.relations],
+            "closure_obligations": list(self.closure_obligations),
+            "domain_and_branches": list(self.domain_and_branches),
+            "claim_boundary": self.claim_boundary,
         }
 
 
@@ -268,6 +421,7 @@ class MethodContract:
     native_composition: str
     native_operators: tuple[str, ...]
     claim_boundary: str
+    native_grammar: NativeGrammarProfile
     forbidden_premature_lowerings: frozenset[MethodMechanism] = field(
         default_factory=lambda: CLASSICAL_MECHANISMS
     )
@@ -287,6 +441,7 @@ class MethodContract:
         _require_texts(self.native_charts, "native_charts")
         _require_texts(self.retained_fibres, "retained_fibres")
         _require_texts(self.native_operators, "native_operators")
+        self.native_grammar.validate()
         if not self.tasks:
             raise MethodContractError("tasks must not be empty")
         for task in self.tasks:
@@ -295,6 +450,14 @@ class MethodContract:
         if len(set(task_ids)) != len(task_ids):
             raise MethodContractError("task ids must be unique")
         known_tasks = frozenset(task_ids)
+        grammar_generators = self.native_grammar.generator_ids
+        for task in self.tasks:
+            unknown_generators = set(task.required_generators) - grammar_generators
+            if unknown_generators:
+                raise MethodContractError(
+                    f"task {task.task_id!r} has unknown required generators: "
+                    f"{sorted(unknown_generators)!r}"
+                )
 
         forbidden = {
             _enum_value(mechanism, MethodMechanism, "mechanism")
@@ -336,6 +499,12 @@ class MethodContract:
                 return witness
         raise PrematureLoweringError(f"undeclared lowering witness: {witness_id!r}")
 
+    def task(self, task_id: str) -> TaskContract:
+        for task in self.tasks:
+            if task.task_id == task_id:
+                return task
+        raise MethodContractError(f"unknown task: {task_id!r}")
+
     def baseline_for(
         self, task_id: str, mechanism: MethodMechanism, baseline_id: str
     ) -> BaselineSpec:
@@ -365,6 +534,7 @@ class MethodContract:
             "native_composition": self.native_composition,
             "native_operators": list(self.native_operators),
             "claim_boundary": self.claim_boundary,
+            "native_grammar": self.native_grammar.as_dict(),
             "forbidden_premature_lowerings": sorted(
                 MethodMechanism(mechanism).value
                 for mechanism in self.forbidden_premature_lowerings
@@ -386,6 +556,7 @@ class MethodEvent:
     input_semantics: str
     output_semantics: str
     cost: CostLedger
+    generator_ids: tuple[str, ...] = ()
     lowering_id: str | None = None
     baseline_id: str | None = None
 
@@ -399,6 +570,7 @@ class MethodEvent:
             "input_semantics": self.input_semantics,
             "output_semantics": self.output_semantics,
             "cost": self.cost.as_dict(),
+            "generator_ids": list(self.generator_ids),
             "lowering_id": self.lowering_id,
             "baseline_id": self.baseline_id,
         }
@@ -446,6 +618,7 @@ class MethodTrace:
         input_semantics: str,
         output_semantics: str,
         cost: CostLedger = CostLedger(),
+        generator_ids: tuple[str, ...] = (),
         lowering_id: str | None = None,
         baseline_id: str | None = None,
     ) -> MethodEvent:
@@ -464,6 +637,26 @@ class MethodTrace:
             MethodLane.NATIVE_DISCOVERY,
             MethodLane.NATIVE_EVALUATION,
         }
+        if lane in native_lanes:
+            _require_texts(generator_ids, "event.generator_ids")
+            if len(set(generator_ids)) != len(generator_ids):
+                raise MethodContractError("event generator ids must be unique")
+            unknown_generators = (
+                set(generator_ids) - self.contract.native_grammar.generator_ids
+            )
+            if unknown_generators:
+                raise MethodContractError(
+                    f"event has unknown generators: {sorted(unknown_generators)!r}"
+                )
+        elif generator_ids:
+            _require_texts(generator_ids, "event.generator_ids")
+            unknown_generators = (
+                set(generator_ids) - self.contract.native_grammar.generator_ids
+            )
+            if unknown_generators:
+                raise MethodContractError(
+                    f"event has unknown generators: {sorted(unknown_generators)!r}"
+                )
         if lane in native_lanes and mechanism in CLASSICAL_MECHANISMS:
             if lowering_id is None:
                 raise PrematureLoweringError(
@@ -509,6 +702,7 @@ class MethodTrace:
             input_semantics=input_semantics,
             output_semantics=output_semantics,
             cost=cost,
+            generator_ids=tuple(generator_ids),
             lowering_id=lowering_id,
             baseline_id=baseline_id,
         )
@@ -554,6 +748,21 @@ class MethodTrace:
         ):
             raise EvidenceLaneError(
                 "certificate-only evidence cannot establish a native result"
+            )
+
+        required_generators = set(self.contract.task(task_id).required_generators)
+        witnessed_generators = {
+            generator_id
+            for event in selected
+            if event.lane
+            in {MethodLane.NATIVE_DISCOVERY, MethodLane.NATIVE_EVALUATION}
+            for generator_id in event.generator_ids
+        }
+        missing_generators = required_generators - witnessed_generators
+        if missing_generators:
+            raise EvidenceLaneError(
+                "native claim is missing required generator evidence: "
+                f"{sorted(missing_generators)!r}"
             )
 
         claim = NativeClaim(

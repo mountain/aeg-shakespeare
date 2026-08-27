@@ -1,10 +1,22 @@
 # Problem frontier: recalculate Brownian motion from process fibres
 
-Status: frozen S0/S1 contract for
-[#158](https://github.com/mountain/process-geometry/issues/158), downstream of
+Status: frozen `PRE-AMP` S0/S1 discrete control for
+[#158](https://github.com/mountain/process-geometry/issues/158), corrected by
+[#160](https://github.com/mountain/process-geometry/issues/160), downstream of
 [#140](https://github.com/mountain/process-geometry/issues/140) and the
 native-method firewall merged in
-[#157](https://github.com/mountain/process-geometry/pull/157).
+[#157](https://github.com/mountain/process-geometry/pull/157).  Recurrence and
+heat-kernel continuation is paused pending the A/M/P chart gate.
+
+## 0. Correction boundary
+
+The finite-history calculation below is mathematically valid, but it is not an
+AMP-native calculation.  Its executable grammar contains only `A-step`:
+addition is active, while population size and probe scale are external
+parameters.  It contains neither finite M/P flows nor their infinitesimal
+generators and brackets.  The result is therefore retained as a discrete
+control, not promoted by changing its vocabulary.  The corrected AMP gate is
+recorded in [`01-amp-generator-chart-gate.md`](01-amp-generator-chart-gate.md).
 
 ## 1. Primitive process before the continuum answer
 
@@ -82,17 +94,19 @@ This phase certifies a necessary nontrivial scale and its local response
 coefficient.  It does **not** yet prove convergence to a Gaussian law or a
 continuum path process.
 
-## 3. Method firewall
+## 3. PRE-AMP method firewall
 
-S0/S1 have no allowed lowering witness.  The native source contains only the
+The discrete S0/S1 control has no allowed lowering witness.  Its source contains only the
 finite increment law, exact centered response, chronological histories,
 endpoint fibres, and their composition.  Classical local expansion,
 transform, continuum PDE, and simulation routes are declared separately in
 `phase0_contract.py` and cannot enter a native trace without a later
-task-adequacy witness.
+task-adequacy witness.  Its method events are now required to name `A-step`,
+and its contract explicitly says that M, P, and AMP brackets are absent.
 
 This is deliberately stronger than asking an agent not to use an oracle in
-prose: the merged method tool rejects the corresponding event in a native lane.
+prose: the method tool rejects both classical oracle entry and an AMP claim
+whose native evidence omits any task-required generator.
 
 ## 4. Held-out and red-team cases
 
@@ -109,15 +123,16 @@ prose: the merged method tool rejects the corresponding event in a native lane.
 
 ## 5. Relation to the larger programme
 
-This is the first independent scale/fibre family after the Bessel-based draft
+This is the first independent discrete scale/fibre control after the Bessel-based draft
 in PR #141.  It pressures U1, U2, U3, U4, and Effective Analysis because the
 same construction connects raw histories, scale, measured fibres, a continuum
 lowering, and later physical response.  At S0/S1 it remains T1 and leaves the
 Mathematical Core, Engineering Architecture, Theory Map, dependencies, and API
 unchanged.
 
-Surreal numbers are not needed for this finite-height task.  That is a negative
-runtime result, not an argument against later AMP or higher-height uses.
+Surreal numbers are not needed for this finite-height control or the first
+exact integer-replica AMP adapter.  That is a negative runtime result, not an
+argument against later AMP closure or higher-height uses.
 
 ## 6. Claim ceiling
 
