@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A passes C0--C2 for two overlapping reversible collisions. Independently, Phases 1J-B through B3 freeze a whole-event response, a fixed-molecule mark, and an absolutely summable bounded formal marked family. Phase 1J-B4 now completes a twelve-certificate signed-current audit: the source has an exact signed endpoint formula (5.63) and a local collision evaluation identity (7.15), but lacks the path-resolved marked Penrose identity and current-valued residual estimates needed for physical identification. Phases 1A and 1B remain post-hoc kinetic controls. The study has not identified the formal marked family with the hard-sphere collision response, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A passes C0--C2 for two overlapping reversible collisions. Independently, Phases 1J-B through B3 freeze a whole-event response, a fixed-molecule mark, and an absolutely summable bounded formal marked family. Phase 1J-B4 completes a twelve-certificate signed-current audit. Phase 1J-B5 now proves the missing one-layer commutation: a bounded C-atom collision mark is constant on every O-atom Penrose grouping fiber, routes to rooted components exactly once, and preserves the large-component family as an exact signed remainder before majorization. The multi-layer current identity and current-valued truncation/terminal errors remain open. Phases 1A and 1B remain post-hoc kinetic controls. The study has not identified the full formal marked family with the hard-sphere collision response, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -366,9 +366,8 @@ Phase 1J-B4 audits that identification against the proof, not only the
 statement, of the source theorem.  The audit finds an exact signed endpoint
 formula for \(E_{H_\ell}\) in equations (5.62)--(5.63) and a local C-atom
 collision evaluation identity in equations (7.13)--(7.15).  These are the two
-necessary ingredients, but the paper does not prove that inserting a
-root-visible collision mark commutes with the Penrose expansion of truncated
-transport.  Endpoint equality cannot supply that conclusion: exact fixtures
+necessary ingredients, but the paper does not state the corresponding marked
+Penrose theorem.  Endpoint equality cannot supply that conclusion: exact fixtures
 exhibit equal endpoints with different currents, equal positive majorants
 with different signed currents, and equal total mass/variation with different
 bounded weak pairings.
@@ -380,6 +379,21 @@ before any absolute value, retain gain/loss orientation independently of
 estimates for \(\mathrm{Err}_2\) and the terminal error must not be renamed as
 current estimates.
 
+Phase 1J-B5 proves this one-layer identity by replaying equations
+(5.18)--(5.30).  The Penrose map groups only subsets of potential O-edges,
+while the collision mark depends only on the original C-atoms, so it is
+constant on each grouping fiber and preserves the binomial cancellation.
+Every root-visible C-atom remains in a rooted component; several rooted
+components obey an additive insertion derivation.  Stopping before the final
+\(O_1\) replacement retains the \(F_\Lambda^{\mathrm{err}}\) contribution as
+an exact signed current remainder.  The theorem is limited to bounded event
+tests invariant under non-root relabeling and to one truncated time layer.
+
+The next target is a marked version of the exact signed cumulant recurrence
+(5.62)--(5.63).  It must carry one layer-indexed mark through the induction
+and prove that the multi-layer signed current coincides with the B3 formal
+family before using B3's absolute summability.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -390,7 +404,7 @@ current estimates.
 6. Can time reversal be used to construct an explicit missing decoder?
 7. At each arithmetic rank, which observers are lowering-induced and which are intrinsic?
 8. Does a useful H-like Lyapunov functional exist on more than one rank, and if so how does it transform across the \((r,s)\) grid?
-9. Does a one-layer collision generating deformation of the Penrose expansion prove the marked path/current identity while retaining both sign axes?
+9. Can the one-layer marked Penrose derivation be iterated through (5.62)--(5.63) with one layer-indexed mark and both sign axes intact?
 10. Can marked molecule estimates supply the clipped collision-flux and logarithmic-tail bounds now known to be sufficient for Lyapunov transfer?
 11. Can one collision-derived chart atlas make dynamics, composition, and covector integration jointly simple, or is their incompatibility an invariant cost?
 
@@ -465,6 +479,8 @@ effective-calculus obligations.
 - [26-phase1j-b3-marked-operation-sequence-results.md](./26-phase1j-b3-marked-operation-sequence-results.md) records the bounded formal marked-family theorem, thirteen exact certificates, red teams, and the physical-current identification boundary.
 - [27-phase1j-b4-signed-current-identification-contract.md](./27-phase1j-b4-signed-current-identification-contract.md) freezes the endpoint/path/current separation, marked Penrose theorem, oriented event space, and typed residual ledger.
 - [28-phase1j-b4-signed-current-identification-results.md](./28-phase1j-b4-signed-current-identification-results.md) records the corrected source audit, twelve exact path/current and no-go certificates, and the missing insertion identity.
+- [29-phase1j-b5-marked-penrose-insertion-contract.md](./29-phase1j-b5-marked-penrose-insertion-contract.md) freezes the marked Penrose fiber lemma, root routing, component derivation, symmetric event quotient, and signed large-component remainder.
+- [30-phase1j-b5-marked-penrose-insertion-results.md](./30-phase1j-b5-marked-penrose-insertion-results.md) records the one-layer theorem, eleven exact certificates, and the multi-layer boundary.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
@@ -476,20 +492,21 @@ effective-calculus obligations.
 - [test_marked_molecule_flux_lift.py](../../tests/research/test_marked_molecule_flux_lift.py) contains the 10 exact Phase 1J-B2 eligibility, pushforward, cut, topology, mark-cost, and claim-boundary certificates.
 - [test_marked_operation_sequence_summation.py](../../tests/research/test_marked_operation_sequence_summation.py) contains the 13 exact Phase 1J-B3 operation-routing, geometric-summation, tail, error, red-team, and claim-boundary certificates.
 - [test_signed_collision_current_identification.py](../../tests/research/test_signed_collision_current_identification.py) contains the 12 exact Phase 1J-B4 path/current linearity, orientation, residual, information-loss, and source-gate certificates.
+- [test_marked_penrose_insertion_identity.py](../../tests/research/test_marked_penrose_insertion_identity.py) contains the 11 exact Phase 1J-B5 inclusion--exclusion, root-routing, derivation, sign, remainder, relabeling, and red-team certificates.
 
-Phase 1J-A is complete through C2.  Independently, Phase 1J-B4 has completed
-the signed-current identification audit without borrowing that finite
-conclusion.  The physical identity itself remains missing.
+Phase 1J-A is complete through C2.  Independently, Phase 1J-B5 has completed
+the one-layer marked Penrose identity without borrowing that finite
+conclusion.  The multi-layer physical identity remains missing.
 A later C3 covector search remains separate unless its domain and
 integrability hypotheses are independently earned.
 
-The next continuum action is the one-layer marked Penrose insertion theorem.
-It must prove a collision-generating deformation of Proposition 5.10 before
-absolute values, or exhibit the exact inclusion--exclusion step that prevents
-it.  Only after this path-resolved equality passes should truncation,
-geometry, \(\mathrm{Err}_2\), and terminal errors be lifted to separately
-typed currents.  The logarithmic tail and entropy chain rule remain later
-gates.
+The next continuum action is a marked version of the signed recurrence
+(5.62)--(5.63).  It must retain the unique mark's layer and event variables,
+prove that factorization neither duplicates nor loses it, and only then use
+B3's absolute convergence to exchange the marked multi-layer sums.  After
+that, truncation, geometry, \(\mathrm{Err}_2\), and terminal errors can be
+lifted to separately typed currents.  The logarithmic tail and entropy chain
+rule remain later gates.
 
 ## References for calibration
 
