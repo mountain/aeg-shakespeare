@@ -1,0 +1,427 @@
+{
+  "schema": "process-geometry/am-weight-corpus/v0",
+  "context": {
+    "lattice_step": "1",
+    "positive_cone": true,
+    "coefficient_domain": "Q[exp(Q)]"
+  },
+  "cases": [
+    {
+      "id": "p1-native-am-laws",
+      "kind": "native-laws",
+      "left": {
+        "basis": "power-weight",
+        "nu": 3,
+        "weight": "5",
+        "coefficient": "2"
+      },
+      "right": {
+        "basis": "power-weight",
+        "nu": -1,
+        "weight": "2",
+        "coefficient": "3"
+      },
+      "pbw": {
+        "source": {
+          "basis": "power-weight",
+          "nu": 4,
+          "weight": "7",
+          "coefficient": "1"
+        },
+        "m": 2,
+        "n": 3
+      },
+      "finite_relation": {
+        "translation": "2",
+        "scale": "3"
+      },
+      "expected": {
+        "status": "evaluated",
+        "product": {
+          "nu": 2,
+          "weight": "7",
+          "coefficient": "6"
+        },
+        "A_left": {
+          "nu": 2,
+          "weight": "4",
+          "coefficient": "6"
+        },
+        "M_left": {
+          "nu": 3,
+          "weight": "5",
+          "coefficient": "10"
+        },
+        "pbw": true,
+        "finite_relation": true
+      }
+    },
+    {
+      "id": "p2-weight32-log-cancellation",
+      "kind": "coefficient",
+      "target_weight": "0",
+      "expression": {
+        "op": "shift",
+        "by": "-32",
+        "argument": {
+          "op": "add",
+          "arguments": [
+            {
+              "op": "log1p",
+              "argument": {
+                "op": "finite",
+                "terms": [
+                  {
+                    "weight": "1",
+                    "coefficient": "1"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "finite",
+              "terms": [
+                {
+                  "weight": "1",
+                  "coefficient": "-1"
+                },
+                {
+                  "weight": "2",
+                  "coefficient": "1/2"
+                },
+                {
+                  "weight": "3",
+                  "coefficient": "-1/3"
+                },
+                {
+                  "weight": "4",
+                  "coefficient": "1/4"
+                },
+                {
+                  "weight": "5",
+                  "coefficient": "-1/5"
+                },
+                {
+                  "weight": "6",
+                  "coefficient": "1/6"
+                },
+                {
+                  "weight": "7",
+                  "coefficient": "-1/7"
+                },
+                {
+                  "weight": "8",
+                  "coefficient": "1/8"
+                },
+                {
+                  "weight": "9",
+                  "coefficient": "-1/9"
+                },
+                {
+                  "weight": "10",
+                  "coefficient": "1/10"
+                },
+                {
+                  "weight": "11",
+                  "coefficient": "-1/11"
+                },
+                {
+                  "weight": "12",
+                  "coefficient": "1/12"
+                },
+                {
+                  "weight": "13",
+                  "coefficient": "-1/13"
+                },
+                {
+                  "weight": "14",
+                  "coefficient": "1/14"
+                },
+                {
+                  "weight": "15",
+                  "coefficient": "-1/15"
+                },
+                {
+                  "weight": "16",
+                  "coefficient": "1/16"
+                },
+                {
+                  "weight": "17",
+                  "coefficient": "-1/17"
+                },
+                {
+                  "weight": "18",
+                  "coefficient": "1/18"
+                },
+                {
+                  "weight": "19",
+                  "coefficient": "-1/19"
+                },
+                {
+                  "weight": "20",
+                  "coefficient": "1/20"
+                },
+                {
+                  "weight": "21",
+                  "coefficient": "-1/21"
+                },
+                {
+                  "weight": "22",
+                  "coefficient": "1/22"
+                },
+                {
+                  "weight": "23",
+                  "coefficient": "-1/23"
+                },
+                {
+                  "weight": "24",
+                  "coefficient": "1/24"
+                },
+                {
+                  "weight": "25",
+                  "coefficient": "-1/25"
+                },
+                {
+                  "weight": "26",
+                  "coefficient": "1/26"
+                },
+                {
+                  "weight": "27",
+                  "coefficient": "-1/27"
+                },
+                {
+                  "weight": "28",
+                  "coefficient": "1/28"
+                },
+                {
+                  "weight": "29",
+                  "coefficient": "-1/29"
+                },
+                {
+                  "weight": "30",
+                  "coefficient": "1/30"
+                },
+                {
+                  "weight": "31",
+                  "coefficient": "-1/31"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "evaluated",
+        "coefficient": "-1/32",
+        "maximum_visited_weights": 8
+      }
+    },
+    {
+      "id": "p3-completed-exp-composition",
+      "kind": "coefficient",
+      "target_weight": "0",
+      "expression": {
+        "op": "exp",
+        "argument": {
+          "op": "shift",
+          "by": "-1",
+          "argument": {
+            "op": "add",
+            "arguments": [
+              {
+                "op": "exp",
+                "argument": {
+                  "op": "finite",
+                  "terms": [
+                    {
+                      "weight": "1",
+                      "coefficient": "2"
+                    }
+                  ]
+                }
+              },
+              {
+                "op": "finite",
+                "terms": [
+                  {
+                    "weight": "0",
+                    "coefficient": "-1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "status": "evaluated",
+        "coefficient": "exp(2)",
+        "maximum_visited_weights": 12
+      }
+    },
+    {
+      "id": "p4-A-resonance-extension",
+      "kind": "primitive",
+      "generator": "A",
+      "term": {
+        "basis": "power-weight",
+        "nu": -1,
+        "weight": "2",
+        "coefficient": "1"
+      },
+      "extension_policy": "allow-typed",
+      "expected": {
+        "status": "evaluated",
+        "extension": "log-a",
+        "domain_witness": "a>0"
+      }
+    },
+    {
+      "id": "p4-M-resonance-extension",
+      "kind": "primitive",
+      "generator": "M",
+      "term": {
+        "basis": "power-weight",
+        "nu": 2,
+        "weight": "0",
+        "coefficient": "1"
+      },
+      "extension_policy": "allow-typed",
+      "expected": {
+        "status": "evaluated",
+        "extension": "v-jordan"
+      }
+    },
+    {
+      "id": "p5-paired-basis-canonicalization",
+      "kind": "paired",
+      "left": {
+        "basis": "power-weight",
+        "nu": 3,
+        "weight": "5",
+        "coefficient": "7/2"
+      },
+      "right": {
+        "basis": "power-character",
+        "nu": 3,
+        "character": "2",
+        "coefficient": "7/2"
+      },
+      "expected": {
+        "status": "evaluated",
+        "same_canonical_term": true
+      }
+    },
+    {
+      "id": "n1-completion-without-cone",
+      "kind": "coefficient",
+      "target_weight": "1",
+      "context_override": {
+        "positive_cone": false
+      },
+      "expression": {
+        "op": "log1p",
+        "argument": {
+          "op": "finite",
+          "terms": [
+            {
+              "weight": "1",
+              "coefficient": "1"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "unsupported",
+        "failure": "positive-cone-required"
+      }
+    },
+    {
+      "id": "n2-negative-completion-input",
+      "kind": "coefficient",
+      "target_weight": "1",
+      "expression": {
+        "op": "log1p",
+        "argument": {
+          "op": "finite",
+          "terms": [
+            {
+              "weight": "-1",
+              "coefficient": "1"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "unsupported",
+        "failure": "completion-input-not-positive"
+      }
+    },
+    {
+      "id": "n3-lattice-denominator-budget",
+      "kind": "coefficient",
+      "target_weight": "1",
+      "expression": {
+        "op": "finite",
+        "terms": [
+          {
+            "weight": "1/29",
+            "coefficient": "1"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resource_exceeded",
+        "failure": "lattice-denominator-budget-exceeded"
+      }
+    },
+    {
+      "id": "n4-target-weight-budget",
+      "kind": "coefficient",
+      "target_weight": "300",
+      "expression": {
+        "op": "finite",
+        "terms": [
+          {
+            "weight": "1",
+            "coefficient": "1"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resource_exceeded",
+        "failure": "target-weight-budget-exceeded"
+      }
+    },
+    {
+      "id": "n5-resonance-ordinary-only",
+      "kind": "primitive",
+      "generator": "A",
+      "term": {
+        "basis": "power-weight",
+        "nu": -1,
+        "weight": "2",
+        "coefficient": "1"
+      },
+      "extension_policy": "ordinary-only",
+      "expected": {
+        "status": "unsupported",
+        "failure": "resonance-extension-required"
+      }
+    },
+    {
+      "id": "n6-symbolic-height",
+      "kind": "coefficient",
+      "target_weight": "0",
+      "expression": {
+        "op": "symbolic-iterate",
+        "function": "exp",
+        "height_symbol": "h"
+      },
+      "expected": {
+        "status": "unsupported",
+        "failure": "symbolic-height-outside-am-fragment"
+      }
+    }
+  ]
+}

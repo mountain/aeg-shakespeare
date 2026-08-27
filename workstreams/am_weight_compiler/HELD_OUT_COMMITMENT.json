@@ -1,0 +1,8 @@
+{
+  "schema": "process-geometry/am-weight-heldout-commitment/v0",
+  "scheme": "sha256(canonical-json-with-256-bit-nonce)",
+  "payload_sha256": "d578b7ed9f5193cc5b0a0212c3edad025a3b2cee4cf3f90885dd95a412ce5597",
+  "reveal_rule": "Reveal only after grammar, coefficient domain, completion rules, resonance policy, budgets, evaluator source, replay, and scoring are publicly frozen.",
+  "anti_bruteforce": "The payload includes a random 256-bit nonce.",
+  "independence_boundary": "This is a preimplementation self-commit, not an independent-agent held-out; it receives generalization evidence but no independent-discovery credit."
+}
