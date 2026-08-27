@@ -196,7 +196,11 @@ basis turns composition into an exact sparse nilpotent matrix and the
 long-horizon coordinate into a triangular linear solve.  It eliminates
 exponential symbolic support and supplies exact residual certificates, while a
 strong logarithmic recurrence prevents any claim of universal numerical
-speedup.  The result is `EXPAND-NARROW` and remains Sonnet-local.
+speedup.  Its second phase separates an exact inverse-state AMP evaluator from
+the coefficient compiler: scalar numerical limits now use a constant-width
+process recurrence with an analytic tail bound, while sparse matrices remain
+offline coefficient/replay certificates.  The result is `EXPAND-NARROW` and
+remains Sonnet-local.
 
 ## Research-local calibration — the \(S^6\) complex structure claim
 

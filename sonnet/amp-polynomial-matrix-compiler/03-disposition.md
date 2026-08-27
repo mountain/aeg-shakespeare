@@ -1,6 +1,6 @@
 # Disposition: selective algorithmic simplification
 
-Status: issue #152 result.
+Status: issues #152 and #154 result.
 
 ## 1. Verdict by layer
 
@@ -9,8 +9,9 @@ Status: issue #152 result.
 | AMP polynomial-like basis | **EXPAND** | compresses degree-`d^N` expanded support into a fixed observer ray and exposes the correct asymptotic coordinate |
 | AMP matrix-like transport | **EXPAND** | composition becomes an exact sparse nilpotent matrix and the conjugacy becomes a triangular linear solve |
 | Exact certificate/replay | **EXPAND** | rational coefficients, finite eigenrelation, and first omitted residual replay independently |
-| Single-query floating-point speed | **NARROW** | strong logarithmic recurrence stops early and can equal or beat compiled evaluation |
-| Global numerical method | **STOP outside chart** | higher truncation can diverge near the non-asymptotic region |
+| Native inverse-state evaluator | **EXPAND** | evaluates the scalar limit without Taylor coefficients or matrices and returns a tail/cost ledger |
+| Compiled repeated-query speed | **NARROW** | degree-ray Horner can reduce online arithmetic, but compilation and crossover remain task dependent |
+| Finite series outside chart | **STOP** | higher truncation can diverge near the non-asymptotic region |
 | Generic interacting dynamics | **OPEN** | one power-dominant scalar family is not a general AMP solver |
 
 The overall disposition is
@@ -19,12 +20,12 @@ The overall disposition is
 \boxed{\texttt{EXPAND-NARROW}}.
 \]
 
-Both proposed layers earned real algorithmic roles, but only for specified
-observers and charts.
+The native and compiled layers earn different algorithmic roles.  Neither is
+promoted as a generic AMP runtime.
 
 ## 2. What was actually simplified
 
-The representation changes the algorithmic structure:
+For coefficient readout, the representation changes the algorithmic structure:
 
 \[
 \text{nonlinear repeated state map}
@@ -47,6 +48,17 @@ the result alone:
 
 This is the first exact example in the AMP line where the two sides form one
 algorithm rather than two analogies.
+
+For scalar numerical evaluation, however, linearization is unnecessary:
+
+\[
+q_{n+1}=\frac{q_n^d}{1+tq_n^d},\qquad
+H(y)=y+\sum_{n\ge0}d^{-n-1}\log(1+tq_n^d).
+\]
+
+This native recurrence is now the default path.  The matrix is an offline
+compiler/certificate for a different task, not the ontology of the nonlinear
+process and not a required runtime intermediate.
 
 ## 3. What remains classical and what is programme-specific
 
