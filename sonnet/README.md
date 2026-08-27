@@ -180,6 +180,16 @@ a correlation-fibre action, regular cocycle, future adequacy, or effective
 compression theorem.  The next work separates a finite collision-covector gate
 from a continuum Deng-calibrated fibre-response gate; neither has yet passed.
 
+## Research-local calibration — AMP closure and ensemble carrier gate
+
+[`amp-ensemble-carrier-gate/`](amp-ensemble-carrier-gate/) separates the
+finite M/P affine subsystem from the infinite A/M/P Lie closure.  It proves an
+exact logarithmic normal form, compiles homogeneous repeated ensembles without
+Cartesian state enumeration, and shows that Addition opens a completed scale
+tail outside the finite carrier.  The AMP line earns `EXPAND`; every frozen
+workload eliminates a surreal runtime, so the overall gate remains `NARROW`
+until an interacting residual yields a measured computation advantage.
+
 ## Research-local calibration — the \(S^6\) complex structure claim
 
 [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) studies a
