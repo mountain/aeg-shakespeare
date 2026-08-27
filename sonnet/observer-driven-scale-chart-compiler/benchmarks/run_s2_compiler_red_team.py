@@ -15,9 +15,16 @@ import sys
 import sympy as sp
 
 
-WORKSTREAMS = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(WORKSTREAMS / "scale_compiler"))
-sys.path.insert(0, str(WORKSTREAMS / "scale_analytic_germ"))
+STUDY_ROOT = Path(__file__).resolve().parents[1]
+FROZEN_PROTOTYPE = STUDY_ROOT / "prototype"
+GERM_WORKSTREAM = STUDY_ROOT / "analytic-germ"
+if not FROZEN_PROTOTYPE.exists():
+    # Isolated pre-integration workstream layout.
+    FROZEN_PROTOTYPE = STUDY_ROOT / "scale_compiler"
+if not GERM_WORKSTREAM.exists():
+    GERM_WORKSTREAM = STUDY_ROOT / "scale_analytic_germ"
+sys.path.insert(0, str(FROZEN_PROTOTYPE))
+sys.path.insert(0, str(GERM_WORKSTREAM))
 
 from analytic_germ_adapter import (  # noqa: E402
     GermBudget,
@@ -59,10 +66,7 @@ def main() -> None:
     assert unresolved == ["full-reconstruction", "uniform-error"]
 
     registry_source = (
-        WORKSTREAMS
-        / "scale_analytic_germ"
-        / "analytic_germ_adapter"
-        / "representation_bridge.py"
+        GERM_WORKSTREAM / "analytic_germ_adapter" / "representation_bridge.py"
     ).read_text(encoding="utf-8")
     forbidden_literals = ["-1/3", "-2/3", "Airy", "airy"]
     assert not any(literal in registry_source for literal in forbidden_literals)

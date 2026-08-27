@@ -7,7 +7,12 @@ import sympy as sp
 
 
 WORKSTREAM_ROOT = Path(__file__).resolve().parents[1]
-FROZEN_PROTOTYPE = WORKSTREAM_ROOT.parent / "scale_compiler"
+STUDY_ROOT = WORKSTREAM_ROOT.parent
+FROZEN_PROTOTYPE = STUDY_ROOT / "prototype"
+if not FROZEN_PROTOTYPE.exists():
+    # Isolated pre-integration workstream layout.
+    FROZEN_PROTOTYPE = STUDY_ROOT / "scale_compiler"
+sys.path.insert(0, str(WORKSTREAM_ROOT))
 sys.path.insert(0, str(FROZEN_PROTOTYPE))
 
 from analytic_germ_adapter import (  # noqa: E402
