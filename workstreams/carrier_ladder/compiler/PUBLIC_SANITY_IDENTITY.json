@@ -1,0 +1,7 @@
+{
+  "schema": "process-geometry/carrier-public-sanity-identity/v0",
+  "algorithm": "sha256",
+  "path": "PUBLIC_SANITY_CASE.json",
+  "sha256": "248ed4d14c2256f250650b8bf9129668904c57ddd8eb0454834eb3f36c7583f2",
+  "role": "public finite-height mixed C1/C2 sanity control; no held-out discovery credit"
+}

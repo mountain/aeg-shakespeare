@@ -1,0 +1,38 @@
+{
+  "baseline_claim_boundary": "Only executable outputs count. Documentation, mere rearrangements, and embeddings receive no construction credit.",
+  "environment": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "python": "3.12.13",
+    "sympy": "1.14.0"
+  },
+  "available_tools": {
+    "sympy": true,
+    "mpmath": true,
+    "sageall": false,
+    "transseries_python_module": false,
+    "surreal_python_module": false,
+    "wolframclient": false,
+    "wolframscript": false,
+    "WolframKernel": false,
+    "math_executable": false,
+    "sage_executable": false,
+    "maxima_executable": false,
+    "pari_gp_executable": false,
+    "maple_executable": false
+  },
+  "probes": [
+    {"id": "nested-exp-log-cancellation", "status": "ok", "result": "E", "seconds": 0.083975, "executable_credit": true},
+    {"id": "third-order-log-cancellation", "status": "ok", "result": "1/3", "seconds": 0.055778, "executable_credit": true},
+    {"id": "fixed-exp-iterate-1", "status": "ok", "result": "0", "seconds": 0.001823, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "fixed-exp-iterate-2", "status": "ok", "result": "1", "seconds": 0.002592, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "fixed-exp-iterate-3", "status": "ok", "result": "E", "seconds": 0.004826, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "fixed-exp-iterate-4", "status": "ok", "result": "exp(E)", "seconds": 0.005611, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "fixed-exp-iterate-5", "status": "ok", "result": "exp(exp(E))", "seconds": 0.008247, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "fixed-exp-iterate-6", "status": "ok", "result": "exp(exp(exp(E)))", "seconds": 0.008479, "executable_credit": true, "symbolic_height_credit": false, "credit_boundary": "literal fixed-height unrolling only"},
+    {"id": "symbolic-exp-height-rsolve", "status": "error:ValueError", "result": "'E(h + k)' expected, got 'exp(E(h))'", "seconds": 0.000888, "executable_credit": false, "symbolic_height_credit": false},
+    {"id": "abel-exp-solve-functional", "status": "ok", "result": "[A(exp(x)) - 1]", "seconds": 0.063794, "executable_credit": false, "credit_boundary": "algebraic isolation is not a constructed Abel solution or evaluator"},
+    {"id": "tetration-translation-solve-functional", "status": "ok", "result": "[log(F(x + 1))]", "seconds": 0.013422, "executable_credit": false, "credit_boundary": "algebraic isolation is not a constructed tetration solution or evaluator"}
+  ],
+  "same_information": true,
+  "schema_version": "carrier-baseline-result-v1"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "process-geometry/carrier-public-sanity-result/v0",
+  "case_id": "public-sanity-mixed-finite-height",
+  "source_sha256": "248ed4d14c2256f250650b8bf9129668904c57ddd8eb0454834eb3f36c7583f2",
+  "status": "sufficient",
+  "decision_scope": "finite-dag syntax storage and certificate replay",
+  "minimum_declared_carrier": "C2-finite-height-le",
+  "construction_height": 4,
+  "normal_form_capability": "not-implemented",
+  "comparison_capability": "not-implemented",
+  "undischarged_task_obligations": ["le-normal-form", "le-domain-branches", "le-comparison"],
+  "eliminability": "surreal-runtime-eliminable-for-frozen-syntax-decision",
+  "certificate_digest": "177e3025d7e8559fd6d8eaa97cf525cbbceeea27973b2394c63c2e8a9d60eec9",
+  "certificate_bytes": 2444,
+  "compilation_steps": 20,
+  "replay_steps": 15,
+  "replay_valid": true,
+  "claim_boundary": "No transseries normal form, asymptotic comparison, hyperserial operation, or surreal runtime is certified."
+}

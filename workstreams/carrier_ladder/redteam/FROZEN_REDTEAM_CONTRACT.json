@@ -1,0 +1,130 @@
+{
+  "schema_version": "carrier-redteam-v1",
+  "frozen_against": {
+    "issue": 142,
+    "frontier_commit": "36bfc00651342234edfef064cccf99abbcb01b0e"
+  },
+  "claim_mode": "exact symbolic plus bounded executable probes",
+  "same_information_rule": "A baseline receives task credit only when it receives the same raw expression, observer, branch/domain assumptions, and resource budget as the candidate compiler.",
+  "corpus": {
+    "L0": [
+      {
+        "id": "airy-finite-germ",
+        "input": "N*(delta*t - t**3/6)",
+        "task": "find an O(1) monomial chart at N->+infinity",
+        "expected_minimum": "C0",
+        "negative_rule": "C1-C4 is overpromotion unless accompanied by a smaller-carrier obstruction"
+      }
+    ],
+    "L1": [
+      {
+        "id": "nested-exp-log-cancellation",
+        "input": "exp(exp(N + exp(-N)) - exp(N))",
+        "task": "exact finite N->+infinity readout",
+        "expected_readout": "E",
+        "maximum_source_height": 3
+      },
+      {
+        "id": "third-order-log-cancellation",
+        "input": "exp(3*N)*(log(1+exp(-N))-exp(-N)+exp(-2*N)/2)",
+        "task": "exact finite N->+infinity readout",
+        "expected_readout": "1/3",
+        "maximum_source_height": 2
+      },
+      {
+        "id": "fixed-exp-iterate-family",
+        "input_schema": "E_0(-N)=-N; E_(k+1)(-N)=exp(E_k(-N))",
+        "task": "compute the limit separately for each literal k in [1,6]",
+        "expected_minimum_upper_bound": "C2",
+        "zero_credit": "This is fixed-height unrolling, never symbolic-height iteration"
+      }
+    ],
+    "L2": [
+      {
+        "id": "symbolic-exp-height",
+        "input": "E(h,x) with E(0,x)=x and E(h+1,x)=exp(E(h,x))",
+        "task": "return one normal form valid for symbolic natural h",
+        "correct_baseline_behavior": "typed unsupported or an independently replayable symbolic-height construction",
+        "forbidden_substitution": "replace h by any finite maximum and unroll"
+      },
+      {
+        "id": "abel-exp-equation",
+        "input": "A(exp(x))=A(x)+1",
+        "task": "construct a normalized local solution with declared domain, branch, existence, uniqueness, and replay",
+        "correct_baseline_behavior": "typed unsupported unless all assumptions and an executable evaluator are returned"
+      },
+      {
+        "id": "tetration-translation-equation",
+        "input": "F(x+1)=exp(F(x))",
+        "task": "construct a normalized solution on a declared domain with executable evaluation and residual certificate",
+        "correct_baseline_behavior": "typed unsupported unless existence, normalization, branch, and evaluator are explicit"
+      }
+    ]
+  },
+  "carrier_capability_matrix": {
+    "C0": {
+      "name": "rational Newton weights / finite polynomial germs",
+      "positive_capabilities": ["finite rational exponent vectors", "finite polynomial support", "exact rational balance and comparison"],
+      "explicit_noncapabilities": ["infinite well-ordered support", "uniform symbolic iteration height", "Abel or tetration construction"]
+    },
+    "C1": {
+      "name": "finite Hahn support / ordered monomial groups",
+      "positive_capabilities": ["finite support over a declared ordered monomial group", "exact finite support comparison"],
+      "explicit_noncapabilities": ["general infinite Hahn series", "uniform symbolic iteration height", "Abel or tetration construction"]
+    },
+    "C2": {
+      "name": "finite-construction-height logarithmic-exponential expressions/transseries fragment",
+      "positive_capabilities": ["literal finite exp/log construction trees", "finite-height lowering evidence"],
+      "explicit_noncapabilities": ["a uniform law over symbolic height merely from finite unrolling", "canonical Abel normalization", "surreal arithmetic"]
+    },
+    "C3": {
+      "name": "hyperserial / iterated-log-exp structure",
+      "status": "conditional and unsupported by the initial executable baseline",
+      "credit_requires": ["symbolic-height object", "closed operations used by the task", "independent finite-shadow replay"]
+    },
+    "C4": {
+      "name": "surreal semantic envelope with explicit effective shadow",
+      "status": "conditional and unsupported by the initial executable baseline",
+      "credit_requires": ["a C0-C3 obstruction", "an effective algorithm rather than an embedding", "independent finite-shadow replay"]
+    }
+  },
+  "firewall_rules": {
+    "hidden_answer": [
+      "expected carrier and normal form are evaluator-only",
+      "held-out inputs cannot be imported by compiler code or certificate data",
+      "case-specific rules count as answer leakage"
+    ],
+    "fixed_height_vs_symbolic_height": [
+      "literal integer k may be evaluated by at most k explicit exp/log nodes",
+      "a result parameterized by h receives symbolic-height credit only if runtime and certificate size are not proportional to an evaluator-chosen finite unrolling bound",
+      "testing k=1..K cannot establish a law for symbolic h"
+    ],
+    "embedding_vs_algorithm": [
+      "membership or embedding into a larger field supplies zero computation credit",
+      "a positive result must expose finite input/output encoding, terminating or budgeted procedure, evaluator, and independently replayable certificate",
+      "an existence theorem without effective construction is capability evidence only"
+    ],
+    "certificate_trace": [
+      "certificate bytes exclude source expression and full operation trace",
+      "certificate must be smaller than source plus full trace for any compression claim",
+      "replay receives the frozen source separately and checks only a witness, obligations, and digest"
+    ],
+    "overpromotion": [
+      "select the least declared carrier whose closure obligations pass",
+      "C3 or C4 without a checked smaller-carrier obstruction is an automatic failure",
+      "ambient availability is not necessity"
+    ]
+  },
+  "budgets": {
+    "sympy_probe_seconds_per_case": 10,
+    "literal_fixed_iteration_maximum": 6,
+    "maximum_source_nodes": 512,
+    "maximum_certificate_to_source_plus_trace_ratio_for_compression_claim": 0.95
+  },
+  "disposition_scoring": {
+    "ELIMINATE": "All frozen executable workloads lower to C0-C2 and all C3/C4 tasks correctly refuse or have no effective result.",
+    "EXPAND": "At least one held-out task has both a replayable C0-C2 obstruction and an effective C3/C4 certificate or measured task advantage.",
+    "NARROW": "The ladder/minimality artifact works, but C3/C4 effectiveness or separation remains unresolved.",
+    "STOP": "Any central positive result depends on hidden unrolling, answer leakage, embedding-only evidence, full-trace certificates, or has no software-visible difference."
+  }
+}

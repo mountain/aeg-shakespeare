@@ -1,0 +1,89 @@
+{
+  "schema": "process-geometry/carrier-corpus/v0",
+  "budget": {"max_nodes": 512, "max_finite_height": 32, "max_certificate_bytes": 65536},
+  "cases": [
+    {
+      "id": "heldout-l1-mixed-nesting",
+      "expression": {
+        "op": "exp",
+        "argument": {
+          "op": "add",
+          "terms": [
+            {
+              "op": "exp",
+              "argument": {
+                "op": "add",
+                "terms": [
+                  {"op": "symbol", "name": "N"},
+                  {
+                    "op": "mul",
+                    "factors": [
+                      {"op": "const", "value": "2"},
+                      {
+                        "op": "exp",
+                        "argument": {
+                          "op": "mul",
+                          "factors": [
+                            {"op": "const", "value": "-1"},
+                            {"op": "symbol", "name": "N"}
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "op": "mul",
+              "factors": [
+                {"op": "const", "value": "-1"},
+                {"op": "exp", "argument": {"op": "symbol", "name": "N"}}
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "heldout-l2-fixed-iterate",
+      "expression": {
+        "op": "exp",
+        "argument": {
+          "op": "exp",
+          "argument": {
+            "op": "exp",
+            "argument": {
+              "op": "exp",
+              "argument": {
+                "op": "exp",
+                "argument": {
+                  "op": "exp",
+                  "argument": {
+                    "op": "exp",
+                    "argument": {
+                      "op": "mul",
+                      "factors": [
+                        {"op": "const", "value": "-1"},
+                        {"op": "symbol", "name": "N"}
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "heldout-l2-symbolic-height",
+      "expression": {
+        "op": "symbolic-iterate",
+        "function": "exp",
+        "seed": {"op": "symbol", "name": "x"},
+        "height_symbol": "h"
+      }
+    }
+  ]
+}

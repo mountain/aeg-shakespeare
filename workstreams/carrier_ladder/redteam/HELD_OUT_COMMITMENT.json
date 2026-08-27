@@ -1,0 +1,12 @@
+{
+  "schema_version": "carrier-heldout-v1",
+  "commitment_scheme": "sha256(canonical-json-with-256-bit-nonce)",
+  "payload_sha256": "40103ae7cdfc5d32bf0917fe98b28c2f427ef6fde7b829535da7a4447376ecd3",
+  "reveal_rule": "Reveal only after the compiler grammar, carrier ordering, refusal semantics, certificate schema, and scoring are frozen. The reveal must include the nonce and exact canonical JSON payload.",
+  "anti_bruteforce": "The committed payload contains a random 256-bit nonce; the public hash does not expose a small enumerable corpus.",
+  "forbidden_before_reveal": [
+    "compiler access to held-out expression text",
+    "case-specific carrier rules",
+    "changing symbolic-height scoring after seeing output"
+  ]
+}
