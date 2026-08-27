@@ -1,0 +1,63 @@
+{
+  "case_id": "heldout-mixed-log-exp-weight7",
+  "certificate": {
+    "case_id": "heldout-mixed-log-exp-weight7",
+    "certificate_digest": "e2c43ede3614378731d7912372f0caf898b99bd28b3adca9ab8ce18cce746ad4",
+    "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+    "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+    "costs": {
+      "compilation": {
+        "lattice_denominator": 1,
+        "nodes": 9
+      },
+      "evaluation": {
+        "coefficient_operations": 111
+      },
+      "storage": {
+        "certificate_bytes": 888,
+        "source_bytes": 656
+      }
+    },
+    "dependencies": {
+      "request_count": 29,
+      "weight_count": 8,
+      "weights": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    "kind": "coefficient",
+    "observer": {
+      "residual": "weights-above-observer-horizon",
+      "target_weight": "0"
+    },
+    "result": {
+      "coefficient": "1/3"
+    },
+    "schema": "process-geometry/am-weight-certificate/v0",
+    "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+    "source_digest": "9a2d378cd8d4bf338273d26c691702667cac95659793e5d1b7da51213045a3f0",
+    "status": "evaluated"
+  },
+  "commitment_verified": true,
+  "passed": true,
+  "payload_digest": "d578b7ed9f5193cc5b0a0212c3edad025a3b2cee4cf3f90885dd95a412ce5597",
+  "pre_reveal_source_commit": "a4cd0a7918b4d79ea049852bb829e0feb92d5e2f",
+  "replay": {
+    "certificate_digest": "e2c43ede3614378731d7912372f0caf898b99bd28b3adca9ab8ce18cce746ad4",
+    "costs": {
+      "coefficient_operations": 111,
+      "dependency_requests": 29
+    },
+    "recomputed_digest": "e2c43ede3614378731d7912372f0caf898b99bd28b3adca9ab8ce18cce746ad4",
+    "replay_digest": "58cc54cd10452ebae2fe423281b72088975e5a9c09649f86babaae0ecb201d7c",
+    "status": "verified"
+  },
+  "schema": "process-geometry/am-weight-heldout-result/v0"
+}
