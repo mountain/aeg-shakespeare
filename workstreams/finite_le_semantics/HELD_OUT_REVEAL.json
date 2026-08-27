@@ -1,0 +1,1 @@
+{"cases":[{"expected_limit":"1/5","id":"heldout-q3-log-cancellation","level":"L1","source":"exp(5*N/3)*(log(1+exp(-N/3))-exp(-N/3)+exp(-2*N/3)/2-exp(-N)/3+exp(-4*N/3)/4)","task":"derive q=3, compute exact N->+infinity limit, and replay residual"}],"nonce":"a66bd9c3a30702fc7dc117b3778d858a3248e28addd614ba5bdc53a90d1c06b5","schema_version":"finite-le-heldout-v1"}

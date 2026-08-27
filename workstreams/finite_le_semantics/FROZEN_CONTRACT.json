@@ -1,0 +1,17 @@
+{
+  "schema": "process-geometry/finite-le-contract/v0",
+  "issue": 144,
+  "regime": {"parameter": "N", "direction": "+infinity", "derived_chart": "t=exp(-N/q)->0+"},
+  "grammar": ["rational-const", "symbol", "add", "mul", "rational-pow", "exp", "log", "symbolic-iterate-negative-control", "abel-negative-control"],
+  "domain_policy": "real arithmetic; N is positive; every log argument needs a replayable syntactic positivity witness",
+  "rate_policy": "collect rational coefficients a of direct linear a*N terms in exp arguments; q is the least positive lcm of their denominators; exp(a*N+r) rewrites to t^(-a*q)*exp(r)",
+  "nested_scale_policy": "after rewriting, an exp argument with a negative t-valuation is outside the single-exponential-scale grammar",
+  "observer": "exact finite limit with a positive-order residual witness; no opaque generic limit oracle",
+  "normal_form": "finite Laurent/Taylor band in t with exact SymPy coefficients and explicit O(t^k)",
+  "comparison": "exact comparison by t-valuation and leading coefficient inside the implemented band",
+  "cancellation": "record the maximum positive jump between the least child valuation and the sum valuation",
+  "replay": "receive source and context separately; rederive q, rewrite, normal form, result, residual, branch witnesses, costs, and certificate digest",
+  "forbidden": ["sympy.limit in compiler or replay", "stored expected answer", "stored full expansion trace", "post-reveal grammar change", "fixed unrolling for symbolic height"],
+  "budgets": {"max_nodes": 256, "max_q": 24, "max_series_order": 12, "max_certificate_bytes": 65536},
+  "claim_ceiling": "exact semantic evaluation only for the frozen real single-exponential rational-rate fragment; not a general LE/transseries evaluator"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "process-geometry/finite-le-heldout-result/v0",
+  "commitment_sha256": "eedef97f8071ea3da687a805b7ea3e8385aa49c0829f2c962a3c6bc8ec181655",
+  "source_freeze_commit": "5df657d450233e14fa6d77a1efb5be36d6bc02e6",
+  "commitment_verified": true,
+  "post_reveal_grammar_change": false,
+  "case": {
+    "id": "heldout-q3-log-cancellation",
+    "status": "evaluated",
+    "q": 3,
+    "chart": "t=exp(-N/3)->0+",
+    "limit": "1/5",
+    "normal_form": "1/5 - t/6 + O(t**2)",
+    "cancellation_jump": 4,
+    "residual": "O(t**2)",
+    "certificate_digest": "63b8bdbf6b56372eaa7ecd4628520597c9cabb92b58c0e29b34d79f9246570a7",
+    "certificate_bytes": 1182,
+    "replay_valid": true,
+    "replay_steps": 69
+  },
+  "same_information_sympy_baseline": {
+    "limit": "1/5",
+    "matches_expected": true,
+    "semantic_authority": false,
+    "certificate": null
+  },
+  "disposition": "EXPAND",
+  "independence_boundary": "Self-committed held-out generalization evidence only; no independent-discovery credit."
+}

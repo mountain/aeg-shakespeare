@@ -1,0 +1,8 @@
+{
+  "schema": "process-geometry/finite-le-heldout-commitment/v0",
+  "scheme": "sha256(canonical-json-with-256-bit-nonce)",
+  "payload_sha256": "eedef97f8071ea3da687a805b7ea3e8385aa49c0829f2c962a3c6bc8ec181655",
+  "reveal_rule": "Reveal only after grammar, branch policy, q derivation, budgets, certificate schema, evaluator source, and scoring are publicly frozen.",
+  "anti_bruteforce": "The payload includes a random 256-bit nonce.",
+  "independence_boundary": "This is a preimplementation self-commit, not an independent-agent held-out; it receives generalization evidence but no independent-discovery credit."
+}
