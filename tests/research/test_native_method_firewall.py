@@ -31,6 +31,7 @@ def contract(*, with_lowering: bool = False) -> object:
         accuracy="caller tolerance for the analytic tail",
         claim_mode=module.ClaimMode.CERTIFIED_APPROXIMATE,
         failure_semantics=("outside-domain", "budget-exhausted"),
+        required_generators=("Q",),
     )
     lowering = ()
     if with_lowering:
@@ -62,6 +63,36 @@ def contract(*, with_lowering: bool = False) -> object:
         native_composition="chronological inverse-state recurrence",
         native_operators=("raise to degree", "divide by 1+t*q^d"),
         claim_boundary="one scalar task; no generic AMP solver or complexity theorem",
+        native_grammar=module.NativeGrammarProfile(
+            profile_id="inverse-recurrence-grammar",
+            family=module.NativeGrammarFamily.DECLARED,
+            required_generators=("Q",),
+            generators=(
+                module.GeneratorWitness(
+                    generator_id="Q",
+                    finite_action="one inverse-state recurrence update",
+                    infinitesimal_action="not-applicable: finite declared recurrence",
+                    carrier="inverse state q",
+                    domain="q in [0, 1]",
+                    task_role="evaluate the escape observer",
+                    residual="tail after the finite recurrence budget",
+                    certificate="replay the exact recurrence",
+                ),
+            ),
+            legal_compositions=("chronological recurrence composition",),
+            relations=(
+                module.GeneratorRelationWitness(
+                    relation_id="Q-Q",
+                    expression="Q after Q is chronological recurrence composition",
+                    closure_status=module.ClosureStatus.TASK_SCOPED,
+                    residual="the full history is not reconstructed",
+                    certificate="direct two-step replay",
+                ),
+            ),
+            closure_obligations=("retain the recurrence tail residual",),
+            domain_and_branches=("real inverse-state chart q in [0, 1]",),
+            claim_boundary="declared recurrence grammar, not an AMP grammar",
+        ),
         allowed_lowerings=lowering,
         baselines=(
             module.BaselineSpec(
@@ -88,13 +119,108 @@ def event_kwargs() -> dict[str, object]:
         "action": "evaluate the declared recurrence",
         "input_semantics": "inverse state and tolerance",
         "output_semantics": "escape value and tail residual",
+        "generator_ids": ("Q",),
     }
+
+
+def amp_grammar(*, generator_ids: tuple[str, ...] = ("A", "M", "P")) -> object:
+    generators = tuple(
+        module.GeneratorWitness(
+            generator_id=generator_id,
+            finite_action=f"finite {generator_id} flow",
+            infinitesimal_action=f"infinitesimal {generator_id} action",
+            carrier="positive state chart",
+            domain="x > 0 with declared branch",
+            task_role=f"{generator_id} process role",
+            residual=f"{generator_id} domain residual",
+            certificate=f"differentiate the {generator_id} flow at zero",
+        )
+        for generator_id in generator_ids
+    )
+    relation_ids = ("A-M", "M-P", "A-P") if "P" in generator_ids else ("A-M",)
+    relations = tuple(
+        module.GeneratorRelationWitness(
+            relation_id=relation_id,
+            expression=f"bracket {relation_id}",
+            closure_status=(
+                module.ClosureStatus.ESCAPES_DECLARED_SPAN
+                if relation_id == "A-P"
+                else module.ClosureStatus.CLOSES_DECLARED_SPAN
+            ),
+            residual=f"{relation_id} residual",
+            certificate=f"direct coefficient differentiation for {relation_id}",
+        )
+        for relation_id in relation_ids
+    )
+    return module.NativeGrammarProfile(
+        profile_id="amp-positive-chart",
+        family=module.NativeGrammarFamily.AMP,
+        required_generators=generator_ids,
+        generators=generators,
+        legal_compositions=("chronological finite-flow composition",),
+        relations=relations,
+        closure_obligations=("retain brackets outside the declared span",),
+        domain_and_branches=("positive real chart with a fixed real logarithm",),
+        claim_boundary="local positive AMP chart only",
+    )
 
 
 def test_incomplete_contract_fails_before_a_trace_exists() -> None:
     incomplete = replace(contract(), primitive_processes=())
     with pytest.raises(module.MethodContractError, match="primitive_processes"):
         module.MethodTrace(incomplete)
+
+
+def test_amp_contract_fails_when_one_generator_is_missing() -> None:
+    incomplete = replace(contract(), native_grammar=amp_grammar(generator_ids=("A", "M")))
+    with pytest.raises(module.MethodContractError, match="exactly the A, M, and P"):
+        module.MethodTrace(incomplete)
+
+
+def test_amp_contract_fails_when_ap_escape_is_hidden() -> None:
+    grammar = amp_grammar()
+    hidden = replace(
+        grammar.relations[-1],
+        closure_status=module.ClosureStatus.CLOSES_DECLARED_SPAN,
+    )
+    incomplete = replace(
+        contract(),
+        native_grammar=replace(
+            grammar,
+            relations=grammar.relations[:-1] + (hidden,),
+        ),
+    )
+    with pytest.raises(module.MethodContractError, match="must expose escape"):
+        module.MethodTrace(incomplete)
+
+
+def test_amp_contract_fails_when_one_pair_relation_is_missing() -> None:
+    grammar = amp_grammar()
+    incomplete = replace(
+        contract(),
+        native_grammar=replace(grammar, relations=grammar.relations[:-1]),
+    )
+    with pytest.raises(module.MethodContractError, match="requires exactly"):
+        module.MethodTrace(incomplete)
+
+
+def test_amp_native_claim_requires_task_generator_coverage() -> None:
+    task = replace(contract().tasks[0], required_generators=("A", "M", "P"))
+    trace = module.MethodTrace(
+        replace(contract(), tasks=(task,), native_grammar=amp_grammar())
+    )
+    event = trace.record(
+        **{key: value for key, value in event_kwargs().items() if key != "generator_ids"},
+        lane=module.MethodLane.NATIVE_EVALUATION,
+        mechanism=module.MethodMechanism.NATIVE_PROCESS,
+        generator_ids=("A", "M"),
+    )
+    with pytest.raises(module.EvidenceLaneError, match="missing.*P"):
+        trace.claim_native_result(
+            task_id="escape-value",
+            statement="incomplete AMP result",
+            evidence_event_ids=(event.event_id,),
+        )
 
 
 @pytest.mark.parametrize(

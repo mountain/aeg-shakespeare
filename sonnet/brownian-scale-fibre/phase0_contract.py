@@ -1,4 +1,4 @@
-"""Frozen S0/S1 method contract and executable audit for issue #158."""
+"""Frozen PRE-AMP discrete-control contract and audit for issue #158."""
 
 from __future__ import annotations
 
@@ -29,8 +29,46 @@ firewall = _load(
 native = _load("brownian_native", Path(__file__).with_name("brownian_native.py"))
 
 
-METHOD_CONTRACT = firewall.MethodContract(
-    contract_id="brownian-scale-fibre-s0-s1",
+DISCRETE_CONTROL_GRAMMAR = firewall.NativeGrammarProfile(
+    profile_id="brownian-finite-history-control",
+    family=firewall.NativeGrammarFamily.DECLARED,
+    required_generators=("A-step",),
+    generators=(
+        firewall.GeneratorWitness(
+            generator_id="A-step",
+            finite_action="append one declared lattice increment to a finite history",
+            infinitesimal_action="not-applicable: the control is a discrete process",
+            carrier="finite nearest-neighbour histories and endpoint fibres",
+            domain="bounded integer-lattice histories",
+            task_role="accumulate increments and push histories to endpoints",
+            residual="multiplicative and power generators are absent",
+            certificate="replay the finite chronological history",
+        ),
+    ),
+    legal_compositions=("chronological history concatenation",),
+    relations=(
+        firewall.GeneratorRelationWitness(
+            relation_id="A-step-A-step",
+            expression="append(u) after append(v) equals append(v,u)",
+            closure_status=firewall.ClosureStatus.TASK_SCOPED,
+            residual="order is forgotten by the endpoint quotient",
+            certificate="literal-history replay before endpoint pushforward",
+        ),
+    ),
+    closure_obligations=(
+        "retain literal history when the observer is path-sensitive",
+    ),
+    domain_and_branches=(
+        "integer-lattice control has no logarithm or real-power branch",
+    ),
+    claim_boundary=(
+        "PRE-AMP discrete control only; it cannot witness M, P, or AMP brackets"
+    ),
+)
+
+
+DISCRETE_CONTROL_CONTRACT = firewall.MethodContract(
+    contract_id="brownian-pre-amp-discrete-control-s0-s1",
     problem=(
         "derive the first fluctuation scale and endpoint-fibre composition "
         "from raw finite increment histories"
@@ -57,6 +95,7 @@ METHOD_CONTRACT = firewall.MethodContract(
                 "degenerate-second-response",
                 "outside-finite-law-grammar",
             ),
+            required_generators=("A-step",),
         ),
         firewall.TaskContract(
             task_id="endpoint-fibre",
@@ -68,6 +107,7 @@ METHOD_CONTRACT = firewall.MethodContract(
             accuracy="exact integer counts and rational probabilities",
             claim_mode=firewall.ClaimMode.EXACT_FINITE,
             failure_semantics=("invalid-history", "transition-budget-exhausted"),
+            required_generators=("A-step",),
         ),
     ),
     native_charts=(
@@ -93,9 +133,11 @@ METHOD_CONTRACT = firewall.MethodContract(
         "history concatenation",
     ),
     claim_boundary=(
-        "S0/S1 only: no continuum limit law, path-space limit, recurrence theorem, "
-        "physical decoder, efficiency theorem, or new stochastic calculus"
+        "PRE-AMP discrete S0/S1 control only: no AMP result, continuum limit law, "
+        "path-space limit, recurrence theorem, physical decoder, efficiency theorem, "
+        "or new stochastic calculus"
     ),
+    native_grammar=DISCRETE_CONTROL_GRAMMAR,
     allowed_lowerings=(),
     baselines=(
         firewall.BaselineSpec(
@@ -142,7 +184,7 @@ def run_phase0() -> Phase0Result:
     if not concatenation_certified:  # pragma: no cover - fail closed
         raise AssertionError("endpoint pushforward did not preserve concatenation")
 
-    trace = firewall.MethodTrace(METHOD_CONTRACT)
+    trace = firewall.MethodTrace(DISCRETE_CONTROL_CONTRACT)
     scale_event = trace.record(
         task_id="blind-scale",
         lane=firewall.MethodLane.NATIVE_DISCOVERY,
@@ -150,6 +192,7 @@ def run_phase0() -> Phase0Result:
         action="derive centered response order and solve population/scale balance",
         input_semantics="raw symmetric unit increment law; no target exponent",
         output_semantics="exact scale-balance certificate",
+        generator_ids=("A-step",),
         cost=firewall.CostLedger(
             discovery_steps=scale.cost.exact_weighted_additions,
             live_state_units=scale.cost.law_atoms,
@@ -162,6 +205,7 @@ def run_phase0() -> Phase0Result:
         action="push chronological histories to exact endpoint fibres",
         input_semantics="nearest-neighbour step grammar and finite horizon",
         output_semantics="endpoint counts and rational pushforward law",
+        generator_ids=("A-step",),
         cost=firewall.CostLedger(
             evaluation_steps=endpoint.cost.transition_updates,
             live_state_units=endpoint.cost.peak_live_fibres,
