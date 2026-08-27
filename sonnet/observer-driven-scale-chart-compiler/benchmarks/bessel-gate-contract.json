@@ -1,0 +1,55 @@
+{
+  "gate": "S2 raw Bessel turning-point discovery",
+  "frozen_before_implementation": true,
+  "raw_input": {
+    "syntax": "SymPy",
+    "expression": "besselj(N, N*z)",
+    "assumptions": {
+      "N": "positive integer tending to +infinity",
+      "z": "real, local to 1"
+    }
+  },
+  "permitted_bridge": {
+    "kind": "versioned representation registry",
+    "may_contain": [
+      "a documented integral representation and its domain",
+      "the integration variable and phase extraction rule",
+      "provenance and unresolved proof obligations"
+    ],
+    "must_not_contain": [
+      "expected scale exponents",
+      "the Airy normal form as a lookup result",
+      "benchmark-specific branches in the generic germ solver"
+    ]
+  },
+  "required_pipeline": [
+    "recognize the raw special-function input",
+    "select a domain-valid representation with provenance",
+    "construct the local analytic germ at the turning point",
+    "retain exact Taylor coefficients and an explicit remainder obligation",
+    "select the leading Newton face without expected-scale hints",
+    "solve the exact rational balance constraints",
+    "replay every certificate check independently"
+  ],
+  "success_predicate": {
+    "scales": {
+      "local_integration_variable": "-1/3",
+      "turning_parameter_z_minus_1": "-2/3"
+    },
+    "certificate": "all checks true",
+    "controls": [
+      "the same generic germ path passes a non-Bessel cubic phase",
+      "the same path passes a quartic cusp with two parameters",
+      "unsupported or domain-invalid representations fail with typed errors"
+    ],
+    "baselines": [
+      "record SymPy discovery behavior on the same raw input",
+      "record an executable Wolfram result when available; otherwise publish a precise non-executability boundary and do not infer a win"
+    ]
+  },
+  "disposition": {
+    "EXPAND": "the complete raw-to-certificate pipeline passes and independent baseline evidence supports a new automation claim",
+    "NARROW": "the pipeline passes but depends on a representation registry or competitive novelty is not established",
+    "STOP": "the result requires expected-scale leakage, an uncertified hidden oracle, or cannot be independently replayed"
+  }
+}
