@@ -1,0 +1,229 @@
+{
+  "cases": [
+    {
+      "candidate": {
+        "certificate_digest": "88f325cd067bf587cb91d78c3809467ae28f442b01d01bd6ff79b2b6c4fae91a",
+        "coefficient": "-1/32",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 5
+          },
+          "evaluation": {
+            "coefficient_operations": 3
+          },
+          "storage": {
+            "certificate_bytes": 864,
+            "source_bytes": 1409
+          }
+        },
+        "dependencies": {
+          "request_count": 4,
+          "weight_count": 2,
+          "weights": [
+            "0",
+            "32"
+          ]
+        },
+        "replay_status": "verified",
+        "status": "evaluated",
+        "wall_time_ms": {
+          "authority": "non-authoritative",
+          "evaluation_median": 0.367427,
+          "evaluation_samples": [
+            0.800185,
+            0.367427,
+            0.390012,
+            0.350352,
+            0.340708
+          ],
+          "replay_median": 0.411535,
+          "replay_samples": [
+            0.411535,
+            0.358484,
+            0.460118,
+            0.346737,
+            0.443814
+          ]
+        }
+      },
+      "case_id": "p2-weight32-log-cancellation",
+      "coefficient": "-1/32",
+      "expanded_term_count": 1,
+      "materialized_window": {
+        "maximum_source_weight": 32,
+        "minimum_weight": 0,
+        "weight_count": 33
+      },
+      "method": "same-information-truncated-series-window",
+      "semantic_or_certificate_credit": false,
+      "source": {
+        "finite_terms": 32,
+        "nodes": 5
+      },
+      "status": "evaluated",
+      "wall_time_ms": {
+        "authority": "non-authoritative",
+        "median": 19.762397,
+        "samples": [
+          345.114878,
+          19.762397,
+          19.523384
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "certificate_digest": "767f31f7a7db9a34007d26f1bc975284971c94072712d049a6a8257ff507aff2",
+        "coefficient": "exp(2)",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 6
+          },
+          "evaluation": {
+            "coefficient_operations": 7
+          },
+          "storage": {
+            "certificate_bytes": 863,
+            "source_bytes": 321
+          }
+        },
+        "dependencies": {
+          "request_count": 8,
+          "weight_count": 2,
+          "weights": [
+            "0",
+            "1"
+          ]
+        },
+        "replay_status": "verified",
+        "status": "evaluated",
+        "wall_time_ms": {
+          "authority": "non-authoritative",
+          "evaluation_median": 0.171601,
+          "evaluation_samples": [
+            0.372665,
+            0.176819,
+            0.171601,
+            0.15775,
+            0.158731
+          ],
+          "replay_median": 0.183619,
+          "replay_samples": [
+            0.212974,
+            0.183619,
+            0.170439,
+            0.166212,
+            0.215077
+          ]
+        }
+      },
+      "case_id": "p3-completed-exp-composition",
+      "coefficient": "exp(2)",
+      "expanded_term_count": 1,
+      "materialized_window": {
+        "maximum_source_weight": 1,
+        "minimum_weight": 0,
+        "weight_count": 2
+      },
+      "method": "same-information-truncated-series-window",
+      "semantic_or_certificate_credit": false,
+      "source": {
+        "finite_terms": 2,
+        "nodes": 6
+      },
+      "status": "evaluated",
+      "wall_time_ms": {
+        "authority": "non-authoritative",
+        "median": 14.457141,
+        "samples": [
+          38.627462,
+          14.161853,
+          14.457141
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "certificate_digest": "e2c43ede3614378731d7912372f0caf898b99bd28b3adca9ab8ce18cce746ad4",
+        "coefficient": "1/3",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 9
+          },
+          "evaluation": {
+            "coefficient_operations": 111
+          },
+          "storage": {
+            "certificate_bytes": 888,
+            "source_bytes": 656
+          }
+        },
+        "dependencies": {
+          "request_count": 29,
+          "weight_count": 8,
+          "weights": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ]
+        },
+        "replay_status": "verified",
+        "status": "evaluated",
+        "wall_time_ms": {
+          "authority": "non-authoritative",
+          "evaluation_median": 0.756729,
+          "evaluation_samples": [
+            0.942271,
+            0.79688,
+            0.756729,
+            0.714055,
+            0.685521
+          ],
+          "replay_median": 0.757601,
+          "replay_samples": [
+            0.757601,
+            0.873737,
+            0.706223,
+            0.727485,
+            0.83628
+          ]
+        }
+      },
+      "case_id": "heldout-mixed-log-exp-weight7",
+      "coefficient": "1/3",
+      "expanded_term_count": 1,
+      "materialized_window": {
+        "maximum_source_weight": 7,
+        "minimum_weight": 0,
+        "weight_count": 8
+      },
+      "method": "same-information-truncated-series-window",
+      "semantic_or_certificate_credit": false,
+      "source": {
+        "finite_terms": 9,
+        "nodes": 9
+      },
+      "status": "evaluated",
+      "wall_time_ms": {
+        "authority": "non-authoritative",
+        "median": 13.626651,
+        "samples": [
+          115.991861,
+          13.02016,
+          13.626651
+        ]
+      }
+    }
+  ],
+  "contract": "BASELINE_CONTRACT.json",
+  "engine": "SymPy 1.14.0",
+  "schema": "process-geometry/am-weight-observed-baselines/v0"
+}

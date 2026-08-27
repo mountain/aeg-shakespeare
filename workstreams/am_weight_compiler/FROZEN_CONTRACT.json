@@ -1,0 +1,62 @@
+{
+  "schema": "process-geometry/am-weight-contract/v0",
+  "issue": 146,
+  "claim_mode": "exact-symbolic",
+  "native_frame": {
+    "finite_law": "S_s T_t = T_(exp(s)*t) S_s",
+    "infinitesimal_law": "[A,M]=A",
+    "basis": "Phi_(nu,w)=a^nu*exp((w-nu)*v)",
+    "power_degrees": "integers",
+    "weights": "finitely generated rational rank-one lattice"
+  },
+  "coefficient_domain": {
+    "base": "Q",
+    "readout": "finite Q-linear combinations of formal exp(q), q in Q",
+    "law": "exp(q)*exp(r)=exp(q+r)"
+  },
+  "completion": {
+    "cone": "positive normalized integer weights",
+    "exp": "argument has no negative weight and has a rational constant coefficient",
+    "log1p": "argument has strictly positive weight",
+    "observer": "one exact target weight or finite band",
+    "residual": "all weights above the observer horizon",
+    "semantic_carrier": "completed AM power-weight algebra; generated matrices or jets have no carrier credit"
+  },
+  "resonance": {
+    "A": "nu=-1 forces a positive-real log(a) extension",
+    "M": "w=0 forces a v Jordan extension",
+    "ordinary_only": "fail closed at either resonance"
+  },
+  "grammar": [
+    "native-power-weight",
+    "native-power-character",
+    "finite-weight-series",
+    "add",
+    "multiply",
+    "scale",
+    "weight-shift",
+    "exp-positive",
+    "log-one-plus-positive",
+    "primitive-request",
+    "symbolic-height-negative-control"
+  ],
+  "budgets": {
+    "max_nodes": 1024,
+    "max_lattice_denominator": 24,
+    "max_abs_power": 256,
+    "max_target_weight": 256,
+    "max_coefficient_operations": 100000,
+    "max_certificate_bytes": 65536
+  },
+  "forbidden": [
+    "generic limit call in compiler or replay",
+    "generic unrestricted series call in compiler or replay",
+    "stored expected answer",
+    "stored full expansion trace",
+    "post-reveal grammar or scoring change",
+    "identifying a jet or matrix window as the semantic carrier",
+    "silently identifying the finite-LE N/t chart with native AM coordinates"
+  ],
+  "dispositions": ["EXPAND", "NARROW", "ELIMINATE", "STOP"],
+  "claim_ceiling": "exact observer-directed coefficient semantics for the frozen rank-one rational completed AM power-weight fragment"
+}

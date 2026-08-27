@@ -1,0 +1,602 @@
+{
+  "case_count": 12,
+  "corpus_schema": "process-geometry/am-weight-corpus/v0",
+  "pass_count": 12,
+  "passed": true,
+  "rows": [
+    {
+      "case_id": "p1-native-am-laws",
+      "certificate": {
+        "case_id": "p1-native-am-laws",
+        "certificate_digest": "e1495534ffafbe12bd898d05b46b42194523a8b05fa62b1b34867db841032544",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 4
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 944,
+            "source_bytes": 331
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "native-laws",
+        "observer": null,
+        "result": {
+          "A_left": {
+            "coefficient": "6",
+            "nu": 2,
+            "weight": "4"
+          },
+          "M_left": {
+            "coefficient": "10",
+            "nu": 3,
+            "weight": "5"
+          },
+          "finite_relation": true,
+          "pbw": true,
+          "product": {
+            "coefficient": "6",
+            "nu": 2,
+            "weight": "7"
+          }
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "1059eb117546ace735e9df37c1c90b499cf3930daefc5085252c71f615e32a9b",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "e1495534ffafbe12bd898d05b46b42194523a8b05fa62b1b34867db841032544",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "e1495534ffafbe12bd898d05b46b42194523a8b05fa62b1b34867db841032544",
+        "replay_digest": "1d21332977a1601d15882f5f3df462ae71d25fa390f7e27c6752e4e232a6c2c4",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "p2-weight32-log-cancellation",
+      "certificate": {
+        "case_id": "p2-weight32-log-cancellation",
+        "certificate_digest": "88f325cd067bf587cb91d78c3809467ae28f442b01d01bd6ff79b2b6c4fae91a",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 5
+          },
+          "evaluation": {
+            "coefficient_operations": 3
+          },
+          "storage": {
+            "certificate_bytes": 864,
+            "source_bytes": 1409
+          }
+        },
+        "dependencies": {
+          "request_count": 4,
+          "weight_count": 2,
+          "weights": [
+            "0",
+            "32"
+          ]
+        },
+        "kind": "coefficient",
+        "observer": {
+          "residual": "weights-above-observer-horizon",
+          "target_weight": "0"
+        },
+        "result": {
+          "coefficient": "-1/32"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "3e36909bb3104d49f4734ba69cbbdae526611d4ffcbf98b5c571cd035b140e76",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "88f325cd067bf587cb91d78c3809467ae28f442b01d01bd6ff79b2b6c4fae91a",
+        "costs": {
+          "coefficient_operations": 3,
+          "dependency_requests": 4
+        },
+        "recomputed_digest": "88f325cd067bf587cb91d78c3809467ae28f442b01d01bd6ff79b2b6c4fae91a",
+        "replay_digest": "3c96431c123c2949d11d471b0416ec48ba8015c13dcfe62d712d7de74ffd2263",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "p3-completed-exp-composition",
+      "certificate": {
+        "case_id": "p3-completed-exp-composition",
+        "certificate_digest": "767f31f7a7db9a34007d26f1bc975284971c94072712d049a6a8257ff507aff2",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 6
+          },
+          "evaluation": {
+            "coefficient_operations": 7
+          },
+          "storage": {
+            "certificate_bytes": 863,
+            "source_bytes": 321
+          }
+        },
+        "dependencies": {
+          "request_count": 8,
+          "weight_count": 2,
+          "weights": [
+            "0",
+            "1"
+          ]
+        },
+        "kind": "coefficient",
+        "observer": {
+          "residual": "weights-above-observer-horizon",
+          "target_weight": "0"
+        },
+        "result": {
+          "coefficient": "exp(2)"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "2bf105bcf6b202f3d01f11dfd722111fdb08a8fa8704afe290ff79873a976617",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "767f31f7a7db9a34007d26f1bc975284971c94072712d049a6a8257ff507aff2",
+        "costs": {
+          "coefficient_operations": 7,
+          "dependency_requests": 8
+        },
+        "recomputed_digest": "767f31f7a7db9a34007d26f1bc975284971c94072712d049a6a8257ff507aff2",
+        "replay_digest": "b1b1e285987a338347dc450388b073f02fed459dd54023d05242cba0d1691336",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "p4-A-resonance-extension",
+      "certificate": {
+        "case_id": "p4-A-resonance-extension",
+        "certificate_digest": "5ff981a955d485bf19142626108512efa4cd32baeb7399273cc775047d529b83",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 1
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 809,
+            "source_bytes": 172
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "primitive",
+        "observer": null,
+        "result": {
+          "domain_witness": "a>0",
+          "extension": "log-a"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "f348dbc1a1fa2e60aa55eb23419186ac60622b9180dd957bac009989ff5d74e4",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "5ff981a955d485bf19142626108512efa4cd32baeb7399273cc775047d529b83",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "5ff981a955d485bf19142626108512efa4cd32baeb7399273cc775047d529b83",
+        "replay_digest": "4c6a4d6c3c8dda037fe63ed49c5de32c35328a248ccb17cc18c1f69b4d117fce",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "p4-M-resonance-extension",
+      "certificate": {
+        "case_id": "p4-M-resonance-extension",
+        "certificate_digest": "d9892e4de1769a860b2e007cbcaba8d24da454f18e96277518ef245ec26d8b83",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 1
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 789,
+            "source_bytes": 171
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "primitive",
+        "observer": null,
+        "result": {
+          "extension": "v-jordan"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "34e8526792b39c7bcdda5e316280b7f1151c71ca1125eded85dd2f827b02e5ff",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "d9892e4de1769a860b2e007cbcaba8d24da454f18e96277518ef245ec26d8b83",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "d9892e4de1769a860b2e007cbcaba8d24da454f18e96277518ef245ec26d8b83",
+        "replay_digest": "bab4b31b4e48ae37f3e698567fb5baf7cdd783f5498d1c1b8e16b4c573769b0c",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "p5-paired-basis-canonicalization",
+      "certificate": {
+        "case_id": "p5-paired-basis-canonicalization",
+        "certificate_digest": "7b7a97a0ec0e7679aa0dcf96ede00602122adf1b9f1464abbea3dc065ee86194",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 2
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 798,
+            "source_bytes": 208
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "paired",
+        "observer": null,
+        "result": {
+          "same_canonical_term": true
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "321119011741d148619abc25bbf5d1e6fb0d1e09a636ba48d8b1c855c97a10d0",
+        "status": "evaluated"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "7b7a97a0ec0e7679aa0dcf96ede00602122adf1b9f1464abbea3dc065ee86194",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "7b7a97a0ec0e7679aa0dcf96ede00602122adf1b9f1464abbea3dc065ee86194",
+        "replay_digest": "1bc93f037046d905697b019ccbccb8dfbd28a84c71149d8f41922f4e9f09a5cc",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n1-completion-without-cone",
+      "certificate": {
+        "case_id": "n1-completion-without-cone",
+        "certificate_digest": "e286792fa7185023f7550ddd74945364d33dbea8c37c823979c1c956335e0638",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "7d6df28354fb4a5dc34d991c992884d4f857deada5ca34f7df0f3c2fde7b9cc7",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 807,
+            "source_bytes": 217
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "coefficient",
+        "observer": null,
+        "result": {
+          "failure": "positive-cone-required"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "4281c3daf9204738b0f8af29ac421e96ac9d5382c09901e5d4f393b10277c7ee",
+        "status": "unsupported"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "e286792fa7185023f7550ddd74945364d33dbea8c37c823979c1c956335e0638",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "e286792fa7185023f7550ddd74945364d33dbea8c37c823979c1c956335e0638",
+        "replay_digest": "607fe5be7967c3bf4eaea6ab10aa2979371018420f95e23ebca0583ce5eaca17",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n2-negative-completion-input",
+      "certificate": {
+        "case_id": "n2-negative-completion-input",
+        "certificate_digest": "154b80a467582d2b19a42b31b12010ccbe305d676100b1abc105bbb3b2ed4e8f",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 816,
+            "source_bytes": 177
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "coefficient",
+        "observer": null,
+        "result": {
+          "failure": "completion-input-not-positive"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "fa1ea4d7f3aa636e3d95677cee953b2541626fcf1bf798292d8951c42b62d10d",
+        "status": "unsupported"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "154b80a467582d2b19a42b31b12010ccbe305d676100b1abc105bbb3b2ed4e8f",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "154b80a467582d2b19a42b31b12010ccbe305d676100b1abc105bbb3b2ed4e8f",
+        "replay_digest": "8e499b17d97ef50b6c67d59f2a43f82507178434e01c11f868dd5ff57da11f57",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n3-lattice-denominator-budget",
+      "certificate": {
+        "case_id": "n3-lattice-denominator-budget",
+        "certificate_digest": "ae99481cf7a3618ef6c87aff3402fba51e611dc776036b4540a0f74eaa1e2ae0",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 829,
+            "source_bytes": 154
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "coefficient",
+        "observer": null,
+        "result": {
+          "failure": "lattice-denominator-budget-exceeded"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "8f278f223561b44d47edc50a6a30fd15b1b521c5c0936cc5fedca037082a7dad",
+        "status": "resource_exceeded"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "ae99481cf7a3618ef6c87aff3402fba51e611dc776036b4540a0f74eaa1e2ae0",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "ae99481cf7a3618ef6c87aff3402fba51e611dc776036b4540a0f74eaa1e2ae0",
+        "replay_digest": "1af829ab153aab0ec169c1a8c541f96f07d1a6037913b95777fae247a604c2d6",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n4-target-weight-budget",
+      "certificate": {
+        "case_id": "n4-target-weight-budget",
+        "certificate_digest": "be95eeef35675c4244cd1d1304b1f639a68fc32facb3dab4b49ebe3834cd3fb8",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 817,
+            "source_bytes": 147
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "coefficient",
+        "observer": null,
+        "result": {
+          "failure": "target-weight-budget-exceeded"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "1333dfb3832577e8047a7a710da312221213d75c1215138e7a859acdda61a8c7",
+        "status": "resource_exceeded"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "be95eeef35675c4244cd1d1304b1f639a68fc32facb3dab4b49ebe3834cd3fb8",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "be95eeef35675c4244cd1d1304b1f639a68fc32facb3dab4b49ebe3834cd3fb8",
+        "replay_digest": "9a30cdbbb911a6d90169850cc7ad25dada0ae77b478d235f4a1a189430c497df",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n5-resonance-ordinary-only",
+      "certificate": {
+        "case_id": "n5-resonance-ordinary-only",
+        "certificate_digest": "cbe7cbc546f53d714596a3bed40a704998ca545a542430af60f499099c2fac62",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 811,
+            "source_bytes": 176
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "primitive",
+        "observer": null,
+        "result": {
+          "failure": "resonance-extension-required"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "19d4623a753ee9c2cf605699303092e78fc8f4023493ab4c64bda4c57b9eb60a",
+        "status": "unsupported"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "cbe7cbc546f53d714596a3bed40a704998ca545a542430af60f499099c2fac62",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "cbe7cbc546f53d714596a3bed40a704998ca545a542430af60f499099c2fac62",
+        "replay_digest": "d589c7b897fd916697bfbfff0dc68e3f2ec04b7a6de27ba6982f86f6ca9be29a",
+        "status": "verified"
+      }
+    },
+    {
+      "case_id": "n6-symbolic-height",
+      "certificate": {
+        "case_id": "n6-symbolic-height",
+        "certificate_digest": "1cb9d266425af8e3872511065f786481109cc513e5f1c055e68d4a1dee97865c",
+        "claim_scope": "frozen-rank-one-rational-completed-am-fragment",
+        "context_digest": "68afe2f989d0ad11054607890d6dd35172deb72016d0587466c6f2adada06f93",
+        "costs": {
+          "compilation": {
+            "lattice_denominator": 1,
+            "nodes": 0
+          },
+          "evaluation": {
+            "coefficient_operations": 0
+          },
+          "storage": {
+            "certificate_bytes": 812,
+            "source_bytes": 144
+          }
+        },
+        "dependencies": {
+          "request_count": 0,
+          "weight_count": 0,
+          "weights": []
+        },
+        "kind": "coefficient",
+        "observer": null,
+        "result": {
+          "failure": "symbolic-height-outside-am-fragment"
+        },
+        "schema": "process-geometry/am-weight-certificate/v0",
+        "semantic_carrier": "completed-am-power-weight/rank-one-rational/v0",
+        "source_digest": "538c3db4138ea37487f5ea255cdf2e8b87ec2ffb7f849ac8c9cbefd389b32d58",
+        "status": "unsupported"
+      },
+      "passed": true,
+      "replay": {
+        "certificate_digest": "1cb9d266425af8e3872511065f786481109cc513e5f1c055e68d4a1dee97865c",
+        "costs": {
+          "coefficient_operations": 0,
+          "dependency_requests": 0
+        },
+        "recomputed_digest": "1cb9d266425af8e3872511065f786481109cc513e5f1c055e68d4a1dee97865c",
+        "replay_digest": "ded372b8ceb0ed49cebd5c274347f9c0b17c6b184fe165bb501f723663546f6b",
+        "status": "verified"
+      }
+    }
+  ],
+  "schema": "process-geometry/am-weight-corpus-result/v0"
+}

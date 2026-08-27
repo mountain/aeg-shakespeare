@@ -1,0 +1,25 @@
+{
+  "schema": "process-geometry/am-weight-baseline-contract/v0",
+  "engine": "SymPy",
+  "same_information": true,
+  "authority": "non-authoritative",
+  "allowed": [
+    "expand or series in the baseline only",
+    "exact coefficient extraction",
+    "wall-time and expression-support measurement"
+  ],
+  "forbidden_credit": [
+    "semantic carrier",
+    "completion proof",
+    "branch or resonance proof",
+    "replay certificate"
+  ],
+  "comparison": [
+    "exact readout equality",
+    "source support",
+    "visited/dependency weights",
+    "certificate bytes",
+    "coefficient operations",
+    "wall time as non-authoritative"
+  ]
+}

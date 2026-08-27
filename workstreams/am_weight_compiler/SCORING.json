@@ -1,0 +1,25 @@
+{
+  "schema": "process-geometry/am-weight-scoring/v0",
+  "acceptance": [
+    "all native AM laws replay exactly",
+    "P2 and P3 use observer-directed dependencies without generic series or limit",
+    "both resonance extensions are typed",
+    "paired encodings canonicalize",
+    "all negatives fail closed",
+    "held-out passes after remote source freeze",
+    "default CI remains seconds-scale"
+  ],
+  "dispositions": {
+    "EXPAND": "reusable AM weight task family gains replayable semantics or a material dependency/support/certificate advantage",
+    "NARROW": "native laws work but completion or transport remains too restricted",
+    "ELIMINATE": "no capability beyond a certificate wrapper around the same-information baseline",
+    "STOP": "answer leakage, opaque oracle, post-reveal change, or uneconomic full traces"
+  },
+  "economy_claim_requires": [
+    "declared workload",
+    "same-information baseline",
+    "compilation and replay costs",
+    "support and certificate measurements",
+    "reproducible material advantage"
+  ]
+}
