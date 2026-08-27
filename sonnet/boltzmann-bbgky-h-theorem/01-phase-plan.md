@@ -1,6 +1,6 @@
 # Initial research plan and gates
 
-Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A now passes ten exact ordered-collision certificates: the renewed target reaches C0, retained-law response reconstruction reaches C1, state-dependent response transport reaches C2, and microscopic forgetting leaves an exact set-valued response relation. Phases 2–5 remain governed by the gates below.
+Status: Phases 1A and 1B executed as post-hoc controls. Phase 1C passed full repository CI as the chart-first mother route. Phase 1D records the measured-fibration and objectification synthesis without a new executable theorem. Phase 1E freezes the continuum collision-boundary seam. Phase 1F freezes a weak/mild continuation cell. Phase 1G earns an autonomous renewed target process but not a microscopic quotient. Phase 1H passes nine exact hidden-candidate certificates: quadratic contrast is the minimum target Lyapunov mode, uniqueness fails, and classical binary relative H is only a post-selection positive resummation. Phase 1I passes nine further exact certificates: the native object is a horizontal/vertical finite observable-difference ledger, polynomial minimality is chart-relative, and fibre response can reverse target dissipation. Phase 1J-A passes ten exact ordered-collision certificates through C2, including a set-valued forgotten response and state-dependent response cocycle. Independently, Phase 1J-B passes nine exact collision-measure budget certificates and isolates the marked-molecule flux lift plus logarithmic tail as the missing continuum theorem. Phases 2–5 remain governed by the gates below.
 
 ## 0. Firewall between three claims
 
@@ -307,10 +307,11 @@ The later
 classifies this phase as an exact one-step response decomposition, not a
 regular-cocycle or C0--C4 correlation-fibre calculus.
 Phase 1J-A has now discharged the finite gate through C2 on a genuinely
-collision-derived, order-sensitive fixture.  Phase 1J-B remains independent:
-it must formulate a continuum fibre-response estimate in the weak collision-
-flux topology of Phases 1E/1F.  The finite product character does not supply
-that estimate or a closed covector.
+collision-derived, order-sensitive fixture.  Independently, Phase 1J-B has
+frozen the continuum response ledger in the weak collision-flux topology of
+Phases 1E/1F and identified the bounded marked-molecule flux lift as the
+missing theorem.  The finite product character supplies neither that estimate
+nor a closed covector.
 
 ## 1H. Ordered collision-response gate — Phase 1J-A
 
@@ -371,7 +372,53 @@ The contract and result owners are
 [`19-phase1j-a-collision-response-cocycle-contract.md`](./19-phase1j-a-collision-response-cocycle-contract.md)
 and
 [`20-phase1j-a-collision-response-cocycle-results.md`](./20-phase1j-a-collision-response-cocycle-results.md).
-The next honest gate is Phase 1J-B's weak collision-flux response estimate.
+The adjacent continuum result is Phase 1J-B's weak collision-flux response
+contract; it does not upgrade the finite C2 result to C3.
+
+## 1I. Continuum collision-flux response gate — Phase 1J-B
+
+Phase 1J-B executes the continuum gate without using any conclusion from
+1J-A.  It replaces an unspecified scalar response by one signed measure
+
+\[
+\nu_T^\epsilon=J_T^\epsilon-J_T[f]
+\]
+
+on the full declared collision-event space.  This response is not encoded by
+assigning a discrete word letter to each collision.  Restriction of the
+measure gives exact horizon additivity, while pairing gives the weak response
+seen by a declared test covector.
+
+For the logarithmic H covector, clipping at level \(K\) gives
+
+\[
+|\langle\nu_T^\epsilon,\psi_f\rangle|
+\le K\|\nu_T^\epsilon\|_{\mathrm{TV}}
++\int|\psi_f-\psi_f^K|\,d|\nu_T^\epsilon|.
+\]
+
+The exact finite shadow verifies this inequality and shows both failure
+modes: a response plus adapter errors can outweigh target dissipation, and
+vanishing total variation does not uniformly control a moving unbounded
+covector.
+
+The primary-source audit grades the Deng--Hani--Ma estimates as bulk
+\(L^1\) input only.  Proposition 8.14 is an exact Fubini/iterated-integral
+identity, while the paper explicitly ends the physical-history
+correspondence after cutting.  It supplies neither a boundary-flux lift nor a
+logarithmic response estimate.
+
+The next continuum gate is therefore bounded and marked.  Mark a root-visible
+collision atom before cutting, push its prescribed-dynamics integral to the
+weak event space, and estimate the marked sum against
+\(\|\psi\|_\infty\le K\), with marking, molecule, recollision, truncation,
+geometry, and kinetic-comparison costs explicit.  Only after that theorem
+passes may the logarithmic tail be removed or retained as a renormalized task.
+
+The contract and result owners are
+[`21-phase1j-b-continuum-h-response-contract.md`](./21-phase1j-b-continuum-h-response-contract.md)
+and
+[`22-phase1j-b-continuum-h-response-results.md`](./22-phase1j-b-continuum-h-response-results.md).
 
 ## 2. Phase 1A — supplied-baseline finite H theorem
 
@@ -747,6 +794,7 @@ Every attempted claim receives one label:
 | 1H | target mode cone and entropy nonuniqueness | exact hidden-candidate and jet-depth shadow | separates semigroup monotonicity from logarithmic composition selection |
 | 1I | exact target/fibre response and chart-relative selector | 70 exact observable ledgers plus order and objectification red teams | places finite response reconstruction and chart retention before covector selection |
 | 1J-A | ordered collision target action, set-valued forgotten response, and exact C2 transport cocycle | 10 exact tests, 57-law response fibre, and 900 cocycle identities | supplies a bounded positive C0--C2 response witness while holding out covector, continuum, and rank claims |
+| 1J-B | whole-event flux response and clipped/tail H budget | 9 exact rational measure and transfer certificates | isolates the marked-molecule flux lift without promoting cutting to physical composition |
 | 2 | task-relative continuation residual | exact partition-refinement tools | calibrates H1 and H4 |
 | 3 | theorem-scoped micro/kinetic seam | no generic code | calibrates one-sided limit story |
 | 4 | possible rank-observer variance law | research-local observer registry | may pressure rank/objectification edge |

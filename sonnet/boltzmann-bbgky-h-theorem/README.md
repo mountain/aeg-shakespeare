@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A now replaces the adjacent A/M order control by two overlapping reversible collisions and passes the finite C0--C2 gates: ordered target action, retained-law response reconstruction, exact set-valued response after forgetting, and a state-dependent response cocycle. Phases 1A and 1B remain post-hoc kinetic controls. The study has not derived continuum kinetic dynamics from microscopic mechanics, controlled a collision-history tail, proved a trace or continuum fibre-response estimate, objectified correlation fibres, selected a closed collision covector, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A replaces the adjacent A/M order control by two overlapping reversible collisions and passes C0--C2: ordered target action, retained-law reconstruction, set-valued response after forgetting, and a state-dependent response cocycle. Independently, Phase 1J-B freezes the continuum response as one signed measure on the full collision-event space, proves an exact clipped/tail H-budget shadow, and identifies a marked-molecule flux lift as the missing theorem. Phases 1A and 1B remain post-hoc kinetic controls. The study has not constructed the continuum flux response from Deng molecules, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -308,6 +308,31 @@ real logarithmic covector would be partial and would add structure outside the
 frozen grammar.  C3, continuum response control, C4 compression, H, generic
 calculus, and rank claims remain open.
 
+Phase 1J-B performs the continuum half of the next gate independently of
+1J-A.  Its native object is the signed collision-current response measure
+
+\[
+\nu_T^\epsilon=J_T^\epsilon-J_T[f]
+\]
+
+on the whole weak collision-event space.  Clipping the H covector at level
+\(K\) yields the exact budget
+
+\[
+|\langle\nu_T^\epsilon,\psi_f\rangle|
+\le K\|\nu_T^\epsilon\|_{\mathrm{TV}}
++\int|\psi_f-\psi_f^K|\,d|\nu_T^\epsilon|.
+\]
+
+The Deng--Hani--Ma theorem supplies bulk \(L^1\) cumulant and molecule
+estimates, not this flux measure or logarithmic pairing.  Moreover, its exact
+molecule cut is a Fubini/iterated-integral identity, and the paper explicitly
+ends the physical-history interpretation after cutting.  The next analytic
+target is therefore a bounded marked-molecule flux lift: mark a root-visible
+collision before cutting, push it to the event space, carry the mark only as
+an integration observable through cuts, and estimate the resulting bounded
+dual norm before attempting the logarithmic tail.
+
 ## 7. Core research questions
 
 1. Can the finite detailed-balance H theorem be expressed using only reversible collision histories, A/M-native coordinates, and a task-local quotient?
@@ -318,7 +343,7 @@ calculus, and rank claims remain open.
 6. Can time reversal be used to construct an explicit missing decoder?
 7. At each arithmetic rank, which observers are lowering-induced and which are intrinsic?
 8. Does a useful H-like Lyapunov functional exist on more than one rank, and if so how does it transform across the \((r,s)\) grid?
-9. Which target/correlation fibre-response bound is sufficient to transport a Lyapunov law between layers?
+9. Can marked molecule estimates supply the clipped collision-flux and logarithmic-tail bounds now known to be sufficient for Lyapunov transfer?
 10. Can one collision-derived chart atlas make dynamics, composition, and covector integration jointly simple, or is their incompatibility an invariant cost?
 
 ## 8. Claim boundaries and kill conditions
@@ -332,6 +357,8 @@ This Sonnet must be revised or stopped if it:
 - equates correlation residuals with Shannon entropy without a declared measure;
 - mixes continuous coarea, discrete shell count, memory multiplicity, and correlation entropy;
 - invokes the H theorem with the wrong sign convention;
+- infers a collision flux or logarithmic pairing from bulk \(L^1\) alone;
+- calls a molecule cut physical history composition after that correspondence has broken;
 - uses a same-scale logarithmic aggregate as evidence of rank raising;
 - claims a new proof while reproducing a supplied classical identity.
 
@@ -382,6 +409,8 @@ effective-calculus obligations.
 - [18-phase1i-charted-fibre-calculus-results.md](./18-phase1i-charted-fibre-calculus-results.md) records nine exact response, chart, potential, order, and closure certificates and the revised Phase 1J gates.
 - [19-phase1j-a-collision-response-cocycle-contract.md](./19-phase1j-a-collision-response-cocycle-contract.md) freezes the overlapping reversible collision carrier, typed target/response actions, C0--C2 gates, chart atlas, and oracle firewall.
 - [20-phase1j-a-collision-response-cocycle-results.md](./20-phase1j-a-collision-response-cocycle-results.md) records the ordered target action, exact five-valued response relation, nonlinear transport cocycle, product character, and claim boundary.
+- [21-phase1j-b-continuum-h-response-contract.md](./21-phase1j-b-continuum-h-response-contract.md) freezes the whole-event-space response measure, clipped/tail H budget, and marked-molecule flux-lift obligation.
+- [22-phase1j-b-continuum-h-response-results.md](./22-phase1j-b-continuum-h-response-results.md) records the nine exact measure certificates, the primary-source audit, and the bounded marked-flux next theorem.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
@@ -389,15 +418,21 @@ effective-calculus obligations.
 - [test_hidden_lyapunov_mode_discovery.py](../../tests/research/test_hidden_lyapunov_mode_discovery.py) contains the 9 exact Phase 1H certificates.
 - [test_charted_fibre_lyapunov_calculus.py](../../tests/research/test_charted_fibre_lyapunov_calculus.py) contains the 9 exact Phase 1I certificates and 70 enumerated observable ledgers.
 - [test_collision_response_cocycle.py](../../tests/research/test_collision_response_cocycle.py) contains the 10 exact Phase 1J-A certificates, including 72 reconstructions and 900 response-cocycle identities.
+- [test_continuum_collision_flux_response_budget.py](../../tests/research/test_continuum_collision_flux_response_budget.py) contains the 9 exact Phase 1J-B measure, clipping, tail, dissipation, and claim-boundary certificates.
 
-Phase 1J-A is complete through C2.  The next action is Phase 1J-B: identify a
-Deng molecule/cumulant composition and cutting map,
-then state an H-response estimate in the weak collision-flux topology of
-Phases 1E/1F.  A bulk estimate that does not control the logarithmic covector
-does not pass.  The finite product character and cocycle may guide the typing,
-but they do not supply the continuum estimate.  A later C3 covector search
-must remain separate unless the continuum gate itself provides the missing
-domain and integrability hypotheses.
+Phase 1J-A is complete through C2, and Phase 1J-B has completed the continuum
+response contract without borrowing that finite conclusion.  A later C3
+covector search remains separate unless its domain and integrability
+hypotheses are independently earned.
+
+The next continuum action is the first bounded marked-molecule flux lift.
+Mark a root-visible collision atom before any cut, push its prescribed-
+dynamics integral to the weak event space, and prove a bounded-test estimate
+with the mark count, molecule size, recollision rank, truncation, and geometry
+costs explicit.  Proposition 8.14 may reorganize the marked integral but may
+not be read as physical composition after cutting.  Only after this estimate
+passes should the logarithmic tail be attacked.  The finite product character
+and cocycle may guide typing, but they do not supply this continuum estimate.
 
 ## References for calibration
 
