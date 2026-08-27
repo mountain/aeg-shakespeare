@@ -190,6 +190,14 @@ tail outside the finite carrier.  The AMP line earns `EXPAND`; every frozen
 workload eliminates a surreal runtime, so the overall gate remains `NARROW`
 until an interacting residual yields a measured computation advantage.
 
+[`amp-polynomial-matrix-compiler/`](amp-polynomial-matrix-compiler/) performs
+that first interacting-residual gate on `x -> x^d+t`.  The AMP exponential-ray
+basis turns composition into an exact sparse nilpotent matrix and the
+long-horizon coordinate into a triangular linear solve.  It eliminates
+exponential symbolic support and supplies exact residual certificates, while a
+strong logarithmic recurrence prevents any claim of universal numerical
+speedup.  The result is `EXPAND-NARROW` and remains Sonnet-local.
+
 ## Research-local calibration — the \(S^6\) complex structure claim
 
 [`s6-complex-arithmetic-tower/`](s6-complex-arithmetic-tower/) studies a
