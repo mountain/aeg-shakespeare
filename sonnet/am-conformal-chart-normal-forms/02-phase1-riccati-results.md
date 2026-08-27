@@ -1,23 +1,24 @@
-# Phase 1：Riccati 射影机制校准结果
+# Phase 1: Riccati Projective-Mechanism Calibration Results
 
-## 状态与边界
+## Status and boundary
 
-- **状态：** 完成 Phase 1 的精确机制校准。
-- **证书：** `tests/research/test_am_conformal_chart_riccati.py`。
-- **算术：** Python `Fraction`，无浮点误差、无外部依赖。
-- **最高主张：** level-1 classical re-expression；没有 bounded discovery，
-  没有 economy theorem，也没有联合标准型定理。
+- **Status:** the Phase 1 exact mechanism calibration is complete.
+- **Certificate:** `tests/research/test_am_conformal_chart_riccati.py`.
+- **Arithmetic:** Python `Fraction`; no floating-point error and no external
+  dependency.
+- **Strongest claim:** level-1 classical re-expression; no bounded discovery,
+  no economy theorem, and no joint-normal-form theorem.
 
-## 1. 阳性对照
+## 1. Positive control
 
-对
+For
 
 $$
 \dot a=c_0+c_1a+c_2a^2,
 \qquad a=-x/y,
 $$
 
-精确证书验证
+the exact certificate verifies that
 
 $$
 \frac d{dt}\binom{x}{y}=
@@ -25,87 +26,98 @@ $$
 \binom{x}{y}
 $$
 
-确实给回原标量场。测试穷举 $4^3$ 组有理系数和五个有理 chart 点，
-共 320 个标量—提升等式。
+recovers the original scalar field.  The test exhausts $4^3$ rational
+coefficient triples at five rational chart points, for a total of 320
+scalar--lift identities.
 
-对三组非平凡 Möbius chart，证书把
+For three nontrivial Möbius charts, the certificate lifts
 
 $$
 b=\frac{\alpha a+\beta}{\gamma a+\delta}
 $$
 
-提升为齐次坐标变换
+to the homogeneous-coordinate transformation
 
 $$
 S=\begin{pmatrix}\alpha&-\beta\\-\gamma&\delta\end{pmatrix},
 \qquad L_b=SLS^{-1},
 $$
 
-并逐点验证 chart 读出与矩阵动力学交换。分母为零的点不被偷偷跨过，
-而是登记为 infinity-chart 边界。
+and checks pointwise that the chart readout commutes with the matrix dynamics.
+Points where a denominator vanishes are not crossed silently; they are
+recorded as infinity-chart boundaries.
 
-## 2. Gauge 与 no-go
+## 2. Gauge and no-go
 
-对多个有理 $\gamma$，证书验证
+For several rational values of $\gamma$, the certificate verifies that
 
 $$
 L\mapsto L+\gamma I
 $$
 
-改变齐次 lift，却不改变 $a=-x/y$ 的动力学。这是表征 gauge，不是新的
-物理自由度。
+changes the homogeneous lift without changing the dynamics of $a=-x/y$.  This
+is a presentation gauge, not a new physical degree of freedom.
 
-反向计算还给出一个精确邻近 no-go。任意常矩阵
+The reverse calculation also gives an exact neighboring no-go.  An arbitrary
+constant matrix
 
 $$
 L=\begin{pmatrix}u&v\\w&z\end{pmatrix}
 $$
 
-在射影读出下只能产生
+can produce only
 
 $$
-\dot a=-v+(u-z)a+wa^2.
+\dot a=-v+(u-z)a+wa^2
 $$
 
-所以一般非零三次项不可能来自同一个常系数二维线性提升。若要处理
-三次标量场，必须改变维数、允许状态依赖矩阵、覆盖或其他结构，并把
-新增成本单独登记。
+under the projective readout.  A generic nonzero cubic term therefore cannot
+come from the same constant-coefficient two-dimensional linear lift.  Handling
+a cubic scalar field requires a change of dimension, a state-dependent matrix,
+a cover, or some other additional structure whose cost must be recorded
+separately.
 
-## 3. 成本判决
+## 3. Cost verdict
 
-八轴 `CostVector` 已能执行严格 Pareto 支配检查：
+The eight-axis `CostVector` now supports strict Pareto-dominance checks:
 
 $$
 (C_{coeff},C_{action},C_{singular},C_{atlas},C_{decoder},
 C_{unit},C_{eval},C_{residual}).
 $$
 
-红队刻意构造“系数更短但 decoder/atlas 更贵”的候选，确认它不能仅凭
-字符数胜出。经典二维 lift 本身也不支配直接标量求值。因此 Phase 1
-证明的是 covariance mechanism，而非计算经济性。
+The red team deliberately constructs a candidate with shorter coefficients but
+a more expensive decoder and atlas, confirming that character count alone
+cannot make it preferable.  The classical two-dimensional lift also does not
+dominate direct scalar evaluation.  Phase 1 therefore establishes a covariance
+mechanism, not computational economy.
 
-## 4. Gate 1 判决
+## 4. Gate 1 verdict
 
-| Gate | 结果 | 说明 |
+| Gate | Result | Explanation |
 | --- | --- | --- |
-| 1A exact lift | 通过 | 标量场与二维 lift 精确交换 |
-| Möbius covariance | 通过 | chart 读出与矩阵共轭精确交换 |
-| scalar gauge | 通过 | 射影动力学不变 |
-| 1C cubic red team | 通过 | 非零三次项被正确拒绝 |
-| joint cost accounting | 通过 | 八轴 Pareto，不按字符数评分 |
-| 1B bounded discovery | **未执行** | 当前矩阵由经典推导给出，未由盲搜索恢复 |
+| 1A exact lift | pass | the scalar field and two-dimensional lift commute exactly |
+| Möbius covariance | pass | the chart readout and matrix conjugation commute exactly |
+| scalar gauge | pass | projective dynamics is invariant |
+| 1C cubic red team | pass | a nonzero cubic term is rejected correctly |
+| joint cost accounting | pass | eight-axis Pareto accounting, not character-count scoring |
+| 1B bounded discovery | **not run** | the current matrix is classically derived, not recovered by blind search |
 
-因此 Phase 1 只能部分关闭：机制与 no-go 已完成，发现器仍开放。进入
-单摆 Phase 2 之前，应先冻结一个不接触目标矩阵的低高度 chart/lift
-grammar，检验它能否从 Riccati 系数恢复任务等价的稀疏二分量表示。
+Phase 1 is therefore only partially closed: the mechanism and no-go are
+complete, but the discoverer remains open.  Before entering pendulum Phase 2,
+freeze a low-height chart/lift grammar that cannot see the target matrix and
+test whether it can recover a task-equivalent sparse two-component
+presentation from the Riccati coefficients.
 
-## 5. 对最新理论的关系
+## 5. Relation to the latest theory
 
-- 同层可逆 chart 保持 exact round-trip；
-- 跨层遗忘使用 semantic adapter，不由本证书覆盖；
-- task quotient 需要 continuation adequacy；
-- chart 后 observer 是否有 coherent response，仍按 Phase 12C 的 C0--C4
-  分级，不由坐标协变自动推出。
+- an invertible same-layer chart preserves an exact round trip;
+- cross-layer forgetting uses a semantic adapter and is not covered by this
+  certificate;
+- a task quotient requires continuation adequacy; and
+- whether an observer has a coherent response after a chart change remains
+  graded by Phase 12C's C0--C4 ladder and does not follow automatically from
+  coordinate covariance.
 
-Mathematical Core、Engineering Architecture、Theory Map 与 Public API
-均不因本阶段改变。证书保持 research-local。
+The Mathematical Core, Engineering Architecture, Theory Map, and Public API
+are unchanged by this phase.  The certificate remains research-local.

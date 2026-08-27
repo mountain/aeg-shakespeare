@@ -1,101 +1,137 @@
-# AM 共形 chart 与联合标准型：问题前沿
+# AM Conformal Charts and Joint Normal Forms: Research Frontier
 
-## 当前状态
+## Current status
 
-- **成熟度：** T0/T1；Phase 1 精确机制校准完成，经济性与发现主张仍未建立。
-- **作用域：** `sonnet/` 研究局部；不改变 Mathematical Core、Theory Map 或公共 API。
-- **最高可负责主张：** Riccati 标量场、二维射影提升、Möbius chart
-  与矩阵共轭、scalar gauge 已在有理数上得到精确闭合；常系数二维
-  线性系统的射影化至多产生二次标量场，因此一般非零三次项是邻近
-  no-go。尚未证明 AM grammar 能发现优于经典基线的 chart，也未证明
-  单摆或 PCR3BP 的净计算成本下降。
+- **Maturity:** T0/T1; the Phase 1 exact mechanism calibration is complete,
+  while the economy and discovery claims remain unestablished.
+- **Scope:** research-local under `sonnet/`; no change to the Mathematical
+  Core, Theory Map, or Public API.
+- **Strongest responsible claim:** Riccati scalar fields, two-dimensional
+  projective lifts, Möbius charts and matrix conjugation, and scalar gauge close
+  exactly over the rationals.  The projectivization of a constant-coefficient
+  two-dimensional linear system produces a scalar field of degree at most two,
+  so a generic nonzero cubic term is a neighboring no-go.  It has not been
+  shown that the AM grammar can discover a chart superior to classical
+  baselines, nor that it lowers the net computational cost of the pendulum or
+  PCR3BP.
 
-## 0. 继承证据与剩余义务
+## 0. Inherited evidence and remaining obligations
 
-本研究初始化之后，其他线路已经完成若干前置工作。它们是可复用的
-边界和校准，不等于本 Sonnet 的联合标准型结果。
+Since this study was initialized, other research lines have completed several
+prerequisites.  They provide reusable boundaries and calibrations; they are
+not results about the joint normal form studied in this Sonnet.
 
-| 来源 | 可继承结果 | 本 Sonnet 仍须证明 |
+| Source | Result that may be inherited | What this Sonnet must still prove |
 | --- | --- | --- |
-| pendulum marked-carrier / Mathematical Core | Cartesian 第一性入口；unit、clock、cover、decoder 分账 | chart/module 联合搜索及净成本 |
-| Boltzmann--BBGKY chart-first adapter | 同层可逆 chart 与跨层 task adapter 必须分开 | 固定共形 atlas 内的 exact chart covariance |
-| Boltzmann--BBGKY contrast/odds audit | 一个 chart 可简化动力学，另一个可简化组合律 | polynomial-like / matrix-like 联合 Pareto 前沿 |
-| Phase 12C fibred change calculus | chart 后的 observer response 仍有独立存在性与 coherence 义务 | chart 选择如何改变 response/evaluator 成本 |
-| PCR3BP history-cost | word、clock、deck、hyperbolic cost 已分账 | 局部 atlas 与变分/monodromy 的联合成本 |
+| pendulum marked-carrier / Mathematical Core | Cartesian first-principles entry; separate accounting for unit, clock, cover, and decoder | joint chart/module search and net cost |
+| Boltzmann--BBGKY chart-first adapter | reversible same-layer charts must be separated from cross-layer task adapters | exact chart covariance within a fixed conformal atlas |
+| Boltzmann--BBGKY contrast/odds audit | one chart may simplify dynamics while another simplifies the composition law | joint polynomial-like / matrix-like Pareto frontier |
+| Phase 12C fibred change calculus | observer response after a chart change still has independent existence and coherence obligations | how chart selection changes response/evaluator cost |
+| PCR3BP history-cost | word, clock, deck, and hyperbolic cost are accounted for separately | joint cost of a local atlas and variation/monodromy |
 
-因此，#119 的主体问题没有被替代。Phase 1 只校准机制；Phase 2/3 不得
-重复证明上述基础，也不得把它们当成 economy theorem。
+The main question posed in #119 has therefore not been superseded.  Phase 1
+only calibrates the mechanism; Phases 2 and 3 must not re-prove the foundations
+above or treat them as an economy theorem.
 
-## 1. 问题原生陈述
+## 1. Problem-native statement
 
-过程几何不是先把物理方程换一种记号，而是先选择承载过程的表征空间，再由读出把过程量投影为物理量。一个物理量通常可由两个过程量表示；例如在一个射影 chart 中
+Process Geometry does not begin by rewriting a physical equation in different
+notation.  It begins by choosing a presentation space that carries the
+process, then projects process quantities to physical quantities through a
+readout.  One physical quantity can typically be represented by two process
+quantities; for example, in a projective chart,
 
 $$
 a=-\frac{x}{y}.
 $$
 
-同一物理读出可在不同 chart 中具有不同表达。这里固定以下工作前提：
+The same physical readout may have different expressions in different charts.
+We freeze the following working premise:
 
-> 在声明的 AM 共形 atlas 的正则重叠区上，chart 转换是共形的；选择 chart 可以改变系数、稀疏性、奇点位置、基底和数值条件，但不能免费改变任务、拓扑、模量、单值化数据或物理单位。
+> On regular overlaps of the declared AM conformal atlas, chart transitions
+> are conformal.  Chart selection may change coefficients, sparsity, singularity
+> locations, bases, and numerical conditioning, but it cannot freely change the
+> task, topology, moduli, single-valuedness data, or physical units.
 
-核心问题是：给定一个物理任务、一个 AM 过程表征及其共形 atlas，是否存在一个可发现、可验证的 chart 与有限模块基底，使
+The central question is this: given a physical task, an AM process
+presentation, and its conformal atlas, is there a discoverable and certifiable
+chart together with a finite module basis such that
 
-1. **polynomial-like 部分**成为低复杂度的标量载体、系数或递推；
-2. **matrix-like 部分**成为低复杂度的作用表、转移矩阵或周期基底；
-3. 二者在同一变换律下闭合；
-4. 物理读出、单位、时钟与全局恢复仍然严格正确；
-5. 总符号—数值成本相对可信基线出现严格的 Pareto 改进。
+1. the **polynomial-like part** becomes a low-complexity scalar carrier,
+   coefficient system, or recurrence;
+2. the **matrix-like part** becomes a low-complexity action table, transition
+   matrix, or period basis;
+3. both parts close under the same transformation law;
+4. the physical readout, units, clock, and global reconstruction remain exactly
+   correct; and
+5. the total symbolic--numerical cost strictly improves on a credible baseline
+   in the Pareto order.
 
-这不是“任意换元能否美化公式”的问题，而是一个受约束的联合标准型与 presentation-search 问题。
+This is not the question whether an arbitrary change of variables can make a
+formula prettier.  It is a constrained joint-normal-form and
+presentation-search problem.
 
-## 2. 原始对象与任务语义
+## 2. Primitive objects and task semantics
 
-每个实例必须先冻结以下输入：
+Every instance must first freeze the following inputs:
 
-- 原始物理过程或历史语言，以及允许观测的任务；
-- AM 过程空间 $P$、其复/共形结构 $J$，以及已声明的 Addition/Multiplication 作用；
-- 物理读出 $\pi:P\to X$ 或任务读出 $\mathcal O$；
-- 正则域、奇点集、边界、分支点和需要保留的标记点；
-- 单位与有序射影标架，特别是 $(0,1,\infty)$ 中物理单位 $1$ 的运输；
-- 基线 chart、基线求解器、精度、预算和工作负载。
+- the primitive physical process or history language and the task whose
+  observations are allowed;
+- the AM process space $P$, its complex/conformal structure $J$, and the
+  declared Addition/Multiplication actions;
+- the physical readout $\pi:P\to X$ or task readout $\mathcal O$;
+- regular domains, singular sets, boundaries, branch points, and marked points
+  that must be retained;
+- units and the ordered projective frame, especially transport of the physical
+  unit $1$ in $(0,1,\infty)$;
+- the baseline chart, baseline solver, accuracy, budget, and workload.
 
-一个候选 chart $\phi:U\to V$ 只有在声明域上满足共形可逆性，并且其提升动力学 $\widetilde F_\phi$ 与物理动力学 $F$ 满足
+A candidate chart $\phi:U\to V$ is task-equivalent only when it is conformally
+invertible on the declared domain and its lifted dynamics
+$\widetilde F_\phi$ and the physical dynamics $F$ satisfy
 
 $$
-\pi_*\widetilde F_\phi=F
+\pi_*\widetilde F_\phi=F.
 $$
 
-时，才是任务等价候选。离散过程则使用相应的交换图或逐步读出等式。chart 往返、读出、单位、时钟与分支选择都必须进入证书。
+For a discrete process, use the corresponding commuting diagram or stepwise
+readout identity.  The chart round trip, readout, units, clock, and branch
+selection must all enter the certificate.
 
-这里的精确往返只适用于同一语义层中的可逆 chart。若源、目标状态或
-continuation interface 不同，则必须使用 Mathematical Core 中的
-task-relative semantic adapter，声明任务、horizon、拓扑、误差预算、
-residual 与 closure；跨层遗忘不得伪装成 chart。task quotient 又是第三种
-操作，须独立证明 continuation adequacy。
+This exact round trip applies only to an invertible chart within one semantic
+layer.  If the source and target states or continuation interfaces differ, use
+the task-relative semantic adapter from the Mathematical Core and declare the
+task, horizon, topology, error budget, residual, and closure.  Cross-layer
+forgetting must not be disguised as a chart change.  A task quotient is a
+third operation and requires an independent proof of continuation adequacy.
 
-## 3. 必须分开的五类变换
+## 3. Five transformations that must remain separate
 
-本 Sonnet 不允许把下列操作统称为“换 chart”：
+This Sonnet does not permit the following operations to be grouped under the
+single phrase "change charts":
 
-| 操作 | 允许的效果 | 必须另行记账的结构 |
+| Operation | Allowed effect | Structure requiring separate accounting |
 | --- | --- | --- |
-| 共形 chart 转换 | 在正则重叠区重写局部坐标 | atlas 切换、奇点、单位与 decoder |
-| 射影/Möbius 变换 | 重排射影标架与有限标记点 | 交比、物理单位、无穷点 |
-| 模块基底或 gauge 变换 | 共轭/重写 matrix-like 作用 | 基底恢复与条件数 |
-| 分歧覆盖 | 单值化或碰撞正则化 | 覆盖次数、deck 数据、分支选择 |
-| 时间重参数化 | 改变积分时钟 | 物理时间恢复与代价 |
+| conformal chart transition | rewrite local coordinates on a regular overlap | atlas switching, singularities, units, and decoder |
+| projective/Möbius transformation | rearrange a projective frame and finitely many marked points | cross-ratios, physical unit, and the point at infinity |
+| module-basis or gauge transformation | conjugate/rewrite a matrix-like action | basis reconstruction and condition number |
+| ramified cover | make a quantity single-valued or regularize a collision | covering degree, deck data, and branch selection |
+| time reparameterization | change the integration clock | physical-time reconstruction and cost |
 
-任务商也不是 chart 转换：它可以忘掉历史信息，必须由任务等价性单独证明。
+A task quotient is not a chart transition either: it may forget history
+information and must be justified independently by task equivalence.
 
-## 4. 联合标准型候选
+## 4. Candidate joint normal form
 
-一个候选由
+A candidate is a tuple
 
 $$
-\mathfrak N=(\phi,\,\mathcal B,\,p,\,R,\,D)
+\mathfrak N=(\phi,\,\mathcal B,\,p,\,R,\,D),
 $$
 
-组成，其中 $\phi$ 是 chart，$\mathcal B$ 是有限模块基底，$p$ 是 polynomial-like 标量数据，$R$ 是 matrix-like 作用数据，$D$ 是物理 decoder。理想情况下，chart 转换与基底变换共同作用为
+where $\phi$ is a chart, $\mathcal B$ is a finite module basis, $p$ is
+polynomial-like scalar data, $R$ is matrix-like action data, and $D$ is the
+physical decoder.  Ideally, the chart and basis transformations act jointly as
 
 $$
 p\mapsto p^{\phi},
@@ -103,19 +139,33 @@ p\mapsto p^{\phi},
 R\mapsto G^{-1}R^{\phi}G-G^{-1}\dot G,
 $$
 
-其中是否出现导数项取决于任务是代数作用、微分方程还是联络问题。公式只是候选变换契约；各阶段必须从具体原始过程重新推导，不能当作普遍定理。
+where the derivative term is present or absent according to whether the task
+concerns an algebraic action, a differential equation, or a connection.  This
+formula is only a candidate transformation contract.  Each phase must derive
+it anew from the concrete primitive process; it must not be treated as a
+general theorem.
 
 ### 4.1 Polynomial-like
 
-暂指在所选 chart 中由有限生成、低次数或低递推复杂度描述的标量载体，包括 AM 函数论已有的指数—多项式 weight chain。它不等同于普通多项式，也不预设所有任务都能落入有限维链。
+This provisionally means a scalar carrier describable in the chosen chart by
+finite generation, low degree, or low recurrence complexity, including the
+exponential--polynomial weight chain already present in AM function theory.  It
+is not the same as an ordinary polynomial, and it does not assume that every
+task lies in a finite-dimensional chain.
 
 ### 4.2 Matrix-like
 
-暂指多个过程分量、局部基底或周期/monodromy 数据的有限作用表。它不仅记录加法可交换性所诱导的线性组合，还必须记录 chart、gauge、覆盖与 decoder 如何改变该表。
+This provisionally means a finite action table for several process components,
+local bases, or period/monodromy data.  It records more than the linear
+combinations induced by commutativity of Addition: it must also record how the
+chart, gauge, cover, and decoder transform the table.
 
-### 4.3 联合而非分别最简
+### 4.3 Joint rather than separate minimization
 
-只把 $p$ 的次数降到最低，可能使 $R$ 稠密、decoder 昂贵或 chart 数目增加；只把 $R$ 对角化，也可能引入分支函数、坏条件数或破坏物理单位。因此标准型使用成本向量而不是单一“最短公式”：
+Minimizing only the degree of $p$ may make $R$ dense, the decoder expensive,
+or the number of charts larger.  Diagonalizing only $R$ may introduce branch
+functions, poor conditioning, or broken physical units.  The normal form
+therefore uses a cost vector rather than one "shortest formula":
 
 $$
 C(\mathfrak N)=(
@@ -130,27 +180,39 @@ C_{\rm residual}
 ).
 $$
 
-除非工作负载给出权重，否则只报告 Pareto 前沿。
+Report only the Pareto frontier unless the workload supplies weights.
 
-## 5. 搜索纪律
+## 5. Search discipline
 
-### 5.1 原生语言优先
+### 5.1 Native language first
 
-先搜索由 Addition/Multiplication 原始作用、任务可见标记点和有限 chart grammar 生成的候选；随后才与不受限的经典变换搜索比较。不能先解出问题，再把经典答案包装成“发现”。
+Search first among candidates generated by primitive Addition/Multiplication
+actions, task-visible marked points, and a finite chart grammar.  Only then
+compare with an unrestricted search over classical transformations.  Do not
+solve the problem first and then package the classical answer as a
+"discovery."
 
-### 5.2 Oracle 防火墙
+### 5.2 Oracle firewall
 
-- Legendre 型、椭圆函数、周期比、Levi–Civita 或其他已知答案可作为后验 oracle 与基线；
-- 除非当前阶段明确把它们列为输入，否则不得把其参数、分支点配对、周期基底或正则化映射直接喂给 proposal generator；
-- 候选生成、评分、验证与 oracle 比较必须留有可审计边界。
+- Legendre forms, elliptic functions, period ratios, Levi--Civita maps, and
+  other known answers may be used as post-hoc oracles and baselines.
+- Unless a phase explicitly declares them as inputs, do not feed their
+  parameters, branch-point pairings, period bases, or regularizing maps to the
+  proposal generator.
+- Candidate generation, scoring, verification, and oracle comparison must have
+  an auditable boundary.
 
-### 5.3 有界 grammar
+### 5.3 Bounded grammar
 
-“所有共形映射”不可执行。Phase 0 必须冻结一个有限或可枚举 grammar，例如由 AM 有限作用、任务可见标记点、低高度 Möbius 变换和声明的局部 chart 复合而成。扩大 grammar 必须记为新的实验阶段，不能事后选择。
+"All conformal maps" is not an executable search space.  Phase 0 must freeze a
+finite or enumerable grammar, for example one generated by finite AM actions,
+task-visible marks, low-height Möbius transformations, and declared local
+chart compositions.  Any grammar expansion must be recorded as a new
+experimental phase rather than selected after the result is known.
 
-## 6. 第一校准：射影/Riccati 原型
+## 6. First calibration: projective/Riccati prototype
 
-若
+If
 
 $$
 a=-\frac{x}{y},
@@ -158,7 +220,7 @@ a=-\frac{x}{y},
 \dot a=c_0+c_1a+c_2a^2,
 $$
 
-则经典二维提升
+then the classical two-dimensional lift
 
 $$
 \frac{d}{dt}
@@ -171,18 +233,24 @@ c_2 & -c_1/2
 \begin{pmatrix}x\\y\end{pmatrix}
 $$
 
-在 $y\neq0$ 上给回同一 Riccati 方程；加上标量矩阵 $\gamma I$ 不改变射影读出。这一例只承担四项校准：
+recovers the same Riccati equation on $y\neq0$; adding a scalar matrix
+$\gamma I$ does not change the projective readout.  This example calibrates
+only four things:
 
-- 两个过程量如何读出一个物理量；
-- polynomial-like 系数如何进入 matrix-like 作用；
-- Möbius chart 与矩阵共轭如何配合；
-- scalar gauge 为什么是表征冗余而非新物理。
+- how two process quantities read out as one physical quantity;
+- how polynomial-like coefficients enter a matrix-like action;
+- how a Möbius chart and matrix conjugation fit together; and
+- why scalar gauge is presentational redundancy rather than new physics.
 
-它是标准理论的阳性对照，不构成 AM 新发现。三次标量场将作为邻近红队，防止从 Riccati 原型不当地推出“所有非线性都可二维线性化”。
+It is a positive control from standard theory, not a new AM discovery.  A
+cubic scalar field is the neighboring red team that blocks the unwarranted
+inference that every nonlinearity can be linearized in two dimensions.
 
-## 7. 第二校准：单摆
+## 7. Second calibration: the pendulum
 
-单摆必须从现有第一性路线开始：Cartesian 原始量与物理约束先行，随后才形成任务载体。当前可比基线为
+The pendulum must begin from the existing first-principles route: Cartesian
+primitive quantities and physical constraints come first, and only then is a
+task carrier formed.  The current comparable baseline is
 
 $$
 Y^2=2(E-U)(1-U^2),
@@ -190,64 +258,104 @@ Y^2=2(E-U)(1-U^2),
 dt=\frac{dU}{Y}.
 $$
 
-研究问题不是预先宣布 Legendre 化，而是检验：
+The research question is not to announce a Legendre transformation in
+advance, but to test whether
 
-1. 从任务可见的分支/标记数据出发，受限 grammar 能否发现低成本共形 chart；
-2. chart 是否把 polynomial-like 载体与 period/module 基底同时简化；
-3. 物理单位、时钟、分支与 decoder 的新增成本是否抵消表面简化；
-4. $E=0$ 的方格周期情形能否作为精确校准，但不把 $\tau=i$ 泄露给发现器；
-5. 平衡点、普通振荡、旋转与 separatrix 退化区是否需要不同 atlas，而非一个伪全局 chart。
+1. a restricted grammar can discover a low-cost conformal chart from
+   task-visible branch and marked-point data;
+2. the chart jointly simplifies the polynomial-like carrier and the
+   period/module basis;
+3. the added costs of physical units, clock, branches, and decoder cancel the
+   apparent simplification;
+4. the square-period case at $E=0$ can serve as an exact calibration without
+   leaking $\tau=i$ to the proposal generator; and
+5. equilibria, ordinary oscillations, rotations, and the degenerate
+   separatrix regime require different atlases rather than one falsely global
+   chart.
 
-交比、$j$-不变量、周期格与 monodromy 是不可被 chart 免费消去的候选剩余量；本 Sonnet 要通过证书确定它们在任务成本中的实际角色。
+Cross-ratios, the $j$-invariant, period lattices, and monodromy are candidate
+residuals that cannot be removed freely by a chart.  This Sonnet must use
+certificates to determine their actual role in task cost.
 
-## 8. 第三校准：平面圆型限制性三体问题
+## 8. Third calibration: the planar circular restricted three-body problem
 
-PCR3BP 是独立压力测试，不是单摆结论的装饰性应用。每次实验先声明局部区域与任务，例如短时传播、Poincaré 返回或近碰撞段，再比较：
+PCR3BP is an independent stress test, not a decorative application of a
+pendulum result.  Each experiment must first declare a local region and task,
+such as short-time propagation, a Poincaré return, or a near-collision segment,
+then compare
 
-- 基线物理/旋转坐标；
-- 纯共形 chart 变化；
-- 必要时单独登记的分歧覆盖；
-- 必要时单独登记的时间重参数化；
-- polynomial-like 局部系数与 matrix-like 变分/monodromy 表的联合成本。
+- baseline physical/rotating coordinates;
+- a pure conformal chart change;
+- a separately recorded ramified cover when necessary;
+- a separately recorded time reparameterization when necessary; and
+- the joint cost of polynomial-like local coefficients and a matrix-like
+  variation/monodromy table.
 
-不能把碰撞正则化偷偷计作 Möbius chart 的收益，也不能由局部 chart 的改善推出全局可积性。现有 [`pcr3bp-history-cost/`](../pcr3bp-history-cost/) 作为相邻 Sonnet，继续独立记录 word、clock、deck 与 hyperbolic cost；两条研究线在有共同证书前不合并。
+Collision regularization must not be credited secretly as a benefit of a
+Möbius chart, and a local chart improvement must not be used to infer global
+integrability.  The existing
+[`pcr3bp-history-cost/`](../pcr3bp-history-cost/) Sonnet independently records
+word, clock, deck, and hyperbolic cost.  The two research lines remain separate
+until they have a common certificate.
 
-## 9. 可证伪假设
+## 9. Falsifiable hypotheses
 
-- **H1 — chart covariance：** 每个合格候选都有精确的读出、单位、时钟与往返证书。
-- **H2 — 有效精简：** 至少一个非平凡任务上存在严格 Pareto 改进，而不只是字符数变短。
-- **H3 — 联合标准型：** 标量载体与有限作用表需要共同选择，分别最简一般不等于联合最简。
-- **H4 — 共形剩余：** 模量、交比、周期、monodromy 或标记单位形成不能由 chart 消去的任务相关残差。
-- **H5 — 局部性边界：** PCR3BP 的最佳对象更可能是 task-local atlas，而不是单一全局标准 chart。
+- **H1 — chart covariance:** every admissible candidate has exact readout,
+  unit, clock, and round-trip certificates.
+- **H2 — effective simplification:** at least one nontrivial task admits a
+  strict Pareto improvement rather than merely a shorter character string.
+- **H3 — joint normal form:** the scalar carrier and finite action table must
+  be selected jointly; separate minima are generally not a joint minimum.
+- **H4 — conformal residual:** moduli, cross-ratios, periods, monodromy, or the
+  marked unit form task-relative residuals that a chart cannot remove.
+- **H5 — locality boundary:** for PCR3BP, the best object is more likely a
+  task-local atlas than one global normal chart.
 
-## 10. Kill conditions 与红队
+## 10. Kill conditions and red teams
 
-出现任一情况必须缩小或关闭相应主张：
+Any of the following must narrow or close the corresponding claim:
 
-- 所谓简化只减少书写长度，却增加 decoder、atlas、分支或数值成本；
-- 候选在任务域上不共形、不单射，或把覆盖/时间变换伪装成 chart；
-- 把移动后的单位重新设为 $1$ 却不计额外归一化；
-- 物理读出、时钟或 task-equivalence 交换图失败；
-- 将奇点移出当前坐标纸后便不再追踪；
-- proposal generator 接触到被冻结的经典答案；
-- 优势仅来自普通 Möbius 归一化，AM 原生 grammar 没有额外贡献；
-- 从局部改良不当地推出全局标准型、全局可积性或拓扑消失；
-- 在匹配预算下，原生 AM 搜索始终弱于基线。负结果仍应保留。
+- the alleged simplification reduces only notation length while increasing
+  decoder, atlas, branch, or numerical cost;
+- a candidate is not conformal or injective on the task domain, or disguises a
+  cover or time change as a chart;
+- a transported unit is reset to $1$ without charging for the additional
+  normalization;
+- the physical readout, clock, or task-equivalence diagram fails to commute;
+- a singularity is moved outside the current coordinate patch and then no
+  longer tracked;
+- the proposal generator gains access to a frozen classical answer;
+- the advantage comes only from ordinary Möbius normalization, with no added
+  contribution from the native AM grammar;
+- a local improvement is used improperly to infer a global normal form,
+  global integrability, or disappearance of topology; or
+- under matched budgets, the native AM search remains inferior to the
+  baseline.  A negative result must still be retained.
 
-## 11. 证书要求
+## 11. Certificate requirements
 
-每个阶段至少提交：
+Every phase must provide at least
 
-- chart 定义域、重叠区、Jacobian/共形性与往返证书；
-- 过程作用的 pushforward/pullback 等式；
-- 物理读出、单位、时钟、分支与 decoder 证书；
-- polynomial-like 载体和 matrix-like 作用的变换证书；
-- 对照基线、冻结预算、完整成本向量和 Pareto 比较；
-- 奇点、退化区、坏条件数和跨 chart 切换红队；
-- 发现输入日志与 oracle 防火墙审计。
+- the chart domain, overlaps, Jacobian/conformality, and round-trip
+  certificates;
+- pushforward/pullback identities for process actions;
+- certificates for the physical readout, units, clock, branches, and decoder;
+- transformation certificates for the polynomial-like carrier and matrix-like
+  action;
+- a control baseline, frozen budget, full cost vector, and Pareto comparison;
+- red teams for singularities, degenerate regimes, bad conditioning, and
+  cross-chart switching; and
+- discovery-input logs and an audit of the oracle firewall.
 
-## 12. 理论与工程影响边界
+## 12. Theory and engineering impact boundary
 
-若校准成功，它可能细化 Mathematical Core 中的 presentation search、单位协变、观察者/decoder 与 effective analysis，也可能给 Engineering Architecture 增加共形 atlas 和联合模块成本的研究局部 schema。
+If successful, the calibration may refine presentation search, unit
+covariance, observers/decoders, and effective analysis in the Mathematical
+Core.  It may also add a research-local schema for conformal atlases and joint
+module cost to the Engineering Architecture.
 
-当前不更新 Theory Map：本研究保持 T0/T1、横向且局部。只有在 Riccati、单摆和 PCR3BP 三层证据中至少两类独立问题迫使出同一接口，并通过精度、校准、抽象与基础闸门后，才允许提出 extraction candidate；任何公共 API 仍须经过 Experimental 层。
+The Theory Map is unchanged at present: this study remains T0/T1, horizontal,
+and local.  An extraction candidate may be proposed only after at least two
+independent problem classes among Riccati, the pendulum, and PCR3BP force the
+same interface and the precision, calibration, abstraction, and foundation
+gates have been passed.  Any Public API must still mature through Experimental.
