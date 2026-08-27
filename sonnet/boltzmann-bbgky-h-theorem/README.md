@@ -1,6 +1,6 @@
 # Sonnet — Boltzmann H theorem, BBGKY, and rank-relative observers
 
-Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A replaces the adjacent A/M order control by two overlapping reversible collisions and passes C0--C2: ordered target action, retained-law reconstruction, set-valued response after forgetting, and a state-dependent response cocycle. Independently, Phase 1J-B freezes the continuum response as one signed measure on the full collision-event space and proves an exact clipped/tail H-budget shadow. Phase 1J-B2 now proves the fixed-molecule one-mark pushforward/TV lemma and Fubini covariance, showing that the remaining continuum theorem is the global marked operation-sequence sum plus physical flux identification. Phases 1A and 1B remain post-hoc kinetic controls. The study has not constructed the continuum flux response from the global Deng molecule expansion, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
+Status: Phase 1C exact finite layer-adaptation calibration passed full repository CI on Python 3.10–3.14. Phase 1D records the resulting measured-fibration, ensemble, asymptotic-fibre, and objectification synthesis at T0/T1. Phase 1E freezes the hard-sphere collision-boundary adapter and bulk-\(L^1\)/boundary-trace obstruction. Phase 1F adds a weak collision-flux task and one-collision Duhamel cell. Phase 1G proves a finite stopped/continued split and time-reversal obstruction. Phase 1H discovers a nonunique target Lyapunov cone without an entropy oracle. Phase 1I places an exact horizontal/vertical fibre-response ledger and a chart audit before entropy selection. Phase 1J-A replaces the adjacent A/M order control by two overlapping reversible collisions and passes C0--C2: ordered target action, retained-law reconstruction, set-valued response after forgetting, and a state-dependent response cocycle. Independently, Phase 1J-B freezes the continuum response as one signed measure on the full collision-event space and proves an exact clipped/tail H-budget shadow. Phase 1J-B2 proves the fixed-molecule one-mark pushforward/TV lemma. Phase 1J-B3 now proves that the bounded formal marked molecule family is absolutely summable in total variation: early bounded-test erasure leaves only a linear molecule-size factor, which is absorbed by the source proof's geometric size sum. The remaining continuum theorem is physical signed-current identification. Phases 1A and 1B remain post-hoc kinetic controls. The study has not identified the formal marked family with the hard-sphere collision response, controlled its logarithmic tail, proved a trace or entropy chain rule, selected a closed collision covector, objectified correlation fibres, proved a hard-sphere H theorem or equivalence of ensembles, or proposed a generic API.
 
 ## 1. Classical problem and sign convention
 
@@ -344,8 +344,23 @@ commutes with Proposition 8.14 as an exact Fubini observable.  This does not
 perform the global marked molecule sum or identify it with physical flux.
 It also reveals that the full bounded \(L^\infty\) ball is a total-variation
 target, potentially stronger than the H-adapted or smooth/cylinder weak test
-classes.  The next analytic target is therefore a marked operation-sequence
-summation with a declared test class and a retained positive gain.
+classes.
+
+Phase 1J-B3 closes the global formal sum for this strongest bounded class.
+For bounded \(\psi\), take absolute value before the operation sequence:
+
+\[
+|\langle\kappa_{M,n},\psi\rangle|
+\le \|\psi\|_\infty\,\||IN_M|\|_{L^1}.
+\]
+
+Summing root-visible marks adds only \(|\mathcal C_H(M)|\le |M|\).  Since
+\(mC^m\le(2C)^m\), this linear factor is absorbed into the existing geometric
+molecule-size sum behind equations (9.52)--(9.53).  The formal signed marked
+family is therefore absolutely summable in total variation with the same
+positive-power form.  Proposition 3.25 supplies domination, however, not an
+identity between this family and a physical collision current.  The next
+analytic target is that signed-current identification.
 
 ## 7. Core research questions
 
@@ -357,7 +372,7 @@ summation with a declared test class and a retained positive gain.
 6. Can time reversal be used to construct an explicit missing decoder?
 7. At each arithmetic rank, which observers are lowering-induced and which are intrinsic?
 8. Does a useful H-like Lyapunov functional exist on more than one rank, and if so how does it transform across the \((r,s)\) grid?
-9. Can every marked molecule/cut/deletion/splitting subcase retain enough gain to absorb the root-visible atom count and sum to a physical collision-current response?
+9. Can the absolutely summable formal marked family be identified, with signs and residuals intact, as the physical collision-current response?
 10. Can marked molecule estimates supply the clipped collision-flux and logarithmic-tail bounds now known to be sufficient for Lyapunov transfer?
 11. Can one collision-derived chart atlas make dynamics, composition, and covector integration jointly simple, or is their incompatibility an invariant cost?
 
@@ -428,6 +443,8 @@ effective-calculus obligations.
 - [22-phase1j-b-continuum-h-response-results.md](./22-phase1j-b-continuum-h-response-results.md) records the nine exact measure certificates, the primary-source audit, and the bounded marked-flux next theorem.
 - [23-phase1j-b2-marked-molecule-flux-lift-contract.md](./23-phase1j-b2-marked-molecule-flux-lift-contract.md) freezes the pre-cut root-visible mark, fixed-molecule pushforward bound, cut covariance, and test-class ladder.
 - [24-phase1j-b2-marked-molecule-flux-lift-results.md](./24-phase1j-b2-marked-molecule-flux-lift-results.md) records the local one-mark lemma, ten exact certificates, red teams, and the marked global-summation boundary.
+- [25-phase1j-b3-marked-operation-sequence-contract.md](./25-phase1j-b3-marked-operation-sequence-contract.md) freezes early bounded-test erasure, operation routing, the linear mark-cost absorption, and formal-current claim ceiling.
+- [26-phase1j-b3-marked-operation-sequence-results.md](./26-phase1j-b3-marked-operation-sequence-results.md) records the bounded formal marked-family theorem, thirteen exact certificates, red teams, and the physical-current identification boundary.
 - [test_chart_first_collision_adapters.py](../../tests/research/test_chart_first_collision_adapters.py) contains the 11 exact Phase 1C certificates.
 - [test_hard_sphere_continuum_adapter_seam.py](../../tests/research/test_hard_sphere_continuum_adapter_seam.py) contains the 6 exact Phase 1E certificates.
 - [test_weak_collision_history_cell.py](../../tests/research/test_weak_collision_history_cell.py) contains the 6 exact Phase 1F certificates.
@@ -437,22 +454,21 @@ effective-calculus obligations.
 - [test_collision_response_cocycle.py](../../tests/research/test_collision_response_cocycle.py) contains the 10 exact Phase 1J-A certificates, including 72 reconstructions and 900 response-cocycle identities.
 - [test_continuum_collision_flux_response_budget.py](../../tests/research/test_continuum_collision_flux_response_budget.py) contains the 9 exact Phase 1J-B measure, clipping, tail, dissipation, and claim-boundary certificates.
 - [test_marked_molecule_flux_lift.py](../../tests/research/test_marked_molecule_flux_lift.py) contains the 10 exact Phase 1J-B2 eligibility, pushforward, cut, topology, mark-cost, and claim-boundary certificates.
+- [test_marked_operation_sequence_summation.py](../../tests/research/test_marked_operation_sequence_summation.py) contains the 13 exact Phase 1J-B3 operation-routing, geometric-summation, tail, error, red-team, and claim-boundary certificates.
 
-Phase 1J-A is complete through C2.  Independently, Phase 1J-B2 has completed
-the fixed-molecule marked operator gate without borrowing that finite
-conclusion.  A later C3 covector search remains separate unless its domain and
+Phase 1J-A is complete through C2.  Independently, Phase 1J-B3 has completed
+the bounded formal marked-family sum without borrowing that finite conclusion.
+A later C3 covector search remains separate unless its domain and
 integrability hypotheses are independently earned.
 
-The next continuum action is Phase 1J-B3, a marked operation-sequence
-summation.  It must carry the pre-cut root-visible event observable through
-every molecule, cut, deletion, split and error category; display the mark
-count, molecule size, recollision rank, truncation and geometry costs; and
-retain a summable gain in one explicitly declared test class.  Proposition
-8.14 may reorganize the marked integral but may not be read as physical
-composition after cutting.  The full \(L^\infty\) ball should be pursued only
-if total-variation control is genuinely available; otherwise the contract
-must name the smaller H-adapted or weak-flux class.  Flux identification and
-the logarithmic tail remain later gates.
+The next continuum action is Phase 1J-B4, physical signed-current
+identification.  It must return to the pre-absolute-value expansion and show
+that the formal marked terms reconstruct one declared microscopic collision
+current with orientation, gain/loss signs, truncation and terminal-error
+currents intact.  Proposition 3.25's positive domination is not such an
+identity.  Equality must hold on the Phase 1F weak event space for bounded
+tests before any comparison with target Boltzmann flux.  The logarithmic tail
+and entropy chain rule remain later gates.
 
 ## References for calibration
 
