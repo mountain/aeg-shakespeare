@@ -1,0 +1,24 @@
+{
+  "schema_version": "carrier-heldout-payload-v1",
+  "nonce": "f1233efc86c95ee1769ceea2094fa05a49ec9d980f6a88f8c078b7ee6d57c000",
+  "cases": [
+    {
+      "id": "heldout-l1-mixed-nesting",
+      "level": "L1",
+      "source": "exp(exp(N + 2*exp(-N)) - exp(N))",
+      "task": "exact finite N->+infinity readout"
+    },
+    {
+      "id": "heldout-l2-fixed-iterate",
+      "level": "L2-negative-control",
+      "source": "literal exp iterate of -N at k=7",
+      "task": "compute this literal fixed-height limit; assign no symbolic-height credit"
+    },
+    {
+      "id": "heldout-l2-symbolic-height",
+      "level": "L2",
+      "source": "E(h+1,x)=exp(E(h,x)), E(0,x)=x",
+      "task": "one executable normal form and replay valid for symbolic natural h; no finite unrolling"
+    }
+  ]
+}
